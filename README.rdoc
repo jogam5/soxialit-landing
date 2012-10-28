@@ -1,9 +1,0 @@
-HipHop Labs
-
-This is an app-template ready for using Devise + OAuth (Facebook Login).
-
-Things you should consider:
-
-- Replace your Facebook Key and hide it in your .bashrc.
-
-HipHop Labs 2012. [Mexico]
