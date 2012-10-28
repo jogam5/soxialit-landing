@@ -1,0 +1,52 @@
+<div class="row">
+	<div class="span6">
+		<h1>Soxialit</h1>
+	</div>
+	<div class="span4 offset2">
+		<p id="session">Si tienes una <strong>invitación</strong>, 
+   			<%= link_to "inicia sesión", new_user_session_path %>.<br />
+   		</p>
+   		<% if user_signed_in? %>
+		    Signed in as <%= current_user.email %>. Not you?
+		    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  		<% end %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span9">
+		<h2>Soxialit es una <span id="redsocial">red social</span> que conecta<br/>
+	<span id="fashion">fashion</span> <span id="bold">designers, bloggers, fotográfos y boutiques</span>
+	<br />en México y Latinoamérica.
+		</h2>
+	</div>
+	<div class="span3">
+		<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fsoxialit&amp;send=false&amp;layout=box_count&amp;width=100&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=tahoma&amp;height=90&amp;appId=200330006764703" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:90px;" allowTransparency="true"></iframe>
+		
+		<a href="https://twitter.com/Soxialit" class="twitter-follow-button" data-show-count="true">Follow @Soxialit</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+		</script>
+	</div>
+</div>
+<div class="row">
+		<div id="wrapper">
+			<div class="span5">
+				<div id="leftside">
+					<h4>Actualmente sólo se puede ingresar a Soxialit
+						por <span id="redsocial">invitación</span>.
+					</h4>
+					<div id="leftsideSecondBlock">Si estás <span id="fashion">desesperado</span> por entrar<br/>
+						obtén una cuenta <strong>ahora mismo</strong><br />
+						por <strong>$10 USD</strong>.
+						<span id="leftsideThirdBlock">Pero debes saber que la
+							cuenta probablemente no valga <br/>los $10 USD.
+						</span>
+						<br /><br />
+						<%= link_to "Compar Cuenta", "#", class: "btn btn-success" %>
+					</div>
+				</div>
+			</div>
+			<div class="span5 offset1">
+			</div>
+		</div>
+</div>

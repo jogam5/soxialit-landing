@@ -1,0 +1,116 @@
+@import "bootstrap";
+$pink:#F03C86;
+$orange:#F8A41A;
+
+#session{
+	margin-top:10px;
+	font-size:1.2em;
+	border:1px dotted #ADADAD;
+	text-align:center;
+}
+
+#session a{
+	color:$orange;
+}
+
+#session a:hover{
+	color:$pink;
+	text-decoration:none;
+}
+
+#invit p{
+	font-size:1em;
+	margin-top:0%;
+	text-align:right;
+}
+
+#invit a:hover{
+	color:$pink;
+	text-decoration:none;
+}
+
+h1{
+	font-family:Lobster;
+	color:#999;
+}
+
+h2{
+	font-family:Lucida Grande, Helvetica, Arial, Sans-serif;
+	font-weight:300;
+	font-size:1.7em;	
+}
+
+
+#redsocial{
+	color:#F8A41A;
+	font-weight:bold;
+}
+
+#fashion{
+	color:$pink;
+	font-weight:bold;
+}
+
+#bold{
+	font-weight:bold;
+}
+
+#wrapper{
+	margin-top:5%;
+	width:100%;
+	background-image:url('colorback.png');
+	height:280px;
+	border:1px dotted #ADADAD;
+			float:auto;
+			margin:2%;
+			padding:1%;	
+}
+#leftside{
+	background-color:white;
+	opacity:0.8;
+	width:100%;
+	height:250px;
+	padding:2%;
+	margin:2%;
+}
+
+#leftside:hover{
+	opacity:1;
+}
+
+#leftside h4{
+	font-family:Lucida Grande, Helvetica, Arial, Sans-serif;
+	font-weight:500;		
+	margin-top:3%;
+	font-size:1.5em;
+	line-height:25px;
+	color:#333;	
+	text-align:center;
+}
+#leftsideSecondBlock{
+	font-family:Lucida Grande, Helvetica, Arial, Sans-serif;
+	font-weight:300;
+	font-size:1.3em;
+	line-height:25px;		
+	color:#555;
+	text-align:center;
+}
+#leftsideThirdBlock{		
+	color:#999;
+}
+
+#reserve h2{
+	font-family:Lucida Grande, Helvetica, Arial, Sans-serif;
+	font-weight:300;		
+	color:black;
+}
+
+#reserve h4{
+	font-family:Lucida Grande, Helvetica, Arial, Sans-serif;
+	font-weight:300;		
+	color:#999;
+}
+
+#url{
+	
+}
