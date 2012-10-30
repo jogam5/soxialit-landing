@@ -34,15 +34,27 @@
 				<div id="leftside">
 					<h4>Actualmente sólo se puede ingresar a Soxialit
 						por <span id="redsocial">invitación</span>.
-					</h4>
+					</h4><br />
 					<div id="leftsideSecondBlock">Si estás <span id="fashion">desesperado</span> por entrar<br/>
 						obtén una cuenta <strong>ahora mismo</strong><br />
 						por <strong>$10 USD</strong>.
-						<span id="leftsideThirdBlock">Pero debes saber que la
-							cuenta probablemente no valga <br/>los $10 USD.
-						</span>
 						<br /><br />
-						<%= link_to "Compar Cuenta", "#", class: "btn btn-success" %>
+						<form target="MercadoPago" action="https://www.mercadopago.com/mlm/buybutton" method="post">
+							<input type="submit" class="btn btn-success" value="Comprar Cuenta" >
+							<input type="hidden" name="acc_id" value="21875312">
+							<input type="hidden" name="url_cancel" value="http://www.soxialit.com">
+							<input type="hidden" name="item_id" value="Soxialit">
+							<input type="hidden" name="name" value="Soxialit Premium">
+							<input type="hidden" name="currency" value="DOL">
+							<input type="hidden" name="price" value="10.0">
+							<input type="hidden" name="url_process" value="http://www.soxialit.com/">
+							<input type="hidden" name="url_succesfull" value="http://www.soxialit.com/bienvenido">
+							<input type="hidden" name="shipping_cost" value="">
+							<input type="hidden" name="enc" value="hxxTihnnIO0kvTbPF0yTWYDAMKg%3D">
+							<input type="hidden" name="ship_cost_mode" value="DS">
+							<input type="hidden" name="op_retira" value="S">
+							<input type="hidden" name="extra_part" value="soxialit">
+						</form>
 					</div>
 				</div>
 			</div>
@@ -50,3 +62,5 @@
 			</div>
 		</div>
 </div>
+
+

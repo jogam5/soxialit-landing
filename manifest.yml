@@ -1,0 +1,17 @@
+---
+applications:
+  .:
+    name: ! '[landing]'
+    framework:
+      name: rails3
+      info:
+        mem: 256M
+        description: Rails Application
+        exec: 
+    infra: rs
+    url: landing.rs.af.cm
+    mem: '256'
+    instances: 1
+    services:
+      landing-mysql-39049:
+        type: mysql
