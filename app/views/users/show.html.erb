@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<% if @user.role?(:admin) %>
+  <section>
+    <%= render 'users/profiles/admin' %>
+   </section>
+<% elsif @user.role?(:designer)  %>
+  <section>
+    <%= render 'users/profiles/designer' %>
+  </section>
+<% elsif @user.role?(:'fashion lover')  %>
+  <section>
+      <%= render 'users/profiles/fashionlover' %>
+  </section>
+<% end %>

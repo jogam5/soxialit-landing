@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="span6">
-		<h1>Soxialit</h1>
+		<p id="title">Soxialit</p>
 	</div>
 	<div class="span4 offset2">
 		<p id="session">Si tienes una <strong>invitación</strong>, 
@@ -12,7 +12,6 @@
   		<% end %>
 	</div>
 </div>
-
 <div class="row">
 	<div class="span9">
 		<h2>Soxialit es una <span id="redsocial">red social</span> que conecta<br/>
@@ -21,11 +20,7 @@
 		</h2>
 	</div>
 	<div class="span3">
-		<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fsoxialit&amp;send=false&amp;layout=box_count&amp;width=100&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=tahoma&amp;height=90&amp;appId=200330006764703" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:90px;" allowTransparency="true"></iframe>
-		
-		<a href="https://twitter.com/Soxialit" class="twitter-follow-button" data-show-count="true">Follow @Soxialit</a>
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-		</script>
+		<%= render 'social_plugins' %>
 	</div>
 </div>
 <div class="row">
@@ -39,22 +34,7 @@
 						obtén una cuenta <strong>ahora mismo</strong><br />
 						por <strong>$10 USD</strong>.
 						<br /><br />
-						<form target="MercadoPago" action="https://www.mercadopago.com/mlm/buybutton" method="post">
-							<input type="submit" class="btn btn-success" value="Comprar Cuenta" >
-							<input type="hidden" name="acc_id" value="21875312">
-							<input type="hidden" name="url_cancel" value="http://www.soxialit.com">
-							<input type="hidden" name="item_id" value="Soxialit">
-							<input type="hidden" name="name" value="Soxialit Premium">
-							<input type="hidden" name="currency" value="DOL">
-							<input type="hidden" name="price" value="10.0">
-							<input type="hidden" name="url_process" value="http://www.soxialit.com/">
-							<input type="hidden" name="url_succesfull" value="http://www.soxialit.com/bienvenido">
-							<input type="hidden" name="shipping_cost" value="">
-							<input type="hidden" name="enc" value="hxxTihnnIO0kvTbPF0yTWYDAMKg%3D">
-							<input type="hidden" name="ship_cost_mode" value="DS">
-							<input type="hidden" name="op_retira" value="S">
-							<input type="hidden" name="extra_part" value="soxialit">
-						</form>
+						<%= render 'mercadopago' %>
 					</div>
 				</div>
 			</div>
