@@ -4,7 +4,12 @@
 	</div>
 	<div class="span4 offset2">
 		<p id="session">Si tienes una <strong>invitación</strong>, 
-   			<%= link_to "inicia sesión", new_user_session_path %>.<br />
+   			<a href="http://www.soxialit.com/users/sign_in"
+   			onclick="_gaq.push(['_trackEvent', 'Buttons', 'Buy', 'MercadoPago']);"
+			onmousedown="_gaq.push(['_trackEvent', 'Buttons', 'Buy', 'MercadoPago']);">
+			inicia sesión
+			</a>.
+   			<br />
    		</p>
    		<% if user_signed_in? %>
 		    Signed in as <%= current_user.email %>. Not you?
