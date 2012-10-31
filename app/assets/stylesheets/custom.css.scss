@@ -20,6 +20,10 @@ $orange:#F8A41A;
 	text-decoration:none;
 }
 
+#footer a:hover{
+	color:$pink;
+	text-decoration:none;
+}
 
 #invitacion a:hover{
 	color:$pink;
@@ -30,7 +34,7 @@ $orange:#F8A41A;
 	font-family:Lobster, Raleway, Helvetica, Sans-Serif;
 	color:$grayTitle;
 	font-size:3em;
-	margin-top:5%;
+	margin:5% 0 6% 0;
 }
 
 h2{
