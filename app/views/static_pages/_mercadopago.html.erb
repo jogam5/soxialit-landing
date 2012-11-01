@@ -1,4 +1,4 @@
-<form target="MercadoPago" action="https://www.mercadopago.com/mlm/buybutton" method="post">
+<form target="MercadoPago" action="https://www.mercadopago.com/mlm/buybutton" id="mercadoPago" method="post">
 		<input type="submit" class="btn btn-success" value="Comprar Cuenta"
 			onclick="_gaq.push(['_trackEvent', 'Call-to-Actions', 'Buy button', 'MercadoPago']);"
 			onmousedown="_gaq.push(['_trackEvent', 'Call-to-Actions', 'Buy button', 'MercadoPago']);">
@@ -16,3 +16,6 @@
 							<input type="hidden" name="op_retira" value="S">
 							<input type="hidden" name="extra_part" value="soxialit">
 </form>
+<script type="text/javascript">
+	mixpanel.track_forms("#mercadoPago", "Clicked Mercado Pago");
+</script>
