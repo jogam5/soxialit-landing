@@ -11,6 +11,8 @@
 			</a>.
    			<br />
    		</p>
+   		<p id="invitacion" style="text-align:center">Si no, <%= link_to 'regístrate', '/auth/facebook/' %>, a veces regalamos algunas.
+   		</p>
    		<% if user_signed_in? %>
 		    Signed in as <%= current_user.email %>. Not you?
 		    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
@@ -19,7 +21,7 @@
 </div>
 <div class="row">
 	<div class="span9">
-		<h2>Soxialit es una <span id="redsocial">red social</span> que conecta<br/>
+		<h2 id="titleDescription">Soxialit es una <span id="redsocial">red social</span> que conecta<br/>
 	<span id="fashion">fashion</span> <span id="bold">designers, bloggers, fotográfos y boutiques</span>
 	<br />en México y Latinoamérica.
 		</h2>
@@ -47,6 +49,10 @@
 			</div>
 		</div>
 </div>
+<% if !Rails.env.production? %>
 <script type="text/javascript">
     mixpanel.track("Landing Page Loaded")
 </script>
+<% else %>
+  <script>(function(c,a){var b,d,h,e;............</script>
+<% end %>

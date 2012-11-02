@@ -10,8 +10,8 @@ class AuthenticationsController < ApplicationController
       flash[:notice] = "Signed in successfully."
       sign_in(:user, authentication.user)
       #session[:user_id] = authentication.user.id
-      #redirect_to user_steps_path
-      redirect_to user_path(current_user)
+      redirect_to user_steps_path
+      #redirect_to user_path(current_user)
     else
       # Authentication not found, thus a new user.
       user = User.new

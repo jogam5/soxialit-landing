@@ -38,7 +38,7 @@ $orange:#F8A41A;
 	margin:5% 0 6% 0;
 }
 
-h2{
+#titleDescription{
 	font-family:Lucida Grande, Helvetica, Arial, Sans-serif;
 	font-weight:300;
 	font-size:1.7em;	
@@ -113,4 +113,10 @@ h2{
 	font-family:Lucida Grande, Helvetica, Arial, Sans-serif;
 	font-weight:300;		
 	color:$grayTitle;
+}
+
+/* Steps */
+#moveToRight{
+	text-align:right;
+	color:$pink;
 }

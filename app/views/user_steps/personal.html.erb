@@ -1,20 +1,21 @@
-<h1>Tell us a little about yourself:</h1>
+<h2>¡Yuppieeeee! Bienvenido a Soxialit.</h2>
+<div class="row">
+  <div class"span3 offset3">
+    <h3 id="moveToRight">Crea tu pérfil</h3>
+  </div>
+</div>
 
 <%= render layout: 'form' do |f| %>
   <div class="field">
-    <%= f.label :username %><br />
+    <h5>Nombre de usuario:</h5>
     <%= f.text_field :username %>
-  </div>
+  </div><br />
    <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
-  </div>
+    <h5>Ubicación:</h5>
+    <%= f.text_field :location, :placeholder => "Ej. Amsterdam" %>
+  </div><br />
    <div class="field">
-    <%= f.label :website %><br />
-    <%= f.text_field :website %>
-  </div>
-  <div class="field">
-    <%= f.label :bio %><br />
-    <%= f.text_area :bio, rows: 5 %>
+    <h5>Website, Blog o Facebook Fan Page:</h5>
+    <%= f.text_field :website, :placeholder => "Ej. www.soxialit.com" %>
   </div>
 <% end %>

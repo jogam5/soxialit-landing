@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Soxialit- La Fashion Social Network para Mexico y Latinoamerica</title>
+  <title>Soxialit- La Fashion Social Network para Mexico y Latinoamérica</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -13,12 +13,13 @@ mixpanel.init("5e344db467e2f971ffccde4566fe2da4");</script><!-- end Mixpanel -->
 <body>
     <div class="container">
       <% flash.each do |type, message| %>
-        <div class="alert <%= flash_class type %>">
+        <div style="margin-top:2%" class="alert <%= flash_class type %>">
           <button class="close" data-dismiss="alert">x</button>
           <%= message %>
       </div>
     <% end %>
   <%= yield %>
+  <hr />
   <%= render 'layouts/footer' %>
 </div>
 <script type="text/javascript">
