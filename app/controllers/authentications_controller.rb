@@ -9,7 +9,6 @@ class AuthenticationsController < ApplicationController
       # Authentication found, sign the user in.
       flash[:notice] = "Signed in successfully."
       sign_in(:user, authentication.user)
-      #session[:user_id] = authentication.user.id
       redirect_to user_steps_path
       #redirect_to user_path(current_user)
     else
@@ -24,7 +23,7 @@ class AuthenticationsController < ApplicationController
       else
         flash[:error] = "Error while creating a user account. Please try again."
         redirect_to root_url
-      end
+      end 
     end
   end
 end

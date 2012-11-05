@@ -3,20 +3,25 @@
 		<p id="title">Soxialit</p>
 	</div>
 	<div class="span4 offset2">
-		<p id="session">Si tienes una <strong>invitación</strong>, 
-   			<a href="http://www.soxialit.com/users/sign_in"
-   			onclick="_gaq.push(['_trackEvent', 'Links', 'Buy Onclick', 'Invitacion OnClick']);"
-			onmousedown="_gaq.push(['_trackEvent', 'Links', 'Buy Onmousedown', 'Invitacion OnMouse']);">
-			inicia sesión
-			</a>.
-   			<br />
-   		</p>
-   		<p id="invitacion" style="text-align:center">Si no, <%= link_to 'regístrate', '/auth/facebook/' %>, a veces regalamos algunas.
-   		</p>
-   		<% if user_signed_in? %>
-		    Signed in as <%= current_user.email %>. Not you?
-		    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-  		<% end %>
+		<% if user_signed_in? %>
+		    <p id="session">Conectado como: <span id="nickname"><%= link_to current_user.username, 
+		        user_path(current_user) %></span> |
+		    	<%= link_to "Salir", destroy_user_session_path, :method => :delete %>
+			</p>
+  		<% else %>
+			<p id="session">Si tienes una <strong>invitación</strong>, 
+	   			<a href="http://www.soxialit.com/users/sign_in"
+	   			onclick="_gaq.push(['_trackEvent', 'Links', 'Buy Onclick', 'Invitacion OnClick']);"
+				onmousedown="_gaq.push(['_trackEvent', 'Links', 'Buy Onmousedown', 'Invitacion OnMouse']);">
+				inicia sesión
+				</a>.
+	   			<br />
+	   		</p>
+	   		<p id="invitacion" style="text-align:center">Si no, <%= link_to 'regístrate', 
+	   							user_omniauth_authorize_path(:facebook) %>, a veces regalamos algunas.
+	   		</p>
+	   	<% end %>
+   		
 	</div>
 </div>
 <div class="row">
@@ -49,10 +54,7 @@
 			</div>
 		</div>
 </div>
-<% if !Rails.env.production? %>
+
 <script type="text/javascript">
     mixpanel.track("Landing Page Loaded")
 </script>
-<% else %>
-  <script>(function(c,a){var b,d,h,e;............</script>
-<% end %>

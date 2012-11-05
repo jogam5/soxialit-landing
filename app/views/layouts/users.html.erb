@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Soxialit</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <style>
+    body {
+      padding-top: 50px;
+    }
+  </style>
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="container"> 
+     <% flash.each do |type, message| %>
+        <div class="alert <%= flash_class type %>">
+          <button class="close" data-dismiss="alert">x</button>
+          <%= message %>
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

@@ -1,6 +1,12 @@
 @import "bootstrap";
 
+#user_nav{
+  margin-left:10%;
+}
+
 $grayTitle:#999;
+$grayUsername:#555;
+$grayBio:#999;
 $pink:#F03C86;
 $orange:#F8A41A;
 
@@ -115,8 +121,51 @@ $orange:#F8A41A;
 	color:$grayTitle;
 }
 
+#nickname a{
+	color:$grayTitle;
+}
+
+#nickname a:hover{
+	color:$pink;
+}
+
 /* Steps */
 #moveToRight{
 	text-align:right;
 	color:$pink;
+}
+
+/* Profile */
+#username{
+	color:$grayUsername;
+	font-size:2em;
+}
+
+#bio{
+	color:$grayBio;
+	font-size:1em;
+}
+
+#profile_picture{
+	float:right;
+}
+
+.navbar .nav > li > a {
+	padding: 10px 15px 3px;
+	color:$pink;
+}
+
+#titleProfile{
+	font-family:Lobster, Raleway, Helvetica, Sans-Serif;
+	color:green;
+	font-size:2em;
+	margin-top:2%;
+	a:hover{
+	color:$pink;
+	}
+}
+
+#titleProfile a{
+	text-decoration:none;
+	color:$grayTitle;
 }

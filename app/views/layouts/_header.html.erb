@@ -1,0 +1,41 @@
+<header class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<span class="span6">
+					<div id="titleProfile"><%= link_to "Soxialit", root_path %></div>
+				</span>
+				<nav>
+				  <ul class="nav pull-right">
+					<% if user_signed_in? %>
+						<li id="fat-menu" class="dropdown">
+				              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				                <span id="nickname"><%= current_user.username %>
+					        	</span><b class="caret"></b>
+				              </a>
+				              <ul class="dropdown-menu">
+				                <li><%= link_to "Pérfil", user_path(current_user) %></li>
+				                <li><%= link_to "Opciones", edit_user_path(current_user) %></li>
+				                <li class="divider"></li>
+				                <li>
+				                  <%= link_to "Salir", destroy_user_session_path, :method => :delete %>
+				                </li>
+				              </ul>
+				        </li>
+			  		<% else %>
+						<p id="session">Si tienes una <strong>invitación</strong>, 
+				   			<a href="http://www.soxialit.com/users/sign_in"
+				   			onclick="_gaq.push(['_trackEvent', 'Links', 'Buy Onclick', 'Invitacion OnClick']);"
+							onmousedown="_gaq.push(['_trackEvent', 'Links', 'Buy Onmousedown', 'Invitacion OnMouse']);">
+							inicia sesión
+							</a>.
+				   			<br />
+				   		</p>
+				   		<p id="invitacion" style="text-align:center">Si no, <%= link_to 'regístrate', 
+				   							user_omniauth_authorize_path(:facebook) %>, a veces regalamos algunas.
+				   		</p>
+	   				<% end %>
+              	  </ul>
+              	</nav>
+			</div>
+		</div>
+</header>

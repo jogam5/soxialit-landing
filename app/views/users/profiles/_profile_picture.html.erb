@@ -1,0 +1,5 @@
+<% if !@user.picture.present? %>
+	<%= image_tag("http://graph.facebook.com/#{@user.uid}/picture?type=normal") %>
+<% else %>
+    <%= image_tag(@user.picture_url(:profile)) %>
+<% end %>

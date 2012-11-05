@@ -10,12 +10,29 @@
     <h5>Nombre de usuario:</h5>
     <%= f.text_field :username %>
   </div><br />
-   <div class="field">
+  <div class="field">
+
+    <% if !@user.picture.present? %>
+    <%= image_tag "http://graph.facebook.com/#{@user.uid}/picture?type=square" %>
+    <% else %>
+    <%= image_tag(@user.picture_url, :width => 100) %>
+    <% end %>
+
+    
+
+    <h5>Cambiar foto de pérfil:</h5>
+    <%= f.file_field :picture %>
+  </div><br />
+  <div class="field">
     <h5>Ubicación:</h5>
     <%= f.text_field :location, :placeholder => "Ej. Amsterdam" %>
   </div><br />
-   <div class="field">
+  <div class="field">
     <h5>Website, Blog o Facebook Fan Page:</h5>
     <%= f.text_field :website, :placeholder => "Ej. www.soxialit.com" %>
+  </div>
+  <div class="field">
+    <h5>Bio:</h5>
+    <%= f.text_area :bio, rows: 5 %>
   </div>
 <% end %>
