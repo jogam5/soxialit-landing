@@ -10,6 +10,10 @@ gem 'oauth2'
 gem 'cancan'
 gem 'wicked'
 
+#Reputation
+gem 'activerecord-reputation-system', require: 'reputation_system'
+
+
 #Pictures
 gem 'carrierwave'
 gem 'rmagick'

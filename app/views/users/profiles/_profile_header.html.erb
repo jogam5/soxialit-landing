@@ -1,0 +1,42 @@
+<div class="row-fluid">
+		<div id="profile">
+			<div class="span2">
+				<span id="profile_picture">
+					<%= render 'users/profiles/profile_picture' %>
+				</span>
+				<section>
+					<%= render 'shared/stats' %>
+				</section>
+			</div>
+			<div class="span4">
+				<p id="username"><%= @user.username %>
+					<% if @user.roles.first.name == 'fashion lover' %>
+						<span id="fashionlover">fashion lover</span>
+					<% elsif @user.roles.first.name == 'designer' %>
+						<span id="designer"> designer</span>
+					<% elsif @user.roles.first.name == 'boutique' %>
+						<span id="boutique">boutique</span>
+					<% elsif @user.roles.first.name == 'blogger' %>
+						<span id="blogger">blogger</span>
+					<% elsif @user.roles.first.name == 'fotografo' %>
+						<span id="fotografo">fotográfo</span>
+					<% else %>
+						<span id="queen">Queen</span>
+					<% end %>		
+				</p>
+				<p id="bio"><%= @user.bio %></p>
+				<p id="location"><i class="icon-map-marker"></i><%= @user.location %>  
+					<span id="website"><%= link_to @user.website, "http://#{@user.website}" %></span>
+				</p>
+			</div>
+			<div class="span3">
+				<div id="bio">
+					<%= render 'follow_form' if user_signed_in? %>
+				</div>
+			</div>
+			<div class="span2">
+				
+			</div>
+		</div>
+</div>
+<hr />

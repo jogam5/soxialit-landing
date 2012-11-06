@@ -9,6 +9,14 @@ $grayUsername:#555;
 $grayBio:#999;
 $pink:#F03C86;
 $orange:#F8A41A;
+$website:#bbb;
+$alert_messages:#FEFFC5;
+
+$fashionlover:#FF555D;
+$designer:#00B174;
+$boutique:#B40E80;
+$fotografo:#005494;
+$blogger:#F90;
 
 #session{
 	margin-top:10px;
@@ -138,7 +146,7 @@ $orange:#F8A41A;
 /* Profile */
 #username{
 	color:$grayUsername;
-	font-size:2em;
+	font-size:2.5em;
 }
 
 #bio{
@@ -146,8 +154,18 @@ $orange:#F8A41A;
 	font-size:1em;
 }
 
+#website{
+	margin-left:5%;
+	a{ color:$website;
+	 }
+	 a:hover{
+	 color:$pink;
+	 text-decoration:none;
+	 }
+}
+
 #profile_picture{
-	float:right;
+	
 }
 
 .navbar .nav > li > a {
@@ -168,4 +186,74 @@ $orange:#F8A41A;
 #titleProfile a{
 	text-decoration:none;
 	color:$grayTitle;
+}
+
+
+/* sidebar */
+
+.stats {
+  margin:3%;
+  overflow: auto;
+  a {
+    float:left;
+    padding: 0 10px;
+    border-left: 1px solid $grayLighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: $pink;
+    }
+  }
+  strong {
+    
+  }
+}
+
+/* sidebar */
+
+
+
+/* Roles */
+
+#fashionlover{
+	color:$fashionlover;
+	font-size:0.5em;
+}
+
+#designer{
+	color:$designer;
+	font-size:0.5em;
+}
+
+#boutique{
+	color:$boutique;
+	font-size:0.5em;
+}
+
+#fotografo{
+	color:$fotografo;
+	font-size:0.5em;
+}
+
+#blogger{
+	color:$blogger;
+	font-size:0.5em;
+}
+
+#queen{
+	color:gold;
+	font-size:0.5em;
+}
+
+.btn-link {
+	color:$orange;
+}
+
+.btn-link a{
+		color:$pink;
+		text-decoration: none;
 }
