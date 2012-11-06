@@ -1,0 +1,30 @@
+<%= content_tag "div", id: "products", data: {id: product.id } do %>
+
+<div class="image" id="producto_<%= product.id %>">
+	<%= image_tag product.picture_url(:thumb) if product.picture.present? %>
+	<% if signed_in? %>
+		<div class="reputation" id="reputation_<%= product.id %>">
+			<span style:"float:left"> Reputation: </span>
+			<br/>
+		 	<span id="want_product_<%= product.id %>">
+				<%= pluralize product.reputation_value_for(:votes).to_i, "Want" %>
+			</span>
+			<span id="have_product_<%= product.id %>">
+				|	<%= pluralize product.reputation_value_for(:haves).to_i, "Have" %>
+			</span>
+			<br/>
+	 		<% if product.user_id == find_evaluation_id(current_user.evaluations)%>
+				<% elsif current_user && !current_user.voted_for?(product) %>
+					<span id="want_<%= product.id %>">
+				 		<%= link_to "Want", vote_product_path(product, type: "up"), :remote => true, method: "post", id: "link" %>
+		      		</span>
+					<span id="have_<%= product.id %>">
+						| <%= link_to "Have", have_product_path(product, type: "up"), :remote => true, method: "post", id: "link" %>
+					</span>
+			<% end %>
+		</div>
+	<% end %>
+</div>
+<% end %>
+
+

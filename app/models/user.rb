@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
                                     dependent: :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
   has_many :followed_users, through: :relationships, source: :followed
+  has_many :products, :dependent => :destroy
+  has_many :evaluations, class_name: "RSEvaluation", as: :source
 
   mount_uploader :picture, ProfilePictureUploader
   # Include default devise modules. Others available are:
@@ -61,4 +63,12 @@ class User < ActiveRecord::Base
   def unfollow!(other_user)
     relationships.find_by_followed_id(other_user.id).destroy
   end
+
+   has_reputation :votes, source: {reputation: :votes, of: :products}, aggregated_by: :sum
+
+  def voted_for?(haiku)
+          evaluations.where(target_type: haiku.class, target_id: haiku.id).present?
+  end
+
+    has_reputation :haves, source: {reputation: :haves, of: :products}, aggregated_by: :sum
 end

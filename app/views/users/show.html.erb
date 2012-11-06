@@ -2,13 +2,22 @@
 <% if @user.role?(:admin) %>
   <section>
     <%= render 'users/profiles/admin' %>
+    <div id="name" class="container" style="margin-left:-10%; margin-right: -10%">
+			<%= render @products %>
+	</div>
    </section>
 <% elsif @user.role?(:designer)  %>
   <section>
     <%= render 'users/profiles/designer' %>
+    <div id="name" class="container" style="margin-left:-10%; margin-right: -10%">
+			<%= render @products %>
+	</div>
   </section>
 <% elsif @user.role?(:'fashion lover')  %>
   <section>
-      <%= render 'users/profiles/fashionlover' %>
+    <%= render 'users/profiles/fashionlover' %>
+    <div id="name" class="container" style="margin-left:-10%; margin-right: -10%">
+			<%= render @products %>
+	</div>
   </section>
 <% end %>

@@ -1,5 +1,6 @@
 DeviseFacebook::Application.routes.draw do
   
+  
   root :to => 'static_pages#home'
  
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
@@ -18,7 +19,10 @@ DeviseFacebook::Application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
 
-
+  resources :products do
+       member { post :vote }
+       member { post :have}
+  end
   
   #match '/auth/:provider/callback', to: 'authentications#create', as: 'signin'
 

@@ -1,0 +1,46 @@
+// Place all the styles related to the Products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.box {
+  margin: 5px;
+  padding: 5px;
+  background: white;
+  font-size: 11px;
+  line-height: 1.4em;
+  float: left;
+  border-radius: 5px;
+  width: 280px;
+  padding: 3px; box-shadow: 1px 2px 1px #888; 
+}
+
+.image{
+	width: 200px;
+	height: 300px;
+	float: left;
+	padding: 0px; 
+	margin: 15px;
+	position: relative;
+	box-shadow: 1px 2px 5px #888; 
+
+}
+.box img{
+	margin-left: 10%;
+  
+}
+
+.reputation{
+	display: none;
+	position: absolute;
+	top: 50px;
+	width: 200px;
+	z-index: 1000;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
+	border:1px solid black;
+  
+}
+.reputation span{
+  	font-weight:bold;
+	color:white;
+}
