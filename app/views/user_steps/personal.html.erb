@@ -11,17 +11,17 @@
     <%= f.text_field :username %>
   </div><br />
   <div class="field">
-
+    
     <% if !@user.picture.present? %>
     <%= image_tag "http://graph.facebook.com/#{@user.uid}/picture?type=square" %>
     <% else %>
     <%= image_tag(@user.picture_url, :width => 100) %>
     <% end %>
 
-    
-
     <h5>Cambiar foto de pérfil:</h5>
     <%= f.file_field :picture %>
+    <%= f.hidden_field :picture_cache %>
+
   </div><br />
   <div class="field">
     <h5>Ubicación:</h5>

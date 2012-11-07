@@ -129,6 +129,20 @@ $blogger:#F90;
 	color:$grayTitle;
 }
 
+#nickname_profile{
+	float:left;
+	margin-top:10px;
+}
+
+#nickname_profile a{
+	color:$grayTitle;
+	text-decoration:none;
+}
+
+#nickname_profile a:hover{
+	color:$pink;
+}
+
 #nickname a{
 	color:$grayTitle;
 }
@@ -254,6 +268,6 @@ $blogger:#F90;
 }
 
 .btn-link a{
-		color:$pink;
-		text-decoration: none;
+	color:$pink;
+	text-decoration: none;
 }

@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :followed_users, through: :relationships, source: :followed
   has_many :products, :dependent => :destroy
   has_many :evaluations, class_name: "RSEvaluation", as: :source
+  has_reputation :votes, source: {reputation: :votes, of: :products}, aggregated_by: :sum
+  has_reputation :haves, source: {reputation: :haves, of: :products}, aggregated_by: :sum
 
   mount_uploader :picture, ProfilePictureUploader
   # Include default devise modules. Others available are:
@@ -20,13 +22,15 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-              :username, :picture, :location, :website, :bio, :role_ids,
-              :provider, :uid
-
-  before_save {  self.username.downcase! }
+              :username, :picture, :picture_cache, :location, :website, :bio, 
+              :role_ids, :provider, :uid
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validate :must_have_only_one_role
+
+  before_save {  self.username.downcase! }
+  after_create :add_user_to_mailchimp 
+  before_destroy :remove_user_from_mailchimp
 
   def role?(role)
     return self.roles.find_by_name(role).try(:name) == role.to_s
@@ -63,12 +67,25 @@ class User < ActiveRecord::Base
   def unfollow!(other_user)
     relationships.find_by_followed_id(other_user.id).destroy
   end
-
-   has_reputation :votes, source: {reputation: :votes, of: :products}, aggregated_by: :sum
-
+   
   def voted_for?(haiku)
           evaluations.where(target_type: haiku.class, target_id: haiku.id).present?
   end
 
-    has_reputation :haves, source: {reputation: :haves, of: :products}, aggregated_by: :sum
+  def add_user_to_mailchimp
+      mailchimp = Hominid::API.new("8acea2d56fff73cbaa8a707bf2d2d880-us5")
+      list_id = mailchimp.find_list_id_by_name "visitors"
+      info = { 'FNAME' => self.username }
+      result = mailchimp.list_subscribe(list_id, self.email, info, 'html', false, true, false, true)
+      Rails.logger.info("MAILCHIMP SUBSCRIBE: result #{result.inspect} for #{self.email}")
+  end
+  
+  def remove_user_from_mailchimp
+    unless self.email.include?('@example.com')
+      mailchimp = Hominid::API.new("8acea2d56fff73cbaa8a707bf2d2d880-us5")
+      list_id = mailchimp.find_list_id_by_name "visitors"
+      result = mailchimp.list_unsubscribe(list_id, self.email, true, false, true)  
+      Rails.logger.info("MAILCHIMP UNSUBSCRIBE: result #{result.inspect} for #{self.email}")
+    end
+  end
 end

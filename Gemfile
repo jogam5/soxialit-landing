@@ -9,14 +9,15 @@ gem 'omniauth-facebook'
 gem 'oauth2'
 gem 'cancan'
 gem 'wicked'
+gem 'hominid'
 
 #Reputation
 gem 'activerecord-reputation-system', require: 'reputation_system'
 
-
 #Pictures
 gem 'carrierwave'
 gem 'rmagick'
+gem 'fog'
 
 #CSS
 gem "bootstrap-sass", "~> 2.1.0.1"
