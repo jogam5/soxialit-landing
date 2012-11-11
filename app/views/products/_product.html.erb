@@ -1,26 +1,33 @@
 <%= content_tag "div", id: "products", data: {id: product.id } do %>
-	<div class="image" style="margin-bottom:10%" id="producto_<%= product.id %>">
-		<div style="height:300px; height: 300px; margin-left:15%">
+
+<div class="image" style="margin-bottom:10%" id="producto_<%= product.id %>">
+	<div style="height:300px; height: 300px; margin-left:15%">
 		<%= image_tag product.picture_url(:thumb) if product.picture.present? %>
-		</div>
-	<% if signed_in? %>
-		<div class="reputation" id="reputation_<%= product.id %>">
-			<span id="want_product_<%= product.id %>">
+	</div>
+		<% if signed_in? %>
+		<div class="reputation_<%= product.id %>" id="reputation">
+		 	<span id="want_product_<%= product.id %>">
 				<i class="icon-star-empty icon-white"></i><%= pluralize product.reputation_value_for(:votes).to_i, "Want" %>
 			</span>
+
 			<br/> 
 		</div>
-		<div class="votacion" id="votacion_<%= product.id %>">
+
+		<div class="votacion_<%= product.id %>" id="votacion">
 			<% if product.user_id == find_evaluation_id(current_user.evaluations)%>
-			<% elsif current_user && !current_user.voted_for?(product) %>
-				<span id="want_<%= product.id %>">
-				<%= link_to '<i class="icon-star-empty icon-white"></i> Want'.html_safe, vote_product_path(product, type: "up"), :remote => true, method: "post", :class => "button-want", id: "link" %>
-				</span>
+				<% elsif current_user && !current_user.voted_for?(product) %>
+					<span id="want_<%= product.id %>">
+				 		<%= link_to '<i class="icon-star-empty icon-white"></i> Want'.html_safe, vote_product_path(product, type: "up"), :remote => true,  method: "post", :class => "button-want", id: "link" %>
+			   		</span>
 			<% end %>
 		</div>
+
 	<% end %>
-		<div class="product_title"> <%= "#{product.title}"%> por <br/><strong><%= "#{product.brand}" %></strong></div>
-	</div>
+
+	<div class="product_title"> <%= "#{product.title}"%> por <br/><strong><%= "#{product.brand}" %></strong></div>
+</div>
+
 <% end %>
+
 
 

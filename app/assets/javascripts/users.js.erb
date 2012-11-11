@@ -3,14 +3,16 @@ $(document).ready(function(){
 	$('#products').live({
 		mouseenter: 
 		function(){
-			$('#reputation_'+ $(this).data('id')).fadeIn();
-			$('#votacion_'+ $(this).data('id')).fadeIn();
+			$('.reputation_'+ $(this).data('id')).fadeIn();
+			$('.votacion_'+ $(this).data('id')).fadeIn();
+
 			},
 		mouseleave:
 			function (){
-				$('#reputation_'+ $(this).data('id')).hide();
-				$('#votacion_'+ $(this).data('id')).hide();
+				$('.reputation_'+ $(this).data('id')).hide();
+				$('.votacion_'+ $(this).data('id')).hide();
 
 			}
-	});
+	  });
+
 });
