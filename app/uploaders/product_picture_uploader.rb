@@ -2,7 +2,7 @@
 class ProductPictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
-  storage :file
+  storage :fog
  
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
@@ -13,16 +13,6 @@ class ProductPictureUploader < CarrierWave::Uploader::Base
   version :thumb do
     process :resize_to_fit => [300,300]
   end
-
-  version :timelime do
-    process :resize_to_fit => [520,550]
-  end
-
-  version :random do
-    process :resize_to_fit => [280,400]
-  end
-  
- 
 
   #version :small_thumb, :from_version => :thumb do
   #  process resize_to_fill: => [20,20]

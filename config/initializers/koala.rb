@@ -1,7 +1,7 @@
 module Facebook
   #CONFIG = YAML.load_file(Rails.root.join("config/facebook.yml"))[Rails.env]
-  APP_ID = '235628993153454'
-  SECRET = '6dc90b8b268f2643ebd5b074a88db7c8'
+  APP_ID = "APP_ID"
+  SECRET = "APP_SECRET"
 end
 
 Koala::Facebook::OAuth.class_eval do

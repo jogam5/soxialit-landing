@@ -17,7 +17,7 @@
   </p>
 
   <p>
-    <%= image_tag @product.picture_url(:random) if @product.picture.present? %>
+    <%= image_tag @product.picture_url(:thumb) if @product.picture.present? %>
   </p>
 <% end %>
 
