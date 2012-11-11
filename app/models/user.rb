@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
            #@graph_data = @api.get_object("/me/")
             @api.put_connections("me", "feed", :message => "Me acabo de unir a Soxialit, la red social 
               que conecta fashion designers, fotografos, bloggers y boutiques en Mexico y 
-              Latinoamerica: http://www.soxialit.com")
+              Latinoamerica. Registrate en: http://www.soxialit.com")
             #@api.put_wall_post("Test#2 Soxialit App")
             rescue Exception=>ex
                 puts ex.message

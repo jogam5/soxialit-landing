@@ -44,11 +44,6 @@ $blogger:#F90;
 	text-decoration:none;
 }
 
-#footer a:hover{
-	color:$pink;
-	text-decoration:none;
-}
-
 #invitacion{
 	font-size:1.3em;
 }
@@ -364,3 +359,17 @@ $blogger:#F90;
 }
 
 /* Feedback */
+
+/* footer */
+
+footer {
+  margin-top: 10px;
+  padding-top: 5px;
+  border-top: 1px solid $grayTitle;
+  
+}
+
+#footer a:hover{
+	color:$rojo;
+	text-decoration:none;
+}

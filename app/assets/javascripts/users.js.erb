@@ -1,17 +1,16 @@
 $(document).ready(function(){
-	
+
 	$('#products').live({
 		mouseenter: 
 		function(){
-			console.log($(this).data('id'));
-			$('#reputation_'+ $(this).data('id')).show();
+			$('#reputation_'+ $(this).data('id')).fadeIn();
+			$('#votacion_'+ $(this).data('id')).fadeIn();
 			},
 		mouseleave:
 			function (){
 				$('#reputation_'+ $(this).data('id')).hide();
+				$('#votacion_'+ $(this).data('id')).hide();
+
 			}
-	  });
-	
+	});
 });
-
-
