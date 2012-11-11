@@ -16,7 +16,7 @@ Devise.setup do |config|
   require 'devise/orm/active_record'
   
   require 'omniauth-facebook'
-  config.omniauth :facebook, "APP_ID", "APP_SECRET",
+  config.omniauth :facebook, ENV["APP_ID"], ENV["APP_SECRET"],
                   :strategy_class => OmniAuth::Strategies::Facebook,
                   :scope => 'email,user_birthday,read_stream, publish_stream'
 
