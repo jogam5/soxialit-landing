@@ -1,19 +1,23 @@
+
 <%= form_for @user, :url => wizard_path, :html => { :multipart => true } do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   
   <%= yield f %>
 
   <br />
-  <h5>Elige un pérfil (<i>el tipo de pérfil sólo se puede seleccionar una vez</i>):</h5>
+  <h5>Elige un perfil:<br /> (<i>el tipo de perfil sólo se puede seleccionar una vez</i>)</h5>
+  
   <% for role in Role.find(:all) %>
     <div>
-        <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
-        <%= role.name %>
+        <% unless role.name == "admin" %>
+          <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
+          <%= role.name %>
+        <% end %>
     </div>
   <% end %>
   <br />
   
   <div class="actions">
-    <%= f.submit "Crear Pérfil" %>
+    <%= f.submit "Crear Perfil", :class => "button-want" %>
   </div>
 <% end %>

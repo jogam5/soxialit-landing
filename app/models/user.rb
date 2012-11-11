@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :followed_users, through: :relationships, source: :followed
   has_many :products, :dependent => :destroy
   has_many :evaluations, class_name: "RSEvaluation", as: :source
+  has_many :feedbacks, :dependent => :destroy
   has_reputation :votes, source: {reputation: :votes, of: :products}, aggregated_by: :sum
   has_reputation :haves, source: {reputation: :haves, of: :products}, aggregated_by: :sum
 
@@ -23,22 +24,25 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
               :username, :picture, :picture_cache, :location, :website, :bio, 
-              :role_ids, :provider, :uid
+              :role_ids, :provider, :uid, :token
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
-  validate :must_have_only_one_role
+  validate :must_have_one_role
 
   before_save {  self.username.downcase! }
   after_create :add_user_to_mailchimp 
-  before_destroy :remove_user_from_mailchimp
+  #before_destroy :remove_user_from_mailchimp
 
   def role?(role)
     return self.roles.find_by_name(role).try(:name) == role.to_s
     #return self.roles.exists?(:name => role.to_s) #ALTERNATIVE
   end
 
-  def must_have_only_one_role
-    errors.add(:base, 'Solamente puedes elegir un rol') unless role_ids.count == 1
+  def must_have_one_role
+     if role_ids.count == 0
+       errors.add(:base, 'Elige un rol')
+     end
+     errors.add(:base, 'Solamente puedes elegir un rol') if role_ids.count > 1
   end
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
@@ -48,10 +52,24 @@ class User < ActiveRecord::Base
                           picture:auth.info.image,
                           provider:auth.provider,
                           uid:auth.uid,
+                          token:auth.credentials.token,
                           email:auth.info.email,
                           password:Devise.friendly_token[0,20]
                            )
       user.save(:validate => false)
+
+        @api = Koala::Facebook::API.new(user.token)
+          begin
+            #@graph_data = @api.get_object("/me/posts")
+            #@graph_data = @api.get_object("me/user", "fields" => "id")
+           #@graph_data = @api.get_object("/me/")
+        #    @api.put_connections("me", "feed", :message => "Test#5: Me acabo de unir a Soxialit, la red social 
+         #     que conecta fashion designers, fotografos, bloggers y boutiques en Mexico y 
+          #    Latinoamerica: http://soxialit.com")
+            #@api.put_wall_post("Test#2 Soxialit App")
+            rescue Exception=>ex
+                puts ex.message
+          end
     end
     user
   end
@@ -74,7 +92,7 @@ class User < ActiveRecord::Base
 
   def add_user_to_mailchimp
       mailchimp = Hominid::API.new("8acea2d56fff73cbaa8a707bf2d2d880-us5")
-      list_id = mailchimp.find_list_id_by_name "visitors"
+      list_id = mailchimp.find_list_id_by_name "Soxialit Registros"
       info = { 'FNAME' => self.username }
       result = mailchimp.list_subscribe(list_id, self.email, info, 'html', false, true, false, true)
       Rails.logger.info("MAILCHIMP SUBSCRIBE: result #{result.inspect} for #{self.email}")
@@ -83,7 +101,7 @@ class User < ActiveRecord::Base
   def remove_user_from_mailchimp
     unless self.email.include?('@example.com')
       mailchimp = Hominid::API.new("8acea2d56fff73cbaa8a707bf2d2d880-us5")
-      list_id = mailchimp.find_list_id_by_name "visitors"
+      list_id = mailchimp.find_list_id_by_name "Soxialit Registros"
       result = mailchimp.list_unsubscribe(list_id, self.email, true, false, true)  
       Rails.logger.info("MAILCHIMP UNSUBSCRIBE: result #{result.inspect} for #{self.email}")
     end

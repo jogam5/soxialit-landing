@@ -1,4 +1,4 @@
-$('#want_<%= dom_id(@product) %>').replaceWith('<span id="vote"> <%= pluralize @product.reputation_value_for(:votes).to_i, "Want" %></span>');
+$('#want_<%= dom_id(@product) %>').replaceWith('<i class="icon-star-empty icon-white"></i><span id="vote"> <%= pluralize @product.reputation_value_for(:votes).to_i, "Want" %></span>');
 $('span#want_<%= @product.id %>').remove();
 $('span#have_<%= @product.id %>').remove();
 

@@ -1,0 +1,14 @@
+<%= form_for(@feedback) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="field">
+    <%= f.label :content,  "Feedback", :class=> "title_feed" %><br />
+    <div class="small_feed">Queremos escucharte, ayúdanos a mejorar <strong>Soxialit</strong>.</div>
+	<hr>
+    <%= f.text_area :content, rows: "10", :class => "span10" %>
+  </div>
+
+  <div style="float:right; margin-right:5%" class="actions">
+    <%= f.submit "Enviar", :class => "button-want" %>
+  </div>
+<% end %>

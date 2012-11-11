@@ -1,0 +1,24 @@
+// Place all the styles related to the Feedbacks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.hero-unit {
+	background-color: white;
+}
+
+.title_feed{
+	font-size: 25px;
+	font-wight: bold;
+}
+
+.small_feed{
+	color: #666;
+	font-weight: 300;
+	line-height: 1.4;
+	font-size: 15px;
+	margin-bottom: 1em;
+	
+	strong{
+		color: #DD390D;
+	}
+}

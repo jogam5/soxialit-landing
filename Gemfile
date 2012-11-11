@@ -10,6 +10,7 @@ gem 'oauth2'
 gem 'cancan'
 gem 'wicked'
 gem 'hominid'
+gem 'koala'
 
 #Reputation
 gem 'activerecord-reputation-system', require: 'reputation_system'

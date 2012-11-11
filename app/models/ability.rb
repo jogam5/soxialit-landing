@@ -16,7 +16,10 @@ class Ability
     elsif user.role? :'blogger'
       can :update, User, :id => user.id
       can :read, :all
-    elsif user.role? :'boutique'
+    elsif user.role? :'fotografo'
+      can :update, User, :id => user.id
+      can :read, :all
+    elsif user.role? :'boutique store'
       can :update, User, :id => user.id
       can :read, :all
     end

@@ -2,7 +2,7 @@
 	<div class="span6">
 		<p id="title">Soxialit</p>
 	</div>
-	<div class="span4 offset2">
+	<div class="span6">
 		<% if user_signed_in? %>
 		    <p id="session">Conectado como: <span id="nickname"><%= link_to current_user.username, 
 		        user_path(current_user) %></span> |
@@ -13,15 +13,14 @@
 	   			<a href="http://www.soxialit.com/users/sign_in"
 	   			onclick="_gaq.push(['_trackEvent', 'Links', 'Buy Onclick', 'Invitacion OnClick']);"
 				onmousedown="_gaq.push(['_trackEvent', 'Links', 'Buy Onmousedown', 'Invitacion OnMouse']);">
-				inicia sesión
-				</a>.
+				inicia sesión</a>.
 	   			<br />
 	   		</p>
-	   		<p id="invitacion" style="text-align:center">Si no, <%= link_to 'regístrate', 
-	   							user_omniauth_authorize_path(:facebook) %>, a veces regalamos algunas.
+	   		<p id="invitacion" style="text-align:center">Si no, <%= link_to 'solicita una ahora', 
+	   							user_omniauth_authorize_path(:facebook) %> y crea tu perfil.
 	   		</p>
-	   	<% end %>
-   		
+	   		<br />
+	   	<% end %>		
 	</div>
 </div>
 <div class="row">

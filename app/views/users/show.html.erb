@@ -2,22 +2,28 @@
 <% if @user.role?(:admin) %>
   <section>
     <%= render 'users/profiles/admin' %>
-    <div id="name" class="container" style="margin-left:-10%; margin-right: -10%">
-			<%= render @products %>
-	</div>
    </section>
 <% elsif @user.role?(:designer)  %>
   <section>
     <%= render 'users/profiles/designer' %>
-    <div id="name" class="container" style="margin-left:-10%; margin-right: -10%">
-			<%= render @products %>
-	</div>
   </section>
 <% elsif @user.role?(:'fashion lover')  %>
   <section>
     <%= render 'users/profiles/fashionlover' %>
-    <div id="name" class="container" style="margin-left:-10%; margin-right: -10%">
-			<%= render @products %>
-	</div>
+  </section>
+<% elsif @user.role?(:'blogger')  %>
+  <section>
+    <%= render 'users/profiles/blogger' %>
+  </section> 
+<% elsif @user.role?(:'fotografo')  %>
+  <section>
+    <%= render 'users/profiles/fotografo' %>
+  </section>  
+<% elsif @user.role?(:'boutique store')  %>
+  <section>
+    <%= render 'users/profiles/boutique' %>
   </section>
 <% end %>
+<script type="text/javascript">
+    mixpanel.track("User Profile Loaded")
+</script>
