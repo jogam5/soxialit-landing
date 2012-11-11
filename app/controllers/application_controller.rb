@@ -9,9 +9,7 @@ class ApplicationController < ActionController::Base
 
   def check_url
 	  url = request.url
-	  if url.include?('soxialit.herokuapp.com')
-	    redirect_to ('http://www.soxialit.com')
-	  elsif url.include?('soxialit.com')
+	  if url.include?('soxialit.com')
 	    redirect_to ('http://www.soxialit.com')       
 	  end    
   end
