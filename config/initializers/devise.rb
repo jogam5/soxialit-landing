@@ -18,7 +18,8 @@ Devise.setup do |config|
   require 'omniauth-facebook'
   config.omniauth :facebook, ENV["APP_ID"], ENV["APP_SECRET"],
                   :strategy_class => OmniAuth::Strategies::Facebook,
-                  :scope => 'email,user_birthday,read_stream, publish_stream'
+                  :scope => 'email, user_birthday, user_location, publish_stream, read_friendlists',
+                  :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
