@@ -16,9 +16,6 @@
 				inicia sesión</a>.
 	   			<br />
 	   		</p>
-	   		<p id="invitacion" style="text-align:center">Si no, <%= link_to 'solicita una ahora', 
-	   							user_omniauth_authorize_path(:facebook) %> y crea tu perfil.
-	   		</p>
 	   		<br />
 	   	<% end %>		
 	</div>
@@ -41,8 +38,8 @@
 					<h4>Actualmente sólo se puede ingresar a Soxialit
 						por <span id="redsocial">invitación</span>.
 					</h4><br />
-					<div id="leftsideSecondBlock">Si aún no tienes una, ingresa con tu cuenta de <strong>facebook</strong> y solicita una invitación
-						<span id="fashion">ahora mismo</span>.
+					<div id="leftsideSecondBlock">Si aún no tienes una, solicita una invitación
+						<span id="fashion">ahora mismo</span> y crea tu perfil.
 						<br /><br />
 						<%= link_to 'Quiero una invitación', 
 	   							user_omniauth_authorize_path(:facebook), :class => "btn btn-success" %>
