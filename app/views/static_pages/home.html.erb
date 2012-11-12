@@ -8,7 +8,7 @@
 		        user_path(current_user) %></span>
 		    	<% if !current_user.picture.present? %>
 					<%= link_to image_tag("http://graph.facebook.com/#{current_user.uid}/picture?type=square", 
-									width: 50, height: 50, :id =>  "nickname_small_picture"), user_path(user) %>
+									width: 50, height: 50, :id =>  "nickname_small_picture"), user_path(current_user) %>
 				<% else %>
 					<%= link_to image_tag(current_user.picture_url(:thumb_profile), :id => "nickname_small_picture"), 
 					    			user_path(current_user) %>
