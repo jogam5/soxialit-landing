@@ -1,3 +1,4 @@
+<% if current_user.roles.first.name == 'admin' %>
 <h1>Listing products</h1>
 
 <table>
@@ -28,4 +29,11 @@
 
 <br />
 
-<%= link_to 'New Product', new_product_path %>
+    <%= link_to 'New Product', new_product_path %>
+<% else %>
+
+<h1>¡Hey! Por ahora no puedes acceder a esta página</h1>
+
+<%= link_to "Regrsar a mi Perfil", user_path(current_user) %>
+
+<% end %>
