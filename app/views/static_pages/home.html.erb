@@ -15,12 +15,10 @@
 				<% end %>
 			</p>
   		<% else %>
-			<p id="session">Si tienes una <strong>invitación</strong>, 
-	   			<a href="http://www.soxialit.com/users/sign_in"
-	   			onclick="_gaq.push(['_trackEvent', 'Links', 'Buy Onclick', 'Invitacion OnClick']);"
-				onmousedown="_gaq.push(['_trackEvent', 'Links', 'Buy Onmousedown', 'Invitacion OnMouse']);">
-				inicia sesión</a>.
-	   			<br />
+  			<p id="session">Crea tu perfil: 
+  				<%= link_to 'inicia sesión', user_omniauth_authorize_path(:facebook),
+	   				:onmousedown => "_gaq.push(['_trackEvent', 'Links', 'Login Onmousedown', 'Fb Auth OnMouse']);" %>
+	   			con tu cuenta de <span style="color:blue">facebook</span>.
 	   		</p>
 	   		<br />
 	   	<% end %>		
