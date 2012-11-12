@@ -41,11 +41,11 @@
 					<h4>Actualmente sólo se puede ingresar a Soxialit
 						por <span id="redsocial">invitación</span>.
 					</h4><br />
-					<div id="leftsideSecondBlock">Si estás <span id="fashion">desesperado</span> por entrar<br/>
-						obtén una cuenta <strong>ahora mismo</strong><br />
-						por <strong>$10 USD</strong>.
+					<div id="leftsideSecondBlock">Si aún no tienes una, ingresa con tu cuenta de <strong>facebook</strong> y solicita una invitación
+						<span id="fashion">ahora mismo</span>.
 						<br /><br />
-						<%= render 'mercadopago' %>
+						<%= link_to 'Quiero una invitación', 
+	   							user_omniauth_authorize_path(:facebook), :class => "btn btn-success" %>
 					</div>
 				</div>
 			</div>
