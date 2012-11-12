@@ -3,128 +3,141 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .box {
-margin: 5px;
-background: white;
-font-size: 11px;
-line-height: 1.4em;
-float: left;
-width: 280px;
+  margin: 5px;
+  background: white;
+  font-size: 11px;
+  line-height: 1.4em;
+  float: left;
+  width: 280px;
 }
+
 .image{
-width: 250px;
-height: 250px;
-float: left;
-padding: 0px; 
-margin: 30px;
-position: relative;
+	width: 250px;
+	height: 250px;
+	float: left;
+	padding: 0px; 
+	margin: 30px;
+	position: relative;
+
 }
 .box img{
-margin-left: 10%;
-
+	margin-left: 10%;
+  
 }
+
 #reputation{
-display: none;
-position: absolute;
-top: 0px;
-width: 250px;
-z-index: 1000;
-color: white;
-background-color: rgba(0,0,0,0.5);
-text-align: center;
+	display: none;
+	position: absolute;
+	top: 0px;
+    width: 250px;
+	z-index: 1000;
+	color: white;
+	background-color: rgba(0,0,0,0.5);
+    text-align: center;
+  
+}
+#reputation span{
+  	font-weight:bold;
+	color:white;
+}
 
-}
-.reputation span{
-font-weight:bold;
-color:white;
-}
 .product_title{
-width: 100%;
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
-color: #7D7D7D;
-line-height: 16px;
-text-align: left;
-cursor: default;
-float: left;
-display: block;
-margin-left: 10px;
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: #7D7D7D;
+	line-height: 16px;
+	text-align: left;
+	cursor: default;
+	float: left;
+	display: block;
+	margin-left: 10px;
+ 
+	strong{
+		color: #363636;
+	}
+}
 
-strong{
-color: #363636;
-}
-}
 #votacion{
-display: none;
-position: absolute;
-left: 5px;
-top: 250px;
-}
-.button-have {
-border-top: 1px solid #41d078;
-background: #41d078;
-background: -webkit-gradient(linear, left top, left bottom, from(#41d078), to(#41d078));
-background: -webkit-linear-gradient(top, #41d078, #41d078);
-background: -moz-linear-gradient(top, #41d078, #41d078);
-background: -ms-linear-gradient(top, #41d078, #41d078);
-background: -o-linear-gradient(top, #41d078, #41d078);
-padding: 7px 15px;
--webkit-border-radius: 3px;
--moz-border-radius: 3px;
-border-radius: 3px;
--webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
--moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-box-shadow: rgba(0,0,0,1) 0 1px 0;
-text-shadow: rgba(0,0,0,.4) 0 1px 0;
-color: white;
-font-size: 14px;
-font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
-text-decoration: none;
-vertical-align: middle;
+	display: none;
+	position: absolute;
+	left: 5px;
+	top: 250px;
 }
 
+.button-have {
+   border-top: 1px solid #41d078;
+   background: #41d078;
+   background: -webkit-gradient(linear, left top, left bottom, from(#41d078), to(#41d078));
+   background: -webkit-linear-gradient(top, #41d078, #41d078);
+   background: -moz-linear-gradient(top, #41d078, #41d078);
+   background: -ms-linear-gradient(top, #41d078, #41d078);
+   background: -o-linear-gradient(top, #41d078, #41d078);
+   padding: 7px 15px;
+   -webkit-border-radius: 3px;
+   -moz-border-radius: 3px;
+   border-radius: 3px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 14px;
+   font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+   
 .button-have:hover {
-border-top-color: #21a654;
-background: #21a654;
-color: #ffffff;
-text-decoration:none;
-}
+   border-top-color: #21a654;
+   background: #21a654;
+   color: #ffffff;
+   text-decoration:none;
+
+   }
 .button-have:active {
-border-top-color: #30a65d;
-background: #30a65d;
-}
+   border-top-color: #30a65d;
+   background: #30a65d;
+   }
+
+
 .button-want {
-border-top: 1px solid #ff5a54;
-background: #ff5a54;
-background: -webkit-gradient(linear, left top, left bottom, from(#ff5a54), to(#ff5a54));
-background: -webkit-linear-gradient(top, #ff5a54, #ff5a54);
-background: -moz-linear-gradient(top, #ff5a54, #ff5a54);
-background: -ms-linear-gradient(top, #ff5a54, #ff5a54);
-background: -o-linear-gradient(top, #ff5a54, #ff5a54);
-padding: 7px 15px;
--webkit-border-radius: 3px;
--moz-border-radius: 3px;
-border-radius: 3px;
--webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
--moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-box-shadow: rgba(0,0,0,1) 0 1px 0;
-text-shadow: rgba(0,0,0,.4) 0 1px 0;
-color: white;
-font-size: 14px;
-font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
-text-decoration: none;
-vertical-align: middle;
-}
+   border-top: 1px solid #ff5a54;
+   background: #ff5a54;
+   background: -webkit-gradient(linear, left top, left bottom, from(#ff5a54), to(#ff5a54));
+   background: -webkit-linear-gradient(top, #ff5a54, #ff5a54);
+   background: -moz-linear-gradient(top, #ff5a54, #ff5a54);
+   background: -ms-linear-gradient(top, #ff5a54, #ff5a54);
+   background: -o-linear-gradient(top, #ff5a54, #ff5a54);
+   padding: 7px 15px;
+   -webkit-border-radius: 3px;
+   -moz-border-radius: 3px;
+   border-radius: 3px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 14px;
+   font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+
+   }
 .button-want:hover {
-border-top-color: #d93e38;
-background: #d93e38;
-color: #ffffff;
-text-decoration:none;
-}
+   border-top-color: #d93e38;
+   background: #d93e38;
+   color: #ffffff;
+	text-decoration:none;
+
+   }
+
 .button-want a{
-text-decoration:none;
+	text-decoration:none;
+
 }
 .button-want:active {
-border-top-color: #d42e28;
-background: #d42e28;
+   border-top-color: #d42e28;
+   background: #d42e28;
 }
