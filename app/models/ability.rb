@@ -12,6 +12,7 @@ class Ability
       can :read, :all
     elsif user.role? :'fashion lover'
       can :update, User, :id => user.id
+      can :vote, Product
       can :read, :all
     elsif user.role? :'blogger'
       can :update, User, :id => user.id
