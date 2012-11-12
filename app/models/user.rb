@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
 
   def must_have_one_role
      if role_ids.count == 0
-       errors.add(:base, 'Elige un rol')
+       errors.add(:base, 'Elige un perfil: designer, blogger, boutique, fotografo o fashion lover.')
      end
      errors.add(:base, 'Solamente puedes elegir un rol') if role_ids.count > 1
   end

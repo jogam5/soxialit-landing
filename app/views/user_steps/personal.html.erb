@@ -10,34 +10,13 @@
   <div class"span6">
     <div style="width:50%; background-color:#F4F2F1" class="well">
   <%= render layout: 'form' do |f| %>
-
+    
     <div class="field">
       <h5>Nombre de usuario:</h5>
-      <p>( http://www.soxialit.com/<span id="fashion">username</span> )</p>
+      <p>( www.soxialit.com/<span id="fashion">username</span> )</p>
       <%= f.text_field :username %>
-    </div><br />
-    <div class="field">
-      <% if !@user.picture.present? %>
-      <%= image_tag "http://graph.facebook.com/#{@user.uid}/picture?type=square" %>
-      <% else %>
-      <%= image_tag(@user.picture_url, :width => 100) %>
-      <% end %>
-
-      <h5>Cambiar foto de perfil:</h5>
-      <%= f.file_field :picture %>
-    </div><br />
-    <div class="field">
-      <h5>Ubicación:</h5>
-      <%= f.text_field :location, :placeholder => "Ej. Amsterdam" %>
-    </div><br />
-    <div class="field">
-      <h5>Website, Blog o Facebook Fan Page:</h5>
-      <%= f.text_field :website, :placeholder => "Ej. www.soxialit.com" %>
     </div>
-    <div class="field" >
-      <h5>Bio:</h5>
-      <%= f.text_area :bio, rows: 5, :placeholder => "Ej. Diseñador de modas especializado en ..." %>
-    </div>
+    
   <% end %> 
   </div>
 </div>

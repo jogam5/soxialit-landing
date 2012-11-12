@@ -35,7 +35,7 @@
           <% for role in Role.find(:all) %>
             <div>
                 <% unless role.name == "admin" %>
-                  <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
+                  <%= radio_button_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
                   <%= role.name %>
                 <% end %>
             </div>
