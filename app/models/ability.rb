@@ -9,6 +9,7 @@ class Ability
       can :manage, :all
     elsif user.role? :designer
       can :update, User, :id => user.id  #Edit its profile info
+      can :vote, Product
       can :read, :all
     elsif user.role? :'fashion lover'
       can :update, User, :id => user.id
@@ -16,12 +17,15 @@ class Ability
       can :read, :all
     elsif user.role? :'blogger'
       can :update, User, :id => user.id
+      can :vote, Product
       can :read, :all
     elsif user.role? :'fotografo'
       can :update, User, :id => user.id
+      can :vote, Product
       can :read, :all
     elsif user.role? :'boutique store'
       can :update, User, :id => user.id
+      can :vote, Product
       can :read, :all
     end
   end
