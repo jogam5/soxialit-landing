@@ -54,6 +54,7 @@ class User < ActiveRecord::Base
                           uid:auth.uid,
                           token:auth.credentials.token,
                           email:auth.info.email,
+                          website:"http://",
                           password:Devise.friendly_token[0,20]
                            )
       user.save(:validate => false)
