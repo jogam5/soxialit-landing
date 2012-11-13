@@ -160,6 +160,7 @@ $blogger:#F90;
 #username{
 	color:$grayUsername;
 	font-size:2.5em;
+	line-height:1em;
 }
 
 #bio{
@@ -167,14 +168,14 @@ $blogger:#F90;
 	font-size:1em;
 }
 
-#website{
-	margin-left:5%;
-	a{ color:$website;
-	 }
-	 a:hover{
-	 color:$rojo;
-	 text-decoration:none;
-	 }
+#location{
+	margin-left:50px;
+	color:#787878;
+}
+
+#url{
+	font-size:12px;
+	a{color:$website;}
 }
 
 .navbar .nav > li > a {
