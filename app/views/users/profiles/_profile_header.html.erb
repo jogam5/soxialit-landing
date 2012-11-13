@@ -26,7 +26,7 @@
 				</p>
 				<p id="bio"><%= @user.bio %></p>
 				<p id="location"><i class="icon-map-marker"></i><%= @user.location %>  
-					<span id="website"><%= link_to @user.website, "http://#{@user.website}" %></span>
+					<span id="website"><%= link_to @user.website, @user.website %></span>
 				</p>
 			</div>
 			<div class="span3">
@@ -45,7 +45,7 @@
 
 			<p style="text-align:center"><%= image_tag "twitter-bg.png" %> 
 			"Reserva tu nickname en @Soxialit, la red social que conecta fashion designers, bloggers y boutiques en México y LatAm: soxialit.com"
-			<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://soxialit.com" data-text="Reserva tu nickname en @Soxialit, la red social que conecta fashion designers, bloggers y boutiques en México y LatAm:" data-size="large">Tweet</a>
+			<a href="https://twitter.com/share" class="twitter-share-button" data-url="www.soxialit.com" data-text="Reserva tu nickname en @Soxialit, la red social que conecta fashion designers, bloggers y boutiques en México y LatAm:" data-size="large">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 			</p>
 			<hr />
