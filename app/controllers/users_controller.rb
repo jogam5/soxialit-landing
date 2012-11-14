@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    #@users = User.all
+    @users = User.find(:all, :order => "created_at DESC")   #Show in reverse order
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
