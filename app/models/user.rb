@@ -57,6 +57,7 @@ class User < ActiveRecord::Base
                           website:"http://",
                           password:Devise.friendly_token[0,20]
                            )
+      user.update_attributes(role_ids:"6")
       user.save(:validate => false)
 
         @api = Koala::Facebook::API.new(user.token)
