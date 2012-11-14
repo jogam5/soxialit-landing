@@ -25,6 +25,8 @@ gem "bootstrap-sass", "~> 2.1.0.1"
 
 #Improve files readability
 gem 'annotate', '~> 2.4.1.beta'
+#Improve performance in server
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

@@ -93,6 +93,7 @@ GEM
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.6.1)
+    newrelic_rpm (3.5.1.14)
     nokogiri (1.5.5)
     oauth2 (0.8.0)
       faraday (~> 0.8)
@@ -191,6 +192,7 @@ DEPENDENCIES
   hominid
   jquery-rails
   koala
+  newrelic_rpm
   oauth2
   omniauth
   omniauth-facebook
