@@ -15,10 +15,9 @@
 				<% end %>
 			</p>
   		<% else %>
-  			<p id="session">Crea tu perfil: 
-  				<%= link_to 'inicia sesión', user_omniauth_authorize_path(:facebook),
-	   				:onmousedown => "_gaq.push(['_trackEvent', 'Links', 'Login Onmousedown', 'Fb Auth OnMouse']);" %>
-	   			con tu cuenta de <span style="color:blue">facebook</span>.
+  			<p id="session">Crea tu perfil: <strong>inicia sesión</strong> con tu cuenta de 
+  				<%= link_to 'facebook', user_omniauth_authorize_path(:facebook),
+	   				:onmousedown => "_gaq.push(['_trackEvent', 'Links', 'Login Onmousedown', 'Fb Auth OnMouse']);" %>.
 	   		</p>
 	   		<br />
 	   	<% end %>		
@@ -43,7 +42,7 @@
 						por <span id="redsocial">invitación</span>.
 					</h4><br />
 					<div id="leftsideSecondBlock">Si aún no tienes una, solicita una invitación
-						<span id="fashion">ahora mismo</span> y crea tu perfil.
+						<span id="fashion">ahora mismo</span> y crea tu perfil usando tu cuenta de facebook.
 						<br /><br />
 						<%= link_to 'Quiero una invitación', 
 	   							user_omniauth_authorize_path(:facebook), :class => "btn btn-success" %>
