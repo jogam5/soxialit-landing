@@ -40,7 +40,7 @@
 	</div>
 	<hr />	
 		<% if current_user == @user %>
-			<h2 style="text-align:center">¡Pronto llegará tu invitación!</h2><br />
+			<h2 style="text-align:center">¡Pronto llegará tu invitación a: <i><%= @user.email %></i>!</h2><br />
 			<h3 id="anuncios">Por favor, ayúdanos a hacer más grande la comunidad con un tweet:</h3>
 
 			<p style="text-align:center"><%= image_tag "twitter-bg.png" %> 
