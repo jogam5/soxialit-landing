@@ -30,6 +30,8 @@
           <h5>Bio:</h5>
           	<%= f.text_area :bio, rows: 5 %>
         </div>
+
+        <% if current_user.roles.first.name == "admin" %>
           <h5>Selecciona un perfil:</h5>
           <% for role in Role.find(:all) %>
             <div>
@@ -39,6 +41,7 @@
                 <% end %>
             </div>
           <% end %>
+        <% end %>
         
         <br />
         <div class="actions">

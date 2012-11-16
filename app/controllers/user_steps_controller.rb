@@ -29,7 +29,7 @@ class UserStepsController < ApplicationController
 	#Method that ensures user can get a role only 
 	def check_signup
 		@user = current_user
-		if current_user.roles.present?
+		if current_user.sign_in_count > 1
 			redirect_to @user
 		end
 	end
