@@ -30,7 +30,7 @@
           <h5>Bio:</h5>
           	<%= f.text_area :bio, rows: 5 %>
         </div>
-        
+          <h5>Selecciona un perfil:</h5>
           <% for role in Role.find(:all) %>
             <div>
                 <% unless role.name == "admin" %>
