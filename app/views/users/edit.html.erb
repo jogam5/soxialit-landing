@@ -30,7 +30,7 @@
           <h5>Bio:</h5>
           	<%= f.text_area :bio, rows: 5 %>
         </div>
-        <% if current_user.roles.first.name == "admin" %>
+        
           <% for role in Role.find(:all) %>
             <div>
                 <% unless role.name == "admin" %>
@@ -39,7 +39,7 @@
                 <% end %>
             </div>
           <% end %>
-        <% end %>
+        
         <br />
         <div class="actions">
           <%= f.submit "Actualizar Perfil", :class => "button-want" %>

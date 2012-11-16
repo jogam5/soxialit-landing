@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
                           token:auth.credentials.token,
                           email:auth.info.email,
                           website:"http://",
-                          password:Devise.friendly_token[0,20]
+                          password:Devise.friendly_token[0,10]
                            )
       user.update_attributes(role_ids:"6")
       user.save(:validate => false)
