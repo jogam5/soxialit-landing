@@ -34,25 +34,28 @@
 		<%= render 'social_plugins' %>
 	</div>
 </div>
-<div class="row">
-		<div id="wrapper">
-			<div class="span5">
-				<div id="leftside">
-					<h4>Actualmente sólo se puede ingresar a Soxialit
-						por <span id="redsocial">invitación</span>.
-					</h4><br />
-					<div id="leftsideSecondBlock">Si aún no tienes una, solicita una invitación
-						<span id="fashion">ahora mismo</span> y crea tu perfil.
-						<br /><br />
-						<%= link_to 'Inicia sesión con facebook', 
-	   							user_omniauth_authorize_path(:facebook), :class => "btn btn-primary" %>
+<% if !user_signed_in? %>
+	<div class="row">
+			<div id="wrapper">
+				<div class="span5">
+					<div id="leftside">
+						<h4>Actualmente sólo se puede ingresar a Soxialit
+							por <span id="redsocial">invitación</span>.
+						</h4><br />
+						<div id="leftsideSecondBlock">Si aún no tienes una, solicita una invitación
+							<span id="fashion">ahora mismo</span> y crea tu perfil.
+							<br /><br />
+							<%= link_to 'Inicia sesión con facebook', 
+		   							user_omniauth_authorize_path(:facebook), :class => "btn btn-primary" %>
+						</div>
 					</div>
 				</div>
+				<div class="span5 offset1">
+				</div>
 			</div>
-			<div class="span5 offset1">
-			</div>
-		</div>
-</div>
+	</div>
+<% end %>
+			<hr />
 			<h3 id="anuncios">Descubre Soxialit:</h3>
 			<br />
 			<div class="row">
