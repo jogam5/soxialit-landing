@@ -15,8 +15,8 @@
 				<% end %>
 			</p>
   		<% else %>
-  			<p id="session"><strong>Inicia sesión</strong> con tu cuenta de 
-  				<%= link_to 'facebook', user_omniauth_authorize_path(:facebook),
+  			<p id="session">Si ya tienes invitación 
+  				<%= link_to 'Inicia Sesión', user_omniauth_authorize_path(:facebook),
 	   				:onmousedown => "_gaq.push(['_trackEvent', 'Links', 'Login Onmousedown', 'Fb Auth OnMouse']);" %>.
 	   		</p>
 	   		<br />
