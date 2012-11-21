@@ -15,6 +15,8 @@ mixpanel.init("5e344db467e2f971ffccde4566fe2da4");</script><!-- end Mixpanel -->
 <style>
   </style>
 <body>
+    <%= render 'shared/home' %>
+
     <div class="container">
       <% flash.each do |type, message| %>
         <div style="margin-top:2%" class="alert <%= flash_class type %>">
@@ -23,6 +25,7 @@ mixpanel.init("5e344db467e2f971ffccde4566fe2da4");</script><!-- end Mixpanel -->
         </div>
       <% end %>
       <%= yield %>
+      <%= render 'layouts/footer' %>
     </div>
     
 <script type="text/javascript">
@@ -37,14 +40,5 @@ mixpanel.init("5e344db467e2f971ffccde4566fe2da4");</script><!-- end Mixpanel -->
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script>
-<!-- Site Meter -->
-  <script type="text/javascript" src="http://sm7.sitemeter.com/js/counter.js?site=sm7emotions">
-  </script>
-  <noscript>
-  <a href="http://sm7.sitemeter.com/stats.asp?site=sm7emotions" target="_top">
-  <img src="http://sm7.sitemeter.com/meter.asp?site=sm7emotions" alt="Site Meter" border="0"/></a>
-  </noscript>
-<!-- Copyright (c)2009 Site Meter -->
-
 </body>
 </html>

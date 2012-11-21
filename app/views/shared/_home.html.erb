@@ -1,0 +1,41 @@
+    <div id="home_nav_top">
+      <div style="height:50px" class="row">
+        <div class="span5 offset1">
+          <p id="title">Soxialit</p>
+        </div>
+        <div class="span6 offset2">
+          <% if user_signed_in? %>
+              <p id="right_navbar">Conectado como: <span id="nickname"><%= link_to current_user.username, 
+                  user_path(current_user) %></span> 
+                <% if !current_user.picture.present? %>
+                  <%= link_to image_tag("http://graph.facebook.com/#{current_user.uid}/picture?type=square", 
+                          width: 50, height: 50, :id =>  "nickname_small_picture"), user_path(current_user) %>
+                <% else %>
+                  <%= link_to image_tag(current_user.picture_url(:thumb_profile), :id => "nickname_small_picture"), 
+                            user_path(current_user) %>
+                <% end %>
+              </p>
+          <% else %>
+              <p id="right_navbar">Si ya tienes invitación: 
+                <%= link_to 'Inicia Sesión', user_omniauth_authorize_path(:facebook),
+                  :onmousedown => "_gaq.push(['_trackEvent', 'Links', 'Buy Onmousedown', 'Invitacion OnMouse']);" %>
+              </p>
+              <br />
+          <% end %>   
+        </div>
+      </div>
+    </div>
+    <div style="background-color:$rojo;" id="home_nav_botton"></div> 
+    <div class="row-fluid">
+      <div class="span9">
+        <h1 id="titleMainIdea">Descubre y Comparte Moda.
+        </h1>
+        <h2 id="titleSecondIdea">Soxialit es una red social que conecta a los amantes de la moda.</h2>
+      </div>
+      <% if !user_signed_in? %>
+        <div style="margin-top:4%; margin-left:0%" class="span3">
+          <%= link_to 'Obten una Invitación', 
+                          user_omniauth_authorize_path(:facebook), :class => "button-want" %>
+        </div>
+      <% end %>
+    </div>

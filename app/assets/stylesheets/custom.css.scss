@@ -59,7 +59,7 @@ $blogger:#F90;
 
 #title{
 	font-family:Lobster, Raleway, Helvetica, Sans-Serif;
-	color:$grayTitle;
+	color:white;
 	font-size:3em;
 	margin:5% 0 6% 0;
 }
@@ -86,14 +86,13 @@ $blogger:#F90;
 }
 
 #wrapper{
-	margin-top:5%;
+	margin-top:1%;
 	width:100%;
-	background-image:url('colorback.png');
-	height:280px;
+	background-image:url('bgHome_2.png');
+	height:530px;
 	border:1px dotted #ADADAD;
-			float:auto;
-			margin:2%;
-			padding:1%;	
+	float:auto;
+	padding:0%;
 }
 #leftside{
 	background-color:white;
@@ -438,3 +437,60 @@ $blogger:#F90;
 }
 
 /* Follow Buttons */
+
+/********************* Changes ******************/
+
+/* New Home */
+
+#home_nav_top{
+	width:100%;
+	background-color:black;
+	height:60px;
+	margin-top:5px;
+	margin-bottom:0px;
+}
+
+#home_nav_botton{
+	width:100%;
+	background-color:$rojo;
+	height:5px;
+	margin:0px;
+	padding:0px;
+	-webkit-box-shadow: 3px 3px 5px 2px #ccc;
+	   			-moz-box-shadow: 3px 3px 5px 2px #ccc;
+	        		box-shadow: 3px 3px 5px 2px #ccc;
+}
+
+#home_nav_botton p{
+	text-align:left;
+}
+
+#right_navbar{
+	margin-top:3.5%;
+	font-size:1.2em;
+	font-family:nimbus-sans, Helvetica Neue, Helvetica, Sans-Serif;
+	font-style:normal;
+	font-weight:300;
+	text-align:right;
+	color:$website;
+}
+
+#right_navbar a:hover{
+	text-decoration:none;
+}
+
+#titleMainIdea{
+	font-family:acta-display, Lucida Grande, Helvetica, Arial, Sans-serif;
+	font-weight:400;
+	font-size:4.5em;
+	margin-top:3%;
+	margin-left:5%;
+}
+
+#titleSecondIdea{
+	font-family:nimbus-sans, Lucida Grande, Helvetica, Arial, Sans-serif;
+	font-weight:300;
+	font-size:1.5em;
+	color:$website;
+	margin-left:5%;
+}

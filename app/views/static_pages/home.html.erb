@@ -1,60 +1,9 @@
-<div class="row">
-	<div class="span6">
-		<p id="title">Soxialit</p>
-	</div>
-	<div class="span6">
-		<% if user_signed_in? %>
-		    <p id="session">Conectado como: <span id="nickname"><%= link_to current_user.username, 
-		        user_path(current_user) %></span>
-		    	<% if !current_user.picture.present? %>
-					<%= link_to image_tag("http://graph.facebook.com/#{current_user.uid}/picture?type=square", 
-									width: 50, height: 50, :id =>  "nickname_small_picture"), user_path(current_user) %>
-				<% else %>
-					<%= link_to image_tag(current_user.picture_url(:thumb_profile), :id => "nickname_small_picture"), 
-					    			user_path(current_user) %>
-				<% end %>
-			</p>
-  		<% else %>
-  			<p id="session">Si ya tienes invitación 
-  				<%= link_to 'Inicia Sesión', user_omniauth_authorize_path(:facebook),
-	   				:onmousedown => "_gaq.push(['_trackEvent', 'Links', 'Login Onmousedown', 'Fb Auth OnMouse']);" %>.
-	   		</p>
-	   		<br />
-	   	<% end %>		
-	</div>
-</div>
-<div class="row">
-	<div class="span9">
-		<h2 id="titleDescription">Soxialit es una <span id="redsocial">red social</span> que conecta<br/>
-	<span id="fashion">fashion</span> <span id="bold">designers, bloggers, fotógrafos y boutiques</span>
-	<br />en México y Latinoamérica.
-		</h2>
-	</div>
-	<div class="span3">
-		<%= render 'social_plugins' %>
-	</div>
-</div>
-<% if !user_signed_in? %>
-	<div class="row">
-			<div id="wrapper">
-				<div class="span5">
-					<div id="leftside">
-						<h4>Actualmente sólo se puede ingresar a Soxialit
-							por <span id="redsocial">invitación</span>.
-						</h4><br />
-						<div id="leftsideSecondBlock">Si aún no tienes una, solicita una invitación
-							<span id="fashion">ahora mismo</span> y crea tu perfil.
-							<br /><br />
-							<%= link_to 'Inicia sesión con facebook', 
-		   							user_omniauth_authorize_path(:facebook), :class => "btn btn-primary" %>
-						</div>
-					</div>
-				</div>
-				<div class="span5 offset1">
-				</div>
-			</div>
-	</div>
-<% end %>
+			<% if !user_signed_in? %>
+		      <div class="row">
+		          <div id="wrapper">
+		          </div>
+		      </div>
+		    <% end %>
 			<hr />
 			<h3 id="anuncios">Descubre Soxialit:</h3>
 			<br />
