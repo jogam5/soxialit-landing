@@ -1,5 +1,8 @@
-$('#want_<%= dom_id(@product) %>').replaceWith('<i class="icon-star-empty icon-white"></i><span id="vote"> <%= pluralize @product.reputation_value_for(:votes).to_i, "Want" %></span>');
+/*$('#want_<%= dom_id(@product) %>').replaceWith('<i class="icon-star-empty icon-white"></i><span id="vote"> <%= pluralize @product.reputation_value_for(:votes).to_i, "Want" %></span>');
 $('span#want_<%= @product.id %>').remove();
-$('span#have_<%= @product.id %>').remove();
+$('span#have_<%= @product.id %>').remove(); */
+$('#love_product_<%= @product.id %>').text('<%= @product.reputation_value_for(:votes).to_i %>');
+$('#love_product_<%= @product.id %>').show();
+$('#love_icon_<%= @product.id %>').addClass('love_icon_active');
 
 

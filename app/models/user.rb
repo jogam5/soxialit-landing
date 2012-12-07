@@ -91,6 +91,14 @@ class User < ActiveRecord::Base
   def voted_for?(haiku)
           evaluations.where(target_type: haiku.class, target_id: haiku.id).present?
   end
+  
+  def voted_by?(haiku, eva)
+     haiku.each do |test|
+        if test.target_id == eva
+           return test.target_id
+        end
+    end
+  end
 
   def add_user_to_mailchimp
       mailchimp = Hominid::API.new('8acea2d56fff73cbaa8a707bf2d2d880-us5')
