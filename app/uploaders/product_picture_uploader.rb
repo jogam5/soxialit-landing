@@ -17,7 +17,7 @@ class ProductPictureUploader < CarrierWave::Uploader::Base
   end
   
   version :timeline do
-    process :resize_to_fit => [500,500]
+    process :resize_to_fit => [400,480]
   end
   
   def extension_white_list

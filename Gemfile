@@ -55,6 +55,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   #gem fileupload paintings
   gem 'jquery-fileupload-rails'
-end
+  gem "twitter-bootstrap-rails"
+ end
 
 gem 'jquery-rails'
