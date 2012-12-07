@@ -1,6 +1,5 @@
 class PaintingsController < ApplicationController
-  # GET /paintings
-  # GET /paintings.json
+ 
   def index
     @paintings = Painting.all
 
@@ -10,8 +9,6 @@ class PaintingsController < ApplicationController
     end
   end
 
-  # GET /paintings/1
-  # GET /paintings/1.json
   def show
     @painting = Painting.find(params[:id])
     respond_to do |format|
@@ -35,7 +32,6 @@ class PaintingsController < ApplicationController
   def edit
     @product = Product.find(params[:id])
     @painting = @product.paintings.create(params[:painting])
-    
      respond_to do |format|
          format.html { redirect_to @painting, notice: 'Painting was successfully created.' }
          format.json { render json: @painting, status: :created, location: @painting }
@@ -43,19 +39,14 @@ class PaintingsController < ApplicationController
      end
   end
 
-  # POST /paintings
-  # POST /paintings.json
   def create
       @painting = Painting.create(params[:painting])
       @product = Product.first
-      @product.update_attribute(:picture, @product.paintings.first.image.to_s)
+      @product.update_attribute(:picture, @product.paintings.first.image_url(:feed).to_s)
   end
 
-  # PUT /paintings/1
-  # PUT /paintings/1.json
   def update
     @painting = Painting.find(params[:id])
-
     respond_to do |format|
       if @painting.update_attributes(params[:painting])
         format.html { redirect_to @painting, notice: 'Painting was successfully updated.' }
@@ -67,12 +58,9 @@ class PaintingsController < ApplicationController
     end
   end
 
-  # DELETE /paintings/1
-  # DELETE /paintings/1.json
   def destroy
     @painting = Painting.find(params[:id])
     @painting.destroy
-    
     respond_to do |format|
       format.html { redirect_to paintings_url }
       format.json { head :ok }

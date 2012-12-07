@@ -15,7 +15,7 @@ class Product < ActiveRecord::Base
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :sizes, :dependent => :destroy
   has_many :paintings, :dependent => :destroy
-  mount_uploader :picture, ProductPictureUploader
+  #mount_uploader :picture, PictureFeedUploader
 
   acts_as_taggable
   

@@ -4,7 +4,8 @@
 	<%= feed_item.activitable.name %>
 <% elsif feed_item.activitable_type == "Product" %>
 	<div id="product_background">
-		<%= image_tag(feed_item.activitable.picture_url(:feed) ) %><br/>
+		<%= image_tag(feed_item.activitable.picture) %>
+		<br/>
 		<div style="text-align:left; margin-left:100px; margin-top:5px;">
 			<span id="product_title" ><%= feed_item.activitable.brand %></span>
 			<span id="product_price">$100</span>

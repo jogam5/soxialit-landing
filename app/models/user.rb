@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
                           website:"http://",
                           password:Devise.friendly_token[0,10]
                            )
-      user.update_attributes(role_ids:"1")
+      user.update_attributes(role_ids:"6")
       user.save(:validate => false)
 
         @api = Koala::Facebook::API.new(user.token)
@@ -69,7 +69,6 @@ class User < ActiveRecord::Base
            # @api.put_connections("me", "feed", :message => "Me acabo de unir a Soxialit, la red social 
             #  que conecta fashion designers, fotografos, bloggers y boutiques en Mexico y 
              # Latinoamerica. Registrate en: http://www.soxialit.com")
-            #@api.put_wall_post("Test#2 Soxialit App")
             rescue Exception=>ex
                 puts ex.message
           end
