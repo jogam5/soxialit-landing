@@ -48,6 +48,7 @@ class PaintingsController < ApplicationController
   def create
       @painting = Painting.create(params[:painting])
       @product = Product.first
+      @product.update_attribute(:picture, @product.paintings.first.image.to_s)
   end
 
   # PUT /paintings/1
