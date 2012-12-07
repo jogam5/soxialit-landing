@@ -10,13 +10,13 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+//= require twitter/bootstrap
 //= requiere jquery.tokeninput
 //= require jquery
 //= require bootstrap
 //= require jquery_ujs
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
-//= require twitter/bootstrap
 //= require_tree .
 
 $(function () {
