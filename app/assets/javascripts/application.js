@@ -11,7 +11,6 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= requiere jquery.tokeninput
-//= require jquery
 //= require bootstrap
 //= require jquery_ujs
 //= require jquery-fileupload/basic
