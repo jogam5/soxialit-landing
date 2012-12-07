@@ -25,10 +25,11 @@
   
 }
 
-#reputation{
-	display: none;
-	position: absolute;
+/******** Wants/loves ********/
+.reputation{
+	position: relative;
 	top: 0px;
+	left: 13%;
     width: 250px;
 	z-index: 1000;
 	color: white;
@@ -36,11 +37,57 @@
     text-align: center;
   
 }
-#reputation span{
+.reputation span{
   	font-weight:bold;
 	color:white;
 }
 
+.love_reputation{
+	background: url(btn-like.png) no-repeat;
+	background-position: 0 -20px; width: 30px; height: 20px;
+}
+
+.love_icon{
+	background: url(btn-like.png) no-repeat;
+	cursor: pointer!important;
+	background-position: 0 0px; width: 20px; height: 20px;
+}
+
+.love_icon:hover{
+	background-position: 0px -20px; width: 20px; height: 20px;
+
+}
+
+.love_icon_active{
+	background: url(btn-like.png) no-repeat;
+	background-position: 0px -20px; width: 20px; height: 20px;
+}
+
+.trick_anchor{
+	color:transparent;
+	margin-left:7px;
+}
+
+.trick_anchor:hover{
+	color:transparent;
+	margin-left:7px;
+}
+
+.product_credits{
+	text-align: left;
+	color: #999;
+	line-height: 17px;
+	font-size: 110%;
+}
+
+.votacion {
+	display: none;
+	width:40px;
+	float:right;
+	margin-top:1%;
+	margin-right:10%;
+}
+/******************************/
 .product_title{
 	width: 100%;
 	white-space: nowrap;
@@ -59,12 +106,7 @@
 	}
 }
 
-#votacion{
-	display: none;
-	position: absolute;
-	left: 5px;
-	top: 250px;
-}
+
 
 .button-have {
    border-top: 1px solid #41d078;

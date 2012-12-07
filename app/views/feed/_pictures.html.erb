@@ -3,8 +3,35 @@
 <% elsif feed_item.activitable_type == "Collection" %>
 	<%= feed_item.activitable.name %>
 <% elsif feed_item.activitable_type == "Product" %>
-	<div id="product_background">
-		<%= link_to image_tag(feed_item.activitable.picture), product_path(feed_item.activitable) %>
+	<div id="product_background" class="image_hover">
+		<div style="display:block"><%= link_to image_tag(feed_item.activitable.picture), 
+														product_path(feed_item.activitable) %></div>
+		<% if signed_in? %>
+			<div class="votacion" id="votacion_<%= feed_item.id %>">
+				<% logger.debug "feed id: #{feed_item.id}\n\n\n\n\n\n" %>
+				<% logger.debug "current_user id: #{current_user.voted_by?(current_user.evaluations, feed_item.id)}\n\n\n\n\n\n" %>
+				<% if feed_item.id == current_user.voted_by?(current_user.evaluations, feed_item.id) %>
+					<span id="want_<%= feed_item.id %>">
+						<div id="love_icon_<%= feed_item.id %>" class="love_icon_active">
+							<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= feed_item.id %>">
+								<%= feed_item.activitable.reputation_value_for(:votes).to_i %>
+							</span>
+						</div>
+		   			</span>
+					<% elsif current_user && !current_user.voted_for?(feed_item) %>
+						<span id="want_<%= feed_item.id %>">
+							<div id="love_icon_<%= feed_item.id %>" class="love_icon">
+								<span style="float:left; display:none; margin-left:-50%; color:black" id="love_product_<%= feed_item.id %>">
+									<%= feed_item.activitable.reputation_value_for(:votes).to_i %>
+								</span>
+								<%= link_to "x", vote_product_path(feed_item, type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
+							</div>
+			   			</span>
+					<% else %>
+					
+				<% end %>
+			</div>
+		<% end %>
 		<br/>
 		<div style="text-align:left; margin-left:100px; margin-top:5px;">
 			<span id="product_title" ><%= feed_item.activitable.title %></span>
@@ -13,5 +40,25 @@
 			<span style="font-size:1.2em;"><%= link_to  feed_item.activitable.user.username, 
 						user_path(feed_item.activitable.user), :id => "user_and_items_link" %></span>
 		</div>
-	</div>
+	</div>	
 <% end %>
+
+
+<script>
+
+	$(document).ready(function(){
+		$('.image_hover').live({
+			mouseenter: 
+			function(e){
+				e.preventDefault();
+				$(this).find('.votacion').fadeIn();
+				},
+			mouseleave:
+			function (e){
+				e.preventDefault();
+				$(this).find('.votacion').fadeOut();
+			}
+		  });
+
+	});
+</script>
