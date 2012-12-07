@@ -53,6 +53,11 @@
 	background-position: 0 0px; width: 20px; height: 20px;
 }
 
+.love_icon span{
+	margin-top: 11%;
+}
+
+
 .love_icon:hover{
 	background-position: 0px -20px; width: 20px; height: 20px;
 
@@ -61,7 +66,13 @@
 .love_icon_active{
 	background: url(btn-like.png) no-repeat;
 	background-position: 0px -20px; width: 20px; height: 20px;
+	
 }
+.love_icon_active span{
+	margin-top: 11%;
+}
+
+
 
 .trick_anchor{
 	color:transparent;

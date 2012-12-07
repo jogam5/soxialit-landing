@@ -20,24 +20,32 @@
 	
 <div style="margin-top:5%" class="span5">
 	<div class="well" id="theme-shadow" style="background-color:white">
-		<div style="float:right" class="description-medium">
+		<div class="description-medium">
 			<div class="product_reputation">
 			<% if signed_in? %>
-				<span id="want_product_<%= @product.id %>">
-					<i class="icon-star-empty icon-black"></i><%= pluralize @product.reputation_value_for(:votes).to_i, "Want" %>
-					<br/>
-					<br/>
-				</span>
-				
-				<% if @product.user_id == find_evaluation_id(current_user.evaluations)%>
-				<% elsif current_user && !current_user.voted_for?(@product) %>
-					<span id="want_show_<%= @product.id %>">
-				 		<%= link_to '<i class="icon-star-empty icon-white"></i> Want'.html_safe, vote_product_path(@product, type: "up"), :remote => true,  method: "post", :class => "button-want", id: "link" %>
-					</span>
+				<div class="votacion" style="display:block; float:left; margin: 12% -46% 0% 37%" id="votacion_<%= @product.id %>">
+					<% if @product.id == current_user.voted_by?(current_user.evaluations, @product.id) %>
+						<span id="want_<%= @product.id %>">
+							<div id="love_icon_<%= @product.id %>" class="love_icon_active">
+								<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= @product.id %>">
+									<%= @product.reputation_value_for(:votes).to_i %>
+								</span>
+							</div>
+		   				</span>
+					<% elsif current_user && !current_user.voted_for?(@product) %>
+						<span id="want_<%= @product.id %>">
+							<div id="love_icon_<%= @product.id %>" class="love_icon">
+								<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= @product.id %>">
+									<%= @product.reputation_value_for(:votes).to_i %>
+								</span>
+								<%= link_to "x", vote_product_path(@product, type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
+							</div>
+			   			</span>
 				<% end %>
+				</div>
 			<% end %>
-			</div>
 		</div>
+	</div>
 		<div class="description-main">
 		  	<%= @product.title %>
 	 	</div>
@@ -72,6 +80,7 @@
 		</div>
 		<br/>
 		<hr>
+		<br/>
 		<hr>
 		<div class="description-low"> Política de devolución</div>
 		<div class="description-medium"> <%= @product.refund_policy %> </div>
