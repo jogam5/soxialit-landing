@@ -14,23 +14,20 @@ Devise.setup do |config|
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
   require 'devise/orm/active_record'
+
+
   
-  require 'omniauth-facebook'
-  config.omniauth :facebook, ENV["APP_ID"], ENV["APP_SECRET"],
-                  :strategy_class => OmniAuth::Strategies::Facebook,
+  # ******************************** CHANGES I MADE TO THE DEVISE THING ************************
+  #require 'omniauth-facebook'
+  config.omniauth :facebook, ENV["APP_ID"],  ENV["APP_SECRET"],
                   :scope => 'email, user_birthday, user_location, publish_stream, read_friendlists',
                   :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}
 
-  # ==> Configuration for any authentication mechanism
-  # Configure which keys are used when authenticating a user. The default is
-  # just :email. You can configure it to use [:username, :subdomain], so for
-  # authenticating a user, both parameters are required. Remember that those
-  # parameters are used only when authenticating and not when retrieving from
-  # session. If you need permissions, you should implement that in a before filter.
-  # You can also supply a hash where the value is a boolean determining whether
-  # or not authentication should be aborted when the value is not present.
-  # config.authentication_keys = [ :email ]
+  # ******************************** CHANGES I MADE TO THE DEVISE THING ************************
 
+
+  # ==> Configuration for any authentication mechanism
+  
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
   # find_for_authentication method and considered in your model lookup. For instance,

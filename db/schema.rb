@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121110045422) do
+ActiveRecord::Schema.define(:version => 20121206180522) do
+
+  create_table "activities", :force => true do |t|
+    t.integer  "activitable_id"
+    t.string   "activitable_type"
+    t.integer  "user_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "activities", ["activitable_type"], :name => "index_activities_on_activitable_type"
+  add_index "activities", ["user_id"], :name => "index_activities_on_user_id"
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -22,9 +33,29 @@ ActiveRecord::Schema.define(:version => 20121110045422) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "comments", :force => true do |t|
+    t.text     "body"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
   create_table "feedbacks", :force => true do |t|
     t.text     "content"
     t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "paintings", :force => true do |t|
+    t.string   "image"
+    t.string   "name"
+    t.integer  "product_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -35,8 +66,17 @@ ActiveRecord::Schema.define(:version => 20121110045422) do
     t.string   "picture"
     t.string   "title"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.decimal  "shipping"
+    t.decimal  "total_price"
+    t.decimal  "ship_int"
+    t.string   "color"
+    t.string   "material"
+    t.integer  "quantity"
+    t.text     "refund_policy"
+    t.decimal  "price"
+    t.decimal  "ship_df"
   end
 
   create_table "relationships", :force => true do |t|
@@ -104,6 +144,30 @@ ActiveRecord::Schema.define(:version => 20121110045422) do
   add_index "rs_reputations", ["reputation_name", "target_id", "target_type"], :name => "index_rs_reputations_on_reputation_name_and_target"
   add_index "rs_reputations", ["reputation_name"], :name => "index_rs_reputations_on_reputation_name"
   add_index "rs_reputations", ["target_id", "target_type"], :name => "index_rs_reputations_on_target_id_and_target_type"
+
+  create_table "sizes", :force => true do |t|
+    t.string   "name"
+    t.integer  "product_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       :limit => 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

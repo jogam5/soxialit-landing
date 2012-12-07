@@ -1,8 +1,34 @@
 class Product < ActiveRecord::Base
-  attr_accessible :brand, :description, :picture, :title, :user_id
-
+  attr_accessible :name
+  attr_accessible :size_tokens
+  attr_accessible :brand, :description, :picture, :title, :user_id, :shipping, :total_price, :ship_int, 
+                    :ship_df, :color, :material, :quantity, :refund_policy, :size, :price
+  attr_accessible :tag_list
+  attr_accessible :name, :image
+  attr_reader :size_tokens
+  attr_reader :tag_list
+  
   belongs_to :user
-  mount_uploader :picture, ProductPictureUploader
   has_reputation :votes, source: :user, aggregated_by: :sum
   has_reputation :haves, source: :user, aggregated_by: :sum
+  has_many :activities, :as => :activitable, :dependent => :destroy
+  has_many :comments, :as => :commentable, :dependent => :destroy
+  has_many :sizes, :dependent => :destroy
+  has_many :paintings, :dependent => :destroy
+  mount_uploader :picture, ProductPictureUploader
+
+  acts_as_taggable
+  
+  default_scope order: 'products.created_at DESC'
+  
+  def size_tokens=(tokens)
+     self.size_ids = Size.ids_from_tokens(tokens)
+  end
+  
+  def mercadopago_url(datos)
+       client_id = '4268569064335968'
+       client_secret = 'pa6nV2JXuGee00YUoXaHsI3fPGhUfNTc'
+       mp_client = MercadoPago::Client.new(client_id, client_secret)
+       payment = mp_client.create_preference(datos) 
+  end
 end

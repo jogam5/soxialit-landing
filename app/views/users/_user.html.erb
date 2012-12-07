@@ -1,0 +1,27 @@
+<li>
+  <span style="margin-top:1%" class="span1">
+	<% if !user.picture.present? %>
+		<%= link_to image_tag("http://graph.facebook.com/#{user.uid}/picture?type=square", 
+					width: 50, height: 50, :id =>  "nickname_small_picture"), user_path(user) %>
+	<% else %>
+		<%= link_to image_tag(user.picture_url(:thumb_profile), :id => "nickname_small_picture"), 
+					user_path(user) %>
+	<% end %>
+  </span>
+  <span class="span4" id="nickname_users_list">
+	<%= link_to user.username, user_path(user) %> | 
+		<% if user.roles.first.name == 'fashion lover' %>
+			<span id="fashionlover_list">fashion lover</span>
+		<% elsif user.roles.first.name == 'boutique store' %>
+			<span id="boutique_list">boutique store</span>
+		<% elsif user.roles.first.name == 'admin' %>
+			<span id="admin_list">QUEEN</span>
+		<% else %>
+  			<span id="<%=user.roles.first.name%>_list"><%= user.roles.first.name %></span>
+		<% end %>
+		<br />
+  	<span id="nickname_small_followers">followers: <%= user.followers.count %><br />
+		<i class="icon-map-marker"></i><span id="nickname_small_location"><%= user.location %></span>
+  	</span>
+  </span>
+</li>

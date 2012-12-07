@@ -1,0 +1,50 @@
+$(document).ready(function(){
+	
+	$('#tag_info').hover(
+		function(){
+			$('#pop_tag').show();
+		},
+		function(){
+		$('#pop_tag').hide();
+		
+	});
+	$('#policy_info').hover(
+		function(){
+			$('#pop_policy').show();
+		},
+		function(){
+		$('#pop_policy').hide();
+		
+	});
+	
+
+/********* Funcion para rotar imagenes en show's product ******/
+
+		$('.paintings').live({
+			mouseenter: 
+			function(e){
+				e.preventDefault();
+				console.log($(this).data('id'));
+				$('.mainpicture').find('img').remove();
+				var test = $('.painting_'+$(this).data('id')).find('img').clone()
+				var image = test.attr('src').replace('thumb', 'timeline');
+				console.log(image);
+				test.attr('src', image).appendTo($('.mainpicture'));
+
+
+				},
+			mouseleave:
+			function (e){
+				e.preventDefault();
+				}
+		  });
+
+	});
+
+
+
+
+
+
+
+

@@ -1,0 +1,29 @@
+<% if @painting.new_record? %>
+	alert("Failed to upload painting: <%= j @painting.errors.full_messages.join(', ').html_safe %>");
+	<% elsif @product.paintings.count == 1 %>
+		$('#ajax-status').show();
+	var i = 0;
+  		$(".defaultMainImage").replaceWith('<%= escape_javascript(render(@painting)) %>');
+		$(".painting").attr('id', 'painting_<%= @painting.id %>');
+		$('#ajax-status').hide();
+		<% else  %>
+		<% if @product.paintings.count <= 4 %>
+			$("li#image_small").hide();
+			$("ul#productImagesSortable").append("<li id='smallImage' class='painting_<%= @painting.id %>'><%= escape_javascript(render(@painting)) %></li>");
+			i += 1
+			<% else %>
+					alert("Just allow 4 pictures! Thanks");
+		<% end %>
+<% end %>
+
+<% if @product.paintings.count >1 %>
+	$('.<%= dom_id(@painting) %>').hover(
+	     function () {
+				$(this).append('<%= link_to image_tag("close.png"), @painting, method: :delete, remote: true, :id => "remove", :class => "remove_painting" %>');
+			},
+			function (){
+				$(this).find("#remove").remove();
+	  });
+<% end %>
+
+

@@ -1,0 +1,19 @@
+<%= content_tag_for(:li, comment ) do %>
+	<div class="comment_body">
+		<span class="comment_avatar">
+			<% if !comment.user.picture.present? %>
+				<%= link_to image_tag("http://graph.facebook.com/#{comment.user.uid}/picture?type=square", 
+						width: 35, height: 35, :id =>  "nickname_small_picture"), user_path(comment.user) %>
+			<% else %>
+				<%= link_to image_tag(comment.user.picture_url(:thumb_profile), width: 35, :id => "nickname_small_picture"), 
+						user_path(comment.user) %>
+			<% end %>
+		</span>
+		<span class="comment_author"><%= "#{comment.user.username}"%></span>
+		<span class="comment_text"><%= comment.body %></span>
+		<span class="comment_timestamp"><%= time_ago_in_words(comment.created_at) %> 
+		<% if current_user == comment.user %>
+			<span class="comment_delete"><%= link_to "X", comment_path(comment), :method => :delete, remote: true %></span></span>
+		<% end %>
+	</div>
+<% end %>

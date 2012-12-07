@@ -2,8 +2,6 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
 
-  # GET /users
-  # GET /users.json
   def index
     #@users = User.all
     @users = User.find(:all, :order => "created_at DESC")   #Show in reverse order
@@ -13,16 +11,12 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1
-  # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @products = Product.all(:order => 'RANDOM()', :limit => 6)
-    @users = User.all
-
+    #@products = Product.all(:order => 'RANDOM()', :limit => 6)
+    #@users = User.all
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @user }
     end
   end
 
@@ -30,10 +24,8 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @user }
     end
   end
 
@@ -46,14 +38,11 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -62,14 +51,11 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
-
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -85,7 +71,16 @@ class UsersController < ApplicationController
     @title = "Followers"
     @user = User.find(params[:id])
     @users = @user.followers
-    render 'show_follow'
+    respond_to do |format|
+      format.js
+    end
   end
-  
+
+  def list_items
+    @user = User.find(params[:id])
+    @products = @user.products
+    respond_to do |format|
+      format.js
+    end
+  end
 end

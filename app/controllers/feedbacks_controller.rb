@@ -4,7 +4,6 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @feedback }
     end
   end
 
@@ -12,7 +11,7 @@ class FeedbacksController < ApplicationController
     @feedback = current_user.feedbacks.build(params[:feedback])
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to current_user, notice: 'Gracias por tus comentarios.' }
+        format.html { redirect_to current_user, notice: 'Gracias por tu ayuda.' }
       else
         format.html { render action: "index" }
       end

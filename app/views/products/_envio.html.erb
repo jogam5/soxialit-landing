@@ -1,0 +1,205 @@
+<div class="modal-envios">
+  <div class="modal-body">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+  	<br/>
+	<tbody>
+	<p><strong> ¿Qué opciones de envíos ofreces?</strong></p>
+	<form style="float:left; width: 500px" id="target">
+		<table class="table">
+	      <tbody>
+	                <tr>
+		              <td><input id="env_stan" type="checkbox" class="span1"></td>
+	                  <td>Envío dentro DF </td>
+	                  <td><input class="input-small focused" id="focusedInput" type="text" value="" placeholder="$" disabled>
+					</td>
+	                </tr>
+	                <tr>
+	                  <td><input id="env_interior" type="checkbox" class="span1"></td>
+	                  <td>Envío interior del país</td>
+	                  <td><input class="input-small focused" id="interior" type="text" value="" placeholder="$" disabled>
+					</td>
+	                </tr>
+	                <tr>
+	                <!--  <td><input id="pickup" type="checkbox" class="span1"></td>
+	                  <td>Recogerlo en mis instalaciones (agrega tu Código Postal)</td>
+	                  <td><input class="input-small focused" id="codPos" type="text" value="" placeholder="CP" disabled>
+					</td> -->
+	                </tr>
+				<!--	<tr>
+	                  <td><input id="estafeta_form" type="checkbox" class="span1"></td>
+	                  <td>Cotiza con Estafeta</td>
+					 <! <td><input class="input-small focused" id="est_cp" type="text" placeholder="CP" value="" disabled></td> -->
+					 <!-- <td><input type="radio" name="optionsRadios" id="optionSobre" value="sobre" unchecked> Sobre</td>
+					  <td><input type="radio" name="optionsRadios" id="optionPaquete" value="paquete" unchecked> Paquete</td>
+					</tr>
+					<tr>
+					  <td></td>
+					  <td></td>
+					  <td><input class="input-medium focused" id="est_peso" type="text" value="" placeholder="Peso kgs" disabled></td>
+					  <td><input class="input-small focused" id="est_alto" type="text" value="" placeholder="Alto cms" disabled></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td><input class="input-small focused" id="est_largo" type="text" value="" placeholder="Largo cms" disabled></td>
+						<td><input class="input-small focused" id="est_ancho" type="text" value="" placeholder="Ancho cms" disabled></td>
+					</tr> -->
+	              </tbody>
+	            </table>
+				<div class="span1">
+					<button type="submit" class="btn">Llenar</button>
+				 </div>
+			</form>
+	
+  </div>
+</div>
+
+
+
+<script>
+
+$(document).ready(function(){
+  $('#env_stan').change(function(){
+    $('#focusedInput').attr('disabled',! this.checked);
+	
+  });
+$('#pickup').change(function(){
+    $('#codPos').attr('disabled',! this.checked);
+  });
+
+$('#env_interior').change(function(){
+    $('#interior').attr('disabled',! this.checked);
+  });
+
+
+$('#optionSobre').change( function(){
+    $('#est_peso').attr('disabled', this.checked);
+    $('#est_alto').attr('disabled', this.checked);
+    $('#est_largo').attr('disabled', this.checked);
+    $('#est_ancho').attr('disabled', this.checked);
+
+  });
+$('#estafeta_form').change(function(){
+	$('#optionPaquete').change( function(){
+    	$('#est_peso').attr('disabled',! this.checked);
+	    $('#est_alto').attr('disabled',! this.checked);
+	    $('#est_largo').attr('disabled',! this.checked);
+	    $('#est_ancho').attr('disabled',! this.checked);
+	});
+  });
+
+});
+
+
+$('#target').submit(function(){
+	$('#campo_envioint').text('');
+	$('#campo_enviodf').text('');
+	$('.forma_estafeta').text('');
+	$('#campo_cp').text('');
+	
+	
+	
+	$('#campo_enviodf').hide();
+	$('#campo_envioint').hide();
+	$('#campo_cp').hide();
+	$('#campo_estafeta').hide();
+	
+	
+	if(!($('#focusedInput').val())){
+	}else if(isNaN($('#focusedInput').val()) && $("#focusedInput").val()!=null && $('#focusedInput').val()!=""){
+		alert("No es un valor aceptable");
+//	if(!($('#focusedInput').val())){}
+	}else{
+		$('#product_ship_df').val($('#focusedInput').val());
+		$('#campo_enviodf').append(('Envío dentro DF $'+ $('#focusedInput').val()));
+		$('#campo_enviodf').show();
+	}
+	
+	
+	if(!($('#interior').val())){
+	
+	}else if(isNaN($('#interior').val()) && $('#interior').val() != null && $('#interior').val()!=""){
+		alert("No es un valor aceptable");
+	}else{
+		$('#product_ship_int').val($('#interior').val());
+		$('#campo_envioint').append(('Envío al interior del país $'+ $('#interior').val()));
+		$('#campo_envioint').show();
+	}
+	
+	
+	
+	if(!($('#codPos').val())){
+	}else{
+		$('#product_cp').val($('#codPos').val());
+		$('#campo_cp').show();
+	}
+	
+	
+	if(!($('#codPos').val())){
+	}else{
+		$('#product_cp').val($('#codPos').val());
+		$('#campo_cp').append(('Recógelo en CP: '+ $('#codPos').val()));
+		$('#campo_cp').show();
+	}
+	
+	
+	
+	if(!($('#est_peso').val())){
+	}else{
+		$('#product_peso').val($('#est_peso').val());
+		$('#estafeta_peso').append(('Peso: '+ $('#est_peso').val()));
+		$('#campo_estafeta').show();
+	}
+	if(!($('#est_alto').val())){
+	}else{
+		$('#product_alto').val($('#est_alto').val());
+		$('#estafeta_alto').append(('Alto: '+ $('#est_alto').val()));
+		$('#campo_estafeta').show();
+	}
+	
+	if(!($('#est_largo').val())){
+	}else{
+		$('#product_largo').val($('#est_largo').val());
+		$('#estafeta_largo').append(('Largo: '+ $('#est_largo').val()));
+		$('#campo_estafeta').show();
+	}
+	if(!($('#est_ancho').val())){
+	}else{
+		$('#product_ancho').val($('#est_ancho').val());
+		$('#estafeta_ancho').append(('Ancho: '+ $('#est_ancho').val()));
+		$('#campo_estafeta').show();
+	}
+	
+	if(!($('#est_cp').val())){
+	}else{
+		$('#product_cp').val($('#est_cp').val());
+		$('#campo_estafeta').show();
+	}
+	
+	if(!($('#optionSobre').is(':checked'))){
+	}else{
+		$('#product_tipo_envio').val($('#optionSobre').val());
+		$('#estafeta_tipo').append(('Tipo: '+ $('#optionSobre').val()));
+		$('#campo_estafeta').show();
+	}
+	
+	if(!($('#optionPaquete').is(':checked'))){
+	}else{
+		$('#product_tipo_envio').val($('#optionPaquete').val());
+		$('#estafeta_tipo').append(('Tipo: '+ $('#optionPaquete').val()));
+		
+	}
+	
+	
+/*	if(isNaN($("#focusedInput").val()) && $("#focusedInput").val()!=null){
+		alert("No es un valor aceptable");
+		alert($("#focusedInput").val());
+	} */
+	
+	
+	$('#modal-id').fadeOut('fast');	
+	return false;
+});
+
+
+</script>

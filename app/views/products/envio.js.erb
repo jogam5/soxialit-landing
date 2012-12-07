@@ -1,0 +1,22 @@
+var y = window.pageYOffset;
+document.documentElement.style.overflowY = "hidden";
+
+window.onscroll = function(){
+	window.scroll(0, y);
+};
+$('#modal-id').fadeIn('fast');
+$('#modal-id').html("<%= escape_javascript(render :partial => 'envio', :object => @product) %>");
+$('#modal-id').click(function(){
+	window.onscroll = null;
+	document.documentElement.style.overflowY = "scroll";
+});
+$(document).keyup(function(e) {
+  if (e.keyCode == 27) { $('#modal-id').fadeOut('fast');
+	window.onscroll = null;
+	document.documentElement.style.overflowY = "scroll";
+   }   // esc
+});
+
+$('.close').click(function(){
+	$('#modal-id').fadeOut('fast');
+});

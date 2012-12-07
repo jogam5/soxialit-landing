@@ -1,0 +1,7 @@
+<% if @product.paintings.count == 1 %>
+  	<%= image_tag(painting.image_url(:timeline)) %>
+</div>
+<% else %>
+  	<%= image_tag(painting.image_url(:thumb)) %>
+<% end %>
+

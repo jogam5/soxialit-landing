@@ -1,0 +1,11 @@
+<% if feed_item.activitable_type == "Product" %>	
+	agregó 
+	<span><%= feed_item.activitable.brand %></span>
+	a sus <span>items</span>.
+<% elsif feed_item.activitable_type == "Collection"  %>
+	agregó 
+	<span><%= feed_item.activitable.name %></span>
+	a sus <span>colecciones</span>.
+<% elsif feed_item.activitable_type == "Portrait"  %>
+	actualizó la cubierta de su portafolio.
+<% end %>

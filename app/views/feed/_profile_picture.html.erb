@@ -1,0 +1,7 @@
+<% if !feed_item.user.picture.present? %>
+	<%= link_to image_tag("http://graph.facebook.com/#{feed_item.user.uid}/picture?type=square", 
+				width: 50, height: 50, :id =>  "nickname_small_picture"), user_path(feed_item.user) %>
+<% else %>
+	<%= link_to image_tag(feed_item.user.picture_url(:thumb_profile), 
+				:id => "nickname_small_picture"), user_path(feed_item.user) %>
+<% end %>
