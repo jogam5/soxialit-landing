@@ -11,10 +11,12 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= requiere jquery.tokeninput
+//= require jquery
 //= require bootstrap
 //= require jquery_ujs
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
+//= require twitter/bootstrap
 //= require_tree .
 
 $(function () {
