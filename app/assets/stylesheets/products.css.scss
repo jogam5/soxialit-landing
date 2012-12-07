@@ -271,28 +271,42 @@ td.picture img { width: 140px; }
 
 /****** Product show ******/
 
+#theme-shadow{
+	padding: 10px;
+	background-color: #F2F2F2;
+	border: 1px solid rgba(0, 0, 0, .2);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, .24);
+	margin-left: -20px;
+	line-height: 0;
+
+}
+
 .description-main{
 	font-size: 22px;
 	line-height: 20px;
 }
 
+.description-price{
+	font-size: 30px;
+	line-height: 30px;
+}
+
 .description-medium{
-	font-size: 14px;
-	line-height: 14px;
+	font-size: 15px;
+	line-height: 15px;
 	padding: 0.5%;
 }
 
 .description-low{
 	display: block;
-	margin-bottom: 5px;
+	margin: 12px 0 5px;
 	color: #999;
-	font-size: 12px;
-	line-height: 12px;
+	font-size: 13px;
+	line-height: 13px;
 	padding: 0.5%;
 }
 
 .description-strong{
-	margin-left:5%;
 	font-size: 22px;
 	line-height: 20px;
 	color: #999;
