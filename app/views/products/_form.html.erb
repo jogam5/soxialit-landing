@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-<div sytle="padding-top: 2%" id="product_form" class="span3">
+<div style="margin-top: 5%" id="product_form" class="span3">
   <div class="field">
 	<%= f.label :title, "*nombre del producto" %>
 	<%= f.text_field :title, placeholder: "" %>
@@ -36,13 +36,12 @@
 	<%= f.label :material, "*material" %>
     <%= f.text_field :material, placeholder: "" %>
   </div>
- 
   <div class="field" style="height: 127px">
 	<p style="float:left">
-		<%= f.label :refund_policy, "*establece tus políticas de devolución" %>
+		<%= f.label :refund_policy, "*políticas de devolución" %>
 	</p>
-	<i style="margin-left: 5%; margin-top: -10%" id="policy_info" class="icon-info-sign icon-black"></i>
-	<div class="popover fade top in" id="pop_policy" style="display:none; position: relative; top: -165px; left:-103px">
+	<i style="margin-left: 5%;" id="policy_info" class="icon-info-sign icon-black"></i>
+	<div class="popover fade top in" id="pop_policy" style="display:none; position: relative; top: -165px; left:50px">
 		<div class="arrow">
 		</div>
 		<div class="popover-inner">
@@ -108,7 +107,7 @@
 		
 </div>
 
-<div style="margin-top: -20px" class="span6" id="mainImage">
+<div style="margin-top: 5%" class="span6" id="mainImage">
 	<div class="defaultMainImage">
 	</div>
 	<div id="ajax-status" style="float:left; display:none; margin-left:50%; margin-top:-100%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
@@ -122,7 +121,7 @@
 	</div>		
 </div>
 <% end %>
-<div class="span3">
+<div style="margin-top:5%" class="span3">
 	<div class="field" id="file_image">
 		<%= form_for(Painting.new, :remote => true) do |f| %>
 		  <%= f.label :image, "*agrega tus fotos(máximo 4 fotos):", :class => "label_fotos" %>

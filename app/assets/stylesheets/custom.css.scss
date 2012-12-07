@@ -25,6 +25,15 @@ $boutique:#B40E80;
 $fotografo:#005494;
 $blogger:#F90;
 
+label,
+input,
+button,
+select,
+textarea {
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 20px;
+}
 
 #home_nav_top{
 	width:100%;
