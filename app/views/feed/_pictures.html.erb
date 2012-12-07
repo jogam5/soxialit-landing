@@ -1,15 +1,17 @@
 <% if feed_item.activitable_type == "Portrait" %>
-	<%= image_tag(feed_item.activitable.picture_url, :width => 500) %>
+	<%= link_to "", "" %>
 <% elsif feed_item.activitable_type == "Collection" %>
 	<%= feed_item.activitable.name %>
 <% elsif feed_item.activitable_type == "Product" %>
 	<div id="product_background">
-		<%= image_tag(feed_item.activitable.picture) %>
+		<%= link_to image_tag(feed_item.activitable.picture), product_path(feed_item.activitable) %>
 		<br/>
 		<div style="text-align:left; margin-left:100px; margin-top:5px;">
-			<span id="product_title" ><%= feed_item.activitable.brand %></span>
-			<span id="product_price">$100</span>
-			<span id="product_y">by </span> <%= link_to  feed_item.activitable.user.username, user_path(feed_item.activitable.user) %>
+			<span id="product_title" ><%= feed_item.activitable.title %></span>
+			<span id="product_price">$<%= feed_item.activitable.price %></span>
+			by
+			<span style="font-size:1.2em;"><%= link_to  feed_item.activitable.user.username, 
+						user_path(feed_item.activitable.user), :id => "user_and_items_link" %></span>
 		</div>
-	</div>	
+	</div>
 <% end %>

@@ -1,4 +1,4 @@
-<%= form_for(@comment, remote: true) do |f| %>
+<%= form_for(@comment) do |f| %>
 	<ul class="comments_new">
 	    <li>
 			<%= render 'shared/error_messages', object: f.object %>

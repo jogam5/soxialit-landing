@@ -23,11 +23,11 @@ mixpanel.init("5e344db467e2f971ffccde4566fe2da4");</script><!-- end Mixpanel -->
         </div>
       <% end %>
       <%= yield %>
-	  <div id="modal-id"></div>
-	  <div id="loading_image" style="display:none; margin-left:50%"><%= image_tag("ajax-loader.gif") %></div>
-	   <%= render 'layouts/footer' %>
+	    <div id="modal-id"></div>
+	    <div id="loading_image" style="display:none; margin-left:50%"><%= image_tag("ajax-loader.gif") %></div>
+	    <%= render 'layouts/footer' %>
     </div>
-<script type="text/javascript">
+ <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-31179966-2']);
   _gaq.push(['_setDomainName', 'soxialit.com']);
@@ -38,6 +38,6 @@ mixpanel.init("5e344db467e2f971ffccde4566fe2da4");</script><!-- end Mixpanel -->
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-</script>
+ </script>
 </body>
 </html>

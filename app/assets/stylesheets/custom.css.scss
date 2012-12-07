@@ -649,8 +649,9 @@ z-index: 2;
 }
 
 .timestamp {
-  color: $grayLight;
-  font-size:1em;
+  color: $website;
+  font-size:0.9em;
+  font-weight:lighter;
 }
 
 #product_background img{
@@ -659,8 +660,10 @@ z-index: 2;
 }
 
 #product_title{
-	color:$grayLight;
+	color:$rojo;
 	font-size:1.2em;
+	font-weight:lighter;
+
 }
 
 #product_y{
@@ -668,8 +671,9 @@ z-index: 2;
 }
 
 #product_price{
-	font-size:1em;
+	font-size:1.2em;
 	color:black;
+	font-weight:lighter;
 }
 
 #subscribe_module {
@@ -765,6 +769,37 @@ li.comment {
 }
 
 /* SignIn/SignUp */
+
+
+/* TimeLine */
+
+#item_link{
+	a{
+	color:$rojo;
+	}
+	a:hover{
+	color:black;
+	text-decoration:none;
+	}
+}
+
+#user_and_items_link{
+	 a{
+	color:black;
+	font-weight:bold;
+	}
+	 a:hover{
+	color:$rojo;
+	text-decoration:none;
+	}
+}
+
+#headline_color{
+	color:#787878;
+	font-weight:lighter;
+}
+
+/* TimeLine */
 
 
 /************ Modal *******/

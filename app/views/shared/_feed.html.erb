@@ -9,7 +9,9 @@
 	  	  		<%= render :partial => 'feed/profile_picture', :locals => { :feed_item => feed_item } %>
 			</div>
 			<div class="span4">
-				<p style="font-size:1.1em"><strong><%= link_to feed_item.user.username, user_path(feed_item.user) %></strong>
+				<p style="font-size:1.1em"><span id="user_and_items_link">
+					<%= link_to feed_item.user.username, user_path(feed_item.user) %>
+						</span>
 				  	<%= render :partial => 'feed/headline', :locals => { :feed_item => feed_item } %>
 				  	<br />
 					<span class="timestamp"><%= time_ago_in_words(feed_item.created_at) %>.</span>
