@@ -1,0 +1,208 @@
+<%= form_for (@product), :validate => true do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div sytle="padding-top: 2%" id="product_form" class="span3">
+  	<div class="field">
+		<%= f.label :title, "*nombre del producto" %>
+		<%= f.text_field :title, placeholder: "" %>
+	  </div>
+	  <div class="field">
+		<%= f.label :brand, "*marca" %>
+	    <%= f.text_field :brand, placeholder: "" %>
+	  </div>
+	  <div class="field">
+		<%= f.label :price, "*precio" %>
+	    <%= f.text_field :price, placeholder: " 0.00", :class => "span2", :style => "float:left" %><p>   MXN </p>
+	  </div>
+	  <br/>
+	  <div class="field">
+		<%= f.label :description, "*describe tu producto" %>
+	    <%= f.text_area :description, rows: "4", placeholder: "" %>
+	  </div>
+	  <div class="field">
+		<%= f.label :color, "*color" %>
+	    <%= f.text_field :color, placeholder: "" %>
+	  </div>
+	  <div class="field">
+		<%= f.label :material, "*material" %>
+	    <%= f.text_field :material, placeholder: "" %>
+	  </div>
+ 
+  <div class="field" style="height: 127px">
+	<p style="float:left">
+		<%= f.label :refund_policy, "*políticas de devolución" %>
+	</p>
+	<i style="margin-left: 5%" id="policy_info" class="icon-info-sign icon-black"></i>
+	<div class="popover fade top in" id="pop_policy" style="display:none; position: relative; top: -165px; left:50px">
+		<div class="arrow">
+		</div>
+		<div class="popover-inner">
+			<div class="popover-content">
+				<p>Ejemplo: "No aplica.", "Solo si el producto esta dañado.", "Solo si después de 30 días no ha sido entregado"</p>
+			</div>
+		</div>
+	</div>
+  </div>
+	<p style="margin-top:-90px">	
+	<%= f.text_area :refund_policy, rows: "3" %>
+	</p>
+ <div class="field">
+    <%= f.label :size_tokens, "*información de tallas/medidas" %>
+    <%= f.text_field :size_tokens, data: {load: @product.sizes}%>
+  </div>
+  <div class="field">
+	<%= f.label :quantity, "Cantidad" %>
+    <%= f.number_field :quantity, :in => 1..5 %>
+  </div>
+   
+  <div class="field" style="height:20px">
+		<p style="float:left">
+			<%= f.label :tag_list, "*agrega tus tags" %>
+		</p>		
+			<i style="margin-left: 5%" id="tag_info" class="icon-info-sign icon-black"></i>
+			<div class="popover fade top in" id="pop_tag" style="display:none; position: relative; top:-120px;;">
+				<div class="arrow">
+				</div>
+				<div class="popover-inner">
+					<div class="popover-content">
+						<p>¿Qué palabras describen a tu producto?(separalas por comas)</p>
+					</div>
+				</div>
+			</div>
+	  </div>
+	
+		<p>
+		    <%= f.text_field :tag_list, placeholder: "*agrega tus tags", "data-pre" => @product.tags.map(&:attributes).to_json, :style => "float:left" %>
+		</p>
+			<div>
+				<%= link_to "opciones de envío", envio_path(:product_id => @product.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :class => 'btn'} %>
+			</div>
+			<br/>
+					<% if @product.ship_df.nil? %>
+					<% else%>
+					<div style="display:block" id="campo_enviodf">
+					
+						<%= "Envío dentro DF $#{@product.envio_df}" %>
+					</div>
+					<% end %>
+				
+					<% if @product.ship_int.nil? %>
+					<% else%>
+					<div style="display:block" id="campo_envioint">
+					
+						<%= "Envío al interior del país $#{@product.envio_int}" %>
+					</div>
+					<% end %>
+			<div style="display:none" id="campo_enviodf">
+				<p>
+					<div style="float:left">Recoger en CP: </div>
+				</p>
+			</div>
+			<div style="display:none" id="campo_envioint">
+				<p>
+					<div style="float:left">Recoger en CP: </div>
+				</p>
+			</div>
+			<div style="display:none" id="campo_cp">
+				<p>
+					<div style="float:left">Recoger en CP: </div>
+				</p>
+			</div>
+			<div style="display:none;" id="campo_estafeta">
+				<div>Envío por Estafeta</div>
+				<div id="estafeta_tipo" class="forma_estafeta"></div>
+				<div id="estafeta_peso" class="forma_estafeta"></div>
+				<div id="estafeta_alto" class="forma_estafeta"></div>
+				<div id="estafeta_largo" class="forma_estafeta"></div>
+				<div id="estafeta_ancho" class="forma_estafeta"></div>
+
+		
+				<%= f.text_field :ship_df, :class => "span2", :style => "display:none" %>
+				<%= f.text_field :ship_int, :class => "span2", :style => "display:none" %>
+				
+
+			</div>
+			<hr>
+
+  
+</div>
+
+
+   <div class="span6">
+		  <% unless @paintings.first.nil? || @paintings.count == 0 %>
+				<div class="mainpicture" id="painting_<%= @paintings.first.id %>">
+					<%= image_tag(@paintings.first.image_url(:timeline))  %>
+				</div>
+					<% else %>
+				<div class="defaultMainImage">
+				</div>
+		  <% end %>
+		<div id="ajax-status" style="float:left; display:none; margin-left:50%; margin-top:-100%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
+		<div style="" class="well">
+			<div class="span6">
+				<div class="actions">
+					<%= link_to 'Cancelar', products_path, class: "button-unfollow" %>
+					<%= f.submit "Actualizar producto", class: "button-want" %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% end %>
+
+	<div class="span3">
+		<div class="field">
+			<%= form_for(Painting.new, :remote => true) do |f| %>
+			  <%= f.label :image, "*agrega tus fotos (máximo 4 fotos):", :class => "label_fotos" %>
+			  <%= f.hidden_field :product_id, :value => @product.id %>
+			  <%= f.file_field :image, multiple: true, name: "painting[image]"%>
+			<% end %>
+		</div>
+		<ul id="productImagesSortable">
+			<% if @paintings.count > 1  %>
+				<% @paintings.each_with_index do |painting, index| %>
+					<% if index > 0 && index < 4 %>
+						<%= content_tag "div", id:"paintings", data: {id: painting.id } do %>
+				 			<li id="smallImage" class="painting_<%= painting.id%>">
+								<%= image_tag(painting.image_url(:thumb))%>
+								<div class="actions" id="remove_painting_<%= painting.id %>">
+									<%= link_to image_tag("close.png"), painting, method: :delete, remote: true, id: "remove" %>
+					  			</div>
+				 			</li>
+						<% end %>
+					<% end %>
+				<% end %>
+			<% end %>
+		</ul>
+	</div>
+
+<script id="template-upload" type="text/x-tmpl">
+<div id="name" style="display:none">
+
+	<div class="upload">
+		<div class="span2">
+			{%=o.name%}
+	  		<div class="progress"><div class="bar" style="width: 0%"></div></div>
+		</div
+	</div>
+</div>
+</script>
+
+
+<script type="text/javascript">
+$("#product_form").keypress(function (evt) {
+	//Deterime where our character code is coming from within the event
+	var charCode = evt.charCode || evt.keyCode;
+	if (charCode  == 13) { //Enter key's keycode
+	return false;
+	}
+});
+</script>

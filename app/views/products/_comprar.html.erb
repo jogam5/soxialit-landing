@@ -1,0 +1,66 @@
+<div class="modal-compra">
+  <div class="modal-body">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+	<h1>Resumen de tu compra</h1>
+	<hr>
+	<div class="row">
+		<div class="span2">
+		</div>
+		<div class="span2">
+			<strong><%= @product.title%></strong>
+			<div id="tipo_envio">
+				
+			</div>
+		</div>
+		<div id="product_price" class="span2">	
+			<%= number_to_currency(@product.price) %>
+			<div id="costo_envio">
+				<span id="envio"></span>
+			</div>
+			<hr>
+			<div id="total">
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="span3">
+	
+		<%= form_for @product, url: envio_df_product_path(@product), remote: true do |f| %>
+			<strong>
+				Que opción de envío deseas:
+			</strong>
+			<% if @product.ship_df.nil? %>
+				<% else %>
+					<div><td><%= radio_button_tag 'envio', @product.ship_df, :class => 'Envío dentro DF' %><span id="envio_df"> Envío dentro DF </span>- $<%= @product.ship_df %> </td></div>
+			<% end %>
+			<% if @product.ship_int.nil? %>
+				<% else %>
+					<div><td><%= radio_button_tag 'envio', @product.ship_int, :class => 'Envío al interior del país' %><span id="envio_interior"> Envío interior del país </span>- $<%= @product.ship_int %></td></div>
+			<% end %>
+			
+			<%= f.text_field :shipping, :class => "span2", :style => "display: none" %>
+			<br/>
+			<div class="span1">
+				<%= f.submit "Elegir", class: "btn" %>
+			</div>
+		<% end %>
+	</div>
+	<div style="display:none" id="pagos" class="span4">
+			<div id="paypal_checkout" style="width:150px; float:left;">
+				<%= link_to "Pagar con Paypal", paypal_checkout_path(:product_id => @product.id), :class => "btn btn-success" %>
+				<div style="width:80px"><%= image_tag("paypal.png")%></div>
+			</div>
+			<div id="mercadopago_checkout" style="width:200px; float:left">
+				<!--	<%= link_to "Pagar con MercadoPago", "#", :class => "btn btn-success" %> -->
+				<p><%= link_to "Pagar con MercadoPago", mercadopago_checkout_path(product_id: @product.id), :class => "btn btn-success" %></p>
+					<div style="width:130px"><%= image_tag("mercadopago.png")%></div>
+			</div>
+		</div>
+  </div>
+</div>
+
+<script>
+
+
+</script>
+

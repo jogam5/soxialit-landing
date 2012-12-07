@@ -1,5 +1,7 @@
 DeviseFacebook::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
+  ENV["APP_ID"] = '439343236107925'
+  ENV["APP_SECRET"] = 'fb1c82f1f5893548e750e18e0b67362e'
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

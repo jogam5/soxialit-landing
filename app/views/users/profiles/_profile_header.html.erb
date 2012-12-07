@@ -1,12 +1,9 @@
 	<div class="row-fluid">
-		<div id="profile">
-			<div class="span2">
+		<div id="show_profile_frame">
+			<div class="span2 offset1">
 				<span id="profile_picture">
 					<%= render 'users/profiles/profile_picture' %>
 				</span>
-				<section>
-					<%= render 'shared/stats' %>
-				</section>
 			</div>
 			<div class="span5">
 				<p id="username"><%= @user.username %></p>
@@ -29,70 +26,10 @@
 				<p id="bio"><%= @user.bio %></p>
 				<p id="url"><i class="icon-globe"></i> <%= link_to @user.website, @user.website %></p>
 			</div>
-			<div class="span3">
+			<div class="span1">
 				<div id="bio">
 					<%= render 'follow_form' if user_signed_in? %>
 				</div>
 			</div>
-			<div class="span1">
-			</div>
 		</div>
 	</div>
-	<hr />	
-		<% if current_user == @user %>
-			<h3 style="text-align:center">¡Pronto llegará tu invitación a: <i><%= @user.email %></i>!</h3><br />
-			<h3 id="anuncios">Por favor, ayúdanos a hacer más grande la comunidad con un tweet:</h3>
-
-			<p style="text-align:center"><%= image_tag "twitter-bg.png" %> 
-			"Unete a @Soxialit, la red social que conecta fashion designers, bloggers, fotografos y boutiques en México y LatAm: soxialit.com"
-			<a href="https://twitter.com/share" class="twitter-share-button" data-url="www.soxialit.com" data-text="Unete a @Soxialit, la red social que conecta fashion designers, bloggers, fotografos y boutiques en México y LatAm: www.soxialit.com" data-size="large">Tweet</a>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-			</p>
-			<hr />
-			<div style="margin-bottom:10%" class="container" >
-				<%= render @products %>
-			</div>
-			<hr />
-		
-			<h3 id="anuncios">Descubre Soxialit</h3>
-			<h3 style="text-align:center">Sígue a otros #fashionlovers:</h3>
-			<br />
-			<div class="row">
-				<% @users.each do |user| %>
-					<span class="span1">
-						<% if !user.picture.present? %>
-							<%= link_to image_tag("http://graph.facebook.com/#{user.uid}/picture?type=square", 
-										width: 50, :id =>  "nickname_small_picture"), user_path(user) %>
-						<% else %>
-						    <%= link_to image_tag(user.picture_url(:thumb_profile), :id => "nickname_small_picture"),
-						    			user_path(user) %>
-						<% end %>
-					</span>
-					<span class="span3" id="nickname_users_list">
-						<%= link_to user.username, user_path(user) %> | 
-							<% if user.roles.first.name == 'fashion lover' %>
-								<span id="fashionlover_list">fashion lover</span>
-							<% elsif user.roles.first.name == 'boutique store' %>
-								<span id="boutique_list">boutique store</span>
-							<% elsif user.roles.first.name == 'admin' %>
-								<span id="admin_list">QUEEN</span>
-							<% else %>
-								<span id="<%=user.roles.first.name%>_list"><%= user.roles.first.name %></span>
-							<% end %>
-						<br />
-				      	<span id="nickname_small_followers">followers: <%= user.followers.count %><br />
-				      	<i class="icon-map-marker"></i><span id="nickname_small_location"><%= user.location %></span>
-				      	</span>
-				      	<hr />
-					</span>
-				<% end %>
-			</div>
-		<% else %>
-			<%= link_to "Regresar", user_path(current_user) %>	
-		<% end %>
-
-<script type="text/javascript">
-  mixpanel.people.set({
-    "$location": "<%=@user.location%>"
-  })
-</script>

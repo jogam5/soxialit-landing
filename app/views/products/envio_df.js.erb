@@ -1,0 +1,8 @@
+$('#envio').text('');
+$('#envio').append('$'+ $('input[name="envio"]:checked').val());
+$('#tipo_envio').append($('input[name="envio"]:checked span').text());
+
+$('#product_shipping').val($('input[name="envio"]:checked').val());
+$('#total').html('<strong><%= "Total: $ #{@product.total_price}" %></strong>');
+
+$('#pagos').show();

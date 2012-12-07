@@ -6,7 +6,7 @@ gem 'rails', '3.2.8'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'oauth2'
+#gem 'oauth2'
 gem 'cancan'
 gem 'wicked'
 gem 'hominid'
@@ -22,6 +22,14 @@ gem 'fog'
 
 #CSS
 gem "bootstrap-sass", "~> 2.1.0.1"
+
+#tags
+gem 'acts-as-taggable-on'
+
+#payment methods
+gem 'mercadopago'
+gem 'paypal-recurring'
+
 
 #Improve files readability
 gem 'annotate', '~> 2.4.1.beta'
@@ -45,6 +53,8 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.0.3'
+  #gem fileupload paintings
+  gem 'jquery-fileupload-rails'
 end
 
 gem 'jquery-rails'

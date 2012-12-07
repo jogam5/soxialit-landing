@@ -1,0 +1,32 @@
+<% if @feed_items.any? %>
+  <ol class="microposts">
+	<% @feed_items.each do |feed_item| %>
+	  <li id="<%= feed_item.id %>">
+	  	<% if feed_item.present? %>
+	  	<span class="content">
+	  	  <div class="row">
+	  	  	<div class="span1">
+	  	  		<%= render :partial => 'feed/profile_picture', :locals => { :feed_item => feed_item } %>
+			</div>
+			<div class="span4">
+				<p style="font-size:1.1em"><strong><%= link_to feed_item.user.username, user_path(feed_item.user) %></strong>
+				  	<%= render :partial => 'feed/headline', :locals => { :feed_item => feed_item } %>
+				  	<br />
+					<span class="timestamp"><%= time_ago_in_words(feed_item.created_at) %>.</span>
+				</p>
+			</div>
+		  </div>
+		  <div class="row">
+			<br /><br />
+			<div id="mitad">
+				<%= render :partial => 'feed/pictures', :locals => { :feed_item => feed_item } %>
+			</div><br />
+		  </div>
+		  <div class="red_bar"></div><br />
+		  <%= render :partial => 'feed/comments', :locals => { :feed_item => feed_item } %>
+		</span>
+		<% end %>
+	  </li>
+	<% end %>
+  </ol>
+<% end %>

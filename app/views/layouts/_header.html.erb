@@ -1,5 +1,9 @@
 <header class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
+		<div
+		 style="background-color:black;
+				background-image: -webkit-linear-gradient(top, black, black);
+				background-image: -moz-linear-gradient(top, black, black);"
+		 class="navbar-inner">
 			<div class="container">
 				<span class="span6">
 					<div id="titleProfile"><%= link_to "Soxialit", root_path %></div>
@@ -7,24 +11,30 @@
 				<nav>
 				  <ul class="nav pull-right">
 					<% if user_signed_in? %>
-					<li id="feedback_header"><%= link_to "Feedback", feedbacks_path %></li>
-					<li class="divider-vertical"></li>
-					<span id="nickname_profile"><%= link_to current_user.username, user_path(current_user) %></span>
-						<li id="fat-menu" class="dropdown">
-				              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-					        	<b class="caret"></b>
-				              </a>
-				              <ul class="dropdown-menu">
-				                <li><%= link_to "Editar Perfil", edit_user_path(current_user) %></li>
-				                <li class="divider"></li>
-				                <li>
-				                  <%= link_to "Salir", destroy_user_session_path, :method => :delete %>
-				                </li>
-				              </ul>
-				        </li>
+						<li id="feedback_header"><%= link_to "Feedback", feedbacks_path %></li>
+						<li class="divider-vertical"></li>
+						<span id="nickname_profile"><%= link_to current_user.username, user_path(current_user) %></span>
+							<li id="fat-menu" class="dropdown">
+					              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+						        	<b class="caret"></b>
+					              </a>
+					              <ul class="dropdown-menu">
+					                <li><%= link_to "Editar Perfil", edit_user_path(current_user) %></li>
+					                <li class="divider"></li>
+					                <li>
+					                  <%= link_to "Salir", destroy_user_session_path, :method => :delete %>
+					                </li>
+					              </ul>
+					        </li>
+					<% else %>
+						<li id="signup"><%= link_to "Ingresa a la comunidad y crea tu cuenta", 
+												user_omniauth_authorize_path(:facebook) %></li>
+						<li class="divider-vertical" style="color:yellow"></li>
+						<li id="signin"><%= link_to "Inicia Sesión", user_omniauth_authorize_path(:facebook) %></li>
 	   				<% end %>
               	  </ul>
               	</nav>
 			</div>
 		</div>
+		<div id="profile_nav_botton"></div>
 </header>

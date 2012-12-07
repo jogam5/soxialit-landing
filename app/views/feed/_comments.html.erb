@@ -1,0 +1,10 @@
+<% if feed_item.activitable.comments.count > 0 %>
+   <ul id="comments">
+		<%= render :partial => feed_item.activitable.comments %>
+	</ul>
+<% end %>
+<% if user_signed_in? %>
+	<div id="comment_form">
+		<%= render :partial => 'comments/form',  :locals => { :feed_item => feed_item } %>
+	</div>
+<% end %>

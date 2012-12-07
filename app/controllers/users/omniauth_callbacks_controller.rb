@@ -11,7 +11,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 	    else
 	      session["devise.facebook_data"] = request.env["omniauth.auth"]
 	      redirect_to root_url
-	      #redirect_to user_steps_path
 	    end
   	end
 end
