@@ -7,7 +7,8 @@
 						<li id="profile_nav_bar"><%= link_to "Mis Items", list_items_path(@user), 
 								remote: true %></li>
 						<li class="divider-vertical"></li>
-						<li id="profile_nav_bar"><%= link_to "Favoritos", "" %></li>
+						<li id="profile_nav_bar"><%= link_to "Favoritos", favorites_path(@user),
+								remote: true %></li>
 						<li class="divider-vertical"></li>
 					</ul>
 					<ul class="nav pull-right">
@@ -19,4 +20,6 @@
 			</div>
 		</div>
 	</div>
-	<div id="ajax"></div>
+	<div id="ajax">
+		<%= render 'users/list_items' %>
+	</div>
