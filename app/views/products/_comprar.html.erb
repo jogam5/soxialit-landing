@@ -1,10 +1,14 @@
 <div class="modal-compra">
   <div class="modal-body">
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
-	<h1>Resumen de tu compra</h1>
+	<h2>Resumen de tu compra</h2>
 	<hr>
 	<div class="row">
 		<div class="span2">
+			<% if @product.paintings.nil? %>
+			<% else %>
+				<%= image_tag(@product.paintings.first.image_url(:thumb))%>
+			<% end %>
 		</div>
 		<div class="span2">
 			<strong><%= @product.title%></strong>
