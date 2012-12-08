@@ -8,14 +8,14 @@
 			</span>
 			<span class="span5">
 				<div id="mi_title">
-					<%= link_to "Apricot Low V-neck Woven Figur", "" %>
+					<%= link_to product.title, product_path(product) %>
 				</div>
-				<p id="mi_brand">by <strong>Macandi</strong></p>
-				<p id="mi_description">"Make a big impression in a dress chosen from our collection, which includes dresses in bright colors or classic red, black, grey or white. Whether you are looking for a flirty cocktail dress, a cute"</p>
+				<p>by <span id="mi_brand"><%= product.brand %></span></p>
+				<p id="mi_description">"<%= product.description %>"</p>
 				<div id="mi_view_more">
 					<%= link_to "Ver Detalles", product_path(product) %> 
 				</div>
-				<p id="mi_price">$599
+				<p id="mi_price">$<%= product.price %>0
 					<span style="margin-left:2%"><%= link_to "Comprar", "", :class => "button-want" %></span>
 				</p>
 			</span>

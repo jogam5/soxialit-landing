@@ -13,8 +13,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    #@products = Product.all(:order => 'RANDOM()', :limit => 6)
-    #@users = User.all
+    @products = @user.products
     respond_to do |format|
       format.html # show.html.erb
     end
@@ -79,6 +78,13 @@ class UsersController < ApplicationController
   def list_items
     @user = User.find(params[:id])
     @products = @user.products
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def favorites
+    @user = User.find(params[:id])
     respond_to do |format|
       format.js
     end

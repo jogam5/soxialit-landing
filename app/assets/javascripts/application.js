@@ -40,5 +40,3 @@ $(function(){
     prePopulate: $('#product_size_tokens').data('load')
 	});
  });
-
-

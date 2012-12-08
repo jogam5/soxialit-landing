@@ -1,0 +1,7 @@
+<div class="row">
+ <% @user.evaluations.each do |z| %>
+	<div id="favorites_image">
+	  	<%= tag(:img, { :src => find_foto(z.target_id) }, false) %>
+ 	</div>
+ <% end %>
+</div>
