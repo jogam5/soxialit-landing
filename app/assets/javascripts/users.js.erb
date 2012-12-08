@@ -14,10 +14,29 @@ $(document).ready(function(){
 			}
 	  });
 
+});
 
 $(function(){
     $('#profile_nav_bar a').click(function(){
         $('#profile_nav_bar .active').removeClass('active'); // remove the class from the currently selected
         $(this).addClass('active'); // add the class to the newly clicked link
     });
+});
+
+
+
+
+$(document).ready(function(){
+	$('#image_hover').live({
+		mouseenter: 
+		function(e){
+			e.preventDefault();
+			$(this).find('.votacion').fadeIn();
+			},
+		mouseleave:
+		function (e){
+			e.preventDefault();
+			$(this).find('.votacion').fadeOut();
+		}
+	});
 });

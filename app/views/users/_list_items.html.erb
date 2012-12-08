@@ -1,10 +1,33 @@
 <% @products.each do |product| %>
 	<div id="mis_items_frame">
-		<div class="row">
-			<span class="span6">
-				<span id="mi_image">
+		<div class="row" id="image_hover">
+			<span style="margin-bottom:2%" class="span6" >
+				<div style="float:right" id="mi_image">
 				<%= image_tag product.picture %>
-				</span>
+			
+				<% if signed_in? %>
+					<div style="margin-right:-5%; margin-bottom: -8%" class="votacion" id="votacion_<%= product.id %>">
+						<% if product.id == current_user.voted_by?(current_user.evaluations, product.id) %>
+							<span id="want_<%= product.id %>">
+								<div id="love_icon_<%= product.id %>" class="love_icon_active">
+									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= product.id %>">
+										<%= product.reputation_value_for(:votes).to_i %>
+									</span>
+								</div>
+				   			</span>
+							<% elsif current_user && !current_user.voted_for?(product) %>
+								<span id="want_<%= product.id %>">
+									<div id="love_icon_<%= product.id %>" class="love_icon">
+										<span style="float:left; display:none; margin-left:-50%; color:black" id="love_product_<%= product.id %>">
+											<%= product.reputation_value_for(:votes).to_i %>
+										</span>
+										<%= link_to "xxx", vote_product_path(product, type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
+									</div>
+					   			</span>
+							<% end %>
+					</div>
+					<% end %>
+					</div>
 			</span>
 			<span class="span5">
 				<div id="mi_title">
