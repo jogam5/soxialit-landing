@@ -1,13 +1,11 @@
 <span id="headline_color">
-<% if feed_item.activitable_type == "Product" %>	
+<% if feed_item.activitable_type == "Product" && feed_item.action == "create" %>	
 	agregó 
 	<span id="item_link"><%= link_to feed_item.activitable.title, product_path(feed_item.activitable) %></span>
 	a sus <span id="user_and_items_link"><%= link_to "Items", user_path(feed_item.user) %></span>.
-<% elsif feed_item.activitable_type == "Collection"  %>
-	agregó 
-	<span><%= feed_item.activitable.name %></span>
-	a sus <span>colecciones</span>.
-<% elsif feed_item.activitable_type == "Portrait"  %>
-	actualizó la cubierta de su portafolio.
+
+<% elsif feed_item.activitable_type == "Product" && feed_item.action == "like"  %>
+	<span style="color:red">loves</span> <span id="item_link_likes"><%= link_to feed_item.activitable.title, 
+														product_path(feed_item.activitable) %></span>
 <% end %>
 </span>

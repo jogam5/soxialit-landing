@@ -44,8 +44,7 @@ class ProductsController < ApplicationController
 
     def new
       @product = current_user.products.create
-      @product.activities.create(:user_id => current_user.id)
-
+      @product.activities.create(:user_id => current_user.id, :action => "create")
       respond_to do |format|
         format.html # new.html.erb
         format.json { render json: @product }
@@ -171,12 +170,12 @@ class ProductsController < ApplicationController
         value = params[:type] == "up" ? 1 : -1
         @product = Product.find(params[:id])
         @product.add_or_update_evaluation(:votes, value, current_user)
-        #redirect_to :back, notice: "Thank you for voting!"
+        @product.activities.create(:user_id => current_user.id, :action => "like")
         respond_to do |format|
           format.js
         end
-
     end
+
     def products_as_json(product)
        data = {
          "external_reference" => "ARTICLE-ID-#{product.id}",
@@ -229,16 +228,7 @@ class ProductsController < ApplicationController
       end
     end
 
-=begin 
-   def tags
-       @tags = Product.tag_counts.where("tags.name LIKE ?", "%#{params[:q]}%")
-       results = @tags.map(&:attributes)
 
-            respond_to do |format|
-              format.json { render :json => @tags.map(&:attributes) }
-            end
-    end
-=end
     def tags
       query = params[:q]
       if query[-1,1] == " "

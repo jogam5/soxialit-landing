@@ -1,5 +1,5 @@
 class Activity < ActiveRecord::Base
-  attr_accessible :activitable_id, :activitable_type, :user_id
+  attr_accessible :activitable_id, :activitable_type, :user_id, :action
   belongs_to :activitable, :polymorphic => true
   belongs_to :user
   has_many :comments, :as => :commentable, :dependent => :destroy

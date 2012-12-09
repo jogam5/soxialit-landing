@@ -22,9 +22,9 @@ class Ability
       can :vote, Product
       can :read, :all
     elsif user.role? :'boutique store'
-      can :update, User, :id => user.id
-      can :vote, Product
+      can :manage, Product
       can :read, :all
+      can :manage, User, :id => user.id
     end
   end
 end

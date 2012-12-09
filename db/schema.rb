@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121206180522) do
+ActiveRecord::Schema.define(:version => 20121208043924) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20121206180522) do
     t.integer  "user_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.string   "action"
   end
 
   add_index "activities", ["activitable_type"], :name => "index_activities_on_activitable_type"
