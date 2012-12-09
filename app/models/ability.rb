@@ -7,24 +7,50 @@ class Ability
 
     if user.role? :admin
       can :manage, :all
+    
     elsif user.role? :designer
-      can :manage, :all
+      can :update, User, :id => user.id
+      can [:list_items, :favorites, :followers], User
+      can :create, Product
+      can :update, Product do |product|
+        product.try(:user) == user
+      end
+      can :vote, Product
+      cannot :vote, Product, :user_id => user.id
+      can :read, :all
+
     elsif user.role? :'fashion lover'
       can :update, User, :id => user.id
+      can [:list_items, :favorites, :followers], User
       can :vote, Product
       can :read, :all
+
     elsif user.role? :'blogger'
       can :update, User, :id => user.id
+      can [:list_items, :favorites, :followers], User
       can :vote, Product
       can :read, :all
+
     elsif user.role? :'fotografo'
       can :update, User, :id => user.id
+      can [:list_items, :favorites, :followers], User
       can :vote, Product
       can :read, :all
+
     elsif user.role? :'boutique store'
-      can :manage, Product
+      can :update, User, :id => user.id
+      can [:list_items, :favorites, :followers], User
+      can :create, Product
+      can :update, Product do |product|
+        product.try(:user) == user
+      end
+      can :vote, Product
+      cannot :vote, Product, :user_id => user.id
       can :read, :all
-      can :manage, User, :id => user.id
+
+    else
+      can :read, :all
+      can [:list_items, :favorites, :followers], User
     end
   end
 end
