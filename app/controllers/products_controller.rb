@@ -221,8 +221,7 @@ class ProductsController < ApplicationController
         initpoint = result["init_point"]
         redirect_to initpoint
     end
-    # DELETE /products/1
-    # DELETE /products/1.json
+    
     def destroy
       @product = Product.find(params[:id])
       @product.destroy

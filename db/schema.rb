@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121208043924) do
+ActiveRecord::Schema.define(:version => 20121210182735) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(:version => 20121208043924) do
   add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
+  create_table "directions", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "zipcode"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "directions", ["user_id"], :name => "index_directions_on_user_id"
+
   create_table "feedbacks", :force => true do |t|
     t.text     "content"
     t.integer  "user_id"
@@ -60,8 +69,6 @@ ActiveRecord::Schema.define(:version => 20121208043924) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "paintings", ["product_id"], :name => "index_paintings_on_product_id"
 
   create_table "products", :force => true do |t|
     t.string   "brand"
@@ -154,8 +161,6 @@ ActiveRecord::Schema.define(:version => 20121208043924) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "sizes", ["product_id"], :name => "index_sizes_on_product_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

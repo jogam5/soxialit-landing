@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_many :products, :dependent => :destroy
   has_many :evaluations, class_name: "RSEvaluation", as: :source
   has_many :feedbacks, :dependent => :destroy
+  has_one :direction, :dependent => :destroy
+
   has_reputation :votes, source: {reputation: :votes, of: :products}, aggregated_by: :sum
   has_reputation :haves, source: {reputation: :haves, of: :products}, aggregated_by: :sum
 

@@ -37,11 +37,10 @@ DeviseFacebook::Application.routes.draw do
   match "favorites/:id" => "users#favorites", :as => "favorites"
 
   resources :comments
+  resource :direction
   
   get '/envio', to: 'products#envio'
-  
   get '/comprar', to: 'products#comprar'
-
   get '/tallas', to: 'products#tallas'
   
   get 'paypal/checkout', to: 'products#paypal_checkout'
