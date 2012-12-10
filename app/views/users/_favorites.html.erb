@@ -1,17 +1,16 @@
 <div class="row">
-	<div id="tumblelog" class="clearfix masonry">
-	 <% @user.evaluations.each do |z| %>
-		<div class="story col2 masonry-brick">
-			  	<%= tag(:img, { :src => find_foto(z.target_id) }, false) %>
-		</div>
- 	<% end %>
+
+	<div id="contenedor" class="clearfix masonry">
+ 		<% @user.evaluations.each do |z| %>
+		<div id="favorites_image">
+	  		<%= tag(:img, { :src => find_foto(z.target_id) }, false) %>
+ 		</div>
+ 		<% end %>
 	</div>
 </div>
 
-<script>
-
-    var wall = new Masonry( document.getElementById('tumblelog'), {
-      columnWidth: 20
-    });
-
+<script type="text/javascript" language="javascript">
+  		var wall = new Masonry( document.getElementById('contenedor'), {
+			isFitWidth: true
+		});
 </script>

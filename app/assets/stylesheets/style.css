@@ -1,17 +1,4 @@
 
-
-
-/*
- * HTML5 ✰ Boilerplate
- * ==|== normalize ==========================================================
- */
-
-article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
-audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
-audio:not([controls]) { display: none; }
-[hidden] { display: none; }
-
-
 /* =============================================================================
    Base
    ========================================================================== */
@@ -35,6 +22,7 @@ audio:not([controls]) { display: none; }
 /* =============================================================================
    Embedded content
    ========================================================================== */
+
 
 
 
@@ -145,6 +133,31 @@ audio:not([controls]) { display: none; }
 
 }
 
+
+
+.copy {
+  width: 600px;
+  line-height: 1.55em;
+}
+
+
+dt {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+dd + dt {
+  margin-top: 0.5em;
+}
+
+dd {
+  margin-left: 1.0em;
+}
+
+button {
+  -webkit-appearance: push-button;
+}
+
 #site-footer {
   clear: both;
   margin: 20px 0px;
@@ -211,12 +224,15 @@ audio:not([controls]) { display: none; }
 /**** Demos ****/
 
 #contenedor {
-  background: #BCE;
+
+  background: #fff;
   padding: 5px;
   margin-bottom: 20px;
   border-radius: 5px;
   clear: both;
   border-radius: 5px;
+  margin: 0 auto;
+  width: auto;
 }
 
 .centered { margin: 0 auto; }
