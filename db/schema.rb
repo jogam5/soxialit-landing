@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(:version => 20121208043924) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "paintings", ["product_id"], :name => "index_paintings_on_product_id"
+
   create_table "products", :force => true do |t|
     t.string   "brand"
     t.string   "description"
@@ -152,6 +154,8 @@ ActiveRecord::Schema.define(:version => 20121208043924) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "sizes", ["product_id"], :name => "index_sizes_on_product_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

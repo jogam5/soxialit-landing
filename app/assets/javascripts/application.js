@@ -15,6 +15,7 @@
 //= require jquery
 //= require bootstrap
 //= require jquery_ujs
+//= require box-maker
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
 //= require_tree .

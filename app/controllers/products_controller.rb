@@ -132,6 +132,8 @@ class ProductsController < ApplicationController
 
     def comprar
        @product = Product.find(params[:product_id])
+       
+      
 
        #user_cp = find_user_product(@product)
        #current_user_cp = current_user.user_cp
@@ -164,6 +166,9 @@ class ProductsController < ApplicationController
 
     def envio
         @product = Product.find(params[:product_id])
+         respond_to do |format|
+            format.js
+          end
      end
 
     def vote
