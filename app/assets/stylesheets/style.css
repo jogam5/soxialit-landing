@@ -219,6 +219,8 @@ button {
   border-radius: 5px;
   clear: both;
   border-radius: 5px;
+  margin: 0 auto;
+  width: auto;
 }
 
 .centered { margin: 0 auto; }
