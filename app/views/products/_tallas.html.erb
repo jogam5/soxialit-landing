@@ -6,16 +6,19 @@
 	   <li class="size_label"><a href="#tab3" id="tab_mujer" data-toggle="tab">Mujer</a></li>
 	   <ul id="nav_mujer" class="nav nav-tabs">
 	        <li class="active"><a href="#tab1" data-toggle="tab">Resumen de tallas mujer</a></li>
-	        <li class=""><a href="#tab2" data-toggle="tab">Calzado</a></li>
-	   		<li class=""><a href="#tab3" data-toggle="tab">Pantalones/faldas</a></li>
+	        <li class=""><a href="#tab2" data-toggle="tab">Pantalones/faldas</a></li>
+	   		<li class=""><a href="#tab3" data-toggle="tab">Calzado</a></li>
 	   </ul>
 	   <ul style="display:none" id="nav_hombre" class="nav nav-tabs">
 	        <li class="active"><a href="#tab4" data-toggle="tab">Resumen de tallas hombre</a></li>
-	        <li class=""><a href="#tab5" data-toggle="tab">Calzado</a></li>
-	   		<li class=""><a href="#tab6" data-toggle="tab">Pantalones</a></li>
+	        <li class=""><a href="#tab5" data-toggle="tab">Pantalones</a></li>
+	   		<li class=""><a href="#tab6" data-toggle="tab">Calzado</a></li>
 	   </ul>
       <div id="content_mujer" class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
          <div class="tab-pane active" id="tab1">
+				<div style="float:right" class="span5">
+					<%= image_tag('women_size_guide.png')%>
+				</div>
 				<table style="width: 37%" class="table table-condensed">
 				              <thead>
 				                <tr>
@@ -53,11 +56,67 @@
 				              </tbody>
 				            </table>
          </div>
-         <div class="tab-pane" id="tab2">
+		  <div class="tab-pane" id="tab2">
+					<div style="float:right" class="span5">
+						<%= image_tag('women_size_guide.png')%>
+					</div>
+					<table style="width: 37%" class="table table-condensed">
+					              <thead>
+					                <tr>
+					                  <th style="width:50px"></th>
+					                  <th style="width: 100px">Cintura</th>
+					                  <th>Cadera</th>
+					                  <th>Largo</th>
+					               </tr>
+					              </thead>
+								<thead>
+					                <tr>
+					                  <th style="width:50px"></th>
+					                  <th style="width: 100px">Pulg. (cm)</th>
+					                  <th style="width: 100px">Pulg. (cm)</th>
+					                  <th style="width: 115px">Pulg. (cm)</th>
+					                </tr>
+					              </thead>
+					              <tbody>
+					                <tr>
+					                  <td>XS</td>
+					                  <td>24(61)</td>
+					                  <td>35(89)</td>
+					                  <td>32-24(82-84)</td>
+					                </tr>
+					                <tr>
+						              <td>S</td>
+					                  <td>26(66)</td>
+					                  <td>37(94)</td>
+					                  <td>34-36(88-90)</td>
+					                </tr>
+					                <tr>
+						              <td>M</td>
+					                  <td>28(71)</td>
+					                  <td>39(99)</td>
+									  <td>34-26(88-90)</td>
+					                </tr>
+									 <tr>
+										<td>L</td>
+						                <td>30(76)</td>
+						                <td>41(104)</td>
+						                <td>34-36(88-90)</td>
+						             </tr>
+									 <tr>
+										<td>XL</td>
+						                <td>30(76)</td>
+						                <td>41(104)</td>
+										<td>36-38(93-95)</td>
+						             </tr>
+					              </tbody>
+					            </table>
+
+				 </div>
+         <div class="tab-pane" id="tab3">
 			<table style="width: 37%" class="table table-condensed">
 			              <thead>
 			                <tr>
-			                  <th style="width:50px">Talla zapato</th>
+			                  <th style="width:50px">Talla zapatos</th>
 			                  <th style="width: 100px">Centímetros</th>
 			                </tr>
 			              </thead>
@@ -93,62 +152,14 @@
 			              </tbody>
 			            </table>
 			       </div>
-         <div class="tab-pane" id="tab3">
-				<table style="width: 37%" class="table table-condensed">
-				              <thead>
-				                <tr>
-				                  <th style="width:50px"></th>
-				                  <th style="width: 100px">Cintura</th>
-				                  <th>Cadera</th>
-				                  <th>Largo</th>
-				               </tr>
-				              </thead>
-							<thead>
-				                <tr>
-				                  <th style="width:50px"></th>
-				                  <th style="width: 100px">Pulg. (cm)</th>
-				                  <th style="width: 100px">Pulg. (cm)</th>
-				                  <th style="width: 100px">Pulg. (cm)</th>
-				                </tr>
-				              </thead>
-				              <tbody>
-				                <tr>
-				                  <td>XS</td>
-				                  <td>24(61)</td>
-				                  <td>35(89)</td>
-				                  <td>32-24(82-84)</td>
-				                </tr>
-				                <tr>
-					              <td>S</td>
-				                  <td>26(66)</td>
-				                  <td>37(94)</td>
-				                  <td>34-36(88-90)</td>
-				                </tr>
-				                <tr>
-					              <td>M</td>
-				                  <td>28(71)</td>
-				                  <td>39(99)</td>
-								  <td>34-26(88-90)</td>
-				                </tr>
-								 <tr>
-									<td>L</td>
-					                <td>30(76)</td>
-					                <td>41(104)</td>
-					                <td>34-36(88-90)</td>
-					             </tr>
-								 <tr>
-									<td>XL</td>
-					                <td>30(76)</td>
-					                <td>41(104)</td>
-									<td>36-38(93-95)</td>
-					             </tr>
-				              </tbody>
-				            </table>
-			 </div>
+       
        </div>
 	</div>
 	 <div id="content_hombre" class="tab-content" style="display:none; padding-bottom: 9px; border-bottom: 1px solid #ddd;">
          <div class="tab-pane active" id="tab4">
+			<div style="float:right" class="span5">
+				<%= image_tag('men_size_guide.png')%>
+			</div>
 			<table style="width: 37%" class="table table-condensed">
 			              <thead>
 			                <tr>
@@ -187,46 +198,9 @@
 			            </table>
          </div>
          <div class="tab-pane" id="tab5">
-			<table style="width: 37%" class="table table-condensed">
-			              <thead>
-			                <tr>
-			                  <th style="width:50px">Talla zapato</th>
-			                  <th style="width: 100px">Centímetros</th>
-			                </tr>
-			              </thead>
-			              <tbody>
-			                <tr>
-			                  <td>1</td>
-			                  <td>20</td>
-			                </tr>
-			                <tr>
-				              <td>3</td>
-			                  <td>21.5</td>
-			                </tr>
-			                <tr>
-				              <td>4</td>
-			                  <td>22.4</td>
-			                </tr>
-							 <tr>
-								<td>5</td>
-				                <td>23</td>
-				             </tr>
-							 <tr>
-								<td>6</td>
-				                <td>24</td>
-				             </tr>
-							 <tr>
-								<td>7</td>
-				                <td>25</td>
-				             </tr>
-							 <tr>
-								<td>8</td>
-				                <td>26</td>
-				             </tr>
-			              </tbody>
-			            </table>
-			 </div>
-         <div class="tab-pane" id="tab6">
+				<div style="float:right" class="span5">
+					<%= image_tag('men_size_guide.png')%>
+				</div>
 				<table style="width: 37%" class="table table-condensed">
 				              <thead>
 				                <tr>
@@ -270,6 +244,46 @@
 				              </tbody>
 				            </table>
 		         </div>
+				<div class="tab-pane" id="tab6">
+					<table style="width: 37%" class="table table-condensed">
+					              <thead>
+					                <tr>
+					                  <th style="width:50px">Talla zapatos</th>
+					                  <th style="width: 100px">Centímetros</th>
+					                </tr>
+					              </thead>
+					              <tbody>
+					                <tr>
+					                  <td>1</td>
+					                  <td>20</td>
+					                </tr>
+					                <tr>
+						              <td>3</td>
+					                  <td>21.5</td>
+					                </tr>
+					                <tr>
+						              <td>4</td>
+					                  <td>22.4</td>
+					                </tr>
+									 <tr>
+										<td>5</td>
+						                <td>23</td>
+						             </tr>
+									 <tr>
+										<td>6</td>
+						                <td>24</td>
+						             </tr>
+									 <tr>
+										<td>7</td>
+						                <td>25</td>
+						             </tr>
+									 <tr>
+										<td>8</td>
+						                <td>26</td>
+						             </tr>
+					              </tbody>
+					            </table>
+					 </div>
        </div>
 	</div>
 
