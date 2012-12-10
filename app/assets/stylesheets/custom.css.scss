@@ -587,6 +587,29 @@ white-space: nowrap;
               box-shadow: 0px 3px 5px 2px #ccc;
 }
 
+.hero-unit {
+  padding: 60px;
+  margin-bottom: 30px;
+  background-color: #eeeeee;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+.hero-unit h1 {
+  margin-bottom: 0;
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px;
+  color: inherit;
+}
+
+.hero-unit p {
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  color: inherit;
+}
 form div.upload { overflow:hidden; }
 
 form div.upload label { font-weight:bold; display:block; margin-bottom:0.25em; }
@@ -810,7 +833,7 @@ li.comment {
 
 /* Favorites */
 
-#favorites_image{
+.favorites_image{
 	width:250px;
 	margin:3%;
 	float:left;
@@ -821,5 +844,6 @@ li.comment {
 	border: 1px solid #DDDDDD;
 	}
 }
+
 
 /* Favorites */

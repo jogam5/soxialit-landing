@@ -24,8 +24,6 @@ $(function(){
 });
 
 
-
-
 $(document).ready(function(){
 	$('#image_hover').live({
 		mouseenter: 
@@ -40,6 +38,24 @@ $(document).ready(function(){
 		}
 	});
 
+
 });
 
+
+$(document).ready(function(){
+	$('.favorites_image img').live({
+		mouseenter: 
+		function(e){
+			e.preventDefault();
+			$(this).find('.votacion').fadeIn();
+			},
+		mouseleave:
+		function (e){
+			e.preventDefault();
+			$(this).find('.votacion').fadeOut();
+		}
+	});
+
+
+});
 

@@ -228,7 +228,9 @@ button {
 .box {
   margin: 5px;
   padding: 5px;
-  background: #FDFAF8;
+  background: #fff;
+  margin: 0 auto;
+  width: auto;
   font-size: 11px;
   line-height: 1.4em;
   float: left;
