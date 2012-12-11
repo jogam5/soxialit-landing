@@ -5,8 +5,7 @@
 	<hr>
 	<div class="row">
 		<div class="span2">
-			<% if @product.paintings.nil? %>
-			<% else %>
+			<% if @product.paintings.any? %>
 				<%= image_tag(@product.paintings.first.image_url(:thumb))%>
 			<% end %>
 		</div>
@@ -45,7 +44,9 @@
 				<% else %>
 				<br/>
 				<tbody>
-					<tr><%= image_tag('logoestafeta.jpg') %></tr>
+					<% if @tarifas.any? %>
+					<%= image_tag('logoestafeta.jpg')%>
+					<% end %>
 					<tr>
 						<% @dias.zip(@tarifas).each do |dia, tarifa| %>
 							<div>

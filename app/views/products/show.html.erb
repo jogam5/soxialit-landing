@@ -105,6 +105,22 @@
 				<% else %>
 				<div class="description-medium">Envío interior del país:  <%= number_to_currency(@product.ship_int) %> </div>
 			<% end %>
+			<% if @tarifas.nil? && @dias.nil? %>
+				<% else %>
+				<br/>
+				<tbody>
+					<% if @tarifas.any? %>
+					<%= image_tag('logoestafeta.jpg')%>
+					<% end %>
+					<tr>
+						<% @dias.zip(@tarifas).each do |dia, tarifa| %>
+							<div class="description-medium">
+								<%= dia %> - $ <%= tarifa %>
+							</div>
+						<% end %>
+					</tr>
+				</tbody>
+			<% end %>
 			
 		</div>
 	<div style="border: 1px solid white; background-color:white; height: auto" class="well">
