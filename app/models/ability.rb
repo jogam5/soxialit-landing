@@ -11,6 +11,7 @@ class Ability
     elsif user.role? :designer
       can :update, User, :id => user.id
       can [:list_items, :favorites, :followers, :following], User
+      can [:paypal_checkout, :envio_df, :tallas, :comprar, :envio, :mercadopago_checkout], Product
       can :create, Product
       can :update, Product do |product|
         product.try(:user) == user
@@ -22,24 +23,28 @@ class Ability
     elsif user.role? :'fashion lover'
       can :update, User, :id => user.id
       can [:list_items, :favorites, :followers, :following], User
+      can [:paypal_checkout, :envio_df, :tallas, :comprar, :envio, :mercadopago_checkout], Product
       can :vote, Product
       can :read, :all
 
     elsif user.role? :'blogger'
       can :update, User, :id => user.id
       can [:list_items, :favorites, :followers, :following], User
+      can [:paypal_checkout, :envio_df, :tallas, :comprar, :envio, :mercadopago_checkout], Product
       can :vote, Product
       can :read, :all
 
     elsif user.role? :'fotografo'
       can :update, User, :id => user.id
       can [:list_items, :favorites, :followers, :following], User
+      can [:paypal_checkout, :envio_df, :tallas, :comprar, :envio, :mercadopago_checkout], Product
       can :vote, Product
       can :read, :all
 
     elsif user.role? :'boutique store'
       can :update, User, :id => user.id
       can [:list_items, :favorites, :followers, :following], User
+      can [:paypal_checkout, :envio_df, :tallas, :comprar, :envio, :mercadopago_checkout], Product
       can :create, Product
       can :update, Product do |product|
         product.try(:user) == user
@@ -47,10 +52,11 @@ class Ability
       can :vote, Product
       cannot :vote, Product, :user_id => user.id
       can :read, :all
-
+      
     else
       can :read, :all
       can [:list_items, :favorites, :followers, :following], User
+      can [:paypal_checkout, :envio_df, :tallas, :comprar, :envio, :mercadopago_checkout], Product
     end
   end
 end

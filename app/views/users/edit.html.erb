@@ -51,11 +51,13 @@
     </div>
   </div>
   <div class="span5 offset1" id="edit_profile">
-    <p><strong>Código Postal Actual:</strong><div style="color:red; display:block" id="address_form"><%= @address.zipcode if @address.present? %></div></p>
-    <%= form_for(@direction, :url => direction_path, remote: true) do |f| %>
-      <%= f.text_field :zipcode, :placeholder => "Ingresa tu C.P." %>
-      <%= f.submit "Cambiar" %>
-    <% end %>
-    <p></p>
+    <h4><strong>Código Postal actual: </strong><span style="color:red" id="address_form"><%= @address.zipcode if @address.present? %></span></h4>
+    <div id="zip_form">
+      <%= form_for(@direction, :url => direction_path, remote: true) do |f| %>
+        <%= f.text_field :zipcode, :placeholder => "Ingresa tu C.P." %>
+        <%= f.submit "Cambiar" %>
+      <% end %>
+    </div>
+    <p>*Con tu C.P. sabrás el precio final y cuando llegarán tus items en tiempo real.</p>
   </div>
 </div>

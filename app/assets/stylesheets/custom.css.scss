@@ -218,10 +218,11 @@ white-space: nowrap;
 #edit_profile {
   width:300px;
   display: block;
-  border-left: 5px solid black;
-  border-right: 5px solid black;
+  border-left: 5px solid $website;
+  border-right: 5px solid $website;
   background:url('footer.png') bottom no-repeat;
   padding: 20px 10px 10px;
+  font-weight:lighter;
 }
 
 /* Profile */
