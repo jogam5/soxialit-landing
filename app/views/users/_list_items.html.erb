@@ -3,7 +3,7 @@
 		<div class="row" id="image_hover">
 			<span style="margin-bottom:2%" class="span6" >
 				<div style="float:right" id="mi_image">
-				<%= image_tag product.picture %>
+				<%= link_to image_tag(product.picture), product_path(product) %>
 			
 				<% if signed_in? %>
 					<div style="margin-right:-5%; margin-bottom: -8%" class="votacion" id="votacion_<%= product.id %>">
@@ -26,10 +26,11 @@
 					   			</span>
 							<% end %>
 					</div>
-					<% end %>
+				<% end %>
 				</div>
 			</span>
 			<span class="span5">
+			  <div class="right_side_items">
 				<div id="mi_title">
 					<%= link_to product.title, product_path(product) %>
 				</div>
@@ -41,6 +42,14 @@
 				<p id="mi_price">$<%= product.price %>0
 					<span style="margin-left:2%"><%= link_to "Comprar", "", :class => "button-want" %></span>
 				</p>
+				<span class="edit_delete_links">
+				  <% if current_user == @user %>
+					  <br />
+					  <%= link_to "Editar", edit_product_path(product) %> |
+					  <%= link_to 'Eliminar', product, method: :delete, data: { confirm: '¿Estas seguro?' } %>
+				  <% end %>
+				</span>
+			  </div>
 			</span>
 		</div>
 	</div>
