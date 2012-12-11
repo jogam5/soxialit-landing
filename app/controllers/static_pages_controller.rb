@@ -8,4 +8,13 @@ class StaticPagesController < ApplicationController
   		@feed_items = User.first.feed
   	end
   end
+  
+  def faq
+  end
+  
+  def privacy
+  end
+  
+  def term
+  end
 end

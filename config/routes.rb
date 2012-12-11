@@ -1,5 +1,5 @@
 DeviseFacebook::Application.routes.draw do
-  
+ 
   resources :paintings
 
   resources :sizes
@@ -48,8 +48,10 @@ DeviseFacebook::Application.routes.draw do
   
   get 'mercadopago/checkout', to: 'products#mercadopago_checkout'
   
-  get "terms", to:'static_pages#terms'
-  
-  get "faq", to:'static_pages#faq'
+  get "term", to:'static_pages#term'
+
+    get "privacy", to:'static_pages#privacy'
+
+    get "faq", to:'static_pages#faq'
   
 end

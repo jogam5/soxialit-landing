@@ -42,3 +42,21 @@ $(document).ready(function(){
 });
 
 
+
+$(document).ready(function(){
+	$('#favorites_image').live({
+		mouseenter: 
+		function(e){
+			e.preventDefault();
+			$(this).find('.votacion').fadeIn();
+			},
+		mouseleave:
+		function (e){
+			e.preventDefault();
+			$(this).find('.votacion').fadeOut();
+		}
+	});
+
+
+});
+
