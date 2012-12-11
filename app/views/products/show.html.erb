@@ -129,9 +129,13 @@
 				Productos de <%= link_to @product.brand, user_path(@product.user_id) %>
 			</div>
 			
-			<% @products.each do |product| %>
-				<div style="padding:1%; width: 22.5%" class="span3">
-						<span class="description-low"><%= (product.title) %> </span>
+			<% @products.shuffle.each_with_index do |product, index| %>
+				<% break if index == 4 %>
+		  		<div style="padding:1%; width: 22.5%" class="span3">
+						<span class="description-low"><%= product.title %> </span>
+						<% if product.paintings.any? %>
+							<div style="height: auto; margin-top: 10%"><%= link_to image_tag(url_painting(product.paintings)), product %></div>
+						<% end %>
 				</div>
 			<% end %>
 		</div>
