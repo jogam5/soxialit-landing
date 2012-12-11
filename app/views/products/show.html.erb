@@ -131,10 +131,7 @@
 			
 			<% @products.each do |product| %>
 				<div style="padding:1%; width: 22.5%" class="span3">
-					<% if product.title.nil? && product.paintings.nil? %>
-					<% else %>
 						<span class="description-low"><%= (product.title) %> </span>
-					<% end %>
 				</div>
 			<% end %>
 		</div>

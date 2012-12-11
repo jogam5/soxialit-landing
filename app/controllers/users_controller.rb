@@ -13,12 +13,22 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @products = @user.products
+    @products = avoid_nil(@user.products)
     respond_to do |format|
       format.html # show.html.erb
     end
   end
 
+  def avoid_nil(products)
+      items = []
+      products.each do |product|
+         if product.title.nil? && product.description.nil?
+         else
+            items << product
+         end
+       end 
+       return items
+   end
   # GET /users/new
   # GET /users/new.json
   def new

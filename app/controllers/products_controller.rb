@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
       id = @product.user_id
       @user = User.find(id)
-      @products = @user.products.all(:order => 'RANDOM()', :limit => 4)
+      @products = avoid_nil(@user.products.all(:order => 'RANDOM()', :limit => 4))
       
        user_product_cp = find_user_product(@product)
        current_user_cp = current_user.direction.zipcode
