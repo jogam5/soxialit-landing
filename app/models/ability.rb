@@ -10,7 +10,7 @@ class Ability
     
     elsif user.role? :designer
       can :update, User, :id => user.id
-      can [:list_items, :favorites, :followers], User
+      can [:list_items, :favorites, :followers, :following], User
       can :create, Product
       can :update, Product do |product|
         product.try(:user) == user
@@ -21,25 +21,25 @@ class Ability
 
     elsif user.role? :'fashion lover'
       can :update, User, :id => user.id
-      can [:list_items, :favorites, :followers], User
+      can [:list_items, :favorites, :followers, :following], User
       can :vote, Product
       can :read, :all
 
     elsif user.role? :'blogger'
       can :update, User, :id => user.id
-      can [:list_items, :favorites, :followers], User
+      can [:list_items, :favorites, :followers, :following], User
       can :vote, Product
       can :read, :all
 
     elsif user.role? :'fotografo'
       can :update, User, :id => user.id
-      can [:list_items, :favorites, :followers], User
+      can [:list_items, :favorites, :followers, :following], User
       can :vote, Product
       can :read, :all
 
     elsif user.role? :'boutique store'
       can :update, User, :id => user.id
-      can [:list_items, :favorites, :followers], User
+      can [:list_items, :favorites, :followers, :following], User
       can :create, Product
       can :update, Product do |product|
         product.try(:user) == user
@@ -50,7 +50,7 @@ class Ability
 
     else
       can :read, :all
-      can [:list_items, :favorites, :followers], User
+      can [:list_items, :favorites, :followers, :following], User
     end
   end
 end

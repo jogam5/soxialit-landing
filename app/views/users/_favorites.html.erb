@@ -1,16 +1,9 @@
-<div class="row">
-
-	<div id="contenedor" class="clearfix masonry">
- 		<% @user.evaluations.each do |z| %>
+<div id="backpack" class="row">
+ 	<% @user.evaluations.each do |z| %>
+ 	  <div id="favorites_frame">
 		<div id="favorites_image">
-	  		<%= tag(:img, { :src => find_foto(z.target_id) }, false) %>
- 		</div>
- 		<% end %>
-	</div>
+		  	<%= tag(:img, { :src => find_foto(z.target_id) }, false) %>
+	 	</div>
+	  </div>
+ 	<% end %>
 </div>
-
-<script type="text/javascript" language="javascript">
-  		var wall = new Masonry( document.getElementById('contenedor'), {
-			isFitWidth: true
-		});
-</script>

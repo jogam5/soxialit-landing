@@ -33,6 +33,7 @@ DeviseFacebook::Application.routes.draw do
 
   match "list_items/:id" => "users#list_items", :as => "list_items"
   match "followers/:id" => "users#followers", :as => "followers_user"
+  match "following/:id" => "users#following", :as => "following_user"
   match "list/:id" => "collections#list", :as => "collections_list"
   match "favorites/:id" => "users#favorites", :as => "favorites"
 
