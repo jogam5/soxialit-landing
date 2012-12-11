@@ -1,5 +1,5 @@
 <div class="row-fluid" style="background-color:white; margin-top:-7%; margin-left:-10%; width: 1150px">
-	<div style="margin-left:3%; margin-right: 2%; margin-top:5%; margin-bottom: 5%; width:600px" class="span6">
+	<div style="margin: 5% 0% 5% -3%; text-align:center; width:800px" class="span7">
 	  <% unless @product.paintings.first.nil? %>
 			<div class="mainpicture" style="float:left" id="painting_<%= @product.paintings.first.id %>">
 			<%= image_tag(@product.paintings.first.image_url(:timeline))  %>
@@ -18,12 +18,12 @@
 				</ul>
 	</div>
 	
-<div style="margin-top:5%" class="span5">
-	<div class="well" id="theme-shadow" style="background-color:white">
+<div style="margin-top:5%; width: 340px" class="span4">
+	<div class="well" style="border: 1px solid white; background-color:white">
 		<div class="description-medium">
 			<div class="product_reputation">
 			<% if signed_in? %>
-				<div class="votacion" style="display:block; float:left; margin: 12% -46% 0% 37%" id="votacion_<%= @product.id %>">
+				<div class="votacion" style="display:block; float:left; margin: 11% -63% 0% 50%" id="votacion_<%= @product.id %>">
 					<% if @product.id == current_user.voted_by?(current_user.evaluations, @product.id) %>
 						<span id="want_<%= @product.id %>">
 							<div id="love_icon_<%= @product.id %>" class="love_icon_active">
@@ -49,47 +49,51 @@
 		<div class="description-main">
 		  	<%= @product.title %>
 	 	</div>
-		<div class="description-low">Marca:</div>
-		<div class="description-strong"> 
-		  <%= link_to @product.brand, user_path(@product.user_id) %>
+		<div class="description-brand"> 
+		 by <%= link_to @product.brand, user_path(@product.user_id) %>
 		</div> 
 		<hr>
 		<div class="description-price">
 			<%= number_to_currency(@product.price) %>
-			<div style="margin-left:35%; margin-top:-8%">
-				<%= link_to "Comprar", comprar_path(:product_id => @product.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :class => 'button-unfollow'} %>
-			</div>
-			<div class="description-low" style=""> Medidas/Tallas</div>
-			<div style="float:left" class="description-medium"> <%= find_sizes(@product.sizes) %> </div>
-			<div style="margin:-6% 0 0 35%"><%= link_to '<i class="icon-info-sign icon-white"></i> Guía de medidas'.html_safe, tallas_path(:product_id => @product.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :class => 'label'} %></div>
-			<br/>
-			<div class="description-low"> Cantidad disponible</div>
-			<div class="description-medium"> <%= @product.quantity %> </div>
 		</div>
+		<div style="margin-left:49%; margin-top:-10%">
+			<%= link_to "Comprar", comprar_path(:product_id => @product.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :class => 'button-unfollow'} %>
+		</div>
+		<br/>
+		<div class="description-low" style=""> Medidas/Tallas</div>
+		<div style="float:left" class="description-medium"> <%= find_sizes(@product.sizes) %> </div>
+		<div style="margin:-5% 0 0 49%">
+			<div class="tag">
+				<%= link_to '<i class="icon-info-sign icon-black"></i> Guía de medidas'.html_safe, tallas_path(:product_id => @product.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :class => 'label'} %>
+			</div>
+		</div>
+		<br/>
+		<div class="description-low"> Cantidad disponible</div>
+		<div class="description-medium"> <%= @product.quantity %> </div>
 		<hr>
 		<div class="description-low"> Descripción del producto</div>
 		<div class="description-text"> <%= @product.description %> </div>
 		<hr>
-		<div style="float:left; width: 220px">
+		<div style="float:left; width: 150px">
 			<div class="description-low"> Colores</div>
 			<div class="description-text"> <%= @product.color %> </div>
 		</div>
-		<div style="float:left; width: 204px">
+		<div style="float:left; width: 150px">
 			<div class="description-low"> Material</div>
 			<div class="description-text"> <%= @product.material %> </div>
 		</div>
 		<br/>
 		<hr>
-		<br/>
 		<hr>
 		<div class="description-low"> Política de devolución</div>
 		<div class="description-text"> <%= @product.refund_policy %> </div>
 		<hr>
-		<div class="description-main">
-			<div class="description-low"> Tags: </div>
-			<% @product.tag_list.each do |tag| %>
-				<%= link_to tag, tag_path(tag), class: "label" %>
-			<% end %>
+		<div class="description-low"> Tags: 
+			<div class="tag">
+				<% @product.tag_list.each do |tag| %>
+					<%= link_to tag, tag_path(tag), class: "label" %>
+				<% end %>
+			</div>
 		</div>
 		<hr>
 		<div class="description-low"> Opciones de envío</div>
@@ -102,10 +106,10 @@
 				<div class="description-medium">Envío interior del país:  <%= number_to_currency(@product.ship_int) %> </div>
 			<% end %>
 			
-	</div>
-	<div id="theme-shadow" style="background-color:white; height: auto" class="well">
+		</div>
+	<div style="border: 1px solid white; background-color:white; height: auto" class="well">
 		<div style="margin-left:0px" class="row">
-			<div class="description-medium">
+			<div class="description-brand">
 				Productos de <%= link_to @product.brand, user_path(@product.user_id) %>
 			</div>
 			

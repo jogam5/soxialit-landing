@@ -94,7 +94,9 @@
 .votacion {
 	display: none;
 	width:40px;
+	z-index: 3000;
 	float:right;
+	position:relative;
 	margin-top:1%;
 	margin-right:10%;
 }
@@ -307,15 +309,21 @@ td.picture { width: 140px; }
 td.picture img { width: 140px; }
 
 #smallImage
-{width:100px;list-style: none; height:100px;border:2px ridge #cbccce;background:url(camara_thumb.png) no-repeat 50% 50%;}
+{width:100px; text-align:center; list-style: none; height:100px;border:2px ridge #cbccce;background:url(camara_thumb.png) no-repeat 50% 50%;
+	
+	img{
+		display:block;
+	}
+}
 
 #image_small
-{width:100px;list-style: none; height:100px;border:2px ridge #cbccce;background:url(camara_thumb.png) no-repeat 50% 50%;}
+{width:100px; display:block; list-style: none; height:100px;border:2px ridge #cbccce;background:url(camara_thumb.png) no-repeat 50% 50%;}
 
 .remove_painting{
 	float:right;
-	margin-top: 65%;
-	margin-right: -23%;
+	margin-top: -31%;
+	margin-right: -34%;
+
 }
 .remove_painting_edit{
 	float:right;
@@ -338,13 +346,13 @@ td.picture img { width: 140px; }
 }
 
 .description-main{
-	font-size: 22px;
-	line-height: 20px;
+	font-size: 1.7em;
+	line-height: 1.5em;
 }
 
 .description-price{
-	font-size: 30px;
-	line-height: 30px;
+	font-size: 2em;
+	line-height: 1.5em;
 }
 
 .description-medium{
@@ -363,19 +371,21 @@ td.picture img { width: 140px; }
 .description-low{
 	display: block;
 	margin: 12px 0 5px;
-	color: #999;
-	font-size: 13px;
-	line-height: 13px;
+	color: #93999E;
+	font-size: 0.9em;
+	line-height: 0.5em;
 	padding: 0.5%;
 }
 
-.description-strong{
-	font-size: 22px;
-	line-height: 20px;
-	color: #999;
+.description-brand{
+	font-size: 1.2em;
+	line-height: 1.2em;
+	color: black;
+	margin-top: 4%;
+	font-weight: lighter;
 	
 	a {
-		color: #ff5a54;
+		color: #999;
 	}
 	a:hover{
 	text-decoration:none;

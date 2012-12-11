@@ -3,6 +3,28 @@
  	  <div id="favorites_frame">
 		<div id="favorites_image">
 		  	<%= tag(:img, { :src => find_foto(z.target_id) }, false) %>
+			<% if signed_in? %>
+				<div style="margin-right:-21%; margin-top: -9%" class="votacion" id="votacion_<%= z.target_id %>">
+					<% if z.target_id == current_user.voted_by?(current_user.evaluations, z.target_id) %>
+						<span id="want_<%= z.target_id %>">
+							<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
+								<span style="float:left; display:block; margin-left:-50%; color:black" id="love_z.target_id_<%= z.target_id %>">
+									<%= find_product(z.target_id).reputation_value_for(:votes).to_i %>
+								</span>
+							</div>
+			   			</span>
+						<% elsif current_user && !current_user.voted_for?(z.target_id) %>
+							<span id="want_<%= z.target_id %>">
+								<div id="love_icon_<%= z.target_id %>" class="love_icon">
+									<span style="float:left; display:none; margin-left:-50%; color:black" id="love_z.target_id_<%= z.target_id %>">
+										<%= find_product(z.target_id).reputation_value_for(:votes).to_i %>
+									</span>
+									<%= link_to "xxx", vote_product_path(find_product(z.target_id), type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
+								</div>
+				   			</span>
+						<% end %>
+				</div>
+			<% end %>
 	 	</div>
 	  </div>
  	<% end %>
