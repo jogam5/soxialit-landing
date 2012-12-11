@@ -1,8 +1,7 @@
 class ProductsController < ApplicationController
   before_filter :authenticate_user!, except: :show
   load_and_authorize_resource
-  # GET /products
-  # GET /products.json
+  
     def index
      if params[:tag]
          @products = Product.tagged_with(params[:tag])
