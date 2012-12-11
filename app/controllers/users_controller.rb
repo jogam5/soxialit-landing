@@ -31,6 +31,8 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    @direction = Direction.new
+    @address = @user.direction
   end
 
   # POST /users
@@ -60,14 +62,14 @@ class UsersController < ApplicationController
   end
 
   def following
-    @title = "Following"
     @user = User.find(params[:id])
     @users = @user.followed_users
-    render 'show_follow'
+    respond_to do |format|
+      format.js
+    end
   end
 
   def followers
-    @title = "Followers"
     @user = User.find(params[:id])
     @users = @user.followers
     respond_to do |format|

@@ -1,6 +1,7 @@
 module UsersHelper
 
-  def find_title(evaluations)
+
+	def find_title(evaluations)
 	    b = Product.find(evaluations)
 	    return b.title
 	end
