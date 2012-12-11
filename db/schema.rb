@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121210182735) do
+ActiveRecord::Schema.define(:version => 20121211062027) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(:version => 20121210182735) do
     t.string   "picture"
     t.string   "title"
     t.integer  "user_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.decimal  "shipping"
     t.decimal  "total_price"
     t.decimal  "ship_int"
@@ -89,6 +89,12 @@ ActiveRecord::Schema.define(:version => 20121210182735) do
     t.text     "refund_policy"
     t.decimal  "price"
     t.decimal  "ship_df"
+    t.string   "tipo_envio"
+    t.integer  "peso"
+    t.integer  "alto"
+    t.integer  "largo"
+    t.integer  "ancho"
+    t.decimal  "price_estafeta"
   end
 
   create_table "relationships", :force => true do |t|

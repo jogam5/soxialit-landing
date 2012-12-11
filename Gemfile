@@ -30,6 +30,9 @@ gem 'acts-as-taggable-on'
 gem 'mercadopago'
 gem 'paypal-recurring'
 
+#estafeta_scrapping
+gem "net-ssh"
+gem 'nokogiri'
 
 #Improve files readability
 gem 'annotate', '~> 2.4.1.beta'

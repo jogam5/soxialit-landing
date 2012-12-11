@@ -15,7 +15,7 @@ module ProductsHelper
      end
   end
   
-  def find_user (user)
+  def find_user(user)
      user = User.find_by_id(user)
      return user.username
   end

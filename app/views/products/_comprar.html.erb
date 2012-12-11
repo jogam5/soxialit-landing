@@ -1,5 +1,5 @@
 <div class="modal-compra">
-  <div class="modal-body">
+  <div style="max-height: 500px" class="modal-body">
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
 	<h2>Resumen de tu compra</h2>
 	<hr>
@@ -41,10 +41,23 @@
 				<% else %>
 					<div><td><%= radio_button_tag 'envio', @product.ship_int, :class => 'Envío al interior del país' %><span id="envio_interior"> Envío interior del país </span>- $<%= @product.ship_int %></td></div>
 			<% end %>
-			
+			<% if @tarifas.nil? && @dias.nil? %>
+				<% else %>
+				<br/>
+				<tbody>
+					<tr><%= image_tag('logoestafeta.jpg') %></tr>
+					<tr>
+						<% @dias.zip(@tarifas).each do |dia, tarifa| %>
+							<div>
+								<input type="radio" name="envio" id='Estafeta <%= dia %>' class="estafeta" value='<%= tarifa %>' unchecked> <%= dia %> - $ <%= tarifa %>
+							</div>
+						<% end %>
+					</tr>
+				</tbody>
+			<% end %>
 			<%= f.text_field :shipping, :class => "span2", :style => "display: none" %>
 			<br/>
-			<div class="span1">
+			<div style="margin-top:-4%" class="span1">
 				<%= f.submit "Elegir", class: "btn" %>
 			</div>
 		<% end %>
@@ -62,9 +75,4 @@
 		</div>
   </div>
 </div>
-
-<script>
-
-
-</script>
 

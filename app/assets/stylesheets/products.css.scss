@@ -94,7 +94,7 @@
 .votacion {
 	display: none;
 	width:40px;
-	z-index: 3000;
+	z-index: 1;
 	float:right;
 	position:relative;
 	margin-top:1%;
@@ -524,6 +524,7 @@ td.picture img { width: 140px; }
   left: 50%;
   z-index: 1050;
   width: 600px;
+  height: 500px;
   margin: -280px 0 30% -280px;
   background-color: #ffffff;
   border: 1px solid #999;
@@ -546,6 +547,7 @@ td.picture img { width: 140px; }
   left: 50%;
   z-index: 1050;
   width: 600px;
+  height: 500px;
   margin: -280px 0 30% -280px;
   background-color: #ffffff;
   border: 1px solid #999;

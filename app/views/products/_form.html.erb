@@ -99,9 +99,19 @@
 		</div>
 	
 		<div style="display:none;" id="campo_estafeta">
+			<div>Envío por Estafeta</div>
+			<div id="estafeta_tipo" class="forma_estafeta"></div>
+			<div id="estafeta_peso" class="forma_estafeta"></div>
+			<div id="estafeta_alto" class="forma_estafeta"></div>
+			<div id="estafeta_largo" class="forma_estafeta"></div>
+			<div id="estafeta_ancho" class="forma_estafeta"></div>
 			<%= f.text_field :ship_df, :class => "span2", :style => "display:none" %>
 			<%= f.text_field :ship_int, :class => "span2", :style => "display:none" %>
-			
+			<%= f.text_field :tipo_envio, :class => "span2", :style => "display:none" %>
+			<%= f.text_field :peso, :class => "span2", :style => "display:none" %>
+			<%= f.text_field :alto, :class => "span2", :style => "display:none" %>
+			<%= f.text_field :largo, :class => "span2", :style => "display:none" %>
+			<%= f.text_field :ancho, :class => "span2", :style => "display:none" %>
 		</div>
 		<hr>
 		

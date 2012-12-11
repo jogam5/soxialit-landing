@@ -3,6 +3,7 @@ class Product < ActiveRecord::Base
   attr_accessible :size_tokens
   attr_accessible :brand, :description, :picture, :title, :user_id, :shipping, :total_price, :ship_int, 
                     :ship_df, :color, :material, :quantity, :refund_policy, :size, :price
+  attr_accessible :tipo_envio, :peso, :alto, :largo, :ancho, :price_estafeta
   attr_accessible :tag_list
   attr_accessible :name, :image
   attr_reader :size_tokens

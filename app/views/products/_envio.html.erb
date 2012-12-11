@@ -20,16 +20,11 @@
 					</td>
 	                </tr>
 	                <tr>
-	                <!--  <td><input id="pickup" type="checkbox" class="span1"></td>
-	                  <td>Recogerlo en mis instalaciones (agrega tu Código Postal)</td>
-	                  <td><input class="input-small focused" id="codPos" type="text" value="" placeholder="CP" disabled>
-					</td> -->
 	                </tr>
-				<!--	<tr>
+					<tr>
 	                  <td><input id="estafeta_form" type="checkbox" class="span1"></td>
 	                  <td>Cotiza con Estafeta</td>
-					 <! <td><input class="input-small focused" id="est_cp" type="text" placeholder="CP" value="" disabled></td> -->
-					 <!-- <td><input type="radio" name="optionsRadios" id="optionSobre" value="sobre" unchecked> Sobre</td>
+					  <td><input type="radio" name="optionsRadios" id="optionSobre" value="sobre" unchecked> Sobre</td>
 					  <td><input type="radio" name="optionsRadios" id="optionPaquete" value="paquete" unchecked> Paquete</td>
 					</tr>
 					<tr>
@@ -43,10 +38,10 @@
 						<td></td>
 						<td><input class="input-small focused" id="est_largo" type="text" value="" placeholder="Largo cms" disabled></td>
 						<td><input class="input-small focused" id="est_ancho" type="text" value="" placeholder="Ancho cms" disabled></td>
-					</tr> -->
+					</tr> 
 	              </tbody>
 	            </table>
-				<div class="span1">
+				<div style="margin-top:-6%" class="span1">
 					<button type="submit" class="btn">Llenar</button>
 				 </div>
 			</form>
@@ -189,13 +184,6 @@ $('#target').submit(function(){
 		$('#estafeta_tipo').append(('Tipo: '+ $('#optionPaquete').val()));
 		
 	}
-	
-	
-/*	if(isNaN($("#focusedInput").val()) && $("#focusedInput").val()!=null){
-		alert("No es un valor aceptable");
-		alert($("#focusedInput").val());
-	} */
-	
 	
 	$('#modal-id').fadeOut('fast');	
 	return false;
