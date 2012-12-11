@@ -1,8 +1,13 @@
 module UsersHelper
 
-def find_title(evaluations)
+  def find_title(evaluations)
 	    b = Product.find(evaluations)
 	    return b.title
+	end
+	
+	def find_product(evaluations)
+	   product = Product.find(evaluations)
+	   return product
 	end
 
 	def find_price(evaluations)
