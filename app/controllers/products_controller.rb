@@ -68,7 +68,7 @@ class ProductsController < ApplicationController
       @product = current_user.products.update_attributes(params[:product])
       respond_to do |format|
         if @product.save
-          format.html { redirect_to @product, notice: 'Product was successfully created.' }
+          format.html { redirect_to @product, notice: 'El producto se ha creado correctamente.' }
           format.json { render json: products_path, status: :created, location: products_path }
           format.js
         else
@@ -82,10 +82,9 @@ class ProductsController < ApplicationController
 
     def update
       @product = current_user.products.find(params[:id])
-      #@product = Product.tagged_with(params[:tag_list])
        respond_to do |format|
         if @product.update_attributes(params[:product])
-          format.html { redirect_to products_path }
+          format.html { redirect_to @product, notice: 'El producto fue actualizado correctamente.' }
           format.json { head :no_content }
         else
           format.html { render action: "new" }
@@ -94,6 +93,14 @@ class ProductsController < ApplicationController
       end
     end
 
+     def destroy
+      @product = Product.find(params[:id])
+      @product.destroy
+      respond_to do |format|
+        format.html { redirect_to current_user, notice: 'El producto fue eliminado.' }
+        format.json { head :no_content }
+      end
+    end
 
     def paypal_checkout
            product = Product.find(params[:product_id])
@@ -219,17 +226,6 @@ class ProductsController < ApplicationController
         redirect_to initpoint
     end
     
-    def destroy
-      @product = Product.find(params[:id])
-      @product.destroy
-
-      respond_to do |format|
-        format.html { redirect_to products_url }
-        format.json { head :no_content }
-      end
-    end
-
-
     def tags
       query = params[:q]
       if query[-1,1] == " "

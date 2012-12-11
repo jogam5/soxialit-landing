@@ -240,7 +240,7 @@
    background: #d42e28;
 }
 
-/* Mis Items Ajax */
+/* Mis Items Ajax **********************/
 
 #mis_items_frame{
   padding:1%;
@@ -296,7 +296,15 @@ a:hover{
   font-size:2em;
 }
 
-/* Mis Items Ajax */
+.right_side_items .edit_delete_links{
+  display:none;
+}
+
+.right_side_items.hover .edit_delete_links{
+  display:inline;
+}
+
+/* Mis Items Ajax *******************************/
 
 
 /*Imagen principal del producto*/

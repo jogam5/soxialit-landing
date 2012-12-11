@@ -1,9 +1,5 @@
 DeviseFacebook::Application.routes.draw do
  
-  resources :paintings
-
-  resources :sizes
-
   root :to => 'static_pages#home'
  
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
@@ -29,29 +25,26 @@ DeviseFacebook::Application.routes.draw do
        put :envio_df, on: :member
   end
 
-  resources :feedbacks
-
   match "list_items/:id" => "users#list_items", :as => "list_items"
   match "followers/:id" => "users#followers", :as => "followers_user"
   match "following/:id" => "users#following", :as => "following_user"
   match "list/:id" => "collections#list", :as => "collections_list"
   match "favorites/:id" => "users#favorites", :as => "favorites"
 
+  resources :feedbacks
   resources :comments
   resource :direction
+  resources :paintings
+  resources :sizes
   
   get '/envio', to: 'products#envio'
   get '/comprar', to: 'products#comprar'
   get '/tallas', to: 'products#tallas'
   
   get 'paypal/checkout', to: 'products#paypal_checkout'
-  
   get 'mercadopago/checkout', to: 'products#mercadopago_checkout'
-  
   get "term", to:'static_pages#term'
-
-    get "privacy", to:'static_pages#privacy'
-
-    get "faq", to:'static_pages#faq'
+  get "privacy", to:'static_pages#privacy'
+  get "faq", to:'static_pages#faq'
   
 end
