@@ -12,28 +12,28 @@
   <% end %>
 <div style="margin-top: 5%" id="product_form" class="span3">
   	<div class="field">
-		<%= f.label :title, "*nombre del producto" %>
+		<%= f.label :title, "*nombre del producto", :class => "description-text" %>
 		<%= f.text_field :title, placeholder: "" %>
 	  </div>
 	  <div class="field">
-		<%= f.label :brand, "*marca" %>
+		<%= f.label :brand, "*marca", :class => "description-text" %>
 	    <%= f.text_field :brand, placeholder: "" %>
 	  </div>
 	  <div class="field">
-		<%= f.label :price, "*precio" %>
+		<%= f.label :price, "*precio", :class => "description-text" %>
 	    <%= f.text_field :price, placeholder: " 0.00", :class => "span2", :style => "float:left" %><p>   MXN </p>
 	  </div>
 	  <br/>
 	  <div class="field">
-		<%= f.label :description, "*describe tu producto" %>
+		<%= f.label :description, "*describe tu producto", :class => "description-text" %>
 	    <%= f.text_area :description, rows: "4", placeholder: "" %>
 	  </div>
 	  <div class="field">
-		<%= f.label :color, "*color" %>
+		<%= f.label :color, "*color", :class => "description-text" %>
 	    <%= f.text_field :color, placeholder: "" %>
 	  </div>
 	  <div class="field">
-		<%= f.label :material, "*material" %>
+		<%= f.label :material, "*material", :class => "description-text" %>
 	    <%= f.text_field :material, placeholder: "" %>
 	  </div>
  
@@ -56,17 +56,17 @@
 	<%= f.text_area :refund_policy, rows: "3" %>
 	</p>
  <div class="field">
-    <%= f.label :size_tokens, "*información de tallas/medidas" %>
+    <%= f.label :size_tokens, "*información de tallas/medidas", :class => "description-text"  %>
     <%= f.text_field :size_tokens, data: {load: @product.sizes}%>
   </div>
   <div class="field">
-	<%= f.label :quantity, "Cantidad" %>
+	<%= f.label :quantity, "Cantidad", :class => "description-text"  %>
     <%= f.number_field :quantity, :in => 1..5 %>
   </div>
    
   <div class="field" style="height:20px">
 		<p style="float:left">
-			<%= f.label :tag_list, "*agrega tus tags" %>
+			<%= f.label :tag_list, "*agrega tus tags", :class => "description-text"  %>
 		</p>		
 			<i style="margin-left: 5%" id="tag_info" class="icon-info-sign icon-black"></i>
 			<div class="popover fade top in" id="pop_tag" style="display:none; position: relative; top:-120px;;">
@@ -81,10 +81,10 @@
 	  </div>
 	
 		<p>
-		    <%= f.text_field :tag_list, placeholder: "*agrega tus tags", "data-pre" => @product.tags.map(&:attributes).to_json, :style => "float:left" %>
+		    <%= f.text_field :tag_list, placeholder: "*agrega tus tags", "data-pre" => @product.tags.map(&:attributes).to_json, :style => "float:left" , :class => "description-text" %>
 		</p>
 			<div>
-				<%= link_to "opciones de envío", envio_path(:product_id => @product.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :class => 'btn'} %>
+				<%= link_to "opciones de envío", envio_path(:product_id => @product.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :class => 'button-follow'} %>
 			</div>
 			<br/>
 					<% if @product.ship_df.nil? %>
@@ -152,7 +152,7 @@
 		<div style="" class="well">
 			<div class="span6">
 				<div class="actions">
-					<%= link_to 'Cancelar', products_path, class: "button-unfollow" %>
+					<%= link_to 'Cancelar', user_path(current_user.id), class: "button-unfollow" %>
 					<%= f.submit "Actualizar producto", class: "button-want" %>
 				</div>
 			</div>
@@ -173,7 +173,7 @@
 				<% @paintings.each_with_index do |painting, index| %>
 					<% if index > 0 && index < 4 %>
 						<%= content_tag "div", id:"paintings", data: {id: painting.id } do %>
-				 			<li id="smallImage" class="painting_<%= painting.id%>">
+				 			<li id="smallImage_show" class="painting_<%= painting.id%>">
 								<%= image_tag(painting.image_url(:thumb))%>
 								<div class="actions" id="remove_painting_<%= painting.id %>">
 									<%= link_to image_tag("close.png"), painting, method: :delete, remote: true, id: "remove", :class => "remove_painting_edit" %>

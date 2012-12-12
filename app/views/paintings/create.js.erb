@@ -9,7 +9,7 @@
 		<% else  %>
 		<% if @product.paintings.count <= 4 %>
 			$("li#image_small").hide();
-			$("ul#productImagesSortable").append("<li id='smallImage' class='painting_<%= @painting.id %>'><%= escape_javascript(render(@painting)) %></li>");
+			$("ul#productImagesSortable").append("<li id='smallImage_show' class='painting_<%= @painting.id %>'><%= escape_javascript(render(@painting)) %></li>");
 			i += 1
 			<% else %>
 					alert("Just allow 4 pictures! Thanks");
