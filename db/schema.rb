@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121211062027) do
+ActiveRecord::Schema.define(:version => 20121212165248) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -162,6 +162,17 @@ ActiveRecord::Schema.define(:version => 20121211062027) do
   add_index "rs_reputations", ["reputation_name", "target_id", "target_type"], :name => "index_rs_reputations_on_reputation_name_and_target"
   add_index "rs_reputations", ["reputation_name"], :name => "index_rs_reputations_on_reputation_name"
   add_index "rs_reputations", ["target_id", "target_type"], :name => "index_rs_reputations_on_target_id_and_target_type"
+
+  create_table "ships", :force => true do |t|
+    t.decimal  "ship_selected"
+    t.string   "ship_name"
+    t.integer  "product_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "user_id"
+  end
+
+  add_index "ships", ["product_id"], :name => "index_ships_on_product_id"
 
   create_table "sizes", :force => true do |t|
     t.string   "name"

@@ -6,6 +6,7 @@ class Product < ActiveRecord::Base
   attr_accessible :tipo_envio, :peso, :alto, :largo, :ancho, :price_estafeta
   attr_accessible :tag_list
   attr_accessible :name, :image
+  attr_accessible :ships_attributes
   attr_reader :size_tokens
   attr_reader :tag_list
   
@@ -16,6 +17,9 @@ class Product < ActiveRecord::Base
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :sizes, :dependent => :destroy
   has_many :paintings, :dependent => :destroy
+  has_many :ships, :dependent => :destroy
+  
+  accepts_nested_attributes_for :ships
 
   acts_as_taggable
   

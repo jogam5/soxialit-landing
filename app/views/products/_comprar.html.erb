@@ -32,6 +32,7 @@
 			<strong>
 				Que opción de envío deseas:
 			</strong>
+				
 			<% if @product.ship_df.nil? %>
 				<% else %>
 					<div><td><%= radio_button_tag 'envio', @product.ship_df, :class => 'Envío dentro DF' %><span id="envio_df"> Envío dentro DF </span>- $<%= @product.ship_df %> </td></div>
@@ -45,7 +46,7 @@
 				<br/>
 				<tbody>
 					<% if @tarifas.any? %>
-					<%= image_tag('logoestafeta.jpg')%>
+						<%= image_tag('logoestafeta.jpg')%>
 					<% end %>
 					<tr>
 						<% @dias.zip(@tarifas).each do |dia, tarifa| %>
@@ -57,6 +58,12 @@
 				</tbody>
 			<% end %>
 			<%= f.text_field :shipping, :class => "span2", :style => "display: none" %>
+			<%= f.fields_for :ships do |builder| %>
+						<%= builder.text_field :ship_name, :style => "display:none" %>
+						<%= builder.text_field :ship_selected, :style => "display:none" %>
+			<% end %>
+			
+			
 			<br/>
 			<div style="margin-top:-4%" class="span1">
 				<%= f.submit "Elegir", class: "btn" %>

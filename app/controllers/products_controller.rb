@@ -34,19 +34,19 @@ class ProductsController < ApplicationController
       @user = User.find(id)
       @products = avoid_nil(@user.products.all)
       user_product_cp = find_user_product(@product)
-       current_user_cp = current_user.direction.zipcode
-       logger.debug "#{user_product_cp}\n\n\n\n\n\n"
-       logger.debug "#{current_user_cp}\n\n\n\n\n\n"
-       if @product.tipo_envio == "sobre"
+      current_user_cp = current_user.direction.zipcode
+      logger.debug "#{user_product_cp}\n\n\n\n\n\n"
+      logger.debug "#{current_user_cp}\n\n\n\n\n\n"
+      if @product.tipo_envio == "sobre"
           url = "http://rastreo2.estafeta.com:7001/Tarificador/admin/TarificadorAction.do?dispatch=doGetTarifas&cCodPosOri=#{user_product_cp}&cCodPosDes=#{current_user_cp}&cTipoEnvio=#{@product.tipo_envio}&cIdioma=Esp"
        else
           url = "http://rastreo2.estafeta.com:7001/Tarificador/admin/TarificadorAction.do?dispatch=doGetTarifas&cCodPosOri=#{user_product_cp}&cCodPosDes=#{current_user_cp}&cTipoEnvio=#{@product.tipo_envio}&cIdioma=Esp&nPeso=#{@product.peso}&nLargo=#{@product.largo}&nAncho=#{@product.ancho}&nAlto=#{@product.alto}"
-       end
-       logger.debug "#{url}\n\n\n\n\n\n"
-       require 'net/http'
-       require 'rubygems'
-       require 'nokogiri'
-       require 'open-uri'
+      end
+      logger.debug "#{url}\n\n\n\n\n\n"
+      require 'net/http'
+      require 'rubygems'
+      require 'nokogiri'
+      require 'open-uri'
 
        doc = Nokogiri::HTML(open(url))
        @dias = []
@@ -148,23 +148,19 @@ class ProductsController < ApplicationController
 
     def envio_df 
      @product = Product.find(params[:id])
-     @product.update_attributes(:shipping => params[:envio])
-     @product.total_price = (@product.price + @product.shipping).to_i
+     @product.ships.create(:ship_selected => params[:envio], :user_id => current_user.id, :ship_name => params[:id])
+     @product.total_price = (@product.price + @product.ships.last.ship_selected).to_i
      @product.save
    end
 
    def tallas
       @product = Product.find(params[:product_id])
    end
-=begin
-         logger.debug "parametro envio es: #{params[:envio]}\n\n\n\n\n\n"
-         logger.debug "parametro envio es: #{@product.envio_df}\n\n\n\n\n\n"
-         logger.debug "parametro envio es: #{@product.envio_int}\n\n\n\n\n\n"
-         logger.debug "parametro envio es: #{params[:envio_df]}\n\n\n\n\n\n"
-=end
+
 
     def comprar
        @product = Product.find(params[:product_id])
+       @product.ships.build
       
        user_product_cp = find_user_product(@product)
        current_user_cp = current_user.direction.zipcode

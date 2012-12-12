@@ -9,7 +9,7 @@
 						<% @product.paintings.each_with_index do |painting, index| %>
 							<% if index < 4 %>
 								<%= content_tag "div", class:"paintings", data: {id: painting.id } do %>
-						 			<li id="smallImage" class="painting_<%= painting.id%>">
+						 			<li id="smallImage_show" class="painting_<%= painting.id%>">
 										<%= image_tag(painting.image_url(:thumb))%>
 									</li>
 								<% end %>
@@ -23,7 +23,7 @@
 		<div class="description-medium">
 			<div class="product_reputation">
 			<% if signed_in? %>
-				<div class="votacion" style="display:block; float:left; margin: 11% -63% 0% 50%" id="votacion_<%= @product.id %>">
+				<div class="votacion" style="display:block; float:left; margin: 22% -104% 0% 90%" id="votacion_<%= @product.id %>">
 					<% if @product.id == current_user.voted_by?(current_user.evaluations, @product.id) %>
 						<span id="want_<%= @product.id %>">
 							<div id="love_icon_<%= @product.id %>" class="love_icon_active">
