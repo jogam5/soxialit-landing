@@ -26,9 +26,14 @@
 				<p id="bio"><%= @user.bio %></p>
 				<p id="url"><i class="icon-globe"></i> <%= link_to @user.website, @user.website %></p>
 			</div>
-			<div class="span1">
+			<div class="span2">
 				<div id="bio">
 					<%= render 'follow_form' if user_signed_in? %>
+					<% if current_user == @user %>
+						<% if @user.roles.first.name = 'designer' || @user.roles.first.name = 'boutique store' %>
+							<%= link_to "Crear Producto", new_product_path, :class => "button-want" %>
+						<% end %>
+					<% end %>
 				</div>
 			</div>
 		</div>
