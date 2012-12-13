@@ -11,7 +11,6 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require twitter/bootstrap
 //= requiere jquery.tokeninput
 
 //= require bootstrap
