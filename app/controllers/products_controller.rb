@@ -43,8 +43,10 @@ class ProductsController < ApplicationController
       id = @product.user_id
       @user = User.find(id)
       @products = avoid_nil(@user.products.all)
-      if find_user_product(@product) != nil && current_user.direction.zipcode != nil
-          
+      user_cp = find_user_product(@product)
+      
+      if current_user.direction.nil? && user_cp.nil?
+      else
          user_product_cp = find_user_product(@product)
          current_user_cp = current_user.direction.zipcode
          logger.debug "#{user_product_cp}\n\n\n\n\n\n"
@@ -278,7 +280,10 @@ class ProductsController < ApplicationController
       def find_user_product(product)
            id_user = product.user_id
            user = User.find(id_user)
+           if user.direction.nil?
+           else
            user.direction.zipcode
+        end
       end    
 
   end
