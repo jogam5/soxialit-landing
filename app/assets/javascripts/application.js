@@ -26,13 +26,12 @@ $(function () {
     prePopulate: $('#product_tag_list').data('pre'),
     theme: 'facebook',
 	 preventDuplicates: true,
-	 tokenValue: 'name', // defaults to 'id'
+	 tokenValue: 'name', 
   
 	 allowCustomEntry: true
    
   });
 });
-
 
 $(function(){
 	$('#product_size_tokens').tokenInput('/sizes.json', {
@@ -41,7 +40,6 @@ $(function(){
     prePopulate: $('#product_size_tokens').data('load')
 	});
  });
-
 
 
 $(function() {
