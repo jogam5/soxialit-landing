@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121212165248) do
+ActiveRecord::Schema.define(:version => 20121212184755) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(:version => 20121212165248) do
     t.integer  "largo"
     t.integer  "ancho"
     t.decimal  "price_estafeta"
+    t.boolean  "status"
   end
 
   create_table "relationships", :force => true do |t|

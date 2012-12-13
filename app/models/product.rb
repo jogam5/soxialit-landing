@@ -7,6 +7,7 @@ class Product < ActiveRecord::Base
   attr_accessible :tag_list
   attr_accessible :name, :image
   attr_accessible :ships_attributes
+  attr_accessible :status
   attr_reader :size_tokens
   attr_reader :tag_list
   

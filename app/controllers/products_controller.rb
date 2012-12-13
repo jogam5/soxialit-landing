@@ -1,13 +1,22 @@
 class ProductsController < ApplicationController
   before_filter :authenticate_user!, except: :show
   load_and_authorize_resource
-  
-    def index
+   
+    def status
+      Product.update_all({:status => true}, {:id => params[:status_ids]})
+      redirect_to products_path
+    end
+    
+    
+    def index  
      if params[:tag]
          @products = Product.tagged_with(params[:tag])
      else
          @products = Product.all
          @tags = Tag.where("name like ?", "%#{params[:q]}%")
+         #@product = Product.find(product)
+         #@product.update_attribute(:status => params[:status])
+         #@product.save
      end
      respond_to do |format|
         format.html # index.html.erb
@@ -15,6 +24,7 @@ class ProductsController < ApplicationController
         format.js
       end
     end
+    
 
     def avoid_nil(products)
        items = []
@@ -95,7 +105,7 @@ class ProductsController < ApplicationController
       @product = current_user.products.update_attributes(params[:product])
       respond_to do |format|
         if @product.save
-          format.html { redirect_to @product, notice: 'El producto se ha creado correctamente.' }
+          format.html { redirect_to @product }
           format.json { render json: products_path, status: :created, location: products_path }
           format.js
         else

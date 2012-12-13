@@ -51,7 +51,7 @@
 					<tr>
 						<% @dias.zip(@tarifas).each do |dia, tarifa| %>
 							<div>
-								<input type="radio" name="envio" id='Estafeta <%= dia %>' class="estafeta" value='<%= tarifa %>' unchecked> <%= dia %> - $ <%= tarifa %>
+								<input type="radio" name="envio" id='Estafeta <%= dia %>' class="estafeta" value='<%= tarifa %>' unchecked> <%= dia %> - $ <%= tarifa %></input>
 							</div>
 						<% end %>
 					</tr>
