@@ -39,12 +39,19 @@ DeviseFacebook::Application.routes.draw do
   
   get '/envio', to: 'products#envio'
   get '/comprar', to: 'products#comprar'
-  get '/tallas', to: 'products#tallas'
-  
+  get '/tallas', to: 'products#tallas' 
   get 'paypal/checkout', to: 'products#paypal_checkout'
   get 'mercadopago/checkout', to: 'products#mercadopago_checkout'
-  get "term", to:'static_pages#term'
-  get "privacy", to:'static_pages#privacy'
-  get "faq", to:'static_pages#faq'
+
   
+  match "/about", to: 'static_pages#about'
+  match "soxialit", to: 'static_pages#soxialit'
+  match "sell", to: 'static_pages#sell'
+  match "buy", to: 'static_pages#buy'
+  match "examples", to: 'static_pages#examples'
+  match "guides", to: 'static_pages#guides'
+  match "term", to:'static_pages#term'
+  match "privacy", to:'static_pages#privacy'
+  match "faq", to:'static_pages#faq'
+
 end

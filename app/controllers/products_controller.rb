@@ -84,7 +84,7 @@ class ProductsController < ApplicationController
       @product = current_user.products.find(params[:id])
        respond_to do |format|
         if @product.update_attributes(params[:product])
-          format.html { redirect_to @product, notice: 'El producto fue actualizado correctamente.' }
+          format.html { redirect_to @product, notice: 'El producto fue creado correctamente.' }
           format.json { head :no_content }
         else
           format.html { render action: "new" }
