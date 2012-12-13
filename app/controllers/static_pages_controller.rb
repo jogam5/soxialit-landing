@@ -9,24 +9,9 @@ class StaticPagesController < ApplicationController
   		@feed_items = User.first.feed
   	end
   end
-  
-  def avoid_nil(feed)
-      products = []
-      feed.each do |item|
-         if item.activitable.title.nil?
-         else
-            products << item
-         end
-       end 
-       return products
-       logger.debug "Productos:   #{products}\n\n\n\n\n\n"
-       
-   end
-     
+ 
   def faq
   end
-  
-  
   
   def privacy
   end
