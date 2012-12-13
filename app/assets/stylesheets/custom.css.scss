@@ -131,11 +131,12 @@ margin-top: 3%;
 	font-size:4.5em;
 	margin-top:3%;
 	margin-left:5%;
+	line-height:1em;
 }
 
 #titleSecondIdea{
 	font-family:nimbus-sans, Lucida Grande, Helvetica, Arial, Sans-serif;
-	font-weight:300;
+	font-weight:lighter;
 	font-size:1.5em;
 	color:$website;
 	margin-left:5%;
@@ -574,7 +575,6 @@ margin-top: 3%;
 
 #show_profile_frame{
 	padding:2%;
-	border:1px dotted #ADADAD;
 	background-color:white;
 	height:100px;
 }
@@ -850,20 +850,20 @@ li.comment {
 /* TimeLine */
 
 #item_link{
-	a{
+	 a{
 	color:$rojo;
 	}
-	a:hover{
+	 a:hover{
 	color:black;
 	text-decoration:none;
 	}
 }
 
 #item_link_likes{
-	a{
+	 a{
 	color:black;
 	}
-	a:hover{
+	 a:hover{
 	color:$grayTitle;
 	text-decoration:none;
 	}
@@ -916,3 +916,64 @@ li.comment {
 }
 
 /* Favorites */
+
+/* Menu About */
+
+#about_menu{
+	margin-top:5%;
+	 p{
+	font-size:0.8em;
+	}
+	 a{
+	font-size:1.2em;
+	font-weight:lighter;
+	color:$grayTitle;
+	}
+	 a:hover{
+	color:black;
+	text-decoration:none;
+	}
+	 a:active{
+	color:$rojo;
+	}
+}
+
+#about_rightside{
+  border-left: 5px solid $website;
+  border-right: 5px solid $website;  
+  padding: 20px 10px 10px;
+  font-weight:lighter;
+}
+
+#about_title{
+  font-size:3em;
+  font-family:acta-display, Lucida Grande, Helvetica, Arial, Sans-serif;
+}
+
+#about_body{
+	 p{
+	font-size:1.2em;
+	font-weight:lighter;
+	}
+	 h2{
+	font-size:2em;
+	font-weight:lighter;
+	}
+
+	 h3{
+	margin-top:1.8em;
+	font-size:1.6em;
+	font-weight:lighter;
+	}
+}
+
+#sell_designer{
+	 img{
+	padding:2px;
+	border: 1px solid #DDDDDD;
+	margin:5%;
+	}
+}
+
+/* Menu About ****************/
+

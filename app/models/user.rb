@@ -68,9 +68,8 @@ class User < ActiveRecord::Base
             #@graph_data = @api.get_object("/me/posts")
             #@graph_data = @api.get_object("me/user", "fields" => "id")
            #@graph_data = @api.get_object("/me/")
-           # @api.put_connections("me", "feed", :message => "Me acabo de unir a Soxialit, la red social 
-            #  que conecta fashion designers, fotografos, bloggers y boutiques en Mexico y 
-             # Latinoamerica. Registrate en: http://www.soxialit.com")
+            @api.put_connections("me", "feed", :message => "Me acabo de unir a Soxialit, la red social 
+              que conecta fashion designers, fotografos, bloggers y boutiques. Registrate en: http://www.soxialit.com")
             rescue Exception=>ex
                 puts ex.message
           end
@@ -103,7 +102,7 @@ class User < ActiveRecord::Base
   end
 
   def add_user_to_mailchimp
-      mailchimp = Hominid::API.new('8acea2d56fff73cbaa8a707bf2d2d880-us5')
+      mailchimp = Hominid::API.new(ENV["MAILCHIMP_API_KEY"])
       list_id = mailchimp.find_list_id_by_name "Soxialit Registros"
       info = { 'FNAME' => self.username }
       result = mailchimp.list_subscribe(list_id, self.email, info, 'html', false, true, false, true)
@@ -112,7 +111,7 @@ class User < ActiveRecord::Base
   
   def remove_user_from_mailchimp
     unless self.email.include?('@example.com')
-      mailchimp = Hominid::API.new('8acea2d56fff73cbaa8a707bf2d2d880-us5')
+      mailchimp = Hominid::API.new(ENV["MAILCHIMP_API_KEY"])
       list_id = mailchimp.find_list_id_by_name "Soxialit Registros"
       result = mailchimp.list_unsubscribe(list_id, self.email, true, false, true)  
       Rails.logger.info("MAILCHIMP UNSUBSCRIBE: result #{result.inspect} for #{self.email}")

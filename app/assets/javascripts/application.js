@@ -10,9 +10,9 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require twitter/bootstrap
-//= requiere jquery.tokeninput
 //= require jquery
+//= requiere jquery.tokeninput
+
 //= require bootstrap
 //= require jquery_ujs
 //= require box-maker
