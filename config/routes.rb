@@ -23,6 +23,7 @@ DeviseFacebook::Application.routes.draw do
        member { post :vote }
        member { post :have}
        put :envio_df, on: :member
+       put :create, on: :collection
        put :status, on: :collection
   end
 

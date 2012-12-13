@@ -107,10 +107,11 @@ class ProductsController < ApplicationController
     end
 
     def create
-      @product = current_user.products.update_attributes(params[:product])
+      @product = current_user.products.first
+      @product.update_attributes(params[:product])
       respond_to do |format|
         if @product.save
-          format.html { redirect_to @product }
+          format.html { redirect_to current_user, notice: 'El producto fue creado correctamente, en menos de 12 hrs. sera publicado' }
           format.json { render json: products_path, status: :created, location: products_path }
           format.js
         else
@@ -126,7 +127,7 @@ class ProductsController < ApplicationController
       @product = current_user.products.find(params[:id])
        respond_to do |format|
         if @product.update_attributes(params[:product])
-          format.html { redirect_to @product, notice: 'El producto fue creado correctamente.' }
+          format.html { redirect_to current_user, notice: 'Producto editado correctamente' }
           format.json { head :no_content }
         else
           format.html { render action: "new" }

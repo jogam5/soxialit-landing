@@ -1,11 +1,9 @@
 <% if @painting.new_record? %>
 	alert("Failed to upload painting: <%= j @painting.errors.full_messages.join(', ').html_safe %>");
 	<% elsif @product.paintings.count == 1 %>
-		$('#ajax-status').show();
 	var i = 0;
   		$(".defaultMainImage").replaceWith('<%= escape_javascript(render(@painting)) %>');
 		$(".painting").attr('id', 'painting_<%= @painting.id %>');
-		$('#ajax-status').hide();
 		<% else  %>
 		<% if @product.paintings.count <= 4 %>
 			$("li#image_small").hide();
