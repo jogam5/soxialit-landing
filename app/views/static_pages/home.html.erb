@@ -3,4 +3,24 @@
     <%= render 'shared/feed' %>
   </div>
 </div>
+
+<script type="text/javascript">
+var anchor = $('<a>', {'style':'display:block', 'id': 'image_top', 'class':'back_to_top', 'href':'#top', 'title': 'Back to Top', 'text': 'Top'});  anchor.appendTo($(document.body))    .hide();
+
+	$(window).scroll(function(event){
+	      if(getScrollTop() > 150) {
+	          anchor.fadeIn(300);
+	      } else {
+	          anchor.fadeOut(300, function() {$(this).hide();});
+	      }
+	  });function getScrollTop() { 
+ var x = 0;    x = x !== 0 ? top : (window.pageYOffset ? window.pageYOffset : 0);    x = x !== 0 ? x : (document.documentElement ? document.documentElement.scrollTop : 0);    x = x !== 0 ? x : (document.body ? document.body.scrollTop : 0);    return x;}
+
+$(document).ready(function(){
+	$('.typekit-badge').css('display', 'none');
+	
+});
+
+</script>
+
 <script type="text/javascript">mixpanel.track("Landing Page Loaded")</script>
