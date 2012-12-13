@@ -1,10 +1,9 @@
 CarrierWave.configure do |config|
 	
   config.fog_credentials = {
-    :provider =>                'AWS',       # required
-    :aws_access_key_id =>      ENV['S3_KEY'],       # required
-    :aws_secret_access_key => ENV['S3_SECRET']       # required
+    :provider =>                'AWS',       
+    :aws_access_key_id =>      ENV['S3_KEY'],       
+    :aws_secret_access_key => ENV['S3_SECRET']       
   }
-  config.fog_directory  = 'soxialit/uploads'                     # required
-  
-end
+  config.fog_directory  = 'soxialit/uploads'                     
+  end
