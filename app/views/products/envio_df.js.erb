@@ -3,6 +3,9 @@ $('#envio').append('$'+ $('input[name="envio"]:checked').val());
 $('#tipo_envio').append($('input[name="envio"]:checked span').text());
 
 $('#product_shipping').val($('input[name="envio"]:checked').val());
+$('#product_ships_attributes_0_ship_selected').val($('input[name="envio"]:checked').val());
+$('#product_ships_attributes_0_ship_name').val($('input[name="envio"]:checked').attr('id'));
+
 $('#total').html('<strong><%= "Total: $ #{@product.total_price}" %></strong>');
 
 $('#pagos').show();

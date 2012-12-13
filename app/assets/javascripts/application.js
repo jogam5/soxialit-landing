@@ -41,3 +41,16 @@ $(function(){
     prePopulate: $('#product_size_tokens').data('load')
 	});
  });
+
+
+
+$(function() {
+  $('#ajax-status')
+    .hide()  // hide it initially.
+    .ajaxStart(function() {
+      $(this).show(); // show on any Ajax event.
+    })
+    .ajaxStop(function() {
+      $(this).hide(); // hide it when it is done.
+  });
+});

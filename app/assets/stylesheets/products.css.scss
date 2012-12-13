@@ -309,7 +309,9 @@ a:hover{
 
 /*Imagen principal del producto*/
 .defaultMainImage
-{width:470px;height:496px;border:2px ridge #cbccce;background:url(camara.png) no-repeat 50% 50%; }
+{width:470px;height:496px;border:2px ridge #cbccce;background:url(camara.png) no-repeat 50% 50%;
+
+ }
 
 body { padding-top: 100px; }
 footer { margin-top: 100px; }
@@ -323,6 +325,23 @@ td.picture img { width: 140px; }
 		display:block;
 	}
 }
+
+
+#smallImage_show{
+
+width:100px; 
+text-align:center; list-style: none; height:100px;border:2px ridge #cbccce;
+	
+	img{
+		display:block;
+		margin: auto;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    bottom: 0;
+	}
+}
+
 
 #image_small
 {width:100px; display:block; list-style: none; height:100px;border:2px ridge #cbccce;background:url(camara_thumb.png) no-repeat 50% 50%;}
@@ -376,12 +395,24 @@ td.picture img { width: 140px; }
 	font-weight: lighter;
 }
 
+.label_fotos{
+	font-size: 1.1em;
+	line-height: 22px;
+	padding: 0.5%;
+	font-color: #695965;
+	width: 300px;
+}
+
+.popup-text{
+	margin: 0 0 0px;
+}
+
 .description-low{
 	display: block;
 	margin: 12px 0 5px;
 	color: #93999E;
 	font-size: 0.9em;
-	line-height: 0.5em;
+	line-height: 0.8em;
 	padding: 0.5%;
 }
 

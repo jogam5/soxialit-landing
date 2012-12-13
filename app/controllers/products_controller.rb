@@ -1,13 +1,22 @@
 class ProductsController < ApplicationController
   before_filter :authenticate_user!, except: :show
   load_and_authorize_resource
-  
-    def index
+   
+    def status
+      Product.update_all({:status => true}, {:id => params[:status_ids]})
+      redirect_to products_path
+    end
+    
+    
+    def index  
      if params[:tag]
          @products = Product.tagged_with(params[:tag])
      else
          @products = Product.all
          @tags = Tag.where("name like ?", "%#{params[:q]}%")
+         #@product = Product.find(product)
+         #@product.update_attribute(:status => params[:status])
+         #@product.save
      end
      respond_to do |format|
         format.html # index.html.erb
@@ -15,6 +24,7 @@ class ProductsController < ApplicationController
         format.js
       end
     end
+    
 
     def avoid_nil(products)
        items = []
@@ -32,7 +42,34 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
       id = @product.user_id
       @user = User.find(id)
-      @products = @user.products.all(:order => 'RANDOM()', :limit => 4)
+      @products = avoid_nil(@user.products.all)
+      user_product_cp = find_user_product(@product)
+      current_user_cp = current_user.direction.zipcode
+      logger.debug "#{user_product_cp}\n\n\n\n\n\n"
+      logger.debug "#{current_user_cp}\n\n\n\n\n\n"
+      if @product.tipo_envio == "sobre"
+          url = "http://rastreo2.estafeta.com:7001/Tarificador/admin/TarificadorAction.do?dispatch=doGetTarifas&cCodPosOri=#{user_product_cp}&cCodPosDes=#{current_user_cp}&cTipoEnvio=#{@product.tipo_envio}&cIdioma=Esp"
+       else
+          url = "http://rastreo2.estafeta.com:7001/Tarificador/admin/TarificadorAction.do?dispatch=doGetTarifas&cCodPosOri=#{user_product_cp}&cCodPosDes=#{current_user_cp}&cTipoEnvio=#{@product.tipo_envio}&cIdioma=Esp&nPeso=#{@product.peso}&nLargo=#{@product.largo}&nAncho=#{@product.ancho}&nAlto=#{@product.alto}"
+      end
+      logger.debug "#{url}\n\n\n\n\n\n"
+      require 'net/http'
+      require 'rubygems'
+      require 'nokogiri'
+      require 'open-uri'
+
+       doc = Nokogiri::HTML(open(url))
+       @dias = []
+       doc.css(':nth-child(6) .style5 strong , :nth-child(7) strong, :nth-child(8) strong').each do |node|
+            @dias.push(node.text)
+       end 
+       logger.debug "#{@dias}\n\n\n\n\n\n"
+
+       @tarifas = []
+          doc.css(':nth-child(6) td:nth-child(8) , :nth-child(7) :nth-child(8), :nth-child(8) td:nth-child(8)').each do |node|
+          @tarifas.push(node.text)
+       end
+       logger.debug "#{@tarifas}\n\n\n\n\n\n"
 
       respond_to do |format|
         format.html # show.html.erb
@@ -68,7 +105,7 @@ class ProductsController < ApplicationController
       @product = current_user.products.update_attributes(params[:product])
       respond_to do |format|
         if @product.save
-          format.html { redirect_to @product, notice: 'El producto se ha creado correctamente.' }
+          format.html { redirect_to @product }
           format.json { render json: products_path, status: :created, location: products_path }
           format.js
         else
@@ -121,23 +158,19 @@ class ProductsController < ApplicationController
 
     def envio_df 
      @product = Product.find(params[:id])
-     @product.update_attributes(:shipping => params[:envio])
-     @product.total_price = (@product.price + @product.shipping).to_i
+     @product.ships.create(:ship_selected => params[:envio], :user_id => current_user.id, :ship_name => params[:id])
+     @product.total_price = (@product.price + @product.ships.last.ship_selected).to_i
      @product.save
    end
 
    def tallas
       @product = Product.find(params[:product_id])
    end
-=begin
-         logger.debug "parametro envio es: #{params[:envio]}\n\n\n\n\n\n"
-         logger.debug "parametro envio es: #{@product.envio_df}\n\n\n\n\n\n"
-         logger.debug "parametro envio es: #{@product.envio_int}\n\n\n\n\n\n"
-         logger.debug "parametro envio es: #{params[:envio_df]}\n\n\n\n\n\n"
-=end
+
 
     def comprar
        @product = Product.find(params[:product_id])
+       @product.ships.build
       
        user_product_cp = find_user_product(@product)
        current_user_cp = current_user.direction.zipcode

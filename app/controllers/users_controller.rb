@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, except: [:show, :list_items, :favorites, :followers]
+  
   load_and_authorize_resource
 
   def index
@@ -13,12 +14,33 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @products = @user.products
+    @products = product_ok(@user.products)
     respond_to do |format|
       format.html # show.html.erb
     end
   end
+  
+  def product_ok(items)
+     products = []
+     items.each do |item|
+        if item.status == true
+           products << item
+        end
+      end
+      return products
+  end
+      
 
+  def avoid_nil(products)
+      items = []
+      products.each do |product|
+         if product.title.nil? && product.description.nil?
+         else
+            items << product
+         end
+       end 
+       return items
+   end
   # GET /users/new
   # GET /users/new.json
   def new
@@ -79,7 +101,7 @@ class UsersController < ApplicationController
 
   def list_items
     @user = User.find(params[:id])
-    @products = @user.products
+    @products = product_ok(@user.products)
     respond_to do |format|
       format.js
     end

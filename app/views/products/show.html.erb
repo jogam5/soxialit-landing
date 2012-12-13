@@ -9,7 +9,7 @@
 						<% @product.paintings.each_with_index do |painting, index| %>
 							<% if index < 4 %>
 								<%= content_tag "div", class:"paintings", data: {id: painting.id } do %>
-						 			<li id="smallImage" class="painting_<%= painting.id%>">
+						 			<li id="smallImage_show" class="painting_<%= painting.id%>">
 										<%= image_tag(painting.image_url(:thumb))%>
 									</li>
 								<% end %>
@@ -23,7 +23,7 @@
 		<div class="description-medium">
 			<div class="product_reputation">
 			<% if signed_in? %>
-				<div class="votacion" style="display:block; float:left; margin: 11% -63% 0% 50%" id="votacion_<%= @product.id %>">
+				<div class="votacion" style="display:block; float:left; margin: 22% -104% 0% 90%" id="votacion_<%= @product.id %>">
 					<% if @product.id == current_user.voted_by?(current_user.evaluations, @product.id) %>
 						<span id="want_<%= @product.id %>">
 							<div id="love_icon_<%= @product.id %>" class="love_icon_active">
@@ -68,11 +68,10 @@
 			</div>
 		</div>
 		<br/>
-		<div class="description-low"> Cantidad disponible</div>
+		<div class="description-low"> Piezas disponibles</div>
 		<div class="description-medium"> <%= @product.quantity %> </div>
 		<hr>
-		<div class="description-low"> Descripción del producto</div>
-		<div class="description-text"> <%= @product.description %> </div>
+		<div class="description-text"> "<%= @product.description %>"</div>
 		<hr>
 		<div style="float:left; width: 150px">
 			<div class="description-low"> Colores</div>
@@ -105,6 +104,22 @@
 				<% else %>
 				<div class="description-medium">Envío interior del país:  <%= number_to_currency(@product.ship_int) %> </div>
 			<% end %>
+			<% if @tarifas.nil? && @dias.nil? %>
+				<% else %>
+				<br/>
+				<tbody>
+					<% if @tarifas.any? %>
+					<%= image_tag('logoestafeta.jpg')%>
+					<% end %>
+					<tr>
+						<% @dias.zip(@tarifas).each do |dia, tarifa| %>
+							<div class="description-medium">
+								<%= dia %> - $ <%= tarifa %>
+							</div>
+						<% end %>
+					</tr>
+				</tbody>
+			<% end %>
 			
 		</div>
 	<div style="border: 1px solid white; background-color:white; height: auto" class="well">
@@ -113,12 +128,13 @@
 				Productos de <%= link_to @product.brand, user_path(@product.user_id) %>
 			</div>
 			
-			<% @products.each do |product| %>
-				<div style="padding:1%; width: 22.5%" class="span3">
-					<% if product.title.nil? && product.paintings.nil? %>
-					<% else %>
-						<span class="description-low"><%= (product.title) %> </span>
-					<% end %>
+			<% @products.shuffle.each_with_index do |product, index| %>
+				<% break if index == 4 %>
+		  		<div style="padding:1%; width: 22.5%" class="span3">
+						<span class="description-low"><%= product.title %> </span>
+						<% if product.paintings.any? %>
+							<div style="height: auto; margin-top: 10%"><%= link_to image_tag(url_painting(product.paintings)), product %></div>
+						<% end %>
 				</div>
 			<% end %>
 		</div>

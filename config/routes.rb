@@ -23,6 +23,7 @@ DeviseFacebook::Application.routes.draw do
        member { post :vote }
        member { post :have}
        put :envio_df, on: :member
+       put :status, on: :collection
   end
 
   match "list_items/:id" => "users#list_items", :as => "list_items"

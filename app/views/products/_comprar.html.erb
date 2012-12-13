@@ -5,8 +5,7 @@
 	<hr>
 	<div class="row">
 		<div class="span2">
-			<% if @product.paintings.nil? %>
-			<% else %>
+			<% if @product.paintings.any? %>
 				<%= image_tag(@product.paintings.first.image_url(:thumb))%>
 			<% end %>
 		</div>
@@ -33,6 +32,7 @@
 			<strong>
 				Que opción de envío deseas:
 			</strong>
+				
 			<% if @product.ship_df.nil? %>
 				<% else %>
 					<div><td><%= radio_button_tag 'envio', @product.ship_df, :class => 'Envío dentro DF' %><span id="envio_df"> Envío dentro DF </span>- $<%= @product.ship_df %> </td></div>
@@ -45,17 +45,25 @@
 				<% else %>
 				<br/>
 				<tbody>
-					<tr><%= image_tag('logoestafeta.jpg') %></tr>
+					<% if @tarifas.any? %>
+						<%= image_tag('logoestafeta.jpg')%>
+					<% end %>
 					<tr>
 						<% @dias.zip(@tarifas).each do |dia, tarifa| %>
 							<div>
-								<input type="radio" name="envio" id='Estafeta <%= dia %>' class="estafeta" value='<%= tarifa %>' unchecked> <%= dia %> - $ <%= tarifa %>
+								<input type="radio" name="envio" id='Estafeta <%= dia %>' class="estafeta" value='<%= tarifa %>' unchecked> <%= dia %> - $ <%= tarifa %></input>
 							</div>
 						<% end %>
 					</tr>
 				</tbody>
 			<% end %>
 			<%= f.text_field :shipping, :class => "span2", :style => "display: none" %>
+			<%= f.fields_for :ships do |builder| %>
+						<%= builder.text_field :ship_name, :style => "display:none" %>
+						<%= builder.text_field :ship_selected, :style => "display:none" %>
+			<% end %>
+			
+			
 			<br/>
 			<div style="margin-top:-4%" class="span1">
 				<%= f.submit "Elegir", class: "btn" %>
