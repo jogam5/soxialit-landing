@@ -10,9 +10,9 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
 //= require twitter/bootstrap
 //= requiere jquery.tokeninput
+//= require jquery
 //= require bootstrap
 //= require jquery_ujs
 //= require box-maker
@@ -26,12 +26,13 @@ $(function () {
     prePopulate: $('#product_tag_list').data('pre'),
     theme: 'facebook',
 	 preventDuplicates: true,
-	 tokenValue: 'name', 
+	 tokenValue: 'name', // defaults to 'id'
   
 	 allowCustomEntry: true
    
   });
 });
+
 
 $(function(){
 	$('#product_size_tokens').tokenInput('/sizes.json', {
@@ -40,6 +41,7 @@ $(function(){
     prePopulate: $('#product_size_tokens').data('load')
 	});
  });
+
 
 
 $(function() {
