@@ -1,8 +1,8 @@
 <% if @feed_items.any? %>
   <ol class="microposts">
 	<% @feed_items.each do |feed_item| %>
-	  <li id="<%= feed_item.id %>">
-	  	<% if feed_item.present? && feed_item.activitable.status == true %>
+	<% if feed_item.present? && feed_item.activitable.status == true %>
+  	  <li id="<%= feed_item.id %>">
 	  	<span class="content">
 	  	  <div class="row">
 	  	  	<div class="span1">
