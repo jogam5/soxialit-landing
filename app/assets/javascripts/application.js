@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= requiere jquery.tokeninput
-
 //= require bootstrap
 //= require jquery_ujs
 //= require box-maker
