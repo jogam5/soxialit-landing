@@ -47,7 +47,6 @@ $(function() {
   $('#ajax-status')
     .hide()  // hide it initially.
     .ajaxStart(function() {
-		alert('start');
       $(this).show(); // show on any Ajax event.
     })
     .ajaxStop(function() {

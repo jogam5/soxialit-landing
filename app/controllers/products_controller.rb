@@ -177,6 +177,7 @@ class ProductsController < ApplicationController
     def comprar
        @product = Product.find(params[:product_id])
        @product.ships.build
+       user_cp = find_user_product(@product)
       if current_user.direction.nil? && user_cp.nil?
       else
           user_product_cp = find_user_product(@product)
