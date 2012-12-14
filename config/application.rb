@@ -18,6 +18,11 @@ end
 
 module DeviseFacebook
   class Application < Rails::Application
+
+    config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
+        r301 %r{.*}, 'http://soxialit.com$&', 
+            :if => Proc.new {|rack_env| rack_env['SERVER_NAME'] == 'www.soxialit.com'}
+    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -66,9 +71,5 @@ module DeviseFacebook
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     #config.autoload_paths += "#{Rails.root}/app/uploaders"
-    config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
-        r301 %r{.*}, 'http://www.soxialit.com$&', 
-            :if => Proc.new {|rack_env| rack_env['SERVER_NAME'] == 'www.soxialit.com'}
-    end
   end
 end
