@@ -18,7 +18,7 @@
 					              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
 						        	<b class="caret"></b>
 					              </a>
-					              <ul class="dropdown-menu">
+					              <ul id="profile_menu" class="dropdown-menu">
 					                <li><%= link_to "Editar Perfil", edit_user_path(current_user) %></li>
 					                <li class="divider"></li>
 					                <li>
@@ -38,3 +38,9 @@
 		</div>
 		<div id="profile_nav_botton"></div>
 </header>
+
+<script>
+		$('#fat-menu').click(function(){
+			$('#profile_menu').toggle();
+		});
+</script>
