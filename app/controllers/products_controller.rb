@@ -112,7 +112,7 @@ class ProductsController < ApplicationController
       respond_to do |format|
         if @product.save
           format.html { redirect_to current_user, notice: 'El producto fue creado correctamente, en menos de 12 hrs. sera publicado' }
-          format.json { render json: products_path, status: :created, location: products_path }
+          format.json { render json: products_path, status: :created, location: current_user }
           format.js
         else
           format.html { render action: "new" }
