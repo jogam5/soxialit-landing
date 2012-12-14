@@ -1,9 +1,25 @@
-<div class="row-fluid" style="background-color:white; margin-top:-7%; margin-left:-10%; width: 1150px">
+<% if @product.user_id == current_user.id && @product.status != true %>
+	<div style="background-color:white" class="well">
+		<div class="span12">
+			<div class="span1 offset4">
+				<%= link_to "Editar", edit_product_path(@product), :class => "button-follow"%>
+			</div>
+			<div class="span1">
+				<%= link_to "Eliminar", @product, method: :delete, data: {confirm: '¿Estás seguro?'}, :class => "button-unfollow"%>
+			</div>
+		</div>
+	</div>
+<% end %>
+<div class="row-fluid" style="margin-top:-7%; margin-left:-10%; width: 1150px">
 	<div style="margin: 5% 0% 5% -3%; text-align:center; width:800px" class="span7">
-	  <% unless @product.paintings.first.nil? %>
-			<div class="mainpicture" style="float:left" id="painting_<%= @product.paintings.first.id %>">
-			<%= image_tag(@product.paintings.first.image_url(:timeline))  %>
+	  <% if @product.paintings.any? %>
+	  <% else %>
+		<div class="defaultMainImage" style="float:left;"></div>
 	  <% end %>
+	
+	  <% if @product.paintings.any? %>
+			<div class="mainpicture" style="float:left" id="painting_<%= @product.paintings.first.id %>">
+				<%= image_tag(@product.paintings.first.image_url(:timeline))  %>
 			</div>
 				<ul id="productImagesSortable" style="float:right;">
 						<% @product.paintings.each_with_index do |painting, index| %>
@@ -16,8 +32,8 @@
 							<% end %>
 						<% end %>
 				</ul>
-	</div>
-	
+			<% end %>
+		</div>
 <div style="margin-top:5%; width: 340px" class="span4">
 	<div class="well" style="border: 1px solid white; background-color:white">
 		<div class="description-medium">

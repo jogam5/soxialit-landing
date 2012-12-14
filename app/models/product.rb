@@ -24,10 +24,10 @@ class Product < ActiveRecord::Base
 
   acts_as_taggable
   
-  validates :price, :numericality => {:greater_than_or_equal_to => 0.01}, :on => :update
-  validates_numericality_of :quantity, :greater_than => 0, :less_than => 6, :on => :update    
-  validates :price, :quantity, :color, :description, :material, :refund_policy, :title, :brand, :presence => { :message => "*dato requerido" },
-   :allow_blank => true, :on => :update
+ # validates :price, :numericality => {:greater_than_or_equal_to => 0.01}, :on => :update
+  #validates_numericality_of :quantity, :greater_than => 0, :less_than => 6, :on => :update    
+  #validates :price, :quantity, :color, :description, :material, :refund_policy, :title, :brand, :presence => { :message => "*dato requerido" },
+ #  :allow_blank => true, :on => :update
   
   default_scope order: 'products.created_at DESC'
   
