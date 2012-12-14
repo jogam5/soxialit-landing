@@ -3,7 +3,6 @@
   <% if @product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product.errors.count, "error") %> prohibieron la publicación de este producto:</h2>
-
       <ul>
       <% @product.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -61,12 +60,12 @@
   </div>
   <br/>
   <div class="field">
-	<%= f.label :quantity, "*cantidad", :class => "description-text" %>
-    <%= f.number_field :quantity, :placeholder => "", :in => 1..5 %>
+	<%= f.label :quantity, "*piezas disponibles", :class => "description-text" %>
+    <%= f.number_field :quantity, :placeholder => "" %>
   </div>
   <div class="field" style="height:20px">
 	<p style="float:left">
-		<%= f.label :tag_list, "*agrega tus tags", :class => "description-text" %>
+		<%= f.label :tag_list, "*agrega tus tags", :class => "description-text", :style => "width: 110px" %>
 	</p>		
     <i style="margin-left: 5%" id="tag_info" class="icon-info-sign icon-black"></i>
     <div class="popover fade top in" id="pop_tag" style="display:none; position: relative; top:-111px; left: 4px;">

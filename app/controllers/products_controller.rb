@@ -100,7 +100,7 @@ class ProductsController < ApplicationController
       @tags = @product.tags.all
 
         respond_to do |format|
-            format.html 
+            format.html    
             format.json 
             format.js 
         end
