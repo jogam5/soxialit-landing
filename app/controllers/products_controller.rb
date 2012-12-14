@@ -124,7 +124,7 @@ class ProductsController < ApplicationController
 
 
     def update
-      @product = current_user.products.find(params[:id])
+      @product = Product.find(params[:id])
        respond_to do |format|
         if @product.update_attributes(params[:product])
           format.html { redirect_to @product, notice: 'Producto editado correctamente' }
