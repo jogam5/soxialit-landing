@@ -1,8 +1,7 @@
 <%= form_for (@product), :action => "edit", :validate => true do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
-
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibieron la publicación de este producto:</h2>
       <ul>
       <% @product.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -60,13 +59,13 @@
     <%= f.text_field :size_tokens, data: {load: @product.sizes}%>
   </div>
   <div class="field">
-	<%= f.label :quantity, "Cantidad", :class => "description-text"  %>
-    <%= f.number_field :quantity, :in => 1..5 %>
+	<%= f.label :quantity, "*piezas disponibles", :class => "description-text"  %>
+    <%= f.number_field :quantity %>
   </div>
    
   <div class="field" style="height:20px">
 		<p style="float:left">
-			<%= f.label :tag_list, "*agrega tus tags", :class => "description-text"  %>
+			<%= f.label :tag_list, "*agrega tus tags", :class => "description-text", :style => "width: 110px" %>
 		</p>		
 			<i style="margin-left: 5%" id="tag_info" class="icon-info-sign icon-black"></i>
 			<div class="popover fade top in" id="pop_tag" style="display:none; position: relative; top:-120px;;">
@@ -140,14 +139,18 @@
 
 
    <div style="margin-top:5%" class="span6">
+		<% if @product.paintings.any? %>
 		  <% unless @paintings.first.nil? || @paintings.count == 0 %>
 				<div class="mainpicture" id="painting_<%= @paintings.first.id %>">
 					<%= image_tag(@paintings.first.image_url(:timeline))  %>
 				</div>
 					<% else %>
-				<div class="defaultMainImage">
-				</div>
+				
 		  <% end %>
+		<% else %>
+			<div class="defaultMainImage">
+			</div>
+		<% end %>
 		<div id="ajax-status" style="float:left; display:none; margin-left:50%; margin-top:-100%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
 		<div style="" class="well">
 			<div class="span6">
@@ -169,16 +172,19 @@
 			<% end %>
 		</div>
 		<ul id="productImagesSortable">
-			<% if @paintings.count > 1  %>
-				<% @paintings.each_with_index do |painting, index| %>
-					<% if index > 0 && index < 4 %>
-						<%= content_tag "div", id:"paintings", data: {id: painting.id } do %>
-				 			<li id="smallImage_show" class="painting_<%= painting.id%>">
-								<%= image_tag(painting.image_url(:thumb))%>
-								<div class="actions" id="remove_painting_<%= painting.id %>">
-									<%= link_to image_tag("close.png"), painting, method: :delete, remote: true, id: "remove", :class => "remove_painting_edit" %>
-					  			</div>
-				 			</li>
+			<% if @product.paintings.any? %>
+			
+				<% if @paintings.count > 1  %>
+					<% @paintings.each_with_index do |painting, index| %>
+						<% if index > 0 && index < 4 %>
+							<%= content_tag "div", id:"paintings", data: {id: painting.id } do %>
+					 			<li id="smallImage_show" class="painting_<%= painting.id%>">
+									<%= image_tag(painting.image_url(:thumb))%>
+									<div class="actions" id="remove_painting_<%= painting.id %>">
+										<%= link_to image_tag("close.png"), painting, method: :delete, remote: true, id: "remove", :class => "remove_painting_edit" %>
+						  			</div>
+					 			</li>
+							<% end %>
 						<% end %>
 					<% end %>
 				<% end %>

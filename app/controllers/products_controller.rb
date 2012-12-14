@@ -45,7 +45,7 @@ class ProductsController < ApplicationController
       @products = avoid_nil(@user.products.all)
       user_cp = find_user_product(@product)
       
-      if current_user.direction.nil? && user_cp.nil?
+      if current_user.direction.nil? || user_cp.nil?
       else
          user_product_cp = find_user_product(@product)
          current_user_cp = current_user.direction.zipcode
@@ -100,7 +100,7 @@ class ProductsController < ApplicationController
       @tags = @product.tags.all
 
         respond_to do |format|
-            format.html 
+            format.html    
             format.json 
             format.js 
         end
@@ -111,8 +111,8 @@ class ProductsController < ApplicationController
       @paintings = @product.paintings.all
       respond_to do |format|
       if @product.update_attributes(params[:product])
-          format.html { redirect_to current_user, notice: 'El producto fue creado correctamente, en menos de 12 hrs. sera publicado' }
-          format.json { render json: products_path, status: :created, location: current_user }
+          format.html { redirect_to @product, notice: 'El producto fue creado correctamente, en menos de 12 hrs. sera publicado' }
+          format.json { render json: @product, status: :created, location: @product }
           format.js
         else
           format.html { render action: "edit" }
@@ -127,7 +127,7 @@ class ProductsController < ApplicationController
       @product = current_user.products.find(params[:id])
        respond_to do |format|
         if @product.update_attributes(params[:product])
-          format.html { redirect_to current_user, notice: 'Producto editado correctamente' }
+          format.html { redirect_to @product, notice: 'Producto editado correctamente' }
           format.json { head :no_content }
         else
           format.html { render action: "edit" }
@@ -178,7 +178,7 @@ class ProductsController < ApplicationController
        @product = Product.find(params[:product_id])
        @product.ships.build
        user_cp = find_user_product(@product)
-      if current_user.direction.nil? && user_cp.nil?
+      if current_user.direction.nil? || user_cp.nil?
       else
           user_product_cp = find_user_product(@product)
           current_user_cp = current_user.direction.zipcode
