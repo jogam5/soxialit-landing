@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  
+
   Rails.env.production? do
     before_filter :check_url
   end
@@ -13,5 +13,4 @@ class ApplicationController < ActionController::Base
     redirect_to user_path(current_user), :alert => exception.message
 	exception.default_message = "blage"
   end
-
 end
