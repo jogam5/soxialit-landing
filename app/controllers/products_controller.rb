@@ -108,14 +108,14 @@ class ProductsController < ApplicationController
 
     def create
       @product = current_user.products.first
-      @product.update_attributes(params[:product])
+      @paintings = @product.paintings.all
       respond_to do |format|
-        if @product.save
+      if @product.update_attributes(params[:product])
           format.html { redirect_to current_user, notice: 'El producto fue creado correctamente, en menos de 12 hrs. sera publicado' }
           format.json { render json: products_path, status: :created, location: current_user }
           format.js
         else
-          format.html { render action: "new" }
+          format.html { render action: "edit" }
           format.json { render json: @product.errors, status: :unprocessable_entity }
           format.js
         end
@@ -130,7 +130,7 @@ class ProductsController < ApplicationController
           format.html { redirect_to current_user, notice: 'Producto editado correctamente' }
           format.json { head :no_content }
         else
-          format.html { render action: "new" }
+          format.html { render action: "edit" }
           format.json { render json: @product.errors, status: :unprocessable_entity }
         end
       end
