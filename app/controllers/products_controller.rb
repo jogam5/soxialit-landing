@@ -95,7 +95,7 @@ class ProductsController < ApplicationController
     # GET /products/1/edit
 
     def edit
-      @product = current_user.products.find(params[:id])
+      @product = Product.find(params[:id])
       @paintings = @product.paintings.all
       @tags = @product.tags.all
 
