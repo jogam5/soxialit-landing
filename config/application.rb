@@ -68,7 +68,7 @@ module DeviseFacebook
     #config.autoload_paths += "#{Rails.root}/app/uploaders"
     config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
         r301 %r{.*}, 'http://www.soxialit.com$&', 
-            :if => Proc.new {|rack_env| rack_env['SERVER_NAME'] == 'soxialit.com'}
+            :if => Proc.new {|rack_env| rack_env['SERVER_NAME'] == 'www.soxialit.com'}
     end
   end
 end
