@@ -38,6 +38,8 @@ gem 'nokogiri'
 gem 'annotate', '~> 2.4.1.beta'
 #Improve performance in server
 gem 'newrelic_rpm'
+#Redirect 
+gem 'rack-rewrite'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

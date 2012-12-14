@@ -66,5 +66,9 @@ module DeviseFacebook
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     #config.autoload_paths += "#{Rails.root}/app/uploaders"
+    config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
+        r301 %r{.*}, 'http://www.soxialit.com$&', 
+            :if => Proc.new {|rack_env| rack_env['SERVER_NAME'] == 'soxialit.com'}
+    end
   end
 end
