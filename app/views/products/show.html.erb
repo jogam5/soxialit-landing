@@ -143,8 +143,7 @@
 			<% end %>
 			
 		</div>
-		<% if @product.status != true %>
-		<% else %>
+	
 			<div style="border: 1px solid white; background-color:white; height: auto" class="well">
 				<div style="margin-left:0px" class="row">
 					<div class="description-brand">
@@ -153,16 +152,18 @@
 			
 					<% @products.shuffle.each_with_index do |product, index| %>
 						<% break if index == 4 %>
-				  		<div style="padding:1%; width: 22.5%" class="span3">
-								<span class="description-low"><%= product.title %> </span>
-								<% if product.paintings.any? %>
-									<div style="height: auto; margin-top: 10%"><%= link_to image_tag(url_painting(product.paintings)), product %></div>
-								<% end %>
-						</div>
+						<% if product.status != true %>
+						<% else %>
+				  			<div style="padding:1%; width: 22.5%" class="span3">
+									<span class="description-low"><%= product.title %> </span>
+									<% if product.paintings.any? %>
+										<div style="height: auto; margin-top: 10%"><%= link_to image_tag(url_painting(product.paintings)), product %></div>
+									<% end %>
+							</div>
+						<% end %>
 					<% end %>
 				</div>
 			</div>
-		<% end %>
 	</div>
 </div>
 
