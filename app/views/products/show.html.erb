@@ -1,7 +1,10 @@
 <% if @product.user_id == current_user.id && @product.status != true %>
 	<div style="background-color:white" class="well">
 		<div class="span12">
-			<div class="span1 offset4">
+			<div class="span2 offset2">
+				<%= link_to "Regresar a mi perfil", current_user, :class => "btn", :style => "width:120px"%>
+			</div>
+			<div class="span1">
 				<%= link_to "Editar", edit_product_path(@product), :class => "button-follow"%>
 			</div>
 			<div class="span1">
