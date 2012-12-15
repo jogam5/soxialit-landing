@@ -1,17 +1,19 @@
-<% if @product.user_id == current_user.id && @product.status != true %>
-	<div style="background-color:white" class="well">
-		<div class="span12">
-			<div class="span2 offset2">
-				<%= link_to "Regresar a mi perfil", current_user, :class => "btn", :style => "width:120px"%>
-			</div>
-			<div class="span1">
-				<%= link_to "Editar", edit_product_path(@product), :class => "button-follow"%>
-			</div>
-			<div class="span1">
-				<%= link_to "Eliminar", @product, method: :delete, data: {confirm: '¿Estás seguro?'}, :class => "button-unfollow"%>
+<% if signed_in? %>
+	<% if @product.user_id == current_user.id && @product.status != true %>
+		<div style="background-color:white" class="well">
+			<div class="span12">
+				<div class="span2 offset2">
+					<%= link_to "Regresar a mi perfil", current_user, :class => "btn", :style => "width:120px; margin-top:-2%"%>
+				</div>
+				<div class="span1">
+					<%= link_to "Editar", edit_product_path(@product), :class => "button-follow"%>
+				</div>
+				<div class="span1">
+					<%= link_to "Eliminar", @product, method: :delete, data: {confirm: '¿Estás seguro?'}, :class => "button-unfollow"%>
+				</div>
 			</div>
 		</div>
-	</div>
+	<% end %>
 <% end %>
 <div class="row-fluid" style="margin-top:-7%; margin-left:-10%; width: 1150px">
 	<div style="margin: 5% 0% 5% -3%; text-align:center; width:800px" class="span7">
@@ -141,23 +143,26 @@
 			<% end %>
 			
 		</div>
-	<div style="border: 1px solid white; background-color:white; height: auto" class="well">
-		<div style="margin-left:0px" class="row">
-			<div class="description-brand">
-				Productos de <%= link_to @product.brand, user_path(@product.user_id) %>
-			</div>
+		<% if @product.status != true %>
+		<% else %>
+			<div style="border: 1px solid white; background-color:white; height: auto" class="well">
+				<div style="margin-left:0px" class="row">
+					<div class="description-brand">
+						Productos de <%= link_to @product.brand, user_path(@product.user_id) %>
+					</div>
 			
-			<% @products.shuffle.each_with_index do |product, index| %>
-				<% break if index == 4 %>
-		  		<div style="padding:1%; width: 22.5%" class="span3">
-						<span class="description-low"><%= product.title %> </span>
-						<% if product.paintings.any? %>
-							<div style="height: auto; margin-top: 10%"><%= link_to image_tag(url_painting(product.paintings)), product %></div>
-						<% end %>
+					<% @products.shuffle.each_with_index do |product, index| %>
+						<% break if index == 4 %>
+				  		<div style="padding:1%; width: 22.5%" class="span3">
+								<span class="description-low"><%= product.title %> </span>
+								<% if product.paintings.any? %>
+									<div style="height: auto; margin-top: 10%"><%= link_to image_tag(url_painting(product.paintings)), product %></div>
+								<% end %>
+						</div>
+					<% end %>
 				</div>
-			<% end %>
-		</div>
+			</div>
+		<% end %>
 	</div>
-</div>
 </div>
 
