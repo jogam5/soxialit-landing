@@ -21,7 +21,13 @@ module UsersHelper
 	end
 
 	def find_designer(evaluations)
-	    b = Product.find(evaluations).user
-	    return b.username
+	    b = Product.find(evaluations)
+	    return b.brand
 	end
+	
+	def find_user(evaluations)
+	   b = Product.find(evaluations)
+	   b.user_id
+	end
+	
 end
