@@ -90,7 +90,7 @@ class User < ActiveRecord::Base
   end
    
   def voted_for?(haiku)
-          evaluations.where(target_type: haiku.class, target_id: haiku.id).present?
+      evaluations.where(target_type: haiku.class, target_id: haiku.id).present?
   end
   
   def voted_by?(haiku, eva)

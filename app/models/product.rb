@@ -28,8 +28,17 @@ class Product < ActiveRecord::Base
   validates_numericality_of :quantity, :greater_than => 0, :less_than => 6, :on => :update    
   validates :price, :quantity, :color, :description, :material, :refund_policy, :title, :brand, :presence => { :message => "*dato requerido" },
    :allow_blank => true, :on => :update
+  validates :ship_df, :ship_int, :tipo_envio, :presence => { :message => "*seleciona al menos una opcion de envio" }, 
+  :allow_blank => true, :on => :update, :if => :any_present?
+ 
   
   default_scope order: 'products.created_at DESC'
+  
+  def any_present?
+    if %w(ship_df tipo_envio ship_int).all?{|attr| self[attr].blank?}
+      message = ("*seleciona al menos una opcion de envio")
+    end
+  end
   
   def size_tokens=(tokens)
      self.size_ids = Size.ids_from_tokens(tokens)

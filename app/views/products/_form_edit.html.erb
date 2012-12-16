@@ -38,7 +38,7 @@
  
   <div class="field" style="height: 127px">
 	<p style="float:left">
-		<%= f.label :refund_policy, "*políticas de devolución" %>
+		<%= f.label :refund_policy, "*políticas de devolución", :class => "description-text", :style => "width: 150px"  %>
 	</p>
 	<i style="margin-left: 5%" id="policy_info" class="icon-info-sign icon-black"></i>
 	<div class="popover fade top in" id="pop_policy" style="display:none; position: relative; top: -165px; left:50px">
@@ -123,6 +123,8 @@
 				<div id="estafeta_alto" class="forma_estafeta"></div>
 				<div id="estafeta_largo" class="forma_estafeta"></div>
 				<div id="estafeta_ancho" class="forma_estafeta"></div>
+			</div>
+			<div style="display:none">
 				<%= f.text_field :ship_df, :class => "span2", :style => "display:none" %>
 				<%= f.text_field :ship_int, :class => "span2", :style => "display:none" %>
 				<%= f.text_field :tipo_envio, :class => "span2", :style => "display:none" %>
@@ -130,12 +132,9 @@
 				<%= f.text_field :alto, :class => "span2", :style => "display:none" %>
 				<%= f.text_field :largo, :class => "span2", :style => "display:none" %>
 				<%= f.text_field :ancho, :class => "span2", :style => "display:none" %>
-
 			</div>
 			<hr>
-
-  
-</div>
+	</div>
 
 
    <div style="margin-top:5%" class="span6">
