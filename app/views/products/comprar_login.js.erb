@@ -1,0 +1,15 @@
+$('#modal-id').html("<%= escape_javascript(render :partial => 'comprar_login', :object => @product) %>");
+$('#modal-id').click(function(){
+	window.onscroll = null;
+	document.documentElement.style.overflowY = "scroll";
+});
+$(document).keyup(function(e) {
+  if (e.keyCode == 27) { $('#modal-id').fadeOut('fast');
+	window.onscroll = null;
+	document.documentElement.style.overflowY = "scroll";
+   }   // esc
+});
+
+$('.close-button').click(function(){
+	$('#modal-id').fadeOut('fast');
+});

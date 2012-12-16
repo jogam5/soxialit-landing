@@ -173,7 +173,10 @@ class ProductsController < ApplicationController
    def tallas
       @product = Product.find(params[:product_id])
    end
-
+   
+   def comprar_login
+      @product = Product.find(params[:product_id])
+   end
 
     def comprar
        @product = Product.find(params[:product_id])

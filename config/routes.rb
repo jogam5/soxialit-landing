@@ -41,6 +41,7 @@ DeviseFacebook::Application.routes.draw do
   
   get '/envio', to: 'products#envio'
   get '/comprar', to: 'products#comprar'
+  get '/comprar_login', to: 'products#comprar_login'
   get '/tallas', to: 'products#tallas' 
   get 'paypal/checkout', to: 'products#paypal_checkout'
   get 'mercadopago/checkout', to: 'products#mercadopago_checkout'
