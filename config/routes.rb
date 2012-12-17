@@ -13,6 +13,8 @@ DeviseFacebook::Application.routes.draw do
   get "products/tags" => "products#tags", :as => :products_tags
   get 'tags/:tag', to: 'products#index', as: :tag
   match '/tags', to: 'tags#show_tags'
+  get '/products_all', to: 'products#products_all'
+  
   #----
   
   resources :users
