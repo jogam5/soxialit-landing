@@ -166,7 +166,8 @@
 		<div class="field">
 			<%= form_for(Painting.new, :remote => true) do |f| %>
 			  <%= f.label :image, "*agrega tus fotos (máximo 4 fotos):", :class => "label_fotos" %>
-			  <span class="warning"><strong>*Importante:</strong> la primera imagen es la principal del producto.</span>
+			  <span class="warning"><strong>*Importante:</strong> la primera imagen es la principal del producto.
+				<br/>Utiliza fotos menores a 2MB </span>
 			  <%= f.hidden_field :product_id, :value => @product.id %>
 			  <%= f.file_field :image, multiple: true, name: "painting[image]"%>
 			<% end %>
