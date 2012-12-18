@@ -13,6 +13,8 @@
 					<% if user_signed_in? %>
 						<li id="feedback_header"><%= link_to "Feedback", feedbacks_path %></li>
 						<li class="divider-vertical"></li>
+						<li id="feedback_header"><%= link_to "Descubre", products_path %></li>
+						<li class="divider-vertical"></li>
 						<span id="nickname_profile"><%= link_to current_user.username, user_path(current_user) %></span>
 							<li id="fat-menu" class="dropdown">
 					              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
@@ -30,7 +32,7 @@
 						<li id="signup"><%= link_to "Ingresa a la comunidad y crea tu cuenta", 
 												user_omniauth_authorize_path(:facebook) %></li>
 						<li class="divider-vertical" style="color:yellow"></li>
-						<li id="signin"><%= link_to "Inicia Sesión", user_omniauth_authorize_path(:facebook) %></li>
+						<li id="signin"><%= link_to "Inicia sesión", user_omniauth_authorize_path(:facebook) %></li>
 	   				<% end %>
               	  </ul>
               	</nav>

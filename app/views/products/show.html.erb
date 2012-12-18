@@ -95,18 +95,22 @@
 		<hr>
 		<div class="description-text"> "<%= @product.description %>"</div>
 		<hr>
-		<div style="float:left; width: 150px">
-			<div class="description-low"> Colores</div>
-			<div class="description-text"> <%= @product.color %> </div>
-		</div>
-		<div style="float:left; width: 150px">
-			<div class="description-low"> Material</div>
-			<div class="description-text"> <%= @product.material %> </div>
+		<div style="display:block; margin-bottom:5%">
+			<div style="float:left; margin-botom:5%; position:relative; width: 150px">
+				<div class="description-low"> Colores</div>
+				<div class="description-text"> <%= @product.color %> </div>
+			</div>
+			<div style="float:left; margin-botom:5%; position:relative; width: 150px">
+				<div class="description-low"> Material</div>
+				<div class="description-text"> <%= @product.material %> </div>
+			</div>
 		</div>
 		<br/>
-		<hr>
-		<hr>
-		<div class="description-low"> Política de devolución</div>
+		<br/>
+		<div style="margin-top: 15%" class="description-low">
+			<hr>
+			 Política de devolución
+		</div>
 		<div class="description-text"> <%= @product.refund_policy %> </div>
 		<hr>
 		<div class="description-low"> Tags: 
