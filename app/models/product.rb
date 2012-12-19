@@ -30,6 +30,7 @@ class Product < ActiveRecord::Base
    :allow_blank => true, :on => :update
   validates :picture, :presence => {:message => "*el producto debe tener al menos una foto"}, :on => :update
   validates :price, :numericality => {:message => "*debe ser valor numerico"}, :on => :update
+
   validates :ship_df, :ship_int, :tipo_envio, :presence => { :message => "*seleciona al menos una opcion de envio" }, 
   :allow_blank => true, :on => :update, :if => :any_present?
  
