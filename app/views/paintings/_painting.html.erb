@@ -1,7 +1,13 @@
-<% if @product.paintings.count == 1 %>
-  	<%= image_tag(painting.image_url(:timeline)) %>
+<div style="float:left; margin-top:5%" class="painting_<%= @painting.id %>">
+	<% if @product.paintings.count == 1%>
+		<div style="float:left;" id="image_small" class="span3">
+			<%= image_tag(painting.image_url(:feed), :style => "display:block; max-height: 250px", :count => @product.paintings.count) %>
+		</div>
+		<div style="margin-left: 25%; margin-bottom: 3%;"><%= radio_button_tag "position", @painting.id, { :checked => true }, :class => "position", :style => "float:left" %><span style="display:block; margin-left:15%;" class="imagen_principal">Imagen principal</span></div>
+	<% else %>
+		<div style="float:left;" id="image_small" class="span3">
+			<%= image_tag(painting.image_url(:feed), :style => "display:block; max-height: 250px", :count => @product.paintings.count) %>
+		</div>
+		<div style="margin-left: 25%; margin-bottom: 3%;"><%= radio_button_tag "position", @painting.id, :class => "position", :style => "float:left" %><span style="display:none; margin-left:15%" class="imagen_principal">Imagen principal</span></div>
+	<% end %>
 </div>
-<% else %>
-  	<%= image_tag(painting.image_url(:thumb)) %>
-<% end %>
-

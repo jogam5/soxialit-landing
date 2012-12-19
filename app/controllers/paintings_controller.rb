@@ -42,10 +42,10 @@ class PaintingsController < ApplicationController
   def create
       @painting = Painting.create(params[:painting])
       @product = Product.first
-      if @product.paintings.any?
-         @product.update_attribute(:picture, @product.paintings.first.image_url(:feed).to_s)
-         logger.debug "parametro envio es: #{@product.paintings.first.image_url.to_s}\n\n\n\n\n\n"
-      end
+      #if @product.paintings.any?
+       #  @product.update_attribute(:picture, @product.paintings.first.image_url(:feed).to_s)
+        # logger.debug "parametro envio es: #{@product.paintings.first.image_url.to_s}\n\n\n\n\n\n"
+      #end
   end
 
   def update

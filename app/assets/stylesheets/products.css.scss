@@ -344,20 +344,33 @@ text-align:center; list-style: none; height:100px;border:2px ridge #cbccce;
 
 
 #image_small
-{width:100px; display:block; list-style: none; height:100px;border:2px ridge #cbccce;background:url(camara_thumb.png) no-repeat 50% 50%;}
+{width:250px; display:block; list-style: none; height:250px;border:2px ridge #cbccce;background:url(camara_thumb.png) no-repeat 50% 50%;}
 
-.remove_painting{
-	float:right;
-	margin-top: -31%;
-	margin-right: -34%;
 
+.image_small_fake
+{width:50px; display: inline-block; list-style: none; height:50px;border:2px ridge #cbccce;background:url(camara_thumb.png) no-repeat 50% 50%;}
+
+.image_small_opacity
+{width:50px; opacity:0.1; display: inline-block; list-style: none; height:50px;border:2px ridge #cbccce;background:url(camara_thumb.png) no-repeat 50% 50%;}
+
+#image_small_show
+{width:250px; display:block; list-style: none; height:250px;border:2px ridge #cbccce;}
+
+.remove_painting_new{
+	margin-top: -18%;
+	margin-right: -2%;
+	float: right;
 }
-.remove_painting_edit{
-	float:right;
-	margin-top: -30%;
-	margin-right: -23%;
+.remove_picture_edit{
+	float: left;
+	margin-top: -15%;
+	margin-right: 0;
+	margin-left: 56%;
 }
 
+.text-info{
+	color: #3A87AD
+}
 /* ******** */
 
 /****** Product show ******/
@@ -458,6 +471,15 @@ text-align:center; list-style: none; height:100px;border:2px ridge #cbccce;
 	}
 }
 
+#selector_main_image{
+	font-size: 1em;
+	line-height: 1.7em;
+	color: black;
+	vertical-align: baseline;
+	white-space: nowrap;
+	font-weight: lighter;
+	background-color: whiteSmoke;
+}
 
 .size_label{
 	float: right;

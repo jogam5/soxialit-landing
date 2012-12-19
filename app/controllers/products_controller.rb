@@ -123,11 +123,18 @@ class ProductsController < ApplicationController
     def create
       @product = current_user.products.first
       @paintings = @product.paintings.all
+      if @product.paintings.any?
+         if params[:position].nil?
+         else
+            painting = Painting.find(params[:position])
+            @product.update_attribute(:picture, painting.image_url(:feed).to_s)
+         end
+      end
       respond_to do |format|
       if @product.update_attributes(params[:product])
-          format.html { redirect_to @product, notice: 'El producto fue creado correctamente, en menos de 12 hrs. sera publicado' }
-          format.json { render json: @product, status: :created, location: @product }
-          format.js
+         format.html { redirect_to @product, notice: 'El producto fue creado correctamente, en menos de 12 hrs. sera publicado' }
+         format.json { render json: @product, status: :created, location: @product }
+         format.js
         else
           format.html { render action: "edit" }
           format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -139,6 +146,13 @@ class ProductsController < ApplicationController
 
     def update
       @product = Product.find(params[:id])
+      if @product.paintings.any?
+         if params[:position].nil?
+         else
+            painting = Painting.find(params[:position])
+            @product.update_attribute(:picture, painting.image_url(:feed).to_s)
+         end
+       end
        respond_to do |format|
         if @product.update_attributes(params[:product])
           format.html { redirect_to @product, notice: 'Producto editado correctamente' }
