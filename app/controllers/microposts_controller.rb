@@ -11,7 +11,17 @@ class MicropostsController < ApplicationController
   end
 
   def create
+    embedly_api = Embedly::API.new :key => '7f6cf7cec28511e0866c4040d3dc5c07',
+        :user_agent => 'Mozilla/5.0 (compatible; mytestapp/1.0; my@email.com)'
     @micropost = current_user.microposts.create(params[:micropost])
+    url = @micropost.url
+    obj = embedly_api.oembed :url => url       
+    @micropost.title = obj[0].title
+    @micropost.provider = obj[0].provider_url
+    @micropost.description = obj[0].description
+    @micropost.thumbnail = obj[0].thumbnail_url
+
+    #@micropost = current_user.microposts.create(params[:micropost])
     if @micropost.valid?
       @micropost.save!
       @micropost.activities.create(:user_id => current_user.id, :action => "create")
@@ -21,7 +31,7 @@ class MicropostsController < ApplicationController
     end
     respond_to do |format|
       if @micropost.save
-        format.html { redirect_to root_url, notice: 'Micropost was successfully created.' }
+        format.html { redirect_to root_url, notice: 'Micropost creado correctamente.' }
         format.js
       else
         format.html { redirect_to root_url, notice: 'Ingresa una URL valida' }
