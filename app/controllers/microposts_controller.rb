@@ -20,14 +20,9 @@ class MicropostsController < ApplicationController
     @micropost.provider = obj[0].provider_url
     @micropost.description = obj[0].description
     @micropost.thumbnail = obj[0].thumbnail_url
-
-    #@micropost = current_user.microposts.create(params[:micropost])
     if @micropost.valid?
-      @micropost.save!
-      @micropost.activities.create(:user_id => current_user.id, :action => "create")
-    else
-      render 'new'
-      flash[:notice] = 'Ingresa URL valida' 
+       @micropost.save!
+       @micropost.activities.create(:user_id => current_user.id, :action => "create")
     end
     respond_to do |format|
       if @micropost.save
