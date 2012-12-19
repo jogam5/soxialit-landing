@@ -13,9 +13,9 @@ class ProductsController < ApplicationController
     
     def index  
      if params[:tag]
-         @products = Product.tagged_with(params[:tag])
+         @products = product_ok(Product.tagged_with(params[:tag]))
      else
-         @products = Product.all
+         @products = product_ok(Product.all)
          @tags = Tag.where("name like ?", "%#{params[:q]}%")
          #@product = Product.find(product)
          #@product.update_attribute(:status => params[:status])
@@ -27,6 +27,16 @@ class ProductsController < ApplicationController
         format.js
       end
     end
+    
+    def product_ok(items)
+        products = []
+        items.each do |item|
+           if item.status == true
+              products << item
+           end
+         end
+         return products
+     end
     
 
     def avoid_nil(products)

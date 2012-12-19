@@ -139,9 +139,9 @@
 
    <div style="margin-top:5%" class="span6">
 		<% if @product.paintings.any? %>
-		  <% unless @paintings.first.nil? || @paintings.count == 0 %>
-				<div class="mainpicture" id="painting_<%= @paintings.first.id %>">
-					<%= image_tag(@paintings.first.image_url(:timeline))  %>
+		  <% unless @product.picture.nil? || @product.paintings.count == 0 %>
+				<div class="mainpicture" id="painting_<%= @product.paintings.first.id %>">
+					<%= image_tag(@product.paintings.first.image_url(:timeline))  %>
 				</div>
 					<% else %>
 				
@@ -175,8 +175,8 @@
 		<ul id="productImagesSortable">
 			<% if @product.paintings.any? %>
 			
-				<% if @paintings.count > 1  %>
-					<% @paintings.each_with_index do |painting, index| %>
+				<% if @product.paintings.count > 1  %>
+					<% @product.paintings.each_with_index do |painting, index| %>
 						<% if index > 0 && index < 4 %>
 							<%= content_tag "div", id:"paintings", data: {id: painting.id } do %>
 					 			<li id="smallImage_show" class="painting_<%= painting.id%>">

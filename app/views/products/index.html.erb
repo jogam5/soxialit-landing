@@ -28,7 +28,7 @@
 			<% end %>
 	 	</div>
 	 	<p style="text-align:center"><strong><%= product.title %></strong> 
-	 		<span style="color:#DD390D">$<%= product.price %></span> by <span style="color:#999"><%= link_to product.brand, user_path(product.user_id) %></span>
+	 		<span style="color:#DD390D">$<%= product.price %></span> by <span style="color:#999"><span id="product_designer"><%= link_to product.brand, user_path(product.user_id) %></span></span>
 	 	</p>
 	  </div>
  	<% end %>

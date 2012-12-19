@@ -26,7 +26,7 @@ class Product < ActiveRecord::Base
   validates :price, :numericality => {:greater_than_or_equal_to => 0.01}, :on => :update
   validates_numericality_of :quantity, :greater_than => 0, :less_than => 6, :on => :update    
   validates :quantity, :presence => {:message => "*debe ser menor 6"}, :on => :update
-  validates :price, :color, :description, :material, :refund_policy, :title, :brand, :presence => { :message => "*dato requerido" },
+  validates :picture, :price, :color, :description, :material, :refund_policy, :title, :brand, :presence => { :message => "*dato requerido" },
    :allow_blank => true, :on => :update
   validates :price, :numericality => {:message => "*debe ser valor numerico"}, :on => :update
   validates :ship_df, :ship_int, :tipo_envio, :presence => { :message => "*seleciona al menos una opcion de envio" }, 

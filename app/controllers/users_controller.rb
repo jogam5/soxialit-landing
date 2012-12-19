@@ -108,7 +108,7 @@ class UsersController < ApplicationController
   end
 
   def favorites
-    @user = User.find(params[:id])
+    @user = User.find(params[:id], :order => "created_at DESC")
     respond_to do |format|
       format.js
     end

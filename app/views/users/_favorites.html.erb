@@ -1,3 +1,4 @@
+<div id="ajax-status" style="float:left; display:none; margin: 0 50% 0 50%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
 <div id="backpack" class="row">
  	<% @user.evaluations.each do |z| %>
  	  <div id="favorites_frame">
@@ -18,7 +19,7 @@
 			<% end %>
 	 	</div>
 	 	<p style="text-align:center"><strong><%= find_title(z.target_id) %></strong> 
-	 		<span style="color:#DD390D">$<%= find_price(z.target_id) %></span> by <span style="color:#999"><%= find_designer(z.target_id) %></span>
+	 		<span style="color:#DD390D">$<%= find_price(z.target_id) %></span> by <span id="product_designer"><%= link_to find_designer(z.target_id), user_path(find_user(z.target_id)) %></span>
 	 	</p>
 	  </div>
  	<% end %>
