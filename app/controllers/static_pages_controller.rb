@@ -2,13 +2,13 @@ class StaticPagesController < ApplicationController
   def home
   	@users = User.all
   	@comment = Comment.new
+    @micropost = Micropost.new
   	if user_signed_in?
   		@feed_items = current_user.feed
   	else
   		@feed_items = User.find(1).feed
   	end
   end
-
 
   def about
   end

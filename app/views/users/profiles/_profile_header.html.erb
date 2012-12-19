@@ -24,7 +24,7 @@
 					<span id="location"><i class="icon-map-marker"></i><%= @user.location %></span>
 				</p>
 				<p id="bio"><%= @user.bio %></p>
-				<p id="url"><i class="icon-globe"></i> <%= link_to @user.website, @user.website %></p>
+				<p id="url"><i class="icon-globe"></i> <%= link_to @user.website, @user.website, target: '_blank' %></p>
 			</div>
 			<div class="span2">
 				<div id="bio">

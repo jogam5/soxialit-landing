@@ -11,7 +11,6 @@ class ProductsController < ApplicationController
       @products = Product.all
     end
     
-    
     def index  
      if params[:tag]
          @products = Product.tagged_with(params[:tag])
@@ -295,7 +294,4 @@ class ProductsController < ApplicationController
            user.direction.zipcode
         end
       end    
-
-  end
-
-
+end

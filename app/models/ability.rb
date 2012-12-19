@@ -22,6 +22,7 @@ class Ability
       can :vote, Product
       cannot :vote, Product, :user_id => user.id
       can :products_all, Product
+      can :create, Micropost
       can :read, :all
 
     elsif user.role? :'fashion lover'
@@ -30,6 +31,7 @@ class Ability
       can [:paypal_checkout, :envio_df, :tallas, :comprar, :envio, :mercadopago_checkout], Product
       can :vote, Product
       can :products_all, Product
+      can :create, Micropost
       can :read, :all
 
     elsif user.role? :'blogger'
@@ -38,6 +40,7 @@ class Ability
       can [:paypal_checkout, :envio_df, :tallas, :comprar, :envio, :mercadopago_checkout], Product
       can :vote, Product
       can :products_all, Product
+      can :create, Micropost
       can :read, :all
 
     elsif user.role? :'fotografo'
@@ -46,6 +49,7 @@ class Ability
       can [:paypal_checkout, :envio_df, :tallas, :comprar, :envio, :mercadopago_checkout], Product
       can :vote, Product
       can :products_all, Product
+      can :create, Micropost
       can :read, :all
 
     elsif user.role? :'boutique store'
@@ -62,6 +66,7 @@ class Ability
       can :vote, Product
       cannot :vote, Product, :user_id => user.id
       can :products_all, Product
+      can :create, Micropost
       can :read, :all
       
     else

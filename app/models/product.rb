@@ -45,9 +45,9 @@ class Product < ActiveRecord::Base
   end
   
   def mercadopago_url(datos)
-       client_id = '4268569064335968'
-       client_secret = 'pa6nV2JXuGee00YUoXaHsI3fPGhUfNTc'
-       mp_client = MercadoPago::Client.new(client_id, client_secret)
-       payment = mp_client.create_preference(datos) 
+   client_id = '4268569064335968'
+   client_secret = 'pa6nV2JXuGee00YUoXaHsI3fPGhUfNTc'
+   mp_client = MercadoPago::Client.new(client_id, client_secret)
+   payment = mp_client.create_preference(datos) 
   end
 end

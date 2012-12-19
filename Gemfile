@@ -40,6 +40,8 @@ gem 'annotate', '~> 2.4.1.beta'
 gem 'newrelic_rpm'
 #Redirect 
 gem 'rack-rewrite'
+#Embedly
+gem 'embedly'
 
 #Online validation
 gem 'client_side_validations'
@@ -64,6 +66,6 @@ group :assets do
   #gem fileupload paintings
   gem 'jquery-fileupload-rails'
   gem "twitter-bootstrap-rails"
- end
+end
 
 gem 'jquery-rails'

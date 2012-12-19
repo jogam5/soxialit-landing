@@ -942,6 +942,48 @@ li.comment {
 	font-weight:lighter;
 }
 
+#item_link_micropost{
+	font-size:1.5em;
+	 a{
+	color:$rojo;
+	}
+	 a:hover{
+	color:black;
+	text-decoration:none;
+	}
+}
+
+#micropost_img img{
+	float:left;
+	padding-right:5%;
+}
+
+#micropost_description{
+	text-align:left;
+	font-size:1.2em;
+	font-weight:lighter;
+	font-color:#999;
+	 a{
+	color:$rojo;
+	text-decoration:none;
+	}
+	 a:hover{
+	color:$grayTitle;
+	}
+}
+
+#micropost_leer_mas{
+	font-size:0.8em;
+	font-weight:lighter;
+	 a{
+	color:#BBB;
+	text-decoration:none;
+	}
+	 a:hover{
+	color:$rojo;
+	}
+}
+
 /* TimeLine */
 
 /* Favorites */
@@ -1037,4 +1079,3 @@ li.comment {
 }
 
 /* Menu About ****************/
-
