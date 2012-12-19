@@ -1,24 +1,20 @@
-
-	$(document).ready(function(){
-		$('.image_hover').live({
-			mouseenter: 
-			function(e){
-				e.preventDefault();
-				$(this).find('.votacion').fadeIn();
-				},
-			mouseleave:
-			function (e){
-				e.preventDefault();
-				$(this).find('.votacion').fadeOut();
-			}
-		  });
-
-		$(function() {
-
-		    $(".new_comment").bind("keypress", function(e) {
-		            if (e.keyCode == 13) return false;
-		      });
-		});
-		
-		   
+$(document).ready(function(){
+	$('.image_hover').live({
+		mouseenter: 
+		function(e){
+			e.preventDefault();
+			$(this).find('.votacion').fadeIn();
+			},
+		mouseleave:
+		function (e){
+			e.preventDefault();
+			$(this).find('.votacion').fadeOut();
+		}
 	});
+
+	$(function() {
+	  $(".new_comment").bind("keypress", function(e) {
+	        if (e.keyCode == 13) return false;
+	  });
+	});		   
+});

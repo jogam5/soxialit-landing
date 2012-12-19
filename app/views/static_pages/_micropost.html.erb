@@ -1,0 +1,15 @@
+<p style="font-weight:lighter; color:#777; font-size:1.5em">Comparte un artículo, un post de tu blog o cualquier link:</p>
+	<%= form_for(@micropost) do |f| %>
+	  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :url, :rows => "1", :class => "span7", :id => "status" %>
+  </div>
+    <%= f.hidden_field :provider %>
+    <%= f.hidden_field :title %>
+    <%= f.hidden_field :description %>
+    <%= f.hidden_field :thumbnail %>
+    <%= f.hidden_field :status, value: true %>
+  <div class="actions" >
+    <%= f.submit "Compartir", id: "button_send"  %>
+  </div>
+<% end %>

@@ -1,5 +1,5 @@
 <% if feed_item.activitable.comments.count > 0 && feed_item.action == "create" %>
-   <ul class="comments" >
+    <ul class="comments" >
 		<%= render :partial => feed_item.activitable.comments %>
 	</ul>
 <% end %>

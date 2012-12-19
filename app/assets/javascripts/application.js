@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.preview.full
 //= requiere jquery.tokeninput
 //= require bootstrap
 //= require jquery_ujs

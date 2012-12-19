@@ -1,5 +1,10 @@
 <div class="row">
-  <div class="span8 offset2">
+  <div class="span2">
+  	<span style="float:right; margin-top:1.4em"><%= image_tag 'link.png' %></span>
+  </div>
+  <div class="span8">
+  	<%= render 'static_pages/micropost' %>
+	<hr />
     <%= render 'shared/feed' %>
   </div>
 </div>
@@ -17,10 +22,31 @@ var anchor = $('<a>', {'style':'display:block', 'id': 'image_top', 'class':'back
  var x = 0;    x = x !== 0 ? top : (window.pageYOffset ? window.pageYOffset : 0);    x = x !== 0 ? x : (document.documentElement ? document.documentElement.scrollTop : 0);    x = x !== 0 ? x : (document.body ? document.body.scrollTop : 0);    return x;}
 
 $(document).ready(function(){
-	$('.typekit-badge').css('display', 'none');
-	
+	$('.typekit-badge').css('display', 'none');	
 });
+</script>
 
+<script type="text/javascript">
+  $(function() {
+    $('#status').preview({key:'7f6cf7cec28511e0866c4040d3dc5c07'});
+  });
+</script>
+
+<script type="text/javascript"charset="UTF-8">
+  $(function() {
+    $('input#button_send').click(function(){
+      var provider = $('input#id_provider_url:hidden').val();
+      $('input#micropost_provider').val(provider);
+       var description = $('input#id_description:hidden').val();
+       $('input#micropost_description').val(description);
+        var title = $('input#id_title:hidden').val();
+        $('input#micropost_title').val(title);
+          var thumbnail = $('input#id_thumbnail_url:hidden').val();
+          $('input#micropost_thumbnail').val(thumbnail);
+    		location.reload();
+     });
+    return false;
+  });
 </script>
 
 <script type="text/javascript">mixpanel.track("Landing Page Loaded")</script>

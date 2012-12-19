@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121212184755) do
+ActiveRecord::Schema.define(:version => 20121219003950) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -60,6 +60,18 @@ ActiveRecord::Schema.define(:version => 20121212184755) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "microposts", :force => true do |t|
+    t.string   "url"
+    t.string   "provider"
+    t.string   "title"
+    t.text     "description"
+    t.string   "thumbnail"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "status"
   end
 
   create_table "paintings", :force => true do |t|
