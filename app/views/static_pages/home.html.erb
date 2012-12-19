@@ -29,6 +29,12 @@ $(document).ready(function(){
 <script type="text/javascript">
   $(function() {
     $('#status').preview({key:'7f6cf7cec28511e0866c4040d3dc5c07'});
+    $.browser = {
+  mozilla : /firefox/.test(navigator.userAgent.toLowerCase())
+  webkit : /webkit/.test(navigator.userAgent.toLowerCase())
+  opera : /opera/.test(navigator.userAgent.toLowerCase())
+  msie : /msie/.test(navigator.userAgent.toLowerCase())
+};
   });
 </script>
 
