@@ -1,27 +1,32 @@
 <% if @painting.new_record? %>
 	alert("Failed to upload painting: <%= j @painting.errors.full_messages.join(', ').html_safe %>");
 	<% elsif @product.paintings.count == 1 %>
-	var i = 0;
-  		$(".defaultMainImage").replaceWith('<%= escape_javascript(render(@painting)) %>');
-		$(".painting").attr('id', 'painting_<%= @painting.id %>');
-		<% else  %>
-		<% if @product.paintings.count <= 4 %>
-			$("li#image_small").hide();
-			$("ul#productImagesSortable").append("<li id='smallImage_show' class='painting_<%= @painting.id %>'><%= escape_javascript(render(@painting)) %></li>");
-			i += 1
-			<% else %>
-					alert("Sólo estan permitidas 4 fotos por producto, gracias!");
-		<% end %>
+		$("#product_images").append('<%= escape_javascript(render(@painting)) %>');
+		$('ul#images_fake li').eq('<%= @product.paintings.count %>'-1).removeClass("image_small_fake").addClass("image_small_opacity"); 
+	<% elsif @product.paintings.count <= 4 %>
+		$('#select_image').show();
+		$("#product_images").append('<%= escape_javascript(render(@painting)) %>');
+		$('ul#images_fake li').eq('<%= @product.paintings.count %>'-1).removeClass("image_small_fake").addClass("image_small_opacity"); 
+	<% else %>
+		alert("¡Sólo estan permitidas 4 fotos por producto!");
 <% end %>
 
-<% if @product.paintings.count >1 %>
+<% if @product.paintings.count >= 1 %>
 	$('.<%= dom_id(@painting) %>').hover(
 	     function () {
-				$(this).append('<%= link_to image_tag("close.png"), @painting, method: :delete, remote: true, :id => "remove", :class => "remove_painting" %>');
+				$(this).append('<%= link_to image_tag("close.png"), @painting, method: :delete, remote: true, :id => "remove", :class => "remove_painting_new", :product => @product.paintings.count %>');
 			},
 			function (){
 				$(this).find("#remove").remove();
 	  });
+<% end %>
+
+<% if @product.paintings.count >= 1 %>
+	$("input[name=position]").change(function(){
+		$('.imagen_principal').hide();
+		$(this).next('span').show();
+	});
+	
 <% end %>
 
 

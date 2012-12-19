@@ -79,7 +79,7 @@
 	 </div>
 	</div>
 	<p>
-	    <%= f.text_field :tag_list, placeholder: "*agrega tus tags", "data-pre" => @product.tags.map(&:attributes).to_json, :class => "description-text" %>
+	    <%= f.text_field :tag_list, placeholder: "*agrega tus tags", "data-pre" => @product.tags.map(&:attributes).to_json, data: {load: @product.tags}, :class => "description-text" %>
 	</p>
 
 		<div>
@@ -117,36 +117,44 @@
 		<hr>
 		
 </div>
-
-<div style="margin-top: 5%; display:block" class="span6" id="mainImage">
-	<div class="defaultMainImage">
-	</div>
-	<div id="ajax-status" style="float:left; display:none; margin-left:50%; margin-top:-104%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
-	<div style="" class="well">
-		<div class="span6">
-			<div class="actions">
+	<div style="margin-top:5%"class="span8">
+		<div style="margin-left:5%; background-color:white" class="well">
+			<div style="margin-left:30%" class="actions">
 				<%= link_to 'Cancelar', user_path(current_user.id), class: "button-unfollow" %>
 				<%= f.submit "Crear Producto", class: "button-want" %>
 			</div>
 		</div>
-	</div>		
-</div>
-<% end %>
-<div style="margin-top:5%" class="span3">
-	<div class="field" id="file_image">
-		<%= form_for(Painting.new, :remote => true) do |f| %>
-		  <%= f.label :image, "agrega tus fotos(máximo 4 fotos):", :class => "label_fotos" %>
-		  <span class="warning"><strong>*Importante:</strong> la primera imagen es la principal del producto.
-			<br/>Utiliza fotos menores a 2MB </span>
-		  <%= f.hidden_field :product_id, :value => @product.id %>
-		  <%= f.file_field :image, multiple: true, name: "painting[image]"%>
-		<% end %>
 	</div>
-	<ul id="productImagesSortable">
-		<li id="image_small">
-		</li>
-	</ul>
+	<div style="display:block; margin-left: 5%;" class="span8" id="mainImage">
+			<div style="margin-left: 15%; display:none" id="select_image" class="description-main"> Selecciona la imagen principal del producto </div>
+			<div style="margin-left:5%" class="row" id="product_images">
+				<ul style="display:block; margin-left: 25%" id="images_fake">
+					<li class="image_small_fake" class="span3">
+					</li>
+					<li class="image_small_fake" class="span3">
+					</li>
+					<li class="image_small_fake" class="span3">
+					</li>
+					<li class="image_small_fake" class="span3">
+					</li>
+				</ul>
+			</div>
+	</div>
+<% end %>
+
+
+<div style="display:block; margin: 3% 0 0 8%;" class="span8" id="mainImage">
+	<div class="span6">
+			<span class="text-info">*agrega las fotos de tu producto (máximo 4). <br/>
+			Utiliza fotos menores a 2MB 
+			</span>
+			<%= form_for(Painting.new, :remote => true) do |f| %>
+			  <%= f.hidden_field :product_id, :value => @product.id %>
+			  <%= f.file_field :image, multiple: true, name: "painting[image]"%>
+		    <% end %>
+	</div>
 </div>
+<div id="ajax-status" style="float:left; display:none; margin-left:50%; margin-top:-104%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
 
 <script id="template-upload" type="text/x-tmpl">
 <div id="name" style="display:none">
@@ -172,5 +180,4 @@ $("#product_form").keypress(function (evt) {
 
 
 </script>
-
 

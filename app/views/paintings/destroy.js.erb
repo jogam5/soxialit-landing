@@ -1,2 +1,6 @@
+var x = $('.<%= dom_id(@painting) %>').find('img');
+var count = x.attr('count');
+$('ul#images_fake li').eq(count-1).removeClass("image_small_opacity").addClass("image_small_fake"); 
 $('.<%= dom_id(@painting) %>').fadeOut('slow');
 $('.<%= dom_id(@painting) %>').remove();
+
