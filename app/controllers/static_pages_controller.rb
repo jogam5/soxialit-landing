@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-  	@users = User.limit(10)
+  	@users = User.limit(6)
   	@comment = Comment.new
     @micropost = Micropost.new
   	if user_signed_in?
