@@ -120,6 +120,6 @@ class User < ActiveRecord::Base
   end
 
   def feed
-    @feed = Activity.from_users_followed_by(self).order("created_at DESC").limit(10)
+    @feed = Activity.from_users_followed_by(self).order("created_at DESC").limit(25)
   end
 end
