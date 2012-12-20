@@ -1,0 +1,49 @@
+<div id="unsigned" class="footer">
+  <div style="margin-bottom:2em" class="row">
+    <span class="span7 offset1">
+      <h3>Somos una comunidad de artistas, creativos y personas que aman la <span style="color:#ddbe6e">moda.</span></h3>
+      <p>Descubre y comparte ítems, posts, fotografías y prendas hechas por personas que aman la moda igual que tú.</p>
+    </span>
+    <span id="footer_login" class="span7">
+      <% @users.each do |user| %>
+        <div class="span2 offset1">
+          <% if !user.picture.present? %>
+            <%= image_tag("http://graph.facebook.com/#{user.uid}/picture?type=square", 
+                  width: 50, height: 50, :id =>  "nickname_small_picture") %>
+          <% else %>
+            <%= image_tag(user.picture_url(:thumb_profile), :id => "nickname_small_picture") %>
+          <% end %>
+        </div>
+      <% end %>
+    </span>
+  </div>  
+  <hr />
+  <div class="row">
+    <div class="span1 offset1">
+      <p style="font-size:0.8em; color:whiteSmoke">&#169; Soxialit</p>
+    </div>
+    <div class="span3">
+      <p><a href="http://blog.soxialit.com"
+      onmousedown="_gaq.push(['_trackEvent', 'Footer Links', 'Check blog OnMouse', 'Tumblr Blog OnMouse']);">Blog
+      </a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.soxialit.com/about"
+        onmousedown="_gaq.push(['_trackEvent', 'Footer Links', 'Check blog OnMouse', 'Tumblr Blog OnMouse']);">Conóce Soxialit
+      </a>&nbsp;&nbsp;</p>
+    </div>
+    <div class="span2 offset4">
+       <a href="https://twitter.com/Soxialit" class="twitter-follow-button" data-show-count="true">Follow @Soxialit</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+      </script>
+    </div>
+    <div class="span1 offset1">
+       <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fsoxialit&amp;send=false&amp;layout=standard&amp;width=100&amp;show_faces=false&amp;font=verdana&amp;colorscheme=dark&amp;action=like&amp;height=90&amp;appId=439343236107925" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:90px;" allowTransparency="true"></iframe>
+    </div>
+  </div>
+  <div style="margin-top:2em" class="row">
+    <div style="position:relative; bottom:-370px" class="span6 offset1">
+      <%= image_tag "love.png" %>
+    </div>
+    <div style="text-align:right" class="span8">
+      <%= image_tag "footer1.jpg" %>
+    </div>
+  </div>
+</div>

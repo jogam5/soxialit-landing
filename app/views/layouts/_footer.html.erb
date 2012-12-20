@@ -2,25 +2,14 @@
 <div class="footer">
   <div class="row">
     <div class="span1.5">
-      <p style="font-size:0.8em">&#169; Soxialit</p>
+      <p style="font-size:0.9em">&#169; Soxialit</p>
     </div>
     <div class="span3">
-      <p id="footer"><a href="http://blog.soxialit.com"
-      onmousedown="_gaq.push(['_trackEvent', 'Footer Links', 'Check blog OnMouse', 'Tumblr Blog OnMouse']);">Blog
-      </a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.soxialit.com/about"
-        onmousedown="_gaq.push(['_trackEvent', 'Footer Links', 'Check blog OnMouse', 'Tumblr Blog OnMouse']);">Acerca de Soxialit
-      </a>&nbsp;&nbsp;</p>
+      <p id="footer">
+        <a href="http://blog.soxialit.com" onmousedown="_gaq.push(['_trackEvent', 'Footer Links', 'Check blog OnMouse', 'Tumblr Blog OnMouse']);">Blog</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="http://www.soxialit.com/about" onmousedown="_gaq.push(['_trackEvent', 'Footer Links', 'Conoce Soxialit OnMouse', 'Conoce Soxialit OnMouse']);">Conóce Soxialit</a>&nbsp;&nbsp;
+      </p>
     </div>
-    <% unless user_signed_in? %>
-      <div class="span2 offset3">
-         <a href="https://twitter.com/Soxialit" class="twitter-follow-button" data-show-count="true">Follow @Soxialit</a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-        </script>
-      </div>
-      <div class="span1 offset1">
-         <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fsoxialit&amp;send=false&amp;layout=button_count&amp;width=100&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=tahoma&amp;height=90&amp;appId=200330006764703" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:90px;" allowTransparency="true"></iframe>
-      </div>
-    <% end %>
   </div>
 </div>
 <script type="text/javascript">mixpanel.track_links('#footer a', 'Clicked Blog Link');</script>

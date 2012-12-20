@@ -1,8 +1,8 @@
 <header class="navbar navbar-fixed-top">
 		<div
 		 style="background-color:black;
-				background-image: -webkit-linear-gradient(top, black, black);
-				background-image: -moz-linear-gradient(top, black, black);"
+				background: -webkit-linear-gradient(top, black, black);
+				background: -moz-linear-gradient(top, black, black);"
 		 class="navbar-inner">
 			<div class="container">
 				<span class="span6">
@@ -13,9 +13,17 @@
 					<% if user_signed_in? %>
 						<li id="feedback_header"><%= link_to "Feedback", feedbacks_path %></li>
 						<li class="divider-vertical"></li>
-						<li id="feedback_header"><%= link_to "Descubre", products_path %></li>
+					    <li id="feedback_header">
+					   	  <a href="http://soxialit.com/products"><i class="icon-random icon-white"></i></a>
+					   	</li>
 						<li class="divider-vertical"></li>
-						<span id="nickname_profile"><%= link_to current_user.username, user_path(current_user) %></span>
+						<li><% if !current_user.picture.present? %>
+							<%= link_to image_tag("http://graph.facebook.com/#{current_user.uid}/picture?type=square", 
+										width: 35, height: 35, :id =>  "navbar_small_picture"), user_path(current_user) %>
+						<% else %>
+							<%= link_to image_tag(current_user.picture_url(:thumb_profile), 
+										width: 35, height: 35, :id => "navbar_small_picture"), user_path(current_user) %>
+						<% end %></li>
 							<li id="fat-menu" class="dropdown">
 					              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
 						        	<b class="caret"></b>
