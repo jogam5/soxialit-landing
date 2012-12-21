@@ -5,7 +5,7 @@
       <p>Descubre y comparte ítems, posts, fotografías y prendas hechas por personas que aman la moda igual que tú.</p>
     </span>
     <span id="footer_login" class="span7">
-      <% @users.each do |user| %>
+      <% @users.shuffle.each do |user| %>
         <div class="span1">
           <% if !user.picture.present? %>
             <%= image_tag("http://graph.facebook.com/#{user.uid}/picture?type=square", 

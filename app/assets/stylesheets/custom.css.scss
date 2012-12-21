@@ -1065,6 +1065,15 @@ li.comment {
 	}
 }
 
+#about_submenu{
+	 a{
+	font-size:1.2em;
+	font-weight:lighter;
+	color:$grayTitle;
+	margin-left:1em;
+	}
+}
+
 #about_rightside{
   border-left: 5px solid $website;
   border-right: 5px solid $website;  
