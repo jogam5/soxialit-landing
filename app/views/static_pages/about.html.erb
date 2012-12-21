@@ -1,15 +1,15 @@
 <div class="row-fluid">
-  <div class="span2" id="about_menu">
-  	<div>
-     <%= link_to "Soxialit", soxialit_path, remote: true %><br/ >
-     <%= link_to "Vender", sell_path, remote: true %><br />
-     <%= link_to "Comprar", buy_path, remote: true %><br />
-     <%= link_to "Ejemplos", examples_path, remote: true %><br />
-     <%= link_to "Guía de Fotos", guides_path, remote: true %><br />
-     <%= link_to "FAQ", faq_path, remote: true %><br />
-     <%= link_to "Privacidad", privacy_path, remote: true %><br />
-     <%= link_to "Condiciones", term_path, remote: true %>
-  </div>
+  <div style="margin-top:1%" class="span2" id="about_menu">
+  	<ul id="menu_about">
+	 <li id= "link_about"><%= link_to "Soxialit", soxialit_path, remote: true %></li>
+     <li id="link_about"><%= link_to "Vender", sell_path, remote: true %></li>
+     <li id="link_about"> <%= link_to "Comprar", buy_path, remote: true %></li>
+     <li id="link_about"><%= link_to "Ejemplos", examples_path, remote: true %></li>
+     <li id="link_about"><%= link_to "Guía de Fotos", guides_path, remote: true %></li>
+     <li id="link_about"><%= link_to "FAQ", faq_path, remote: true %></li>
+     <li id="link_about"><%= link_to "Privacidad", privacy_path, remote: true %></li>
+     <li id="link_about"><%= link_to "Condiciones", term_path, remote: true %></li>
+  </ul>
 </div>
   <div class="span10" id="about_rightside">
   	<p id="titleMainIdea">Soxialit es una red social que conecta a los amantes de la moda</p>

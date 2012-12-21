@@ -1046,7 +1046,8 @@ li.comment {
 /* Menu About */
 
 #about_menu{
-	margin-top:5%;
+	position: fixed;
+	overflow: hidden;
 	 p{
 	font-size:0.8em;
 	}
@@ -1069,6 +1070,7 @@ li.comment {
   border-right: 5px solid $website;  
   padding: 5px 10px 10px;
   font-weight:lighter;
+  margin-left: 21%;
 }
 
 #about_title{
