@@ -1,6 +1,5 @@
 		<% if signed_in? %>
 			<div class="votacion" id="votacion_<%= feed_item.activitable.id %>">
-				<% logger.debug "feed id: #{feed_item.activitable.id}\n\n\n\n\n\n" %>
 
 				<% if feed_item.activitable.id == current_user.voted_by?(current_user.evaluations, feed_item.activitable.id) %>
 					<span id="want_<%= feed_item.activitable.id %>">

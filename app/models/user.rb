@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
 
   has_reputation :votes, source: {reputation: :votes, of: :products}, aggregated_by: :sum
   has_reputation :haves, source: {reputation: :haves, of: :products}, aggregated_by: :sum
+  has_reputation :lovs, source: {reputation: :lovs, of: :microposts}, aggregated_by: :sum
 
   mount_uploader :picture, ProfilePictureUploader
   # Include default devise modules. Others available are:

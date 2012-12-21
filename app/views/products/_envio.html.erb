@@ -3,20 +3,21 @@
 	<button type="button" class="close-button" data-dismiss="modal" aria-hidden="true">X</button>
   	<br/>
 	<tbody>
-	<p><strong> ¿Qué opciones de envíos ofreces?</strong></p>
+	<p class="description-main"><strong> ¿Qué opciones de envíos ofreces?</strong></p>
+	<p style="font-size: 1.2em" class="description-text">Selecciona al menos una y establece el precio del envío.</p>
 	<form style="float:left; width: 500px" id="target">
 		<table class="table">
 	      <tbody>
 	                <tr>
 		              <td><input id="env_stan" type="checkbox" class="span1"></td>
 	                  <td>Envío dentro DF </td>
-	                  <td><input class="input-small focused" id="focusedInput" type="text" value="" placeholder="$" disabled>
+	                  <td>$ <input class="input-small focused" id="focusedInput" type="text" value="" disabled>
 					</td>
 	                </tr>
 	                <tr>
 	                  <td><input id="env_interior" type="checkbox" class="span1"></td>
 	                  <td>Envío interior del país</td>
-	                  <td><input class="input-small focused" id="interior" type="text" value="" placeholder="$" disabled>
+	                  <td>$ <input class="input-small focused" id="interior" type="text" value="" disabled>
 					</td>
 	                </tr>
 	                <tr>
@@ -30,25 +31,26 @@
 					<tr>
 					  <td></td>
 					  <td></td>
-					  <td><input class="input-medium focused" id="est_peso" type="text" value="" placeholder="Peso kgs" disabled></td>
-					  <td><input class="input-small focused" id="est_alto" type="text" value="" placeholder="Alto cms" disabled></td>
+					  <td>Peso kgs <input class="input-medium focused" id="est_peso" type="text" value="" disabled></td>
+					  <td>Alto cms <input class="input-small focused" id="est_alto" type="text" value="" disabled></td>
 					</tr>
 					<tr>
 						<td></td>
 						<td></td>
-						<td><input class="input-small focused" id="est_largo" type="text" value="" placeholder="Largo cms" disabled></td>
-						<td><input class="input-small focused" id="est_ancho" type="text" value="" placeholder="Ancho cms" disabled></td>
+						<td>Largo cms <input class="input-small focused" id="est_largo" type="text" value="" disabled></td>
+						<td>Ancho cms <input class="input-small focused" id="est_ancho" type="text" value="" disabled></td>
 					</tr> 
 	         </tbody>
 	     </table>
-		<div style="margin-top:-6%;" class="span1">
-			<button type="submit" class="btn">Llenar</button>
+		<div style="margin-top:-6%; " class="span1">
+			<button type="submit" class="button-follow">Llenar</button>
 		 </div>
-		<div style="margin-top:5%; margin-left:5%" class="well">
-				Notas: <br/>
-				Selecciona la opción de envío que desees y establece el precio del envío.<br/>
-				Cotiza con Estafeta llenando algunos datos del paquete que enviarías. <br/>
-				Si eliges <strong>"SOBRE"</strong> no debes llenar mas datos, si eliges <strong>"PAQUETE"</strong> llena los campos correspondientes.
+		<div style="margin-top:6%; margin-left:5%; background-color:black" class="well">
+				<span style="color:white"> Cotiza con Estafeta:</span> <br/>
+				<span style="color:white"><strong>SOBRE:</strong> si tu producto puede ser empacado en un sobre y pesa menos de 1KG.<br>
+					<strong>PAQUETE:</strong> llena los datos del empaque, mínimo 1 KG, alto, largo y ancho en centímetros.<br>
+					Mas información de <strong><%= link_to "Estafeta", "http://www.estafeta.com/servicios/mensajer%C3%ADa-y-paqueter%C3%ADa/servicios-nacionales/caracter%C3%ADsticas.aspx", :target => "_blank" %></strong> 
+			   </span>
 		</div>
 	</form>
 	

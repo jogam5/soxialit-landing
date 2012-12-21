@@ -41,4 +41,14 @@ class MicropostsController < ApplicationController
       format.html { redirect_to root_url }
     end
   end
+  
+  def lovs
+    value = params[:type] == "up" ? 1 : -1
+    @micropost = Micropost.find(params[:id])
+    @micropost.add_evaluation(:lovs, value, current_user)
+    @micropost.activities.create(:user_id => current_user.id, :action => "like")
+     respond_to do |format|
+        format.js
+      end
+  end
 end

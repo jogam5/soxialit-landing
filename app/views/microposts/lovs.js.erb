@@ -1,0 +1,5 @@
+$('#love_product_<%= @micropost.id %>').text('<%= @micropost.reputation_value_for(:lovs).to_i %>');
+$('#love_product_<%= @micropost.id %>').show();
+$('#love_icon_<%= @micropost.id %>').addClass('love_icon_active');
+
+
