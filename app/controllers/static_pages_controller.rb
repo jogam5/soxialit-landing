@@ -12,6 +12,7 @@ class StaticPagesController < ApplicationController
   end
 
   def about
+    @users = User.limit(6)
   end
   
   def soxialit
