@@ -40,7 +40,9 @@ DeviseFacebook::Application.routes.draw do
   resource :direction
   resources :paintings
   resources :sizes
-  resources :microposts
+  resources :microposts do 
+     member { post :lovs}
+  end
   
   get '/envio', to: 'products#envio'
   get '/comprar', to: 'products#comprar'
