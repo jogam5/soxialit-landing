@@ -9,14 +9,17 @@ class ProductsController < ApplicationController
     
     def products_all
       @products = Product.all
+      @users = User.all
     end
     
     def index  
      if params[:tag]
          @products = product_ok(Product.tagged_with(params[:tag]))
+         @users = User.all
      else
          @products = product_ok(Product.all)
          @tags = Tag.where("name like ?", "%#{params[:q]}%")
+         @users = User.all
          #@product = Product.find(product)
          #@product.update_attribute(:status => params[:status])
          #@product.save
@@ -55,6 +58,7 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
       id = @product.user_id
       @user = User.find(id)
+      @users = User.all
       @products = avoid_nil(@user.products.all)
       user_cp = find_user_product(@product)
       
