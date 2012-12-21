@@ -19,6 +19,8 @@
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
 //= require rails.validations
+//= require masonry
+//= require masonry.min
 //= require_tree .
 
 $(function () {
