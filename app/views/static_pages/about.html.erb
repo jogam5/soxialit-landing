@@ -1,17 +1,36 @@
 <div class="row-fluid">
-  <div class="span2" id="about_menu">
-  	<div>
-     <%= link_to "Soxialit", soxialit_path, remote: true %><br/ >
-     <%= link_to "Vender", sell_path, remote: true %><br />
-     <span id="about_submenu"><%= link_to "Guía de Fotos", guides_path, remote: true %></span><br />
-     <span id="about_submenu"><%= link_to "Ejemplos", examples_path, remote: true %></span><br />
-     <%= link_to "Comprar", buy_path, remote: true %><br />
-     <%= link_to "FAQ", faq_path, remote: true %><br />
-     <%= link_to "Privacidad", privacy_path, remote: true %><br />
-     <%= link_to "Condiciones", term_path, remote: true %>
+  <% if user_signed_in? %>
+  <div style="margin-top:1%" class="span2" id="about_menu">
+  	<ul id="menu_about">
+	 <li id= "link_about"><%= link_to "Soxialit", soxialit_path, remote: true %></li>
+     <li id="link_about"><%= link_to "Vender", sell_path, remote: true %></li>
+     <span id="about_submenu"><li id="link_about"><%= link_to "Guía de Fotos", guides_path, remote: true %></li></span>
+     <span id="about_submenu"><li id="link_about"><%= link_to "Ejemplos", examples_path, remote: true %></li></span>
+	 <li id="link_about"> <%= link_to "Comprar", buy_path, remote: true %></li>
+     <li id="link_about"><%= link_to "FAQ", faq_path, remote: true %></li>
+     <li id="link_about"><%= link_to "Privacidad", privacy_path, remote: true %></li>
+     <li id="link_about"><%= link_to "Condiciones", term_path, remote: true %></li>
+    </ul>
   </div>
-</div>
   <div class="span10" id="about_rightside">
   	<p id="titleMainIdea">Soxialit es una red social que conecta a los amantes de la moda.</p>
   </div>
+  <% else %>
+  <div style="margin-top:1%" class="span2" id="about_menu_relative">
+  	<ul id="menu_about">
+	 <li id= "link_about"><%= link_to "Soxialit", soxialit_path, remote: true %></li>
+     <li id="link_about"><%= link_to "Vender", sell_path, remote: true %></li>
+     <span id="about_submenu"><li id="link_about"><%= link_to "Guía de Fotos", guides_path, remote: true %></li></span>
+     <span id="about_submenu"><li id="link_about"><%= link_to "Ejemplos", examples_path, remote: true %></li></span>
+	 <li id="link_about"> <%= link_to "Comprar", buy_path, remote: true %></li>
+     <li id="link_about"><%= link_to "FAQ", faq_path, remote: true %></li>
+     <li id="link_about"><%= link_to "Privacidad", privacy_path, remote: true %></li>
+     <li id="link_about"><%= link_to "Condiciones", term_path, remote: true %></li>
+    </ul>
+  </div>
+  <div style="margin-top:-34%" class="span10" id="about_rightside">
+  	<p id="titleMainIdea">Soxialit es una red social que conecta a los amantes de la moda</p>
+  	<p id="titleSecondIdea">Descubre y comparte ítems, posts, fotografías y prendas hechas por creativos emergentes que aman la moda.</p>
+  </div>
+  <% end %>
 </div>

@@ -1047,7 +1047,27 @@ li.comment {
 /* Menu About */
 
 #about_menu{
-	margin-top:5%;
+	position: fixed;
+	overflow: hidden;
+	 p{
+	font-size:0.8em;
+	}
+	 a{
+	font-size:1.4em;
+	font-weight:lighter;
+	color:$grayTitle;
+	}
+	 a:hover{
+	color:black;
+	text-decoration:none;
+	}
+	 a:active{
+	color:$rojo;
+	}
+}
+
+
+#about_menu_relative{
 	 p{
 	font-size:0.8em;
 	}
@@ -1067,7 +1087,16 @@ li.comment {
 
 #about_submenu{
 	 a{
-	font-size:1.2em;
+	font-size:1.1em;
+	font-weight:lighter;
+	color:$grayTitle;
+	margin-left:1em;
+	}
+}
+
+#about_submenu{
+	 a{
+	font-size:1.1em;
 	font-weight:lighter;
 	color:$grayTitle;
 	margin-left:1em;
@@ -1079,6 +1108,7 @@ li.comment {
   border-right: 5px solid $website;  
   padding: 5px 10px 10px;
   font-weight:lighter;
+  margin-left: 21%;
 }
 
 #about_title{

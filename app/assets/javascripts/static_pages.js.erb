@@ -17,4 +17,26 @@ $(document).ready(function(){
 	        if (e.keyCode == 13) return false;
 	  });
 	});		   
+	
+	$(function(){
+		$('#link_about').live({
+			mouseenter: 
+			function(e){
+				e.preventDefault();
+				$(this).removeClass('link_about').addClass('link_about_border');
+				},
+			mouseleave:
+			function (e){
+				e.preventDefault();
+				$(this).removeClass('link_about_border').addClass('link_about');
+			}
+		});
+	});
+	
+	$(function(){
+		$('#link_about').live("click", function(){
+			$('#menu_about li').css('background-color', 'white');
+			$(this).css('background-color', "#e6e6e6");
+		});
+	});
 });
