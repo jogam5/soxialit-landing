@@ -6,7 +6,7 @@ class StaticPagesController < ApplicationController
   	if user_signed_in?
   		@feed_items = current_user.feed
   	else
-  		@feed_items = User.find(1).feed
+  	  @feed_items = User.find(1).feed
       #@feed_items = User.first.feed
   	end
   end

@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
-      user = User.create(username:auth.extra.raw_info.first_name,
+      user = User.create(username:"tu nickname",
                           picture:auth.info.image,
                           provider:auth.provider,
                           uid:auth.uid,
@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
             #@graph_data = @api.get_object("me/user", "fields" => "id")
            #@graph_data = @api.get_object("/me/")
             @api.put_connections("me", "feed", :message => "Me acabo de unir a Soxialit, la red social 
-              que conecta fashion designers, fotografos, bloggers y boutiques. Registrate en: http://www.soxialit.com")
+              que conecta fashion designers, fotografos, bloggers y boutiques. Registrate en: http://soxialit.com")
             rescue Exception=>ex
                 puts ex.message
           end
