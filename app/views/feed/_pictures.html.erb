@@ -58,7 +58,7 @@
 	<br/>
 	<div style="text-align:left; margin-left:100px; margin-top:5px;">
 		 <div id="micropost_description">
-		 	<span style="color:#999">Publicado por</span> 
+		 	<span style="color:#999; font-size:0.9em">Publicado por</span> 
 				<% if !feed_item.activitable.user.picture.present? %>
 					<%= link_to image_tag("http://graph.facebook.com/#{feed_item.activitable.user.uid}/picture?type=square", 
 								width: 35, height: 35, :id =>  "like_small_picture"), user_path(feed_item.activitable.user) %>
