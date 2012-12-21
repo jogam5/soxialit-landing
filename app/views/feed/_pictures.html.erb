@@ -51,18 +51,21 @@
 
 <% elsif feed_item.activitable_type == "Micropost" && feed_item.action == "like" %>
 <div id="product_background" class="image_hover">
-	<div style="display:block; width:250px; margin-left:100px">
+	<div style="display:block; width:100px; margin-left:100px">
 		  <%= link_to image_tag(feed_item.activitable.thumbnail), feed_item.activitable.url, target: '_blank' %>
 	</div>
-	
 	<%= render :partial => 'feed/like_micropost', :locals => { :feed_item => feed_item } %>
 	<br/>
 	<div style="text-align:left; margin-left:100px; margin-top:5px;">
-		 <div id="micropost_description"><%= feed_item.activitable.description %><br />
-		 	<div id="micropost_leer_mas"><%= link_to "Leer más", feed_item.activitable.url, target: '_blank' %></div>
-		 	<br />
-		 	<span style="color:#999">vía</span> <%= link_to feed_item.activitable.provider, feed_item.activitable.provider, 
-		 													target: '_blank' %>
+		 <div id="micropost_description">
+		 	<span style="color:#999">Publicado por</span> 
+				<% if !feed_item.activitable.user.picture.present? %>
+					<%= link_to image_tag("http://graph.facebook.com/#{feed_item.activitable.user.uid}/picture?type=square", 
+								width: 35, height: 35, :id =>  "like_small_picture"), user_path(feed_item.activitable.user) %>
+				<% else %>
+					<%= link_to image_tag(feed_item.activitable.user.picture_url(:thumb_profile), 
+								width: 35, height: 35, :id => "like_small_picture"), user_path(feed_item.activitable.user) %>
+				<% end %>
 		 </div>
 	</div>
 </div><% end %>
