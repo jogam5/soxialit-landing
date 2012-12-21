@@ -58,7 +58,7 @@ class Ability
     else
       can :read, :all
       can [:list_items, :favorites, :followers, :following], User
-      can [:paypal_checkout, :envio_df, :tallas, :comprar, :envio, :mercadopago_checkout], Product
+      can [:paypal_checkout, :show, :envio_df, :tallas, :comprar, :envio, :mercadopago_checkout], Product
       can :products_all, Product
     end
   end
