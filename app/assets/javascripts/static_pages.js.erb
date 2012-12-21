@@ -36,7 +36,9 @@ $(document).ready(function(){
 	$(function(){
 		$('#link_about').live("click", function(){
 			$('#menu_about li').css('background-color', 'white');
+			$('#menu_about li').find('a').css('color', '#999');
 			$(this).css('background-color', "#e6e6e6");
+			$(this).find('a').css('color', '#DD390D');
 		});
 	});
 });
