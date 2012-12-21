@@ -243,15 +243,11 @@ button {
   background: #fff;
   margin: 0 auto;
   width: auto;
-  font-size: 11px;
-  line-height: 1.4em;
   float: left;
   border-radius: 5px;
 }
 
 .box h2 {
-  font-size: 14px;
-  font-weight: 200;
 }
 
 .box img,
@@ -270,7 +266,7 @@ button {
 
 .col1 { width: 80px; }
 .col2 { width: 180px; }
-.col3 { width: 280px; }
+.col3 { width: 280px; left: -25px }
 .col4 { width: 380px; }
 .col5 { width: 480px; }
 
