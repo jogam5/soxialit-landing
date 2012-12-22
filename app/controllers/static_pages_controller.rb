@@ -68,4 +68,7 @@ class StaticPagesController < ApplicationController
       format.js
     end
   end
+  
+  def payment
+  end
 end
