@@ -180,7 +180,7 @@ class ProductsController < ApplicationController
     def paypal_checkout
            product = Product.find(params[:product_id])
            ppr = PayPal::Recurring.new(
-            return_url: product_url(product),
+            return_url: payment_url,
             cancel_url: products_url,
             description: product.title,
             amount: product.total_price,

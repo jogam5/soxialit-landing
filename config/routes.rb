@@ -53,6 +53,7 @@ DeviseFacebook::Application.routes.draw do
 
   
   match "/about", to: 'static_pages#about'
+  match "/payment", to: 'static_pages#payment_complete'
   match "soxialit", to: 'static_pages#soxialit'
   match "sell", to: 'static_pages#sell'
   match "buy", to: 'static_pages#buy'
