@@ -94,6 +94,12 @@ class ProductsController < ApplicationController
              logger.debug "#{@tarifas}\n\n\n\n\n\n"
          end
       end
+      if params[:PayerID]
+        @product.paypal_customer_token = params[:PayerID]
+        @product.paypal_payment_token = params[:token]
+        @product.email = PayPal::Recurring.new(token: params[:token]).checkout_details.email
+      end
+      
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @product }
@@ -180,7 +186,7 @@ class ProductsController < ApplicationController
     def paypal_checkout
            product = Product.find(params[:product_id])
            ppr = PayPal::Recurring.new(
-            return_url: payment_url,
+            return_url: product_url(product),
             cancel_url: products_url,
             description: product.title,
             amount: product.total_price,

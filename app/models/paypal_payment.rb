@@ -1,0 +1,3 @@
+class PaypalPayment
+   
+end 

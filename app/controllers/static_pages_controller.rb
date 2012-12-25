@@ -70,5 +70,6 @@ class StaticPagesController < ApplicationController
   end
   
   def payment
+    
   end
 end

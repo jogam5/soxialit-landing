@@ -10,6 +10,9 @@ class Product < ActiveRecord::Base
   attr_accessible :status
   attr_reader :size_tokens
   attr_reader :tag_list
+  attr_accessor :paypal_payment_token
+  attr_accessor :email
+  
   
   belongs_to :user
   has_reputation :votes, source: :user, aggregated_by: :sum
@@ -53,5 +56,9 @@ class Product < ActiveRecord::Base
    client_secret = 'pa6nV2JXuGee00YUoXaHsI3fPGhUfNTc'
    mp_client = MercadoPago::Client.new(client_id, client_secret)
    payment = mp_client.create_preference(datos) 
+  end
+  
+  def payment_provided?
+     paypal_payment_token.present?
   end
 end
