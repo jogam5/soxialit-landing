@@ -10,39 +10,9 @@ class PaypalPayment
   
   def checkout_url(options)
      process(:checkout, options).checkout_url
-     
-=begin
-    process(:checkout, options).checkout_url
-    ppr = PayPal::Recurring.new(
-    return_url: option1,
-    cancel_url: option2,
-    description: product.title,
-    amount: product.total_price,
-    currency: "MXN"
-     )
-     response = ppr.checkout
-     if response.valid?
-       redirect_to response.checkout_url
-     else
-       raise response.errors.inspect
-    end
   end
-=end
   
   def make_recurring
-=begin
-    ppr = PayPal::Recurring.new(
-    token: @pay.paypal_payment_token,
-    payer_id: @pay.paypal_payment_token,
-    description: @product.title,
-    amount: @product.total_price,
-    currency: "MXN"
-    )
-    response = ppr.request_payment
-     if response.errors.present?
-       raise response.errors.inspect
-    end
-=end
     process :request_payment
     process :create_recurring_profile, period: :monthly, frequency: 1, start_at: Time.zone.now
   end
