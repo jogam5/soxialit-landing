@@ -1,4 +1,21 @@
-<% unless @product.payment_provided? %>
+<% if params[:PayerID] %>
+	<%= form_for @pay do |f| %>
+		<h1>¡Gracias por tu compra!</h1>
+		<p>Confirma que este es el correo de tu cuenta de <strong>PayPal: </strong></p>
+		<div class="field">
+	      <%= f.label :email %>
+	      <%= f.text_field :email, :value => @pay.email, :disabled => true %>
+	    </div>
+		<%= f.hidden_field :paypal_customer_token, :value => @pay.paypal_customer_token %>
+		<%= f.hidden_field :paypal_payment_token, :value => @pay.paypal_payment_token %>
+		<%= f.hidden_field :product_id %>
+		
+		<div class="actions">
+		      <%= f.submit "Confirmar", :class => "button-follow" %>
+		      <%= link_to "Regresar", @product, :class => "button-unfollow" %>
+		</div>
+	<% end %>
+<% else %>
 	<% if signed_in? %>
 		<% if @product.user_id == current_user.id && @product.status != true %>
 			<div style="background-color:white" class="well">
@@ -173,19 +190,3 @@
 		</div>
 	</div>
 <% end %>
-<% if @product.payment_provided? %>
-	<%= form_for @product do |f| %>
-		<div class="field">
-	      <%= f.label :email %>
-	      <%= f.text_field :email %>
-	    </div>
-		<h1>test</h1>
-		<%= f.hidden_field :paypal_customer_token %>
-		<%= f.hidden_field :paypal_payment_token %>
- 
-	<% end %>
-<% end %>
-
-
-
-

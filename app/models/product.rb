@@ -22,6 +22,7 @@ class Product < ActiveRecord::Base
   has_many :sizes, :dependent => :destroy
   has_many :paintings, :dependent => :destroy
   has_many :ships, :dependent => :destroy
+  has_many :pays, :dependent => :destroy
   
   accepts_nested_attributes_for :ships
 

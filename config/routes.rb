@@ -1,5 +1,7 @@
 DeviseFacebook::Application.routes.draw do
  
+  resources :pays
+
   root :to => 'static_pages#home'
  
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
@@ -48,7 +50,8 @@ DeviseFacebook::Application.routes.draw do
   get '/comprar', to: 'products#comprar'
   get '/comprar_login', to: 'products#comprar_login'
   get '/tallas', to: 'products#tallas' 
-  get 'paypal/checkout', to: 'products#paypal_checkout'
+ # get 'paypal/checkout', to: 'products#paypal_checkout'
+  get 'paypal/checkout', to: 'pays#paypal_checkout'
   get 'mercadopago/checkout', to: 'products#mercadopago_checkout'
 
   
