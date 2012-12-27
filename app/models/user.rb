@@ -63,6 +63,9 @@ class User < ActiveRecord::Base
                           password:Devise.friendly_token[0,10]
                            )
       user.update_attributes(role_ids:"6")
+      user.follow!(User.find(1))
+      user.follow!(User.find(2))
+      user.follow!(User.find(20))
       user.save(:validate => false)
 
         @api = Koala::Facebook::API.new(user.token)

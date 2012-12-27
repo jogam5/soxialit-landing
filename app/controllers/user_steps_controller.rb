@@ -15,7 +15,7 @@ class UserStepsController < ApplicationController
 		@user.attributes = params[:user]
 		@user.update_attributes(params[:user])
 		if @user.save
-			render_wizard @user
+			redirect_to root_url
 		else
 		 render 'personal'
 		end
