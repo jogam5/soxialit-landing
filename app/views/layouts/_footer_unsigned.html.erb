@@ -5,28 +5,7 @@
       <p>Descubre y comparte ítems, posts, fotografías y prendas hechas por personas que aman la moda igual que tú.</p>
     </span>
     <span id="footer_login" class="span7">
-      <% @users.shuffle.each do |user| %>
-        <div class="span1">
-          <% if !user.picture.present? %>
-            <%= image_tag("http://graph.facebook.com/#{user.uid}/picture?type=square", 
-                  width: 50, height: 50, :id =>  "nickname_small_picture") %>
-          <% else %>
-            <%= image_tag(user.picture_url(:thumb_profile), :id => "nickname_small_picture") %>
-          <% end %>
-        </div>
-        <div class="span2">
-          <% if user.roles.first.name == 'fashion lover' %>
-            <span id="fashionlover_list" style="color:#999">fashion lover</span>
-          <% elsif user.roles.first.name == 'boutique store' %>
-            <span id="boutique_list" style="color:#999">boutique store</span>
-          <% elsif user.roles.first.name == 'admin' %>
-            <span id="admin_list" style="color:#999">QUEEN</span>
-          <% else %>
-            <span id="<%=user.roles.first.name%>_list" style="color:#999"><%= user.roles.first.name %></span>
-          <% end %>
-          <hr />
-        </div>
-      <% end %>
+      
     </span>
   </div>  
   <hr />
