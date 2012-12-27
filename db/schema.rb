@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121227195903) do
+ActiveRecord::Schema.define(:version => 20121227201926) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(:version => 20121227195903) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "email"
-    t.integer  "phone"
+    t.string   "phone"
     t.string   "category"
     t.string   "brand"
     t.string   "website"
