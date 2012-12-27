@@ -1,5 +1,7 @@
 DeviseFacebook::Application.routes.draw do
  
+  resources :partners
+
   resources :pays
 
   root :to => 'static_pages#home'

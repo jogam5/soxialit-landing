@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :products, :dependent => :destroy
   has_many :evaluations, class_name: "RSEvaluation", as: :source
   has_many :feedbacks, :dependent => :destroy
+  has_many :partners, :dependent => :destroy
   has_many :microposts, :dependent => :destroy
   has_one :direction, :dependent => :destroy
 

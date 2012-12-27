@@ -1,0 +1,22 @@
+// Place all the styles related to the Partners controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#description-low{
+	display: block;
+	margin: 12px 0 5px;
+	color: #93999E;
+	font-size: 0.9em;
+	line-height: 0.8em;
+	padding: 0.5%;
+	a {
+		color: #999;
+	}
+	a:hover{
+	text-decoration:none;
+	color: #d93e38;
+   
+	}
+
+}

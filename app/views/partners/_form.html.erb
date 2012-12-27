@@ -1,0 +1,63 @@
+<%= form_for @partner, :validate => true do |f| %>
+  <% if @partner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@partner.errors.count, "error") %> prohibieron enviar tu información:</h2>
+
+      <ul>
+      <% @partner.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="row">
+  <div class="span4 offset2">
+    <div class="small_feed">Nombre completo: </div>
+    <%= f.text_field :name %>
+  </div>
+  <div class="span4">
+    <div class="small_feed">Email de contacto: </div>
+    <%= f.text_field :email %>
+  </div>
+ <div class="span4 offset2">
+    <div class="small_feed">
+		Cuenta de PayPal:
+		<p id="description-low">Ingresa el email de tu cuenta de PayPal, necesario para recibir pagos.
+		Obtén una <strong><%= link_to "aquí", "https://www.paypal.com/mx/webapps/mpp/home", :target => 'blank' %></strong></p>
+	</div>
+    <%= f.text_field :paypal %>
+  </div>
+  <div class="span4">
+    <div class="small_feed">Teléfono: </div>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="span4 offset2">
+    <div class="small_feed">Categoría: </div>
+	<%= f.select :category, options_for_select(["Accesorios", "Ropa", "Zapatos"]), {} %>
+  </div>
+  <div class="span4">
+    <div class="small_feed">Marca: </div>
+    <%= f.text_field :brand %>
+  </div>
+  <div class="span4 offset2">
+    <div class="small_feed">Website/Facebook Fan Page: </div>
+    <%= f.text_field :website %>
+  </div>
+  <div class="span4">
+	<div class="small_feed">Ciudad: </div>
+    <%= f.text_field :city %>
+  </div>
+  <div class="span4 offset2">
+	<div class="small_feed">Dirección: </div>
+    <%= f.text_field :address %>
+  </div>
+  <div class="span4">
+	<div class="small_feed">Código postal: </div>
+    <%= f.text_field :zipcode %>
+  </div>
+  <div class="span4 offset2">
+    <%= f.submit "Enviar", :class => "button-want" %>
+  </div>
+</div>
+<% end %>
