@@ -4,8 +4,9 @@
       <h3>Somos una comunidad de artistas, creativos y personas que aman la <span style="color:#ddbe6e">moda.</span></h3>
       <p>Descubre y comparte ítems, posts, fotografías y prendas hechas por personas que aman la moda igual que tú.</p>
     </span>
-    <span id="footer_login" class="span7">
-      
+    <span id="footer_login" class="span6">
+      <p style="text-align:center"><%= link_to "Ingresa a la Comunidad", 
+                        user_omniauth_authorize_path(:facebook), class: "button-want" %></p>
     </span>
   </div>  
   <hr />
