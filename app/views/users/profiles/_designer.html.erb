@@ -17,7 +17,7 @@
 							<%= link_to "Following", following_user_path(@user), remote: true %></p>
 						</li>
 						<li class="divider-vertical"></li>
-						<li style="padding-top:9px"><p id="profile_nav_bar"><span id="followers_count"><%= @user.followers.count %> </span>
+						<li style="padding-top:9px"><p id="profile_nav_bar"><span id="followers_count_<%=@user.id%>"><%= @user.followers.count %> </span>
 							<%= link_to "Followers", followers_user_path(@user), remote: true %></p>
 						</li>
 	              	</ul>
