@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Plan:</b>
+  <%= @pay.plan_id %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @pay.email %>
+</p>
+
+
+<%= link_to 'Edit', edit_pay_path(@pay) %> |
+<%= link_to 'Back', pays_path %>

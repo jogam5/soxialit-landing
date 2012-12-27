@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121219003950) do
+ActiveRecord::Schema.define(:version => 20121225200238) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -87,14 +87,24 @@ ActiveRecord::Schema.define(:version => 20121219003950) do
 
   add_index "paintings", ["product_id"], :name => "index_paintings_on_product_id"
 
+  create_table "pays", :force => true do |t|
+    t.integer  "plan_id"
+    t.string   "email"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.integer  "product_id"
+    t.string   "paypal_customer_token"
+    t.string   "paypal_recurring_profile_token"
+  end
+
   create_table "products", :force => true do |t|
     t.string   "brand"
     t.string   "description"
     t.string   "picture"
     t.string   "title"
     t.integer  "user_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.decimal  "shipping"
     t.decimal  "total_price"
     t.decimal  "ship_int"
@@ -111,6 +121,8 @@ ActiveRecord::Schema.define(:version => 20121219003950) do
     t.integer  "ancho"
     t.decimal  "price_estafeta"
     t.boolean  "status"
+    t.string   "paypal_customer_token"
+    t.string   "paypal_recurring_profile_token"
   end
 
   create_table "relationships", :force => true do |t|

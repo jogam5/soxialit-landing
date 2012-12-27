@@ -61,7 +61,14 @@ class ProductsController < ApplicationController
       @users = User.all
       @products = avoid_nil(@user.products.all)
       user_cp = find_user_product(@product)
-      
+      @pay = @product.pays.build
+        if params[:PayerID]
+           @pay.paypal_customer_token = params[:PayerID]
+           @pay.paypal_payment_token = params[:token]
+           #@pay.email = @pay.paypal.checkout_details.email
+           @pay.email = PayPal::Recurring.new(token: params[:token]).checkout_details.email
+         end
+
       if signed_in?
          if current_user.direction.nil? || user_cp.nil?
          else
@@ -94,13 +101,16 @@ class ProductsController < ApplicationController
              logger.debug "#{@tarifas}\n\n\n\n\n\n"
          end
       end
+   
+    
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @product }
         format.js
       end
     end
-
+    
+     
     def new
       @product = current_user.products.create
       @product.activities.create(:user_id => current_user.id, :action => "create")
@@ -176,11 +186,11 @@ class ProductsController < ApplicationController
         format.json { head :no_content }
       end
     end
-
+=begin
     def paypal_checkout
            product = Product.find(params[:product_id])
            ppr = PayPal::Recurring.new(
-            return_url: payment_url,
+            return_url: product_url(product),
             cancel_url: products_url,
             description: product.title,
             amount: product.total_price,
@@ -193,7 +203,7 @@ class ProductsController < ApplicationController
              raise response.errors.inspect
           end
       end
-
+=end
     def envio_df 
      @product = Product.find(params[:id])
      @product.ships.create(:ship_selected => params[:envio], :user_id => current_user.id, :ship_name => params[:id])
