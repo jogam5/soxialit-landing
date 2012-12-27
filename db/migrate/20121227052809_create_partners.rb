@@ -4,7 +4,7 @@ class CreatePartners < ActiveRecord::Migration
       t.integer :user_id
       t.string :name
       t.string :email
-      t.integer :phone
+      t.string :phone
       t.string :category
       t.string :brand
       t.string :website
