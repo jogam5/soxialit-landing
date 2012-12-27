@@ -1,3 +1,4 @@
+<div id="form_<%= @user.id %>" %>
 <% unless current_user?(@user) %>
   <div id="follow_form">
   <% if current_user.following?(@user) %>
@@ -7,3 +8,4 @@
   <% end %>
   </div>
 <% end %>
+</div>
