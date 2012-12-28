@@ -324,12 +324,12 @@ margin-top: 3%;
 	font-family:Lobster, Raleway, Helvetica, Sans-Serif;
 	font-size:2em;
 	margin-top:2%;
-	 a:hover{
-	color:$grayTitle;
-	}
 	 a{
 	text-decoration:none;
 	color:white;
+	}
+	 a:hover{
+	color:$grayTitle;
 	}
 }
 
@@ -916,6 +916,7 @@ li.comment {
 	color:white;
 	font-weight:300;
 	font-size:1.2em;
+	font-family:acta-display, nimbus, Lucida Grande, Helvetica, Arial, Sans-serif;
 	}
 	 a:hover{
 	color:$rojo;
@@ -1190,7 +1191,7 @@ li.comment {
 }
 
 #footer_login{
-	margin-top:3em;
+	margin-top:0.5em;
 	text-alig:center;
 	a{
 	color:whiteSmoke;
@@ -1200,6 +1201,9 @@ li.comment {
 	 a:hover{
 	color:#ccc;
 	 }
+	 h3{
+	font-size:2.5em; 
+	}
 }
 
 /* Footer Unsigned ***********/

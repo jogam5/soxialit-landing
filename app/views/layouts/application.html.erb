@@ -18,7 +18,6 @@ mixpanel.init("5e344db467e2f971ffccde4566fe2da4");</script><!-- end Mixpanel -->
 <style> body { padding-top: 65px; } </style>
 
 <body>
-    <%= render 'layouts/header_unsigned' unless user_signed_in? %>
     <%= render 'layouts/header' %>
     <div class="container">
       <% flash.each do |type, message| %>

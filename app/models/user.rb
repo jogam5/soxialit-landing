@@ -65,20 +65,31 @@ class User < ActiveRecord::Base
                            )
       user.update_attributes(role_ids:"6")
       user.follow!(User.find(1))
-      user.follow!(User.find(2))
-      user.follow!(User.find(20))
+      
       user.save(:validate => false)
 
         @api = Koala::Facebook::API.new(user.token)
-          begin
-            #@graph_data = @api.get_object("/me/posts")
-            #@graph_data = @api.get_object("me/user", "fields" => "id")
-           #@graph_data = @api.get_object("/me/")
-            @api.put_connections("me", "feed", :message => "Me acabo de unir a Soxialit, la red social para Descubrir,
-              Comprar y Compartir Moda. Registrate en: http://soxialit.com")
-            rescue Exception=>ex
-                puts ex.message
+        begin
+          #@graph_data = @api.get_object("/me/posts")
+          #@graph_data = @api.get_object("me/user", "fields" => "id")
+         #@graph_data = @api.get_object("/me/")
+          @api.put_connections("me", "feed", :message => "Me acabo de unir a Soxialit, la red social para fashion 
+            designers, bloggers, fotografos y amantes de la moda. Registrate en: http://soxialit.com")
+          @friends = @api.get_connections("me", "friends")
+          @users = User.all
+          @users.each do |u|
+            @friends.each do |friend|
+              if friend["id"] == u.uid
+                if u.id != User.find(1).id
+                  user.follow!(User.find(u.id))
+                end
+              end
+            end
           end
+
+          rescue Exception=>ex
+              puts ex.message
+        end
     end
     user
   end
