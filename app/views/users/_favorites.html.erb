@@ -2,7 +2,7 @@
 <div style="margin-left:-2%; margin-right: 8%" id="contenedor" class="clearfix masonry">
  	<% @user.evaluations.each do |z| %>
 		<% if z.target_type == "Micropost" %>
-			<div class="box photo col4 masonry-brick">
+			<div class="box photo col3 masonry-brick">
 				<div style="background-color:white; padding:10px; margin-left:5%" class="well">
 					<%= link_to image_tag(find_micropost_image(z.target_id), :class => "link_favorites_image"), find_micropost_url(z.target_id), target: '_blank' %>
 					<p style="font-size: 1.1em; margin-left:27%">
