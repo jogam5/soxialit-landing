@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121227055408) do
+ActiveRecord::Schema.define(:version => 20121227202958) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(:version => 20121227055408) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "email"
-    t.integer  "phone"
+    t.string   "phone"
     t.string   "category"
     t.string   "brand"
     t.string   "website"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(:version => 20121227055408) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "paypal"
+    t.string   "skype"
   end
 
   add_index "partners", ["user_id"], :name => "index_partners_on_user_id"
