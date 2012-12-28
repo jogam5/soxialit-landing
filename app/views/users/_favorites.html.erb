@@ -1,5 +1,5 @@
 <div id="ajax-status" style="float:left; display:none; margin: 0 50% 0 50%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
-<div  id="contenedor" class="clearfix masonry">
+<div id="contenedor" class="clearfix masonry">
  	<% @user.evaluations.each do |z| %>
 		<% if z.target_type == "Micropost" %>
 			<div class="box photo col3 masonry-brick">
