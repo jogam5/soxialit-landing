@@ -101,7 +101,7 @@ class UsersController < ApplicationController
 
   def list_items
     @user = User.find(params[:id])
-    @products = product_ok(@user.products)
+    @products = product_ok(@user.products, :order => "created_at DESC")
     respond_to do |format|
       format.js
     end
