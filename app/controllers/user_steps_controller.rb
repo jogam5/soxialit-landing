@@ -14,6 +14,7 @@ class UserStepsController < ApplicationController
 		@user = current_user
 		@user.attributes = params[:user]
 		@user.update_attributes(params[:user])
+		
 		if @user.save
 			redirect_to root_url
 		else
