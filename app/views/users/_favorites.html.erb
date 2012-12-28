@@ -21,7 +21,7 @@
 		<% end %>
 		<% if z.target_type == "Product" %>
 		
-	<div class="box photo col3 masonry-brick">
+	<div style="margin-left:3%" class="box photo col3 masonry-brick">
  	  <div id="favorites_frame">
 		<div id="favorites_image">
 		  		<%= link_to tag(:img, { :src => find_foto(z.target_id) }, false), product_path(z.target_id) %>
