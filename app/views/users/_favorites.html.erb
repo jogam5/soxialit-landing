@@ -5,11 +5,9 @@
 			<div class="box photo col3 masonry-brick">
 				<div id="favorites_frame">
 						<%= link_to image_tag(find_micropost_image(z.target_id)), find_micropost_url(z.target_id), target: '_blank' %>
-						<p style="font-size: 1.1em; margin-left:27%">
-							<p style="margin-left:45%" id="item_link"><strong>
-								<%= link_to find_micropost_title(z.target_id), find_micropost_url(z.target_id), target: '_blank' %></strong> 
+							<p style="margin-left:10%" id="item_link"><strong>
+								Link: <%= link_to find_micropost_title(z.target_id), find_micropost_url(z.target_id), target: '_blank' %></strong> 
 						 	</p>
-						</p>	
 						<div style="margin-left: 65%" id="micropost_description">
 							<span style="color:#999; font-size: 0.9em">Publicado por</span>
 							<%= link_to image_tag(find_micropost_userimage(z.source_id), style:"width:35px", id: "like_small_picture"), user_path(find_micropost_userurl(z.source_id))%>
