@@ -4,7 +4,7 @@
 		<% if z.target_type == "Micropost" %>
 			<div class="box photo col3 masonry-brick">
 				<div id="favorites_frame">
-		 	  	<div style="background-color:white; padding:10px; margin-left:14%" class="span3">
+		 	  	<div style="background-color:white; padding:10px; margin-left:30%" class="well">
 					<%= link_to image_tag(find_micropost_image(z.target_id), :class => "link_favorites_image"), find_micropost_url(z.target_id), target: '_blank' %>
 					<p style="font-size: 1.1em; margin-left:27%">
 						<p style="margin-left:45%" id="item_link"><strong>
