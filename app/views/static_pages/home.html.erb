@@ -26,4 +26,34 @@ $(document).ready(function(){
 });
 </script>
 
-<script type="text/javascript">mixpanel.track("Landing Page Loaded")</script>
+
+<script type="text/javascript">
+  $(function() {
+    $('#status').preview({key:'7f6cf7cec28511e0866c4040d3dc5c07'});
+  });
+</script>
+<script type="text/javascript"charset="UTF-8">
+  $(function() {
+    $('input#button_send').click(function(){
+      var url = $('input#id_url:hidden').val();
+      $('input#micropost_url').val(url);
+       var provider_url = $('input#id_provider_url:hidden').val();
+       $('input#micropost_provider').val(provider_url);
+        var title = $('input#id_title:hidden').val();
+        $('input#micropost_title').val(title);
+         var description = $('input#id_description:hidden').val();
+         $('input#micropost_description').val(description);
+          var image = $('input#id_thumbnail_url:hidden').val();
+          $('input#micropost_thumbnail').val(image);
+     });
+    return false;
+  });
+  $(function() {
+    $('input#button_send').click(function(){
+      setTimeout(function() {
+               location.reload('.microposts');
+      }, 500);
+    });
+  });
+</script>
+<script type="text/javascript">mixpanel.track("Home Page Loaded")</script>
