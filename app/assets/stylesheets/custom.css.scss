@@ -938,6 +938,7 @@ li.comment {
 #item_link{
 	 a{
 	color:$rojo;
+	font-weight: lighter;
 	}
 	 a:hover{
 	color:black;
@@ -953,6 +954,10 @@ li.comment {
 	color:$grayTitle;
 	text-decoration:none;
 	}
+}
+
+.link_image_favoritos{
+	display:block; width:150px; position: block; margin-left: auto; margin-right: auto;
 }
 
 #user_and_items_link{

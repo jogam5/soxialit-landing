@@ -4,11 +4,12 @@
 	<% if z.target_type == "Micropost" %>
 			<div class="box photo col3 masonry-brick">
 				<div class="frame_link_favorites">
-					<div style="display:block; width:150px;">
+					<div class="link_image_favoritos">
 						<%= link_to image_tag(find_micropost_image(z.target_id)), find_micropost_url(z.target_id), target: '_blank' %>
 					</div>
-					<p style="margin-left:10%" id="item_link"><strong>
-						Link: <%= link_to find_micropost_title(z.target_id), find_micropost_url(z.target_id), target: '_blank' %></strong> 
+					<br/>
+					<p style="margin-left:-10%" id="item_link"><strong>
+						<%= image_tag('link.png', style: "width:25px; float:left" ) %> </i><%= link_to find_micropost_title(z.target_id), find_micropost_url(z.target_id), target: '_blank' %></strong> 
 					</p>
 					<div id="micropost_description">
 						<span style="color:#999; font-size: 0.9em">Publicado por</span>
