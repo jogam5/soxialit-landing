@@ -295,6 +295,12 @@ button {
   overflow: auto;
 }
 
+
+.profile_favorites_image{
+	width: 35px;
+	height: 35px;
+}
+
 #comparison .example {
   width: 420px;
   float: left;
