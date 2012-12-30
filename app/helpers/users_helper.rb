@@ -51,13 +51,15 @@ module UsersHelper
 	end
 	
 	def find_micropost_userimage(evaluations)
-	   a = User.find(evaluations)
-	   b = "http://graph.facebook.com/#{a.uid}/picture?type=square"
-	   return b
+	   a = Micropost.find(evaluations)
+	   b = User.find(a.user_id)
+	   c = "http://graph.facebook.com/#{b.uid}/picture?type=square"
+	   return c
 	end
 	
 	def find_micropost_userurl(evaluations)
-	   a = User.find(evaluations)
-	   a.id
+	   a = Micropost.find(evaluations)
+	   b = User.find(a.user_id)
+	   b.id
 	end
 end
