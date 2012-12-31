@@ -1,5 +1,4 @@
-<% if current_user.roles.first.name == 'admin' %>
-	<div class="users_follow">
+<div class="users_follow">
 		<span><%= link_to "Fashion Lovers / ", fashionlover_path, :remote => true %></span>
 		<span><%= link_to " Designers / ", designer_path, :remote => true %></span>
 		<span> <%= link_to " Boutiques / ", boutique_path, :remote => true %></span>
@@ -9,6 +8,8 @@
   <hr>
   <div id="ajax-status" style="float:left; display:none; margin: 0 50% 0 50%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
   <div id="user_roles"></div>
+<% if current_user.roles.first.name == 'admin' %>
+
 
   <h1>Listing users</h1>
 
