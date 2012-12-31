@@ -6,5 +6,6 @@ class ActivitiesController < ApplicationController
 
   def expire_get_feed_cache
   	Rails.cache.delete('get_feed')
+  	return true
   end
 end
