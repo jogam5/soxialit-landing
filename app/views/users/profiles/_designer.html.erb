@@ -7,7 +7,7 @@
 						<li id="profile_nav_bar"><%= link_to "Items", list_items_path(@user), 
 								remote: true %></li>
 						<li class="divider-vertical"></li>
-						<li id="profile_nav_bar"><%= link_to "Loves", favorites_path(@user),
+						<li id="profile_nav_bar"><%= link_to image_tag('like-active.png'), favorites_path(@user),
 								remote: true %></li>
 						<li class="divider-vertical"></li>
 					</ul>
