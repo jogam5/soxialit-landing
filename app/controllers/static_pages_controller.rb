@@ -1,12 +1,13 @@
 class StaticPagesController < ApplicationController
   def home
   	@users = User.limit(6)
+    @stats = Rails.cache.stats.first.last
   	@comment = Comment.new
     @micropost = Micropost.new
   	if user_signed_in?
-  		@feed_items = current_user.feed
+  		@feed_items = current_user.feed_cached
   	else
-  	  @feed_items = User.find(1).feed
+  	  @feed_items = User.find(1).feed_cached
       #@feed_items = User.first.feed
   	end
   end

@@ -1,3 +1,26 @@
+<% if current_user.roles.first.name == 'admin' %>
+<h1>Cache Stats</h1>
+
+<table>
+  <tr>
+    <th>Metric</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+    <td>Cache hits:</td>
+    <td><%= @stats['get_hits'] %></td>
+  </tr>
+  <tr>
+    <td>Cache misses:</td>
+    <td><%= @stats['get_misses'] %></td>
+  </tr>
+  <tr>
+    <td>Cache flushes:</td>
+    <td><%= @stats['cmd_flush'] %></td>
+  </tr>
+</table>
+<% end %>
+
 <div class="row">
   <div class="span2">
   	<span style="float:right; margin-top:1.4em"><%= image_tag 'link.png' %></span>

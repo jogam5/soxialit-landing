@@ -12,6 +12,9 @@ gem 'wicked'
 gem 'hominid'
 gem 'koala'
 
+#gem cache
+gem 'dalli'
+
 #Reputation
 gem 'activerecord-reputation-system', require: 'reputation_system'
 
