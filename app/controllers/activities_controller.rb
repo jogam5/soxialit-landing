@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  after_save :expire_get_feed_cache
+  #after_save :expire_get_feed_cache
 
   def create
   end
