@@ -113,4 +113,50 @@ class UsersController < ApplicationController
       format.js
     end
   end
+  
+  def designer
+   @users = User.all
+   @designers = find_designer(@users)
+  end
+  
+  def find_designer(users)
+     designers = []
+     users.each do |user|
+        if user.roles.first.name == "designer"
+           designers << user
+        end
+     end
+     return designers
+  end
+  
+  def fashionlover
+     @users = User.all
+     @fashionlovers = find_fashionlover(@users)
+    end
+
+    def find_fashionlover(users)
+       fashionlover = []
+       users.each do |user|
+          if user.roles.first.name == "admin"
+             fashionlover << user
+          end
+       end
+       return fashionlover
+    end
+    
+    def boutique
+        @users = User.all
+        @boutiques = find_boutiques(@users)
+       end
+
+       def find_boutiques(users)
+          boutiques = []
+          users.each do |user|
+             if user.roles.first.name == "boutique store"
+                boutiques << user
+             end
+          end
+          return boutiques
+       end
+  
 end

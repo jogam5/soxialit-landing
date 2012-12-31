@@ -1,4 +1,11 @@
 <% if current_user.roles.first.name == 'admin' %>
+  <%= link_to "Fashion Lovers", fashionlover_path, :remote => true %>
+  <%= link_to "Designers", designer_path, :remote => true %>
+  <%= link_to "Boutiques", boutique_path, :remote => true %>
+
+  Fashion Lovers/ Designers/ Boutiques/ Blogger/ Fotógrafos
+  <div id="user_roles"></div>
+
   <h1>Listing users</h1>
 
   <table>
