@@ -57,9 +57,9 @@ DeviseFacebook::Application.routes.draw do
   get '/designer', to: 'users#designer'
   get '/fashionlover', to: 'users#fashionlover'
   get '/boutique', to: 'users#boutique'
+  get '/blogger', to: 'users#bloger'
+  get '/fotografo', to: 'users#fotografo'
   
-  
- 
  # get 'paypal/checkout', to: 'products#paypal_checkout'
   get 'paypal/checkout', to: 'pays#paypal_checkout'
   get 'mercadopago/checkout', to: 'products#mercadopago_checkout'

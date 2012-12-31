@@ -137,7 +137,7 @@ class UsersController < ApplicationController
     def find_fashionlover(users)
        fashionlover = []
        users.each do |user|
-          if user.roles.first.name == "admin"
+          if user.roles.first.name == "fashion lover"
              fashionlover << user
           end
        end
@@ -158,5 +158,35 @@ class UsersController < ApplicationController
           end
           return boutiques
        end
+       
+       def blogger
+            @users = User.all
+            @bloggers = find_bloggers(@users)
+           end
+
+           def find_bloggers(users)
+              bloggers = []
+              users.each do |user|
+                 if user.roles.first.name == "blogger"
+                    bloggers << user
+                 end
+              end
+              return bloggers
+           end
+           
+           def fotografo
+              @users = User.all
+              @fotografos = find_fotografos(@users)
+           end
+
+                def find_fotografos(users)
+                   fotografos = []
+                   users.each do |user|
+                      if user.roles.first.name == "fotografo"
+                         fotografos << user
+                      end
+                   end
+                   return fotografos
+                end
   
 end
