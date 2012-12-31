@@ -1,12 +1,13 @@
 <% if current_user.roles.first.name == 'admin' %>
-  <%= link_to "Fashion Lovers", fashionlover_path, :remote => true %>
-  <%= link_to "Designers", designer_path, :remote => true %>
-  <%= link_to "Boutiques", boutique_path, :remote => true %>
-  <%= link_to "Bloggers", blogger_path, :remote => true %>
-  <%= link_to "Fotógrafos", fotografo_path, :remote => true %>
-
-
-  Fashion Lovers/ Designers/ Boutiques/ Blogger/ Fotógrafos
+	<div class="users_follow">
+		<span><%= link_to "Fashion Lovers/ ", fashionlover_path, :remote => true %></span>
+		<span><%= link_to " Designers/ ", designer_path, :remote => true %></span>
+		<span> <%= link_to " Boutiques/ ", boutique_path, :remote => true %></span>
+		<span> <%= link_to " Bloggers/ ", blogger_path, :remote => true %></span>
+		<span>  <%= link_to " Fotógrafos/ ", fotografo_path, :remote => true %></span>
+	</div>
+  <hr>
+	
   <div id="user_roles"></div>
 
   <h1>Listing users</h1>

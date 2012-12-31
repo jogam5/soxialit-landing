@@ -1262,4 +1262,29 @@ li.comment {
 }
 
 
+#user_roles{
+	li{
+	list-style:none;
+	}
+}
+
+.users_follow{
+
+	span{
+		padding-bottom: 10px;
+		font-size: 1.2em;
+		font-family: "helvetica";
+		font-weight: 400;
+		color: #666;
+		text-transform: capitalize;
+	}
+	a{
+		color: #666;;
+		text-decoration: none;
+	}
+	a:hover{
+		color:#DD390D;
+	}
+}
+
 /* Header Unsigned ***********/
