@@ -278,6 +278,16 @@ class ProductsController < ApplicationController
     end
 
     def products_as_json(product)
+       if user_signed_in?
+          username = current_user.username
+          surname = current_user.username
+          email = current_user.email
+       else
+          username = "Usuario Nuevo"
+          surname = "Usuario Nuevo"
+          email = "email nuevo"
+      end
+          
        data = {
          "external_reference" => "ARTICLE-ID-#{product.id}",
          "items" => [
@@ -292,9 +302,9 @@ class ProductsController < ApplicationController
            }
          ],
          "payer" => {
-             "name"=> current_user.username,
-             "surname"=> current_user.username,
-             "email"=> current_user.email
+             "name"=> username,
+             "surname"=> surname,
+             "email"=> email
            },
          "back_urls"=> {
            "pending"=> "https://www.site.com/pending",
