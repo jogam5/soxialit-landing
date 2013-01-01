@@ -307,9 +307,9 @@ class ProductsController < ApplicationController
              "email"=> email
            },
          "back_urls"=> {
-           "pending"=> "https://www.site.com/pending",
-           "success"=> "http://www.site.com/success",
-           "failure"=> "http://www.site.com/failure"
+           "pending"=> "https://www.soxialit.com",
+           "success"=> "http://www.soxialit.com/",
+           "failure"=> "http://www.soxialit.com/"
          }
        }
        return data
