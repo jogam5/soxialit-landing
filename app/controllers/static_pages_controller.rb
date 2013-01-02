@@ -1,6 +1,5 @@
 class StaticPagesController < ApplicationController
   def home
-  	@users = User.limit(6)
     @stats = Rails.cache.stats.first.last
   	@comment = Comment.new
     @micropost = Micropost.new
@@ -71,6 +70,5 @@ class StaticPagesController < ApplicationController
   end
   
   def payment
-    
   end
 end
