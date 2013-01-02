@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :authenticate_user!, except: :show
+  before_filter :authenticate_user!, :except => [:show, :index, :tallas, :comprar, :mercadopago_checkout, :envio_df, :envio]
   load_and_authorize_resource
    
     def status
@@ -206,7 +206,12 @@ class ProductsController < ApplicationController
 =end
     def envio_df 
      @product = Product.find(params[:id])
-     @product.ships.create(:ship_selected => params[:envio], :user_id => current_user.id, :ship_name => params[:id])
+     if user_signed_in?
+        user = current_user.id
+     else 
+        user = "nil"
+     end
+     @product.ships.create(:ship_selected => params[:envio], :user_id => user, :ship_name => params[:id])
      @product.total_price = (@product.price + @product.ships.last.ship_selected).to_i
      @product.save
    end
@@ -223,33 +228,35 @@ class ProductsController < ApplicationController
        @product = Product.find(params[:product_id])
        @product.ships.build
        user_cp = find_user_product(@product)
-      if current_user.direction.nil? || user_cp.nil?
-      else
-          user_product_cp = find_user_product(@product)
-          current_user_cp = current_user.direction.zipcode
-          logger.debug "#{user_product_cp}\n\n\n\n\n\n"
-          logger.debug "#{current_user_cp}\n\n\n\n\n\n"
-          if @product.tipo_envio == "sobre"
-             url = "http://rastreo2.estafeta.com:7001/Tarificador/admin/TarificadorAction.do?dispatch=doGetTarifas&cCodPosOri=#{user_product_cp}&cCodPosDes=#{current_user_cp}&cTipoEnvio=#{@product.tipo_envio}&cIdioma=Esp"
-          else
-             url = "http://rastreo2.estafeta.com:7001/Tarificador/admin/TarificadorAction.do?dispatch=doGetTarifas&cCodPosOri=#{user_product_cp}&cCodPosDes=#{current_user_cp}&cTipoEnvio=#{@product.tipo_envio}&cIdioma=Esp&nPeso=#{@product.peso}&nLargo=#{@product.largo}&nAncho=#{@product.ancho}&nAlto=#{@product.alto}"
-          end
-             logger.debug "#{url}\n\n\n\n\n\n"
-             require 'net/http'
-             require 'rubygems'
-             require 'nokogiri'
-             require 'open-uri'
+       if user_signed_in?
+         if current_user.direction.nil? || user_cp.nil?
+         else
+             user_product_cp = find_user_product(@product)
+             current_user_cp = current_user.direction.zipcode
+             logger.debug "#{user_product_cp}\n\n\n\n\n\n"
+             logger.debug "#{current_user_cp}\n\n\n\n\n\n"
+             if @product.tipo_envio == "sobre"
+                url = "http://rastreo2.estafeta.com:7001/Tarificador/admin/TarificadorAction.do?dispatch=doGetTarifas&cCodPosOri=#{user_product_cp}&cCodPosDes=#{current_user_cp}&cTipoEnvio=#{@product.tipo_envio}&cIdioma=Esp"
+             else
+                url = "http://rastreo2.estafeta.com:7001/Tarificador/admin/TarificadorAction.do?dispatch=doGetTarifas&cCodPosOri=#{user_product_cp}&cCodPosDes=#{current_user_cp}&cTipoEnvio=#{@product.tipo_envio}&cIdioma=Esp&nPeso=#{@product.peso}&nLargo=#{@product.largo}&nAncho=#{@product.ancho}&nAlto=#{@product.alto}"
+             end
+                logger.debug "#{url}\n\n\n\n\n\n"
+                require 'net/http'
+                require 'rubygems'
+                require 'nokogiri'
+                require 'open-uri'
 
-             doc = Nokogiri::HTML(open(url))
-             @dias = []
-             doc.css(':nth-child(6) .style5 strong , :nth-child(7) strong, :nth-child(8) strong').each do |node|
-                  @dias.push(node.text)
-             end 
+                doc = Nokogiri::HTML(open(url))
+                @dias = []
+                doc.css(':nth-child(6) .style5 strong , :nth-child(7) strong, :nth-child(8) strong').each do |node|
+                     @dias.push(node.text)
+                end 
 
-          @tarifas = []
-             doc.css(':nth-child(6) td:nth-child(8) , :nth-child(7) :nth-child(8), :nth-child(8) td:nth-child(8)').each do |node|
-             @tarifas.push(node.text)
-          end
+             @tarifas = []
+                doc.css(':nth-child(6) td:nth-child(8) , :nth-child(7) :nth-child(8), :nth-child(8) td:nth-child(8)').each do |node|
+                @tarifas.push(node.text)
+             end
+         end
       end
     end
 
@@ -271,6 +278,16 @@ class ProductsController < ApplicationController
     end
 
     def products_as_json(product)
+       if user_signed_in?
+          username = current_user.username
+          surname = current_user.username
+          email = current_user.email
+       else
+          username = "Usuario Nuevo"
+          surname = "Usuario Nuevo"
+          email = "email nuevo"
+      end
+          
        data = {
          "external_reference" => "ARTICLE-ID-#{product.id}",
          "items" => [
@@ -285,14 +302,14 @@ class ProductsController < ApplicationController
            }
          ],
          "payer" => {
-             "name"=> current_user.username,
-             "surname"=> current_user.username,
-             "email"=> current_user.email
+             "name"=> username,
+             "surname"=> surname,
+             "email"=> email
            },
          "back_urls"=> {
-           "pending"=> "https://www.site.com/pending",
-           "success"=> "http://www.site.com/success",
-           "failure"=> "http://www.site.com/failure"
+           "pending"=> "https://www.soxialit.com",
+           "success"=> "http://www.soxialit.com/",
+           "failure"=> "http://www.soxialit.com/"
          }
        }
        return data

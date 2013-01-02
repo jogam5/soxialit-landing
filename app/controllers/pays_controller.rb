@@ -16,8 +16,10 @@ class PaysController < ApplicationController
     product.pays.create(email:@pay.email, paypal_recurring_profile_token: @pay.paypal_recurring_profile_token, paypal_customer_token: @pay.paypal_customer_token)
     respond_to do |format|
        if @pay.save_with_payment
-       else
+       elsif user_signed_in?
          format.html {redirect_to current_user, notice: 'Gracias por tu compra, en un momento te enviaremos informacion'}
+       else
+          format.html {redirect_to products_path, notice: 'Gracias por tu compra, en un momento te enviaremos informacion'}
        end
    end
   end
