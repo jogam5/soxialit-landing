@@ -961,9 +961,6 @@ li.comment {
 }
 
 #description_link_favorites{
-
-   	overflow: hidden;
-	text-overflow: ellipsis;
 	font-size: 15px;
 	line-height: 21px;
 	color: #444;
@@ -972,6 +969,11 @@ li.comment {
 	margin-bottom: 2%;
 	font-family: "ff-meta-serif-web-pro",Georgia,Cambria,"Times New Roman",Times,serif;
 	font-weight: 400;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 4; 
+	-webkit-box-orient: vertical;
 }
 
 .link_user_index{
