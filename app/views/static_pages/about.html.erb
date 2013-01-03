@@ -2,10 +2,14 @@
   <div style="margin-top:1%" class="span2" id="about_menu">
   	<ul id="menu_about">
 	 <li id= "link_about"><%= link_to "Soxialit", soxialit_path, remote: true %></li>
-     <li id="link_about" class="vender"><%= link_to "Vender", sell_path, remote: true %></li>
-     <span id="about_submenu"><li id="link_about" class="guia"><%= link_to "Guía de Fotos", guides_path, remote: true %></li></span>
-     <span id="about_submenu"><li id="link_about" class="ejemplo"><%= link_to "Ejemplos", examples_path, remote: true %></li></span>
-	 <li id="link_about" class="comprar"> <%= link_to "Comprar", buy_path, remote: true %></li>
+     <li id="link_about" class="vender"><%= link_to "Vender", sell_path, remote: true,
+          :onmousedown => "_gaq.push(['_trackEvent', 'About Links', 'Check Vender OnMouse', 'Vender OnMouse']);" %></li>
+     <span id="about_submenu"><li id="link_about" class="guia"><%= link_to "Guía de Fotos", guides_path, remote: true,
+          :onmousedown => "_gaq.push(['_trackEvent', 'About Links', 'Check Guia OnMouse', 'Guia OnMouse']);" %></li></span>
+     <span id="about_submenu"><li id="link_about" class="ejemplo"><%= link_to "Ejemplos", examples_path, remote: true,
+          :onmousedown => "_gaq.push(['_trackEvent', 'About Links', 'Check Ejemplo OnMouse', 'Ejemplo OnMouse']);" %></li></span>
+	 <li id="link_about" class="comprar"> <%= link_to "Comprar", buy_path, remote: true,
+          :onmousedown => "_gaq.push(['_trackEvent', 'About Links', 'Check Comprar OnMouse', 'Comprar OnMouse']);" %></li>
      <li id="link_about"><%= link_to "FAQ", faq_path, remote: true %></li>
      <li id="link_about"><%= link_to "Privacidad", privacy_path, remote: true %></li>
      <li id="link_about"><%= link_to "Condiciones", term_path, remote: true %></li>
