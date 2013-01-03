@@ -1,9 +1,10 @@
-<div class="users_follow">
-		<span><%= link_to "Fashion Lovers / ", fashionlover_path, :remote => true %></span>
-		<span><%= link_to " Designers / ", designer_path, :remote => true %></span>
-		<span> <%= link_to " Boutiques / ", boutique_path, :remote => true %></span>
-		<span> <%= link_to " Bloggers / ", blogger_path, :remote => true %></span>
-		<span>  <%= link_to " Fotógrafos / ", fotografo_path, :remote => true %></span>
+<p id="titleMainIdea" style="font-size: 3.2em">Encuentra gente interesante que seguir..... </p>
+	<div class="users_follow">
+		<span><%= link_to "Fashion Lovers / ", fashionlover_path, :remote => true, :class => "link_user_index" %></span>
+		<span><%= link_to " Designers / ", designer_path, :remote => true, :class => "link_user_index" %></span>
+		<span> <%= link_to " Boutiques / ", boutique_path, :remote => true, :class => "link_user_index" %></span>
+		<span> <%= link_to " Bloggers / ", blogger_path, :remote => true, :class => "link_user_index" %></span>
+		<span>  <%= link_to " Fotógrafos / ", fotografo_path, :remote => true, :class => "link_user_index" %></span>
 	</div>
   <hr>
   <div id="ajax-status" style="float:left; display:none; margin: 0 50% 0 50%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
