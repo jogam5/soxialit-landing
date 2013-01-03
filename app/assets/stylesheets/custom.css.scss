@@ -957,8 +957,31 @@ li.comment {
 }
 
 .link_image_favoritos{
-	display:block; width:150px; position: block; margin-left: auto; margin-right: auto;
+	display:block; width:100%; height:150px; padding:0%; margin:0%; position: block; margin-left: auto; margin-right: auto;
 }
+
+#description_link_favorites{
+
+   	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 15px;
+	line-height: 21px;
+	color: #444;
+	padding-top: 6px;
+	margin-top: 3%;
+	margin-bottom: 2%;
+	font-family: "ff-meta-serif-web-pro",Georgia,Cambria,"Times New Roman",Times,serif;
+	font-weight: 400;
+}
+
+.link_user_index{
+	font-size: 1.8em;
+	line-height: 2.2em;
+	color: #303239;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
 
 #user_and_items_link{
 	 a{
@@ -997,6 +1020,8 @@ li.comment {
 	font-size:1.2em;
 	font-weight:lighter;
 	font-color:#999;
+	padding:3%;
+	margin-top: -5%;
 	 a{
 	color:$rojo;
 	text-decoration:none;
@@ -1233,9 +1258,9 @@ li.comment {
 }
 
 .frame_link_favorites{
-	padding: 15px;
+	padding: 0px;
 	margin-top: 1%;
-	left: 6%;
+	left: 0%;
 	display: block;
 	position: relative;
 	background-color: white;
