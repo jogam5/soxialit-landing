@@ -1077,31 +1077,12 @@ li.comment {
 	}
 }
 
-
-#about_menu_relative{
-	 p{
-	font-size:0.8em;
-	}
-	 a{
-	font-size:1.4em;
-	font-weight:lighter;
-	color:$grayTitle;
-	}
-	 a:hover{
-	color:black;
-	text-decoration:none;
-	}
-	 a:active{
-	color:$rojo;
-	}
-}
-
 #about_submenu{
 	 a{
-	font-size:1.1em;
+	font-size:1em;
 	font-weight:lighter;
 	color:$grayTitle;
-	margin-left:1em;
+	margin-left:0.8em;
 	}
 }
 
