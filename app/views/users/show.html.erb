@@ -23,6 +23,19 @@
     <%= render 'users/profiles/boutique' %>
   </section>
 <% end %>
+<div id="ajax">
+  <div class="row">
+   <div class="span8 offset1">
+    <% if @activities.any? %>
+     <ol class="microposts">
+      <% @activities.each do |feed_item| %>
+        <%= render :partial => 'feed/feed_item', :locals => { :feed_item => feed_item } %>
+      <% end %>
+     </ol>
+    <% end %>
+   </div>
+  </div>
+</div>
 <script type="text/javascript">
     mixpanel.track("User Profile Loaded")
 </script>

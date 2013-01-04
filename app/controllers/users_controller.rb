@@ -14,6 +14,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @products = product_ok(@user.products)
+    @activities = @user.activities
+    @comment = Comment.new
     respond_to do |format|
       format.html # show.html.erb
     end

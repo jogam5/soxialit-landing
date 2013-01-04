@@ -1,7 +1,7 @@
 <% if @feed_items.any? %>
   <ol class="microposts">
 	<% @feed_items.each do |feed_item| %>
-	<% if feed_item.present? && feed_item.activitable.status == true %>
+	 <% if feed_item.present? && feed_item.activitable.status == true %>
   	  <li id="<%= feed_item.id %>">
 	  	<span class="content">
 	  	  <div class="row">
@@ -30,8 +30,8 @@
 		   <div class="red_bar"></div><br />
 		     <%= render :partial => 'feed/comments', :locals => { :feed_item => feed_item } %>
 		</span>
-		<% end %>
 	  </li>
+	 <% end %>
 	<% end %>
   </ol>
 <% end %>
