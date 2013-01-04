@@ -24,6 +24,10 @@ DeviseFacebook::Application.routes.draw do
   resources :users
   resources :user_steps
   resources :relationships, only: [:create, :destroy]
+  #Customized Routes for Profile Page
+  #match ":username", :to => "users#show",
+  #                    :as => "user",
+  #                    :via => :get
 
   resources :products do
        member { post :vote }
@@ -64,7 +68,6 @@ DeviseFacebook::Application.routes.draw do
   get 'paypal/checkout', to: 'pays#paypal_checkout'
   get 'mercadopago/checkout', to: 'products#mercadopago_checkout'
 
-  
   match "/about", to: 'static_pages#about'
   match "/payment", to: 'static_pages#payment_complete'
   match "soxialit", to: 'static_pages#soxialit'

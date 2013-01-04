@@ -142,4 +142,9 @@ class User < ActiveRecord::Base
   def feed_cached
     Rails.cache.fetch('get_feed'){ feed }
   end
+
+  #Customized routes for user profile
+  #def to_param
+  #  username
+  #end
 end

@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    #@user = User.find_by_username(params[:username])
     @products = product_ok(@user.products)
     @activities = @user.activities.order("created_at DESC")
     @comment = Comment.new
@@ -93,6 +94,7 @@ class UsersController < ApplicationController
   end
 
   def followers
+    #@user = User.find_by_username(params[:username])
     @user = User.find(params[:id])
     @users = @user.followers
     respond_to do |format|
