@@ -268,13 +268,13 @@ class ProductsController < ApplicationController
      end
 
     def vote
-        value = params[:type] == "up" ? 1 : -1
-        @product = Product.find(params[:id])
-        @product.add_or_update_evaluation(:votes, value, current_user)
-        @product.activities.create(:user_id => current_user.id, :action => "like")
-        respond_to do |format|
-          format.js
-        end
+      value = params[:type] == "up" ? 1 : -1
+      @product = Product.find(params[:id])
+      @product.add_or_update_evaluation(:votes, value, current_user)
+      @product.activities.create(:user_id => current_user.id, :action => "like")
+      respond_to do |format|
+        format.js
+      end
     end
 
     def products_as_json(product)
