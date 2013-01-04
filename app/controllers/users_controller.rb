@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @products = product_ok(@user.products)
-    @activities = @user.activities
+    @activities = @user.activities.order("created_at DESC")
     @comment = Comment.new
     respond_to do |format|
       format.html # show.html.erb
