@@ -4,10 +4,11 @@ class StaticPagesController < ApplicationController
   	@comment = Comment.new
     @micropost = Micropost.new
   	if user_signed_in?
-  		@feed_items = current_user.feed_cached
-      #@feed_items = current_user.feed
+  		#@feed_items = current_user.feed_cached
+      @feed_items = current_user.feed
   	else
-  	  @feed_items = User.find(1).feed_cached
+  	  #@feed_items = User.find(1).feed_cached
+      @feed_items = User.find(1).feed
       #@feed_items = User.first.feed
   	end
   end
