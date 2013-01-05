@@ -8,7 +8,8 @@
         </div>
         <% if feed_item.activitable_type == "Micropost" && feed_item.action == "create" %>
           <% if current_user == feed_item.user %>
-            <span class="micropost_delete"><%= link_to "X", micropost_path(feed_item.activitable), :method => :delete %></span>
+            <span class="micropost_delete"><%= link_to "X", micropost_path(feed_item.activitable), :method => :delete,
+                                                 data: { confirm: '¿Estas seguro de eliminar el post?' } %></span>
           <% end %>
         <% end %>
         <div class="span7">
