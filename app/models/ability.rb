@@ -53,7 +53,21 @@ class Ability
       can :read, :all
 
     elsif user.role? :'boutique store'
-      can :manage, :all
+      can :update, User, :id => user.id
+      can [:list_items, :favorites, :followers, :following], User
+      can [:paypal_checkout, :envio_df, :tallas, :comprar, :envio, :mercadopago_checkout], Product
+      can :create, Product
+      can :update, Product do |product|
+        product.try(:user) == user
+      end
+      can :destroy, Product do |product|
+        product.try(:user) == user
+      end
+      can :vote, Product
+      cannot :vote, Product, :user_id => user.id
+      can :products_all, Product
+      #can :create, Micropost
+      can :read, :all
       
     else
       can :read, :all

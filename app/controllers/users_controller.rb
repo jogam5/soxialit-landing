@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-  #before_filter :authenticate_user!, :except => [:show, :list_items, :favorites, :followers, :following]
-  before_filter :authenticate_user!, :only => [:index, :new, :edit, :create, :update]
-
+  before_filter :authenticate_user!, :except => [:show, :list_items, :favorites, :followers, :following]
+  #before_filter :authenticate_user!, :only => [:index, :new, :edit, :create, :update]
   load_and_authorize_resource
 
   def index
