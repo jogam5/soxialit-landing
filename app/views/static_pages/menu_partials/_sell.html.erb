@@ -14,6 +14,7 @@
 	  </div>
   </div><br/ >
   <h2>¿Cuánto cuesta vender en Soxialit?</h2>
+  <% if current_user.roles.first.name == 'admin' %>
   <div class="row">
     <h2 style="text-align:center; font-size:1.8em; color:#DD390D">Planes por Item</h2><br />
     <div id="sell_designer">
@@ -53,7 +54,9 @@
         <p style="font-size:0.9em; color:black">*Plan disponible sólo en México DF.</p>
       </span>
     </div>
-  </div><hr/ >
+  </div>
+  <% end %>
+  <hr/ >
   <h2 style="text-align:center; font-size:1.8em; color:#DD390D">Por TIEMPO LIMITADO vender no cuesta nada, regístrate en: 
       <a href="http://soxialit.com/partners">http://soxialit.com/partners</a></h2><hr /><br />
   <h2>¿Por qué vender en Soxialit?</h2>
