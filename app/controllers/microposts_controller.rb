@@ -21,7 +21,7 @@ class MicropostsController < ApplicationController
     @micropost = Micropost.find(params[:id])
     @micropost.destroy
     respond_to do |format|
-      format.html { redirect_to root_url }
+      format.html { redirect_to :back, notice: 'Micropost eliminado correctamente' }
     end
   end
   

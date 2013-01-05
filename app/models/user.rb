@@ -142,4 +142,13 @@ class User < ActiveRecord::Base
   def feed_cached
     Rails.cache.fetch('get_feed'){ feed }
   end
+
+  def friends
+    User.all.shuffle.take(12)
+  end
+
+  #Customized routes for user profile
+  #def to_param
+  #  username
+  #end
 end

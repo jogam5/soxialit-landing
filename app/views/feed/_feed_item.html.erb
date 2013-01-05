@@ -1,0 +1,37 @@
+<% if feed_item.present? && feed_item.activitable.status == true %>
+  <br />
+  <li id="<%= feed_item.id %>">
+    <span class="content">
+      <div class="row">
+        <div class="span1">
+          <%= render :partial => 'feed/profile_picture', :locals => { :feed_item => feed_item } %>
+        </div>
+        <% if feed_item.activitable_type == "Micropost" && feed_item.action == "create" %>
+          <% if current_user == feed_item.user %>
+            <span class="micropost_delete"><%= link_to "X", micropost_path(feed_item.activitable), :method => :delete,
+                                                 data: { confirm: '¿Estas seguro de eliminar el post?' } %></span>
+          <% end %>
+        <% end %>
+        <div class="span7">
+          <p style="font-size:1.1em"><span id="user_and_items_link">
+            <%= link_to feed_item.user.username, user_path(feed_item.user) %></span>
+              <%= render :partial => 'feed/headline', :locals => { :feed_item => feed_item } %>
+              <br />
+            <span class="timestamp">
+             <%= time_ago_in_words(feed_item.created_at) unless feed_item.activitable_type == "Micropost" %>
+            </span>
+            <br />
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div id="mitad">
+          <%= render :partial => 'feed/pictures', :locals => { :feed_item => feed_item } %>
+        </div>
+        <br />
+      </div>
+      <div class="red_bar"></div><br />
+      <%= render :partial => 'feed/comments', :locals => { :feed_item => feed_item } %>
+    </span>
+  </li>
+<% end %>

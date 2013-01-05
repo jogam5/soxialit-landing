@@ -1,24 +1,22 @@
 <%= render 'users/profiles/profile_header' %>
-	<div style="margin-top:1%" class="navbar">
-		<div class="navbar-inner">
-				<nav>
-					<ul class="nav pull-left">
-						<li id="profile_nav_bar"><%= link_to image_tag('like-active.png'), favorites_path(@user), remote: true %></li>
-						<li class="divider-vertical"></li>
-					</ul>
-					<ul class="nav pull-right">
-						<li class="divider-vertical"></li>
-						<li style="padding-top:9px"><p id="profile_nav_bar"><%= @user.followed_users.count %> 
-							<%= link_to "Following", following_user_path(@user), remote: true %></p>
-						</li>
-						<li class="divider-vertical"></li>
-						<li style="padding-top:9px"><p id="profile_nav_bar"><span id="followers_count_<%=@user.id%>"><%= @user.followers.count %> </span>
-							<%= link_to "Followers", followers_user_path(@user), remote: true %></p>
-						</li>
-	              	</ul>
-	            </nav>
-		</div>
+<div style="margin-top:1%" class="navbar">
+	<div class="navbar-inner">
+			<nav>
+				<ul class="nav pull-left">
+					<li id="profile_nav_bar"><%= link_to image_tag('like-active.png'), favorites_path(@user), remote: true %></li>
+					<li class="divider-vertical"></li>
+				</ul>
+				<ul class="nav pull-right">
+					<li class="divider-vertical"></li>
+					<li style="padding-top:9px"><p id="profile_nav_bar"><%= @user.followed_users.count %> 
+						<%= link_to "Following", following_user_path(@user), remote: true %></p>
+					</li>
+					<li class="divider-vertical"></li>
+					<li style="padding-top:9px"><p id="profile_nav_bar"><span id="followers_count_<%=@user.id%>"><%= @user.followers.count %> </span>
+						<%= link_to "Followers", followers_user_path(@user), remote: true %></p>
+					</li>
+	          	</ul>
+            </nav>
 	</div>
-	<div id="ajax-status" style="float:left; display:none; margin: 0 50% 0 50%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
-	<div id="ajax">
-	</div>
+</div>
+<div id="ajax-status" style="float:left; display:none; margin: 0 50% 0 50%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>

@@ -840,7 +840,7 @@ z-index: 2;
 	}
 }
 
-/* TimeLine Post */
+/* TimeLine Post - CLOSE */
 
 /* Comments */
 
@@ -1023,7 +1023,7 @@ li.comment {
 	font-weight:lighter;
 	font-color:#999;
 	padding:3%;
-	margin-top: -5%;
+	margin-top: -3%;
 	 a{
 	color:$rojo;
 	text-decoration:none;
@@ -1042,6 +1042,19 @@ li.comment {
 	}
 	 a:hover{
 	color:$rojo;
+	}
+}
+
+.micropost_delete{
+	 a{
+	font-size:1em;
+	margin-right:7px;
+	color:#DDD;
+	float:right;
+	}
+	 a:hover{
+	color:black;
+	text-decoration:none;
 	}
 }
 
@@ -1206,14 +1219,14 @@ li.comment {
 #footer_login{
 	margin-top:0.5em;
 	text-alig:center;
-	a{
+	 a{
 	color:whiteSmoke;
 	text-decoration:none;
 	font-size:0.9em;
-	 }
+	}
 	 a:hover{
 	color:#ccc;
-	 }
+	}
 	 h3{
 	font-size:2.5em; 
 	}
@@ -1296,3 +1309,23 @@ li.comment {
 }
 
 /* Header Unsigned ***********/
+
+/* Friends User_Steps */
+
+#friends_end{
+	text-align:right;
+	margin-bottom:3em;
+	 a{
+	border: 1px dotted black;
+	padding:4px;
+	color:$rojo;
+	font-size:1.4em;
+	font-weight:lighter;
+	}
+	 a:hover{
+	color: black;
+	text-decoration: none;
+	}
+}
+
+/* Friends User_Steps  END */

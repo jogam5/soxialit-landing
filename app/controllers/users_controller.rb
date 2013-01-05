@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, except: [:show, :list_items, :favorites, :followers]
+  before_filter :authenticate_user!, :except => [:show, :list_items, :favorites, :followers, :following]
+  #before_filter :authenticate_user!, :only => [:index, :new, :edit, :create, :update]
   load_and_authorize_resource
 
   def index
@@ -13,7 +14,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    #@user = User.find_by_username(params[:username])
     @products = product_ok(@user.products)
+    @activities = @user.activities.order("created_at DESC")
+    @comment = Comment.new
     respond_to do |format|
       format.html # show.html.erb
     end
@@ -91,6 +95,7 @@ class UsersController < ApplicationController
   end
 
   def followers
+    #@user = User.find_by_username(params[:username])
     @user = User.find(params[:id])
     @users = @user.followers
     respond_to do |format|

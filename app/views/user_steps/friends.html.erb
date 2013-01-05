@@ -1,0 +1,13 @@
+<div id="ajax-status" style="float:left; display:none; margin: 0 50% 0 50%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
+<div class="row">
+  <div class="span12">
+  	<h2 style="margin-bottom:1em; color:#BBB; font-weight:lighter">Descubre lo que otros amantes de la moda están compartiendo:</h2>
+  	<p id="friends_end"><%= link_to 'Terminar', next_wizard_path %></p>
+    <% if @users.any? %>
+      <ul id="followers">
+          <%= render @users %>
+      </ul>
+    <% end %>
+  </div>
+</div>
+
