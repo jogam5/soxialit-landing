@@ -59,3 +59,14 @@ $(document).ready(function(){
 	
 });
 /* Masonry en index favoritos */
+window.onload = function() {
+  var wall = new Masonry( document.getElementById('contenedor') );
+};
+
+
+$(document).ready(function(){
+	$('.link_user_index').live('click', function(){
+		$('.users_follow span').find('a').css('color', '#666');
+		$(this).css('color', '#DD390D');
+	});
+});

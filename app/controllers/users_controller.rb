@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :list_items, :favorites, :followers, :following]
+  before_filter :authenticate_user!, :except => [:show, :list_items, :list_projects, :favorites, 
+                 :followers, :following, :fotografo, :boutique, :fashionlover, :blogger, :designer, :index ]
   #before_filter :authenticate_user!, :only => [:index, :new, :edit, :create, :update]
   load_and_authorize_resource
 
@@ -102,6 +103,11 @@ class UsersController < ApplicationController
       format.js
     end
   end
+  
+  def list_projects
+     @user = User.find(params[:id])
+     @projects = @user.projects.find(:all, :order => 'created_at DESC')
+  end
 
   def list_items
     @user = User.find(params[:id])
@@ -138,59 +144,59 @@ class UsersController < ApplicationController
      @fashionlovers = find_fashionlover(@users)
     end
 
-    def find_fashionlover(users)
-       fashionlover = []
-       users.each do |user|
-          if user.roles.first.name == "fashion lover"
-             fashionlover << user
-          end
+ def find_fashionlover(users)
+    fashionlover = []
+    users.each do |user|
+       if user.roles.first.name == "fashion lover"
+          fashionlover << user
        end
-       return fashionlover
     end
+    return fashionlover
+ end
     
-    def boutique
-        @users = User.all
-        @boutiques = find_boutiques(@users)
-       end
+  def boutique
+     @users = User.all
+     @boutiques = find_boutiques(@users)
+  end
 
-       def find_boutiques(users)
-          boutiques = []
-          users.each do |user|
-             if user.roles.first.name == "boutique store"
-                boutiques << user
-             end
+  def find_boutiques(users)
+       boutiques = []
+       users.each do |user|
+          if user.roles.first.name == "boutique store"
+             boutiques << user
           end
-          return boutiques
        end
+       return boutiques
+  end
        
-       def blogger
-            @users = User.all
-            @bloggers = find_bloggers(@users)
-           end
+  def blogger
+      @users = User.all
+      @bloggers = find_bloggers(@users)
+  end
 
-           def find_bloggers(users)
-              bloggers = []
-              users.each do |user|
-                 if user.roles.first.name == "blogger"
-                    bloggers << user
-                 end
-              end
-              return bloggers
-           end
+  def find_bloggers(users)
+     bloggers = []
+     users.each do |user|
+        if user.roles.first.name == "blogger"
+           bloggers << user
+        end
+     end
+     return bloggers
+  end
            
-           def fotografo
-              @users = User.all
-              @fotografos = find_fotografos(@users)
-           end
+   def fotografo
+     @users = User.all
+     @fotografos = find_fotografos(@users)
+   end
 
-                def find_fotografos(users)
-                   fotografos = []
-                   users.each do |user|
-                      if user.roles.first.name == "fotografo"
-                         fotografos << user
-                      end
-                   end
-                   return fotografos
-                end
+   def find_fotografos(users)
+       fotografos = []
+       users.each do |user|
+          if user.roles.first.name == "fotografo"
+             fotografos << user
+          end
+       end
+       return fotografos
+    end
   
 end

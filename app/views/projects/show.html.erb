@@ -1,0 +1,162 @@
+<% if user_signed_in? %>
+	<% if current_user.id == @project.user_id %>
+		<div class="row-fluid" style="margin-top:-7%; margin-left:-10%; width: 1150px">
+			<div style="margin: 5% 0% 5% -3%; text-align:center; width:800px" class="span8 offset1">
+				<div style="background-color:white; padding-bottom:15%" class="well">
+					<div class="span8 offset1">
+						<h2>Elige las imágenes de tu proyecto: </h2>
+					</div>
+					<%= form_for(Picture.new, :remote => true) do |f| %>
+						<div class="span4 offset4">
+						  <%= f.hidden_field :project_id, :value => @project.id %>
+						  <%= f.file_field :image, multiple: true, name: "picture[image]"%>
+						</div>
+					<% end %>
+		
+					<%= form_for (@project), url: change_position_project_path do |f| %>
+						<div class="span4 offset3">
+							<%= link_to "Editar", edit_project_path(@project.id), :class => "button-unfollow" %>
+							<%= f.submit "Finalizar", :class => "button-follow" %>
+						</div>
+					</div>
+				
+					<div class="row">
+						<p class="small_feed">
+						  <%= @project.name %>
+						</p>			
+						<hr>
+						<div id="ajax-status" style="float:left; display:none; margin: 0 50% 0 50%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
+						  <div id="project_picture">
+						  </div>
+						<% end %>
+						
+						  <% @pictures.each do |picture| %>
+							<div class="span12 offset1">
+								<div id="picture_<%= picture.id %>" class="image_frame">
+									<%= image_tag(picture.image_url(:timeline)) %>
+									<div style="border: 1px solid white; background-color: white;"class="well">
+										<div class="span2 offset3">
+											<div><%= radio_button_tag "position", picture.id, { :checked => true }, :class => "position" %><span style="display:none; margin-left:5%" class="imagen_principal">Imagen principal del proyecto</span></div>
+										</div>
+										<div class="span1">
+											<%= link_to image_tag("trash.png", style: "width:50px"), picture, method: :delete, remote: true, :id => "remove" %><span style="float:right">Eliminar</span>
+										</div>
+									</div>
+								</div>
+							</div>
+					  	  <% end %>
+					</div>
+			</div>
+			<div style="margin-top:5%; width: 340px" class="span4">
+				<div class="well" style="border: 1px solid white; background-color:white">
+					<div class="description-brand">
+						Proyecto por 
+						<%= link_to find_user_project(@project.user_id), user_path(@project.user_id) %>
+					</div>
+					<div class="description-brand">
+						<%= link_to image_tag(find_user_image(@project.user_id)), user_path(@project.user_id)%>
+						<span id="location"><i class="icon-map-marker"></i><%= find_location(@project.user_id) %></span>
+						<div class="description-low">Locación: <span class="description-text"><%= @project.location %></span></div>
+					</div>
+					<hr>
+					<div class="description-low">
+						Sobre el proyecto
+					</div>
+					<div class="description-text">
+							<%= @project.description%>
+					</div>
+				</div>
+			</div>
+		</div>
+	<% else %>
+		<div class="row-fluid" style="margin-top:-7%; margin-left:-10%; width: 1150px">
+			<div style="margin: 5% 0% 5% -3%; text-align:center; width:800px" class="span8 offset1">
+				<div class="row">
+					<p class="small_feed">
+					  <%= @project.name %>
+					</p>			
+					<hr>
+					  <% @pictures.each do |picture| %>
+						<div class="span12 offset1">
+							<div id="picture_<%= picture.id %>" class="image_frame">
+								<%= image_tag(picture.image_url(:timeline)) %>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			</div>
+			<div style="margin-top:5%; width: 340px" class="span4">
+				<div class="well" style="border: 1px solid white; background-color:white">
+					<div class="description-brand">
+						Proyecto por 
+						<%= link_to find_user_project(@project.user_id), user_path(@project.user_id) %>
+					</div>
+					<div class="description-brand">
+						<%= link_to image_tag(find_user_image(@project.user_id)), user_path(@project.user_id)%>
+						<span id="location"><i class="icon-map-marker"></i><%= find_location(@project.user_id) %></span>
+						<div class="description-low">Locación: <span class="description-text"><%= @project.location %></span></div>
+					</div>
+					<hr>
+					<div class="description-low">
+						Sobre el proyecto
+					</div>
+					<div class="description-text">
+							<%= @project.description%>
+					</div>
+				</div>
+			</div>
+		</div>
+	<% end %>
+	<% else %>
+	<div class="row-fluid" style="margin-top:-7%; margin-left:-10%; width: 1150px">
+		<div style="margin: 5% 0% 5% -3%; text-align:center; width:800px" class="span8 offset1">
+			<div class="row">
+				<p class="small_feed">
+				  <%= @project.name %>
+				</p>			
+				<hr>
+				  <% @pictures.each do |picture| %>
+					<div class="span12 offset1">
+						<div id="picture_<%= picture.id %>" class="image_frame">
+							<%= image_tag(picture.image_url(:timeline)) %>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+		<div style="margin-top:5%; width: 340px" class="span4">
+			<div class="well" style="border: 1px solid white; background-color:white">
+				<div class="description-brand">
+					Proyecto por 
+					<%= link_to find_user_project(@project.user_id), user_path(@project.user_id) %>
+				</div>
+				<div class="description-brand">
+					<%= link_to image_tag(find_user_image(@project.user_id)), user_path(@project.user_id)%>
+					<span id="location"><i class="icon-map-marker"></i><%= find_location(@project.user_id) %></span>
+					<div class="description-low">Locación: <span class="description-text"><%= @project.location %></span></div>
+				</div>
+				<hr>
+				<div class="description-low">
+					Sobre el proyecto
+				</div>
+				<div class="description-text">
+						<%= @project.description%>
+				</div>
+			</div>
+		</div>
+	</div>	
+		
+<% end %>
+	
+<script id="template-upload" type="text/x-tmpl">
+<div id="name" style="display:none">
+
+	<div class="upload">
+		<div class="span2">
+			{%=o.name%}
+	  		<div class="progress"><div class="bar" style="width: 0%"></div></div>
+		</div
+	</div>
+</div>
+
+</script>

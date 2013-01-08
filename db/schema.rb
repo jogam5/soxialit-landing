@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121227202958) do
+ActiveRecord::Schema.define(:version => 20130106170147) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -69,10 +69,13 @@ ActiveRecord::Schema.define(:version => 20121227202958) do
     t.text     "description"
     t.string   "thumbnail"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.boolean  "status"
   end
+
+  add_index "microposts", ["status"], :name => "index_microposts_on_status"
+  add_index "microposts", ["user_id"], :name => "index_microposts_on_user_id"
 
   create_table "paintings", :force => true do |t|
     t.string   "image"
@@ -81,6 +84,8 @@ ActiveRecord::Schema.define(:version => 20121227202958) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "paintings", ["product_id"], :name => "index_paintings_on_product_id"
 
   create_table "partners", :force => true do |t|
     t.integer  "user_id"
@@ -111,6 +116,14 @@ ActiveRecord::Schema.define(:version => 20121227202958) do
     t.string   "paypal_recurring_profile_token"
   end
 
+  create_table "pictures", :force => true do |t|
+    t.integer  "project_id"
+    t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.boolean  "position"
+  end
+
   create_table "products", :force => true do |t|
     t.string   "brand"
     t.string   "description"
@@ -137,6 +150,16 @@ ActiveRecord::Schema.define(:version => 20121227202958) do
     t.boolean  "status"
     t.string   "paypal_customer_token"
     t.string   "paypal_recurring_profile_token"
+  end
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "user_id"
+    t.string   "location"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "picture"
   end
 
   create_table "relationships", :force => true do |t|
@@ -222,6 +245,8 @@ ActiveRecord::Schema.define(:version => 20121227202958) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "sizes", ["product_id"], :name => "index_sizes_on_product_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   has_many :feedbacks, :dependent => :destroy
   has_many :partners, :dependent => :destroy
   has_many :microposts, :dependent => :destroy
+  has_many :projects, :dependent => :destroy
+  has_many :pictures, :through => :projects
   has_one :direction, :dependent => :destroy
 
   has_reputation :votes, source: {reputation: :votes, of: :products}, aggregated_by: :sum

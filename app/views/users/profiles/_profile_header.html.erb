@@ -33,6 +33,9 @@
 					<% if @user.id == 65 || @user.id == 27 %>
 						<%= link_to "Crear Producto", new_product_path, :class => "button-want" %> 
 					<% end %>
+					<% if @user.roles.first.name == "fotografo" %>
+						<%= link_to "Crear Proyecto", new_project_path, :class => "button-want" %> 
+					<% end %>
 				<% end %>
 			</div>
 		</div>

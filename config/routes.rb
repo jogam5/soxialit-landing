@@ -1,5 +1,11 @@
 DeviseFacebook::Application.routes.draw do
  
+  resources :pictures
+
+  resources :projects do
+    put :change_position, on: :member
+  end
+
   resources :partners
 
   resources :pays
@@ -41,6 +47,8 @@ DeviseFacebook::Application.routes.draw do
   match "following/:id" => "users#following", :as => "following_user"
   match "list/:id" => "collections#list", :as => "collections_list"
   match "favorites/:id" => "users#favorites", :as => "favorites"
+  match "list_projects/:id" => "users#list_projects", :as => "list_projects"
+  
 
   resources :feedbacks
   resources :comments

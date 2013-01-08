@@ -1,0 +1,14 @@
+<% if @picture.new_record? %>
+	alert("Error al agregar imagen: <%= j @painting.errors.full_messages.join(', ').html_safe %>");
+<% else %>
+	$("#project_picture").append('<%= escape_javascript(render(@picture)) %>');
+<% end %>
+
+
+<% if @project.pictures.count >= 1 %>
+	$("input[name=position]").change(function(){
+		$('.imagen_principal').hide();
+		$(this).next('span').show();
+	});
+	
+<% end %>

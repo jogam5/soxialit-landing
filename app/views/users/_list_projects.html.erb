@@ -1,0 +1,38 @@
+<div id="ajax-status" style="float:left; display:none; margin: 0 50% 0 50%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
+<div style="margin-left:-2%; margin-right: 8%; width:940px" id="contenedor" class="clearfix masonry">
+	<% @projects.each do |project| %>
+	<div id="mis_items_frame">
+	  	<div class="row" id="image_hover">
+			<span style="margin-bottom:2%" class="span6" >
+				<div style="float:right" id="mi_image">
+					<%= link_to image_tag(project.picture, style:"margin:0% 0% 2% 0%; max-height: auto"), project %>
+				</div>
+			</span>
+			<span class="span5">
+			  <div class="right_side_items">
+				<div id="mi_title">
+					<%= link_to project.name, project %>
+				</div>
+				<p>por <span class="description-brand"><%= link_to find_user_project(project.user_id), user_path(project.user_id) %></span></p>
+				<p id="mi_description">"<%= project.description %>"</p>
+				<div id="mi_view_more">
+					<%= link_to "Ver Proyecto completo", project %> 
+				</div>
+				<span>
+				  <% if current_user == @user %>
+					  <br />
+					  <%= link_to "Editar", edit_project_path(project) %> |
+					  <%= link_to 'Eliminar', project, method: :delete, data: { confirm: '¿Estas seguro?' } %>
+				  <% end %>
+				</span>
+			  </div>
+			</span>
+		</div>
+	</div>
+	<!--	<div class="span8">
+			<div class="frame_link_favorites">
+				<%= link_to image_tag(project.picture, style:"margin:0% 0% 2% 0%; max-height: auto"), project %>
+			</div>
+		</div> -->
+	<% end %>
+</div>

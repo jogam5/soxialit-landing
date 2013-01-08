@@ -67,4 +67,9 @@ module UsersHelper
 	   a = Micropost.find(evaluations)
 	   a.description
    end
+   
+   def find_user_project(project)
+      a = User.find(project)
+      a.username
+   end
 end

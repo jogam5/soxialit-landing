@@ -4,44 +4,42 @@
 		<span><%= link_to " Designers / ", designer_path, :remote => true, :class => "link_user_index" %></span>
 		<span> <%= link_to " Boutiques / ", boutique_path, :remote => true, :class => "link_user_index" %></span>
 		<span> <%= link_to " Bloggers / ", blogger_path, :remote => true, :class => "link_user_index" %></span>
-		<span>  <%= link_to " Fotógrafos / ", fotografo_path, :remote => true, :class => "link_user_index" %></span>
+		<span>  <%= link_to " Fotógrafos", fotografo_path, :remote => true, :class => "link_user_index" %></span>
 	</div>
   <hr>
   <div id="ajax-status" style="float:left; display:none; margin: 0 50% 0 50%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
-  <div id="user_roles"></div>
-<% if current_user.roles.first.name == 'admin' %>
+  <div id="user_roles">
+  </div>
+<% if user_signed_in? %>
+	<% if current_user.roles.first.name == 'admin' %>
 
 
-  <h1>Listing users</h1>
+		  <h1>Listing users</h1>
 
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Image</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+		  <table>
+		    <tr>
+		      <th>Name</th>
+		      <th>Email</th>
+		      <th>Image</th>
+		      <th></th>
+		      <th></th>
+		      <th></th>
+		    </tr>
 
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= user.username %></td>
-      <td><%= user.email %></td>
+		  <% @users.each do |user| %>
+		    <tr>
+		      <td><%= user.username %></td>
+		      <td><%= user.email %></td>
 
-      <td><%= link_to 'Show', user %></td>
-      <td><%= link_to 'Edit', edit_user_path(user) %></td>
-      <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		      <td><%= link_to 'Show', user %></td>
+		      <td><%= link_to 'Edit', edit_user_path(user) %></td>
+		      <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
-    </tr>
-  <% end %>
-  </table>
+		    </tr>
+		  <% end %>
+		  </table>
 
-  <br />
+		  <br />
 
-<% else %>
-
-  <h1>¡Hey! Por ahora no puedes acceder a esta página</h1>
-  <%= link_to "Regrsar a mi Perfil", user_path(current_user) %>
-
+		<% end %>
 <% end %>
