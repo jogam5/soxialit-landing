@@ -23,11 +23,8 @@ var CKEDITOR_BASEPATH = '/assets/ckeditor/';
 
 <script type="text/javascript">
 $(function() {
-    //set up the editor instance for ckeditor
     var editor = CKEDITOR.replace('post_body');
-    //global for editor instance
     global = editor;
-    //set timed interval to run function
     setInterval("updateCount()", 500);
 });
 
