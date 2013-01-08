@@ -1,25 +1,25 @@
-<h1>Listing pictures</h1>
+<% if user_signed_in?%>
+	<% if current_user.roles.first.name == "admin" %>
+		<h1>Listing pictures</h1>
 
-<table>
-  <tr>
-    <th>Project</th>
-    <th>Image</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+		<table>
+		  <tr>
+		    <th>Project</th>
+		    <th>Image</th>
+		    <th></th>
+		    <th></th>
+		    <th></th>
+		  </tr>
 
-<% @pictures.each do |picture| %>
-  <tr>
-    <td><%= picture.project_id %></td>
-    <td><%= picture.image %></td>
-    <td><%= link_to 'Show', picture %></td>
-    <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-    <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+		
+		</table>
+
+		<br />
+
+		<%= link_to 'New Picture', new_picture_path %>
+	<% else %>
+		<h1>¡Hey, por ahora no puedes ver esta página!</h1>
+		<%= link_to "<- Regresar",  root_path %>
+	<% end %>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Picture', new_picture_path %>
+	
