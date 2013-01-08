@@ -6,11 +6,8 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new(url: "http://")
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @post }
-    end
+    @post = Post.new
+
   end
 
   def show
@@ -23,16 +20,13 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.create(params[:post])
-    @post.save!
+    #@post.save!
     #@post.activities.create(:user_id => current_user.id, :action => "create")
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render json: @post, status: :created, location: @post }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.save
+      redirect_to @post
+    else
+      flash.now[:error] = 'Invalid email/password combination'
+      render "new"
     end
   end
 
@@ -42,10 +36,8 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.update_attributes(params[:post])
         format.html { redirect_to @post, notice: 'El Post fue actualizado correctamente.' }
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,5 +49,9 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to :back, notice: 'Micropost eliminado correctamente' }
     end
+  end
+
+  def check_validations
+    
   end
 end
