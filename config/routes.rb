@@ -78,4 +78,6 @@ DeviseFacebook::Application.routes.draw do
   match "privacy", to:'static_pages#privacy'
   match "faq", to:'static_pages#faq'
 
+  resources :posts
+
 end

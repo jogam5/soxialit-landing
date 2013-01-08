@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121227202958) do
+ActiveRecord::Schema.define(:version => 20130107192819) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -110,6 +110,18 @@ ActiveRecord::Schema.define(:version => 20121227202958) do
     t.string   "paypal_customer_token"
     t.string   "paypal_recurring_profile_token"
   end
+
+  create_table "posts", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "quote"
+    t.string   "url"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 
   create_table "products", :force => true do |t|
     t.string   "brand"
@@ -222,6 +234,15 @@ ActiveRecord::Schema.define(:version => 20121227202958) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "slides", :force => true do |t|
+    t.string   "picture"
+    t.integer  "post_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "slides", ["post_id"], :name => "index_slides_on_post_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
