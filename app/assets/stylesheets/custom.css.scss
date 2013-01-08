@@ -1003,6 +1003,7 @@ li.comment {
 
 #item_link_micropost{
 	font-size:1.5em;
+	color:$rojo;
 	 a{
 	color:$rojo;
 	}
@@ -1329,3 +1330,9 @@ li.comment {
 }
 
 /* Friends User_Steps  END */
+
+.countdown {
+  display: inline;
+  padding-left: 30px;
+  color: $grayLight;
+}

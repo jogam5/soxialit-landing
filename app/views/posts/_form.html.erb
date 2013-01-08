@@ -1,0 +1,41 @@
+<%= form_for(@post) do |f| %>
+
+  <div class="field">
+    <p>Título</p>
+    <%= f.text_field :title %>
+  </div>
+  <p>Post <i>(máximo 600 caracteres)</i></p>
+  <%= f.text_area :body, :class => "ckeditor" %>
+  <div id="count">600</div>
+  <div class="field">
+    <br />
+    <p>Quote:</p>
+    <%= f.text_field :quote %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+var CKEDITOR_BASEPATH = '/assets/ckeditor/';
+</script>
+
+<script type="text/javascript">
+$(function() {
+    //set up the editor instance for ckeditor
+    var editor = CKEDITOR.replace('post_body');
+    //global for editor instance
+    global = editor;
+    //set timed interval to run function
+    setInterval("updateCount()", 500);
+});
+
+function updateCount() {
+    almost = global.getData();
+    var count = 608 - almost.length;
+    $('#count').html(almost.length);
+    if(almost.length <= 600)
+      $('#count').html(count);
+}
+</script>

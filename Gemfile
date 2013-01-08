@@ -14,6 +14,9 @@ gem 'koala'
 #gem cache
 gem 'dalli'
 
+#gem Text Editor in Microposts
+gem 'ckeditor_rails'
+
 #Reputation
 gem 'activerecord-reputation-system', require: 'reputation_system'
 
