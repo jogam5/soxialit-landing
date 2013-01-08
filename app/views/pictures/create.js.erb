@@ -1,8 +1,5 @@
-<% if @picture.new_record? %>
-	alert("Error al agregar imagen: <%= j @painting.errors.full_messages.join(', ').html_safe %>");
-<% else %>
-	$("#project_picture").append('<%= escape_javascript(render(@picture)) %>');
-<% end %>
+
+$("#project_picture").append('<%= escape_javascript(render(@picture)) %>');
 
 
 <% if @project.pictures.count >= 1 %>

@@ -81,7 +81,7 @@ class PicturesController < ApplicationController
 end
 =end
 
-def new
+ def new
    @project = Project.find(params[:project_id]) 
    @picture = @project.pictures.build
 
@@ -91,7 +91,7 @@ def new
    end
  end
  
- def destroy
+  def destroy
      @picture = Picture.find(params[:id])
      @picture.destroy
 
@@ -101,7 +101,6 @@ def new
        format.js
      end
    end
- end
  
  def update
      @picture = Picture.find(params[:id])
@@ -124,4 +123,5 @@ def new
        logger.debug "picture: #{picture_first}\n\n\n\n\n\n"
        @project.update_attribute(:picture, picture_first)
      end
+end
  
