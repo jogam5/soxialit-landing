@@ -3,5 +3,7 @@ class Project < ActiveRecord::Base
   has_many :pictures, :dependent => :destroy
   belongs_to :user
   
+  validates :description, :location, :name, :presence => { :message => "*dato requerido" }, :allow_blank => true
+  
 end
    

@@ -1,4 +1,4 @@
-<%= form_for(@project) do |f| %>
+<%= form_for @project, :validate => true do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibieron la publicación de este proyecto:</h2>
