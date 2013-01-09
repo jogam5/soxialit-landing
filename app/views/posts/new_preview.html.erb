@@ -58,6 +58,6 @@
 <%= form_for(@post) do |f| %>
   <%= f.hidden_field :title, :value => @post.title %>
   <%= f.hidden_field :body, :value => @post.body %>
-  <%= f.submit 'Re-Eedit', :onclick => "this.form.action='new'" %>
-  <%= f.submit 'Create' %>
+  <%= f.submit 'Re-Editar', :onclick => "this.form.action='new'" %>
+  <%= f.submit 'Crear Micropost' %>
 <% end %>
