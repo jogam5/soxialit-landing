@@ -26,10 +26,10 @@ class PostsController < ApplicationController
     @post = current_user.posts.create(params[:post])
     #@post.save!
     #@post.activities.create(:user_id => current_user.id, :action => "create")
-    if params[:preview_button] || !@post.save
-      render "new"
-    else
+    if @post.save
       redirect_to @post
+    else
+      render "new"
     end
   end
 
