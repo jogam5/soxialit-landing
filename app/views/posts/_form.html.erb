@@ -1,15 +1,14 @@
-<%= form_for(@post) do |f| %>
-
+<%= form_for(@post, :url => create_post_path) do |f| %>
   <div class="field">
     <p>Título</p>
     <%= f.text_field :title %>
   </div>
   <p>Post <i>(máximo 600 caracteres)</i></p>
   <%= f.text_area :body, :class => "ckeditor" %>
-  <div id="count">600</div>
+  <p><i>Límite:</i> <span id="count">600</span></p>
   <div class="field">
     <br />
-    <p>Quote:</p>
+    <p>Frase:</p>
     <%= f.text_field :quote %>
   </div>
   <div class="actions">
