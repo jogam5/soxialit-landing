@@ -53,3 +53,8 @@ $(document).ready(function(){
 window.onload = function() {
   var wall = new Masonry( document.getElementById('contenedor') );
 };
+
+$(document).ready(function(){
+	var pathname = window.location.href;
+	$('.fb-like').data('href', pathname);
+});

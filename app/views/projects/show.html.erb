@@ -65,6 +65,14 @@
 					<div class="description-text">
 							<%= @project.description%>
 					</div>
+					<hr>	
+					<div class="description-low"> Tags: 
+				        <div class="tag">
+				        	<% @project.tag_list.each do |tag| %>
+				        		<%= link_to tag, tag_path(tag), class: "label" %>
+				        	<% end %>
+				        </div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -103,6 +111,14 @@
 					<div class="description-text">
 							<%= @project.description%>
 					</div>
+					<hr>	
+					<div class="description-low"> Tags: 
+				        <div class="tag">
+				        	<% @project.tag_list.each do |tag| %>
+				        		<%= link_to tag, tag_path(tag), class: "label" %>
+				        	<% end %>
+				        </div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -140,7 +156,15 @@
 					Sobre el proyecto
 				</div>
 				<div class="description-text">
-						<%= @project.description%>
+					<%= @project.description%>
+				</div>
+				<hr>
+				<div class="description-low"> Tags: 
+			        <div class="tag">
+			        	<% @project.tag_list.each do |tag| %>
+			        		<%= link_to tag, tag_path(tag), class: "label" %>
+			        	<% end %>
+			        </div>
 				</div>
 			</div>
 		</div>

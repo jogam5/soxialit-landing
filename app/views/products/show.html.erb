@@ -66,7 +66,7 @@
 		        		<% if @product.id == current_user.voted_by?(current_user.evaluations, @product.id) %>
 		        			<span id="want_<%= @product.id %>">
 		        				<div id="love_icon_<%= @product.id %>" class="love_icon_active">
-		        					<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= @product.id %>">
+									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= @product.id %>">
 		        						<%= @product.reputation_value_for(:votes).to_i %>
 		        					</span>
 		        				</div>
@@ -74,7 +74,7 @@
 		        		<% elsif current_user && !current_user.voted_for?(@product) %>
 		        			<span id="want_<%= @product.id %>">
 		        				<div id="love_icon_<%= @product.id %>" class="love_icon">
-		        					<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= @product.id %>">
+									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= @product.id %>">
 		        						<%= @product.reputation_value_for(:votes).to_i %>
 		        					</span>
 		        					<%= link_to "x", vote_product_path(@product, type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
@@ -109,7 +109,11 @@
 			</div>
 			<br/>
 			<div class="description-low"> Piezas disponibles</div>
-			<div class="description-medium"> <%= @product.quantity %> </div>
+			<div class="description-medium"> <%= @product.quantity %> 
+					<span style="float:right; margin-right:25%; margin-top: -13%; display:block">
+						<div class="fb-like" data-href="" data-send="false" data-layout="box_count" data-width="150" data-show-faces="false"></div>
+					</span>
+			</div>
 			<hr>
 			<div class="description-text"> "<%= @product.description %>"</div>
 			<hr>
@@ -190,3 +194,12 @@
 		</div>
 	</div>
 <% end %>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=439343236107925";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
