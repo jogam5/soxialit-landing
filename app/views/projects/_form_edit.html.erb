@@ -18,6 +18,10 @@
     <%= f.text_field :location %>
   </div>
   <div class="field">
+	  <%= f.label :tag_list, "Tags (separados por comas)" %><br />
+	  <%= f.text_field :tag_list %>
+  </div>
+  <div class="field">
     <%= f.label :description, "Describe tu proyecto.", :class => "small_feed" %>
     <%= f.text_area :description, rows:"5", :class => "span10" %>
   </div>

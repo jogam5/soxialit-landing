@@ -5,7 +5,8 @@ DeviseFacebook::Application.routes.draw do
   resources :projects do
     put :change_position, on: :member
   end
-
+  get 'tags/:tag', to: 'projects#index', as: :tag
+  
   resources :partners
 
   resources :pays
