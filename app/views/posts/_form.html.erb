@@ -1,11 +1,4 @@
 <%= form_for(@post) do |f| %>
-  
-  <% if params[:preview_button] %>
-    <div id="preview">
-      <%= @post.title %> <br/>
-      <%= raw @post.body %>
-    </div>
-  <% end %>
 
   <div class="field">
     <p>Título</p>
