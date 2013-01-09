@@ -86,8 +86,9 @@ DeviseFacebook::Application.routes.draw do
   match "privacy", to:'static_pages#privacy'
   match "faq", to:'static_pages#faq'
 
-  match 'posts/new' => 'posts#create', :via => :post, :as => :create_post
-
   resources :posts
+  match 'posts/new_preview', to: 'posts#new_preview'
+
+  resources :slides
 
 end

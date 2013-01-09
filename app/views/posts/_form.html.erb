@@ -1,4 +1,12 @@
-<%= form_for(@post, :url => create_post_path) do |f| %>
+<%= form_for(@post) do |f| %>
+  
+  <% if params[:preview_button] %>
+    <div id="preview">
+      <%= @post.title %> <br/>
+      <%= raw @post.body %>
+    </div>
+  <% end %>
+
   <div class="field">
     <p>Título</p>
     <%= f.text_field :title %>
@@ -11,10 +19,29 @@
     <p>Frase:</p>
     <%= f.text_field :quote %>
   </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Preview', :onclick => "this.form.action='new_preview'; this.form.target='_blank'; return true" %>
+    <%= f.submit 'Crear' %>
+    <%= f.submit "Pre" %>
   </div>
 <% end %>
+
+<%= form_for(Slide.new, :remote => true) do |f| %>
+  <%= f.hidden_field :post_id, :value => @post.id %>
+  <%= f.file_field :picture, multiple: true, name: "slide[picture]"%>
+<% end %>
+
+<div id="algo">
+  <% if @slides.present? %>
+    <% @slides.each do |s| %>
+        <div id="slide_<%=s.id%>">
+          <%= image_tag(s.picture_url, :width => 100) %>
+          <%= link_to "eliminar", s, method: :delete, remote: true %>
+        </div>
+    <% end %>
+  <% end %>
+</div>
 
 <script type="text/javascript">
 var CKEDITOR_BASEPATH = '/assets/ckeditor/';
@@ -29,9 +56,22 @@ $(function() {
 
 function updateCount() {
     almost = global.getData();
-    var count = 608 - almost.length;
+    var count = 758 - almost.length;
     $('#count').html(almost.length);
-    if(almost.length <= 600)
+    if(almost.length <= 750)
       $('#count').html(count);
+    else
+      $('#count').html(count)
 }
+</script>
+
+<script id="template-upload" type="text/x-tmpl">
+  <div id="name" style="display:none">
+    <div class="upload">
+      <div class="span2">
+        {%=o.name%}
+          <div class="progress"><div class="bar" style="width: 0%"></div></div>
+      </div
+    </div>
+  </div>
 </script>

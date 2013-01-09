@@ -6,13 +6,17 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
-
+    @post = Post.new(params[:post])
+    @slides = @post.slides
+    respond_to do |format|
+      format.html
+    end
   end
 
   def show
     @post = Post.find(params[:id])
     @user = @post.user
+    @photos = @post.slides
     respond_to do |format|
       format.html # show.html.erb
     end
@@ -22,11 +26,10 @@ class PostsController < ApplicationController
     @post = current_user.posts.create(params[:post])
     #@post.save!
     #@post.activities.create(:user_id => current_user.id, :action => "create")
-    if @post.save
-      redirect_to @post
-    else
-      flash.now[:error] = 'Invalid email/password combination'
+    if params[:preview_button] || !@post.save
       render "new"
+    else
+      redirect_to @post
     end
   end
 
@@ -42,7 +45,6 @@ class PostsController < ApplicationController
     end
   end
 
-
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
@@ -51,7 +53,9 @@ class PostsController < ApplicationController
     end
   end
 
-  def check_validations
-    
+  def new_preview
+    @post = Post.new(params[:post])
+    @photos = @post.slides
+    @user = current_user
   end
 end

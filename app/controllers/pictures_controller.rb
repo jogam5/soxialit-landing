@@ -117,11 +117,11 @@ end
    end
    
    def create
-       @picture = Picture.create(params[:picture])
-       @project = Project.find(@picture.project_id)
-       picture_first = @project.pictures.first.image_url(:timeline).to_s
-       logger.debug "picture: #{picture_first}\n\n\n\n\n\n"
-       @project.update_attribute(:picture, picture_first)
-     end
+     @picture = Picture.create(params[:picture])
+     @project = Project.find(@picture.project_id)
+     picture_first = @project.pictures.first.image_url(:timeline).to_s
+     logger.debug "picture: #{picture_first}\n\n\n\n\n\n"
+     @project.update_attribute(:picture, picture_first)
+   end
 end
  
