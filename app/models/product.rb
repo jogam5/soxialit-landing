@@ -3,7 +3,7 @@ class Product < ActiveRecord::Base
   attr_accessible :size_tokens
   attr_accessible :brand, :description, :picture, :title, :user_id, :shipping, :total_price, :ship_int, 
                     :ship_df, :color, :material, :quantity, :refund_policy, :size, :price
-  attr_accessible :tipo_envio, :peso, :alto, :largo, :ancho, :price_estafeta
+  attr_accessible :tipo_envio, :peso, :alto, :largo, :ancho, :price_estafeta, :delivery_time
   attr_accessible :tag_list
   attr_accessible :name, :image
   attr_accessible :ships_attributes
@@ -34,6 +34,8 @@ class Product < ActiveRecord::Base
    :allow_blank => true, :on => :update
   validates :picture, :presence => {:message => "*el producto debe tener al menos una foto"}, :on => :update
   validates :price, :numericality => {:message => "*debe ser valor numerico"}, :on => :update
+  validates :delivery_time, :presence => {:message => "*dato requerido"}, :on => :update
+  validates_numericality_of :delivery_time, :greater_than => 0, :less_than => 11, :on => :update    
 
   validates :ship_df, :ship_int, :tipo_envio, :presence => { :message => "*seleciona al menos una opcion de envio" }, 
   :allow_blank => true, :on => :update, :if => :any_present?

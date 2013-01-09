@@ -143,6 +143,11 @@
 		        </div>
 			</div>
 			<hr>
+			<div class="description-low">Tiempo estimado de entrega</div>
+					<%= image_tag ('delivery-icon.gif'), style: "float:left" %>
+					<div style="margin-left:20%" class="description-text">
+						<%= "#{@product.delivery_time} días" %>
+					</div>
 			<div class="description-low"> Opciones de envío</div>
 		        <% if @product.ship_df.nil? %>
 		        	<% else %>

@@ -81,6 +81,10 @@
 	<p>
 	    <%= f.text_field :tag_list, placeholder: "*agrega tus tags", "data-pre" => @product.tags.map(&:attributes).to_json, data: {load: @product.tags}, :class => "description-text" %>
 	</p>
+	<div class="field">
+		<%= f.label :quantity, "*tiempo estimado de entrega", :class => "description-text" %>
+	    <%= f.number_field :delivery_time, :placeholder => "dias" %>
+	</div>
 
 		<div>
 			<%= link_to "opciones de envío", envio_path(:product_id => @product.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :class => 'button-follow'} %>

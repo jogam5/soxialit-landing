@@ -45,13 +45,11 @@
 					<span style="margin-left:2%"><%= link_to "Comprar", comprar_path(:product_id => product.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :class => 'button-want'} %>
 					</span>
 				</p>
-				<span class="edit_delete_links">
 				  <% if current_user == @user %>
 					  <br />
 					  <%= link_to "Editar", edit_product_path(product) %> |
 					  <%= link_to 'Eliminar', product, method: :delete, data: { confirm: '¿Estas seguro?' } %>
 				  <% end %>
-				</span>
 			  </div>
 			</span>
 		</div>
