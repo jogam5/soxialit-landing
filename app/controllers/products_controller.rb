@@ -136,7 +136,7 @@ class ProductsController < ApplicationController
     end
 
     def create
-      @product = current_user.products.first
+      @product = Product.find(params[:product_id])
       @paintings = @product.paintings.all
       if @product.paintings.any?
          if params[:position].nil?
