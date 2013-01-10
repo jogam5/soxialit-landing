@@ -91,8 +91,9 @@ DeviseFacebook::Application.routes.draw do
 
   
   match 'posts/new_preview', to: 'posts#new_preview'
+  match 'posts/new', to: 'posts#new'
   resources :posts
-  
+
   resources :slides
 
 end

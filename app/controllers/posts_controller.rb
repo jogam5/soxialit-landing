@@ -6,7 +6,8 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new(params[:post])
+    #@post = Post.new(params[:post])
+    @post = current_user.posts.create(:title => "titulo", :body => "escribe tu post")
     @slides = @post.slides
     respond_to do |format|
       format.html
@@ -23,7 +24,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.create(params[:post])
+    #@post = current_user.posts.create(params[:post])
+    @post = Post.new(params[:post])
+    @post.update_attributes(params[:post])
     #@post.save!
     #@post.activities.create(:user_id => current_user.id, :action => "create")
     if @post.save
