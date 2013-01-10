@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130109175027) do
+ActiveRecord::Schema.define(:version => 20130110221842) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -260,6 +260,16 @@ ActiveRecord::Schema.define(:version => 20130109175027) do
   end
 
   add_index "sizes", ["product_id"], :name => "index_sizes_on_product_id"
+
+  create_table "sizeships", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "size_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sizeships", ["product_id"], :name => "index_sizeships_on_product_id"
+  add_index "sizeships", ["size_id"], :name => "index_sizeships_on_size_id"
 
   create_table "slides", :force => true do |t|
     t.string   "picture"
