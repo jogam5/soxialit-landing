@@ -976,6 +976,33 @@ li.comment {
 	-webkit-box-orient: vertical;
 }
 
+#description_user_profile{
+	color:$grayBio;
+	font-size:1em;
+	font-weight:lighter;
+	padding-top: 6px;
+	margin-top: 3%;
+	margin-bottom: 2%;
+	font-family: "ff-meta-serif-web-pro",Georgia,Cambria,"Times New Roman",Times,serif;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3; 
+	-webkit-box-orient: vertical;
+	float:left;
+	
+}
+
+.link_bio{
+	color:$rojo;
+	text-decoration:none;
+	
+}
+.link_bio:hover{
+	color:$rojo;
+	text-decoration:none;
+}
+
 .link_user_index{
 	font-size: 1.8em;
 	line-height: 2.2em;
