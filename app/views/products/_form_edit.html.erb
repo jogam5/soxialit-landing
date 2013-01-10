@@ -142,7 +142,6 @@
 
 
    <div style="margin-top:5%" class="span8">
-	<div id="ajax-status" style="float:left; display:none; margin-left:35%; margin-top:-15%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
 		<div style="background-color:white" class="well">
 			<div style="margin-left:30%" class="actions">
 					<%= link_to 'Cancelar', user_path(current_user.id), class: "button-unfollow" %>
@@ -155,6 +154,7 @@
 			<% if @product.paintings.any? %>
 				<% if @product.paintings.count >= 1  %>
 				<div style="margin-left: 15%; display:block" id="select_image" class="description-main"> Selecciona la imagen principal del producto </div>
+				<div id="ajax-status" style="display:none; margin-left:45%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
 					<% @product.paintings.each_with_index do |painting, index| %>
 						<% if index >= 0 && index <= 4 %>
 							<div class="painting_<%= painting.id%>">
@@ -187,7 +187,8 @@
 	<div style="margin-top:5%; margin-left:7%" class="span6">
 		 <span class="text-info">*agrega las fotos de tu producto (máximo 4). <br/>
 			Selecciona cuál es la imagen<strong> PRINCIPAL</strong>. Utiliza fotos menores a 2MB 
- 		  </span>
+		  </span>
+
 			<%= form_for(Painting.new, :remote => true) do |f| %>
 			  <%= f.hidden_field :product_id, :value => @product.id %>
 			  <%= f.file_field :image, multiple: true, name: "painting[image]"%>
