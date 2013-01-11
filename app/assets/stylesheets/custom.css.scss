@@ -1361,6 +1361,7 @@ ul.comments{
 
 /* Friends User_Steps  END */
 
+/* POST */
 .countdown {
   display: inline;
   padding-left: 30px;
@@ -1388,3 +1389,19 @@ ul.comments{
   color:#787878;
   }
 }
+
+#post_new_label{
+	margin-top:1em;
+	font-size:1.5em;
+	color:#777;
+}
+
+#count{
+	color:$rojo;
+}
+
+#post_new_rightside{
+	border-left: 1px dotted #555;
+	padding-left: 1em;
+}
+/* POST  END */
