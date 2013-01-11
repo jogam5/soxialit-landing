@@ -1,6 +1,23 @@
 <div class="row">
-  <div class="span8 offset2">
-   <span class="content">
+  <div class="span2">
+    <% if @post.status == false %>
+      <h3>Vista Previa</h3>
+    <% end %>
+    <% if current_user == @post.user %>
+      <%= link_to 'Editar', edit_post_path(@post) %>
+        <% if @post.status == false %>
+        |
+        <%= link_to 'Cancelar', post_path(@post), method: :delete %><hr />
+        <%= link_to 'Publicar', publish_path(:post_id => @post.id), :class => "button-want" %>
+        <% end %>
+    <% elsif @post.status == false %>
+      <p>Este post aún no ha sido Publicado por el autor.</p>
+    <% else %>
+      <br />
+    <% end %>
+  </div>
+  <div class="span8">
+   <span class="contenido">
     <div style="margin-left:1.5em">
       <div class="row">
         <div class="span1">
@@ -33,7 +50,11 @@
       <div class="row">
         <div class="span8">
           <div class="galleria">
-          	
+          	<% if @photos.present? %>
+              <% @photos.each do |photo| %>
+                <%= image_tag(photo.picture_url) if photo.picture.present? %>
+              <% end %>
+            <% end %>
           </div>
         </div>
       </div><br />
@@ -41,10 +62,10 @@
         <div class="span8">
           <h4 style="text-align:center; margin-top:1em; color:#555"><%= @post.quote %></h4>
         </div>
-      </div><hr />
+      </div>
       <div class="row">
-        <div class="span8">
-          <p style="margin-left:2em; color:#777">
+        <div class="span8" id="post_body">
+          <p>
            <%= raw @post.body %>
           </p>
         </div>
@@ -52,6 +73,66 @@
     </div>
     <br />
     <div class="red_bar"></div><br />
+    <% if @post.comments.count > 0 %>
+      <ul class="comments" style="margin-bottom:1px" >
+        <% @comments.each do |comment| %>
+        <%= content_tag_for(:li, comment ) do %>
+          <div class="comment_body">
+            <span class="comment_avatar">
+              <% if !comment.user.picture.present? %>
+                <%= link_to image_tag("http://graph.facebook.com/#{comment.user.uid}/picture?type=square", 
+                    width: 35, height: 35, :id =>  "nickname_small_picture"), user_path(comment.user) %>
+              <% else %>
+                <%= link_to image_tag(comment.user.picture_url(:thumb_profile), width: 35, :id => "nickname_small_picture"), 
+                    user_path(comment.user) %>
+              <% end %>
+            </span>
+            <span class="comment_author"><%= "#{comment.user.username}"%></span>
+            <span class="comment_text"><%= comment.body %></span>
+            <span class="comment_timestamp"><%= time_ago_in_words(comment.created_at) %> 
+            <% if current_user == comment.user %>
+              <span class="comment_delete"><%= link_to "X", comment_path(comment), 
+                        :method => :delete, remote: true %>
+              </span></span>
+            <% end %>
+          </div>
+        <% end %>
+        <% end %>
+      </ul>
+    <% end %>
+    <% if user_signed_in? %>
+      <div class="comment_form" id="form_<%=@post.id %>" >
+        <%= form_for(@comment, remote: true) do |f| %>
+          <ul class="comments" id="comment_post_<%=@post.id %>"></ul>
+          <ul class="comments_new">
+                <li>
+                <%= render 'shared/error_messages', object: f.object %>
+                  <span class="comment_avatar">
+                      <% if !current_user.picture.present? %>
+                      <%= image_tag("http://graph.facebook.com/#{current_user.uid}/picture?type=square", 
+                            width: 35, height: 35, :id =>  "nickname_small_picture") %>
+                    <% else %>
+                      <%= image_tag(current_user.picture_url(:thumb_profile), width: 35, 
+                          :id => "nickname_small_picture") %>
+                    <% end %>
+                  </span>
+                  <div class="field">
+                      <%= f.text_area :body, rows: "1", :class => "span7", :placeholder => "Agrega un comentario..." %>
+                  </div>
+                      <%= f.hidden_field :commentable_id, :value => @post.id %>
+                      <%= f.hidden_field :commentable_type, :value => "Post" %>
+                  </li>
+          </ul>
+          <div style="margin:1% 10% 1% 1%; text-align:right"> 
+
+          <%= f.submit "Comentar", class: "button-comment" %>
+            </div>
+        <% end %>
+      </div>
+    <% end %>
    </span>
   </div>
 </div>
+<script type="text/javascript">
+  Galleria.run('.galleria');
+</script>

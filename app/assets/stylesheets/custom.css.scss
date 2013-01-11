@@ -775,7 +775,7 @@ form div.upload div.file-preview {
   }
 }
 
-.content {
+.contenido {
   width:675px;
   display: block;
   background:url('module_horns_narrow.gif') top no-repeat;
@@ -852,6 +852,10 @@ li.comment {
 	font-size: 12px;
 	border-bottom: 2px solid white;
 	padding:6px 10px;
+}
+
+ul.comments{
+	margin-bottom:1px;
 }
 
 .comment_body{
@@ -1339,4 +1343,22 @@ li.comment {
 
 .red_post {
     color:#900;
+}
+
+.galleria { 
+  width: 630px; 
+  height: 420px; 
+  background: black;
+  margin-left:0.5em;
+}
+
+#post_body{
+  margin-left:2em;
+  margin-top:1.5em;
+  border-top: 1px solid #DDD;
+  font-weight:lighter;
+   p{
+  text-align:left;
+  color:#787878;
+  }
 }

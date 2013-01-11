@@ -41,8 +41,7 @@
 		 <div id="micropost_description"><%= feed_item.activitable.description %><br />
 		 	<div id="micropost_leer_mas"><%= link_to "Leer más", feed_item.activitable.url, target: '_blank' %></div>
 		 	<br />
-		 	<span style="color:#999">vía</span> <%= link_to feed_item.activitable.provider, feed_item.activitable.provider, 
-		 													target: '_blank' %>
+		 	<span style="color:#999">vía</span> <%= link_to feed_item.activitable.provider, feed_item.activitable.provider, target: '_blank' %>
 		 </div>
 		<%= render :partial => 'feed/like_micropost', :locals => { :feed_item => feed_item } %>
 		
@@ -69,4 +68,23 @@
 		 </div>
 	</div>
 </div>
+<% elsif feed_item.activitable_type == "Post" && feed_item.action == "create" %>
+ <div id="product_background" class="">
+  <div class="row" style="display:block;  margin-left:35px">
+	<div class="galleria">
+      <% if feed_item.activitable.slides.present? %>
+        <% feed_item.activitable.slides.each do |photo| %>
+          <%= image_tag(photo.picture_url) if photo.picture.present? %>
+        <% end %>
+      <% end %>
+    </div>	
+  </div>
+  <br />
+  <div class="row">
+      <h4 style="text-align:center; margin-top:1em; color:#555"><%= feed_item.activitable.quote %></h4>
+  </div>
+  <div class="row" id="post_body">
+      <p ><%= raw feed_item.activitable.body %></p>
+  </div>
+ </div>
 <% end %>

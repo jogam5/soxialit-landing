@@ -1,39 +1,40 @@
-<%= form_for(@post) do |f| %>
+<div class="row">
+  <div class="span8">
+    <%= form_for(@post, url: posts_path(:post_id => @post.id)  ) do |f| %>
+      <div class="field">
+        <p>Título</p>
+        <%= f.text_field :title %>
+      </div>
+      <p>Post <i>(máximo 750 caracteres)</i></p>
+      <%= f.text_area :body, :class => ".do_ckeditor" %>
+      <p><i>Límite:</i> <span id="count">750</span></p>
+     
+      <div class="field">
+        <br />
+      <p>Frase:</p>
+        <%= f.text_field :quote %>
+      </div>
 
-  <div class="field">
-    <p>Título</p>
-    <%= f.text_field :title %>
-  </div>
-  <p>Post <i>(máximo 600 caracteres)</i></p>
-  <%= f.text_area :body, :class => "ckeditor" %>
-  <p><i>Límite:</i> <span id="count">600</span></p>
-  <div class="field">
-    <br />
-    <p>Frase:</p>
-    <%= f.text_field :quote %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit 'Preview', :onclick => "this.form.action='new_preview'" %>
-    <%= f.submit 'Crear' %>
-    <%= f.submit "Pre" %>
-  </div>
-<% end %>
-
-<%= form_for(Slide.new, :remote => true) do |f| %>
-  <%= f.hidden_field :post_id, :value => @post.id %>
-  <%= f.file_field :picture, multiple: true, name: "slide[picture]"%>
-<% end %>
-
-<div id="algo">
-  <% if @slides.present? %>
-    <% @slides.each do |s| %>
-        <div id="slide_<%=s.id%>">
-          <%= image_tag(s.picture_url, :width => 100) %>
-          <%= link_to "eliminar", s, method: :delete, remote: true %>
-        </div>
+      <div class="actions">
+        <%= f.submit 'Generar Post', :class => 'button-want' %>
+      </div>
     <% end %>
-  <% end %>
+  </div>
+  <div class="span4">
+    <p>Agrega hasta 10 imágenes al Micropost:</p>
+    <%= form_for(Slide.new, :remote => true) do |f| %>
+      <%= f.hidden_field :post_id, :value => @post.id %>
+      <%= f.file_field :picture, multiple: true, name: "slide[picture]"%>
+    <% end %>
+    <div id="display_slides">
+      <% if @slides.present? %>
+        <% @slides.each do |s| %>
+            <div id="slide_<%=s.id%>">
+            </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <script type="text/javascript">
@@ -41,6 +42,7 @@ var CKEDITOR_BASEPATH = '/assets/ckeditor/';
 </script>
 
 <script type="text/javascript">
+
 $(function() {
     var editor = CKEDITOR.replace('post_body');
     global = editor;

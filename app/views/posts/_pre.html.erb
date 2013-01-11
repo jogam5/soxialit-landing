@@ -1,4 +1,6 @@
-
+<div class="modal-compra">
+  <div style="max-height: 500px" class="modal-body">
+  <button type="button" class="close-button" data-dismiss="modal" aria-hidden="true">X</button>
 <div class="row">
   <div class="span8 offset2">
    <span class="content">
@@ -54,8 +56,5 @@
    </span>
   </div>
 </div>
-<%= form_for(@post) do |f| %>
-  <%= f.hidden_field :title, :value => @post.title %>
-  <%= f.hidden_field :body, :value => @post.body %>
-  <%= f.hidden_field :post_id, :value => @post.id %>
-<% end %>
+</div>
+</div>
