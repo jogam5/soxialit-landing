@@ -38,6 +38,7 @@ class UsersController < ApplicationController
       items = []
       products.each do |product|
          if product.title.nil? && product.description.nil?
+            product.destroy
          else
             items << product
          end

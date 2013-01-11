@@ -7,10 +7,18 @@ class PartnersController < ApplicationController
      end
 
      def create
-       @partner = current_user.partners.build(params[:partner])
+       if user_signed_in?
+          @partner = current_user.partners.build(params[:partner])
+       else
+          @partner = Partner.create(params[:partner])
+       end
        respond_to do |format|
          if @partner.save
-           format.html { redirect_to current_user, notice: 'Gracias, en breve nos pondremos en contacto contigo.' }
+            if user_signed_in?
+               format.html { redirect_to current_user, notice: 'Gracias, en breve nos pondremos en contacto contigo.' }
+            else
+               format.html { redirect_to root_path, notice: 'Gracias, en breve nos pondremos en contacto contigo.' }
+            end
          else
            format.html { render action: "index" }
          end
