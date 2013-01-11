@@ -25,7 +25,7 @@
 			</p>
 			<% if @user.bio.nil?%>
 			<% else %>
-				<% if @user.bio.length > 150 %>
+				<% if @user.bio.length >= 109 %>
 					<p id="description_user_profile">
 						<%= @user.bio %>
 					</p>
