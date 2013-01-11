@@ -41,7 +41,7 @@ class PaintingsController < ApplicationController
 
   def create
       @painting = Painting.create(params[:painting])
-      @product = Product.first
+      @product = Product.find(@painting.product_id)
       if @product.paintings.any?
          picture_first = @product.paintings.first.image_url(:feed).to_s
          @product.update_attribute(:picture, picture_first)
