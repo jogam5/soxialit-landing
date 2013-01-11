@@ -1,43 +1,46 @@
 <h2 style="color:#555; font-weight:lighter">Editar Post</h2>
-<div class="row">
+<div class="well" style="background-color:whiteSmoke">
+ <div class="row">
   <div class="span8">
-	<%= form_for(@post) do |f| %>
-	  <div class="field">
-	    <p>Título</p>
-	    <%= f.text_field :title %>
-	  </div>
-	  <p>Post <i>(máximo 750 caracteres)</i></p>
-	  <%= f.text_area :body, :class => ".do_ckeditor" %>
-	  <p><i>Límite:</i> <span id="count">750</span></p>
-
-	  <div class="field">
-	    <br />
-	  <p>Frase:</p>
-	    <%= f.text_field :quote %>
-	  </div>
-	  <div class="actions">
-	    <%= f.submit 'Actualizar Post', :class => 'button-want' %>
-	  </div>
-	<% end %>
-  </div>
-  <div class="span4">
-    <p>Agrega hasta 10 imágenes al Micropost:</p>
-    <%= form_for(Slide.new, :remote => true) do |f| %>
-      <%= f.hidden_field :post_id, :value => @post.id %>
-      <%= f.file_field :picture, multiple: true, name: "slide[picture]"%>
+    <%= form_for(@post) do |f| %>
+      <div class="field">
+        <p id="post_new_label">Título</p>
+        <%= f.text_field :title, :class => "span5" %>
+      </div>
+      <p id="post_new_label">Post <span style="font-size:0.7em"><i>(máximo 750 caracteres)</i></span></p>
+        <%= f.text_area :body, :class => ".do_ckeditor" %>
+      <p style="margin-top:0.5em"><i>Límite:</i> <span id="count">750</span></p>
+      <div class="field">
+        <p id="post_new_label">Frase o Cita Textual <span style="font-size:0.7em"><i>(opcional)</i></span></p>
+        <%= f.text_field :quote, :class => "span7" %>
+      </div><hr />
+      <div class="actions">
+        <%= f.submit 'Actualizar Post', :class => 'button-want' %>
+      </div>
     <% end %>
-    <div id="display_slides">
-      <% if @slides.present? %>
-        <% @slides.each do |s| %>
-           <div id="slide_<%=s.id%>">
-           	  <%= image_tag(s.picture_url, :width => 100) %>
-              <%= link_to "Eliminar", s, method: :delete, remote: true %>
-              <hr />
-           </div>
-        <% end %>
+  </div>
+  <div class="span3" id="post_new_rightside">
+    <p id="post_new_label">Imágenes<hr/></p>
+    <p id="post_new_label"><span style="font-size:0.7em">Agrega hasta 10 imágenes. La primera quedará como portada.</span></p>
+    <div id="slider_photos">
+      <%= form_for(Slide.new, :remote => true) do |f| %>
+        <%= f.hidden_field :post_id, :value => @post.id %>
+        <%= f.file_field :picture, multiple: true, name: "slide[picture]"%>
       <% end %>
+      <div id="display_slides">
+        <% if @slides.present? %>
+          <% @slides.each do |s| %>
+              <div id="slide_<%=s.id%>">
+                <%= image_tag(s.picture_url, :width => 100) %>
+                <%= link_to "Eliminar", s, method: :delete, remote: true %>
+              <hr />
+              </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
+ </div>
 </div>
 
 <script type="text/javascript">
