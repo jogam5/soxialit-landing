@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :avoid_nil, only: :show
 
   def edit
     @post = Post.find(params[:id])
@@ -61,15 +62,12 @@ class PostsController < ApplicationController
     redirect_to root_url
   end
 
-  def avoid_nil(posts)
-   items = []
-   posts.each do |post|
-    if post.title.nil? && post.body.nil?
-       post.destroy
-    else
-      items << post
-    end
+  def avoid_nil
+   @posts = Post.all
+   @posts.each do |post|
+     if post.title.nil? && post.body.nil?
+        post.destroy
+     end
    end
-    return items
   end
 end

@@ -1,7 +1,7 @@
 <div class="row">
   <div class="span2">
     <% if @post.status == false %>
-      <h3>Vista Previa</h3>
+      <h3 style="color:#555; font-weight:lighter">Vista Previa</h3>
     <% end %>
     <% if current_user == @post.user %>
       <%= link_to 'Editar', edit_post_path(@post) %>

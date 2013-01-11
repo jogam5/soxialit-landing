@@ -152,6 +152,6 @@ class User < ActiveRecord::Base
 
   #Customized routes for user profile
   #def to_param
-  #  username
+   # username
   #end
 end
