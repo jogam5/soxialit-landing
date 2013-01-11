@@ -1,6 +1,7 @@
 class Size < ActiveRecord::Base
-  attr_accessible :name, :product_id
-  belongs_to :product
+  attr_accessible :name
+  has_many :sizeships
+  has_many :products, through: :sizeships
   
   
     def self.tokens(query)

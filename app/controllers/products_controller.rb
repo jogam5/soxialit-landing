@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
          @users = User.all
      else
          @products = product_ok(Product.all)
+         @products.sort_by!(&:reputations)
          @tags = Tag.where("name like ?", "%#{params[:q]}%")
          @users = User.all
          #@product = Product.find(product)
@@ -135,7 +136,7 @@ class ProductsController < ApplicationController
     end
 
     def create
-      @product = current_user.products.first
+      @product = Product.find(params[:product_id])
       @paintings = @product.paintings.all
       if @product.paintings.any?
          if params[:position].nil?

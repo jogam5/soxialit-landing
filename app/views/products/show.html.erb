@@ -97,7 +97,6 @@
 			</div>
 			<div style="margin-left:49%; margin-top:-10%">
 		        <%= link_to "Comprar", comprar_path(:product_id => @product.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :class => 'button-want'} %>
-	
 			</div>
 			<br/>
 			<div class="description-low" style=""> Medidas/Tallas</div>
@@ -110,8 +109,8 @@
 			<br/>
 			<div class="description-low"> Piezas disponibles</div>
 			<div class="description-medium"> <%= @product.quantity %> 
-					<span style="float:right; margin-right:25%; margin-top: -13%; display:block">
-						<div class="fb-like" data-href="" data-send="false" data-layout="box_count" data-width="150" data-show-faces="false"></div>
+					<span style="float:right; margin-right:16%; margin-top:-6%; display:block">
+						<div class="fb-like" data-href="" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false"></div>
 					</span>
 			</div>
 			<hr>
@@ -144,10 +143,8 @@
 			</div>
 			<hr>
 			<div class="description-low">Tiempo estimado de entrega</div>
-					<%= image_tag ('delivery-icon.gif'), style: "float:left" %>
-					<div style="margin-left:20%" class="description-text">
-						<%= "#{@product.delivery_time} días" %>
-					</div>
+			<i style="float:left" class="icon-time icon-black"></i>
+			<div style="margin-left:8%; margin-top:-2%" class="description-text"><%= "#{@product.delivery_time} días" %></div>
 			<div class="description-low"> Opciones de envío</div>
 		        <% if @product.ship_df.nil? %>
 		        	<% else %>

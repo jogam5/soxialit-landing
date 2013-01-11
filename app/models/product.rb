@@ -12,17 +12,17 @@ class Product < ActiveRecord::Base
   attr_reader :tag_list
   attr_accessor :paypal_payment_token
   attr_accessor :email
-  
-  
+
   belongs_to :user
   has_reputation :votes, source: :user, aggregated_by: :sum
   has_reputation :haves, source: :user, aggregated_by: :sum
   has_many :activities, :as => :activitable, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
-  has_many :sizes, :dependent => :destroy
   has_many :paintings, :dependent => :destroy
   has_many :ships, :dependent => :destroy
   has_many :pays, :dependent => :destroy
+  has_many :sizeships
+  has_many :sizes, through: :sizeships
   
   accepts_nested_attributes_for :ships
 
@@ -36,10 +36,8 @@ class Product < ActiveRecord::Base
   validates :price, :numericality => {:message => "*debe ser valor numerico"}, :on => :update
   validates :delivery_time, :presence => {:message => "*dato requerido"}, :on => :update
   validates_numericality_of :delivery_time, :greater_than => 0, :less_than => 11, :on => :update    
-
   validates :ship_df, :ship_int, :tipo_envio, :presence => { :message => "*seleciona al menos una opcion de envio" }, 
   :allow_blank => true, :on => :update, :if => :any_present?
- 
   validates :picture, :presence => {:message => "*debes elegir cual es la imagen principal del producto."}, :on => :update
   
   default_scope order: 'products.created_at DESC'
