@@ -46,7 +46,7 @@ class ProductsController < ApplicationController
     def avoid_nil(products)
        items = []
        products.each do |product|
-          if product.title.nil? && product.description.nil?
+          if product.title.blank? && product.description.blank?
              logger.debug "producto destruido #{product.id}\n\n\n\n\n\n"
              product.destroy
           else
