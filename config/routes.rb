@@ -1,16 +1,5 @@
 DeviseFacebook::Application.routes.draw do
  
-  resources :pictures
-
-  resources :projects do
-    put :change_position, on: :member
-  end
-  get 'tags/:tag', to: 'projects#index', as: :tag
-  
-  resources :partners
-
-  resources :pays
-
   root :to => 'static_pages#home'
  
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
@@ -89,11 +78,19 @@ DeviseFacebook::Application.routes.draw do
   match "privacy", to:'static_pages#privacy'
   match "faq", to:'static_pages#faq'
 
-  
-  match 'posts/new_preview', to: 'posts#new_preview'
-  match 'posts/new', to: 'posts#new'
-  resources :posts
-
+  match 'publish', to: 'posts#publish'
+  resources :posts do
+    put :create, on: :collection
+  end
   resources :slides
+
+  resources :pictures
+  resources :projects do
+    put :change_position, on: :member
+  end
+  get 'tags/:tag', to: 'projects#index', as: :tag
+  
+  resources :partners
+  resources :pays
 
 end

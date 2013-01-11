@@ -21,6 +21,8 @@
 //= require jquery-fileupload/vendor/tmpl
 //= require rails.validations
 //= require masonry
+//= require galleria-1.2.8.min
+//= require galleria.classic
 //= require_tree .
 
 $(function () {

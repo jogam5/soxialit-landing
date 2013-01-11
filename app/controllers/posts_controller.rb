@@ -3,11 +3,11 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @slides = @post.slides
   end
 
   def new
-    #@post = Post.new(params[:post])
-    @post = current_user.posts.create(:title => "titulo", :body => "escribe tu post")
+    @post = current_user.posts.create
     @slides = @post.slides
     respond_to do |format|
       format.html
@@ -18,30 +18,24 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = @post.user
     @photos = @post.slides
+    @comment = Comment.new
+    @comments = @post.comments
     respond_to do |format|
       format.html # show.html.erb
     end
   end
 
   def create
-    #@post = current_user.posts.create(params[:post])
-    @post = Post.new(params[:post])
+    @post = Post.find(params[:post_id])
     @post.update_attributes(params[:post])
-    #@post.save!
-    #@post.activities.create(:user_id => current_user.id, :action => "create")
-    if @post.save
-      redirect_to @post
-    else
-      render "new"
-    end
+    redirect_to @post
   end
 
   def update
     @post = Post.find(params[:id])
-
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        format.html { redirect_to @post, notice: 'El Post fue actualizado correctamente.' }
+        format.html { redirect_to @post }
       else
         format.html { render action: "edit" }
       end
@@ -52,13 +46,30 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'Micropost eliminado correctamente' }
+      format.html { redirect_to root_url, notice: 'Micropost eliminado correctamente' }
     end
   end
 
-  def new_preview
-    @post = Post.new(params[:post])
-    @photos = @post.slides
-    @user = current_user
+  def publish
+    @post = Post.find(params[:post_id])
+    if @post.status == false
+      @post.update_attributes(:status => true)
+      @post.activities.create(:user_id => current_user.id, :action => "create")
+    else
+
+    end
+    redirect_to root_url
+  end
+
+  def avoid_nil(posts)
+   items = []
+   posts.each do |post|
+    if post.title.nil? && post.body.nil?
+       post.destroy
+    else
+      items << post
+    end
+   end
+    return items
   end
 end

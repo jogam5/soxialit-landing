@@ -1,0 +1,60 @@
+<div class="modal-compra">
+  <div style="max-height: 500px" class="modal-body">
+  <button type="button" class="close-button" data-dismiss="modal" aria-hidden="true">X</button>
+<div class="row">
+  <div class="span8 offset2">
+   <span class="content">
+    <div style="margin-left:1.5em">
+      <div class="row">
+        <div class="span1">
+          <% if !@user.picture.present? %>
+            <%= link_to image_tag("http://graph.facebook.com/#{@user.uid}/picture?type=square", 
+                  width: 50, height: 50, :id =>  "nickname_small_picture"), user_path(@user) %>
+          <% else %>
+            <%= link_to image_tag(@user.picture_url(:thumb_profile), 
+                  :id => "nickname_small_picture"), user_path(@user) %>
+          <% end %>
+        </div>
+        <% if current_user == @post.user %>
+          <span class="micropost_delete"><%= link_to "X", post_path(@post), :method => :delete %></span>
+        <% end %>
+        <div class="span7">
+          <p style="font-size:1.1em"><span id="user_and_items_link">
+            <%= link_to @user.username, user_path(@user) %></span>
+            <span id="headline_color">
+             <span style="">escribió:</span><br/ >
+              <br /><br /><span id="item_link_micropost"><%= @post.title %></span>
+            </span>
+            <br />
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span8">
+          <div class="galleria">
+            <% @photos.each do |photo| %>
+              <%= image_tag photo %>
+            <% end %>
+          </div>
+        </div>
+      </div><br />
+      <div class="row">
+        <div class="span8">
+          <h4 style="text-align:center; margin-top:1em; color:#555"><%= @post.quote %></h4>
+        </div>
+      </div><hr />
+      <div class="row">
+        <div class="span8">
+          <p style="margin-left:2em; color:#777">
+           <%= raw @post.body %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="red_bar"></div><br />
+   </span>
+  </div>
+</div>
+</div>
+</div>

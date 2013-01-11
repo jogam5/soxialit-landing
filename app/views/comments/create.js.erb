@@ -1,2 +1,2 @@
-$('<%= escape_javascript(render(@comment)) %>').appendTo($('#comment_product_<%= @comment.commentable_id %>'));
+$('<%= escape_javascript(render(@comment)) %>').appendTo($('#comment_<%= @comment.commentable_type.downcase %>_<%= @comment.commentable_id %>'));
 $('#form_<%= @comment.commentable_id %> > form')[0].reset();
