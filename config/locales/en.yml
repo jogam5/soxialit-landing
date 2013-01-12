@@ -8,7 +8,10 @@ en:
         post:
           attributes:
             title:
-              blank: "Ingresa un Titulo para el Micropost"
+              blank: "Ingresa un Titulo para el Micropost."
+      messages:
+        taken: "*Ups: alguien llego antes y te gano ese nickname."
+        invalid: "*El texto es invalido."
   hello: "Hello world"
   datetime:
     distance_in_words:

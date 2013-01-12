@@ -3,11 +3,13 @@
 <div class="row">
   <div class="span5">
     <div style="background-color:whiteSmoke" class="well">
-      <%= form_for @user, :html => { :multipart => true } do |f| %>
+      <%= form_for @user, :html => { :multipart => true }, :validate => true do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <div class="field">
           <h4>Nombre de usuario</h4>
-          <p>( www.soxialit.com/<span id="fashion">username</span> )</p>
+          <p>( soxialit.com/<span id="fashion">username</span> )</p>
+          <p><span><i>*Sólo puede contener letras, números y guión bajo.</i></span></p>
+
           <%= f.text_field :username %>
         </div><hr />
           <h4>Foto de perfil</h4>
@@ -58,6 +60,6 @@
         <%= f.submit "Cambiar" %>
       <% end %>
     </div>
-    <p>*Con tu C.P. conoceras el precio final y cuando llegarán tus items en tiempo real.</p>
+    <p>*Con tu C.P. conoceras el precio final y cuando podrían llegar tus items en tiempo real.</p>
   </div>
 </div>

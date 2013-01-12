@@ -14,7 +14,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
+    @user = User.find_by_username(params[:username])
     @products = product_ok(@user.products)
     @activities = @user.activities.order("created_at DESC")
     @comment = Comment.new
@@ -56,7 +57,8 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
+    @user = User.find_by_username(params[:username])
     @direction = Direction.new
     @address = @user.direction
   end
@@ -77,7 +79,8 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
+    @user = User.find_by_username(params[:username])
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice: 'Tus datos fueron actualizados correctamente.' }
@@ -88,7 +91,8 @@ class UsersController < ApplicationController
   end
 
   def following
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
+    @user = User.find_by_username(params[:username])
     @users = @user.followed_users
     respond_to do |format|
       format.js
@@ -96,8 +100,8 @@ class UsersController < ApplicationController
   end
 
   def followers
-    #@user = User.find_by_username(params[:username])
-    @user = User.find(params[:id])
+    @user = User.find_by_username(params[:username])
+    #@user = User.find(params[:id])
     @users = @user.followers
     respond_to do |format|
       format.js
@@ -109,12 +113,14 @@ class UsersController < ApplicationController
   end
   
   def list_projects
-     @user = User.find(params[:id])
+     #@user = User.find(params[:id])
+     @user = User.find_by_username(params[:username])
      @projects = @user.projects.find(:all, :order => 'created_at DESC')
   end
 
   def list_items
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
+    @user = User.find_by_username(params[:username])
     @products = product_ok(@user.products)
     respond_to do |format|
       format.js
@@ -122,7 +128,8 @@ class UsersController < ApplicationController
   end
 
   def favorites
-    @user = User.find(params[:id], :order => "created_at DESC")
+    #@user = User.find(params[:id], :order => "created_at DESC")
+    @user = User.find_by_username(params[:username], :order => "created_at DESC")
     respond_to do |format|
       format.js
     end

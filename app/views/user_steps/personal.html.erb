@@ -10,9 +10,10 @@
     <div style="width:50%; background-color:#F4F2F1" class="well">
       <%= render layout: 'form' do |f| %>
         <div class="field">
-          <h5>Nombre de usuario:</h5>
-          <p>( www.soxialit.com/<span id="fashion">username</span> )</p>
+          <h4>Tu nombre de usuario:</h4>
+          <p>( soxialit.com/<span id="fashion">username</span> )</p>
           <%= f.text_field :username %>
+          <p><span><i>*Sólo puede contener letras, números y guión bajo.</i></span></p>
         </div>
       <% end %> 
     </div>

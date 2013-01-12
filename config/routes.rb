@@ -16,14 +16,10 @@ DeviseFacebook::Application.routes.draw do
   get '/products_all', to: 'products#products_all'
   #----
   
-  resources :users
+  resources :users, only: [:index, :create, :new]
   resources :user_steps
   resources :relationships, only: [:create, :destroy]
-  #Customized Routes for Profile Page
-  #match ":username", :to => "users#show",
-  #                    :as => "user",
-  #                    :via => :get
-
+  
   resources :products do
        member { post :vote }
        member { post :have}
@@ -32,12 +28,11 @@ DeviseFacebook::Application.routes.draw do
        put :status, on: :collection
   end
 
-  match "list_items/:id" => "users#list_items", :as => "list_items"
-  match "followers/:id" => "users#followers", :as => "followers_user"
-  match "following/:id" => "users#following", :as => "following_user"
-  match "list/:id" => "collections#list", :as => "collections_list"
-  match "favorites/:id" => "users#favorites", :as => "favorites"
-  match "list_projects/:id" => "users#list_projects", :as => "list_projects"
+  match "list_items/:username" => "users#list_items", :as => "list_items"
+  match "followers/:username" => "users#followers", :as => "followers_user"
+  match "following/:username" => "users#following", :as => "following_user"
+  match "favorites/:username" => "users#favorites", :as => "favorites"
+  match "list_projects/:username" => "users#list_projects", :as => "list_projects"
   
 
   resources :feedbacks
@@ -62,7 +57,6 @@ DeviseFacebook::Application.routes.draw do
   get '/fotografo', to: 'users#fotografo'
   get '/bio', to: 'users#bio'
   
-  
  # get 'paypal/checkout', to: 'products#paypal_checkout'
   get 'paypal/checkout', to: 'pays#paypal_checkout'
   get 'mercadopago/checkout', to: 'products#mercadopago_checkout'
@@ -83,14 +77,17 @@ DeviseFacebook::Application.routes.draw do
     put :create, on: :collection
   end
   resources :slides
-
   resources :pictures
   resources :projects do
     put :change_position, on: :member
   end
   get 'tags/:tag', to: 'projects#index', as: :tag
-  
   resources :partners
   resources :pays
 
+  #Customized Routes for Profile Page
+  match ":username/edit", :to => "users#edit", :as => "edit_user", :via => :get
+  match ":username", :to => "users#show", :as => "user", :via => :get
+  match ":username", :to => "users#update", :as => "user", :via => :put
+  match ":username", :to => "users#destroy", :as => "user", :via => :delete
 end

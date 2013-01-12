@@ -35,8 +35,9 @@ class User < ActiveRecord::Base
               :username, :picture, :picture_cache, :location, :website, :bio, 
               :role_ids, :provider, :uid, :token
 
-  validates :username, presence: true, uniqueness: { case_sensitive: false }
-  validate :must_have_one_role
+  VALID_USERNAME_REGEX = /^[a-zA-Z0-9_]*[a-zA-Z][a-zA-Z0-9_]*$/
+  validates :username, presence: true,  format: { with: VALID_USERNAME_REGEX },
+            uniqueness: { case_sensitive: false }
 
   before_save {  self.username.downcase! }
   after_create :add_user_to_mailchimp 
@@ -57,7 +58,7 @@ class User < ActiveRecord::Base
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
-      user = User.create(username:auth.extra.raw_info.username,
+      user = User.create(username:"joy"+rand(9).to_s+rand(9).to_s+rand(9).to_s,
                           picture:auth.info.image,
                           provider:auth.provider,
                           uid:auth.uid,
@@ -76,7 +77,7 @@ class User < ActiveRecord::Base
           #@graph_data = @api.get_object("/me/posts")
           #@graph_data = @api.get_object("me/user", "fields" => "id")
          #@graph_data = @api.get_object("/me/")
-          @api.put_connections("me", "feed", :message => "Me acabo de unir a Soxialit, la red social para fashion 
+          @api.put_connections("me", "feed", :message => "Me acabo de unir a Soxialit, la red social que une fashion 
             designers, bloggers, fotografos y amantes de la moda. Registrate en: http://soxialit.com")
           @friends = @api.get_connections("me", "friends")
           @users = User.all
@@ -151,7 +152,7 @@ class User < ActiveRecord::Base
   end
 
   #Customized routes for user profile
-  #def to_param
-   # username
-  #end
+  def to_param
+    username
+  end
 end
