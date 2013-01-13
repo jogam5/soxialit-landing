@@ -874,6 +874,17 @@ z-index: 2;
 	}
 }
 
+#post_body_feed{
+  margin-left:2em;
+  margin-top:1.5em;
+  border-top: 1px solid #DDD;
+  font-weight:lighter;
+   p{
+  text-align:left;
+  color:#787878;
+  }
+}
+
 /* TimeLine Post - CLOSE */
 
 /* Comments */
@@ -1005,7 +1016,7 @@ ul.comments{
 	padding-top: 6px;
 	margin-top: 3%;
 	margin-bottom: 2%;
-	font-family: "ff-meta-serif-web-pro",Georgia,Cambria,"Times New Roman",Times,serif;
+	font-family: nimbus-sans, Helvetica-Neue, Helvetica, Arial, Sans-serif;
 	font-weight: 400;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -1021,13 +1032,12 @@ ul.comments{
 	padding-top: 6px;
 	margin-top: 3%;
 	margin-bottom: 2%;
-	font-family: "ff-meta-serif-web-pro",Georgia,Cambria,"Times New Roman",Times,serif;
+	font-family: nimbus-sans, Helvetica-Neue, Helvetica, Arial, Sans-serif;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
 	-webkit-line-clamp: 2; 
 	-webkit-box-orient: vertical;
-	
 }
 
 .link_bio{
@@ -1412,15 +1422,12 @@ ul.comments{
   margin-left:0.5em;
 }
 
-#post_body{
+
+#post_quote{
   margin-left:2em;
-  margin-top:1.5em;
-  border-top: 1px solid #DDD;
-  font-weight:lighter;
-   p{
-  text-align:left;
-  color:#787878;
-  }
+  text-align:center;
+  margin-top:1em; 
+  color:#555;
 }
 
 #post_new_label{

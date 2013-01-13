@@ -36,7 +36,7 @@
           <label class="control-label">Ubicación</label>
           <div class="controls">
             <%= f.text_field :location %>
-            <p id="edit_information">¿Dónde estas ubicado?</p>
+            <p id="edit_information">¿Dónde estás ubicado?</p>
           </div>
         </div>
         <div class="control-group">
@@ -52,7 +52,7 @@
             <%= f.text_area :bio, rows: 5, :class => "span3" %>
             <p id="edit_information">Cuéntale al mundo un poco de ti.</p>
           </div>
-        </div>    
+        </div>
         <% if current_user.roles.first.name == "admin" %>
           <p>Selecciona el perfil:</p>
           <% for role in Role.find(:all) %>

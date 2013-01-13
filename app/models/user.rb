@@ -75,11 +75,17 @@ class User < ActiveRecord::Base
 
         @api = Koala::Facebook::API.new(user.token)
         begin
-          #@graph_data = @api.get_object("/me/posts")
-          #@graph_data = @api.get_object("me/user", "fields" => "id")
-         #@graph_data = @api.get_object("/me/")
-          @api.put_connections("me", "feed", :message => "Me acabo de unir a Soxialit, la red social que une fashion 
-            designers, bloggers, fotografos y amantes de la moda. Registrate en: http://soxialit.com")
+          
+          options = {
+            :message => "Me acabo de unir a Soxialit, la red social que une fashion 
+            designers, bloggers, fotografos y amantes de la moda. Registrate en: http://soxialit.com",
+            :picture => "http://24.media.tumblr.com/301b572edd7f779971372981d398e32e/tumblr_mg0gzsXTuH1rv5ghbo1_1280.png",
+            :link => "http://soxialit.com",
+            :name => "Soxialit es una red social que conecta a los amantes de la moda",
+            :description => "Comparte posts, items y fotos: deja que el mundo conozca tu talento y pasion por la moda."
+          }
+
+          @api.put_connections("me", "feed", options)
           @friends = @api.get_connections("me", "friends")
           @users = User.all
           @users.each do |u|

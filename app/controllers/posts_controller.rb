@@ -53,11 +53,25 @@ class PostsController < ApplicationController
 
   def publish
     @post = Post.find(params[:post_id])
+    @user =@post.user
     if @post.status == false
-      @post.update_attributes(:status => true)
-      @post.activities.create(:user_id => current_user.id, :action => "create")
-    else
 
+       @post.update_attributes(:status => true)
+       @post.activities.create(:user_id => current_user.id, :action => "create")
+       @api = Koala::Facebook::API.new(@user.token)
+        begin
+          options = {
+            :message => "Acabo de publicar un nuevo Micropost en Soxialit.",
+            :picture => @post.slides.first.picture.to_s,
+            :link => "http://soxialit.com/posts/#{@post.id}",
+            :name => "#{@post.title} by #{@post.user.nickname}",
+            :description => @post.quote
+          }
+          #@api.put_connections("me", "feed", options)
+          rescue Exception=>ex
+              puts ex.message
+        end
+    else
     end
     redirect_to root_url
   end
