@@ -9,6 +9,23 @@ body{
 	background-color:white;
 }
 
+/* For titles in pages like perfil, user_steps, index of users, etc. */
+
+#main_header_menu{
+  font-size:3em;
+  font-family:acta-display, Helvetica-Neue, Helvetica, Arial, Sans-serif;
+  font-color:black;
+  line-height:1.2em;
+}
+
+#sub_header_menu{
+  font-size:2em;
+  font-family:acta-display, Helvetica-Neue, Helvetica, Arial, Sans-serif;
+  font-color:black;
+}
+
+/* For titles in pages like perfil, user_steps, index of users, etc. END */
+
 .alert-success {
 background-color: black;
 border-color: black;
@@ -93,13 +110,10 @@ background-color: whiteSmoke;
 }
 .tag {
 margin-top: 3%;
-	
-	a:hover{
-	color: #DD390D;
-	}
+ a:hover{
+ color: #DD390D;
+ }
 }
-
-
 
 #home_nav_top{
 	width:100%;
@@ -197,7 +211,7 @@ margin-top: 3%;
 
 #fashion{
 	color:$rojo;
-	font-weight:bold;
+	font-weight:normal;
 }
 
 #bold{
@@ -275,8 +289,26 @@ margin-top: 3%;
 	color:$rojo;
 }
 
+/* Edit Profile */
 
-#edit_profile {
+#edit_account_data{
+  border-left: 5px solid $website;
+  border-right: 5px solid $website;  
+  padding: 5px 10px 10px;
+  font-weight:lighter;
+}
+
+#edit_information{
+  color:#999; 
+  margin-top:0.3em;
+}
+
+#edit_username_format{
+  color:#BBB;
+  font-size:1em;
+}
+
+#edit_personal_data {
   width:300px;
   display: block;
   border-left: 5px solid $website;
@@ -285,6 +317,8 @@ margin-top: 3%;
   padding: 20px 10px 10px;
   font-weight:lighter;
 }
+
+/* Edit Profile END */
 
 /* Profile */
 #username{
@@ -1007,13 +1041,12 @@ ul.comments{
 }
 
 .link_user_index{
-	font-size: 1.8em;
+	font-size: 1.4em;
 	line-height: 2.2em;
 	color: #303239;
 	margin-bottom: 0;
 	margin-top: 0;
 }
-
 
 #user_and_items_link{
 	 a{

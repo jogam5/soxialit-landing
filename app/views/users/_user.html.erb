@@ -9,7 +9,7 @@
 	<% end %>
   </div>
   <div class="span4" style="margin-left:35px" id="nickname_users_list">
-	<%= link_to user.username, user_path(user) %> | 
+	<%= link_to user.nickname, user_path(user) %> | 
 		<% if user.roles.first.name == 'fashion lover' %>
 			<span id="fashionlover_list">fashion lover</span>
 		<% elsif user.roles.first.name == 'boutique store' %>

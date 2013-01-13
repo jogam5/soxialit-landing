@@ -209,5 +209,4 @@ class UsersController < ApplicationController
        end
        return fotografos
     end
-  
 end

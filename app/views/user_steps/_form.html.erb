@@ -1,23 +1,30 @@
-
 <%= form_for @user, :url => wizard_path, :html => { :multipart => true }, :validate => true do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  
-  <%= yield f %>
-
+  <%= render 'shared/error_messages', object: f.object %>  
+  <div class="control-group">
+    <label class="control-label">Nombre de usuario (URL)</label>
+    <div class="controls">
+      <%= f.text_field :username %>
+      <p id="edit_information">http://soxialit.com/<span id="fashion"><%= @user.nickname %></span></p>
+      <p id="edit_username_format">* Sólo puede contener letras, números y guión bajo.</p>
+    </div>
+  </div>
   <hr />
-  <h4>Elige un perfil:</h4>
-  
-  <% for role in Role.find(:all) %>
-    <div>
+  <div class="control-group">
+    <label class="control-label">Elige un perfil</label>
+    <div class="controls">
+      <% for role in Role.find(:all) %>
         <% unless role.name == "admin" %>
           <%= radio_button_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
           <%= role.name %>
+          <br/ >
         <% end %>
+      <% end %>
     </div>
-  <% end %>
-  <br />
-  
-  <div class="actions">
-    <%= f.submit "Crear Perfil", :class => "button-want" %>
+  </div>
+  <hr />
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit "Crear Perfil", :class => "button-want" %>
+    </div>
   </div>
 <% end %>

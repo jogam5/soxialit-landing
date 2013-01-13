@@ -2,7 +2,7 @@
   <div style="max-height: 500px" class="modal-body">
 	<button type="button" class="close-button" data-dismiss="modal" aria-hidden="true">X</button>
 	<div style="float:left; margin-right:2%"><%= image_tag("http://graph.facebook.com/#{@user.uid}/picture?type=square", width: 50, height:50)%></div>
-	<h3><%= @user.username %></h3>
+	<h3><%= @user.nickname %></h3>
 	<hr>
 	<%= @user.bio %>
   </div>

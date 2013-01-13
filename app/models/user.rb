@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
               :username, :picture, :picture_cache, :location, :website, :bio, 
-              :role_ids, :provider, :uid, :token
+              :role_ids, :provider, :uid, :token, :nickname
 
   VALID_USERNAME_REGEX = /^[a-zA-Z0-9_]*[a-zA-Z][a-zA-Z0-9_]*$/
   validates :username, presence: true,  format: { with: VALID_USERNAME_REGEX },
@@ -58,7 +58,8 @@ class User < ActiveRecord::Base
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
-      user = User.create(username:"joy"+rand(9).to_s+rand(9).to_s+rand(9).to_s,
+      user = User.create(username:"usuario"+rand(9).to_s+rand(9).to_s+rand(9).to_s,
+                          nickname:auth.info.name,
                           picture:auth.info.image,
                           provider:auth.provider,
                           uid:auth.uid,

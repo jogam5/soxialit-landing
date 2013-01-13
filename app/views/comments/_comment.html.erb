@@ -9,7 +9,7 @@
 						user_path(comment.user) %>
 			<% end %>
 		</span>
-		<span class="comment_author"><%= "#{comment.user.username}"%></span>
+		<span class="comment_author"><%= "#{comment.user.nickname}"%></span>
 		<span class="comment_text"><%= comment.body %></span>
 		<span class="comment_timestamp"><%= time_ago_in_words(comment.created_at) %> 
 		<% if current_user == comment.user %>

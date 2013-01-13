@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130110221842) do
+ActiveRecord::Schema.define(:version => 20130113003327) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -256,8 +256,6 @@ ActiveRecord::Schema.define(:version => 20130110221842) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "sizes", ["product_id"], :name => "index_sizes_on_product_id"
-
   create_table "sizeships", :force => true do |t|
     t.integer  "product_id"
     t.integer  "size_id"
@@ -315,6 +313,7 @@ ActiveRecord::Schema.define(:version => 20130110221842) do
     t.string   "provider"
     t.string   "uid"
     t.string   "token"
+    t.string   "nickname"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
