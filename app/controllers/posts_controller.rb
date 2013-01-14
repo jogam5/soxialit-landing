@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :avoid_nil, only: :show
+  after_filter :koala, only: :publish
 
   def edit
     @post = Post.find(params[:id])
@@ -57,19 +58,6 @@ class PostsController < ApplicationController
     if @post.status == false
        @post.update_attributes(:status => true)
        @post.activities.create(:user_id => current_user.id, :action => "create")
-       @api = Koala::Facebook::API.new(current_user.token)
-        begin
-          options = {
-            :message => "Acabo de publicar un nuevo Micropost en Soxialit.",
-            :picture => @post.slides.first.picture.to_s,
-            :link => "http://soxialit.com/posts/#{@post.id}",
-            :name => "#{@post.title} by #{@post.user.nickname}",
-            :description => @post.quote
-          }
-          @api.put_connections("me", "feed", options)
-          rescue Exception=>ex
-              puts ex.message
-        end
     else
     end
     redirect_to root_url
@@ -82,5 +70,21 @@ class PostsController < ApplicationController
         post.destroy
      end
    end
+  end
+
+  def koala
+      @api = Koala::Facebook::API.new(current_user.token)
+        begin
+          options = {
+            :message => "Acabo de publicar un nuevo Micropost en Soxialit.",
+            :picture => @post.slides.first.picture.to_s,
+            :link => "http://soxialit.com/posts/#{@post.id}",
+            :name => "#{@post.title} by #{@post.user.nickname}",
+            :description => @post.quote
+          }
+          @api.put_connections("me", "feed", options)
+          rescue Exception=>ex
+              puts ex.message
+        end
   end
 end
