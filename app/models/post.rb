@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
   has_many :comments, :as => :commentable, :dependent => :destroy
 
   validates :body, presence: true, 
-  				length: { maximum: 750, :too_long => "Intentalo de nuevo: el Micropost debe tener maximo %{count} caracteres." }, 
+  				length: { maximum: 550, :too_long => "Vamos, intenta de nuevo: maximo %{count} caracteres." }, 
   					:on => :update
   validates :title, presence: true, :on => :update
   validates :user_id, :presence => true

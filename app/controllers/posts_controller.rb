@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = current_user.posts.create
+    @post = current_user.posts.create(:url => "http://")
     @slides = @post.slides
     respond_to do |format|
       format.html
@@ -67,7 +67,7 @@ class PostsController < ApplicationController
             :name => "#{@post.title} by #{@post.user.nickname}",
             :description => @post.quote
           }
-          #@api.put_connections("me", "feed", options)
+          @api.put_connections("me", "feed", options)
           rescue Exception=>ex
               puts ex.message
         end

@@ -15,7 +15,6 @@
 //= requiere jquery.tokeninput
 //= require bootstrap
 //= require jquery_ujs
-//= require ckeditor-jquery
 //= require box-maker
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl

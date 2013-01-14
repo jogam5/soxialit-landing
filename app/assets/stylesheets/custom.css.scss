@@ -874,16 +874,6 @@ z-index: 2;
 	}
 }
 
-#post_body_feed{
-  margin-left:2em;
-  margin-top:1.5em;
-  border-top: 1px solid #DDD;
-  font-weight:lighter;
-   p{
-  text-align:left;
-  color:#787878;
-  }
-}
 
 /* TimeLine Post - CLOSE */
 
@@ -1423,25 +1413,67 @@ ul.comments{
 }
 
 
-#post_quote{
+#post_quote_feed{
   margin-left:2em;
   text-align:center;
+  padding-left: 1em;
+  padding-right:1em;
   margin-top:1em; 
   color:#555;
+  font-weight:lighter;
+  font-size:1.4em;
+  font-family:acta-display,Helvetica-Neue,Helvetica,Arial,Sans-serif;
+  line-height:1.4em;
 }
 
 #post_new_label{
-	margin-top:1em;
-	font-size:1.5em;
-	color:#777;
+  margin-top:1em;
+  font-size:1.5em;
+  color:#777;
 }
 
-#count{
+.count{
 	color:$rojo;
+}
+
+#post_body_feed{
+  margin-left:2em;
+  padding-top:1em;
+  border-top: 1px solid #DDD;
+   p{
+  text-align:left;
+  color:#777;
+  font-weight:lighter;
+  font-size:1.1em;
+  }
+}
+
+#post_body_show{
+	color:#777;
+	font-size:1.1em;
+	border-top: 1px solid #DDD;
+	padding-top:1em;
+	font-weight:lighter;
+}
+
+#post_quote_show{
+	text-align:center; 
+	padding: 0em 1em; 
+	font-weight:lighter; 
+	margin-top:1em; 
+	color:#555;
+	font-size:1.4em;
+	font-family:acta-display,Helvetica-Neue,Helvetica,Arial,Sans-serif;
+	line-height:1.4em;
 }
 
 #post_new_rightside{
 	border-left: 1px dotted #555;
 	padding-left: 1em;
 }
+
+#post_quote{
+  margin:0em;
+}
+
 /* POST  END */
