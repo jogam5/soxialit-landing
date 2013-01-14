@@ -1,3 +1,6 @@
+<% meta :title => "Soxialit - La red social para fashion designers, bloggers, fotógra....", :description => "#{@product.title} - #{@product.description}", :keywords => @product.tags %>
+<% meta [:property => "og:image", :content => @product.picture] %>
+
 <% if params[:PayerID] %>
 	<%= form_for @pay do |f| %>
 		<h1>¡Gracias por tu compra!</h1>

@@ -36,6 +36,9 @@ gem 'paypal-recurring'
 gem "net-ssh"
 gem 'nokogiri'
 
+#facebook_metatags
+gem 'metamagic'
+
 #Improve files readability
 gem 'annotate', '~> 2.4.1.beta'
 #Improve performance in server
