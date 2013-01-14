@@ -51,10 +51,10 @@
 				<div class="well" style="border: 1px solid white; background-color:white">
 					<div class="description-brand">
 						Proyecto por 
-						<%= link_to find_user_project(@project.user_id), user_path(@project.user_id) %>
+						<%= link_to find_user_project(@project.user_id), user_path(@project.user) %>
 					</div>
 					<div class="description-brand">
-						<%= link_to image_tag(find_user_image(@project.user_id)), user_path(@project.user_id)%>
+						<%= link_to image_tag(find_user_image(@project.user_id)), user_path(@project.user)%>
 						<span id="location"><i class="icon-map-marker"></i><%= find_location(@project.user_id) %></span>
 						<div class="description-low">Locación: <span class="description-text"><%= @project.location %></span></div>
 					</div>
@@ -97,10 +97,10 @@
 				<div class="well" style="border: 1px solid white; background-color:white">
 					<div class="description-brand">
 						Proyecto por 
-						<%= link_to find_user_project(@project.user_id), user_path(@project.user_id) %>
+						<%= link_to find_user_project(@project.user_id), user_path(@project.user) %>
 					</div>
 					<div class="description-brand">
-						<%= link_to image_tag(find_user_image(@project.user_id)), user_path(@project.user_id)%>
+						<%= link_to image_tag(find_user_image(@project.user_id)), user_path(@project.user)%>
 						<span id="location"><i class="icon-map-marker"></i><%= find_location(@project.user_id) %></span>
 						<div class="description-low">Locación: <span class="description-text"><%= @project.location %></span></div>
 					</div>
@@ -144,14 +144,10 @@
 			<div class="well" style="border: 1px solid white; background-color:white">
 				<div class="description-brand">
 					Proyecto por 
-					<%= link_to find_user_project(@project.user_id), user_path(@project.user) %>
+					<%= link_to find_user_project(@project.user), "#" %>
 				</div>
 				<div class="description-brand">
-					<% if !@user.picture.present? %>
-						<%= link_to image_tag(find_user_image(@project.user_id)), user_path(@project.user_id)%>
-					<% else %>
-						<%= link_to image_tag(find_user_image_profile(@project.user_id), @user)%>
-					<% end %>
+					<%= link_to image_tag(find_user_image(@project.user_id)), user_path(@project.user)%>
 					<span id="location"><i class="icon-map-marker"></i><%= find_location(@project.user_id) %></span>
 					<div class="description-low">Locación: <span class="description-text"><%= @project.location %></span></div>
 				</div>
