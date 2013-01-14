@@ -60,7 +60,7 @@ class PostsController < ApplicationController
        @post.activities.create(:user_id => current_user.id, :action => "create")
     else
     end
-    redirect_to root_url
+    redirect_to @post
   end
 
   def avoid_nil
@@ -73,7 +73,9 @@ class PostsController < ApplicationController
   end
 
   def koala
-      @api = Koala::Facebook::API.new(current_user.token)
+      @post = Post.find(params[:id])
+      @user =@post.user
+      @api = Koala::Facebook::API.new(@user.token)
         begin
           options = {
             :message => "Acabo de publicar un nuevo Micropost en Soxialit.",
