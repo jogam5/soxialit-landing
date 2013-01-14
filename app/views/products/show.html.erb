@@ -89,7 +89,7 @@
 		      	<%= @product.title %>
 		 	</div>
 			<div class="description-brand"> 
-		     by <%= link_to @product.brand, user_path(@product.user_id) %>
+		     by <%= link_to @product.brand, user_path(@product.user) %>
 			</div> 
 			<hr>
 			<div class="description-price">
@@ -176,7 +176,7 @@
 		        <div style="border: 1px solid white; background-color:white; height: auto" class="well">
 		        	<div style="margin-left:0px" class="row">
 		        		<div class="description-brand">
-		        			Productos de <%= link_to @product.brand, user_path(@product.user_id) %>
+		        			Productos de <%= link_to @product.brand, user_path(@product.user) %>
 		        		</div>
 		        
 		        		<% @products.shuffle.each_with_index do |product, index| %>
