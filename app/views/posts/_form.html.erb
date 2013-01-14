@@ -26,7 +26,7 @@
   </div>
   <div class="span3" id="post_new_rightside">
     <p id="post_new_label">Imágenes<hr/></p>
-    <p id="post_new_label"><span style="font-size:0.7em">Agrega hasta 10 imágenes. La primera quedará como portada.</span></p>
+    <p id="post_new_label"><span style="font-size:0.7em">Agrega hasta 10 imágenes.</span></p>
     <div id="slider_photos">
       <%= form_for(Slide.new, :remote => true) do |f| %>
         <%= f.hidden_field :post_id, :value => @post.id %>
