@@ -110,6 +110,7 @@ GEM
     mercadopago (1.0.2)
       json (>= 1.4.6)
       rest-client (= 1.6.7)
+    metamagic (2.0.4)
     mime-types (1.19)
     multi_json (1.5.0)
     multipart-post (1.1.5)
@@ -238,6 +239,7 @@ DEPENDENCIES
   jquery-rails
   koala
   mercadopago
+  metamagic
   net-ssh
   newrelic_rpm
   nokogiri
