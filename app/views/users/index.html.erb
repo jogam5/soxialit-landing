@@ -9,6 +9,9 @@
   <br>
   <div id="ajax-status" style="float:left; display:none; margin: 0 50% 0 50%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
   <div id="user_roles">
+	<% @fashionlovers.each do |lover| %>
+		<%= render(lover), :partial => ('user') %>
+	<% end %>
   </div>
 <% if user_signed_in? %>
  <% if current_user.roles.first.name == 'admin' %>

@@ -13,5 +13,10 @@ module ProjectsHelper
       a = User.find(project)
       a.location
    end
+   
+   def find_user_image_profile(project)
+      a = User.find(project)
+      a.picture_url(:profile)
+   end
 end
 

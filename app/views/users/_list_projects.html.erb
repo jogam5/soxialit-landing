@@ -13,7 +13,7 @@
 				<div id="mi_title">
 					<%= link_to project.name, project %>
 				</div>
-				<p>por <span class="description-brand"><%= link_to find_user_project(project.user_id), user_path(project.user_id) %></span></p>
+				<p>por <span class="description-brand"><%= link_to find_user_project(project.user_id), user_path(@user) %></span></p>
 				<p id="mi_description">"<%= project.description %>"</p>
 				<div id="mi_view_more">
 					<%= link_to "Ver Proyecto completo", project %> 
