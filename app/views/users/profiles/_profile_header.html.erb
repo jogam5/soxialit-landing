@@ -38,11 +38,12 @@
 			<% end %>
 			<p id="url"><i class="icon-globe"></i> <%= link_to @user.website, @user.website, target: '_blank' %></p>
 		</div>
-		<div class="span2">
+		<div class="span3">
 			<div id="bio">
 				<%= render 'follow_form' if user_signed_in? %>
+				<%= link_to "Crear Micropost", new_post_path, :class => 'button-want' %><hr />
 				<% if current_user == @user %>
-					<% if @user.id == 65 || @user.id == 27 %>
+					<% if @user.id == 65 || @user.id == 27 || @user.id == 47 %>
 						<%= link_to "Crear Producto", new_product_path, :class => "button-want" %> 
 					<% end %>
 					<% if @user.roles.first.name == "fotografo" %>
