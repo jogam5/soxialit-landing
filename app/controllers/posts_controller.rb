@@ -55,10 +55,9 @@ class PostsController < ApplicationController
     @post = Post.find(params[:post_id])
     @user =@post.user
     if @post.status == false
-
        @post.update_attributes(:status => true)
        @post.activities.create(:user_id => current_user.id, :action => "create")
-       @api = Koala::Facebook::API.new(@user.token)
+       @api = Koala::Facebook::API.new(current_user.token)
         begin
           options = {
             :message => "Acabo de publicar un nuevo Micropost en Soxialit.",
