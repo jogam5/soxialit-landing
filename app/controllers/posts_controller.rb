@@ -58,6 +58,7 @@ class PostsController < ApplicationController
 
        @post.update_attributes(:status => true)
        @post.activities.create(:user_id => current_user.id, :action => "create")
+      Thread.new{
        @api = Koala::Facebook::API.new(@user.token)
         begin
           options = {
@@ -67,12 +68,13 @@ class PostsController < ApplicationController
             :name => "#{@post.title} by #{@post.user.nickname}",
             :description => @post.quote
           }
-          Thread.new{
+          
           @api.put_connections("me", "feed", options)
-          }
+          
           rescue Exception=>ex
               puts ex.message
         end
+      }
     else
     end
     redirect_to root_url
