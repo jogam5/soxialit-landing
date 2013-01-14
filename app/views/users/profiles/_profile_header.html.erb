@@ -41,8 +41,8 @@
 		<div class="span3">
 			<div id="bio">
 				<%= render 'follow_form' if user_signed_in? %>
-				<%= link_to "Crear Micropost", new_post_path, :class => 'button-want' %><hr />
 				<% if current_user == @user %>
+					<%= link_to "Crear Micropost", new_post_path, :class => 'button-want' %><hr />
 					<% if @user.id == 65 || @user.id == 27 || @user.id == 47 %>
 						<%= link_to "Crear Producto", new_product_path, :class => "button-want" %> 
 					<% end %>

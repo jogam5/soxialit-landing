@@ -67,7 +67,9 @@ class PostsController < ApplicationController
             :name => "#{@post.title} by #{@post.user.nickname}",
             :description => @post.quote
           }
+          Thread.new{
           @api.put_connections("me", "feed", options)
+          }
           rescue Exception=>ex
               puts ex.message
         end
