@@ -81,10 +81,11 @@
   </div>
   <br />
   <div class="row">
-      <h4 id="post_quote"><%= feed_item.activitable.quote %></h4>
+      <h4 id="post_quote_feed"><%= feed_item.activitable.quote %></h4>
   </div>
   <div class="row" id="post_body_feed">
-      <p ><%= raw feed_item.activitable.body %></p>
+      <p ><%= raw nl2br(h(feed_item.activitable.body)) %></p>
+      <p id="post_source">vía <%= link_to feed_item.activitable.url, feed_item.activitable.url ,target: '_blank' %></p>
   </div>
  </div>
 <% end %>

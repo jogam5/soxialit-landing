@@ -18,7 +18,7 @@
 		<br /><br /><span id="item_link_micropost"><%= link_to feed_item.activitable.title,
 																		feed_item.activitable.url, target: '_blank' %></span>
 	<% elsif feed_item.activitable_type == "Post" && feed_item.action == "create"  %>
-		<span style="">compartió un Micropost:</span><br/ >
+		<span style="">publicó un nuevo Micropost:</span><br/ >
 			<span class="timestamp" style="float:right">
 				<%= time_ago_in_words(feed_item.created_at) if feed_item.activitable_type == "Post" %>.
 				<br />

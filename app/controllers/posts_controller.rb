@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = current_user.posts.create
+    @post = current_user.posts.create(:url => "http://")
     @slides = @post.slides
     respond_to do |format|
       format.html

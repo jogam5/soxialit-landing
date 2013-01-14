@@ -60,14 +60,13 @@
       </div><br />
       <div class="row">
         <div class="span8">
-          <h4 style="text-align:center; margin-top:1em; color:#555"><%= @post.quote %></h4>
+          <h4 id="post_quote_show"><%= @post.quote %></h4>
         </div>
       </div>
       <div class="row">
-        <div class="span8" id="post_body">
-          <p>
-           <%= raw @post.body %>
-          </p>
+        <div class="span8" id="post_body_show">
+          <p><%= raw nl2br(h(@post.body)) %></p>
+          <p>vía <%= link_to @post.url, @post.url ,target: '_blank' %></p>
         </div>
       </div>
     </div>
