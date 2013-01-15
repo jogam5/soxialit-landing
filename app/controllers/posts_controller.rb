@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :authenticate_user! :except => :show
+  before_filter :authenticate_user!, :except => :show
   before_filter :avoid_nil, only: :show
 
   def edit
