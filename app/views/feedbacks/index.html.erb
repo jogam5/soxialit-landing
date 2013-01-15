@@ -4,4 +4,11 @@
 <div class="row">
 	<p style="text-align:center; font-size:1.6em; font-weight:lighter">¡Si tienes dudas específicas mandanos un tweet a <%= link_to "@Soxialit", "https://twitter.com/soxialit" %>, te responderemos enseguida!</p>
 </div>
+
+<% if current_user.roles.first.name == 'admin' %>
+	<% @feedbacks.each do |feedback| %>
+		feedback.content
+		<hr/ >
+	<% end %>
+<% end %>
 <script type="text/javascript">mixpanel.track("Feedback Page Loaded")</script>
