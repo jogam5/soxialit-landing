@@ -6,14 +6,14 @@ class Post < ActiveRecord::Base
   has_many :comments, :as => :commentable, :dependent => :destroy
 
   validates :body, presence: true, 
-  				length: { maximum: 550, :too_long => "Vamos, intenta de nuevo: maximo %{count} caracteres." }, 
+  				length: { maximum: 550, :too_long => "Intenta otra vez: maximo %{count} caracteres." }, 
   					:on => :update
   validates :title, presence: true, :on => :update
   validates :user_id, :presence => true
 
 
-  def self.publish_post_facebook(post_id)
-    @post = Post.find(post_id)
+  def self.publish_post_facebook(post)
+    @post = post
     @user = @post.user
     @api = Koala::Facebook::API.new(@user.token)
       begin
@@ -24,9 +24,7 @@ class Post < ActiveRecord::Base
           :name => "#{@post.title} by #{@post.user.nickname}",
           :description => @post.quote
         }
-        
         @api.put_connections("me", "feed", options)
-        
         rescue Exception=>ex
             puts ex.message
       end
