@@ -1,5 +1,5 @@
 <% content_for :meta do %>
-	<% meta :title => "Soxialit - La red social para fashion designers, bloggers, fotógraf.... - #{@product.title}", :description => @product.description %>
+	<% meta :title => "Soxialit - La red social para fashion designers, bloggers, fotógraf.... - #{@product.title}", :description => " #{@product.brand} - #{@product.description}", :keywords => @product.tags %>
 	<% meta [:property => "og:image", :content => @product.picture] %>
 <% end %>
 
