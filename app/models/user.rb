@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
                           password:Devise.friendly_token[0,10]
                            )
       user.update_attributes(role_ids:"6")
-      user.follow!(User.find(1))
+      #user.follow!(User.find(1))
       
       user.save(:validate => false)
 
@@ -85,15 +85,15 @@ class User < ActiveRecord::Base
             :description => "Comparte posts, items y fotos: deja que el mundo conozca tu talento y pasion por la moda."
           }
 
-          @api.put_connections("me", "feed", options)
+          #@api.put_connections("me", "feed", options)
           @friends = @api.get_connections("me", "friends")
           @users = User.all
           @users.each do |u|
             @friends.each do |friend|
               if friend["id"] == u.uid
-                if u.id != User.find(1).id
-                  user.follow!(User.find(u.id))
-                end
+               # if u.id != User.find(1).id
+                  #user.follow!(User.find(u.id))
+               # end
               end
             end
           end
@@ -163,11 +163,17 @@ class User < ActiveRecord::Base
     username
   end
 
-  def facebooker
+  def facebook
     @facebook ||= Koala::Facebook::API.new(token)
     block_given? ? yield(@facebook) : @facebook
   rescue Koala::Facebook::APIError => e
     logger.info. e.to_s
-    nil
+    if e.message.include?("OAuthException: Error validating access token:")
+      Rails.logger.error "Facebook access token not valid"
+      @facebook = Koala::Facebook::OAuth.new("235628993153454", "6dc90b8b268f2643ebd5b074a88db7c8")
+      @facebook.exchange_access_token_info(token)
+    else
+      Rails.logger.error "FacebookApi#perform Koala Error with #{e}, model_id:#{model.id}"
+    end
   end
 end
