@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130113003327) do
+ActiveRecord::Schema.define(:version => 20130115002627) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -46,6 +46,22 @@ ActiveRecord::Schema.define(:version => 20130113003327) do
   add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
   create_table "directions", :force => true do |t|
     t.integer  "user_id"
     t.string   "zipcode"
@@ -69,13 +85,10 @@ ActiveRecord::Schema.define(:version => 20130113003327) do
     t.text     "description"
     t.string   "thumbnail"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "status"
   end
-
-  add_index "microposts", ["status"], :name => "index_microposts_on_status"
-  add_index "microposts", ["user_id"], :name => "index_microposts_on_user_id"
 
   create_table "paintings", :force => true do |t|
     t.string   "image"
@@ -84,8 +97,6 @@ ActiveRecord::Schema.define(:version => 20130113003327) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "paintings", ["product_id"], :name => "index_paintings_on_product_id"
 
   create_table "partners", :force => true do |t|
     t.integer  "user_id"
@@ -260,8 +271,6 @@ ActiveRecord::Schema.define(:version => 20130113003327) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "sizes", ["product_id"], :name => "index_sizes_on_product_id"
 
   create_table "sizeships", :force => true do |t|
     t.integer  "product_id"

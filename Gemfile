@@ -14,6 +14,9 @@ gem 'koala'
 #gem cache
 gem 'dalli'
 
+#gem to delay processes in Facebook
+gem 'delayed_job_active_record'
+
 #Reputation
 gem 'activerecord-reputation-system', require: 'reputation_system'
 

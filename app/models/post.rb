@@ -10,4 +10,25 @@ class Post < ActiveRecord::Base
   					:on => :update
   validates :title, presence: true, :on => :update
   validates :user_id, :presence => true
+
+
+  def self.publish_post_facebook(post_id)
+    @post = Post.find(post_id)
+    @user = @post.user
+    @api = Koala::Facebook::API.new(@user.token)
+      begin
+        options = {
+          :message => "Acabo de publicar un nuevo Micropost en Soxialit.",
+          :picture => @post.slides.first.picture.to_s,
+          :link => "http://soxialit.com/posts/#{@post.id}",
+          :name => "#{@post.title} by #{@post.user.nickname}",
+          :description => @post.quote
+        }
+        
+        @api.put_connections("me", "feed", options)
+        
+        rescue Exception=>ex
+            puts ex.message
+      end
+  end
 end
