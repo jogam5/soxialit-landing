@@ -15,8 +15,8 @@ class Post < ActiveRecord::Base
   def self.publish_post_facebook(post)
     @post = post
     @user = @post.user
-    @api = Koala::Facebook::API.new(@user.token)
-      begin
+    #@api = Koala::Facebook::API.new(@user.token)
+      #begin
         options = {
           :message => "Acabo de publicar un nuevo Micropost en Soxialit.",
           :picture => @post.slides.first.picture.to_s,
@@ -24,9 +24,9 @@ class Post < ActiveRecord::Base
           :name => "#{@post.title} by #{@post.user.nickname}",
           :description => @post.quote
         }
-        @api.put_connections("me", "feed", options)
-        rescue Exception=>ex
-            puts ex.message
-      end
+        @user.facebook.put_connections("me", "feed", options)
+        #rescue Exception=>ex
+         #   puts ex.message
+      #end
   end
 end

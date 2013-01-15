@@ -162,4 +162,12 @@ class User < ActiveRecord::Base
   def to_param
     username
   end
+
+  def facebook
+    @facebook ||= Koala::Facebook::API.new(token)
+    block_given? ? yield(@facebook) : @facebook
+  rescue Koala::Facebook::APIError => e
+    logger.info. e.to_s
+    nil
+  end
 end
