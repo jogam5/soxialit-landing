@@ -170,10 +170,6 @@ class User < ActiveRecord::Base
     block_given? ? yield(@facebook) : @facebook
   rescue Koala::Facebook::APIError => e
     logger.info. e.to_s
-    if e.message.include?("OAuthException: Error validating access token:")
-      Rails.logger.error "Facebook access token not valid"
-    else
-      Rails.logger.error "FacebookApi#perform Koala Error with #{e}, model_id:#{model.id}"
-    end
+    nil
   end
 end

@@ -15,37 +15,13 @@ class Post < ActiveRecord::Base
   def self.publish_post_facebook(post)
     @post = post
     @user = @post.user
-    @api = Koala::Facebook::API.new(@user.token)
-      begin
-        options = {
-          :message => "Acabo de publicar un nuevo Micropost en Soxialit.",
-          :picture => @post.slides.first.picture.to_s,
-          :link => "http://soxialit.com/posts/#{@post.id}",
-          :name => "#{@post.title} by #{@post.user.nickname}",
-          :description => @post.quote
-        }
-        @api.put_connections("me", "feed", options)
-        rescue Koala::Facebook::APIError => e
-            #puts ex.message
-          if e.message.include?("OAuthException: Error validating access token: Session does not match current stored session.")
-            Rails.logger.error "Facebook access token not valid: #{@user.token}"
-            auth = env["omniauth.auth"]
-            #current_user = User.where(:provider => auth.provider, :uid => auth.uid).first
-            current_user.update_attributes(token:auth.credentials.token)
-            current_user.save(:validate => false)
-             Rails.logger.error "new token: #{current_user.token}"
-            @rapi = Koala::Facebook::OAuth.new(current_user.token)
-            options = {
-              :message => "Acabo de publicar un nuevo Micropost en Soxialit.",
-              :picture => @post.slides.first.picture.to_s,
-              :link => "http://soxialit.com/posts/#{@post.id}",
-              :name => "#{@post.title} by #{@post.user.nickname}",
-              :description => @post.quote
-            }
-            @rapi.put_connections("me", "feed", options)
-          else
-            Rails.logger.error "FacebookApi#perform Koala Error with #{e}, model_id:#{model.id}"
-          end
-      end
+      options = {
+        :message => "Acabo de publicar un Micropost en Soxialit.",
+        :picture => @post.slides.first.picture.to_s,
+        :link => "http://soxialit.com/posts/#{@post.id}",
+        :name => "#{@post.title} by #{@post.user.nickname}",
+        :description => @post.quote
+      }
+      @user.facebook.put_connections("me", "feed", options)
   end
 end
