@@ -5,7 +5,9 @@
 	  	<div class="row" id="image_hover">
 			<span style="margin-bottom:2%" class="span6" >
 				<div style="float:right" id="mi_image">
-					<%= link_to image_tag(project.picture, style:"margin:0% 0% 2% 0%; max-height: auto"), project %>
+					<% if !project.picture.nil?%>
+						<%= link_to image_tag(project.picture, style:"margin:0% 0% 2% 0%; max-height: auto"), project %>
+					<% end %>
 				</div>
 			</span>
 			<span class="span5">
@@ -29,6 +31,5 @@
 			</span>
 		</div>
 	</div>
-	
 	<% end %>
 </div>
