@@ -2,6 +2,7 @@ class FeedbacksController < ApplicationController
   
   def index
     @feedback = Feedback.new
+    @feedbacks = Feedback.all
     respond_to do |format|
       format.html # new.html.erb
     end

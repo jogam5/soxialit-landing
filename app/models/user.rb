@@ -149,7 +149,7 @@ class User < ActiveRecord::Base
   end
 
   def feed
-    @feed = Activity.from_users_followed_by(self).order("created_at DESC").limit(30)
+    @feed = Activity.from_users_followed_by(self).order("created_at DESC").limit(35)
   end
 
   def feed_cached
