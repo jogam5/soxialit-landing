@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
                           password:Devise.friendly_token[0,10]
                            )
       user.update_attributes(role_ids:"6")
-      #user.follow!(User.find(1))
+      user.follow!(User.find(1))
       
       user.save(:validate => false)
 
@@ -85,15 +85,15 @@ class User < ActiveRecord::Base
             :description => "Comparte posts, items y fotos: deja que el mundo conozca tu talento y pasion por la moda."
           }
 
-          #@api.put_connections("me", "feed", options)
+          @api.put_connections("me", "feed", options)
           @friends = @api.get_connections("me", "friends")
           @users = User.all
           @users.each do |u|
             @friends.each do |friend|
               if friend["id"] == u.uid
-               # if u.id != User.find(1).id
-                  #user.follow!(User.find(u.id))
-               # end
+                if u.id != User.find(1).id
+                  user.follow!(User.find(u.id))
+                end
               end
             end
           end
@@ -102,7 +102,11 @@ class User < ActiveRecord::Base
               puts ex.message
         end
     end
+    user.update_attributes(token:auth.credentials.token)
+    user.save(:validate => false)
+    Rails.logger.info("shit happens")
     user
+    
   end
 
   def following? (other_user)
