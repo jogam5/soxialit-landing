@@ -2,9 +2,10 @@
 	<% if current_user.id == @project.user_id %>
 		<div class="row-fluid" style="margin-top:-7%; margin-left:-10%; width: 1150px">
 			<div style="margin: 5% 0% 5% -3%; text-align:center; width:800px" class="span8 offset1">
-				<div style="background-color:white; padding-bottom:15%" class="well">
-					<div class="span8 offset1">
+				<div style="background-color:white; padding-bottom:20%" class="well">
+					<div class="span8 offset2">
 						<h2>Elige las imágenes de tu proyecto: </h2>
+						<h5>La imagen debe ser menor a 2MB</h5>
 					</div>
 					<%= form_for(Picture.new, :remote => true) do |f| %>
 						<div class="span4 offset4">

@@ -7,5 +7,6 @@ class Project < ActiveRecord::Base
   validates :description, :location, :name, :presence => { :message => "*dato requerido" }, :allow_blank => true
   attr_accessible :tag_list
   acts_as_taggable
+  
 end
    

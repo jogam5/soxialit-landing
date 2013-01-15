@@ -35,25 +35,26 @@
 	</div>
 </div>
 
-<div class="row">
-	<% @pictures.each do |picture| %>
-		<div class="span12 offset1">
-			<div id="picture_<%= picture.id %>" class="image_frame">
-				<%= image_tag(picture.image_url(:timeline)) %>
-				<div style="border: 1px solid white; background-color: white;"class="well">
-					<div class="span2 offset3">
-						<div><%= radio_button_tag "position", picture.id, { :checked => true }, :class => "position" %><span style="display:none;" class="imagen_principal">Imagen principal</span></div>
-					</div>
-					<div class="span1">
-						<%= link_to image_tag("trash.png", style: "width:50px"), picture, method: :delete, remote: true, :id => "remove" %><span style="float:right">Eliminar</span>
+<% if !@pictures.nil? %>
+	<div class="row">
+		<% @pictures.each do |picture| %>
+			<div class="span12 offset1">
+				<div id="picture_<%= picture.id %>" class="image_frame">
+					<%= image_tag(picture.image_url(:timeline)) %>
+					<div style="border: 1px solid white; background-color: white;"class="well">
+						<div class="span2 offset3">
+							<div><%= radio_button_tag "position", picture.id, { :checked => true }, :class => "position" %><span style="display:none;" class="imagen_principal">Imagen principal</span></div>
+						</div>
+						<div class="span1">
+							<%= link_to image_tag("trash.png", style: "width:50px"), picture, method: :delete, remote: true, :id => "remove" %><span style="float:right">Eliminar</span>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	<% end %>
-</div>
-
-<div style="background-color:white; padding-bottom:13%" class="well">
+		<% end %>
+	</div>
+<% end %>
+<div style="background-color:white; padding-bottom:18%" class="well">
 	<div class="span4 offset4">
 		<%= link_to 'Cancelar', current_user, :class => "button-unfollow" %>
 	    <%= f.submit "Actualizar", :class => "button-want" %>
@@ -62,6 +63,8 @@
 	
 	<div class="span8 offset1">
 		<h2>Elige las imágenes de tu proyecto: </h2>
+		<h5>La imagen debe ser menor a 2MB</h5>
+		
 	</div>
 	<%= form_for(Picture.new, :remote => true) do |f| %>
 	<div class="span4 offset4">
