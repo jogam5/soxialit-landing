@@ -57,7 +57,7 @@ class PostsController < ApplicationController
     if @post.status == false
        @post.update_attributes(:status => true)
        @post.activities.create(:user_id => current_user.id, :action => "create")
-       Post.delay.publish_post_facebook(@post.id)
+       Post.delay.publish_post_facebook(@post)
     else
     end
     redirect_to root_url
