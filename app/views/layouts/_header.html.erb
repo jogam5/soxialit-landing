@@ -14,7 +14,11 @@
 						<li id="feedback_header"><%= link_to "Feedback", feedbacks_path %></li>
 						<li class="divider-vertical"></li>
 					    <li id="feedback_header">
-					   	  <a href="http://soxialit.com/products"><i class="icon-random icon-white"></i></a>
+					   	  <a href="http://soxialit.com/products"><i class="icon-refresh icon-white"></i></a>
+					   	</li>
+					   	<li class="divider-vertical"></li>
+					    <li id="feedback_header">
+					      <%= link_to '<i class="icon-pencil icon-white"></i>'.html_safe, new_post_path %>
 					   	</li>
 						<li class="divider-vertical"></li>
 						<li><% if !current_user.picture.present? %>
