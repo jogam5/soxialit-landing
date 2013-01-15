@@ -28,9 +28,13 @@ class Post < ActiveRecord::Base
         rescue Koala::Facebook::APIError => e
             #puts ex.message
           if e.message.include?("OAuthException: Error validating access token: Session does not match current stored session.")
-            Rails.logger.error "Facebook access token not valid damn"
-            @rapi = Koala::Facebook::OAuth.new("235628993153454", "6dc90b8b268f2643ebd5b074a88db7c8")
-            @rapi.exchange_access_token_info(@user.token)
+            Rails.logger.error "Facebook access token not valid: #{@user.token}"
+            auth = request.env["omniauth.auth"]
+            #user = User.where(:provider => auth.provider, :uid => auth.uid).first
+            current_user.update_attributes(token:auth.credentials.token)
+            current_user.save(:validate => false)
+             Rails.logger.error "new token: #{current_user.token}"
+            @rapi = Koala::Facebook::OAuth.new(current_user.token)
             options = {
               :message => "Acabo de publicar un nuevo Micropost en Soxialit.",
               :picture => @post.slides.first.picture.to_s,
