@@ -4,10 +4,11 @@
 <div class="row">
 	<p style="text-align:center; font-size:1.6em; font-weight:lighter">¡Si tienes dudas específicas mandanos un tweet a <%= link_to "@Soxialit", "https://twitter.com/soxialit" %>, te responderemos enseguida!</p>
 </div>
-
+<br/ >
 <% if current_user.roles.first.name == 'admin' %>
 	<% @feedbacks.each do |feedback| %>
-		feedback.content
+		<p>id: <%= feedback.user.id %>, email:<%= feedback.user.email %> </p>
+		<p><%= feedback.content %></p>
 		<hr/ >
 	<% end %>
 <% end %>
