@@ -29,8 +29,8 @@ class Post < ActiveRecord::Base
             #puts ex.message
           if e.message.include?("OAuthException: Error validating access token: Session does not match current stored session.")
             Rails.logger.error "Facebook access token not valid: #{@user.token}"
-            auth = request.env["omniauth.auth"]
-            #user = User.where(:provider => auth.provider, :uid => auth.uid).first
+            auth = env["omniauth.auth"]
+            #current_user = User.where(:provider => auth.provider, :uid => auth.uid).first
             current_user.update_attributes(token:auth.credentials.token)
             current_user.save(:validate => false)
              Rails.logger.error "new token: #{current_user.token}"
