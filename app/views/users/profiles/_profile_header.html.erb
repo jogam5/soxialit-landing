@@ -43,7 +43,7 @@
 				<%= render 'follow_form' if user_signed_in? %>
 				<% if current_user == @user %>
 					
-					<% if @user.id == 65 || @user.id == 27 || @user.id == 47 %>
+					<% if @user.id == 65 || @user.id == 27 || @user.id == 47 || @user.id == 16 %>
 						<%= link_to "Crear Producto", new_product_path, :class => "button-want" %> 
 					<% end %>
 					<% if @user.roles.first.name == "fotografo" %>
