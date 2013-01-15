@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     end
     
     def products_all
-      @products = avoid_nil(Product.all)
+      @products = Product.all
       @users = User.all
     end
     
