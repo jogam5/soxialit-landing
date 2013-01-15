@@ -104,9 +104,7 @@ class User < ActiveRecord::Base
     end
     user.update_attributes(token:auth.credentials.token)
     user.save(:validate => false)
-    Rails.logger.info("shit happens")
     user
-    
   end
 
   def following? (other_user)
@@ -174,8 +172,6 @@ class User < ActiveRecord::Base
     logger.info. e.to_s
     if e.message.include?("OAuthException: Error validating access token:")
       Rails.logger.error "Facebook access token not valid"
-      @facebook = Koala::Facebook::OAuth.new("235628993153454", "6dc90b8b268f2643ebd5b074a88db7c8")
-      @facebook.exchange_access_token_info(token)
     else
       Rails.logger.error "FacebookApi#perform Koala Error with #{e}, model_id:#{model.id}"
     end
