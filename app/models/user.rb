@@ -163,7 +163,7 @@ class User < ActiveRecord::Base
     username
   end
 
-  def facebook
+  def facebooker
     @facebook ||= Koala::Facebook::API.new(token)
     block_given? ? yield(@facebook) : @facebook
   rescue Koala::Facebook::APIError => e

@@ -24,7 +24,7 @@ class Post < ActiveRecord::Base
           :name => "#{@post.title} by #{@post.user.nickname}",
           :description => @post.quote
         }
-        @user.facebook.put_connections("me", "feed", options)
+        @user.facebooker.put_connections("me", "feed", options)
         #rescue Exception=>ex
          #   puts ex.message
       #end
