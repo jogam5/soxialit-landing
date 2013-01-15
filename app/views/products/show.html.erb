@@ -1,6 +1,10 @@
 <% content_for :meta do %>
-	<% meta :title => "Soxialit - La red social para fashion designers, bloggers, fotógraf.... - #{@product.title}", :description => " #{@product.brand} - #{@product.description}", :keywords => @product.tags %>
+	<% meta :description => " #{@product.brand} - #{@product.title} - #{@product.description}", :keywords => @product.tags %>
 	<% meta [:property => "og:image", :content => @product.picture] %>
+	<% meta [:property => "og:type", :content => "website"] %>
+	<% meta [:property => "og:title", :content => "Soxialit - La red social para fashion designers, bloggers, fotógrafos y boutique stores"] %>
+	<% meta [:property => "fb:app_id", :content => "439343236107925"] %>
+	
 <% end %>
 
 
