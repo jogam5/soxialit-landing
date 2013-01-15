@@ -10,8 +10,8 @@ class StaticPagesController < ApplicationController
   	else
       @user = User.find(1)
   	  #@feed_items = User.find(1).feed_cached
-      #@feed_items = User.find(1).feed
-      @feed_items = User.first.feed
+      @feed_items = User.find(1).feed
+      #@feed_items = User.first.feed
   	end
   end
 
