@@ -25,8 +25,8 @@ class Post < ActiveRecord::Base
           :description => @post.quote
         }
         @api.put_connections("me", "feed", options)
-        rescue Exception=>ex
-            puts ex.message
+        rescue Koala::Facebook::APIError => e
+            #puts ex.message
           if e.message.include?("OAuthException: Error validating access token: Session does not match current stored session.")
             Rails.logger.error "Facebook access token not valid"
             @api = Koala::Facebook::OAuth.new("235628993153454", "6dc90b8b268f2643ebd5b074a88db7c8")
