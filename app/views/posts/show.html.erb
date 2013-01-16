@@ -1,3 +1,14 @@
+<% content_for :meta do %>
+	<% if @post.slides.any? %>
+		<% meta [:property => "og:image", :content => @post.slides.first.picture] %>
+	<% end %>
+	<% meta [:property => "og:description", :content => " #{@post.title}"] %>
+	<% meta [:property => "og:type", :content => "website"] %>
+	<% meta [:property => "og:title", :content => "Soxialit - La red social para fashion designers, bloggers, fotógrafos y boutique stores"] %>
+	<% meta [:property => "og:url", :content => "https://soxialit.com/posts/#{@post.id}"] %>
+	<% meta [:property => "fb:app_id", :content => "235628993153454"] %>
+<% end %>
+
 <div class="row">
   <div class="span2">
     <% if @post.status == false %>
@@ -64,6 +75,9 @@
       <div class="row">
         <div class="span8">
           <h4 id="post_quote_show"><%= @post.quote %></h4>
+			<span style="float:right; margin-right:10%; margin-top:-4.5%; display:block">
+				<div class="fb-like" data-href="" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false"></div>
+			</span>
         </div>
 		<% if signed_in? %>
 			<div style="margin-top:-4%; margin-right: 5%"class="votacion" id="votacion_<%= @post.id %>">
@@ -164,3 +178,11 @@
 <script type="text/javascript">
   Galleria.run('.galleria');
 </script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=439343236107925";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
