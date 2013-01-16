@@ -107,6 +107,7 @@ class ProjectsController < ApplicationController
            picture = Picture.find(params[:position])
            logger.debug "picture: #{picture}\n\n\n\n\n\n"
            @project.update_attribute(:picture, picture.image_url(:timeline).to_s)
+           #here will be the code
         end
      respond_to do |format|
      if @project.update_attributes(params[:project])
