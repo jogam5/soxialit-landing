@@ -13,6 +13,7 @@ class Post < ActiveRecord::Base
   
   has_reputation :likes, source: :user, aggregated_by: :sum
   
+
   def self.publish_post_facebook(post)
     @post = post
     @user = @post.user
