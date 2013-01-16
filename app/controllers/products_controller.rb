@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     end
     
     def products_all
-      @products = Product.all
+      @products = avoid_nil(Product.all)
       @users = User.all
     end
     
@@ -47,8 +47,8 @@ class ProductsController < ApplicationController
        items = []
        products.each do |product|
           if product.title.blank? && product.description.blank?
-             #logger.debug "producto destruido #{product.id}\n\n\n\n\n\n"
-             #product.destroy
+             logger.debug "producto destruido #{product.id}\n\n\n\n\n\n"
+             product.destroy
           else
              items << product
           end

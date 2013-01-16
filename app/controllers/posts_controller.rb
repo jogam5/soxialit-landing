@@ -71,4 +71,14 @@ class PostsController < ApplicationController
      end
    end
   end
+  
+  def likes
+      value = params[:type] == "up" ? 1 : -1
+      @post = Post.find(params[:id])
+      @post.add_evaluation(:likes, value, current_user)
+      @post.activities.create(:user_id => current_user.id, :action => "like")
+       respond_to do |format|
+          format.js
+        end
+    end
 end

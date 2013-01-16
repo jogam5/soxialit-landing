@@ -75,6 +75,7 @@ DeviseFacebook::Application.routes.draw do
   match 'publish', to: 'posts#publish'
   resources :posts do
     put :create, on: :collection
+    member {post :likes}
   end
   resources :slides
   resources :pictures
