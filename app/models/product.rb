@@ -66,14 +66,14 @@ class Product < ActiveRecord::Base
   def self.publish_product_facebook(product)
     Rails.logger.info(product)
     logger.debug "Product no sirve #{product}"
-    @product = product
-    @user = @product.user
+    #@product = product
+    @user = product.user
       options = {
         :message => "Acabo de publicar un item en Soxialit.",
-        :picture => @product.picture.to_s,
-        :link => "https://soxialit.com/products/#{@product.id}",
-        :name => "#{@product.title} by #{@product.user.nickname}",
-        :description => @product.description
+        :picture => product.picture.to_s,
+        :link => "https://soxialit.com/products/#{product.id}",
+        :name => "#{product.title} by #{product.user.nickname}",
+        :description => product.description
       }
       @user.facebook.put_connections("me", "feed", options)
   end

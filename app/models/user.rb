@@ -149,7 +149,7 @@ class User < ActiveRecord::Base
   end
 
   def feed
-    @feed = Activity.from_users_followed_by(self).order("created_at DESC").limit(35)
+    @feed = Activity.from_users_followed_by(self).order("created_at DESC").limit(25)
   end
 
   def feed_cached
@@ -160,7 +160,6 @@ class User < ActiveRecord::Base
     User.all.shuffle.take(12)
   end
 
-  #Customized routes for user profile
   def to_param
     username
   end

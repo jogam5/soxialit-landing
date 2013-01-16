@@ -11,8 +11,6 @@ class ProductsController < ApplicationController
          b = Product.find(id)
          logger.debug "producto: #{b}"
       end
-      #product = Product.find(b)
-      #logger.debug "objeto producto: #{product}"
       Product.delay.publish_product_facebook(b)
       redirect_to products_path
     end
