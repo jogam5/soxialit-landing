@@ -91,7 +91,7 @@
  </div>
 <% elsif feed_item.activitable_type == "Post" && feed_item.action == "like" %>
 <div id="product_background" class="image_hover">
-	<div style="display:block; width:100px; margin-left:100px">
+	<div style="display:block; width:300px; margin-left:100px">
 		<% if feed_item.activitable.slides.any? %>
 		  <%= link_to image_tag(feed_item.activitable.slides.first.picture), post_path(feed_item.activitable.id), target: '_blank' %>
 		<% end %>
