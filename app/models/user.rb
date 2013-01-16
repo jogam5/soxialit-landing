@@ -160,7 +160,6 @@ class User < ActiveRecord::Base
     User.all.shuffle.take(12)
   end
 
-  #Customized routes for user profile
   def to_param
     username
   end
