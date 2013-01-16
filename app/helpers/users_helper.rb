@@ -72,4 +72,39 @@ module UsersHelper
       a = User.find(project)
       a.username
    end
+   
+   def find_post_image(evaluations)
+	   a = Post.find(evaluations)
+	   if a.slides.any?
+	      a.slides.first.picture_url
+	   end
+	end
+	
+	def find_post_url(evaluations)
+	   a = Post.find(evaluations)
+	   a.id
+	end
+	
+	def find_post_body(evaluations)
+	   a = Post.find(evaluations)
+	   a.body
+	end
+	
+	def find_post_link(evaluations)
+	   a = Post.find(evaluations)
+	   a.url
+	end
+	
+	def find_post_userimage(evaluations)
+	   a = Post.find(evaluations)
+	   b = User.find(a.user_id)
+	   c = "http://graph.facebook.com/#{b.uid}/picture?type=square"
+	   return c
+	end
+	
+	def find_post_userurl(evaluations)
+	   a = Post.find(evaluations)
+	   b = User.find(a.user_id)
+	   b.id
+	end
 end

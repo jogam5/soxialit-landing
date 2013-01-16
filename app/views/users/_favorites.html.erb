@@ -22,7 +22,7 @@
 					</div>
 				</div>
 			</div>
-			<% end %>
+	<% end %>
 	<% if z.target_type == "Product" %>
 		<div class="box photo col3 masonry-brick">
 	 	  <div id="favorites_frame">
@@ -47,6 +47,28 @@
 	 	</p>
 	  </div>
 	</div>
+	<% end %>
+	<% if z.target_type == "Post" %>
+		<div class="box photo col3 masonry-brick">
+			<div class="frame_link_favorites">
+				<div class="link_image_favoritos">
+					<%= link_to image_tag(find_post_image(z.target_id), style:"margin:0% 0% 2% 0%; max-height: 200px"), posts_path(find_post_url(z.target_id)), target: '_blank' %>
+				</div>
+				<br/>
+				<div style="width:250px; padding:20px; height:50px">
+					<p id="description_link_favorites">
+						<%= find_post_body(z.target_id)%>
+					</p>
+				</div>
+				<p style="margin-left:-10%; padding:7%; margin-top:5%; width:290px" id="item_link"><strong>
+					<%= image_tag('link.png', style: "width:25px; float:left" ) %> </i><%= link_to find_post_link(z.target_id), find_post_link(z.target_id), target: '_blank' %></strong> 
+				</p>
+				<div id="micropost_description">
+					<span style="color:#999; font-size: 0.9em">Publicado por</span>
+						<%= link_to image_tag(find_post_userimage(z.target_id), style:"width:35px; margin-left:42%; margin-top:-9%", id: "like_small_picture"), user_path(find_post_userurl(z.target_id))%>
+				</div>
+			</div>
+		</div>
 	<% end %>
   	<% end %>
 </div>
