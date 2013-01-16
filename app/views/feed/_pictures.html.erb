@@ -77,7 +77,8 @@
           <%= image_tag(photo.picture_url) if photo.picture.present? %>
         <% end %>
       <% end %>
-    </div>	
+    </div>
+	<%= render :partial => 'feed/like_post', :locals => { :feed_item => feed_item } %>
   </div>
   <br />
   <div class="row">

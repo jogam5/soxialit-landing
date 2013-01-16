@@ -10,6 +10,9 @@ class Post < ActiveRecord::Base
   					:on => :update
   validates :title, presence: true, :on => :update
   validates :user_id, :presence => true
+  
+  has_reputation :likes, source: :user, aggregated_by: :sum
+  
 
   def self.publish_post_facebook(post)
     @post = post

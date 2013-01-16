@@ -85,10 +85,13 @@ ActiveRecord::Schema.define(:version => 20130115002627) do
     t.text     "description"
     t.string   "thumbnail"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.boolean  "status"
   end
+
+  add_index "microposts", ["status"], :name => "index_microposts_on_status"
+  add_index "microposts", ["user_id"], :name => "index_microposts_on_user_id"
 
   create_table "paintings", :force => true do |t|
     t.string   "image"
@@ -97,6 +100,8 @@ ActiveRecord::Schema.define(:version => 20130115002627) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "paintings", ["product_id"], :name => "index_paintings_on_product_id"
 
   create_table "partners", :force => true do |t|
     t.integer  "user_id"
@@ -271,6 +276,8 @@ ActiveRecord::Schema.define(:version => 20130115002627) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "sizes", ["product_id"], :name => "index_sizes_on_product_id"
 
   create_table "sizeships", :force => true do |t|
     t.integer  "product_id"
