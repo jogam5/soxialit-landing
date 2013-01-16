@@ -63,7 +63,7 @@ class Product < ActiveRecord::Base
      paypal_payment_token.present?
   end
 
-  def self.publish_post_facebook(product)
+  def self.publish_product_facebook(product)
     @product = product
     @user = @product.user
       options = {

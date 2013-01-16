@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
       Product.update_all({:status => true}, {:id => params[:status_ids]})
       a = params[:status_ids]
       @product = Product.find(a)
-      Product.delay.publish_post_facebook(@product)
+      Product.delay.publish_product_facebook(@product)
       redirect_to products_path
     end
     
