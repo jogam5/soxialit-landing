@@ -4,9 +4,16 @@ class ProductsController < ApplicationController
    
     def status
       Product.update_all({:status => true}, {:id => params[:status_ids]})
-      a = params[:status_ids]
-      @product = Product.find(a)
-      Product.delay.publish_product_facebook(@product)
+      a = []
+      b = params[:status_ids]
+      b.each do |id|
+         logger.debug "producto id: #{id}"
+         b = Product.find(id)
+         logger.debug "producto: #{b}"
+      end
+      #product = Product.find(b)
+      #logger.debug "objeto producto: #{product}"
+      Product.delay.publish_product_facebook(b)
       redirect_to products_path
     end
     
