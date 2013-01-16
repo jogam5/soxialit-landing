@@ -64,6 +64,8 @@ class Product < ActiveRecord::Base
   end
 
   def self.publish_product_facebook(product)
+    Rails.logger.info(product)
+    logger.debug "Product no sirve #{product}"
     @product = product
     @user = @product.user
       options = {
