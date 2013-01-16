@@ -40,7 +40,6 @@ class ProjectsController < ApplicationController
   def edit
     @project = Project.find(params[:id])
     @pictures = @project.pictures.find(:all)
-    
   end
 
   # POST /projects
