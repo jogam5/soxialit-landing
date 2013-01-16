@@ -9,6 +9,7 @@
           <%= link_to 'Cancelar', post_path(@post), method: :delete %><hr />
           <%= link_to 'Publicar', publish_path(:post_id => @post.id), :class => "button-want" %>
         <% else %>
+          <br/ >
           <%= link_to 'Editar', edit_post_path(@post) %> |
           <%= link_to 'Cancelar', post_path(@post), method: :delete %>
         <% end %>
@@ -18,7 +19,6 @@
       <br />
     <% end %>
   </div>
-  <button type="button" id="copy-some-txt">example</button>
   <div class="span8">
    <span class="contenido">
     <div style="margin-left:1.5em">
