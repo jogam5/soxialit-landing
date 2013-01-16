@@ -11,7 +11,6 @@ class Post < ActiveRecord::Base
   validates :title, presence: true, :on => :update
   validates :user_id, :presence => true
 
-
   def self.publish_post_facebook(post)
     @post = post
     @user = @post.user

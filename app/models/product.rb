@@ -62,4 +62,17 @@ class Product < ActiveRecord::Base
   def payment_provided?
      paypal_payment_token.present?
   end
+
+  def self.publish_post_facebook(product)
+    @product = product
+    @user = @product.user
+      options = {
+        :message => "Acabo de publicar un item en Soxialit.",
+        :picture => @product.picture.to_s,
+        :link => "https://soxialit.com/products/#{@product.id}",
+        :name => "#{@product.title} by #{@product.user.nickname}",
+        :description => @product.description
+      }
+      @user.facebook.put_connections("me", "feed", options)
+  end
 end
