@@ -67,6 +67,9 @@ module UsersHelper
 	   a = Micropost.find(evaluations)
 	   a.description
    end
+   def find_micropost(evaluations)
+	   micropost = Micropost.find(evaluations)
+	end
    
    def find_user_project(project)
       a = User.find(project)
@@ -106,5 +109,9 @@ module UsersHelper
 	   a = Post.find(evaluations)
 	   b = User.find(a.user_id)
 	   b.id
+	end
+	
+	def find_post(evaluations)
+	   product = Post.find(evaluations)
 	end
 end

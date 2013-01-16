@@ -32,6 +32,6 @@
 	<% elsif feed_item.activitable_type == "Post" && feed_item.action == "like"  %>
 		<span style="color:red">loves</span> <span id="item_link_likes"> el siguiente link:</span>
 		<br /><br /><span id="item_link_micropost"><%= link_to feed_item.activitable.title,
-																		feed_item.activitable.url, target: '_blank' %></span>
+																		post_path(feed_item.activitable.id), target: '_blank' %></span>
 	<% end %>
 </span>
