@@ -222,6 +222,9 @@ GEM
     wicked (0.2.0)
       activesupport (>= 3.0.7)
       rails (>= 3.0.7)
+    zclip-rails (0.0.1)
+      jquery-rails (>= 1.0.17)
+      railties (~> 3.1)
 
 PLATFORMS
   ruby
@@ -262,3 +265,4 @@ DEPENDENCIES
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   wicked
+  zclip-rails

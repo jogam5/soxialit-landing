@@ -7,7 +7,7 @@
 <br/ >
 <% if current_user.roles.first.name == 'admin' %>
 	<% @feedbacks.each do |feedback| %>
-		<p>id: <%= feedback.user.id %>, email:<%= feedback.user.email %> </p>
+		<p>id: <%= feedback.user.id %>|| username:<%= feedback.user.username %>|| email:<%= feedback.user.email %> </p>
 		<p><%= feedback.content %></p>
 		<hr/ >
 	<% end %>

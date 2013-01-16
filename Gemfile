@@ -17,6 +17,9 @@ gem 'dalli'
 #gem to delay processes in Facebook
 gem 'delayed_job_active_record'
 
+#gem copy text_field entry into clipboard
+gem 'zclip-rails'
+
 #Reputation
 gem 'activerecord-reputation-system', require: 'reputation_system'
 

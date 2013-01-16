@@ -22,6 +22,7 @@
 //= require masonry
 //= require galleria-1.2.8.min
 //= require galleria.classic
+//= require zclip
 //= require_tree .
 
 $(function () {
