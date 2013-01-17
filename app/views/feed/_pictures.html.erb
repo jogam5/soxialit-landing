@@ -89,4 +89,13 @@
       <p id="post_source">vía <%= link_to feed_item.activitable.url, feed_item.activitable.url ,target: '_blank' %></p>
   </div>
  </div>
+ <% elsif feed_item.activitable_type == "Project" && feed_item.action == "create" %>
+ <div id="product_background" class="">
+  <div class="row" style="display:block;  margin-left:35px">
+  	<div style="width:400px; margin-left:3em" >
+		<%= image_tag(feed_item.activitable.picture) %>
+	</div>
+  </div>
+  <br />
+ </div>
 <% end %>

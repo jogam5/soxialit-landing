@@ -107,8 +107,8 @@ class ProjectsController < ApplicationController
            picture = Picture.find(params[:position])
            logger.debug "picture: #{picture}\n\n\n\n\n\n"
            @project.update_attribute(:picture, picture.image_url(:timeline).to_s)
-           #here will be the code
         end
+        @project.activities.create(:user_id => current_user.id, :action => "create")
      respond_to do |format|
      if @project.update_attributes(params[:project])
         format.html { redirect_to current_user, notice: 'El proyecto fue creado correctamente' }

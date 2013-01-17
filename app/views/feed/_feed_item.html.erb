@@ -22,7 +22,7 @@
               <%= render :partial => 'feed/headline', :locals => { :feed_item => feed_item } %>
               <br />
             <span class="timestamp">
-             <%= time_ago_in_words(feed_item.created_at) unless feed_item.activitable_type == "Micropost" || feed_item.activitable_type == "Post"  %>
+             <%= time_ago_in_words(feed_item.created_at) unless feed_item.activitable_type == "Micropost" || feed_item.activitable_type == "Post" || feed_item.activitable_type == "Project"  %>
             </span>
             <br />
           </p>
