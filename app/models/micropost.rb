@@ -6,8 +6,20 @@ class Micropost < ActiveRecord::Base
   has_many :comments, :as => :commentable, :dependent => :destroy
 
   validates :url, presence: true, format: { with: URI::regexp(%w(http https)) }
-  #validates :url, presence: true
   
   has_reputation :lovs, source: :user, aggregated_by: :sum
+
+  def self.publish_link_facebook(micropost)
+    @micropost = micropost
+    @user = @micropost.user
+      options = {
+        :message => "Acabo de compartir un link en Soxialit.",
+        :picture => @micropost.thumbnail.to_s,
+        :link => "http://soxialit.com/#{@user.username}",
+        :name => "#{@micropost.title} by #{@user.nickname}",
+        :description => @micropost.description
+      }
+      @user.facebook.put_connections("me", "feed", options)
+  end
   
 end
