@@ -32,7 +32,7 @@
 						user_path(feed_item.activitable.user), :id => "user_and_items_link" %></span>
 		</div>
 	</div>
-<% elsif feed_item.activitable_type == "Micropost" && feed_item.action == "create" %>
+<% elsif feed_item.activitable_type == "M" && feed_item.action == "create" %>
 	<div id="product_background" class="image_hover">
 		<div class="row" style="display:block;  margin-left:50px">
 		 <div style="width:300px" id="micropost_img">
@@ -48,7 +48,7 @@
 		</div>
 	</div>
 
-<% elsif feed_item.activitable_type == "Micropost" && feed_item.action == "like" %>
+<% elsif feed_item.activitable_type == "M" && feed_item.action == "like" %>
 <div id="product_background" class="image_hover">
 	<div style="display:block; width:100px; margin-left:100px">
 		  <%= link_to image_tag(feed_item.activitable.thumbnail), feed_item.activitable.url, target: '_blank' %>
@@ -111,4 +111,13 @@
 		 </div>
 	</div>
 </div>
+<% elsif feed_item.activitable_type == "Project" && feed_item.action == "create" %>
+ <div id="product_background" class="">
+  <div class="row" style="display:block;  margin-left:35px">
+  	<div style="width:400px; margin-left:3em" >
+		<%= image_tag(feed_item.activitable.picture) %>
+	</div>
+  </div>
+  <br />
+ </div>
 <% end %>
