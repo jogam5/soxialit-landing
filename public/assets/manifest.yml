@@ -97,10 +97,10 @@ wrong5.jpg: wrong5-208812eb19f241c59f80a45c9f6554a4.jpg
 wrong5/index.jpg: wrong5-208812eb19f241c59f80a45c9f6554a4.jpg
 zapato.png: zapato-1029d6c5aa14da47143753767914f588.png
 zapato/index.png: zapato-1029d6c5aa14da47143753767914f588.png
-application.js: application-2b51b70ab40f70b77ac37a3eeeaa4270.js
-application/index.js: application-2b51b70ab40f70b77ac37a3eeeaa4270.js
-application.css: application-8d00599ed6f99ef686d6c52e7d94263c.css
-application/index.css: application-8d00599ed6f99ef686d6c52e7d94263c.css
+application.js: application-b8f8671d9e215f6ef80482c3eda7ba16.js
+application/index.js: application-b8f8671d9e215f6ef80482c3eda7ba16.js
+application.css: application-be7f4944ecacac991725e44f49819873.css
+application/index.css: application-be7f4944ecacac991725e44f49819873.css
 fontawesome-webfont.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont/index.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont.svg: fontawesome-webfont-c3f3594758768fbb43eae746d18b3b50.svg
@@ -121,3 +121,5 @@ glyphicons-halflings-white.png: glyphicons-halflings-white-6cccd17a7aed91dbc0157
 glyphicons-halflings-white/index.png: glyphicons-halflings-white-6cccd17a7aed91dbc0157d343c68c0d9.png
 glyphicons-halflings.png: glyphicons-halflings-2851b489e8c39f8fad44fc10efb99c3e.png
 glyphicons-halflings/index.png: glyphicons-halflings-2851b489e8c39f8fad44fc10efb99c3e.png
+ZeroClipboard10.swf: ZeroClipboard10-c654dc864770a89e89f1bb92d06d762a.swf
+ZeroClipboard10/index.swf: ZeroClipboard10-c654dc864770a89e89f1bb92d06d762a.swf

@@ -10,12 +10,15 @@ class MicropostsController < ApplicationController
     end
   end
 
+
   def create
-    @micropost = current_user.microposts.create(params[:micropost])
+    @micropost = current_user.microposts.build(params[:micropost])
     @micropost.save!
     @micropost.activities.create(:user_id => current_user.id, :action => "create")
     redirect_to :back
   end
+
+  
 
   def destroy
     @micropost = Micropost.find(params[:id])

@@ -47,7 +47,8 @@ DeviseFacebook::Application.routes.draw do
   get '/envio', to: 'products#envio'
   get '/comprar', to: 'products#comprar'
   get '/comprar_login', to: 'products#comprar_login'
-  get '/tallas', to: 'products#tallas' 
+  get '/tallas', to: 'products#tallas'
+  match 'preview', to: 'static_pages#preview'
   
  # get users/index
   get '/designer', to: 'users#designer'

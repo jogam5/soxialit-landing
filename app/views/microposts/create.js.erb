@@ -5,7 +5,7 @@ window.onscroll = function(){
 	window.scroll(0, y);
 };
 $('#modal-id').fadeIn('fast');
-$('#modal-id').html("<%= escape_javascript(render :partial => 'preview', :object => @products) %>");
+$('#modal-id').html("<%= escape_javascript(render :partial => 'preview', :object => @micropost) %>");
 $('#modal-id').click(function(){
 	window.onscroll = null;
 	document.documentElement.style.overflowY = "scroll";

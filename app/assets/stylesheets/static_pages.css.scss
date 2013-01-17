@@ -53,11 +53,14 @@
 
 
 .selector {
+  border:1px dotted #ADADAD;
+  padding:10px;
   margin: 10px auto;
   position: relative;
   display: none;
   min-height: 85px;
   /* URL Selector */ }
+
   .selector .thumbnail {
     float: left;
     margin: 0 10px 0 0;
@@ -68,7 +71,7 @@
       padding: 0px; }
       .selector .thumbnail .items .images {
         position: absolute;
-        width: 300em;
+        width: 400em;
         margin: 0px;
         padding: 0px;
         left: 0px; }

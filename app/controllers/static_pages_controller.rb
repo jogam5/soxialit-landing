@@ -13,6 +13,10 @@ class StaticPagesController < ApplicationController
   	end
   end
 
+  def preview
+    @Micropost = Micropost.find(params[:micropost])
+  end
+
   def about
     @users = User.limit(6)
   end
