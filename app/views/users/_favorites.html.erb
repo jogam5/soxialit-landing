@@ -6,6 +6,19 @@
 				<div class="frame_link_favorites">
 					<div class="link_image_favoritos">
 						<%= link_to image_tag(find_micropost_image(z.target_id), style:"margin:0% 0% 2% 0%; max-height: 200px"), find_micropost_url(z.target_id), target: '_blank' %>
+						<% if signed_in? %>
+							<div style="margin-right:-2%; margin-top: 59%" class="votacion" id="votacion_<%= z.target_id %>">
+								<% if z.target_id == current_user.voted_by?(current_user.evaluations, z.target_id) %>
+									<span id="want_<%= z.target_id %>">
+										<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
+											<span style="float:left; display:block; margin-left:-50%; color:black" id="love_z.target_id_<%= z.target_id %>">
+												<%= find_micropost(z.target_id).reputation_value_for(:lovs).to_i %>
+											</span>
+										</div>
+						   			</span>
+								<% end %>
+							</div>
+						<% end %>
 					</div>
 					<br/>
 					<div style="width:250px; padding:20px; height:50px">
@@ -52,7 +65,20 @@
 		<div class="box photo col3 masonry-brick">
 			<div class="frame_link_favorites">
 				<div class="link_image_favoritos">
-					<%= link_to image_tag(find_post_image(z.target_id), style:"margin:0% 0% 2% 0%; max-height: 200px"), posts_path(find_post_url(z.target_id)), target: '_blank' %>
+					<%= link_to image_tag(find_post_image(z.target_id), style:"margin:0% 0% 2% 0%; max-height: 200px"), post_path(find_post_url(z.target_id)), target: '_blank' %>
+					<% if signed_in? %>
+						<div style="margin-right:-2%; margin-top: 59%" class="votacion" id="votacion_<%= z.target_id %>">
+							<% if z.target_id == current_user.voted_by?(current_user.evaluations, z.target_id) %>
+								<span id="want_<%= z.target_id %>">
+									<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
+										<span style="float:left; display:block; margin-left:-50%; color:black" id="love_z.target_id_<%= z.target_id %>">
+											<%= find_post(z.target_id).reputation_value_for(:likes).to_i %>
+										</span>
+									</div>
+					   			</span>
+							<% end %>
+						</div>
+					<% end %>
 				</div>
 				<br/>
 				<div style="width:250px; padding:20px; height:50px">
