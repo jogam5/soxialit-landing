@@ -5,11 +5,11 @@
 			<div class="box photo col3 masonry-brick">
 				<div class="frame_link_favorites">
 					<div class="link_image_favoritos">
-						<div style="float:left; width: 270px; height:160px; padding:5% 5% 2% 5%">
-							<%= link_to image_tag(find_micropost_image(z.target_id), style:"width: 200px; height: auto"), find_micropost_url(z.target_id), target: '_blank' %>
+						<div style="float:left; width: 270px; position:absolute; text-align:center; height:200px; padding:5% 5% 2% 5%">
+							<%= link_to image_tag(find_micropost_image(z.target_id), style:"width: 200px; height:100%"), find_micropost_url(z.target_id), target: '_blank' %>
 						</div>
 						<% if signed_in? %>
-							<div style="margin-right:-2%; margin-top: 59%" class="votacion" id="votacion_<%= z.target_id %>">
+							<div style="margin-right:-2%; margin-top: 128%" class="votacion" id="votacion_<%= z.target_id %>">
 								<% if z.target_id == current_user.voted_by?(current_user.evaluations, z.target_id) %>
 									<span id="want_<%= z.target_id %>">
 										<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
@@ -67,11 +67,11 @@
 		<div class="box photo col3 masonry-brick">
 			<div class="frame_link_favorites">
 				<div class="link_image_favoritos">
-					<div style="float:left; width: 270px; height:160px; padding:5% 5% 2% 5%">
-						<%= link_to image_tag(find_post_image(z.target_id), style:"width: 200px; height: auto"), post_path(find_post_url(z.target_id)), target: '_blank' %>
+					<div style="float:left; position: absolute; text-align: center; width: 270px; height:160px; padding:5% 5% 2% 5%">
+						<%= link_to image_tag(find_post_image(z.target_id), style:"width: 200px; height: 100%"), post_path(find_post_url(z.target_id)), target: '_blank' %>
 					</div>
 					<% if signed_in? %>
-						<div style="margin-right:-2%; margin-top: 59%" class="votacion" id="votacion_<%= z.target_id %>">
+						<div style="margin-right:-2%; margin-top: 128%" class="votacion" id="votacion_<%= z.target_id %>">
 							<% if z.target_id == current_user.voted_by?(current_user.evaluations, z.target_id) %>
 								<span id="want_<%= z.target_id %>">
 									<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
