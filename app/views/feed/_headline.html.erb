@@ -9,10 +9,10 @@
 	<% elsif feed_item.activitable_type == "Product" && feed_item.action == "like"  %>
 		<span style="color:red">loves</span> <span id="item_link_likes"><%= link_to feed_item.activitable.title, 
 															product_path(feed_item.activitable) %></span>
-	<% elsif feed_item.activitable_type == "Micropost" && feed_item.action == "create"  %>
+	<% elsif feed_item.activitable_type == "M" && feed_item.action == "create"  %>
 		<span style="">compartió:</span><br/ >
 			<span class="timestamp" style="float:right">
-				<%= time_ago_in_words(feed_item.created_at) if feed_item.activitable_type == "Micropost" %>.
+				<%= time_ago_in_words(feed_item.created_at) if feed_item.activitable_type == "" %>.
 				<br />
 			</span>
 		<br /><br /><span id="item_link_micropost"><%= link_to feed_item.activitable.title,
@@ -25,7 +25,7 @@
 			</span>
 		<br /><br /><span id="item_link_micropost"><%= link_to feed_item.activitable.title,
 																		post_path(feed_item.activitable) %></span>
-	<% elsif feed_item.activitable_type == "Micropost" && feed_item.action == "like"  %>
+	<% elsif feed_item.activitable_type == "M" && feed_item.action == "like"  %>
 		<span style="color:red">loves</span> <span id="item_link_likes"> el siguiente link:</span>
 		<br /><br /><span id="item_link_micropost"><%= link_to feed_item.activitable.title,
 														feed_item.activitable.url, target: '_blank' %></span>
