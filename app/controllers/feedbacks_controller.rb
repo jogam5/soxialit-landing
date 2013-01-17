@@ -16,6 +16,7 @@ class FeedbacksController < ApplicationController
       else
         format.html { render action: "index" }
       end
+      format.js
     end
   end
 end
