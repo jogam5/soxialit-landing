@@ -1,5 +1,4 @@
 <% if feed_item.present? && feed_item.activitable.status == true %>
- <% unless feed_item.activitable_type == "Micropost" %>
   <br />
   <li id="<%= feed_item.id %>">
     <span class="contenido">
@@ -7,8 +6,8 @@
         <div class="span1">
           <%= render :partial => 'feed/profile_picture', :locals => { :feed_item => feed_item } %>
         </div>
-        <% if feed_item.activitable_type == "M" && feed_item.action == "create" %>
-          <% if current_user == feed_item.user %>
+        <% if feed_item.activitable_type == "Micropost" && feed_item.action == "create" %>
+          <% if current_user == feed_item.user || current_user == User.find(1) %>
             <span class="micropost_delete"><%= link_to "X", micropost_path(feed_item.activitable), :method => :delete, data: { confirm: '¿Estas seguro de eliminar el post?' } %></span>
           <% end %>
         <% end %>
@@ -23,7 +22,7 @@
               <%= render :partial => 'feed/headline', :locals => { :feed_item => feed_item } %>
               <br />
             <span class="timestamp">
-             <%= time_ago_in_words(feed_item.created_at) unless feed_item.activitable_type == "M" || feed_item.activitable_type == "Post" || feed_item.activitable_type == "Project"  %>
+             <%= time_ago_in_words(feed_item.created_at) unless feed_item.activitable_type == "Micropost" || feed_item.activitable_type == "Post" || feed_item.activitable_type == "Project"  %>
             </span>
             <br />
           </p>
@@ -39,7 +38,6 @@
       <%= render :partial => 'feed/comments', :locals => { :feed_item => feed_item } %>
     </span>
   </li>
- <% end %>
 <% end %>
 <script type="text/javascript">
   Galleria.run('.galleria');

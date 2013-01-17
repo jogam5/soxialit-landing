@@ -1,32 +1,10 @@
-<% if user_signed_in? && Rails.env.production? %>
-<% if current_user.roles.first.name == 'admin' %>
-  <h1>Cache Stats</h1>
-  <table>
-    <tr>
-      <th>Metric</th>
-      <th>Value</th>
-    </tr>
-    <tr>
-      <td>Cache hits:</td>
-      <td><%= @stats['get_hits'] %></td>
-    </tr>
-    <tr>
-      <td>Cache misses:</td>
-      <td><%= @stats['get_misses'] %></td>
-    </tr>
-    <tr>
-      <td>Cache flushes:</td>
-      <td><%= @stats['cmd_flush'] %></td>
-    </tr>
-  </table>
-<% end %>
-<% end %>
-
 <div class="row">
   <div class="span2">
-    <br />
+    <span style="float:right; margin-top:1.4em"><%= image_tag 'link.png' %></span>
   </div>
   <div class="span8">
+    <%= render 'static_pages/micropost' %>
+  <hr />
     <%= render 'shared/feed' %>
   </div>
 </div>
@@ -52,9 +30,16 @@ $(document).ready(function(){
 <script type="text/javascript">
   $(function() {
     $('#status').preview({key:'7f6cf7cec28511e0866c4040d3dc5c07'});
+
+    $('#status').live('keyup keydown', function(e) {
+      var empty = $(this).val().length;
+      if ( empty > 0 )
+        $('#wait').toggleClass('show');
+    });
   });
 </script>
-<script type="text/javascript"charset="UTF-8">
+
+<script type="text/javascript">
   $(function() {
     $('input#button_send').click(function(){
       var url = $('input#id_url:hidden').val();
