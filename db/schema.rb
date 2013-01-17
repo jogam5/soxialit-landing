@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130116234514) do
+ActiveRecord::Schema.define(:version => 20130117173947) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20130116234514) do
     t.string   "zipcode"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "product_id"
   end
 
   add_index "directions", ["user_id"], :name => "index_directions_on_user_id"
@@ -85,10 +86,13 @@ ActiveRecord::Schema.define(:version => 20130116234514) do
     t.text     "description"
     t.string   "thumbnail"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.boolean  "status"
   end
+
+  add_index "microposts", ["status"], :name => "index_microposts_on_status"
+  add_index "microposts", ["user_id"], :name => "index_microposts_on_user_id"
 
   create_table "paintings", :force => true do |t|
     t.string   "image"
@@ -97,6 +101,8 @@ ActiveRecord::Schema.define(:version => 20130116234514) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "paintings", ["product_id"], :name => "index_paintings_on_product_id"
 
   create_table "partners", :force => true do |t|
     t.integer  "user_id"
@@ -274,6 +280,8 @@ ActiveRecord::Schema.define(:version => 20130116234514) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "sizes", ["product_id"], :name => "index_sizes_on_product_id"
 
   create_table "sizeships", :force => true do |t|
     t.integer  "product_id"

@@ -74,7 +74,7 @@
     </div>
   </div>
   <div class="span3 offset1" id="edit_personal_data">
-    <p>Código Postal actual:<span style="color:red" id="address_form"><%= @address.zipcode if @address.present? %></span></p>
+    <p>Código Postal actual: <span style="color:red" id="address_form"><%= @address.zipcode if @address.present? %></span></p>
     <div id="zip_form">
       <%= form_for(@direction, :url => direction_path, remote: true) do |f| %>
         <%= f.text_field :zipcode, :placeholder => "Ingresa tu C.P." %>

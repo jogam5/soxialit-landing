@@ -31,19 +31,20 @@
 			<strong>
 				Que opción de envío deseas:
 			</strong>
-			<% if current_user.direction.zipcode.blank? %>
-				<div class="span3 offset1" id="edit_personal_data">
-			    <p>Código Postal actual:<span style="color:red" id="address_form"><%= @address.zipcode if @address.present? %></span></p>
-			    <div id="zip_form">
-			      <%= form_for(@direction, :url => direction_path, remote: true) do |f| %>
-			        <%= f.text_field :zipcode, :placeholder => "Ingresa tu C.P." %>
-					<%= f.hidden_field :id, :value => @product.id %>
-			        <%= f.submit "Cambiar" %>
-			      <% end %>
-			    </div>
-			    <p id="edit_information">* Con tu C.P. conocerás el precio final y el costo del envío en tiempo real.</p>
-			  </div>
-			<% else %>
+			<p><span id="address_form"></span></p>
+			<% if user_signed_in? %>
+				<% if current_user.direction.nil? || current_user.direction.present? %>
+					<div class="span4" id="cp_actualiza">
+					<p id="edit_information">* Actualiza tu C.P. para cotizar el envío con Estafeta</p>
+				    <div id="zip_form">
+				      <%= form_for(@direction, :url => direction_path, remote: true) do |f| %>
+				        <%= f.text_field :zipcode, :placeholder => "Ingresa tu C.P." %>
+						<%= f.hidden_field :product_id, :value => @product.id %>
+				        <%= f.submit "Actualizar" %>
+				      <% end %>
+				    </div>
+				  </div>
+				<% else %>
 				<%= form_for @product, url: envio_df_product_path(@product), remote: true do |f| %>
 				<% if @product.ship_df.nil? %>
 					<% else %>
@@ -82,6 +83,7 @@
 				</div>
 			<% end %>
 		<% end %>
+		<% end %>
 	</div>
 	<div style="display:none" id="pagos" class="span4">
 			<div id="paypal_checkout" style="width:150px; float:left;">
@@ -96,3 +98,16 @@
 		</div>
   </div>
 </div>
+
+
+<script type="text/javascript">
+$("#new_direction").keypress(function (evt) {
+//Deterime where our character code is coming from within the event
+	var charCode = evt.charCode || evt.keyCode;
+	if (charCode  == 13) { //Enter key's keycode
+	return false;
+	}
+});
+
+
+</script>
