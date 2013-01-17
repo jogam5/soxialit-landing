@@ -5,7 +5,9 @@
 			<div class="box photo col3 masonry-brick">
 				<div class="frame_link_favorites">
 					<div class="link_image_favoritos">
-						<%= link_to image_tag(find_micropost_image(z.target_id), style:"margin:0% 0% 2% 0%; max-height: 200px"), find_micropost_url(z.target_id), target: '_blank' %>
+						<div style="float:left; width: 270px; height:160px; padding:5% 5% 2% 5%">
+							<%= link_to image_tag(find_micropost_image(z.target_id), style:"width: 200px; height: auto"), find_micropost_url(z.target_id), target: '_blank' %>
+						</div>
 						<% if signed_in? %>
 							<div style="margin-right:-2%; margin-top: 59%" class="votacion" id="votacion_<%= z.target_id %>">
 								<% if z.target_id == current_user.voted_by?(current_user.evaluations, z.target_id) %>
@@ -21,7 +23,7 @@
 						<% end %>
 					</div>
 					<br/>
-					<div style="width:250px; padding:20px; height:50px">
+					<div style="width:250px; padding-left:20px; padding-bottom:15px; padding-top:13%; height:50px">
 						<p id="description_link_favorites">
 							<%= find_micropost_description(z.target_id)%>
 						</p>
@@ -65,7 +67,9 @@
 		<div class="box photo col3 masonry-brick">
 			<div class="frame_link_favorites">
 				<div class="link_image_favoritos">
-					<%= link_to image_tag(find_post_image(z.target_id), style:"margin:0% 0% 2% 0%; max-height: 200px"), post_path(find_post_url(z.target_id)), target: '_blank' %>
+					<div style="float:left; width: 270px; height:160px; padding:5% 5% 2% 5%">
+						<%= link_to image_tag(find_post_image(z.target_id), style:"width: 200px; height: auto"), post_path(find_post_url(z.target_id)), target: '_blank' %>
+					</div>
 					<% if signed_in? %>
 						<div style="margin-right:-2%; margin-top: 59%" class="votacion" id="votacion_<%= z.target_id %>">
 							<% if z.target_id == current_user.voted_by?(current_user.evaluations, z.target_id) %>
@@ -81,7 +85,7 @@
 					<% end %>
 				</div>
 				<br/>
-				<div style="width:250px; padding:20px; height:50px">
+				<div style="width:250px; padding-left:20px; padding-bottom:15px; padding-top:13%; height:50px">
 					<p id="description_link_favorites">
 						<%= find_post_body(z.target_id)%>
 					</p>
