@@ -16,7 +16,7 @@
 				<br />
 			</span>
 		<br /><br /><span id="item_link_micropost"><%= link_to feed_item.activitable.title,
-														feed_item.activitable.url, target: '_blank' %></span>
+													micropost_path(feed_item.activitable), target: '_blank' %></span>
 	<% elsif feed_item.activitable_type == "Post" && feed_item.action == "create"  %>
 		<span style="">publicó un Post:</span><br/ >
 			<span class="timestamp" style="float:right">
