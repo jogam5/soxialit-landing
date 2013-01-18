@@ -60,7 +60,7 @@ module UsersHelper
 	def find_micropost_userurl(evaluations)
 	   a = Micropost.find(evaluations)
 	   b = User.find(a.user_id)
-	   b.id
+	   b.username
 	end
 	
 	def find_micropost_description(evaluations)
@@ -108,7 +108,7 @@ module UsersHelper
 	def find_post_userurl(evaluations)
 	   a = Post.find(evaluations)
 	   b = User.find(a.user_id)
-	   b.id
+	   b.username
 	end
 	
 	def find_post(evaluations)

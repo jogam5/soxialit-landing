@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index, :tallas, :comprar, :mercadopago_checkout, :envio_df, :envio]
+  before_filter :authenticate_user!, :except => [:show, :index, :tallas, :comprar, :mercadopago_checkout, :paypal_checkout, :PayerID, :envio_df, :envio]
   load_and_authorize_resource
    
     def status
@@ -74,6 +74,7 @@ class ProductsController < ApplicationController
       user_cp = find_user_product(@product)
       @pay = @product.pays.build
         if params[:PayerID]
+           logger.debug "PayPal #{params[:PayerID]}\n\n\n\n\n\n"
            @pay.paypal_customer_token = params[:PayerID]
            @pay.paypal_payment_token = params[:token]
            #@pay.email = @pay.paypal.checkout_details.email

@@ -33,57 +33,10 @@
 			</strong>
 			<p><span id="address_form"></span></p>
 			<% if user_signed_in? %>
-				<% if current_user.direction.nil? || current_user.direction.present? %>
-					<div class="span4" id="cp_actualiza">
-					<p id="edit_information">* Actualiza tu C.P. para cotizar el envío con Estafeta</p>
-				    <div id="zip_form">
-				      <%= form_for(@direction, :url => direction_path, remote: true) do |f| %>
-				        <%= f.text_field :zipcode, :placeholder => "Ingresa tu C.P." %>
-						<%= f.hidden_field :product_id, :value => @product.id %>
-				        <%= f.submit "Actualizar" %>
-				      <% end %>
-				    </div>
-				  </div>
-				<% else %>
-				<%= form_for @product, url: envio_df_product_path(@product), remote: true do |f| %>
-				<% if @product.ship_df.nil? %>
-					<% else %>
-						<div><td><%= radio_button_tag 'envio', @product.ship_df, :class => 'Envío dentro DF' %><span id="envio_df"> Envío dentro DF </span>- $<%= @product.ship_df %> </td></div>
-				<% end %>
-				<% if @product.ship_int.nil? %>
-					<% else %>
-						<div><td><%= radio_button_tag 'envio', @product.ship_int, :class => 'Envío al interior del país' %><span id="envio_interior"> Envío interior del país </span>- $<%= @product.ship_int %></td></div>
-				<% end %>
-				<% if @tarifas.nil? && @dias.nil? %>
-					<% else %>
-					<br/>
-					<tbody>
-						<% if @tarifas.any? %>
-							<%= image_tag('logoestafeta.jpg')%>
-						<% end %>
-						<tr>
-							<% @dias.zip(@tarifas).each do |dia, tarifa| %>
-								<div>
-									<input type="radio" name="envio" id='Estafeta <%= dia %>' class="estafeta" value='<%= tarifa %>' unchecked> <%= dia %> - $ <%= tarifa %></input>
-								</div>
-							<% end %>
-						</tr>
-					</tbody>
-				<% end %>
-				<%= f.text_field :shipping, :class => "span2", :style => "display: none" %>
-				<%= f.fields_for :ships do |builder| %>
-							<%= builder.text_field :ship_name, :style => "display:none" %>
-							<%= builder.text_field :ship_selected, :style => "display:none" %>
-				<% end %>
-			
-			
-				<br/>
-				<div style="margin-top:-4%" class="span1">
-					<%= f.submit "Elegir", class: "btn" %>
-				</div>
-			<% end %>
-		<% end %>
-		<% end %>
+				<%= render 'compra_login'%>
+			<% else %>
+				<%= render 'compra_without_login' %>
+ 		    <% end %>
 	</div>
 	<div style="display:none" id="pagos" class="span4">
 			<div id="paypal_checkout" style="width:150px; float:left;">
@@ -91,7 +44,6 @@
 				<div style="width:80px"><%= image_tag("paypal.png")%></div>
 			</div>
 			<div id="mercadopago_checkout" style="width:200px; float:left">
-				<!--	<%= link_to "Pagar con MercadoPago", "#", :class => "btn btn-success" %> -->
 				<p><%= link_to "Pagar con MercadoPago", mercadopago_checkout_path(product_id: @product.id), :class => "btn btn-success" %></p>
 					<div style="width:130px"><%= image_tag("mercadopago.png")%></div>
 			</div>
