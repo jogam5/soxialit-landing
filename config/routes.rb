@@ -34,13 +34,12 @@ DeviseFacebook::Application.routes.draw do
   match "favorites/:username" => "users#favorites", :as => "favorites"
   match "list_projects/:username" => "users#list_projects", :as => "list_projects"
   
-
   resources :feedbacks
   resources :comments
   resource :direction
   resources :paintings
   resources :sizes
-  resources :microposts do 
+  resources :microposts do
      member { post :lovs}
   end
   

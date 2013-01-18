@@ -1,4 +1,3 @@
-
 class Post < ActiveRecord::Base
   attr_accessible :body, :quote, :title, :url, :user_id, :status
   has_many :slides

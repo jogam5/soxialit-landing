@@ -10,11 +10,21 @@ class MicropostsController < ApplicationController
     end
   end
 
+  def show
+    @micropost = Micropost.find(params[:id])
+    @user = @micropost.user
+    @comment = Comment.new
+    @comments = @micropost.comments
+    respond_to do |format|
+      format.html # show.html.erb
+    end
+  end
+
   def create
     @micropost = current_user.microposts.build(params[:micropost])
     @micropost.save!
     @micropost.activities.create(:user_id => current_user.id, :action => "create")
-    Micropost.delay.publish_link_facebook(@micropost)
+    #Micropost.delay.publish_link_facebook(@micropost)
     redirect_to :back
   end
 

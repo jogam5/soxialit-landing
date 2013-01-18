@@ -1,0 +1,115 @@
+<div class="row">
+  <div class="span2">    
+  <br />
+  </div>
+  <div class="span8">
+   <span class="contenido">
+    <div style="margin-left:1.5em">
+      <div class="row">
+        <div class="span1">
+          <% if !@user.picture.present? %>
+            <%= link_to image_tag("http://graph.facebook.com/#{@user.uid}/picture?type=square", 
+                  width: 50, height: 50, :id =>  "nickname_small_picture"), user_path(@user) %>
+          <% else %>
+            <%= link_to image_tag(@user.picture_url(:thumb_profile), 
+                  :id => "nickname_small_picture"), user_path(@user) %>
+          <% end %>
+        </div>
+        <% if current_user == @micropost.user %>
+          <span class="micropost_delete"><%= link_to "X", micropost_path(@micropost), :method => :delete %></span>
+        <% end %>
+        <div class="span7">
+          <p style="font-size:1.1em"><span id="user_and_items_link">
+            <%= link_to @user.nickname, user_path(@user) %></span>
+            <span id="headline_color">
+             <span style="">publicó:</span><br/ >
+             <span class="timestamp" style="float:right">
+              <%= time_ago_in_words(@micropost.created_at) %>.
+              <br />
+              </span>
+              <br /><br /><span id="item_link_micropost"><%=  @micropost.title %></span>
+            </span>
+            <br />
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div id="mitad">
+          <div id="product_background" class="image_hover">
+            <div class="row" style="display:block;  margin-left:50px">
+             <div style="width:300px" id="micropost_img">
+              <%= link_to image_tag(@micropost.thumbnail), @micropost.url, target: '_blank' %>
+             </div>
+             <div id="micropost_description"><%= @micropost.description %><br />
+              <div id="micropost_leer_mas"><%= link_to "Leer más", @micropost.url, target: '_blank' %></div>
+              <br />
+              <span style="color:#999">vía</span> <%= link_to @micropost.provider, @micropost.provider, target: '_blank' %>
+             </div>
+
+            </div>
+          </div>
+        </div>
+      </div><br />
+      <div class="red_bar"></div><br />
+      <% if @micropost.comments.count > 0 %>
+        <ul class="comments" style="margin-bottom:1px" >
+          <% @comments.each do |comment| %>
+          <%= content_tag_for(:li, comment ) do %>
+            <div class="comment_body">
+              <span class="comment_avatar">
+                <% if !comment.user.picture.present? %>
+                  <%= link_to image_tag("http://graph.facebook.com/#{comment.user.uid}/picture?type=square", 
+                      width: 35, height: 35, :id =>  "nickname_small_picture"), user_path(comment.user) %>
+                <% else %>
+                  <%= link_to image_tag(comment.user.picture_url(:thumb_profile), width: 35, :id => "nickname_small_picture"), 
+                      user_path(comment.user) %>
+                <% end %>
+              </span>
+              <span class="comment_author"><%= "#{comment.user.nickname}"%></span>
+              <span class="comment_text"><%= comment.body %></span>
+              <span class="comment_timestamp"><%= time_ago_in_words(comment.created_at) %> 
+              <% if current_user == comment.user %>
+                <span class="comment_delete"><%= link_to "X", comment_path(comment), 
+                          :method => :delete, remote: true %>
+                </span></span>
+              <% end %>
+            </div>
+          <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+      <% if user_signed_in? %>
+        <div class="comment_form" id="form_<%=@micropost.id %>" >
+          <%= form_for(@comment, remote: true) do |f| %>
+            <ul class="comments" id="comment_micropost_<%=@micropost.id %>"></ul>
+            <ul class="comments_new">
+                  <li>
+                  <%= render 'shared/error_messages', object: f.object %>
+                    <span class="comment_avatar">
+                        <% if !current_user.picture.present? %>
+                        <%= image_tag("http://graph.facebook.com/#{current_user.uid}/picture?type=square", 
+                              width: 35, height: 35, :id =>  "nickname_small_picture") %>
+                      <% else %>
+                        <%= image_tag(current_user.picture_url(:thumb_profile), width: 35, 
+                            :id => "nickname_small_picture") %>
+                      <% end %>
+                    </span>
+                    <div class="field">
+                        <%= f.text_area :body, rows: "1", :class => "span7", :placeholder => "Agrega un comentario..." %>
+                    </div>
+                        <%= f.hidden_field :commentable_id, :value => @micropost.id %>
+                        <%= f.hidden_field :commentable_type, :value => "Micropost" %>
+                    </li>
+            </ul>
+            <div style="margin:1% 10% 1% 1%; text-align:right"> 
+
+            <%= f.submit "Comentar", class: "button-comment" %>
+              </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>  
+   </span>
+  </div>
+</div>
+<br/ >
