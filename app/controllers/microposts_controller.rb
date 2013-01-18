@@ -24,7 +24,7 @@ class MicropostsController < ApplicationController
     @micropost = current_user.microposts.build(params[:micropost])
     @micropost.save!
     @micropost.activities.create(:user_id => current_user.id, :action => "create")
-    #Micropost.delay.publish_link_facebook(@micropost)
+    Micropost.delay.publish_link_facebook(@micropost)
     redirect_to :back
   end
 
