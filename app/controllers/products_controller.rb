@@ -25,7 +25,8 @@ class ProductsController < ApplicationController
          @products = product_ok(Product.tagged_with(params[:tag]))   
          @users = User.all
      else
-         @products = Product.all.sort_by!(&:reputations)
+         @products = product_ok(Product.all)
+         @products.sort_by!(&:reputations)
          @tags = Tag.where("name like ?", "%#{params[:q]}%")
          @users = User.all
       end
