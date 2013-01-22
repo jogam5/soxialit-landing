@@ -1,6 +1,7 @@
-<p id="sub_header_menu">Perfil</p>
-<p style="font-size: 1.2em; font-weight: lighter; color: #777;">Actualiza tu información básica, biografía, nickname y tu website.</p>
-<p id="titleSecondIdea"><%= form_for @user, :html => { :multipart => true }, :validate => true do |f| %>
+<p id="sub_header_menu">Perfil</p><br />
+<p style="font-size: 1.2em; font-weight: lighter; color: #777">Actualiza tu información básica, biografía, nickname y tu website.</p><br /><br/ >
+<div class="form-horizontal">
+  <%= form_for @user, :html => { :multipart => true }, :validate => true do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="control-group">
       <label class="control-label">Nombre de usuario (URL)</label>
@@ -37,8 +38,6 @@
         <p id="edit_information">¿Dónde estás ubicado?</p>
       </div>
     </div>
-
-	<hr>
     <div class="control-group">
       <label class="control-label">Website</label>
       <div class="controls">
@@ -71,5 +70,4 @@
       </div>
     </div>
   <% end %>
-</p>
-<hr />
+</div>

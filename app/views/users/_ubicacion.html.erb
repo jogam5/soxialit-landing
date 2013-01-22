@@ -1,14 +1,16 @@
-<p id="sub_header_menu">Ubicación</p>
-<p style="font-size: 1.2em; font-weight: lighter; color: #777;">Cuál es tu CP, conocerás el costo de envío en tiempo de real de tu compra.</p>
-<p id="titleSecondIdea"><%= form_for @user, :html => { :multipart => true }, :validate => true do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
-	 	<hr>
-	<% end %>
-		<p>Código Postal actual: <span style="color:red" id="address_form"><%= @address.zipcode if @address.present? %></span></p>
-	    <div id="zip_form">
-	      <%= form_for(@direction, :url => direction_path, remote: true) do |f| %>
-	        <%= f.text_field :zipcode, :placeholder => "Ingresa tu C.P." %>
-	        <%= f.submit "Cambiar" %>
-	      <% end %>
-	    </div>
-<hr />
+<p id="sub_header_menu">Datos Personales</p><br />
+<p style="font-size: 1.2em; font-weight: lighter; color: #777;">Estos datos se usarán cuando realices una compra.</p>
+<p id="edit_information" style="font-size:0.9em">*Esta información se mantendrá privada y Soxialit no la compartirá con terceros. Revisa las
+	<%= link_to "políticas de privacidad." ""%></p><br/ >
+<p id="titleSecondIdea">
+<%= form_for @user, :html => { :multipart => true }, :validate => true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+<% end %>
+<p>Código Postal actual: <span style="color:red" id="address_form"><%= @address.zipcode if @address.present? %></span>
+</p>
+<div id="zip_form">
+  <%= form_for(@direction, :url => direction_path, remote: true) do |f| %>
+    <%= f.text_field :zipcode, :placeholder => "Ingresa tu C.P." %>
+    <%= f.submit "Cambiar" %>
+  <% end %>
+</div>
