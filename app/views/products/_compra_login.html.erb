@@ -1,10 +1,31 @@
-<% if current_user.direction.present? %>
-	<% if current_user.direction.zipcode == ""  %>
+<% if current_user.direction.nil? %>
+	<div class="span4" id="cp_actualiza">
+		<p id="edit_information">* Actualiza tu información para continuar.</p>
+		<div id="zip_form">
+	  		<%= form_for(@direction, :url => direction_path, remote: true) do |f| %>
+	    		<%= f.text_field :name, :placeholder => "Tu nombre" %>
+	    		<%= f.text_field :street, :placeholder => "Calle y número" %>
+	    		<%= f.text_field :suburb, :placeholder => "Colonia" %>
+	    		<%= f.text_field :town, :placeholder => "Delegación ó municipio" %>
+	    		<%= f.text_field :state, :placeholder => "Estado" %>
+				<%= f.text_field :zipcode, :placeholder => "Ingresa tu C.P." %>
+				<%= f.hidden_field :product_id, :value => @product.id %>
+	        	<%= f.submit "Actualizar" %>
+	     	<% end %>
+		</div>
+	</div>
+	<% elsif current_user.direction.zipcode == "" || current_user.direction.street == ""  %>
 		<div class="span4" id="cp_actualiza">
-			<p id="edit_information">* Actualiza tu C.P. para cotizar el envío con Estafeta</p>
+			<p id="edit_information">* Actualiza tu información para continuar.</p>
 	    	<div id="zip_form">
 	      		<%= form_for(@direction, :url => direction_path, remote: true) do |f| %>
-		        	<%= f.text_field :zipcode, :placeholder => "Ingresa tu C.P." %>
+			    <%= render '/shared/errors', :target => @direction %>
+	        		<%= f.text_field :name, :value =>  @address.name, :placeholder => "Tu nombre" %>
+	        		<%= f.text_field :street, :value =>  @address.street, :placeholder => "Calle y número" %>
+	        		<%= f.text_field :suburb, :value =>  @address.suburb, :placeholder => "Colonia" %>
+	        		<%= f.text_field :town, :value =>  @address.town, :placeholder => "Delegación ó municipio" %>
+	        		<%= f.text_field :state, :value =>  @address.state, :placeholder => "Estado" %>
+					<%= f.text_field :zipcode, :value =>  @address.zipcode, :placeholder => "Ingresa tu C.P." %>
 					<%= f.hidden_field :product_id, :value => @product.id %>
 		        	<%= f.submit "Actualizar" %>
 		     	<% end %>
@@ -48,5 +69,4 @@
 			<%= f.submit "Elegir", class: "btn" %>
 		</div>
 	<% end %>
-<% end %>
 <% end %>

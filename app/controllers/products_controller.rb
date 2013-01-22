@@ -236,7 +236,9 @@ class ProductsController < ApplicationController
        @product.ships.build
        @user = User.find(@product.user_id)
        @direction = Direction.new
-       @address = @user.direction
+       if user_signed_in?
+          @address = current_user.direction
+       end
        user_cp = find_user_product(@product)
        if user_signed_in?
          if current_user.direction.nil? || user_cp.nil?
