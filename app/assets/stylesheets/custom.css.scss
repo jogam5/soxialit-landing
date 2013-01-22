@@ -199,7 +199,7 @@ margin-top: 3%;
 	font-family:nimbus-sans, Helvetica-Neue, Helvetica, Arial, Sans-serif;
 	font-weight:lighter;
 	font-size:1.8em;
-	color:$website;
+	color:#777;
 	margin-left:5%;
 	line-height:1.2em;
 }
@@ -1214,9 +1214,10 @@ ul.comments{
 
 #about_body{
 	 p{
-	font-size:1.2em;
+	font-size:1.4em;
 	font-weight:lighter;
 	color:#777;
+	line-height:1.2em;
 	}
 	 h2{
 	font-size:2em;
