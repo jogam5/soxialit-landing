@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :list_items, :list_projects, :favorites, 
-                 :followers, :following, :fotografo, :boutique, :fashionlover, :blogger, :bio, :designer, :index ]
+                 :followers, :following, :fotografo, :boutique, :fashionlover, :blogger, :bio, :designer, :index, :ubicacion ]
   #before_filter :authenticate_user!, :only => [:index, :new, :edit, :create, :update]
   load_and_authorize_resource
 
@@ -210,4 +210,14 @@ class UsersController < ApplicationController
        end
        return fotografos
     end
+    
+    def ubicacion
+       @user = User.find(params[:user_id])
+        @direction = Direction.new
+        @address = @user.direction
+    end
+    
+    def perfil
+        @user = User.find(params[:user_id])
+     end
 end

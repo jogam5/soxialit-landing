@@ -22,7 +22,7 @@ DeviseFacebook::Application.routes.draw do
   
   resources :products do
        member { post :vote }
-       member { post :have}
+      # member { post :have}
        put :envio_df, on: :member
        put :create, on: :collection
        put :status, on: :collection
@@ -71,6 +71,11 @@ DeviseFacebook::Application.routes.draw do
   match "term", to:'static_pages#term'
   match "privacy", to:'static_pages#privacy'
   match "faq", to:'static_pages#faq'
+
+  # profile edit
+  match "ubicacion", to: 'users#ubicacion'
+  match "perfil", to: 'users#perfil'
+  
 
   match 'publish', to: 'posts#publish'
   resources :posts do
