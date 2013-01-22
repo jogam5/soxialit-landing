@@ -1,14 +1,15 @@
 <div class="row-fluid">
   <div style="margin-top:1%" class="span2" id="about_menu">
-  	<ul id="menu_about">
-	 <li id= "link_about"><%= link_to "Perfil", perfil_path(:user_id => @user.id), remote: true %></li>
-	 <li id= "link_about"><%= link_to "Ubicación", ubicacion_path(:user_id => @user.id ), remote: true %></li>
+    <ul id="menu_about">
+	   <li id= "link_about"><%= link_to "Perfil", perfil_path(:user_id => @user.id), remote: true %></li>
+	   <li id= "link_about"><%= link_to "Datos Personales", ubicacion_path(:user_id => @user.id ), remote: true %></li>
     </ul>
   </div>
   <div class="span8" id="about_rightside">
-	<p id="sub_header_menu">Perfil</p>
-	<p style="font-size: 1.2em; font-weight: lighter; color: #777;">Actualiza tu información básica, biografía, nickname y tu website.</p>
-    <p id="titleSecondIdea"><%= form_for @user, :html => { :multipart => true }, :validate => true do |f| %>
+	  <p id="sub_header_menu">Perfil</p><br />
+	  <p style="font-size: 1.2em; font-weight: lighter; color: #777;">Actualiza tu información básica, biografía, nickname y tu website.</p><br /><br/ >
+    <div class="form-horizontal">
+      <%= form_for @user, :html => { :multipart => true }, :validate => true do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <div class="control-group">
           <label class="control-label">Nombre de usuario (URL)</label>
@@ -45,9 +46,7 @@
             <p id="edit_information">¿Dónde estás ubicado?</p>
           </div>
         </div>
-	
-		<hr>
-	    <div class="control-group">
+  	    <div class="control-group">
           <label class="control-label">Website</label>
           <div class="controls">
             <%= f.text_field :website %>
@@ -79,8 +78,6 @@
           </div>
         </div>
       <% end %>
-	</p>
-    <hr />
+  	</div>
   </div>
 </div>
-

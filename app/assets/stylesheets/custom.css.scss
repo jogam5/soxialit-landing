@@ -199,7 +199,7 @@ margin-top: 3%;
 	font-family:nimbus-sans, Helvetica-Neue, Helvetica, Arial, Sans-serif;
 	font-weight:lighter;
 	font-size:1.8em;
-	color:$website;
+	color:#777;
 	margin-left:5%;
 	line-height:1.2em;
 }
@@ -941,12 +941,12 @@ ul.comments{
 
 #signin {
 	 a{
-	color:$website;
+	color:$rojo;
 	font-weight:300;
 	font-size:1em;
 	}
 	 a:hover{
-	color:$rojo;
+	color:white;
 	}
 }
 
@@ -1204,7 +1204,7 @@ ul.comments{
   border-right: 5px solid $website;  
   padding: 5px 10px 10px;
   font-weight:lighter;
-  margin-left: 21%;
+  margin-left: 25%;
 }
 
 #about_title{
@@ -1214,9 +1214,10 @@ ul.comments{
 
 #about_body{
 	 p{
-	font-size:1.2em;
+	font-size:1.4em;
 	font-weight:lighter;
 	color:#777;
+	line-height:1.2em;
 	}
 	 h2{
 	font-size:2em;
