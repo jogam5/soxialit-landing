@@ -19,7 +19,6 @@
 			<p id="edit_information">* Actualiza tu información para continuar.</p>
 	    	<div id="zip_form">
 	      		<%= form_for(@direction, :url => direction_path, remote: true) do |f| %>
-			    <%= render '/shared/errors', :target => @direction %>
 	        		<%= f.text_field :name, :value =>  @address.name, :placeholder => "Tu nombre" %>
 	        		<%= f.text_field :street, :value =>  @address.street, :placeholder => "Calle y número" %>
 	        		<%= f.text_field :suburb, :value =>  @address.suburb, :placeholder => "Colonia" %>
