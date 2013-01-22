@@ -1,8 +1,14 @@
-<p id="sub_header_menu">Perfil</p><br/ >
-<div class="row">
-  <div class="span6" id="edit_account_data">
-    <div class="form-horizontal">
-      <%= form_for @user, :html => { :multipart => true }, :validate => true do |f| %>
+<div class="row-fluid">
+  <div style="margin-top:1%" class="span2" id="about_menu">
+  	<ul id="menu_about">
+	 <li id= "link_about"><%= link_to "Perfil", perfil_path(:user_id => @user.id), remote: true %></li>
+	 <li id= "link_about"><%= link_to "Ubicación", ubicacion_path(:user_id => @user.id ), remote: true %></li>
+    </ul>
+  </div>
+  <div class="span8" id="about_rightside">
+	<p id="sub_header_menu">Perfil</p>
+	<p style="font-size: 1.2em; font-weight: lighter; color: #777;">Actualiza tu información básica, biografía, nickname y tu website.</p>
+    <p id="titleSecondIdea"><%= form_for @user, :html => { :multipart => true }, :validate => true do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <div class="control-group">
           <label class="control-label">Nombre de usuario (URL)</label>
@@ -39,7 +45,9 @@
             <p id="edit_information">¿Dónde estás ubicado?</p>
           </div>
         </div>
-        <div class="control-group">
+	
+		<hr>
+	    <div class="control-group">
           <label class="control-label">Website</label>
           <div class="controls">
             <%= f.text_field :website %>
@@ -49,7 +57,7 @@
         <div class="control-group">
           <label class="control-label">Bio</label>
           <div class="controls">
-            <%= f.text_area :bio, rows: 5, :class => "span3" %>
+            <%= f.text_area :bio, rows: 4, :class => "span9" %>
             <p id="edit_information">Cuéntale al mundo un poco de ti.</p>
           </div>
         </div>
@@ -71,16 +79,8 @@
           </div>
         </div>
       <% end %>
-    </div>
-  </div>
-  <div class="span3 offset1" id="edit_personal_data">
-    <p>Código Postal actual: <span style="color:red" id="address_form"><%= @address.zipcode if @address.present? %></span></p>
-    <div id="zip_form">
-      <%= form_for(@direction, :url => direction_path, remote: true) do |f| %>
-        <%= f.text_field :zipcode, :placeholder => "Ingresa tu C.P." %>
-        <%= f.submit "Cambiar" %>
-      <% end %>
-    </div>
-    <p id="edit_information">* Con tu C.P. conocerás el precio final y el costo del envío en tiempo real.</p>
+	</p>
+    <hr />
   </div>
 </div>
+

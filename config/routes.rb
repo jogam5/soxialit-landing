@@ -72,6 +72,11 @@ DeviseFacebook::Application.routes.draw do
   match "privacy", to:'static_pages#privacy'
   match "faq", to:'static_pages#faq'
 
+  # profile edit
+  match "ubicacion", to: 'users#ubicacion'
+  match "perfil", to: 'users#perfil'
+  
+
   match 'publish', to: 'posts#publish'
   resources :posts do
     put :create, on: :collection
