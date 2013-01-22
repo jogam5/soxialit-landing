@@ -22,20 +22,16 @@ class ProductsController < ApplicationController
     
     def index  
      if params[:tag]
-         @products = product_ok(Product.tagged_with(params[:tag]))
+         @products = product_ok(Product.tagged_with(params[:tag]))   
          @users = User.all
      else
-         @products = product_ok(Product.all)
-         @products.sort_by!(&:reputations)
+         @products = Product.all.sort_by!(&:reputations)
          @tags = Tag.where("name like ?", "%#{params[:q]}%")
          @users = User.all
-         #@product = Product.find(product)
-         #@product.update_attribute(:status => params[:status])
-         #@product.save
-     end
+      end
      respond_to do |format|
         format.html # index.html.erb
-        format.json { render json: @products.map(&:attributes) }
+        format.json { render json: @products.map(&:attributes) }  
         format.js
       end
     end
@@ -55,8 +51,6 @@ class ProductsController < ApplicationController
        items = []
        products.each do |product|
           if product.title.blank? && product.description.blank?
-             logger.debug "producto destruido #{product.id}\n\n\n\n\n\n"
-             product.destroy
           else
              items << product
           end

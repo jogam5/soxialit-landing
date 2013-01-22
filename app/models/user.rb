@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
                                     dependent: :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
   has_many :followed_users, through: :relationships, source: :followed
-  has_many :products, :dependent => :destroy
-  has_many :evaluations, class_name: "RSEvaluation", as: :source
+  has_many :products, :dependent => :destroy, :order => "created_at DESC"
+  has_many :evaluations, class_name: "RSEvaluation", as: :source, :order => "created_at DESC"
   has_many :feedbacks, :dependent => :destroy
   has_many :partners, :dependent => :destroy
   has_many :microposts, :dependent => :destroy
@@ -19,9 +19,10 @@ class User < ActiveRecord::Base
   has_one :direction, :dependent => :destroy
   has_many :posts, :dependent => :destroy
 
-  has_reputation :votes, source: {reputation: :votes, of: :products}, aggregated_by: :sum
-  has_reputation :haves, source: {reputation: :haves, of: :products}, aggregated_by: :sum
+  has_reputation :votes, source: {reputation: :votes, of: :products}, aggregated_by: :sum, :order => "created_at DESC"
+  #has_reputation :haves, source: {reputation: :haves, of: :products}, aggregated_by: :sum
   has_reputation :lovs, source: {reputation: :lovs, of: :microposts}, aggregated_by: :sum
+  has_reputation :likes, source: {reputation: :likes, of: :posts}, aggregated_by: :sum
 
   mount_uploader :picture, ProfilePictureUploader
   # Include default devise modules. Others available are:

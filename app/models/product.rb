@@ -14,8 +14,7 @@ class Product < ActiveRecord::Base
   attr_accessor :email
 
   belongs_to :user
-  has_reputation :votes, source: :user, aggregated_by: :sum
-  has_reputation :haves, source: :user, aggregated_by: :sum
+  has_reputation :votes, source: :user, aggregated_by: :sum, :order => "created_at DESC"
   has_many :activities, :as => :activitable, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :paintings, :dependent => :destroy
