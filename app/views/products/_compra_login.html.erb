@@ -4,12 +4,12 @@
 		<div id="zip_form">
 	  		<%= form_for(@direction, :url => direction_path, remote: true) do |f| %>
 				<span style="color:red" id="errors"></span>
-	    		<%= f.text_field :name, :placeholder => "Tu nombre" %>
-	    		<%= f.text_field :street, :placeholder => "Calle y número" %>
-	    		<%= f.text_field :suburb, :placeholder => "Colonia" %>
-	    		<%= f.text_field :town, :placeholder => "Delegación ó municipio" %>
-	    		<%= f.text_field :state, :placeholder => "Estado" %>
-				<%= f.text_field :zipcode, :placeholder => "Ingresa tu C.P." %>
+	    		<%= f.text_field :name, :placeholder => "Tu nombre", :class => "personal" %>
+	    		<%= f.text_field :street, :placeholder => "Calle y número", :class => "personal" %>
+	    		<%= f.text_field :suburb, :placeholder => "Colonia", :class => "personal" %>
+	    		<%= f.text_field :town, :placeholder => "Delegación ó municipio", :class => "personal" %>
+	    		<%= f.text_field :state, :placeholder => "Estado", :class => "personal" %>
+				<%= f.text_field :zipcode, :placeholder => "Ingresa tu C.P.", :class => "personal" %>
 				<%= f.hidden_field :product_id, :value => @product.id %>
 	        	<%= f.submit "Actualizar" %>
 	     	<% end %>
@@ -21,12 +21,12 @@
 	    	<div id="zip_form">
 		  		<%= form_for(@direction, :url => direction_path, remote: true) do |f| %>
 					<span style="color:red" id="errors"></span>
-		        	<%= f.text_field :name, :value =>  @address.name, :placeholder => "Tu nombre" %>
-	        		<%= f.text_field :street, :value =>  @address.street, :placeholder => "Calle y número" %>
-	        		<%= f.text_field :suburb, :value =>  @address.suburb, :placeholder => "Colonia" %>
-	        		<%= f.text_field :town, :value =>  @address.town, :placeholder => "Delegación ó municipio" %>
-	        		<%= f.text_field :state, :value =>  @address.state, :placeholder => "Estado" %>
-					<%= f.text_field :zipcode, :value =>  @address.zipcode, :placeholder => "Ingresa tu C.P." %>
+		        	<%= f.text_field :name, :value =>  @address.name, :placeholder => "Tu nombre", :class => "personal" %>
+	        		<%= f.text_field :street, :value =>  @address.street, :placeholder => "Calle y número", :class => "personal" %>
+	        		<%= f.text_field :suburb, :value =>  @address.suburb, :placeholder => "Colonia", :class => "personal" %>
+	        		<%= f.text_field :town, :value =>  @address.town, :placeholder => "Delegación ó municipio", :class => "personal" %>
+	        		<%= f.text_field :state, :value =>  @address.state, :placeholder => "Estado", :class => "personal" %>
+					<%= f.text_field :zipcode, :value =>  @address.zipcode, :placeholder => "Ingresa tu C.P.", :class => "personal" %>
 					<%= f.hidden_field :product_id, :value => @product.id %>
 		        	<%= f.submit "Actualizar" %>
 		     	<% end %>
@@ -72,7 +72,27 @@
 	<% end %>
 <% end %>
 
+
 <script>
+
+$('#new_direction').submit(function () {
+	var i = 0;
+	$.each($('#new_direction .personal'), function()
+	    {
+	        if($(this).val() ==  "" ){
+				$('#errors').text('*información requerida');
+				$(this).css('background-color', 'rgb(250, 228, 228)');
+		    }else{
+				$('#errors').text('');
+				$(this).css('background-color', 'white');
+				i++;
+			}
+		});	
+		return i == 6? true:false;
+    	
+});
+
+/*
 	$('#new_direction').submit(function(){
 	  var someField = $('#direction_name');
 	
@@ -137,4 +157,8 @@
 		$('#direction_name').css('background-color', 'white');
 	  }
 	});
+	
+	*/
+	
+	
 </script>
