@@ -3,6 +3,7 @@
 		<p id="edit_information">* Actualiza tu información para continuar.</p>
 		<div id="zip_form">
 	  		<%= form_for(@direction, :url => direction_path, remote: true) do |f| %>
+				<span style="color:red" id="errors"></span>
 	    		<%= f.text_field :name, :placeholder => "Tu nombre" %>
 	    		<%= f.text_field :street, :placeholder => "Calle y número" %>
 	    		<%= f.text_field :suburb, :placeholder => "Colonia" %>
@@ -18,8 +19,9 @@
 		<div class="span4" id="cp_actualiza">
 			<p id="edit_information">* Actualiza tu información para continuar.</p>
 	    	<div id="zip_form">
-	      		<%= form_for(@direction, :url => direction_path, remote: true) do |f| %>
-	        		<%= f.text_field :name, :value =>  @address.name, :placeholder => "Tu nombre" %>
+		  		<%= form_for(@direction, :url => direction_path, remote: true) do |f| %>
+					<span style="color:red" id="errors"></span>
+		        	<%= f.text_field :name, :value =>  @address.name, :placeholder => "Tu nombre" %>
 	        		<%= f.text_field :street, :value =>  @address.street, :placeholder => "Calle y número" %>
 	        		<%= f.text_field :suburb, :value =>  @address.suburb, :placeholder => "Colonia" %>
 	        		<%= f.text_field :town, :value =>  @address.town, :placeholder => "Delegación ó municipio" %>
@@ -69,3 +71,70 @@
 		</div>
 	<% end %>
 <% end %>
+
+<script>
+	$('#new_direction').submit(function(){
+	  var someField = $('#direction_name');
+	
+	  if (someField.val().length < 2) {
+		$('#errors').text('*información requerida');
+		$('#direction_name').css('background-color', 'rgb(250, 228, 228)');
+	    return false;
+	  }else{
+		$('#errors').text('');
+		$('#direction_name').css('background-color', 'white');
+	  }
+	
+	  var someField2 = $('#direction_street');
+	
+	 if (someField2.val().length < 2) {
+		$('#errors').text('*información requerida');
+		$('#direction_street').css('background-color', 'rgb(250, 228, 228)');
+	    return false;
+	  }else{
+		$('#errors').text('');
+		$('#direction_name').css('background-color', 'white');
+	  }
+	  
+	var someField3 = $('#direction_suburb');
+	
+	 if (someField3.val().length < 2) {
+		$('#errors').text('*información requerida');
+		$('#direction_suburb').css('background-color', 'rgb(250, 228, 228)');
+	    return false;
+	  }else{
+		$('#errors').text('');
+		$('#direction_name').css('background-color', 'white');
+	  }
+	  
+	 var someField4 = $('#direction_town');
+	 if (someField4.val().length < 2) {
+		$('#errors').text('*información requerida');
+		$('#direction_town').css('background-color', 'rgb(250, 228, 228)');
+	    return false;
+	  }else{
+		$('#errors').text('');
+		$('#direction_name').css('background-color', 'white');
+	  }
+	 
+	 var someField5 = $('#direction_state');
+	 if (someField5.val().length < 2) {
+		$('#errors').text('*información requerida');
+		$('#direction_state').css('background-color', 'rgb(250, 228, 228)');
+	    return false;
+	  }else{
+		$('#errors').text('');
+		$('#direction_name').css('background-color', 'white');
+	  }
+	
+	  var someField6 = $('#direction_zipcode');
+	 if (someField6.val().length < 2) {
+		$('#errors').text('*información requerida');
+		$('#direction_zipcode').css('background-color', 'rgb(250, 228, 228)');
+	    return false;
+	  }else{
+		$('#errors').text('');
+		$('#direction_name').css('background-color', 'white');
+	  }
+	});
+</script>
