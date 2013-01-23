@@ -1,28 +1,25 @@
 <div class="row-fluid">
 	<div id="show_profile_frame">
-		<div class="span2 offset1">
+		<div class="span3">
 			<span id="profile_picture">
 				<%= render 'users/profiles/profile_picture' %>
 			</span>
 		</div>
-		<div class="span5">
+		<div class="span6">
 			<p id="username"><%= @user.nickname %></p>
-			<p>
 				<% if @user.roles.first.name == 'fashion lover' %>
-					<span id="fashionlover">fashion lover</span>
+					<p id="fashionlover">fashion lover</p>
 				<% elsif @user.roles.first.name == 'designer' %>
-					<span id="designer"> designer</span>
+					<p id="designer"> designer</p>
 				<% elsif @user.roles.first.name == 'boutique store' %>
-					<span id="boutique">boutique store</span>
+					<p id="boutique">boutique store</p>
 				<% elsif @user.roles.first.name == 'blogger' %>
-					<span id="blogger">blogger</span>
+					<p id="blogger">blogger</p>
 				<% elsif @user.roles.first.name == 'fotografo' %>
-					<span id="fotografo">fotógrafo</span>
+					<p id="fotografo">fotógrafo</p>
 				<% else %>
-					<span id="queen">Queen</span>
+					<p id="queen">Soxialit</p>
 				<% end %>
-				<span id="location"><i class="icon-map-marker"></i><%= @user.location %></span>
-			</p>
 			<% if @user.bio.nil?%>
 			<% else %>
 				<% if @user.bio.length >= 109 %>
@@ -36,7 +33,9 @@
 					</p>
 				<% end %>
 			<% end %>
-			<p id="url"><i class="icon-globe"></i> <%= link_to @user.website, @user.website, target: '_blank' %></p>
+			<p id="url"><i class="icon-globe"></i> <%= link_to @user.website, @user.website, target: '_blank' %>
+				<span id="location"><i class="icon-map-marker"></i><%= @user.location %></span>
+			</p>
 		</div>
 		<div class="span3">
 			<div id="bio">

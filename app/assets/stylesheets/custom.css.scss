@@ -334,13 +334,15 @@ margin-top: 3%;
 }
 
 #location{
-	margin-left:50px;
-	color:#787878;
+	color:$website;
+	margin-left:10px;
+	font-weight:lighter;
 }
 
 #url{
 	font-size:13px;
 	font-weight:lighter;
+	margin-top:0.5em;
 	a{color:$website;
 	 }
 	a:hover{
@@ -400,32 +402,32 @@ margin-top: 3%;
 
 #fashionlover{
 	color:$fashionlover;
-	font-size:1.5em;
+	font-size:1.2em;
 }
 
 #designer{
 	color:$designer;
-	font-size:1.5em;
+	font-size:1.2em;
 }
 
 #boutique{
 	color:$boutique;
-	font-size:1.5em;
+	font-size:1.2em;
 }
 
 #fotografo{
 	color:$fotografo;
-	font-size:1.5em;
+	font-size:1.2em;
 }
 
 #blogger{
 	color:$blogger;
-	font-size:1.5em;
+	font-size:1.2em;
 }
 
 #queen{
 	color:gold;
-	font-size:1.5em;
+	font-size:1.2em;
 }
 
 .btn-link {
