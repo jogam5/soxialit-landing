@@ -1,1 +1,0 @@
-(function(){CKEDITOR.editorConfig=function(e){return e.language="es",e.width="500",e.height="200",e.toolbar_Pure=[{name:"basicstyles",items:["Bold","Italic","Underline","Strike"]},{name:"links",items:["Link"]}],e.toolbar="Pure",!0}}).call(this);
