@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130117173947) do
+ActiveRecord::Schema.define(:version => 20130122165645) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -68,6 +68,11 @@ ActiveRecord::Schema.define(:version => 20130117173947) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "product_id"
+    t.string   "name"
+    t.string   "street"
+    t.string   "suburb"
+    t.string   "town"
+    t.string   "state"
   end
 
   add_index "directions", ["user_id"], :name => "index_directions_on_user_id"

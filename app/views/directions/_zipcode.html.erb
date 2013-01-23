@@ -1,5 +1,5 @@
 <% if @direction.product_id.nil? %>
-	<%= @direction.zipcode %>
+	<p>¡Datos actualizados!</p>
 <% else %>
 	<%= form_for @product, url: envio_df_product_path(@product), remote: true do |f| %>
 		   <% if @product.ship_df.nil? %>

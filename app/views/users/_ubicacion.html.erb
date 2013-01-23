@@ -1,16 +1,88 @@
 <p id="sub_header_menu">Datos Personales</p><br />
 <p style="font-size: 1.2em; font-weight: lighter; color: #777;">Estos datos se usarán cuando realices una compra.</p>
 <p id="edit_information" style="font-size:0.9em">*Esta información se mantendrá privada y Soxialit no la compartirá con terceros. Revisa las
-	<%= link_to "políticas de privacidad." ""%></p><br/ >
+	<%= link_to "políticas de privacidad.", ""%></p><br/ >
 <p id="titleSecondIdea">
-<%= form_for @user, :html => { :multipart => true }, :validate => true do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-<% end %>
-<p>Código Postal actual: <span style="color:red" id="address_form"><%= @address.zipcode if @address.present? %></span>
-</p>
+<p><span style="color:red" id="address_form"></span></p>
 <div id="zip_form">
-  <%= form_for(@direction, :url => direction_path, remote: true) do |f| %>
-    <%= f.text_field :zipcode, :placeholder => "Ingresa tu C.P." %>
-    <%= f.submit "Cambiar" %>
+  <%= form_for(@direction, :url => direction_path, remote: :true) do |f| %>
+	<% if @address.present? %>
+<div class="control-group">
+     <label style="float: left; text-align: right" class="control-label">Tu nombre</label>
+     <div style="margin-left:25%;" class="controls">
+       <%= f.text_field :name, :value => @address.name %>
+     </div>
+</div>
+<div class="control-group">
+     <label style="float:left; text-align: right" class="control-label">Calle y numero</label>
+     <div style="margin-left:25%;" class="controls">
+       <%= f.text_field :street, :value =>  @address.street%>
+     </div>
+ </div>
+<div class="control-group">
+     <label style="float:left; text-align: right" class="control-label">Colonia</label>
+     <div style="margin-left:25%;" class="controls">
+       <%= f.text_field :suburb, :value =>  @address.suburb %>
+     </div>
+   </div>
+<div class="control-group">
+     <label style="float:left; text-align: right" class="control-label">Delegación ó municipio</label>
+     <div style="margin-left:25%;" class="controls">
+       <%= f.text_field :town, :value =>  @address.town  %>
+     </div>
+   </div>
+<div class="control-group">
+     <label style="float:left; text-align:right" class="control-label">Estado</label>
+     <div style="margin-left:25%;" class="controls">
+       <%= f.text_field :state, :value =>  @address.state%>
+     </div>
+   </div>
+
+<div class="control-group">
+     <label style="float:left; text-align:right" class="control-label">Ingresa tu C.P.</label>
+     <div style="margin-left:25%;" class="controls">
+       <%= f.text_field :zipcode, :value =>  @address.zipcode %>
+     </div>
+   </div>
+	<% else %>
+	<div class="control-group">
+	     <label style="float: left; text-align: right" class="control-label">Tu nombre</label>
+	     <div style="margin-left:25%;" class="controls">
+	       <%= f.text_field :name %>
+	     </div>
+	</div>
+	<div class="control-group">
+	     <label style="float:left; text-align: right" class="control-label">Calle y numero</label>
+	     <div style="margin-left:25%;" class="controls">
+	       <%= f.text_field :street %>
+	     </div>
+	 </div>
+	<div class="control-group">
+	     <label style="float:left; text-align: right" class="control-label">Colonia</label>
+	     <div style="margin-left:25%;" class="controls">
+	       <%= f.text_field :suburb %>
+	     </div>
+	   </div>
+	<div class="control-group">
+	     <label style="float:left; text-align: right" class="control-label">Delegación ó municipio</label>
+	     <div style="margin-left:25%;" class="controls">
+	       <%= f.text_field :town %>
+	     </div>
+	   </div>
+	<div class="control-group">
+	     <label style="float:left; text-align:right" class="control-label">Estado</label>
+	     <div style="margin-left:25%;" class="controls">
+	       <%= f.text_field :state %>
+	     </div>
+	   </div>
+
+	<div class="control-group">
+	     <label style="float:left; text-align:right" class="control-label">Ingresa tu C.P.</label>
+	     <div style="margin-left:25%;" class="controls">
+	       <%= f.text_field :zipcode %>
+	     </div>
+	   </div>
+	<% end %>
+    <%= f.submit "Actualizar" %>
   <% end %>
 </div>

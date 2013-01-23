@@ -212,7 +212,7 @@ class UsersController < ApplicationController
     end
     
     def ubicacion
-       @user = User.find(params[:user_id])
+        @user = User.find(params[:user_id])
         @direction = Direction.new
         @address = @user.direction
     end
