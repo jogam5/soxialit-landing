@@ -15,11 +15,23 @@ class Micropost < ActiveRecord::Base
       options = {
         :message => "Acabo de compartir un link en Soxialit.",
         :picture => @micropost.thumbnail.to_s,
-        :link => "http://soxialit.com/#{@user.username}",
+        :link => "http://soxialit.com/microposts/#{micropost.id}",
         :name => "#{@micropost.title} by #{@user.nickname}",
         :description => @micropost.description
       }
       @user.facebook.put_connections("me", "feed", options)
   end
-  
+
+  def self.publish_link_like_facebook(micropost)
+    @micropost = micropost
+    @user = current_user
+      options = {
+        :message => "Me gusto el siguiente link en Soxialit.",
+        :picture => @micropost.thumbnail.to_s,
+        :link => "http://soxialit.com/microposts/#{micropost.id}",
+        :name => "#{@micropost.title} by #{@micropost.user.nickname}",
+        :description => @micropost.description
+      }
+      @user.facebook.put_connections("me", "feed", options)
+  end
 end
