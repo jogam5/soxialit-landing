@@ -33,7 +33,7 @@
 						<%= link_to "ver mas...", bio_path(:user_id => @user.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :class => "link_bio"} %>
 					</div>
 				<% else %>
-					<p id="description_user_profile">
+					<p id="description_perfil">
 						<%= @user.bio %>
 					</p>
 				<% end %>
