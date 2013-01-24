@@ -98,6 +98,8 @@ project.jpg: project-3c964dc18002e20c06af8b4f780a156d.jpg
 project/index.jpg: project-3c964dc18002e20c06af8b4f780a156d.jpg
 project.png: project-2a0e996d5d44401d81c0fdeca93880b7.png
 project/index.png: project-2a0e996d5d44401d81c0fdeca93880b7.png
+shop.png: shop-6c0d0e18293b9bb641dcd2da0c8d1695.png
+shop/index.png: shop-6c0d0e18293b9bb641dcd2da0c8d1695.png
 soxialit.ico: soxialit-c30f561cbc68078f44bc39cefdc90623.ico
 soxialit/index.ico: soxialit-c30f561cbc68078f44bc39cefdc90623.ico
 trash.png: trash-7c60f61d07df1bc572333fd0a71216c2.png
