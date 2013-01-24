@@ -12,16 +12,18 @@
 					<li class="divider-vertical"></li>
 				</ul>
 				<ul class="nav pull-right">
-					<% if @user.id == 4 || @user.id == 65 || @user.id == 27 || @user.id == 47 || @user.id == 16 || @user.id == 265 || @user.id == 67 || @user.id == 20 %>
-					<li class="divider-vertical"></li>
-						<li>
-							<%= link_to image_tag('dress.png'), new_product_path %> 
-						</li>
-					<% else %>
-					<li class="divider-vertical"></li>
-						<li>
-							<%= link_to image_tag('change.png', style: "margin-top:-10%"), partners_path %> 
-						</li>
+					<% if current_user == @user %>
+						<% if @user.id == 4 || @user.id == 65 || @user.id == 27 || @user.id == 47 || @user.id == 16 || @user.id == 265 || @user.id == 67 || @user.id == 20 %>
+						<li class="divider-vertical"></li>
+							<li>
+								<%= link_to image_tag('dress.png'), new_product_path %> 
+							</li>
+						<% else %>
+						<li class="divider-vertical"></li>
+							<li>
+								<%= link_to image_tag('change.png', style: "margin-top:-10%"), partners_path %> 
+							</li>
+						<% end %>
 					<% end %>
 					<% if current_user == @user %>
 							<li class="divider-vertical"></li>

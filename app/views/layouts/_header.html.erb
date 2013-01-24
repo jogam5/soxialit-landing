@@ -18,7 +18,7 @@
 					   	</li>
 					   	<li class="divider-vertical"></li>
 					    <li id="feedback_header">
-					      <%= link_to '<i class="icon-pencil icon-white"></i>'.html_safe, new_post_path %>
+							<%= link_to image_tag('post_white.png', style:"margin-left:15%"), new_post_path %>
 					   	</li>
 						<li class="divider-vertical"></li>
 						<li><% if !current_user.picture.present? %>
