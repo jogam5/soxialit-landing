@@ -351,7 +351,7 @@ margin-top: 3%;
 }
 
 .navbar .nav > li > a {
-	padding: 10px 15px 3px;
+	padding: 8px 15px 3px;
 	color:$pink;
 	text-shadow: none;
 }
@@ -653,7 +653,7 @@ margin-top: 3%;
 /* Fixed Bar in Profile */
 
 #profile_nav_bar{
-	margin-top:2%;
+	margin-top:5%;
 	 a{
 	color:$grayTitle;
 	}
@@ -1050,11 +1050,14 @@ ul.comments{
 }
 
 .link_bio{
-	color:$rojo;
+	color:#BBB;
 	text-decoration:none;
+	font-size:0.9em;
+	font-weight:lighter;
 	float: right;
 	margin-top: -5.3%;
-	margin-right: 11%;
+	margin-right: 15%;
+
 }
 
 .link_bio:hover{
