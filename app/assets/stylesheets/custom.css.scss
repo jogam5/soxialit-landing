@@ -343,8 +343,6 @@ margin-top: 3%;
 	font-size:13px;
 	font-weight:lighter;
 	margin-top:0.5em;
-	padding-bottom:7px;
-	border-bottom: 1px solid $grayLighter;
 	a{color:$website;
 	 }
 	a:hover{
@@ -353,7 +351,7 @@ margin-top: 3%;
 }
 
 .navbar .nav > li > a {
-	padding: 10px 15px 3px;
+	padding: 8px 15px 3px;
 	color:$pink;
 	text-shadow: none;
 }
@@ -655,7 +653,7 @@ margin-top: 3%;
 /* Fixed Bar in Profile */
 
 #profile_nav_bar{
-	margin-top:2%;
+	margin-top:5%;
 	 a{
 	color:$grayTitle;
 	}
@@ -1058,7 +1056,7 @@ ul.comments{
 	font-weight:lighter;
 	float: right;
 	margin-top: -5.3%;
-	margin-right: 11%;
+	margin-right: 15%;
 
 }
 

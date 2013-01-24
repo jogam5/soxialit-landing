@@ -30,7 +30,7 @@
 						<p style="width:380px" id="description_user_perfil">
 							<%= @user.bio %>
 						</p>
-						<%= link_to "Ver mas...", bio_path(:user_id => @user.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :class => "link_bio"} %>
+						<%= link_to "ver mas...", bio_path(:user_id => @user.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :class => "link_bio"} %>
 					</div>
 				<% else %>
 					<p id="description_user_profile">
@@ -38,13 +38,13 @@
 					</p>
 				<% end %>
 			<% end %>
-			<p id="profile_nav_bar"><span id="followers_count_<%=@user.id%>" style="color:red"><%= @user.followers.count %></span>
-						<%= link_to "Followers", followers_user_path(@user), remote: true %> |
-				<span style="color:red"><%= @user.followed_users.count %></span>
-						<%= link_to "Following", following_user_path(@user), remote: true %>
+			<p id="profile_nav_bar"><span id="followers_count_<%=@user.id%>" style="color:red; font-size:1.2em">
+				<%= @user.followers.count %></span>
+				<%= link_to "Followers", followers_user_path(@user), remote: true %> |
+				<span style="color:red; font-size:1.2em"><%= @user.followed_users.count %></span>
+				<%= link_to "Following", following_user_path(@user), remote: true %>
 			</p>
 		</div>
-
 		<div class="span3">
 			<div id="bio">
 				<%= render 'follow_form' if user_signed_in? %>
