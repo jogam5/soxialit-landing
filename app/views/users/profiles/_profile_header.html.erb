@@ -38,7 +38,7 @@
 					</p>
 				<% end %>
 			<% end %>
-			<p id="profile_nav_bar"><span id="followers_count_<%=@user.id%>" style="color:red; font-size:1.2em">
+			<p id="profile_nav_bar"><span id="followers_count_<%=@user.id%>" style="color:red; font-size:1.1em">
 				<%= @user.followers.count %></span>
 				<%= link_to "Followers", followers_user_path(@user), remote: true %> |
 				<span style="color:red; font-size:1.2em"><%= @user.followed_users.count %></span>
