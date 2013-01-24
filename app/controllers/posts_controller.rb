@@ -73,13 +73,13 @@ class PostsController < ApplicationController
   end
   
   def likes
-      value = params[:type] == "up" ? 1 : -1
-      @post = Post.find(params[:id])
-      @post.add_evaluation(:likes, value, current_user)
-      @post.activities.create(:user_id => current_user.id, :action => "like")
-      Post.delay.publish_post_like_facebook(@post)
-       respond_to do |format|
-          format.js
-        end
+    value = params[:type] == "up" ? 1 : -1
+    @post = Post.find(params[:id])
+    @post.add_evaluation(:likes, value, current_user)
+    @post.activities.create(:user_id => current_user.id, :action => "like")
+    Post.delay.publish_post_like_facebook(@post, current_user)
+    respond_to do |format|
+      format.js
     end
+  end
 end

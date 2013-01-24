@@ -13,6 +13,9 @@ camara.png: camara-4d0625fa13834561a06ca79a68591e71.png
 camara/index.png: camara-4d0625fa13834561a06ca79a68591e71.png
 camara_thumb.png: camara_thumb-c9e15cdefedaddc67523fdc8fda9f34b.png
 camara_thumb/index.png: camara_thumb-c9e15cdefedaddc67523fdc8fda9f34b.png
+change: change
+change.png: change-5d30ac770fe9b7ef6158af9a582025ac.png
+change/index.png: change-5d30ac770fe9b7ef6158af9a582025ac.png
 classic-loader.gif: classic-loader-efbcfdb0cb95a77ca8d9dc4f90f3ed2f.gif
 classic-loader/index.gif: classic-loader-efbcfdb0cb95a77ca8d9dc4f90f3ed2f.gif
 classic-map.png: classic-map-573537dc8c2f39b035fd8bd0d15657ab.png
@@ -31,6 +34,8 @@ designer2.jpg: designer2-2ccbbcf2389fd62819ff60ef98b53150.jpg
 designer2/index.jpg: designer2-2ccbbcf2389fd62819ff60ef98b53150.jpg
 designer3.jpg: designer3-3546874749a847da81ad0ca30923d1f9.jpg
 designer3/index.jpg: designer3-3546874749a847da81ad0ca30923d1f9.jpg
+dress.png: dress-0c5dd5cdbb2d3cdc92a0c94d54ee25fc.png
+dress/index.png: dress-0c5dd5cdbb2d3cdc92a0c94d54ee25fc.png
 footer.png: footer-8010dccd553e2290bf5163ab5bbcfcef.png
 footer/index.png: footer-8010dccd553e2290bf5163ab5bbcfcef.png
 footer1.jpg: footer1-c499543837f10785db18b0badd55e57d.jpg
@@ -85,8 +90,12 @@ politicas.png: politicas-d9c876ee2e1def0adb8952c7f1c9fc4d.png
 politicas/index.png: politicas-d9c876ee2e1def0adb8952c7f1c9fc4d.png
 post.jpg: post-8c5e900357ff3c89f510e69695249d27.jpg
 post/index.jpg: post-8c5e900357ff3c89f510e69695249d27.jpg
+post.png: post-89816b8954d2a6ed18e47343ee7ee87b.png
+post/index.png: post-89816b8954d2a6ed18e47343ee7ee87b.png
 project.jpg: project-3c964dc18002e20c06af8b4f780a156d.jpg
 project/index.jpg: project-3c964dc18002e20c06af8b4f780a156d.jpg
+project.png: project-2a0e996d5d44401d81c0fdeca93880b7.png
+project/index.png: project-2a0e996d5d44401d81c0fdeca93880b7.png
 soxialit.ico: soxialit-c30f561cbc68078f44bc39cefdc90623.ico
 soxialit/index.ico: soxialit-c30f561cbc68078f44bc39cefdc90623.ico
 trash.png: trash-7c60f61d07df1bc572333fd0a71216c2.png

@@ -22,9 +22,8 @@ class Micropost < ActiveRecord::Base
       @user.facebook.put_connections("me", "feed", options)
   end
 
-  def self.publish_link_like_facebook(micropost)
+  def self.publish_link_like_facebook(micropost, user)
     @micropost = micropost
-    @user = current_user
       options = {
         :message => "Me gusto el siguiente link en Soxialit.",
         :picture => @micropost.thumbnail.to_s,
@@ -32,6 +31,6 @@ class Micropost < ActiveRecord::Base
         :name => "#{@micropost.title} by #{@micropost.user.nickname}",
         :description => @micropost.description
       }
-      @user.facebook.put_connections("me", "feed", options)
+      user.facebook.put_connections("me", "feed", options)
   end
 end

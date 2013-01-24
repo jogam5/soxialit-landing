@@ -8,7 +8,7 @@ class ProfilePictureUploader < CarrierWave::Uploader::Base
   end
 
   version :profile do
-    process :resize_and_pad => [200,200,"#240902"]
+    process :resize_and_pad => [150,150,"#240902"]
   end
 
   version :thumb_profile do
