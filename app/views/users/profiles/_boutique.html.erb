@@ -12,14 +12,12 @@
 					<li class="divider-vertical"></li>
 				</ul>
 				<ul class="nav pull-right">
+					<% if current_user == @user %>
 					<li class="divider-vertical"></li>
-					<li style="padding-top:9px"><p id="profile_nav_bar"><%= @user.followed_users.count %> 
-						<%= link_to "Following", following_user_path(@user), remote: true %></p>
+					<li>
+						<%= link_to image_tag('post.png', style:"margin-left:50%"), new_post_path %>
 					</li>
-					<li class="divider-vertical"></li>
-					<li style="padding-top:9px"><p id="profile_nav_bar"><span id="followers_count"><%= @user.followers.count %> </span>
-						<%= link_to "Followers", followers_user_path(@user), remote: true %></p>
-					</li>
+					<% end %>
               	</ul>
             </nav>
 		</div>

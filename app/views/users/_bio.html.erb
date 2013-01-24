@@ -1,7 +1,11 @@
 <div class="modal-bio">
   <div style="max-height: 300px" class="modal-body">
 	<button type="button" class="close-button" data-dismiss="modal" aria-hidden="true">X</button>
-	<div style="float:left; margin-right:2%"><%= image_tag("http://graph.facebook.com/#{@user.uid}/picture?type=square", width: 50, height:50)%></div>
+	<% if !@user.picture.present? %>
+		<div style="float:left; margin-right:2%"><%= link_to image_tag("http://graph.facebook.com/#{@user.uid}/picture?type=normal"), @user %></div>
+	<% else %>
+	    <div style="float:left; margin-right:2%"><%= link_to image_tag(@user.picture_url(:profile)), @user %></div>
+	<% end %>
 	<h3><%= @user.nickname %></h3>
 	<hr>
 	<%= @user.bio %>

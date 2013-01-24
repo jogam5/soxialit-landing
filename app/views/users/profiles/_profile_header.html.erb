@@ -38,25 +38,16 @@
 					</p>
 				<% end %>
 			<% end %>
-			<p id="profile_nav_bar"><span id="followers_count_<%=@user.id%>" style="color:red; font-size:1.1em">
+			<p id="profile_nav_bar"><span id="followers_count" style="color:red; font-size:1.2em">
 				<%= @user.followers.count %></span>
 				<%= link_to "Followers", followers_user_path(@user), remote: true %> |
-				<span style="color:red; font-size:1.2em"><%= @user.followed_users.count %></span>
+				<span style="color:red; font-size:1.2em" id=""><%= @user.followed_users.count %></span>
 				<%= link_to "Following", following_user_path(@user), remote: true %>
 			</p>
 		</div>
 		<div class="span3">
 			<div id="bio">
 				<%= render 'follow_form' if user_signed_in? %>
-				<% if current_user == @user %>
-					<%= link_to "Crear Micropost", new_post_path, :class => 'button-want' %><hr />
-					<% if @user.id == 65 || @user.id == 27 || @user.id == 47 || @user.id == 16 || @user.id == 265 || @user.id == 67 || @user.id == 20 %>
-						<%= link_to "Crear Producto", new_product_path, :class => "button-want" %> 
-					<% end %>
-					<% if @user.roles.first.name == "fotografo" %>
-						<%= link_to "Crear Proyecto", new_project_path, :class => "button-want" %> 
-					<% end %>
-				<% end %>
 			</div>
 		</div>
 	</div>
