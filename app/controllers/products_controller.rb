@@ -284,7 +284,7 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
       @product.add_or_update_evaluation(:votes, value, current_user)
       @product.activities.create(:user_id => current_user.id, :action => "like")
-      Product.delay.publish_like_facebook(@product)
+      Product.delay.publish_product_like_facebook(@product)
       respond_to do |format|
         format.js
       end

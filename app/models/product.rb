@@ -77,7 +77,7 @@ class Product < ActiveRecord::Base
       @user.facebook.put_connections("me", "feed", options)
   end
 
-  def self.publish_like_facebook(product)
+  def self.publish_product_like_facebook(product)
     Rails.logger.info(product)
     logger.debug "Product like no sirve #{product}"
     #@product = product

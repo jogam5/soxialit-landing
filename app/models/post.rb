@@ -13,12 +13,24 @@ class Post < ActiveRecord::Base
   
   has_reputation :likes, source: :user, aggregated_by: :sum
   
-
   def self.publish_post_facebook(post)
     @post = post
     @user = @post.user
       options = {
         :message => "Acabo de publicar un Micropost en Soxialit.",
+        :picture => @post.slides.first.picture.to_s,
+        :link => "http://soxialit.com/posts/#{@post.id}",
+        :name => "#{@post.title} by #{@post.user.nickname}",
+        :description => @post.quote
+      }
+      @user.facebook.put_connections("me", "feed", options)
+  end
+
+  def self.publish_post_like_facebook(post)
+    @post = post
+    @user = current_user
+      options = {
+        :message => "Me gusto el siguiente micropost en Soxialit.",
         :picture => @post.slides.first.picture.to_s,
         :link => "http://soxialit.com/posts/#{@post.id}",
         :name => "#{@post.title} by #{@post.user.nickname}",
