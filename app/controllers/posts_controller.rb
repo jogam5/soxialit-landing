@@ -57,7 +57,7 @@ class PostsController < ApplicationController
     if @post.status == false
        @post.update_attributes(:status => true)
        @post.activities.create(:user_id => current_user.id, :action => "create")
-       Post.delay.publish_post_facebook(@post)
+       Post.delay.publish_post_facebook(@post) unless @user.fb == false
     else
     end
     redirect_to root_url
@@ -77,7 +77,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.add_evaluation(:likes, value, current_user)
     @post.activities.create(:user_id => current_user.id, :action => "like")
-    Post.delay.publish_post_like_facebook(@post, current_user)
+    Post.delay.publish_post_like_facebook(@post, current_user) unless current_user.fb == false
     respond_to do |format|
       format.js
     end

@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
          b = Product.find(id)
          logger.debug "producto: #{b}"
       end
-      Product.delay.publish_product_facebook(b)
+      Product.delay.publish_product_facebook(b) unless b.user.fb == false
       redirect_to products_path
     end
     
@@ -284,7 +284,7 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
       @product.add_or_update_evaluation(:votes, value, current_user)
       @product.activities.create(:user_id => current_user.id, :action => "like")
-      Product.delay.publish_product_like_facebook(@product, current_user)
+      Product.delay.publish_product_like_facebook(@product, current_user) unless current_user.fb == false
       respond_to do |format|
         format.js
       end

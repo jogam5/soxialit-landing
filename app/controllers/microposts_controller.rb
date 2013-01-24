@@ -24,7 +24,7 @@ class MicropostsController < ApplicationController
     @micropost = current_user.microposts.build(params[:micropost])
     @micropost.save!
     @micropost.activities.create(:user_id => current_user.id, :action => "create")
-    Micropost.delay.publish_link_facebook(@micropost)
+    Micropost.delay.publish_link_facebook(@micropost) unless @micropost.user.fb == false
     redirect_to :back
   end
 
@@ -41,7 +41,7 @@ class MicropostsController < ApplicationController
     @micropost = Micropost.find(params[:id])
     @micropost.add_evaluation(:lovs, value, current_user)
     @micropost.activities.create(:user_id => current_user.id, :action => "like")
-    Micropost.delay.publish_link_like_facebook(@micropost, current_user)
+    Micropost.delay.publish_link_like_facebook(@micropost, current_user) unless current_user.fb == false
 
      respond_to do |format|
         format.js

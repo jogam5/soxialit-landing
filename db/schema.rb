@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130122165645) do
+ActiveRecord::Schema.define(:version => 20130124200957) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -91,13 +91,10 @@ ActiveRecord::Schema.define(:version => 20130122165645) do
     t.text     "description"
     t.string   "thumbnail"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "status"
   end
-
-  add_index "microposts", ["status"], :name => "index_microposts_on_status"
-  add_index "microposts", ["user_id"], :name => "index_microposts_on_user_id"
 
   create_table "paintings", :force => true do |t|
     t.string   "image"
@@ -106,8 +103,6 @@ ActiveRecord::Schema.define(:version => 20130122165645) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "paintings", ["product_id"], :name => "index_paintings_on_product_id"
 
   create_table "partners", :force => true do |t|
     t.integer  "user_id"
@@ -286,8 +281,6 @@ ActiveRecord::Schema.define(:version => 20130122165645) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "sizes", ["product_id"], :name => "index_sizes_on_product_id"
-
   create_table "sizeships", :force => true do |t|
     t.integer  "product_id"
     t.integer  "size_id"
@@ -325,8 +318,8 @@ ActiveRecord::Schema.define(:version => 20130122165645) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",   :null => false
+    t.string   "encrypted_password",     :default => "",   :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -335,8 +328,8 @@ ActiveRecord::Schema.define(:version => 20130122165645) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
     t.string   "username"
     t.string   "picture"
     t.string   "location"
@@ -346,9 +339,11 @@ ActiveRecord::Schema.define(:version => 20130122165645) do
     t.string   "uid"
     t.string   "token"
     t.string   "nickname"
+    t.boolean  "fb",                     :default => true
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["fb"], :name => "index_users_on_facebook"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 

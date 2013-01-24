@@ -52,6 +52,14 @@
         <p id="edit_information">Cuéntale al mundo un poco de ti.</p>
       </div>
     </div>
+    <div class="control-group">
+      <div class="controls">
+        <label class="checkbox">
+          <%= f.check_box :fb %> Publicar tus actividades en tu timeline de Facebook.
+        </label>
+        <p id="edit_information" style="margin-left:1.5em">* Incrementa la audiencia para tus posts, fotos o links compartiéndolos con tus amigos y sus seguidores.</p>
+      </div>
+    </div>
     <% if current_user.roles.first.name == "admin" %>
       <p>Selecciona el perfil:</p>
       <% for role in Role.find(:all) %>
