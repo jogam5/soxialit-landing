@@ -27,7 +27,7 @@
 			<% else %>
 				<% if @user.bio.length >= 109 %>
 					<div style="width:500px" class="text-title">
-						<p style="width:380px" id="description_user_perfil">
+						<p style="width:380px" id="description_perfil">
 							<%= @user.bio %>
 						</p>
 						<%= link_to "ver mas...", bio_path(:user_id => @user.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :class => "link_bio"} %>
