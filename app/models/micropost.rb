@@ -24,7 +24,6 @@ class Micropost < ActiveRecord::Base
 
   def self.publish_link_like_facebook(micropost, user)
     @micropost = micropost
-    #@user = current_user
       options = {
         :message => "Me gusto el siguiente link en Soxialit.",
         :picture => @micropost.thumbnail.to_s,

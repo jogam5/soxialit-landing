@@ -37,8 +37,4 @@ class Post < ActiveRecord::Base
       }
       user.facebook.put_connections("me", "feed", options)
   end
-
-  def get_user
-    
-  end
 end

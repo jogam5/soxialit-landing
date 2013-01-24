@@ -65,7 +65,6 @@ class Product < ActiveRecord::Base
   def self.publish_product_facebook(product)
     Rails.logger.info(product)
     logger.debug "Product no sirve #{product}"
-    #@product = product
     @user = product.user
       options = {
         :message => "Acabo de publicar un item en Soxialit.",
@@ -77,18 +76,16 @@ class Product < ActiveRecord::Base
       @user.facebook.put_connections("me", "feed", options)
   end
 
-  def self.publish_product_like_facebook(product)
+  def self.publish_product_like_facebook(product, user)
     Rails.logger.info(product)
     logger.debug "Product like no sirve #{product}"
-    #@product = product
-    @user = current_user
       options = {
-        :message => "A #{@user.nickname} le gusta un item en Soxialit.",
+        :message => "A #{user.nickname} le gusta un item en Soxialit.",
         :picture => product.picture.to_s,
         :link => "https://soxialit.com/products/#{product.id}",
         :name => "#{product.title} by #{product.user.nickname}",
         :description => product.description
       }
-      @user.facebook.put_connections("me", "feed", options)
+      user.facebook.put_connections("me", "feed", options)
   end
 end
