@@ -1015,8 +1015,21 @@ ul.comments{
 	display: block;
 	max-height: 80px;
 	overflow: hidden;
-	
 }
+
+#description_user_perfil{
+	display: block;
+	max-height: 37px;
+	overflow: hidden;
+	color:$grayBio;
+	font-size:1em;
+	font-weight:lighter;
+	padding-top: 6px;
+	margin-top: 3%;
+	margin-bottom: 2%;
+	font-family: nimbus-sans, Helvetica-Neue, Helvetica, Arial, Sans-serif;
+}
+
 
 #description_user_profile{
 	color:$grayBio;
@@ -1032,13 +1045,18 @@ ul.comments{
 	-webkit-line-clamp: 2; 
 	-webkit-box-orient: vertical;
 	white-space:nowrap;
+	display: block;
+
 }
 
 .link_bio{
 	color:$rojo;
 	text-decoration:none;
-	
+	float: right;
+	margin-top: -5.3%;
+	margin-right: 11%;
 }
+
 .link_bio:hover{
 	color:$rojo;
 	text-decoration:none;

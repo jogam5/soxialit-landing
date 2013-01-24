@@ -57,6 +57,13 @@ module UsersHelper
 	   return c
 	end
 	
+	def find_micropost_imagefile(evaluations)
+	   a = Micropost.find(evaluations)
+	   b = User.find(a.user_id)
+	   c = b.picture_url(:profile)
+	   return c
+	end
+	
 	def find_micropost_userurl(evaluations)
 	   a = Micropost.find(evaluations)
 	   b = User.find(a.user_id)
@@ -102,6 +109,13 @@ module UsersHelper
 	   a = Post.find(evaluations)
 	   b = User.find(a.user_id)
 	   c = "http://graph.facebook.com/#{b.uid}/picture?type=square"
+	   return c
+	end
+	
+	def find_post_imagefile(evaluations)
+	   a = Post.find(evaluations)
+	   b = User.find(a.user_id)
+	   c = b.picture_url(:profile)
 	   return c
 	end
 	
