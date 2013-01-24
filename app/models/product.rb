@@ -81,9 +81,9 @@ class Product < ActiveRecord::Base
     Rails.logger.info(product)
     logger.debug "Product like no sirve #{product}"
     #@product = product
-    @user = product.user
+    @user = current_user
       options = {
-        :message => "A #{product.user.nickname} le gusta un item en Soxialit.",
+        :message => "A #{@user.nickname} le gusta un item en Soxialit.",
         :picture => product.picture.to_s,
         :link => "https://soxialit.com/products/#{product.id}",
         :name => "#{product.title} by #{product.user.nickname}",
