@@ -19,7 +19,11 @@
 					</p>
 					<div id="micropost_description">
 						<span style="color:#999; font-size: 0.9em">Publicado por</span>
+						<% if find_micropost_imagefile(z.target_id) == nil %>
 							<%= link_to image_tag(find_micropost_userimage(z.target_id), style:"width:35px; margin-left:42%; margin-top:-9%", id: "like_small_picture"), user_path(find_micropost_userurl(z.target_id))%>
+						<% else %>
+							<%= link_to image_tag(find_micropost_imagefile(z.target_id), style:"width:35px; margin-left:42%; margin-top:-9%", id: "like_small_picture"), user_path(find_micropost_userurl(z.target_id))%>
+						<% end %>
 							<div style="float:right; margin-top:-10%">
 								<% if signed_in? %>
 									<div style="margin-right:-2%;" class="votacion" id="votacion_<%= z.target_id %>">
@@ -82,7 +86,11 @@
 				</p>
 				<div id="micropost_description">
 					<span style="color:#999; font-size: 0.9em">Publicado por</span>
-						<%= link_to image_tag(find_post_userimage(z.target_id), style:"width:35px; margin-left:42%; margin-top:-9%", id: "like_small_picture"), user_path(find_post_userurl(z.target_id))%>
+						<% if find_post_imagefile(z.target_id) == nil %>
+							<%= link_to image_tag(find_post_userimage(z.target_id), style:"width:35px; margin-left:42%; margin-top:-9%", id: "like_small_picture"), user_path(find_post_userurl(z.target_id))%>
+						<% else %>
+							<%= link_to image_tag(find_post_imagefile(z.target_id), style:"width:35px; margin-left:42%; margin-top:-9%", id: "like_small_picture"), user_path(find_post_userurl(z.target_id))%>
+						<% end %>
 						<div style="float:right;">
 							<% if signed_in? %>
 								<div style="margin-right:-2%; margin-top: -54%" class="votacion" id="votacion_<%= z.target_id %>">
