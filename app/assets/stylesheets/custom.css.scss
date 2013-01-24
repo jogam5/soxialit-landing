@@ -343,6 +343,8 @@ margin-top: 3%;
 	font-size:13px;
 	font-weight:lighter;
 	margin-top:0.5em;
+	padding-bottom:7px;
+	border-bottom: 1px solid $grayLighter;
 	a{color:$website;
 	 }
 	a:hover{
@@ -1035,10 +1037,12 @@ ul.comments{
 }
 
 .link_bio{
-	color:$rojo;
+	color:#BBB;
 	text-decoration:none;
-	
+	font-size:0.9em;
+	font-weight:lighter;
 }
+
 .link_bio:hover{
 	color:$rojo;
 	text-decoration:none;
