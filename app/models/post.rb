@@ -26,9 +26,8 @@ class Post < ActiveRecord::Base
       @user.facebook.put_connections("me", "feed", options)
   end
 
-  def self.publish_post_like_facebook(post)
+  def self.publish_post_like_facebook(post, user)
     @post = post
-    @user = current_user
       options = {
         :message => "Me gusto el siguiente micropost en Soxialit.",
         :picture => @post.slides.first.picture.to_s,
@@ -36,6 +35,10 @@ class Post < ActiveRecord::Base
         :name => "#{@post.title} by #{@post.user.nickname}",
         :description => @post.quote
       }
-      @user.facebook.put_connections("me", "feed", options)
+      user.facebook.put_connections("me", "feed", options)
+  end
+
+  def get_user
+    
   end
 end
