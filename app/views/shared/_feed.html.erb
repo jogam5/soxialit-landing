@@ -15,7 +15,7 @@
 				  	<%= render :partial => 'feed/headline', :locals => { :feed_item => feed_item } %>
 				  	<br />
 					<span class="timestamp">
-					 <%= time_ago_in_words(feed_item.created_at) unless feed_item.activitable_type == "Micropost" || feed_item.activitable_type == "Post" || feed_item.activitable_type == "Project"  %>
+					 <%= time_ago_in_words(feed_item.created_at) if feed_item.activitable_type == "Product" %>
 					</span>
 					<br />
 				</p>
@@ -27,8 +27,10 @@
 			</div>
 			<br />
 		  </div>
-		   <div class="red_bar"></div><br />
-		     <%= render :partial => 'feed/comments', :locals => { :feed_item => feed_item } %>
+		  <div class="red_bar"></div><br />
+		  <% unless feed_item.activitable_type == "User" %>
+		    <%= render :partial => 'feed/comments', :locals => { :feed_item => feed_item } %>
+		  <% end %>
 		</span>
 	  </li>
 	 <% end %>

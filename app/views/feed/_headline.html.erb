@@ -1,5 +1,32 @@
 <span id="headline_color">
-	<% if feed_item.activitable_type == "Product" && feed_item.action == "create" %>	
+	<% if feed_item.activitable_type == "User" && feed_item.action == "create"  %>
+	  <span class="timestamp" style="float:right">
+		<%= time_ago_in_words(feed_item.created_at) %>.
+		<br />
+	  </span>
+	  se acaba de unir a Soxialit.
+	  <% if feed_item.activitable.roles.first.name == 'fashion lover' %>
+		<p id="fashionlover">fashion lover</p>
+	  <% elsif feed_item.activitable.roles.first.name == 'designer' %>
+		<p id="designer"> designer</p>
+	  <% elsif feed_item.activitable.roles.first.name == 'boutique store' %>
+		<p id="boutique">boutique store</p>
+	  <% elsif feed_item.activitable.roles.first.name == 'blogger' %>
+		<p id="blogger">blogger</p>
+	  <% elsif feed_item.activitable.roles.first.name == 'fotografo' %>
+		<p id="fotografo">fotógrafo</p>
+	  <% end %>
+	  <% unless current_user?(feed_item.activitable) %>
+		<div style="margin-top:0.5em" id="form_<%= feed_item.activitable.id %>" %>
+		  <% if current_user.following?(feed_item.activitable) %>
+			<%= render :partial => 'shared/unfollow', :locals => { :user => feed_item.activitable } %>
+			  <% else %>
+			<%= render :partial => 'shared/follow', :locals => { :user => feed_item.activitable } %>
+		  <% end %>
+		</div>
+	  <% end %>
+	  
+	<% elsif feed_item.activitable_type == "Product" && feed_item.action == "create" %>	
 		agregó 
 		<% if feed_item.activitable.nil? %>
 		<% else %>
