@@ -5,7 +5,6 @@
 		<div style="display:block"><%= link_to image_tag(feed_item.activitable.picture), 
 														product_path(feed_item.activitable) %></div>
 		
-		<%= render :partial => 'feed/likes', :locals => { :feed_item => feed_item } %>
 
 		<br/>
 		<div style="text-align:left; margin-left:100px; margin-top:5px;">
@@ -17,12 +16,13 @@
 						user_path(feed_item.activitable.user), :id => "user_and_items_link" %></span>
 		</div>
 	</div>
+	<%= render :partial => 'feed/likes', :locals => { :feed_item => feed_item } %>
+	
 <% elsif feed_item.activitable_type == "Product" && feed_item.action == "like" %>
 	<div id="product_background" class="image_hover">
 		<div style="display:block; width:250px; margin-left:100px"><%= link_to image_tag(feed_item.activitable.picture), 
 														product_path(feed_item.activitable) %></div>
 		
-		<%= render :partial => 'feed/likes', :locals => { :feed_item => feed_item } %>
 		<br/>
 		<div style="text-align:left; margin-left:100px; margin-top:5px;">
 			<span id="product_title" style="font-size:1em" ><%= feed_item.activitable.title %></span>
@@ -30,9 +30,12 @@
 			by
 			<span id="product_designer">
 				<%= link_to  feed_item.activitable.brand, 
-						user_path(feed_item.activitable.user), :id => "user_and_items_link" %></span>
+						user_path(feed_item.activitable.user), :id => "user_and_items_link" %>
+			</span>
 		</div>
 	</div>
+	<%= render :partial => 'feed/likes', :locals => { :feed_item => feed_item } %>
+	
 <% elsif feed_item.activitable_type == "Micropost" && feed_item.action == "create" %>
 	<div id="product_background" class="image_hover">
 		<div class="row" style="display:block;  margin-left:50px">
@@ -44,17 +47,15 @@
 		 	<br />
 		 	<span style="color:#999">vía</span> <%= link_to feed_item.activitable.provider, feed_item.activitable.provider, target: '_blank' %>
 		 </div>
-		<%= render :partial => 'feed/like_micropost', :locals => { :feed_item => feed_item } %>
-		
 		</div>
 	</div>
+	<%= render :partial => 'feed/like_micropost', :locals => { :feed_item => feed_item } %>
 
 <% elsif feed_item.activitable_type == "Micropost" && feed_item.action == "like" %>
 <div id="product_background" class="image_hover">
 	<div style="display:block; width:100px; margin-left:100px">
 		  <%= link_to image_tag(feed_item.activitable.thumbnail), feed_item.activitable.url, target: '_blank' %>
 	</div>
-	<%= render :partial => 'feed/like_micropost', :locals => { :feed_item => feed_item } %>
 	<br/>
 	<div style="text-align:left; margin-left:100px; margin-top:5px;">
 		 <div id="micropost_description">
@@ -69,6 +70,8 @@
 		 </div>
 	</div>
 </div>
+<%= render :partial => 'feed/like_micropost', :locals => { :feed_item => feed_item } %>
+
 <% elsif feed_item.activitable_type == "Post" && feed_item.action == "create" %>
  <div id="product_background" class="">
   <div class="row" style="display:block;  margin-left:35px">
@@ -79,7 +82,6 @@
         <% end %>
       <% end %>
     </div>
-	<%= render :partial => 'feed/like_post', :locals => { :feed_item => feed_item } %>
   </div>
   <br />
   <div class="row">
@@ -90,6 +92,8 @@
       <p id="post_source">vía <%= link_to feed_item.activitable.url, feed_item.activitable.url ,target: '_blank' %></p>
   </div>
  </div>
+<%= render :partial => 'feed/like_post', :locals => { :feed_item => feed_item } %>
+
 <% elsif feed_item.activitable_type == "Post" && feed_item.action == "like" %>
 <div id="product_background" class="image_hover">
 	<div style="display:block; width:300px; margin-left:100px">
@@ -97,7 +101,6 @@
 		  <%= link_to image_tag(feed_item.activitable.slides.first.picture), post_path(feed_item.activitable.id), target: '_blank' %>
 		<% end %>
 	</div>
-	<%= render :partial => 'feed/like_post', :locals => { :feed_item => feed_item } %>
 	<br/>
 	<div style="text-align:left; margin-left:100px; margin-top:5px;">
 		 <div id="micropost_description">
@@ -112,6 +115,8 @@
 		 </div>
 	</div>
 </div>
+<%= render :partial => 'feed/like_post', :locals => { :feed_item => feed_item } %>
+
 <% elsif feed_item.activitable_type == "Project" && feed_item.action == "create" %>
  <div id="product_background" class="">
   <div class="row" style="display:block;  margin-left:35px">
