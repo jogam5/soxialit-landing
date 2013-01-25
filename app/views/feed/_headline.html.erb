@@ -16,16 +16,17 @@
 	  <% elsif feed_item.activitable.roles.first.name == 'fotografo' %>
 		<p id="fotografo">fotógrafo</p>
 	  <% end %>
-	  <% unless current_user?(feed_item.activitable) %>
-		<div style="margin-top:0.5em" id="form_<%= feed_item.activitable.id %>" %>
-		  <% if current_user.following?(feed_item.activitable) %>
-			<%= render :partial => 'shared/unfollow', :locals => { :user => feed_item.activitable } %>
-			  <% else %>
-			<%= render :partial => 'shared/follow', :locals => { :user => feed_item.activitable } %>
+	  <% if user_signed_in? %>	
+	  	<% unless current_user?(feed_item.activitable) %>
+			<div style="margin-top:0.5em" id="form_<%= feed_item.activitable.id %>" %>
+			  <% if current_user.following?(feed_item.activitable) %>
+				<%= render :partial => 'shared/unfollow', :locals => { :user => feed_item.activitable } %>
+				  <% else %>
+				<%= render :partial => 'shared/follow', :locals => { :user => feed_item.activitable } %>
+			  <% end %>
+			</div>
 		  <% end %>
-		</div>
 	  <% end %>
-	  
 	<% elsif feed_item.activitable_type == "Product" && feed_item.action == "create" %>	
 		agregó 
 		<% if feed_item.activitable.nil? %>
