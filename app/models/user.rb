@@ -102,7 +102,7 @@ class User < ActiveRecord::Base
           rescue Exception=>ex
               puts ex.message
         end
-      User.find(1).follow!(user)
+      #User.find(1).follow!(user)
     end
     user.update_attributes(token:auth.credentials.token)
     user.save(:validate => false)
