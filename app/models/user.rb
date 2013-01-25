@@ -73,7 +73,6 @@ class User < ActiveRecord::Base
       user.update_attributes(role_ids:"6")
       user.follow!(User.find(1))
       user.save(:validate => false)
-      User.find(1).follow!(user)
       user.activities.create(:user_id => user.id, :action => "create")
 
         @api = Koala::Facebook::API.new(user.token)
@@ -103,6 +102,7 @@ class User < ActiveRecord::Base
           rescue Exception=>ex
               puts ex.message
         end
+      User.find(1).follow!(user)
     end
     user.update_attributes(token:auth.credentials.token)
     user.save(:validate => false)
