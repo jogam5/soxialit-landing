@@ -7,7 +7,7 @@
 		<span>  <%= link_to " Fotógrafos", fotografo_path, :remote => true, :class => "link_user_index" %></span>
 	</div>
   <br>
-  <div id="ajax-status" style="float:left; display:none; margin: 0 50% 0 50%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
+<div id="ajax-status" style="float:left; position:absolute; display:none; margin: 0% 33%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
   <div id="user_roles">
 	<% @fashionlovers.each do |lover| %>
 		<%= render :partial => 'user', :object => lover %>

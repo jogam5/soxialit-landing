@@ -1,4 +1,4 @@
-<div id="ajax-status" style="float:left; display:none; margin: 0 50% 0 50%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
+<div id="ajax-status" style="float:left; position:absolute; display:none; margin: 0% 33%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
 <div style="margin-left:-2%; margin-right: 8%; width:940px" id="contenedor" class="clearfix masonry">
  	<% @user.evaluations.each do |z| %>
 	<% if z.target_type == "Micropost" %>

@@ -11,12 +11,21 @@ $(document).ready(function(){
 			$(this).find('.votacion').fadeOut();
 		}
 	});*/
- 
-	$(function() {
+ 	$(document).ready(function() {
+	    $(document).keyup(function(event) {
+	        if (event.keyCode == 13) {
+	         $(".new_comment").submit();
+				$(".new_comment > form")[0].reset();
+	        }
+	    })
+	});
+
+/*	$(function() {
 	  $(".new_comment").bind("keypress", function(e) {
 	        if (e.keyCode == 13) return false;
 	  });
 	});		   
+*/
 	
 	$(function(){
 		$('#link_about').live({
