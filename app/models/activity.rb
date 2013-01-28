@@ -5,6 +5,7 @@ class Activity < ActiveRecord::Base
   has_many :comments, :as => :commentable, :dependent => :destroy
 
   after_save :expire_get_feed_cache
+  after_destroy :expire_get_feed_cache
 
 
   def self.from_users_followed_by(user)

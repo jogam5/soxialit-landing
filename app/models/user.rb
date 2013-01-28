@@ -154,7 +154,7 @@ class User < ActiveRecord::Base
     @feed = Activity.from_users_followed_by(self).order("created_at DESC").limit(95)
   end
 
-  def feed_cached
+  def self.feed_cached
     Rails.cache.fetch('get_feed'){ feed }
   end
 
