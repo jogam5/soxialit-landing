@@ -10,6 +10,8 @@
 </div>
 <h1>Cache Stats</h1>
 
+<% if user_signed_in? %>
+<% if current_user.roles.first.name == 'admin' %>
 <table>
   <tr>
     <th>Metric</th>
@@ -28,6 +30,8 @@
     <td><%= @stats['cmd_flush'] %></td>
   </tr>
 </table>
+<% end %>
+<% end %>
 
 <script type="text/javascript">
 var anchor = $('<a>', {'style':'display:block', 'id': 'image_top', 'class':'back_to_top', 'href':'#top', 'title': 'Back to Top', 'text': 'Top'});  anchor.appendTo($(document.body))    .hide();
