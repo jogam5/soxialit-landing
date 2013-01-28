@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :followed_users, through: :relationships, source: :followed
   has_many :products, :dependent => :destroy, :order => "created_at DESC"
   has_many :evaluations, class_name: "RSEvaluation", as: :source, :order => "created_at DESC"
-  has_many :activities, :as => :activitable, :dependent => :destroy
+  #has_many :activities, :as => :activitable, :dependent => :destroy
   has_many :feedbacks, :dependent => :destroy
   has_many :partners, :dependent => :destroy
   has_many :microposts, :dependent => :destroy
@@ -73,7 +73,7 @@ class User < ActiveRecord::Base
       user.update_attributes(role_ids:"6")
       user.follow!(User.find(1))
       user.save(:validate => false)
-      user.activities.create(:user_id => user.id, :action => "create")
+      #user.activities.create(:user_id => user.id, :action => "create")
 
         @api = Koala::Facebook::API.new(user.token)
         begin 
