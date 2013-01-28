@@ -8,10 +8,10 @@
     <%= render 'shared/feed' %>
   </div>
 </div>
-<h1>Cache Stats</h1>
 
 <% if user_signed_in? %>
 <% if current_user.roles.first.name == 'admin' %>
+<h1>Cache Stats</h1>
 <table>
   <tr>
     <th>Metric</th>
