@@ -56,8 +56,6 @@
               <br />
               <span style="color:#999">vía</span> <%= link_to @micropost.provider, @micropost.provider, target: '_blank' %>
              </div>
-			
-
             </div>
           </div>
         </div>
@@ -69,6 +67,9 @@
 		<% if signed_in? %>
 			<div style="margin-top:0.1%; margin-right: 1%"class="votacion" id="votacion_<%= @micropost.id %>">
 				<% if @micropost.id == current_user.voted_by?(current_user.evaluations, @micropost.id) %>
+				<div id="ajax-status" style="float: right; display:none; margin-left: 50%;">
+						<%= image_tag("loading.gif") %>
+					</div>
 					<span id="want_<%= @micropost.id %>">
 						<div id="love_icon_<%= @micropost.id %>" class="love_icon_active">
 							<span style="float:left; display:block; margin-left:-50%; color:black" 
@@ -78,6 +79,9 @@
 						</div>
 		   			</span>
 					<% elsif current_user && !current_user.voted_for?(@micropost) %>
+					<div id="ajax-status" style="float: right; display:none; margin-left: 50%;">
+							<%= image_tag("loading.gif") %>
+						</div>
 						<span id="want_<%= @micropost.id %>">
 							<div id="love_icon_<%= @micropost.id %>" class="love_icon">
 								<span style="float:left; display:block; margin-left:-50%; color:black" 

@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     @products = product_ok(@user.products)
     @activities = @user.activities.order("created_at DESC")
     @comment = Comment.new
+    
     respond_to do |format|
       format.html # show.html.erb
     end

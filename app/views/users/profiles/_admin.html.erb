@@ -8,11 +8,11 @@
 				</ul>
 				<ul class="nav pull-right">
 					<li class="divider-vertical"></li>
-					<li style="padding-top:9px"><p id="profile_nav_bar"><%= @user.followed_users.count %> 
+					<li style="padding-top:9px"><p id="profile_nav_bar"><span id="followers_count"><%= @user.followed_users.count %></span>
 						<%= link_to "", following_user_path(@user), remote: true %></p>
 					</li>
 					<li class="divider-vertical"></li>
-					<li style="padding-top:9px"><p id="profile_nav_bar"><span id="followers_count_<%=@user.id%>"><%= @user.followers.count %> </span>
+					<li style="padding-top:9px"><p id="profile_nav_bar"><%= @user.followers.count %>
 						<%= link_to "", followers_user_path(@user), remote: true %></p>
 					</li>
 	          	</ul>
