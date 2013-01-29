@@ -24,7 +24,7 @@ class MicropostsController < ApplicationController
     @micropost = current_user.microposts.build(params[:micropost])
     @micropost.save!
     @micropost.activities.create(:user_id => current_user.id, :action => "create")
-    Micropost.expire_feed_cache(current_user)
+    Activity.expire_feed_cache(current_user)
     Micropost.delay.publish_link_facebook(@micropost) unless @micropost.user.fb == false
     redirect_to :back
   end
@@ -32,7 +32,7 @@ class MicropostsController < ApplicationController
   def destroy
     @micropost = Micropost.find(params[:id])
     @micropost.destroy
-    Micropost.expire_feed_cache(current_user)
+    Activity.expire_feed_cache(current_user)
     respond_to do |format|
       format.html { redirect_to :back, notice: 'Micropost eliminado correctamente' }
     end
