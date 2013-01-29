@@ -977,12 +977,17 @@ ul.comments{
 /* TimeLine */
 
 #item_link{
+	font-size:1.2em;
+	color:#303239;
+	padding:1em 0em 0em 0em;
+	font-weight:700;
+	text-align:left;
 	 a{
-	color:$rojo;
+	color:#303239;
 	font-weight: lighter;
 	}
 	 a:hover{
-	color:black;
+	color:$rojo;
 	text-decoration:none;
 	}
 }
@@ -1011,10 +1016,13 @@ ul.comments{
 }
 
 #description_link_favorites{
-	font-size: 16px;
+	font-size: 1em;
+	color:#999999;
 	display: block;
 	max-height: 80px;
 	overflow: hidden;
+	font-weight:lighter;
+	text-align:left;
 }
 
 #description_perfil{

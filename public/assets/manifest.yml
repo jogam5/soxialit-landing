@@ -72,6 +72,10 @@ link.jpg: link-64c6021c87b27063461b6d7364d535a7.jpg
 link/index.jpg: link-64c6021c87b27063461b6d7364d535a7.jpg
 link.png: link-4dc28bdeff746ad7774c2fdd2481f70d.png
 link/index.png: link-4dc28bdeff746ad7774c2fdd2481f70d.png
+link_favorite.png: link_favorite-dce983d455e30881ade605444cc5053b.png
+link_favorite/index.png: link_favorite-dce983d455e30881ade605444cc5053b.png
+loading.png: loading-323f98010c873f1cc77c59859654895e.png
+loading/index.png: loading-323f98010c873f1cc77c59859654895e.png
 logoestafeta.jpg: logoestafeta-4def5beec02be7fbbed4f9a33bb3a46c.jpg
 logoestafeta/index.jpg: logoestafeta-4def5beec02be7fbbed4f9a33bb3a46c.jpg
 love.png: love-77c863bf7e7e94feba9d40c4f2a2ad83.png
@@ -104,6 +108,8 @@ shop.png: shop-6c0d0e18293b9bb641dcd2da0c8d1695.png
 shop/index.png: shop-6c0d0e18293b9bb641dcd2da0c8d1695.png
 soxialit.ico: soxialit-c30f561cbc68078f44bc39cefdc90623.ico
 soxialit/index.ico: soxialit-c30f561cbc68078f44bc39cefdc90623.ico
+soxialit.png: soxialit-41251bfa6b74179a033cc2035aada3c7.png
+soxialit/index.png: soxialit-41251bfa6b74179a033cc2035aada3c7.png
 trash.png: trash-7c60f61d07df1bc572333fd0a71216c2.png
 trash/index.png: trash-7c60f61d07df1bc572333fd0a71216c2.png
 twitter-bg.png: twitter-bg-910eee05f4979df8f74a6b6f1906a4c9.png
@@ -124,10 +130,10 @@ wrong5.jpg: wrong5-208812eb19f241c59f80a45c9f6554a4.jpg
 wrong5/index.jpg: wrong5-208812eb19f241c59f80a45c9f6554a4.jpg
 zapato.png: zapato-1029d6c5aa14da47143753767914f588.png
 zapato/index.png: zapato-1029d6c5aa14da47143753767914f588.png
-application.js: application-2f48ca58b7e340fa7d2ae92d2a2a7101.js
-application/index.js: application-2f48ca58b7e340fa7d2ae92d2a2a7101.js
-application.css: application-9c8387aeeb0cb2fe1b120dd8641ca11d.css
-application/index.css: application-9c8387aeeb0cb2fe1b120dd8641ca11d.css
+application.js: application-56cf705826f0df0b7a9134bfb4289393.js
+application/index.js: application-56cf705826f0df0b7a9134bfb4289393.js
+application.css: application-ec7afdc02dc9688cdf222f905b916a51.css
+application/index.css: application-ec7afdc02dc9688cdf222f905b916a51.css
 fontawesome-webfont.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont/index.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont.svg: fontawesome-webfont-c3f3594758768fbb43eae746d18b3b50.svg
