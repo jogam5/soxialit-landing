@@ -46,7 +46,7 @@
 					<span style="color:red; font-size:1.2em" id="followers_count"><%= @user.followed_users.count %></span>
 					<%= link_to "Following", following_user_path(@user), remote: true %>
 				<% else %>
-					<span style="color:red; font-size:1.2em" id="followers_count">
+					<span style="color:red; font-size:1.2em" id="followers_count_<%= @user.id %>">
 						<%= @user.followers.count %></span>
 						<%= link_to "Followers", followers_user_path(@user), remote: true %> |
 					<span style="color:red; font-size:1.2em"><%= @user.followed_users.count %></span>
