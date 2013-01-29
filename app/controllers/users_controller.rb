@@ -199,6 +199,7 @@ class UsersController < ApplicationController
            
    def fotografo
      @users = User.all
+     @fotografos =  User.find(:all, :conditions )
      @fotografos = find_fotografos(@users)
    end
 

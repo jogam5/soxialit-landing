@@ -3,9 +3,9 @@
 		<div style="margin-left:28%">
 			<a href="http://s1246.beta.photobucket.com/user/soxialit/media/soxialit_logo_zps7eb2aaa1.png.html" target="_blank"><img src="http://i1246.photobucket.com/albums/gg616/soxialit/soxialit_logo_zps7eb2aaa1.png" border="0" alt=" photo soxialit_logo_zps7eb2aaa1.png"/></a>		
 		</div>
-		<div style="margin-left:35%"><h1><strong>¡Hey <%= link_to @user.username, user_path(@user.username), style: "text-decoration:none; color:#d93e38" %>!</strong></h1></div>
+		<div style="margin-left:35%"><h1><strong>¡Hey <%= link_to @user.username, user_url(@user.username), style: "text-decoration:none; color:#d93e38" %>!</strong></h1></div>
 		<hr>
-		<p>Ha <%= link_to @user_following.username, user_path(@user.username), style: "text-decoration:none; color:#d93e38" %> le gusta tu item: <strong><%= link_to @product.title, @product, style: "color: #bbb; font-weight: lighter; text-decoration:none;" %></strong></p>
+		<p>Ha <%= link_to @user_following.username, user_url(@user.username), style: "text-decoration:none; color:#d93e38" %> le gusta tu item: <strong><%= link_to @product.title, product_url(@product), style: "color: #bbb; font-weight: lighter; text-decoration:none;" %></strong></p>
 		<%= image_tag (@product.picture)%>
 		<p>Likes: <%= @product.reputation_value_for(:votes).to_i %>
 		<hr>
