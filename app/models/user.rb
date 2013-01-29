@@ -155,7 +155,8 @@ class User < ActiveRecord::Base
   end
 
   def feed_cached
-    Rails.cache.fetch('get_feed'){ feed }
+    user = current_user
+    Rails.cache.fetch('feed_user_#{user.id}'){ feed }
   end
 
   def friends
