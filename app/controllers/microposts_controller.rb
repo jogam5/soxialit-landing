@@ -31,8 +31,8 @@ class MicropostsController < ApplicationController
 
   def destroy
     @micropost = Micropost.find(params[:id])
+    Activity.expire_feed_cache(@micropost.user)
     @micropost.destroy
-    Activity.expire_feed_cache(current_user)
     respond_to do |format|
       format.html { redirect_to :back, notice: 'Micropost eliminado correctamente' }
     end
