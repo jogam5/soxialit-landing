@@ -1,6 +1,5 @@
 class ActivitiesController < ApplicationController
-  after_create :expire_feed_cache
-  after_destroy :expire_feed_cache
+  after_filter :expire_feed_cache, only: :create
 
   def create
   end
