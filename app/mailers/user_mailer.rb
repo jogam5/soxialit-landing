@@ -21,6 +21,13 @@ class UserMailer < ActionMailer::Base
       mail(:to =>  user.email, :subject => "Tu Micropost tiene un nuevo Like")
    end
    
+   def lov_post(user, current, post)
+      @user = user
+      @user_following = current
+      @post = post
+      mail(:to =>  user.email, :subject => "Tu Post tiene un nuevo Like")
+   end
+   
    def registration_confirmation(user)
       mail(:to =>  user.email, :subject => "Test")
    end

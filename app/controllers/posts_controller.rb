@@ -77,7 +77,9 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.add_evaluation(:likes, value, current_user)
     @post.activities.create(:user_id => current_user.id, :action => "like")
+    @user = User.find(@post.user_id)
     Post.delay.publish_post_like_facebook(@post, current_user) unless current_user.fb == false
+    UserMailer.lov_post(@user, current_user, @post).deliver
     respond_to do |format|
       format.js
     end

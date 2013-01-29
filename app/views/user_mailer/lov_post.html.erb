@@ -5,9 +5,9 @@
 		</div>
 		<div style="margin-left:35%"><h1><strong>¡Hey <%= link_to @user.username, user_url(@user.username), style: "text-decoration:none; color:#d93e38" %>!</strong></h1></div>
 		<hr>
-		<p>Ha <%= link_to @user_following.username, user_url(@user.username), style: "text-decoration:none; color:#d93e38" %> le gusta tu Micropost: <strong><%= link_to @micropost.title, micropost_url(@micropost), style: "color: #bbb; font-weight: lighter; text-decoration:none;" %></strong></p>
-		<%= image_tag (@micropost.thumbnail)%>
-		<p>Likes: <%= @micropost.reputation_value_for(:lovs).to_i %>
+		<p>Ha <%= link_to @user_following.username, user_url(@user.username), style: "text-decoration:none; color:#d93e38" %> le gusta tu Post: <strong><%= link_to @post.title, post_url(@post), style: "color: #bbb; font-weight: lighter; text-decoration:none;" %></strong></p>
+		<%= image_tag (@post.slides.first.picture)%>
+		<p>Likes: <%= @post.reputation_value_for(:likes).to_i %>
 		<hr>
 		<div style="display: block;
 		margin: 12px 0 5px;
