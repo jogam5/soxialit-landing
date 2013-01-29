@@ -6,6 +6,8 @@ DeviseFacebook::Application.configure do
   ENV['S3_KEY'] = 'AKIAISOYROBHPU657TUA'
   ENV['S3_SECRET'] = 'MY3IsJoVQmgxgsDbnRh5ElQDf3p9hzDPRc9lvxFc'
 
+  #config.cache_store = :dalli_store
+
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
