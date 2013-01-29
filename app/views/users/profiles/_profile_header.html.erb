@@ -38,11 +38,20 @@
 					</p>
 				<% end %>
 			<% end %>
-			<p id="profile_nav_bar"><span id="followers_count" style="color:red; font-size:1.2em">
-				<%= @user.followers.count %></span>
-				<%= link_to "Followers", followers_user_path(@user), remote: true %> |
-				<span style="color:red; font-size:1.2em" id=""><%= @user.followed_users.count %></span>
-				<%= link_to "Following", following_user_path(@user), remote: true %>
+			<p id="profile_nav_bar">
+				<% if current_user == @user %>
+				<span style="color:red; font-size:1.2em">
+					<%= @user.followers.count %></span>
+					<%= link_to "Followers", followers_user_path(@user), remote: true %> |
+					<span style="color:red; font-size:1.2em" id="followers_count"><%= @user.followed_users.count %></span>
+					<%= link_to "Following", following_user_path(@user), remote: true %>
+				<% else %>
+					<span style="color:red; font-size:1.2em" id="followers_count">
+						<%= @user.followers.count %></span>
+						<%= link_to "Followers", followers_user_path(@user), remote: true %> |
+					<span style="color:red; font-size:1.2em"><%= @user.followed_users.count %></span>
+					<%= link_to "Following", following_user_path(@user), remote: true %>
+				<% end %>
 			</p>
 		</div>
 		<div class="span3">

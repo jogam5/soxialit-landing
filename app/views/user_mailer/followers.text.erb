@@ -1,0 +1,13 @@
+<%= link_to @user.username, "#", :class => "description-medium" %>, 
+Tienes un nuevo seguidor en Soxialit.
+<%= image_tag('good1.jpg') %>
+<strong>Testing HTML</strong>
+Ahora <%= @user_following.username%> te esta siguiendo.
+<% if !@user_following.picture.present? %>
+	<%= link_to image_tag("http://graph.facebook.com/#{@user_following.uid}/picture?type=normal"), @user_following %>
+<% else %>
+    <%= link_to image_tag(@user_following.picture_url(:profile)), @user_following %>
+<% end %>
+
+
+

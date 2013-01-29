@@ -1,6 +1,9 @@
 <% if signed_in? %>
 	<div style="margin-top:-3%; margin-right: 5%" class="votacion" id="votacion_<%= feed_item.activitable.id %>">
 		<% if feed_item.activitable.id == current_user.voted_by?(current_user.evaluations, feed_item.activitable.id) %>
+		<div id="ajax-status" style="float: right; display:none; margin-left: 50%;">
+				<%= image_tag("loading.gif") %>
+			</div>
 			<span id="want_<%= feed_item.activitable.id %>">
 				<div id="love_icon_<%= feed_item.activitable.id %>" class="love_icon_active">
 					<span style="float:left; display:block; margin-left:-50%; color:black" 
@@ -10,6 +13,9 @@
 				</div>
    			</span>
 			<% elsif current_user && !current_user.voted_for?(feed_item.activitable) %>
+			<div id="ajax-status" style="float: right; display:none; margin-left: 50%;">
+				<%= image_tag("loading.gif") %>
+			</div>
 				<span id="want_<%= feed_item.activitable.id %>">
 					<div id="love_icon_<%= feed_item.activitable.id %>" class="love_icon">
 						<span style="float:left; display:block; margin-left:-50%; color:black" 
