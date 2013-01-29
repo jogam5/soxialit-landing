@@ -3,7 +3,7 @@
             {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true } ) do |f| %>
 	  <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_area :url, :rows => "1", :class => "span7", :id => "status" %>
+    <%= f.text_area :url, :rows => "2", :class => "span8", :id => "status" %>
   </div>
     <%= f.hidden_field :url %>
     <%= f.hidden_field :provider %>
@@ -14,7 +14,7 @@
   <% if user_signed_in? %>
   <% end %>
   <div class="actions" >
-    <span style="margin-left:32em"><%= f.submit "Publicar", id: "button_send", class: "button-want"  %></span>
+    <span style="margin-left:38em"><%= f.submit "Publicar", id: "button_send", class: "button-want"  %></span>
   </div>
   <br/>
   <p id="wait">Vista Previa <i>(edita el contenido dando click sobre el texto)</i></p>

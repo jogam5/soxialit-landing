@@ -7,14 +7,6 @@
 					<li class="divider-vertical"></li>
 				</ul>
 				<ul class="nav pull-right">
-					<li class="divider-vertical"></li>
-					<li style="padding-top:9px"><p id="profile_nav_bar"><%= @user.followed_users.count %> 
-						<%= link_to "", following_user_path(@user), remote: true %></p>
-					</li>
-					<li class="divider-vertical"></li>
-					<li style="padding-top:9px"><p id="profile_nav_bar"><span id="followers_count_<%=@user.id%>"><%= @user.followers.count %> </span>
-						<%= link_to "", followers_user_path(@user), remote: true %></p>
-					</li>
 	          	</ul>
             </nav>
 	</div>
