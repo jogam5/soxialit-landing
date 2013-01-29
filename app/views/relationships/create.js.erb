@@ -1,4 +1,4 @@
 $("#form_<%= @user.id %>").html("<%= escape_javascript(render('users/unfollow')) %>")
 //$("#followers_count_<%= @user.id %>").html('<%= @user.followers.count %>')
-
+$('#followers_count_<%= @user.id %> ').text('<%= @user.followers.count %>')
 $("#followers_count").text('<%= current_user.followed_users.count %>')
