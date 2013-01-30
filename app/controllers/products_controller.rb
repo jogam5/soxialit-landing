@@ -11,7 +11,6 @@ class ProductsController < ApplicationController
          b = Product.find(id)
          logger.debug "producto: #{b}"
       end
-      Activity.expire_feed_cache(b.user)
       Product.delay.publish_product_facebook(b) unless b.user.fb == false
       redirect_to products_path
     end
@@ -122,6 +121,8 @@ class ProductsController < ApplicationController
     def new
       @product = current_user.products.create
       @product.activities.create(:user_id => current_user.id, :action => "create")
+      Activity.expire_feed_cache(@product.user)
+
       respond_to do |format|
         format.html # new.html.erb
         format.json { render json: @product }
