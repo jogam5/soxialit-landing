@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
          b = Product.find(id)
          logger.debug "producto: #{b}"
       end
+      Activity.expire_feed_cache(b.user)
       Product.delay.publish_product_facebook(b) unless b.user.fb == false
       redirect_to products_path
     end

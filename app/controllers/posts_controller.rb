@@ -45,6 +45,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
+    Activity.expire_feed_cache(@post.user)
     @post.destroy
     respond_to do |format|
       format.html { redirect_to root_url, notice: 'Micropost eliminado correctamente' }
@@ -57,6 +58,7 @@ class PostsController < ApplicationController
     if @post.status == false
        @post.update_attributes(:status => true)
        @post.activities.create(:user_id => current_user.id, :action => "create")
+       Activity.expire_feed_cache(@user)
        Post.delay.publish_post_facebook(@post) unless @user.fb == false
     else
     end
