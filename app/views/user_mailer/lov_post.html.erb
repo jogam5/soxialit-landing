@@ -1,11 +1,11 @@
 <div style="margin-right: auto; margin-left: auto;width: 540px; display: table; content: ""; line-height: 0; font-size: 14px; line-height: 20px; color: #333; font-family: nimbus-sans, Helvetica Neue, Helvetica, Sans-Serif;">
 	<div style="width: 500px; float: left;margin-left: 20px; display: block;font-size: 14px;line-height: 20px; color: #333333;">
 		<div style="margin-left:35%">
-			<img src="http://i1246.photobucket.com/albums/gg616/soxialit/soxialit_logo_zps7eb2aaa1.png" border="0" alt=" photo soxialit_logo_zps7eb2aaa1.png"/>
+			<img src="http://i1246.photobucket.com/albums/gg616/soxialit/soxialit_logo_zps7eb2aaa1.png" border="0" alt="Soxialit"/>
 		</div>
-		<div style="margin-left:35%"><h1><strong>¡Hey <%= link_to @user.username, user_url(@user.username), style: "text-decoration:none; color:#d93e38" %>!</strong></h1></div>
+		<div style="margin-left:35%"><h1><strong>¡Hey <%= link_to @user.nickname, user_url(@user.username), style: "text-decoration:none; color:#d93e38" %>!</strong></h1></div>
 		<hr>
-		<p>Ha <%= link_to @user_following.username, user_url(@user.username), style: "text-decoration:none; color:#d93e38" %> le gusta tu Post: <strong><%= link_to @post.title, post_url(@post), style: "color: #bbb; font-weight: lighter; text-decoration:none;" %></strong></p>
+		<p>A <%= link_to @user_following.username, user_url(@user.username), style: "text-decoration:none; color:#d93e38" %> le gusta tu Post: <strong><%= link_to @post.title, post_url(@post), style: "color: #bbb; font-weight: lighter; text-decoration:none;" %></strong></p>
 		<%= image_tag (@post.slides.first.picture)%>
 		<p>Likes: <%= @post.reputation_value_for(:likes).to_i %>
 		<hr>
