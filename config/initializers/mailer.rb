@@ -1,5 +1,5 @@
 ActionMailer::Base.delivery_method = :smtp
-=begin
+
 ActionMailer::Base.smtp_settings = {
   :enable_starttls_auto => true,
   :address   => "smtp.mandrillapp.com",
@@ -9,7 +9,7 @@ ActionMailer::Base.smtp_settings = {
    :password  => "Gf0eBZ_WJFWI9SpPEMlhTg",
    :authentication => 'login' # Mandrill supports 'plain' or 'login'
 }
-=end
+=begin
 ActionMailer::Base.smtp_settings = {
      :address              => "smtp.gmail.com",
      :port                 => 587,
@@ -19,6 +19,6 @@ ActionMailer::Base.smtp_settings = {
      :authentication       => "plain",
      :enable_starttls_auto => true
 }
-  
+=end  
 ActionMailer::Base.default_url_options[:host] = "soxialit.com"
 
