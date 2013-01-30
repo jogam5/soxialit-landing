@@ -13,6 +13,6 @@ class Activity < ActiveRecord::Base
 
   def self.expire_feed_cache(current_user)
     user = current_user
-    Rails.cache.delete('feed_user_#{user.id}')
+    Rails.cache.delete("feed_user_#{user.id}")
   end
 end
