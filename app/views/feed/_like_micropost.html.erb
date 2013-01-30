@@ -1,7 +1,7 @@
 <% if signed_in? %>
 	<div style="margin-top:-3%; margin-right: 5%"class="votacion" id="votacion_<%= feed_item.activitable.id %>">
 		<% if feed_item.activitable.id == current_user.voted_by?(current_user.evaluations, feed_item.activitable.id) %>
-		   <div id="ajax-status" style="float: right; display:none; margin-left: 50%;">
+		   <div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
 				<%= image_tag("loading.gif") %>
 			</div>
 			<span id="want_<%= feed_item.activitable.id %>">
@@ -13,7 +13,7 @@
 				</div>
    			</span>
 			<% elsif current_user && !current_user.voted_for?(feed_item.activitable) %>
-			    <div id="ajax-status" style="float: right; display:none; margin-left: 50%;">
+			   <div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
 					<%= image_tag("loading.gif") %>
 				</div>
 				<span id="want_<%= feed_item.activitable.id %>">

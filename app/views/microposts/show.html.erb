@@ -67,7 +67,7 @@
 		<% if signed_in? %>
 			<div style="margin-top:0.1%; margin-right: 1%"class="votacion" id="votacion_<%= @micropost.id %>">
 				<% if @micropost.id == current_user.voted_by?(current_user.evaluations, @micropost.id) %>
-				<div id="ajax-status" style="float: right; display:none; margin-left: 50%;">
+				   <div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
 						<%= image_tag("loading.gif") %>
 					</div>
 					<span id="want_<%= @micropost.id %>">
@@ -79,7 +79,7 @@
 						</div>
 		   			</span>
 					<% elsif current_user && !current_user.voted_for?(@micropost) %>
-					<div id="ajax-status" style="float: right; display:none; margin-left: 50%;">
+					   <div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
 							<%= image_tag("loading.gif") %>
 						</div>
 						<span id="want_<%= @micropost.id %>">

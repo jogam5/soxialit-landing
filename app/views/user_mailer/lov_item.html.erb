@@ -1,21 +1,44 @@
 <div style="margin-right: auto; margin-left: auto;width: 540px; display: table; content: ""; line-height: 0; font-size: 14px; line-height: 20px; color: #333; font-family: nimbus-sans, Helvetica Neue, Helvetica, Sans-Serif;">
 	<div style="width: 500px; float: left;margin-left: 20px; display: block;font-size: 14px;line-height: 20px; color: #333333;">
-		<div style="margin-left:35%">
-			<img src="http://i1246.photobucket.com/albums/gg616/soxialit/soxialit_logo_zps7eb2aaa1.png" border="0" alt="Soxialit"/>
+		<div style="">
+			<img src="http://i1246.photobucket.com/albums/gg616/soxialit/soxialit_log_zpsbf67f556.png" border="0" alt="Soxialit"/>
 		</div>
-		<div style="margin-left:35%"><h1><strong>¡Hey <%= link_to @user.nickname, user_url(@user.username), style: "text-decoration:none; color:#d93e38" %>!</strong></h1></div>
+		<p style="display: block;
+		color: #777;
+		font-size:1.2em;
+		font-weight:lighter;
+		padding-top: 6px;
+		margin-top: 3%;
+		margin-bottom: 2%;
+		font-family: nimbus-sans, Helvetica-Neue, Helvetica, Arial, Sans-serif;">¡Hey <%= @user.nickname %>!</p>
+		<p style="display: block;
+		color: black;
+		font-size:1.8em;
+		line-height: 1.8em;
+		font-weight:lighter;
+		padding-top: 6px;
+		margin-top: 3%;
+		margin-bottom: 2%;
+		font-family: nimbus-sans, Helvetica-Neue, Helvetica, Arial, Sans-serif;">A <%= link_to @user_following.username, user_url(@user.username), style: "text-decoration:none; color:#d93e38" %> le gusta tu item: <strong><%= link_to @product.title, product_url(@product), style: "color: #bbb; font-weight: lighter; text-decoration:none;" %></strong></p>
 		<hr>
-		<p>A <%= link_to @user_following.username, user_url(@user.username), style: "text-decoration:none; color:#d93e38" %> le gusta tu item: <strong><%= link_to @product.title, product_url(@product), style: "color: #bbb; font-weight: lighter; text-decoration:none;" %></strong></p>
-		<%= image_tag (@product.picture)%>
-		<p>Likes: <%= @product.reputation_value_for(:votes).to_i %>
+		<%= link_to(image_tag(@product.picture), product_url(@product))%>
+		<img src="http://i1246.photobucket.com/albums/gg616/soxialit/like-active_zps3977b1a5.png" border="0" alt="Likes:"/>
+		<div style="margin-left:5%; margin-top:-4%"><%= @product.reputation_value_for(:votes).to_i %></div>
 		<hr>
 		<div style="display: block;
 		margin: 12px 0 5px;
 		color: #93999E;
 		font-size: 0.9em;
 		line-height: 0.8em;
-		padding: 0.5%;"> Soxialit - La red social para fashion designers, bloggers, fotógrafos y boutique stores </div>
-		<div style="color:#999;">http://soxialit.com</div>
+		padding: 0.5%;"> Soxialit es la red social que conecta a los amantes de la moda. </div>
+		<%= link_to "http://soxialit.com", "soxialit.com", style: "text-decoration:none; color:black" %>
+		<div style="margin-left:10%;margin: 12px 0 5px; float:right;
+		color: #93999E;
+		font-size: 0.7em;
+		line-height: 0.8em;
+		padding: 0.5%;"><%= link_to "Cambiar notificaciones de email.", edit_user_url(@user), style:"color:#93999E; text-decoration:none" %>
+		</div>
+		<br/>
 		<br/>
 		<hr>
 	</div>
