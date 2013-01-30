@@ -3,6 +3,7 @@
     <ul id="menu_about">
 	   <li id= "link_about"><%= link_to "Perfil", perfil_path(:user_id => @user.id), remote: true %></li>
 	   <li id= "link_about"><%= link_to "Datos Personales", ubicacion_path(:user_id => @user.id ), remote: true %></li>
+	   <li id= "link_about"><%= link_to "Notificaciones de Email", notificacion_path(:user_id => @user.id ), remote: true %></li>
     </ul>
   </div>
   <div class="span8" id="about_rightside">

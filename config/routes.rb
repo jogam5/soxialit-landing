@@ -39,6 +39,7 @@ DeviseFacebook::Application.routes.draw do
   resources :feedbacks
   resources :comments
   resource :direction
+  resources :notifications
   resources :paintings
   resources :sizes
   resources :microposts do
@@ -77,6 +78,7 @@ DeviseFacebook::Application.routes.draw do
   # profile edit
   match "ubicacion", to: 'users#ubicacion'
   match "perfil", to: 'users#perfil'
+  match "notificacion", to: 'users#notificacion'
   
 
   match 'publish', to: 'posts#publish'

@@ -21,7 +21,9 @@
 		margin-bottom: 2%;
 		font-family: nimbus-sans, Helvetica-Neue, Helvetica, Arial, Sans-serif;">A <%= link_to @user_following.username, user_url(@user.username), style: "text-decoration:none; color:#d93e38" %> le gusta tu Post: <strong><%= link_to @post.title, post_url(@post), style: "color: #bbb; font-weight: lighter; text-decoration:none;" %></strong></p>
 		<hr>
-		<%= link_to(image_tag(@post.slides.first.picture, style:"width: 500px"), post_url(@post))%>
+		<% if @post.slides.any? %>
+			<%= link_to(image_tag(@post.slides.first.picture, style:"width: 500px"), post_url(@post))%>
+		<% end %>
 		<div style="display:block"><img src="http://i1246.photobucket.com/albums/gg616/soxialit/like-active_zps3977b1a5.png" style="float:left" border="0" alt="Likes:"/>
 		<%= @post.reputation_value_for(:likes).to_i %></div>
 		<hr>

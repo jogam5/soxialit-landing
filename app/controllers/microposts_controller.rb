@@ -45,7 +45,11 @@ class MicropostsController < ApplicationController
     @micropost.activities.create(:user_id => current_user.id, :action => "like")
     @user = User.find(@micropost.user_id)
     Micropost.delay.publish_link_like_facebook(@micropost, current_user) unless current_user.fb == false
-    UserMailer.lov_micropost(@user, current_user, @micropost).deliver
+    if !@user.notification.nil?
+       if @user.notification.lov_micropost == true
+         UserMailer.lov_micropost(@user, current_user, @micropost).deliver
+      end
+    end
      respond_to do |format|
         format.js
       end

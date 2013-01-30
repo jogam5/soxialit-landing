@@ -81,7 +81,11 @@ class PostsController < ApplicationController
     @post.activities.create(:user_id => current_user.id, :action => "like")
     @user = User.find(@post.user_id)
     Post.delay.publish_post_like_facebook(@post, current_user) unless current_user.fb == false
-    UserMailer.lov_post(@user, current_user, @post).deliver
+    if !@user.notification.nil?
+       if @user.notification.lov_post == true
+          UserMailer.lov_post(@user, current_user, @post).deliver
+       end
+    end
     respond_to do |format|
       format.js
     end

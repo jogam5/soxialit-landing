@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130125014520) do
+ActiveRecord::Schema.define(:version => 20130130170352) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -98,6 +98,18 @@ ActiveRecord::Schema.define(:version => 20130125014520) do
 
   add_index "microposts", ["status"], :name => "index_microposts_on_status"
   add_index "microposts", ["user_id"], :name => "index_microposts_on_user_id"
+
+  create_table "notifications", :force => true do |t|
+    t.boolean  "follow",        :default => true
+    t.boolean  "lov_item",      :default => true
+    t.boolean  "lov_post",      :default => true
+    t.boolean  "lov_micropost", :default => true
+    t.integer  "user_id",       :default => 1
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
 
   create_table "paintings", :force => true do |t|
     t.string   "image"

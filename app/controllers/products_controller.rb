@@ -285,7 +285,11 @@ class ProductsController < ApplicationController
       @product.activities.create(:user_id => current_user.id, :action => "like")
       @user = User.find(@product.user_id)
       Product.delay.publish_product_like_facebook(@product, current_user) unless current_user.fb == false
-      UserMailer.lov_item(@user ,current_user, @product ).deliver
+      if !@user.notification.nil?
+         if @user.notification.lov_item == true
+            UserMailer.lov_item(@user ,current_user, @product ).deliver
+         end
+      end
       respond_to do |format|
         format.js
       end
