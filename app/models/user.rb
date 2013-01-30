@@ -155,6 +155,7 @@ class User < ActiveRecord::Base
   end
 
   def self.feed_cached(current_user)
+    logger.debug "Este es el current_user ID dentro del cache method: #{current_user}"
     user = current_user
     Rails.cache.fetch('feed_user_#{user.id}'){ user.feed }
   end
