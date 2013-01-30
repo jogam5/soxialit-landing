@@ -4,10 +4,10 @@ class StaticPagesController < ApplicationController
   	@comment = Comment.new
     @micropost = Micropost.new
   	if user_signed_in?
-  		@feed_items = current_user.feed_cached(current_user)  if Rails.env.production?
+  		@feed_items = User.feed_cached(current_user)  if Rails.env.production?
       @feed_items = current_user.feed if Rails.env.development?
   	else
-  	  @feed_items = User.find(1).feed_cached(User.find(1)) if Rails.env.production?
+  	  @feed_items = User.feed_cached(User.find(1)) if Rails.env.production?
       #@feed_items = User.find(1).feed
       @feed_items = User.first.feed if Rails.env.development?
   	end
