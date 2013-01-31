@@ -225,6 +225,5 @@ class UsersController < ApplicationController
    
    def notificacion
       @user = User.find(params[:user_id])
-      @notification = Notification.new
    end
 end
