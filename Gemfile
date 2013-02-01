@@ -14,6 +14,8 @@ gem 'koala'
 #gem cache
 gem 'dalli'
 
+gem "heroku-forward"
+
 #gem to delay processes in Facebook
 gem 'delayed_job_active_record'
 
@@ -64,6 +66,7 @@ end
 
 group :production do
   gem 'pg', '0.12.2'
+  gem 'thin'
 end
 
 # Gems used only for assets and not required
