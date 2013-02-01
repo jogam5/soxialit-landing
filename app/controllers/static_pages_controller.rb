@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    @stats = Rails.cache.stats.first.last unless Rails.env.development?
+    #@stats = Rails.cache.stats.first.last unless Rails.env.development?
   	@comment = Comment.new
     @micropost = Micropost.new
   	if user_signed_in?
