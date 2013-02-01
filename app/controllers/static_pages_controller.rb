@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
     @micropost = Micropost.new
   	if user_signed_in?
   		#@feed_items = User.feed_cached(current_user)  if Rails.env.production?
-      @feed_items = current_user.feed 
+      @feed_items = current_user.feed
       
       #@feed_items = User.feed_cached(current_user)
   	else
