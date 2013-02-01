@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-   default :from => "info@soxialit.com"
+   default :from => "Soxialit<info@soxialit.com>"
    
    def followers(user, current)
       @user = user

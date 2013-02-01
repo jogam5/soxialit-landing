@@ -2,37 +2,42 @@
 <p style="font-size: 1.2em; font-weight: lighter; color: #777">Selecciona que notificaciones quieres recibir en tu correo.</p><br />
 <p><span style="color:red" id="notification"></span></p>
 <div id="ajax-status" style="float:left; position:absolute; display:none; margin: 0% 33%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
-	<%= form_for(Notification.new, :remote => true) do |f| %>
-	<div class="control-group">
-      <div class="controls">
-        <label class="checkbox">
-          <%= f.check_box :follow %> Quien te sigue en Soxilait.
-        </label>
-      </div>
-    </div>
-	<div class="control-group">
-      <div class="controls">
-        <label class="checkbox">
-          <%= f.check_box :lov_item %> Nuevos likes en tus items.
-        </label>
-      </div>
-    </div>
-	<div class="control-group">
-      <div class="controls">
-        <label class="checkbox">
-          <%= f.check_box :lov_micropost %> Likes en los links que compartes.
-        </label>
-      </div>
-    </div>
-	<div class="control-group">
-      <div class="controls">
-        <label class="checkbox">
-          <%= f.check_box :lov_post %> Nuevos likes en tus Posts.
-        </label>
-      </div>
-    </div>
-	<%= f.hidden_field :user_id, :value => @user.id %>
-	<%= f.submit "Actualizar" %>
-	<br/>
-	<br/>
-	<% end %>
+	<div class="span4">
+		<p>Recibir un email cuando:</p>
+	</div>
+	<div class="span6">
+		<%= form_for(Notification.new, :remote => true) do |f| %>
+		<div class="control-group">
+	      <div class="controls">
+	        <label class="checkbox">
+	          <%= f.check_box :follow %> Tengo un nuevo follower.
+	        </label>
+	      </div>
+	    </div>
+		<div class="control-group">
+	      <div class="controls">
+	        <label class="checkbox">
+	          <%= f.check_box :lov_item %> A alguien le gustan mis items.
+	        </label>
+	      </div>
+	    </div>
+		<div class="control-group">
+	      <div class="controls">
+	        <label class="checkbox">
+	          <%= f.check_box :lov_micropost %> A alguien le gustan los links que comparto.
+	        </label>
+	      </div>
+	    </div>
+		<div class="control-group">
+	      <div class="controls">
+	        <label class="checkbox">
+	          <%= f.check_box :lov_post %> A alguien le gustan los Posts que publico.
+	        </label>
+	      </div>
+	    </div>
+		<%= f.hidden_field :user_id, :value => @user.id %>
+		<%= f.submit "Guardar cambios" %>
+		<br/>
+		<br/>
+		<% end %>
+	</div>
