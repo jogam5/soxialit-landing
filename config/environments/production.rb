@@ -1,7 +1,7 @@
 DeviseFacebook::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-  config.cache_store = :dalli_store
+  #config.cache_store = :dalli_store
 
   # Code is not reloaded between requests
   config.cache_classes = true
