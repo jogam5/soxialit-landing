@@ -19,12 +19,15 @@
   </tr>
   <tr>
     <td>Cache hits:</td>
+     <td><%= @stats['get_hits'] %></td>
   </tr>
   <tr>
     <td>Cache misses:</td>
+    <td><%= @stats['get_misses'] %></td>
   </tr>
   <tr>
     <td>Cache flushes:</td>
+    <td><%= @stats['cmd_flush'] %></td>
   </tr>
 </table>
 <% end %>

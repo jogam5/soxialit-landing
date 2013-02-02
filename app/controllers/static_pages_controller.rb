@@ -1,17 +1,16 @@
 class StaticPagesController < ApplicationController
   def home
-    #@stats = Rails.cache.stats.first.last unless Rails.env.development?
+    @stats = Rails.cache.stats.first.last unless Rails.env.development?
   	@comment = Comment.new
     @micropost = Micropost.new
   	if user_signed_in?
-  		#@feed_items = User.feed_cached(current_user)  if Rails.env.production?
-      @feed_items = current_user.feed
-      
-      #@feed_items = User.feed_cached(current_user)
+  		@feed_items = User.feed_cached(current_user)  if Rails.env.production?
+      #@feed_items = current_user.feed 
+      @feed_items = User.feed_cached(current_user) if Rails.env.production?
   	else
-  	  #@feed_items = User.feed_cached(User.find(1)) if Rails.env.production?
-      #@feed_items = User.feed_cached(User.find(47))
-      @feed_items = User.first.feed 
+  	  @feed_items = User.feed_cached(User.find(1)) if Rails.env.production?
+      @feed_items = User.feed_cached(User.find(47)) if Rails.env.development?
+      #@feed_items = User.first.feed 
   	end
   end
 
