@@ -16,7 +16,7 @@ gem 'dalli'
 
 #gem to delay processes in Facebook
 gem 'delayed_job_active_record'
-gem 'hirefire'
+gem "workless", "~> 1.1.1"
 
 #gem copy text_field entry into clipboard
 gem 'zclip-rails'
