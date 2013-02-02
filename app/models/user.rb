@@ -72,7 +72,7 @@ class User < ActiveRecord::Base
                           password:Devise.friendly_token[0,10]
                            )
       user.update_attributes(role_ids:"6")
-      #user.build_notification
+      user.build_notification
       user.follow!(User.find(1))
       user.save(:validate => false)
       #user.activities.create(:user_id => user.id, :action => "create")
@@ -108,7 +108,7 @@ class User < ActiveRecord::Base
     end
     user.update_attributes(token:auth.credentials.token)
     user.save(:validate => false)
-    #user.build_notification unless !user.notification.nil?
+    user.build_notification unless !user.notification.nil?
     user
   end
 
