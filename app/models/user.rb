@@ -96,6 +96,8 @@ class User < ActiveRecord::Base
               if friend["id"] == u.uid
                 if u.id != User.find(1).id
                   user.follow!(User.find(u.id))
+                  usuario = User.find(u.id)
+                  UserMailer.followers(usuario, user).deliver
                 end
               end
             end
