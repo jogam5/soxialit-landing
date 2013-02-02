@@ -14,10 +14,9 @@ gem 'koala'
 #gem cache
 gem 'dalli'
 
-gem "heroku-forward"
-
 #gem to delay processes in Facebook
 gem 'delayed_job_active_record'
+gem 'hirefire'
 
 #gem copy text_field entry into clipboard
 gem 'zclip-rails'
