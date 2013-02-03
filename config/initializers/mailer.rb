@@ -21,4 +21,3 @@ ActionMailer::Base.smtp_settings = {
 }
 =end  
 ActionMailer::Base.default_url_options[:host] = "soxialit.com"
-
