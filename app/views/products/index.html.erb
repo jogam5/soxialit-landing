@@ -7,7 +7,7 @@
 		
 				<% if signed_in? %>
 					<div style="margin-right:-21%; margin-top: -9%" class="votacion" id="votacion_<%= product.id %>">
-						<% if product.id == current_user.voted_by?(current_user.evaluations, product.id) %>
+						<% if product.user_id == current_user.id %>
 							<span id="want_<%= product.id %>">
 								<div id="love_icon_<%= product.id %>" class="love_icon_active">
 									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= product.id %>">
@@ -16,6 +16,9 @@
 								</div>
 				   			</span>
 							<% elsif current_user && !current_user.voted_for?(product) %>
+								<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
+									<%= image_tag("loading.gif") %>
+								</div>
 								<span id="want_<%= product.id %>">
 									<div id="love_icon_<%= product.id %>" class="love_icon">
 										<span style="float:left; display:none; margin-left:-50%; color:black" id="love_product_<%= product.id %>">
@@ -24,6 +27,17 @@
 										<%= link_to "xxx", vote_product_path(product, type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
 									</div>
 					   			</span>
+							<% else %>
+								<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
+									<%= image_tag("loading.gif") %>
+								</div>
+			        			<span id="want_<%= product.id %>">
+			        				<div id="love_icon_<%= product.id %>" class="love_icon_active">
+										<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= product.id %>">
+			        						<%= product.reputation_value_for(:votes).to_i %>
+			        					</span>
+			        				</div>
+			       				</span>
 						<% end %>
 					</div>
 				<% end %>
