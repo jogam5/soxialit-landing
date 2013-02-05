@@ -292,6 +292,7 @@ class ProductsController < ApplicationController
       end
       respond_to do |format|
         format.js
+        format.xml
       end
     end
 
