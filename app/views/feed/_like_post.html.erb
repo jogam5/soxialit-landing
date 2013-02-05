@@ -31,7 +31,7 @@
 				<%= image_tag("loading.gif") %>
 			</div>
 			<span id="want_<%= feed_item.activitable.id %>">
-				<div id="love_icon_<%= product.id %>" class="love_icon_active">
+				<div id="love_icon_<%= feed_item.activitable.id %>" class="love_icon_active">
 					<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= feed_item.activitable.id %>">
 						<%= feed_item.activitable.reputation_value_for(:likes).to_i %>
 					</span>
