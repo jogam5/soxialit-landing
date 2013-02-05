@@ -57,13 +57,22 @@
 	<br/>
 	<div style="text-align:left; margin-left:100px; margin-top:5px;">
 		 <div id="micropost_description">
-		 	<span style="color:#999; font-size:0.9em">Publicado por</span> 
+		 	<span style="color:#999; font-size:0.9em">Publicado por <span id="user_and_items_link"><%= link_to feed_item.activitable.user.username, user_path(feed_item.user) %></span></span> 
 				<% if !feed_item.activitable.user.picture.present? %>
 					<%= link_to image_tag("http://graph.facebook.com/#{feed_item.activitable.user.uid}/picture?type=square", 
 								width: 35, height: 35, :id =>  "like_small_picture"), user_path(feed_item.activitable.user) %>
 				<% else %>
 					<%= link_to image_tag(feed_item.activitable.user.picture_url(:thumb_profile), 
 								width: 35, height: 35, :id => "like_small_picture"), user_path(feed_item.activitable.user) %>
+				<% end %>
+				<% unless current_user?(feed_item.activitable.user) %>
+					<div style="margin-top:0.5em" id="form_<%= feed_item.activitable.user.id %>" %>
+				  	<% if current_user.following?(feed_item.activitable.user) %>
+					      <%= render :partial => 'shared/unfollow', :locals => { :user => feed_item.activitable.user } %>
+					<% else %>
+					      <%= render :partial => 'shared/follow', :locals => { :user => feed_item.activitable.user } %>
+					<% end %>
+					</div>
 				<% end %>
 		 </div>
 	</div>
@@ -102,13 +111,22 @@
 	<br/>
 	<div style="text-align:left; margin-left:100px; margin-top:5px;">
 		 <div id="micropost_description">
-		 	<span style="color:#999; font-size:0.9em">Publicado por</span> 
+		 	<span style="color:#999; font-size:0.9em;">Publicado por <span id="user_and_items_link"><%= link_to feed_item.activitable.user.username, user_path(feed_item.user) %></span></span> 
 				<% if !feed_item.activitable.user.picture.present? %>
 					<%= link_to image_tag("http://graph.facebook.com/#{feed_item.activitable.user.uid}/picture?type=square", 
 								width: 35, height: 35, :id =>  "like_small_picture"), user_path(feed_item.activitable.user) %>
 				<% else %>
 					<%= link_to image_tag(feed_item.activitable.user.picture_url(:thumb_profile), 
 								width: 35, height: 35, :id => "like_small_picture"), user_path(feed_item.activitable.user) %>
+				<% end %>
+				<% unless current_user?(feed_item.activitable.user) %>
+					<div style="margin-top:0.5em" id="form_<%= feed_item.activitable.user.id %>" %>
+				  	<% if current_user.following?(feed_item.activitable.user) %>
+					      <%= render :partial => 'shared/unfollow', :locals => { :user => feed_item.activitable.user } %>
+					<% else %>
+					      <%= render :partial => 'shared/follow', :locals => { :user => feed_item.activitable.user } %>
+					<% end %>
+					</div>
 				<% end %>
 		 </div>
 	</div>
