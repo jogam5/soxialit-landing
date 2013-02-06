@@ -74,7 +74,6 @@
 					<% unless current_user?(feed_item.activitable.user) %>
 						<div style="margin-top:0.5em" id="form_<%= feed_item.activitable.user.id %>" %>
 					  	<% if current_user.following?(feed_item.activitable.user) %>
-						      <%= render :partial => 'shared/unfollow', :locals => { :user => feed_item.activitable.user } %>
 						<% else %>
 						      <%= render :partial => 'shared/follow', :locals => { :user => feed_item.activitable.user } %>
 						<% end %>
@@ -135,7 +134,6 @@
 					<% unless current_user?(feed_item.activitable.user) %>
 						<div style="margin-top:0.5em" id="form_<%= feed_item.activitable.user.id %>" %>
 					  	<% if current_user.following?(feed_item.activitable.user) %>
-						      <%= render :partial => 'shared/unfollow', :locals => { :user => feed_item.activitable.user } %>
 						<% else %>
 						      <%= render :partial => 'shared/follow', :locals => { :user => feed_item.activitable.user } %>
 						<% end %>
