@@ -95,7 +95,7 @@ DeviseFacebook::Application.routes.draw do
   resources :partners
   resources :pays
 
-  #Customized Routes for Profile Page
+  #Customized Routes for Profile Page should be at th END
   match ":username/edit", :to => "users#edit", :as => "edit_user", :via => :get
   match ":username", :to => "users#show", :as => "user", :via => :get
   match ":username", :to => "users#update", :as => "user", :via => :put
