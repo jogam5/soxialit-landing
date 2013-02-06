@@ -13,7 +13,7 @@
 			  </p>
 			  <p id="description_link_favorites"><%= find_micropost_description(z.target_id)%></p>
 			  <hr/ >
-			  <div id="micropost_description">
+			  <div id="micropost_description" style="height:50px">
 				<div style="float:left; width: auto; height: auto">
 					<% if find_micropost_imagefile(z.target_id) == nil %>
 						<%= link_to image_tag(find_micropost_userimage(z.target_id), style:"width:35px; margin-left:2%; margin-top:0", id: "like_small_picture"), user_path(find_micropost_userurl(z.target_id))%>
@@ -135,7 +135,7 @@
 			  	</p>
 				<p id="description_link_favorites"><%= find_post_body(z.target_id)%></p>
 				<hr/ >
-				<div id="micropost_description">
+				<div style="height:50px" id="micropost_description">
 					<div style="float:left; width: auto; height: auto">
 				 	 <% if find_post_imagefile(z.target_id) == nil %>
 						<%= link_to image_tag(find_post_userimage(z.target_id), style:"width:35px; margin-left:2%; margin-top:0%", id: "like_small_picture"), user_path(find_post_userurl(z.target_id))%>
