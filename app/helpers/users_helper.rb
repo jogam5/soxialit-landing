@@ -32,7 +32,7 @@ module UsersHelper
 	
 	def find_micropost_title(evaluations)
 	   a = Micropost.find(evaluations)
-	   a.title
+	   a.url
 	end
 	
 	def find_micropost_image(evaluations)
