@@ -351,7 +351,7 @@ margin-top: 3%;
 }
 
 .navbar .nav > li > a {
-	padding: 8px 15px 3px;
+	padding: 8px 5px 3px;
 	color:$pink;
 	text-shadow: none;
 }
@@ -943,18 +943,18 @@ ul.comments{
 
 #signin {
 	 a{
-	color:$rojo;
+	color:white;
 	font-weight:300;
-	font-size:1em;
+	font-size:1.3em;
 	}
 	 a:hover{
-	color:white;
+	color:$rojo;
 	}
 }
 
 #signup {
 	 a{
-	color:white;
+	color:#999;
 	font-weight:300;
 	font-size:1.2em;
 	font-family:acta-display, nimbus, Helvetica-Neue, Helvetica, Arial, Sans-serif;
