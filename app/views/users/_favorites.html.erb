@@ -7,9 +7,9 @@
 	  	<% if z.target_type == "Micropost" %>	
 		  <div class="frame_link_favorites">
 			<div style="max-width: 270px; position:relative; text-align:center; height:auto; padding:5% 5% 5% 5%">
-			  <%= link_to image_tag(find_micropost_image(z.target_id), style:"margin-left:5%; max-width: 90%; height:auto"), find_micropost_url(z.target_id), target: '_blank' %>
+			  <%= link_to image_tag(find_micropost_image(z.target_id), style:"margin-left:5%; max-width: 90%; height:auto"), micropost_path(z.target_id), target: '_blank' %>
 			  <p id="item_link">
-				<%= link_to find_micropost_title(z.target_id), find_micropost_url(z.target_id), target: '_blank' %>
+				<%= link_to truncate(find_micropost_title(z.target_id), :lenght => 35), find_micropost_url(z.target_id), target: '_blank' %>
 			  </p>
 			  <p id="description_link_favorites"><%= find_micropost_description(z.target_id)%></p>
 			  <hr/ >
@@ -64,7 +64,7 @@
 			<div style="max-width: 270px; position:relative; text-align:center; height:auto; padding:5% 5% 2% 5%">
 			  	<%= link_to image_tag(find_post_image(z.target_id), style:"position: relative; margin:0%; max-width:100%; height:auto"), post_path(find_post_url(z.target_id)), target: '_blank' %>
 			  	<p id="item_link">
-			      <%= link_to find_post_link(z.target_id), find_post_link(z.target_id), target: '_blank' %>
+			      <%= link_to truncate(find_post_link(z.target_id), :length => 35), find_post_link(z.target_id), target: '_blank' %>
 			  	</p>
 				<p id="description_link_favorites"><%= find_post_body(z.target_id)%></p>
 				<hr/ >
