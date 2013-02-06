@@ -32,7 +32,7 @@ module UsersHelper
 	
 	def find_micropost_title(evaluations)
 	   a = Micropost.find(evaluations)
-	   a.url
+	   a.title
 	end
 	
 	def find_micropost_image(evaluations)
@@ -77,6 +77,17 @@ module UsersHelper
    def find_micropost(evaluations)
 	   micropost = Micropost.find(evaluations)
 	end
+	
+	def find_micropost_nickname(evaluations)
+	   a = Micropost.find(evaluations)
+	   b = User.find(a.user_id)
+	   b.nickname
+   end
+   
+   def find_micropost_userid(evaluations)
+      a = Micropost.find(evaluations)
+      a.user_id
+   end
    
    def find_user_project(project)
       a = User.find(project)
@@ -98,6 +109,11 @@ module UsersHelper
 	def find_post_body(evaluations)
 	   a = Post.find(evaluations)
 	   a.body
+	end
+	
+	def find_post_title(evaluations)
+	   a = Post.find(evaluations)
+	   a.title
 	end
 	
 	def find_post_link(evaluations)
@@ -128,4 +144,15 @@ module UsersHelper
 	def find_post(evaluations)
 	   product = Post.find(evaluations)
 	end
+	
+	def find_post_nickname(evaluations)
+	   a = Post.find(evaluations)
+	   b = User.find(a.user_id)
+	   b.nickname
+   end
+   
+   def find_post_userid(evaluations)
+      a = Post.find(evaluations)
+      a.user_id
+   end
 end
