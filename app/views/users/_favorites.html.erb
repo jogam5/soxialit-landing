@@ -20,9 +20,6 @@
 					<% else %>
 						<%= link_to image_tag(find_micropost_imagefile(z.target_id), style:"width:35px; margin-left:2%; margin-top:0", id: "like_small_picture"), user_path(find_micropost_userurl(z.target_id))%>
 					<% end %>
-					<span style="font-size:0.8em" id="item_link"><%= link_to find_micropost_nickname(z.target_id), user_path(find_micropost_userurl(z.target_id))%></span>
-				</div>
-				<div style="float:left">
 					<% if user_signed_in? %>
 						<% unless current_user?(find_micropost(z.target_id).user) %>
 							<div style="margin-top:0.5em" id="form_<%= find_micropost_userid(z.target_id) %>" %>
@@ -33,6 +30,9 @@
 							</div>
 						<% end %>
 					<% end %>
+				</div>
+				<div style="float:left; margin-left:3%">
+					<span style="font-size:0.8em" id="item_link"><%= link_to find_micropost_nickname(z.target_id), user_path(find_micropost_userurl(z.target_id))%></span>
 				</div>
 				<div style="float:right; margin-top: 3%">
 				  <% if signed_in? %>
@@ -142,9 +142,6 @@
 					  <% else %>
 						<%= link_to image_tag(find_post_imagefile(z.target_id), style:"width:35px; margin-left:2%; margin-top:0%", id: "like_small_picture"), user_path(find_post_userurl(z.target_id))%>
 					  <% end %>
-					  <span style="font-size:0.8em" id="item_link"><%= link_to find_post_nickname(z.target_id), user_path(find_post_userurl(z.target_id))%></span>
-					</div>
-					<div style="float:left">
 						<% if user_signed_in? %>
 							<% unless current_user?(find_post(z.target_id).user) %>
 								<div style="margin-top:0.5em" id="form_<%= find_post_userid(z.target_id) %>" %>
@@ -155,6 +152,9 @@
 								</div>
 							<% end %>
 						<% end %>
+					</div>
+					<div style="float:left; margin-left: 3%">
+						<span style="font-size:0.8em" id="item_link"><%= link_to find_post_nickname(z.target_id), user_path(find_post_userurl(z.target_id))%></span>
 					</div>
 				  <div style="float:right; margin-top: 13%">
 					<% if signed_in? %>
@@ -206,8 +206,8 @@
 </div>
 
 <script type="text/javascript">
+	alert('Test');
 	$(document).load(function(){
-		alert('Test');
 		window.onload = function() {
 	  		var wall = new Masonry( document.getElementById('contenedor') );
 		};
