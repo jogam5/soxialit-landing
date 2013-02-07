@@ -1,0 +1,114 @@
+<div class="row-fluid" style="margin-top:-7%; margin-left:-10%; width: 1150px">
+	<div style="margin: 5% 0% 5% -3%; text-align:center; width:800px" class="span7">
+	  <% if @product.paintings.any? %>
+	  <% else %>
+		<div class="defaultMainImage" style="float:left;"></div>
+	  <% end %>
+
+	  <% if @product.paintings.any? %>
+	        <div class="mainpicture" style="float:left" id="painting_<%= @product.paintings.first.id %>">
+	        	<%= image_tag(@product.picture)  %>
+	        </div>
+	        	<ul id="productImagesSortable" style="float:right;">
+	        			<% @product.paintings.each_with_index do |painting, index| %>
+	        				<% if index < 4 %>
+	        					<%= content_tag "div", class:"paintings", data: {id: painting.id } do %>
+	        			 			<li id="smallImage_show" class="painting_<%= painting.id%>">
+	        							<%= image_tag(painting.image_url(:thumb))%>
+	        						</li>
+	        					<% end %>
+	        				<% end %>
+	        			<% end %>
+	        	</ul>
+	        <% end %>
+		</div>
+<div style="margin-top:5%; width: 340px" class="span4">
+	<div class="well" style="border: 1px solid white; background-color:white">
+		<div class="description-main">
+	      	<%= @product.title %>
+	 	</div>
+		<div class="description-brand"> 
+	     by <%= link_to @product.brand, user_path(@product.user) %>
+		</div> 
+			<div style="float:left; width:200px; height:30px; padding: 5%">
+		        <% if signed_in? %>
+		        	<div class="votacion" style="display:block; float:left" id="votacion_<%= @product.id %>">
+		        		<% if @product.user_id == current_user.id %>
+						   <div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
+								<%= image_tag("loading.gif") %>
+							</div>
+		        			<span id="want_<%= @product.id %>">
+		        				<div id="love_icon_<%= @product.id %>" class="love_icon_active">
+									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= @product.id %>">
+		        						<%= @product.reputation_value_for(:votes).to_i %>
+		        					</span>
+		        				</div>
+		       				</span>
+		        		<% elsif current_user && !current_user.voted_for?(@product) %>
+						   <div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
+								<%= image_tag("loading.gif") %>
+							</div>
+		        			<span id="want_<%= @product.id %>">
+		        				<div id="love_icon_<%= @product.id %>" class="love_icon">
+									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= @product.id %>">
+		        						<%= @product.reputation_value_for(:votes).to_i %>
+		        					</span>
+		        					<%= link_to "x", vote_product_path(@product, type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
+		        				</div>
+		           			</span>
+						<% else %>
+							<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
+								<%= image_tag("loading.gif") %>
+							</div>
+		        			<span id="want_<%= @product.id %>">
+		        				<div id="love_icon_<%= @product.id %>" class="love_icon_active">
+									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= @product.id %>">
+		        						<%= @product.reputation_value_for(:votes).to_i %>
+		        					</span>
+		        				</div>
+		       				</span>
+		        	<% end %>
+		        	</div>
+		        <% end %>
+			<span style="float:right; margin-right:16%; display:block">
+				<div class="fb-like" data-href="" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false"></div>
+			</span>
+		</div>
+		<br/>
+		<br/>
+		<hr>
+		<div class="description-price">
+	        <%= number_to_currency(@product.price) %>
+		</div>
+		<div style="margin-left:49%; margin-top:-10%">
+	        <%= link_to "Comprar", comprar_path(:product_id => @product.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :class => 'button-want'} %>
+		</div>
+		<hr>
+		<div class="description-low"> Tags: 
+	        <div class="tag">
+	        	<% @product.tag_list.each do |tag| %>
+	        		<%= link_to tag, tag_path(tag), class: "label" %>
+	        	<% end %>
+	        </div>
+		</div>
+		<div style="border: 1px solid white; background-color:white; height: auto" class="well">
+	        <div style="margin-left:0px" class="row">
+	        	<div class="description-brand">
+	        		Productos de <%= link_to @product.brand, user_path(@product.user) %>
+	        	</div>
+	           	<% @products.shuffle.each_with_index do |product, index| %>
+	        			<% break if index == 4 %>
+	        			<% if product.status != true %>
+	        			<% else %>
+	        	  			<div style="padding:1%; width: 22.5%" class="span3">
+	        						<span class="description-low"><%= product.title %> </span>
+	        						<% if product.paintings.any? %>
+	        							<div style="height: auto; margin-top: 10%"><%= link_to image_tag(url_painting(product.paintings)), product %></div>
+	        						<% end %>
+	        				</div>
+	        			<% end %>
+	        		<% end %>
+	        	</div>
+	        </div>
+	</div>
+</div>

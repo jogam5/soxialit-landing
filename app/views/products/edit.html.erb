@@ -1,5 +1,9 @@
 <div class="row">
-	<%= render 'form_edit' %>
+	<% if current_user.id == 11 %>
+		<%= render 'form_edit_simple'%>
+	<% else %>
+		<%= render 'form_edit' %>
+	<% end %>
 </div>
 
 

@@ -194,7 +194,8 @@
 			  <%= f.file_field :image, multiple: true, name: "painting[image]"%>
 			<% end %>
 	</div>
-
+	<div id="ajax-status" style="float:left; position:absolute; display:none; margin: 0% 33%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
+	
 <script id="template-upload" type="text/x-tmpl">
 <div id="name" style="display:none">
 
