@@ -13,7 +13,7 @@
 			  </p>
 			  <p id="description_link_favorites"><%= find_micropost_description(z.target_id)%></p>
 			  <hr/ >
-			  <div id="micropost_description" style="height:50px">
+			  <div id="micropost_description" style="height:50px; width: 150px">
 				<div style="float:left; width: auto; height: auto">
 					<% if find_micropost_imagefile(z.target_id) == nil %>
 						<%= link_to image_tag(find_micropost_userimage(z.target_id), style:"width:35px; margin-left:2%; margin-top:0", id: "like_small_picture"), user_path(find_micropost_userurl(z.target_id))%>
@@ -32,9 +32,10 @@
 					<% end %>
 				</div>
 				<div style="float:left; margin-left:3%">
-					<span style="font-size:0.8em" id="item_link"><%= link_to find_micropost_nickname(z.target_id), user_path(find_micropost_userurl(z.target_id))%></span>
+					<span style="font-size:0.8em" id="item_link"><%= link_to truncate(find_micropost_nickname(z.target_id), :length => 15), user_path(find_micropost_userurl(z.target_id))%></span>
 				</div>
-				<div style="float:right; margin-top: 3%">
+			  </div>
+				<div style="float:right; margin-top: -20%">
 				  <% if signed_in? %>
 					<div style="margin-right:-2%;" class="votacion" id="votacion_<%= z.target_id %>">
 					  	<% if find_micropost_userid(z.target_id) == current_user.id %>
@@ -75,7 +76,6 @@
 					</div>
 				  <% end %>
 				</div>
-			  </div>
 			</div>
 		  </div>
 		<% elsif z.target_type == "Product" %>
@@ -135,7 +135,7 @@
 			  	</p>
 				<p id="description_link_favorites"><%= find_post_body(z.target_id)%></p>
 				<hr/ >
-				<div style="height:50px" id="micropost_description">
+				<div style="height:50px; width: 150px" id="micropost_description">
 					<div style="float:left; width: auto; height: auto">
 				 	 <% if find_post_imagefile(z.target_id) == nil %>
 						<%= link_to image_tag(find_post_userimage(z.target_id), style:"width:35px; margin-left:2%; margin-top:0%", id: "like_small_picture"), user_path(find_post_userurl(z.target_id))%>
@@ -154,9 +154,10 @@
 						<% end %>
 					</div>
 					<div style="float:left; margin-left: 3%">
-						<span style="font-size:0.8em" id="item_link"><%= link_to find_post_nickname(z.target_id), user_path(find_post_userurl(z.target_id))%></span>
+						<span style="font-size:0.8em" id="item_link"><%= link_to truncate(find_post_nickname(z.target_id), :lenght => 15), user_path(find_post_userurl(z.target_id))%></span>
 					</div>
-				  <div style="float:right; margin-top: 13%">
+				</div>
+				  <div style="float:right; margin-top: -10%">
 					<% if signed_in? %>
 					  <div style="margin-right:-2%; margin-top: -54%" class="votacion" id="votacion_<%= z.target_id %>">
 						<% if find_post_userid(z.target_id) == current_user.id %>
@@ -196,7 +197,6 @@
 						<% end %>
 					  </div>
 					<% end %>
-				  </div>
 				</div>
 			</div>
 		  </div>
@@ -206,10 +206,8 @@
 </div>
 
 <script type="text/javascript">
-	alert('Test');
-	$(document).load(function(){
-		window.onload = function() {
-	  		var wall = new Masonry( document.getElementById('contenedor') );
-		};
-	});
+function mas(){
+	  var wall = new Masonry( document.getElementById('contenedor') );
+}
+document.ready = mas;
 </script>
