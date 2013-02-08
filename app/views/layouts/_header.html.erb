@@ -11,10 +11,10 @@
 				<nav>
 				  <ul class="nav pull-right">
 					<% if user_signed_in? %>
-						<li id="feedback_header"><%= link_to "Feedback", feedbacks_path %></li>
+						<li id="feedback_header"><%= link_to "Feedback", feedbacks_path, :title => "Te queremos escuchar"%></li>
 						<li class="divider-vertical"></li>
 					    <li id="feedback_header">
-							<%= link_to image_tag('shop.png', style:"margin-left:15%"), products_path %>
+							<%= link_to image_tag('shop.png', style:"margin-left:15%"), products_path, :title => "Comprar" %>
 					   	</li>
 					   	<li class="divider-vertical"></li>
 					    <li id="feedback_header">
