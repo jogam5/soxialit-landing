@@ -17,6 +17,7 @@
 });
 */
 
+
 $(function(){
     $('#profile_nav_bar a').click(function(){
         $('#profile_nav_bar .active').removeClass('active'); // remove the class from the currently selected
@@ -60,6 +61,19 @@ $(document).ready(function(){
 	
 });
 */
+/* Loading image */
+$(function() {
+  $('#ajax-status')
+    .hide()  // hide it initially.
+    .ajaxStart(function() {
+      $(this).show(); // show on any Ajax event.
+    })
+    .ajaxStop(function() {
+      $(this).hide(); // hide it when it is done.
+  });
+});
+
+
 
 
 /* Masonry en index favoritos */
@@ -68,6 +82,7 @@ window.onload = function() {
 };
 
 
+/* profile edit */
 $(document).ready(function(){
 	$('.link_user_index').live('click', function(){
 		$('.users_follow span').find('a').css('color', '#666');
