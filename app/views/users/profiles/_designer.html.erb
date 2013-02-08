@@ -16,14 +16,12 @@
 						<% if @user.id == 65 || @user.id == 27 || @user.id == 47 || @user.id == 16 || @user.id == 265 || @user.id == 67 || @user.id == 20 %>
 						<li class="divider-vertical"></li>
 							<li>
-								<!--<%= link_to image_tag('product.png'), new_product_path %>  -->
-								<%= link_to image_tag('product.png'), product_modal_path, {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :class => 'label'} %>
-					        	
-							</li>
+								<%= link_to image_tag('product.png'), new_product_path %>
+					       	</li>
 						<% else %>
 						<li class="divider-vertical"></li>
 							<li>
-								<%= link_to image_tag('change.png', style: "margin-top:-10%"), partners_path %> 
+								<%= link_to image_tag('product.png'), product_modal_path, {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :class => 'label'} %>
 							</li>
 						<% end %>
 					<% end %>
