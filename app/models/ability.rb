@@ -59,7 +59,7 @@ class Ability
 
     elsif user.role? :'boutique store'
       can :update, User, :id => user.id
-      can [:list_items, :list_projects, :favorites, :followers, :following, :designer, :bio, :boutique, :fashionlover, :fotografo, :blogger, :ubicacion, :perfil, :notificacion], User
+      can [:list_items, :list_projects, :favorites, :followers, :following, :designer, :bio, :boutique, :fashionlover, :fotografo, :blogger, :ubicacion, :perfil, :notificacion, :product_modal], User
       can [:paypal_checkout, :envio_df, :tallas, :comprar, :envio, :mercadopago_checkout], Product
       can :create, Product
       can :update, Product do |product|
