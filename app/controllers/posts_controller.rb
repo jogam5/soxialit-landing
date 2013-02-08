@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @slides = @post.slides
   end
-
+  
   def new
     @post = current_user.posts.create(:url => "http://")
     @slides = @post.slides

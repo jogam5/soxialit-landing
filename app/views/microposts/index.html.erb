@@ -1,0 +1,79 @@
+<div id="contenedor" class="clearfix masonry">
+	<% @microposts.each do |micropost| %>
+	<div class="box photo col3 masonry-brick">
+		<div class="frame_link_favorites">
+			<div style="max-width: 270px; position:relative; text-align:center; height:auto; padding:5% 5% 5% 5%">
+				<%= link_to image_tag(micropost.thumbnail, style:"margin-left:5%; max-width: 90%; height:auto"), micropost, target: '_blank' %>
+				<p id="item_link">
+					<%= link_to truncate(micropost.title, :lenght => 35), micropost, target: '_blank' %>
+			  	</p>
+			  	<p id="description_link_favorites"><%= micropost.description %></p>
+			  	<hr/ >
+			  	<div id="micropost_description" style="height:50px; width: 150px">
+					<div style="float:left; width: auto; height: auto">
+						<% if find_micropost_imagefile(micropost.id) == nil %>
+							<%= link_to image_tag(find_micropost_userimage(micropost.id), style:"width:35px; margin-left:2%; margin-top:0", id: "like_small_picture"), user_path(micropost.user)%>
+						<% else %>
+							<%= link_to image_tag(find_micropost_imagefile(micropost.id), style:"width:35px; margin-left:2%; margin-top:0", id: "like_small_picture"), user_path(micropost.user)%>
+						<% end %>
+						<% if user_signed_in? %>
+							<% unless current_user?(micropost.user) %>
+								<div style="margin-top:0.5em" id="form_<%= micropost.user_id %>">
+						  			<% if current_user.following?(micropost.user) %>
+									<% else %>
+							      		<%= render :partial => 'shared/follow_favorites', :locals => { :user => micropost.user } %>
+									<% end %>
+								</div>
+							<% end %>
+						<% end %>
+					</div>
+					<div style="float:left; margin-left:3%">
+						<span style="font-size:0.8em" id="item_link"><%= link_to truncate(find_micropost_nickname(micropost.id), :length => 15), user_path(micropost.user)%></span>
+					</div>
+			  	</div>
+			  	<div style="float:right; margin-top: -20%">
+			  		<% if signed_in? %>
+						<div style="margin-right:-2%;" class="votacion" id="votacion_<%= micropost.id %>">
+							<% if micropost.user_id == current_user.id %>
+								<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
+									<%= image_tag("loading.gif") %>
+								</div>
+								<span id="want_<%= micropost.id %>">
+									<div id="love_icon_<%= micropost.id %>" class="love_icon_active">
+										<span style="float:left; display:block; margin-left:-50%; color:black" id="love_z.target_id_<%= micropost.id %>">
+											<%= micropost.reputation_value_for(:lovs).to_i %>
+										</span>
+									</div>
+						   		</span>
+								<% elsif current_user && !current_user.voted_for?(micropost) %>
+								<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
+									<%= image_tag("loading.gif") %>
+								</div>
+		        				<span id="want_<%= micropost.id  %>">
+		        					<div id="love_icon_<%= micropost.id  %>" class="love_icon">
+										<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= micropost.id  %>">
+		        							<%= micropost.reputation_value_for(:lovs).to_i %>
+		        						</span>
+		        						<%= link_to "x", lovs_micropost_path(micropost, type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
+		        					</div>
+		           				</span>
+								<% else %>
+								<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
+									<%= image_tag("loading.gif") %>
+								</div>
+		        				<span id="want_<%= micropost.id %>">
+		        					<div id="love_icon_<%= micropost.id %>" class="love_icon_active">
+										<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= micropost.id %>">
+		        							<%= micropost.reputation_value_for(:lovs).to_i %>
+		        						</span>
+		        					</div>
+		       					</span>
+							<% end %>
+						</div>
+				  	<% end %>
+				  </div>
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>

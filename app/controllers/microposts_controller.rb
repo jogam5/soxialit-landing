@@ -9,6 +9,10 @@ class MicropostsController < ApplicationController
       format.json { render json: @micropost }
     end
   end
+  
+  def index  
+     @microposts = Micropost.find_with_reputation(:lovs, :all, order: 'lovs desc')
+  end
 
   def show
     @micropost = Micropost.find(params[:id])
