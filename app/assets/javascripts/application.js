@@ -25,37 +25,3 @@
 //= require zclip
 //= require_tree .
 
-$(function () {
-  $('#product_tag_list').tokenInput('/sizes.json', { 
-    crossDomain: false,
-    prePopulate: $('#product_tag_list').data('pre'),
-    theme: 'facebook',
-	 preventDuplicates: true,
-	 tokenValue: 'name', // defaults to 'id'
-  
-	 allowCustomEntry: true
-   
-  });
-});
-
-
-$(function(){
-	$('#product_size_tokens').tokenInput('/sizes.json', {
-    crossDomain: false,
-	 preventDuplicates: true,
-    prePopulate: $('#product_size_tokens').data('load')
-	});
- });
-
-
-$(function() {
-  $('#ajax-status')
-    .hide()  // hide it initially.
-    .ajaxStart(function() {
-      $(this).show(); // show on any Ajax event.
-    })
-    .ajaxStop(function() {
-      $(this).hide(); // hide it when it is done.
-  });
-});
-
