@@ -1,0 +1,41 @@
+<div class="modal-soxialit">
+  <div class="modal-body" style="max-height:630px">
+	<button type="button" class="close-button" data-dismiss="modal" aria-hidden="true">X</button>
+	<h2>Elige, ¿cómo quieres exponer tus productos?</h2>
+			<div class="span10">
+			<div class="span5">
+				<h4>Conviertete en Partner de Soxialit</h4>
+				<p id="description_perfil">En Soxialit queremos que tus prendas ó items se han adquiridos por miles de personas.</p>
+				<p id="description_perfil">Al ser Partner de Soxialit tus productos podrán ser comprados en línea con sólo algunos clicks, tendrán una mejor exposición dentro de la plataforma y los clientes no se perderán de ningún detalle de tus producto.
+				<p id="description_perfil">Para esto requerimos algunos datos de contacto: </p>
+				<%= link_to "Quiero ser Partner", partners_path, :class => "button-want"%>
+			</div>
+			<div class="span4">
+				<br/>
+				<%= image_tag('soxialit_partner.png')%>
+			</div>
+		</div>
+		<div class="span9">
+			<hr>
+			<div class="span9">
+				<h4>Pon tus productos en los ojos de miles de personas</h4>
+				<p id="description_perfil">Porque Facebook no es la mejor manera de exponer tus productos, </p>
+				<p id="description_perfil">de forma sencilla publica tus items y compartelos a todos tus seguidores y fans.</p>
+			</div>
+			<div class="span2">
+				<%= image_tag('item_tag.png', width: "130px")%>
+				<h4 style="margin-left:40%">Crea</h4>
+			</div>
+			<div class="span2">
+				<%= image_tag('share.png', width: "130px")%>
+				<h4 style="margin-left:15%">Comparte</h4>
+			</div>
+			<div class="span2">
+				<%= image_tag('like_icon.png', width: "130px")%>
+			</div>
+			<div style="margin-top:10%" class="span2">
+				<%= link_to "Empieza ahora", new_product_path, :class => "btn btn-success" %>
+			</div>
+		</div>
+  </div>
+</div>

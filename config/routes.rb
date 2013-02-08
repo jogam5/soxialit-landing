@@ -50,6 +50,7 @@ DeviseFacebook::Application.routes.draw do
   get '/comprar', to: 'products#comprar'
   get '/comprar_login', to: 'products#comprar_login'
   get '/tallas', to: 'products#tallas'
+  get '/product_modal', to: 'users#product_modal'
   match 'preview', to: 'static_pages#preview'
   
  # get users/index
