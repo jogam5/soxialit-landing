@@ -3,10 +3,10 @@ $(document).ready(function(){
 	$('.fb-like').data('href', pathname);
 });
 
-var container = document.getElementById('contenedor');
 
-var wall = new Masonry(container, {
-    isFitWidth: true
+$(document).ready(function(){
+	var container = document.getElementById('contenedor');
+	var wall = new Masonry(container);
+	container.style.display = "block";
+	wall.reload();
 });
-container.style.display = "block";
-wall.reload();
