@@ -4,9 +4,11 @@
 	<h3>Puedes publicar un producto de dos formas: </h3>
 		<div class="span10">
 			<div class="span6">
-				<h4>1 - Conviertete en nuestro Partner</h4>
-				<p style="color:$grayBio;font-size:1em;font-weight:lighter">Podrás vender en línea a través de Soxialit, tus items gozarán de una interfaz detallada con descripción, guía de tallas, cotización de envíos en tiempo real, entre otras cosas. Además, serás el primero en implementar los cambios que están por venir para que comprar moda en Internet sea una gran experiencia.</p>
-				<p style="color:$grayBio;font-size:1em;font-weight:lighter">Costo: <b>15% sobre el importe final</b>. No te quitamos comisiones extras por recibir pagos por PayPal, Tarjeta de débito o crédito, Pago en Oxxo y Depósito Bancario.</p><br />
+				<h4>1 - Conviertete en nuestro Partner.</h4>
+				<p style="color:$grayBio;font-size:1em;font-weight:lighter">Podrás vender en línea a través de Soxialit, tus items gozarán de una interfaz detallada con descripción, guía de tallas, cotización de envíos en tiempo real, entre otras cosas. Serás el primero en implementar las actualizaciones para que comprar moda en Internet sea una gran experiencia.</p>
+				<p style="color:$grayBio;font-size:1em;font-weight:lighter">Costo: <b>15% sobre el precio final del item</b>. No hay costo extra por publicar. No te quitamos comisiones extras por recibir pagos a través de PayPal, Tarjeta de débito o crédito, Pago en Oxxo y Depósito Bancario.</p>
+				<p style="color:$grayBio;font-size:1em;font-weight:lighter">¡Sólo ganamos cuando TÚ ganas!</p>
+				<br />
 				<%= link_to "Quiero ser Partner", partners_path, :class => "button-want"%>
 			</div>
 			<div class="span3">
@@ -17,24 +19,22 @@
 		<div class="span9">
 			<hr>
 			<div class="span9">
-				<h4>Pon tus productos en los ojos de miles de personas</h4>
-				<p id="description_perfil">Porque Facebook no es la mejor manera de exponer tus productos, </p>
-				<p id="description_perfil">de forma sencilla publica tus items y compartelos a todos tus seguidores y fans.</p>
+				<h4>2 - Aún no estoy convencido de ser su Partner.</h4>
+				<p style="color:$grayBio;font-size:1em;font-weight:lighter">¡Venga! No hay problema: sube totalmente <b>GRATIS</b> los items que quieras y redirecciona al sitio web que prefieras cuando alguien de click en "Comprar".</p>
+				<p style="color:$grayBio;font-size:1em;font-weight:lighter"><i>Nuestra mayor deseo es poner tu talento y tu pasión por la moda en frente de miles de personas.</i></p>
 			</div>
 			<div class="span2">
-				<%= image_tag('item_tag.png', width: "130px")%>
+				<%= image_tag('item_tag.png', width: "100px")%>
 				<h4 style="margin-left:40%">Crea</h4>
 			</div>
 			<div class="span2">
-				<%= image_tag('share.png', width: "130px")%>
+				<%= image_tag('like_icon.png', width: "100px")%>
 				<h4 style="margin-left:15%">Comparte</h4>
 			</div>
-			<div class="span2">
-				<%= image_tag('like_icon.png', width: "130px")%>
-			</div>
 			<div style="margin-top:10%" class="span2">
-				<%= link_to "Empieza ahora", new_product_path, :class => "btn btn-success" %>
+				<%= link_to "Publicar Producto", new_product_path, :class => "btn btn-success" %>
 			</div>
+			<br />
 		</div>
   </div>
 </div>

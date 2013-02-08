@@ -18,7 +18,7 @@
 					   	</li>
 					   	<li class="divider-vertical"></li>
 					    <li id="feedback_header">
-							<%= link_to image_tag('post_white.png', style:"margin-left:15%"), microposts_path, :title => "Descubre" %>
+							<%= link_to '<i class="icon-th-list icon-white"></i>'.html_safe, microposts_path, :title => "Descubre" %>
 					   	</li>
 						<li class="divider-vertical"></li>
 						<li><% if !current_user.picture.present? %>
