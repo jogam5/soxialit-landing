@@ -206,8 +206,12 @@
 </div>
 
 <script type="text/javascript">
-function mas(){
-	  var wall = new Masonry( document.getElementById('contenedor') );
-}
-document.ready = mas;
+window.onload = function(){
+	
+	var container = document.getElementById('contenedor');
+	var wall = new Masonry(container);
+	container.style.display = "block";
+	wall.reload();
+	
+};
 </script>
