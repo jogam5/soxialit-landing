@@ -77,3 +77,13 @@
 		</div>
 	<% end %>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	var container = document.getElementById('contenedor');
+	var wall = new Masonry(container);
+	container.style.display = "block";
+	wall.reload();
+	
+});
+</script>
