@@ -22,6 +22,11 @@
 		<%= f.label :price, "*precio", :class => "description-text" %>
 	    <%= f.text_field :price, placeholder: " 0.00", :class => "span2", :style => "float:left" %><p>   MXN </p>
 	  </div>
+	  <br/>
+	  <div class="field">
+		<%= f.label :url, "*URL a redireccionar cuando alguien da COMPRAR en tu item", :class => "description-text" %>
+	    <%= f.text_field :url, :value =>"http://", :class => "span3", :style => "float:left" %>
+	  </div>
 	  <div class="field" style="height:20px">
 	  	<p style="float:left">
 			<%= f.label :tag_list, "*agrega tus tags", :class => "description-text", :style => "width: 110px" %>

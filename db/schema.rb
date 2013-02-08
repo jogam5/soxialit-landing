@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130130170352) do
+ActiveRecord::Schema.define(:version => 20130208090717) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -91,10 +91,13 @@ ActiveRecord::Schema.define(:version => 20130130170352) do
     t.text     "description"
     t.string   "thumbnail"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.boolean  "status"
   end
+
+  add_index "microposts", ["status"], :name => "index_microposts_on_status"
+  add_index "microposts", ["user_id"], :name => "index_microposts_on_user_id"
 
   create_table "notifications", :force => true do |t|
     t.boolean  "follow",        :default => true
@@ -115,6 +118,8 @@ ActiveRecord::Schema.define(:version => 20130130170352) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "paintings", ["product_id"], :name => "index_paintings_on_product_id"
 
   create_table "partners", :force => true do |t|
     t.integer  "user_id"
@@ -194,6 +199,7 @@ ActiveRecord::Schema.define(:version => 20130130170352) do
     t.string   "paypal_customer_token"
     t.string   "paypal_recurring_profile_token"
     t.string   "delivery_time"
+    t.string   "url"
   end
 
   create_table "projects", :force => true do |t|
@@ -292,6 +298,8 @@ ActiveRecord::Schema.define(:version => 20130130170352) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "sizes", ["product_id"], :name => "index_sizes_on_product_id"
 
   create_table "sizeships", :force => true do |t|
     t.integer  "product_id"

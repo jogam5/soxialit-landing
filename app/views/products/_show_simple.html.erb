@@ -81,7 +81,7 @@
 	        <%= number_to_currency(@product.price) %>
 		</div>
 		<div style="margin-left:49%; margin-top:-10%">
-	        <%= link_to "Comprar", comprar_path(:product_id => @product.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :class => 'button-want'} %>
+	        <%= link_to "Comprar", @product.url, :class => 'button-want', target: '_blank' %>
 		</div>
 		<hr>
 		<div class="description-low"> Tags: 
