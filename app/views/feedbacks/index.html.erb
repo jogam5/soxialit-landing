@@ -2,7 +2,7 @@
 	<%= render 'form' %>
 </div>
 <div class="row">
-	<p style="text-align:center; font-size:1.6em; font-weight:lighter">¡Si tienes dudas específicas mandanos un tweet a <%= link_to "@Soxialit", "https://twitter.com/soxialit" %>, te responderemos enseguida!</p>
+	<p style="text-align:center; font-size:1.6em; line-height:1.2em; font-weight:lighter">Si tienes dudas específicas envíanos un tweet a <%= link_to "@Soxialit", "https://twitter.com/soxialit" %>. Si no te respondemos en menos <br /> de 5 minutos ¡te invitamos una cerveza!</p>
 </div>
 <br/ >
 <% if current_user.roles.first.name == 'admin' %>
