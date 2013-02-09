@@ -42,7 +42,7 @@
 			</div>
 		<% end %>
 	<% end %>
-	<% if @product.user_id == 1 %>
+	<% if @user.id == 65 || @user.id == 27 || @user.id == 47 || @user.id == 16 || @user.id == 265 || @user.id == 67 || @user.id == 20 %>
 		<%= render 'show_product'%>
 	<% else %>
 		<%= render 'show_simple' %>

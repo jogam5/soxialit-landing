@@ -206,7 +206,12 @@
 </div>
 
 <script type="text/javascript">
-	window.onload = function() {
-	  var wall = new Masonry( document.getElementById('contenedor'));
-	};
+
+$(function() {
+  $('body').bind('ajaxComplete', function() {
+	var wall = new Masonry( document.getElementById('contenedor') );
+	wall.reload();
+  });
+});
+
 </script>
