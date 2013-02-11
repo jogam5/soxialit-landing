@@ -5,11 +5,15 @@ window.onscroll = function(){
 	window.scroll(0, y);
 };
 $('#modal-micropost').show('slide', {}, 500);
+setTimeout(function() {
+	$('#modal-micropost').css('background-color', 'rgba(0, 0, 0, 0.298039)');	
+}, 500);
 $('#modal-micropost').html("<%= escape_javascript(render :partial => 'modal_micropost', :object => @micropost) %>");
 $('#modal-micropost').click(function(){
 	window.onscroll = null;
 	document.documentElement.style.overflowY = "scroll";
 });
+
 $(document).keyup(function(e) {
   if (e.keyCode == 27) { $('#modal-id').fadeOut('fast');
 	window.onscroll = null;
@@ -22,12 +26,7 @@ $('.close-button').click(function(){
 	$('#modal-micropost').hide('slide');
 });
 
-
 $("#like-button").html("<fb:like href=\"https://soxialit.com/microposts/<%= @micropost.id %>\" send=\"false\" layout=\"button_count\" width=\"200\" show_faces=\"false\" action=\"like\" font=\"\"></fb:like>");
 FB.XFBML.parse($('#like-button')[0]);
 
-$(document).ready(function(){
-	setTimeout(function() {
-		$('#modal-micropost').css('background-color', 'rgba(0, 0, 0, 0.298039)');	
-	}, 500);
-});
+
