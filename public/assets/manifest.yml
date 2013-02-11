@@ -108,6 +108,8 @@ project.jpg: project-3c964dc18002e20c06af8b4f780a156d.jpg
 project/index.jpg: project-3c964dc18002e20c06af8b4f780a156d.jpg
 project.png: project-2a0e996d5d44401d81c0fdeca93880b7.png
 project/index.png: project-2a0e996d5d44401d81c0fdeca93880b7.png
+reporte.rtf: reporte-39e16557f20e9aa75655cac494f01f62.rtf
+reporte/index.rtf: reporte-39e16557f20e9aa75655cac494f01f62.rtf
 share.png: share-20989ceff48427cd450e5eddf9a25089.png
 share/index.png: share-20989ceff48427cd450e5eddf9a25089.png
 shop.png: shop-6c0d0e18293b9bb641dcd2da0c8d1695.png
@@ -140,8 +142,8 @@ zapato.png: zapato-1029d6c5aa14da47143753767914f588.png
 zapato/index.png: zapato-1029d6c5aa14da47143753767914f588.png
 application.js: application-7a90754ac3c48906297ebb35e5450fa6.js
 application/index.js: application-7a90754ac3c48906297ebb35e5450fa6.js
-application.css: application-8dd93eca51fdfee1f1cc77e9bed47f8f.css
-application/index.css: application-8dd93eca51fdfee1f1cc77e9bed47f8f.css
+application.css: application-28a0cb5e258d67123ab84c67b858bf29.css
+application/index.css: application-28a0cb5e258d67123ab84c67b858bf29.css
 fontawesome-webfont.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont/index.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont.svg: fontawesome-webfont-c3f3594758768fbb43eae746d18b3b50.svg
