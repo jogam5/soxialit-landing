@@ -22,10 +22,12 @@ $('.close-button').click(function(){
 	$('#modal-micropost').hide('slide');
 });
 
-setTimeout(function() {
-	$('#modal-micropost').css('background-color', 'rgba(0, 0, 0, 0.298039)');	
-}, 500);
-
 
 $("#like-button").html("<fb:like href=\"https://soxialit.com/microposts/<%= @micropost.id %>\" send=\"false\" layout=\"button_count\" width=\"200\" show_faces=\"false\" action=\"like\" font=\"\"></fb:like>");
 FB.XFBML.parse($('#like-button')[0]);
+
+$(document).ready(function(){
+	setTimeout(function() {
+		$('#modal-micropost').css('background-color', 'rgba(0, 0, 0, 0.298039)');	
+	}, 500);
+});
