@@ -16,7 +16,7 @@ class Micropost < ActiveRecord::Base
         :message => "Acabo de compartir un link en Soxialit.",
         :picture => @micropost.thumbnail.to_s,
         :link => "http://soxialit.com/microposts/#{micropost.id}",
-        :name => "#{@micropost.title} by #{@user.nickname}",
+        :name => "#{@micropost.title} via #{@micropost.provider}",
         :description => @micropost.description
       }
       @user.facebook.put_connections("me", "feed", options)
@@ -28,7 +28,7 @@ class Micropost < ActiveRecord::Base
         :message => "Me gusto el siguiente link en Soxialit.",
         :picture => @micropost.thumbnail.to_s,
         :link => "http://soxialit.com/microposts/#{micropost.id}",
-        :name => "#{@micropost.title} by #{@micropost.user.nickname}",
+        :name => "#{@micropost.title} via #{@micropost.provider}",
         :description => @micropost.description
       }
       user.facebook.put_connections("me", "feed", options)

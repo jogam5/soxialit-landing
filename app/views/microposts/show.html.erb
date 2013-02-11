@@ -10,7 +10,8 @@
 <% end %>
 
 <div class="row">
-  <div class="span2">    
+  <div class="span2">
+    <p style="margin-top:2.5em"><i class=" icon-list"></i> <%= link_to "Ir al Muro de Posts", microposts_path %></p>
   <br />
   </div>
   <div class="span8">
@@ -170,7 +171,7 @@
   </div>
 </div>
 <br/ >
-<script type="text/javascript">mixpanel.track("Link_<%= @micropost.title %>")</script>
+<script type="text/javascript">mixpanel.track("Link: <%= @micropost.title %>")</script>
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {

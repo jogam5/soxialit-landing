@@ -1,14 +1,14 @@
 <div class="hero-unit">	
-	<p style="font-size:2em; margin-bottom:0.9em"><span style="font-size:1.2em; margin-right:0.8em">1</span>Regálanos un tweet para hacer la comunidad más grande:<p>
-	<p><%= image_tag("twitter-bg.png") %> "<span style="text-align:center; font-size:0.9em">Regístrate en http://soxialit.com, la red social que conecta #Fashion Lovers, Bloggers, Designers y Fotógrafos</span>"</p>
-	<p style="text-align:center"><a href="https://twitter.com/share" class="twitter-share-button" data-url="." data-text="Regístrate en http://soxialit.com, la red social que conecta #Fashion Lovers, Bloggers, Designers y Fotógrafos || vía @Soxialit" data-lang="es" data-size="large" data-count="none">Twittear</a></p>
+	<p style="font-size:1.8em; margin-bottom:0.9em"><span style="font-size:1.1em; margin-right:0.8em">1</span>Ayúdanos a hacer más grande la comunidad:<p>
+	<p><%= image_tag("twitter-bg.png") %> "<span style="text-align:center; font-size:0.8em">Crea tu cuenta en http://soxialit.com, la red social que conecta #Fashion Bloggers, Designers, Fotógrafos y Boutiques</span>"</p>
+	<p style="text-align:center"><a href="https://twitter.com/share" class="twitter-share-button" data-url="." data-text="Crea tu cuenta en http://soxialit.com, la red social que conecta #Fashion Bloggers, Designers, Fotógrafos y Boutiques || vía @Soxialit" data-lang="es" data-size="large" data-count="none">Twittear</a></p>
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 	</script>
 	<%= render 'form' %>
 </div>
 <div class="row">
 	<hr/ >
-	<p style="text-align:center; font-size:1.6em; line-height:1.2em; font-weight:lighter">Si tienes dudas o preguntas específicas sobre Soxialit, envíanos un tweet a <%= link_to "@Soxialit", "https://twitter.com/soxialit" %>. Si no te respondemos en menos de 5 minutos ¡te invitamos una cerveza!</p>
+	<p style="text-align:center; font-size:1.6em; line-height:1.2em; font-weight:lighter">Si tienes dudas o preguntas específicas sobre Soxialit, envíanos un tweet a <%= link_to "@Soxialit", "https://twitter.com/soxialit" %></p>
 </div>
 <br/ >
 <% if current_user.roles.first.name == 'admin' %>
