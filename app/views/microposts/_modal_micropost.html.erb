@@ -1,0 +1,117 @@
+<% content_for :meta do %>
+	<% if !@micropost.thumbnail.nil? %>
+		<% meta [:property => "og:image", :content => @micropost.thumbnail] %>
+	<% end %>
+	<% meta [:property => "og:description", :content => " #{@micropost.title}"] %>
+	<% meta [:property => "og:type", :content => "website"] %>
+	<% meta [:property => "og:title", :content => "Soxialit - #{@micropost.title}"] %>
+	<% meta [:property => "og:url", :content => "https://soxialit.com/microposts/#{@micropost.id}"] %>
+	<% meta [:property => "fb:app_id", :content => ENV["APP_ID"] ] %>
+<% end %>
+
+<div class="modal-micropost">
+  <div style="max-height: 600px" class="modal-body">
+	<button type="button" class="close-button" data-dismiss="modal" aria-hidden="true">X</button>
+	<div class="row">
+		<div class="span5 offset1">
+			<p id="item_link">
+				<%= link_to @micropost.title, @micropost, target: '_blank' %>
+	  		</p>
+		</div>
+		<div class="span6">
+			<%= link_to image_tag(@micropost.thumbnail), @micropost, target: '_blank' %>
+		</div>
+		<div class="span3">
+			<div id="micropost_description" style="height:50px; width: 150px">
+				<div style="float:left; width: auto; height: auto">
+					<% if find_micropost_imagefile(@micropost.id) == nil %>
+						<%= link_to image_tag(find_micropost_userimage(@micropost.id), style:"width:35px; margin-left:2%; margin-top:0", id: "like_small_picture"), user_path(@micropost.user)%>
+					<% else %>
+						<%= link_to image_tag(find_micropost_imagefile(@micropost.id), style:"width:35px; margin-left:2%; margin-top:0", id: "like_small_picture"), user_path(@micropost.user)%>
+					<% end %>
+					<% if user_signed_in? %>
+						<% unless current_user?(@micropost.user) %>
+							<div style="margin-top:0.5em" id="form_<%= @micropost.user_id %>">
+					  			<% if current_user.following?(@micropost.user) %>
+								<% else %>
+						      		<%= render :partial => 'shared/follow_favorites', :locals => { :user => @micropost.user } %>
+								<% end %>
+							</div>
+						<% end %>
+					<% end %>
+				</div>
+				<div style="float:left; margin-left:3%">
+					<span style="font-size:0.8em" id="item_link"><%= link_to truncate(find_micropost_nickname(@micropost.id), :length => 15), user_path(@micropost.user)%></span>
+				</div>
+		  	</div>
+			<hr>
+			<p id="description_micropost"><%= @micropost.description %></p>
+			<hr>
+			<div style="margin-right: 28%">
+				<span style="float:right;  display:block">
+					<div class="fb-like" data-href="https://soxialit.com/microposts/<%= @micropost.id %>" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false"></div>
+				</span>
+				<% if signed_in? %>
+					<div style="margin-top:0.1%; margin-right: 1%"class="votacion" id="votacion_<%= @micropost.id %>">
+						<% if @micropost.user_id == current_user.id %>
+						   <div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
+								<%= image_tag("loading.gif") %>
+							</div>
+							<span id="want_<%= @micropost.id %>">
+								<div id="love_icon_<%= @micropost.id %>" class="love_icon_active">
+									<span style="float:left; display:block; margin-left:-50%; color:black" 
+												id="love_product_<%= @micropost.id %>">
+										<%= @micropost.reputation_value_for(:lovs).to_i %>
+									</span>
+								</div>
+				   			</span>
+							<% elsif current_user && !current_user.voted_for?(@micropost) %>
+							   <div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
+									<%= image_tag("loading.gif") %>
+								</div>
+								<span id="want_<%= @micropost.id %>">
+									<div id="love_icon_<%= @micropost.id %>" class="love_icon">
+										<span style="float:left; display:block; margin-left:-50%; color:black" 
+													id="love_product_<%= @micropost.id %>">
+											<%= @micropost.reputation_value_for(:lovs).to_i %>
+										</span>
+										<%= link_to "xxx", lovs_micropost_path(@micropost, type: "up"), 
+												:class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
+									</div>
+					   			</span>
+							<% else %>
+							<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
+								<%= image_tag("loading.gif") %>
+							</div>
+		        			<span id="want_<%= @micropost.id %>">
+		        				<div id="love_icon_<%= @micropost.id %>" class="love_icon_active">
+									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= @micropost.id %>">
+		        						<%= @micropost.reputation_value_for(:lovs).to_i %>
+		        					</span>
+		        				</div>
+		       				</span>
+						<% end %>
+					</div>
+				 <% end %>
+			  </div>
+		</div>
+	</div>
+  </div>
+</div>
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=439343236107925";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+$(document).ready(function(){
+	setTimeout(function() {
+		$('#modal-micropost').css('background-color', 'rgba(0, 0, 0, 0.298039)');	
+	}, 1000);
+});
+</script>

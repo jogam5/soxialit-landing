@@ -1,5 +1,5 @@
 class MicropostsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :authenticate_user!, :except => [:show, :index, :modal_micropost]
   #load_and_authorize_resource
 
   def new
@@ -58,4 +58,9 @@ class MicropostsController < ApplicationController
         format.js
       end
   end
+  
+  def modal_micropost
+     @micropost = Micropost.find(params[:micropost_id])
+  end
+  
 end
