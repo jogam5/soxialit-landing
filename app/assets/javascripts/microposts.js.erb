@@ -23,11 +23,14 @@ jQuery(function() {
 
 
 
-
-/*if ($('.pagination').length) {
-      	$('#pagination').bind('click', function(){
-				var url;
-		      url = $('.pagination .next_page').attr('href');
-		     return $.getScript(url);
-			})
-  		}*/
+jQuery(function(){
+	if ($('.pagination').length) {
+		var url;
+		//url = $('.pagination .next_page').attr('href');
+		$('#paginate').show();
+		$('#paginate').bind('click', function(){
+			url = $('.pagination .next_page').attr('href');
+			return $.getScript(url);
+		});
+	}	
+});
