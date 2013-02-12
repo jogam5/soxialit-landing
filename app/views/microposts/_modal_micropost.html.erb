@@ -25,7 +25,7 @@
 		</div>
 		<div class="span3">
 			<div id="micropost_description">
-				<div style="float:left; width: auto; height: auto">
+				<div style="float:left; width:auto; height:40px; padding-right:0.5em">
 					<% if find_micropost_imagefile(@micropost.id) == nil %>
 						<%= link_to image_tag(find_micropost_userimage(@micropost.id), style:"width:35px; margin-left:2%; margin-top:0", id: "like_small_picture"), user_path(@micropost.user)%>
 					<% else %>
@@ -36,7 +36,7 @@
 							<div style="margin-top:0.5em" id="form_<%= @micropost.user_id %>">
 					  			<% if current_user.following?(@micropost.user) %>
 								<% else %>
-						      		<%= render :partial => 'shared/follow_favorites', :locals => { :user => @micropost.user } %>
+						      	  <%= render :partial => 'shared/follow_favorites', :locals => { :user => @micropost.user } %>
 								<% end %>
 							</div>
 						<% end %>
@@ -49,9 +49,7 @@
 		  	<div class="timestamp" style="text-align:right">
               <%= time_ago_in_words(@micropost.created_at) %>.
             </div>
-            <br />
 			<hr />
-			
 			<p id="description_micropost" style="color:#555"><%= @micropost.description %></p>
 			<div id="micropost_leer_mas" style="margin-bottom:1em"><%= link_to "Leer más", @micropost.url, target: '_blank' %>
 			</div>
