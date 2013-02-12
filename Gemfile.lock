@@ -237,6 +237,7 @@ GEM
     wicked (0.2.0)
       activesupport (>= 3.0.7)
       rails (>= 3.0.7)
+    will_paginate (3.0.3)
     workless (1.1.2)
       delayed_job (>= 2.0.7)
       heroku-api
@@ -287,5 +288,6 @@ DEPENDENCIES
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   wicked
+  will_paginate
   workless (~> 1.1.1)
   zclip-rails
