@@ -77,7 +77,9 @@
 
 $(function() {
   $('body').bind('ajaxComplete', function() {
-	var wall = new Masonry( document.getElementById('contenedor') );
+	var container = document.getElementById('contenedor');
+	var wall = new Masonry(container);
+	container.style.display = "block";
 	wall.reload();
   });
 });
