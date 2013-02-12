@@ -1525,3 +1525,48 @@ ul.comments{
 }
 
 /* POST  END */
+
+
+/* MODAL on /microposts */
+
+#title_link_modal{
+	font-family:acta-display, Helvetica-Neue, Helvetica, Arial, Sans-serif;
+	font-size:1.8em;
+	color:#black;
+	padding:1em 0em 0em 0em;
+	font-weight:300;
+	text-align:left;
+	line-height:1.2em;
+	 a{
+	color:#303239;
+	font-weight: lighter;
+	}
+	 a:hover{
+	color:$rojo;
+	text-decoration:none;
+	}
+}
+
+
+#nickname_link_modal{
+	font-size:0.8em;
+	color:#303239;
+	font-weight:700;
+	text-align:left;
+	 a{
+	color:#303239;
+	font-weight: lighter;
+	}
+	 a:hover{
+	color:$rojo;
+	text-decoration:none;
+	}
+}
+
+#role_link_modal{
+	font-size:0.8em;
+	color:#999;
+	line-height:15px;
+}
+
+/* MODAL on /microposts   END */

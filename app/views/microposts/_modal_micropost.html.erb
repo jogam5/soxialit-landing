@@ -13,13 +13,13 @@
   <div style="max-height: 600px" class="modal-body">
 	<button type="button" class="close-button" data-dismiss="modal" aria-hidden="true">X</button>
 	<div class="row">
-		<div class="span5 offset1">
-			<p id="item_link">
-				<%= link_to @micropost.title, @micropost, target: '_blank' %>
+		<div class="span8">
+			<p id="title_link_modal" style="margin-bottom:0.5em">
+				<%= @micropost.title %>
 	  		</p>
 		</div>
 		<div class="span6">
-			<%= link_to image_tag(@micropost.thumbnail), @micropost, target: '_blank' %>
+			<%= link_to image_tag(@micropost.thumbnail), @micropost.url, target: '_blank' %>
 		</div>
 		<div class="span3">
 			<div id="micropost_description" style="height:50px; width: 150px">
@@ -41,12 +41,20 @@
 					<% end %>
 				</div>
 				<div style="float:left; margin-left:3%">
-					<span style="font-size:0.8em" id="item_link"><%= link_to truncate(find_micropost_nickname(@micropost.id), :length => 15), user_path(@micropost.user)%></span>
+					<span id="nickname_link_modal"><%= link_to @micropost.user.nickname, 
+																			user_path(@micropost.user)%></span><br/>
+					<div id="role_link_modal"><%= @micropost.user.roles.first.name %></div>
 				</div>
 		  	</div>
-			<hr>
-			<p id="description_micropost"><%= @micropost.description %></p>
-			<hr>
+		  	<span class="timestamp">
+              <%= time_ago_in_words(@micropost.created_at) %>.
+            </span>
+			<hr />
+			<p id="description_micropost" style="color:#555"><%= @micropost.description %></p>
+			<div id="micropost_leer_mas" style="margin-bottom:1em"><%= link_to "Leer más", @micropost.url, target: '_blank' %>
+			</div>
+            <span style="color:#999">vía</span> <%= link_to @micropost.provider, @micropost.provider, target: '_blank' %>
+			<hr />
 			<div style="margin-right: 28%">
 				<span style="float:right;  display:block">
 					<div class="fb-like" data-href="https://soxialit.com/microposts/<%= @micropost.id %>" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false"></div>
@@ -98,7 +106,6 @@
 	</div>
   </div>
 </div>
-
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
