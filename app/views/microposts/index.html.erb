@@ -1,22 +1,17 @@
 <div id="modal-micropost"></div>
 <div id="contenedor" class="clearfix masonry">
-	<%= render @microposts%>
+	<%= render @microposts %>
 </div>
 <%= will_paginate @microposts %>
 
 <script type="text/javascript">
-
-
-$(function() {
-  $('body').bind('ajaxComplete', function() {
-	window.onload = function(){
-		var container = document.getElementById('contenedor');
-		var wall = new Masonry(container);
-		container.style.display = "block";
-		wall.reload();
-	};
-  });
-});
-
+window.onload = function(){
+	
+	var container = document.getElementById('contenedor');
+	var wall = new Masonry(container);
+	container.style.display = "block";
+	wall.reload();
+	
+};
 </script>
 <script type="text/javascript">mixpanel.track("Microposts Feed")</script>
