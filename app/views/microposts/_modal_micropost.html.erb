@@ -44,7 +44,6 @@
 					<span style="font-size:0.8em" id="item_link"><%= link_to truncate(find_micropost_nickname(@micropost.id), :length => 15), user_path(@micropost.user)%></span>
 				</div>
 		  	</div>
-			<br/>
 			<hr>
 			<p id="description_micropost"><%= @micropost.description %></p>
 			<hr>
@@ -95,9 +94,9 @@
 					</div>
 				 <% end %>
 			  </div>
+			</div>
 		</div>
-	</div>
-  </div>
+  	</div>
 </div>
 <script src="http://connect.facebook.net/en_US/all.js" type="text/javascript">
 
