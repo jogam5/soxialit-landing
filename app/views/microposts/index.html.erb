@@ -5,13 +5,15 @@
 <%= will_paginate @microposts %>
 
 <script type="text/javascript">
-window.onload = function(){
-	
+
+$(function() {
+  $('body').bind('ajaxComplete', function() {
 	var container = document.getElementById('contenedor');
-	var wall = new Masonry(container);
-	container.style.display = "block";
+	var wall = new Masonry( document.getElementById('contenedor') );
 	wall.reload();
-	
-};
+  });
+});
+
 </script>
+
 <script type="text/javascript">mixpanel.track("Microposts Feed")</script>
