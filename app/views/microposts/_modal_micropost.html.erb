@@ -13,13 +13,13 @@
   <div style="max-height: 600px" class="modal-body">
 	<button type="button" class="close-button" data-dismiss="modal" aria-hidden="true">X</button>
 	<div class="row">
-		<div class="span5 offset1">
-			<p id="item_link">
-				<%= link_to @micropost.title, @micropost, target: '_blank' %>
+		<div class="span8">
+			<p id="title_link_modal" style="margin-bottom:0.5em">
+				<%= @micropost.title %>
 	  		</p>
 		</div>
 		<div class="span6">
-			<%= link_to image_tag(@micropost.thumbnail), @micropost, target: '_blank' %>
+			<%= link_to image_tag(@micropost.thumbnail), @micropost.url, target: '_blank' %>
 		</div>
 		<div class="span3">
 			<div id="micropost_description" style="height:50px; width: 150px">
@@ -41,12 +41,20 @@
 					<% end %>
 				</div>
 				<div style="float:left; margin-left:3%">
-					<span style="font-size:0.8em" id="item_link"><%= link_to truncate(find_micropost_nickname(@micropost.id), :length => 15), user_path(@micropost.user)%></span>
+					<span id="nickname_link_modal"><%= link_to @micropost.user.nickname, 
+																			user_path(@micropost.user)%></span><br/>
+					<div id="role_link_modal"><%= @micropost.user.roles.first.name %></div>
 				</div>
 		  	</div>
-			<hr>
-			<p id="description_micropost"><%= @micropost.description %></p>
-			<hr>
+		  	<span class="timestamp">
+              <%= time_ago_in_words(@micropost.created_at) %>.
+            </span>
+			<hr />
+			<p id="description_micropost" style="color:#555"><%= @micropost.description %></p>
+			<div id="micropost_leer_mas" style="margin-bottom:1em"><%= link_to "Leer más", @micropost.url, target: '_blank' %>
+			</div>
+            <span style="color:#999">vía</span> <%= link_to @micropost.provider, @micropost.provider, target: '_blank' %>
+			<hr />
 			<div style="margin-right: 28%">
 				<span style="float:right;  width: 100px; display:block">
 					<span id="like-button"></span>
@@ -100,4 +108,21 @@
 </div>
 <script src="http://connect.facebook.net/en_US/all.js" type="text/javascript">
 
+<<<<<<< HEAD
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=439343236107925";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+$(document).ready(function(){
+	setTimeout(function() {
+		$('#modal-micropost').css('background-color', 'rgba(0, 0, 0, 0.298039)');	
+	}, 1000);
+});
+=======
+>>>>>>> 717bed9ef30234e636e0fcc801ebd3cc560445f3
 </script>
