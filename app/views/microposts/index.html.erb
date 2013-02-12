@@ -4,26 +4,33 @@
 </div>
 
 <div style="display:none"><%= will_paginate(@microposts)%></div>
-<div class="container">
-	<div class="row">
-		<div class="span8">
-			<div class="show_more" id="paginate">Ver mas Posts</div>
+<div style="display:block" class="container">
+	<div style="display:block" class="row">
+		<div style="display:block" class="span10 offset1">
+			<div  style="display:block" class="show_more" id="paginate">Ver mas Posts</div>
 		</div>
 	</div>
 </div>
 
 <script type="text/javascript">
 
-function afterLoad() {
-	var container = document.getElementById('contenedor');
-	var wall = new Masonry(container);
-	container.style.display = "block";
+$(function() {
+  $('body').bind('ajaxComplete', function() {
+	var wall = new Masonry( document.getElementById('contenedor') );
 	wall.reload();
-}
-$(document).ready(function(){
-$("body").bind("ajaxComplete", function(e, xhr, settings){
-           afterLoad();
-        });
+  });
+});
+
+jQuery(function(){
+	if ($('.pagination').length) {
+		var url;
+		//url = $('.pagination .next_page').attr('href');
+		$('#paginate').show();
+		$('#paginate').bind('click', function(){
+			url = $('.pagination .next_page').attr('href');
+			return $.getScript(url);
+		});
+	}
 });
 
 </script>
