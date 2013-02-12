@@ -12,22 +12,4 @@
 	</div>
 </div>
 
-<script type="text/javascript">
-
-$(function() {
- 
-jQuery(function(){
-	if ($('.pagination').length) {
-		var url;
-		url = $('.pagination .next_page').attr('href');
-		$('#paginate').show();
-		$('#paginate').bind('click', function(){
-			return $.getScript(url);
-		});
-	}
-});
-});
-
-</script>
-
 <script type="text/javascript">mixpanel.track("Microposts Feed")</script>

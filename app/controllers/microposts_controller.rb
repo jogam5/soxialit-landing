@@ -11,7 +11,7 @@ class MicropostsController < ApplicationController
   end
   
   def index  
-     @microposts = Micropost.page(params[:page]).per_page(40).find_with_reputation(:lovs, :all, order: 'lovs desc')
+     @microposts = Micropost.page(params[:page]).per_page(4).find_with_reputation(:lovs, :all, order: 'lovs desc')
   end
 
   def show
