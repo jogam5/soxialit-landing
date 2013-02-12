@@ -18,12 +18,14 @@
 				<%= @micropost.title %>
 	  		</p>
 		</div>
+	</div>
+	<div class="row">
 		<div class="span6">
 			<%= link_to image_tag(@micropost.thumbnail), @micropost.url, target: '_blank' %>
 		</div>
 		<div class="span3">
-			<div id="micropost_description" style="height:50px; width: 150px">
-				<div style="float:left; width: auto; height: auto">
+			<div id="micropost_description">
+				<div style="float:left; width:auto; height:40px; padding-right:0.5em">
 					<% if find_micropost_imagefile(@micropost.id) == nil %>
 						<%= link_to image_tag(find_micropost_userimage(@micropost.id), style:"width:35px; margin-left:2%; margin-top:0", id: "like_small_picture"), user_path(@micropost.user)%>
 					<% else %>
@@ -34,21 +36,19 @@
 							<div style="margin-top:0.5em" id="form_<%= @micropost.user_id %>">
 					  			<% if current_user.following?(@micropost.user) %>
 								<% else %>
-						      		<%= render :partial => 'shared/follow_favorites', :locals => { :user => @micropost.user } %>
+						      	  <%= render :partial => 'shared/follow_favorites', :locals => { :user => @micropost.user } %>
 								<% end %>
 							</div>
 						<% end %>
 					<% end %>
 				</div>
-				<div style="float:left; margin-left:3%">
-					<span id="nickname_link_modal"><%= link_to @micropost.user.nickname, 
-																			user_path(@micropost.user)%></span><br/>
-					<div id="role_link_modal"><%= @micropost.user.roles.first.name %></div>
-				</div>
+				<span id="nickname_link_modal"><%= link_to @micropost.user.nickname, 
+													user_path(@micropost.user)%></span><br/>
+				<div id="role_link_modal"><%= @micropost.user.roles.first.name %></div>
 		  	</div>
-		  	<span class="timestamp">
+		  	<div class="timestamp" style="text-align:right">
               <%= time_ago_in_words(@micropost.created_at) %>.
-            </span>
+            </div>
 			<hr />
 			<p id="description_micropost" style="color:#555"><%= @micropost.description %></p>
 			<div id="micropost_leer_mas" style="margin-bottom:1em"><%= link_to "Leer más", @micropost.url, target: '_blank' %>
@@ -108,7 +108,6 @@
 </div>
 <script src="http://connect.facebook.net/en_US/all.js" type="text/javascript">
 
-<<<<<<< HEAD
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -123,6 +122,3 @@ $(document).ready(function(){
 		$('#modal-micropost').css('background-color', 'rgba(0, 0, 0, 0.298039)');	
 	}, 1000);
 });
-=======
->>>>>>> 717bed9ef30234e636e0fcc801ebd3cc560445f3
-</script>
