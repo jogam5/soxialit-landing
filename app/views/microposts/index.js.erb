@@ -1,6 +1,8 @@
 $('#contenedor').append('<%= j render(@microposts) %>');
 <% if @microposts.next_page %>
   $('.pagination').replaceWith('<%= j will_paginate(@microposts) %>');
+	var wall = new Masonry( document.getElementById('contenedor') );
+	wall.reload();
 <% else %>
   $('.pagination').remove();
 <% end %>
