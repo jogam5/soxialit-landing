@@ -11,9 +11,14 @@ jQuery(function() {
       url = $('.pagination .next_page').attr('href');
       if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 50) {
         $('.pagination').text("Cargando los siguientes posts...");
+
         return $.getScript(url);
       }
     });
     return $(window).scroll();
+		var container = document.getElementById('contenedor');
+		var wall = new Masonry(container);
+		container.style.display = "block";
+		wall.reload();
   }
 });

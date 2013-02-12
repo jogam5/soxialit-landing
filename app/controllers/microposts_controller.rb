@@ -11,7 +11,7 @@ class MicropostsController < ApplicationController
   end
   
   def index  
-     @microposts = Micropost.page(params[:page]).per_page(50)
+     @microposts = Micropost.page(params[:page]).per_page(2)
   end
 
   def show
