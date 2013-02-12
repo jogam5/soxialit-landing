@@ -3,13 +3,31 @@ $(document).ready(function(){
 	$('.fb-like').data('href', pathname);
 });
 
-
+/*
 jQuery(function() {
   if ($('.pagination').length) {
+    $(window).scroll(function() {
+      var url;
+      url = $('.pagination .next_page').attr('href');
+      if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+        $('.pagination').text("Cargando los siguientes posts...");
+        return $.getScript(url);
+      }
+    });
+    return $(window).scroll();
+  }
+});
+*/
+
+
+
+
+
+
+/*if ($('.pagination').length) {
       	$('#pagination').bind('click', function(){
 				var url;
 		      url = $('.pagination .next_page').attr('href');
 		     return $.getScript(url);
 			})
-  		}
-});
+  		}*/
