@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :list_items, :list_projects, :favorites, 
-                 :followers, :following, :fotografo, :boutique, :fashionlover, :blogger, :bio, :designer, :index, :ubicacion, :notificacion, :product_modal ]
+                 :followers, :following, :fotografo, :boutique, :fashionlover, :blogger, :bio, :designer, :index, :ubicacion, :product_modal ]
   #before_filter :authenticate_user!, :only => [:index, :new, :edit, :create, :update]
   load_and_authorize_resource
 

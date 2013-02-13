@@ -1,6 +1,24 @@
 $(document).ready(function(){
 	var pathname = window.location.href;
 	$('.fb-like').data('href', pathname);
+	$('#micropost_url').val(pathname);
+});
+
+
+$(document).ready(function(){
+	$('#copy-some-txt').zclip({
+	    copy: 
+			function(e){
+				url = $('#micropost_url').val();
+				return url 
+			},
+	    beforeCopy: function() {
+		 	$('#copied').fadeIn('slow');
+	    },
+	    afterCopy: function() {
+		 	$('#copied').fadeOut('slow');
+	    }
+	});
 });
 
 
