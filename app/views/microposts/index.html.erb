@@ -28,10 +28,16 @@ $(function() {
 	});
 });
 
-setTimeout(function(){
-	var wall = new Masonry( document.getElementById('contenedor') );
-	wall.reload();
-}, 500);
+
+$(function() {
+  $('body').bind('ajaxComplete', function() {
+	setTimeout(function(){
+		var wall = new Masonry( document.getElementById('contenedor') );
+		wall.reload();
+	}, 500);
+  });
+});
+
 
 </script>
 
