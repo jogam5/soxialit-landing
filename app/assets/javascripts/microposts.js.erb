@@ -4,17 +4,6 @@ $(document).ready(function(){
 });
 
 
-jQuery(function(){
-	if ($('.pagination').length) {
-		var url;
-		$('#paginate').show();
-		$('#paginate').bind('click', function(){
-			url = $('.pagination .next_page').attr('href');
-			return $.getScript(url);
-		});
-	}
-});
-
 
 /*
 jQuery(function() {

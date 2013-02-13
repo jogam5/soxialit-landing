@@ -15,11 +15,23 @@
 <script type="text/javascript">
 
 $(function() {
-  $('body').bind('ajaxComplete', function() {
-		var wall = new Masonry( document.getElementById('contenedor') );
-		wall.reload();
-  });
+ 
+	jQuery(function(){
+		if ($('.pagination').length) {
+			var url;
+			url = $('.pagination .next_page').attr('href');
+			$('#paginate').show();
+			$('#paginate').bind('click', function(){
+				return $.getScript(url);
+			});
+		}
+	});
 });
+
+setTimeout(function(){
+	var wall = new Masonry( document.getElementById('contenedor') );
+	wall.reload();
+}, 500);
 
 </script>
 
