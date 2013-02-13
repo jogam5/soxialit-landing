@@ -33,9 +33,6 @@
 		  		<% if signed_in? %>
 					<div style="margin-right:-2%;" class="votacion" id="votacion_<%= micropost.id %>">
 						<% if micropost.user_id == current_user.id %>
-							<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
-								<%= image_tag("loading.gif") %>
-							</div>
 							<span id="want_<%= micropost.id %>">
 								<div id="love_icon_<%= micropost.id %>" class="love_icon_active">
 									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_z.target_id_<%= micropost.id %>">
@@ -44,9 +41,6 @@
 								</div>
 					   		</span>
 							<% elsif current_user && !current_user.voted_for?(micropost) %>
-							<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
-								<%= image_tag("loading.gif") %>
-							</div>
 	        				<span id="want_<%= micropost.id  %>">
 	        					<div id="love_icon_<%= micropost.id  %>" class="love_icon">
 									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= micropost.id  %>">
@@ -56,9 +50,6 @@
 	        					</div>
 	           				</span>
 							<% else %>
-							<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
-								<%= image_tag("loading.gif") %>
-							</div>
 	        				<span id="want_<%= micropost.id %>">
 	        					<div id="love_icon_<%= micropost.id %>" class="love_icon_active">
 									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= micropost.id %>">
