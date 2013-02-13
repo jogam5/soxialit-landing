@@ -6,6 +6,8 @@ class Micropost < ActiveRecord::Base
   has_many :comments, :as => :commentable, :dependent => :destroy
 
   validates :url, presence: true, format: { with: URI::regexp(%w(http https)) }
+
+  #title
   
   has_reputation :lovs, source: :user, aggregated_by: :sum
 
