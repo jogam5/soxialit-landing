@@ -14,11 +14,11 @@
 						<li id="feedback_header"><%= link_to "HELP US!", feedbacks_path, :title => "Te queremos escuchar"%></li>
 						<li class="divider-vertical"></li>
 					    <li id="feedback_header">
-							<%= link_to image_tag('shop.png', style:"margin-left:15%"), products_path, :title => "Comprar" %>
+							<%= link_to image_tag('shop1.png', style:"margin-left:15%; margin-top:-10%"), products_path, :title => "Comprar" %>
 					   	</li>
 					   	<li class="divider-vertical"></li>
 					    <li id="feedback_header">
-							<%= link_to '<i class="icon-th-list icon-white"></i>'.html_safe, microposts_path, :title => "Descubre" %>
+							<%= link_to image_tag('micropost1.png', style: "margin-top:-8%"), microposts_path, :title => "Descubre" %>
 					   	</li>
 						<li class="divider-vertical"></li>
 						<li><% if !current_user.picture.present? %>

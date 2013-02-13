@@ -15,7 +15,9 @@ $('#modal-micropost').click(function(){
 });
 
 $(document).keyup(function(e) {
-  if (e.keyCode == 27) { $('#modal-id').fadeOut('fast');
+  if (e.keyCode == 27) { 
+	$('#modal-micropost').css('background-color', 'transparent')
+	$('#modal-micropost').hide('slide');
 	window.onscroll = null;
 	document.documentElement.style.overflowY = "scroll";
    }   // esc

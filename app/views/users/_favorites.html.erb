@@ -1,216 +1,225 @@
-<div id="ajax-status" style="float:left; position:absolute; display:none; margin: 0% 33%; z-index: 3000">
-	<%= image_tag("ajax-loader.gif") %>
-</div>
-<div id="contenedor" class="clearfix masonry" style="margin-left:3%; margin-right: 8%; width:940px">
-  <% @user.evaluations.each do |z| %>
-    <div class="box photo col3 masonry-brick">
-	  	<% if z.target_type == "Micropost" %>	
-		  <div class="frame_link_favorites">
-			<div style="max-width: 270px; position:relative; text-align:center; height:auto; padding:5% 5% 5% 5%">
-			  <%= link_to image_tag(find_micropost_image(z.target_id), style:"margin-left:5%; max-width: 90%; height:auto"), micropost_path(z.target_id), target: '_blank' %>
-			  <p id="item_link">
-				<%= link_to truncate(find_micropost_title(z.target_id), :lenght => 35), find_micropost_url(z.target_id), target: '_blank' %>
-			  </p>
-			  <p id="description_link_favorites"><%= find_micropost_description(z.target_id)%></p>
-			  <hr/ >
-			  <div id="micropost_description" style="height:50px; width: 150px">
-				<div style="float:left; width: auto; height: auto">
-					<% if find_micropost_imagefile(z.target_id) == nil %>
-						<%= link_to image_tag(find_micropost_userimage(z.target_id), style:"width:35px; margin-left:2%; margin-top:0", id: "like_small_picture"), user_path(find_micropost_userurl(z.target_id))%>
-					<% else %>
-						<%= link_to image_tag(find_micropost_imagefile(z.target_id), style:"width:35px; margin-left:2%; margin-top:0", id: "like_small_picture"), user_path(find_micropost_userurl(z.target_id))%>
-					<% end %>
-					<% if user_signed_in? %>
-						<% unless current_user?(find_micropost(z.target_id).user) %>
-							<div style="margin-top:0.5em" id="form_<%= find_micropost_userid(z.target_id) %>" %>
-						  	<% if current_user.following?(find_micropost(z.target_id).user) %>
+  <% if !@user.evaluations.first.nil? %>
+	<div id="contenedor" class="clearfix masonry" style="margin-left:3%; margin-right: 8%; width:940px">
+  		<% @user.evaluations.each do |z| %>
+		    <div class="box photo col3 masonry-brick">
+			  	<% if z.target_type == "Micropost" %>	
+				  <div class="frame_link_favorites">
+					<div style="max-width: 270px; position:relative; text-align:center; height:auto; padding:5% 5% 5% 5%">
+					  <%= link_to image_tag(find_micropost_image(z.target_id), style:"margin-left:5%; max-width: 90%; height:auto"), micropost_path(z.target_id), target: '_blank' %>
+					  <p id="title_link_modal">
+						<%= link_to truncate(find_micropost_title(z.target_id), :lenght => 35), find_micropost_url(z.target_id), target: '_blank' %>
+					  </p>
+					  <hr/ >
+					  <div id="micropost_description" style="height:50px; width: 150px">
+						<div style="float:left; width: auto; height: auto">
+							<% if find_micropost_imagefile(z.target_id) == nil %>
+								<%= link_to image_tag(find_micropost_userimage(z.target_id), style:"width:35px; margin-left:2%; margin-top:0", id: "like_small_picture"), user_path(find_micropost_userurl(z.target_id))%>
 							<% else %>
-							      <%= render :partial => 'shared/follow_favorites', :locals => { :user => find_micropost(z.target_id).user } %>
+								<%= link_to image_tag(find_micropost_imagefile(z.target_id), style:"width:35px; margin-left:2%; margin-top:0", id: "like_small_picture"), user_path(find_micropost_userurl(z.target_id))%>
 							<% end %>
+							<% if user_signed_in? %>
+								<% unless current_user?(find_micropost(z.target_id).user) %>
+									<div style="margin-top:0.5em" id="form_<%= find_micropost_userid(z.target_id) %>" %>
+								  	<% if current_user.following?(find_micropost(z.target_id).user) %>
+									<% else %>
+									      <%= render :partial => 'shared/follow_favorites', :locals => { :user => find_micropost(z.target_id).user } %>
+									<% end %>
+									</div>
+								<% end %>
+							<% end %>
+						</div>
+						<div style="float:left; margin-left:3%">
+							<span style="font-size:0.8em" id="item_link"><%= link_to truncate(find_micropost_nickname(z.target_id), :length => 15), user_path(find_micropost_userurl(z.target_id))%></span>
+						</div>
+					  </div>
+						<div style="float:right; margin-top: -20%">
+						  <% if signed_in? %>
+							<div style="margin-right:-2%;" class="votacion" id="votacion_<%= z.target_id %>">
+							  	<% if find_micropost_userid(z.target_id) == current_user.id %>
+									<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
+										<%= image_tag("loading.gif") %>
+									</div>
+									<span id="want_<%= z.target_id %>">
+										<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
+											<span style="float:left; display:block; margin-left:-50%; color:black" id="love_z.target_id_<%= z.target_id %>">
+												<%= find_micropost(z.target_id).reputation_value_for(:lovs).to_i %>
+											</span>
+										</div>
+								   	</span>
+								<% elsif current_user && !current_user.voted_for?(find_micropost(z.target_id)) %>
+									<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
+										<%= image_tag("loading.gif") %>
+									</div>
+				        			<span id="want_<%= z.target_id  %>">
+				        				<div id="love_icon_<%= z.target_id  %>" class="love_icon">
+											<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= z.target_id  %>">
+				        						<%= find_micropost(z.target_id).reputation_value_for(:lovs).to_i %>
+				        					</span>
+				        					<%= link_to "x", lovs_micropost_path(find_micropost(z.target_id), type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
+				        				</div>
+				           			</span>
+								<% else %>
+									<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
+										<%= image_tag("loading.gif") %>
+									</div>
+				        			<span id="want_<%= z.target_id %>">
+				        				<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
+											<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= z.target_id %>">
+				        						<%= find_micropost(z.target_id).reputation_value_for(:lovs).to_i %>
+				        					</span>
+				        				</div>
+				       				</span>
+								<% end %>
 							</div>
-						<% end %>
-					<% end %>
-				</div>
-				<div style="float:left; margin-left:3%">
-					<span style="font-size:0.8em" id="item_link"><%= link_to truncate(find_micropost_nickname(z.target_id), :length => 15), user_path(find_micropost_userurl(z.target_id))%></span>
-				</div>
-			  </div>
-				<div style="float:right; margin-top: -20%">
-				  <% if signed_in? %>
-					<div style="margin-right:-2%;" class="votacion" id="votacion_<%= z.target_id %>">
-					  	<% if find_micropost_userid(z.target_id) == current_user.id %>
-							<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
-								<%= image_tag("loading.gif") %>
-							</div>
-							<span id="want_<%= z.target_id %>">
-								<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
-									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_z.target_id_<%= z.target_id %>">
-										<%= find_micropost(z.target_id).reputation_value_for(:lovs).to_i %>
-									</span>
-								</div>
-						   	</span>
-						<% elsif current_user && !current_user.voted_for?(find_micropost(z.target_id)) %>
-							<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
-								<%= image_tag("loading.gif") %>
-							</div>
-		        			<span id="want_<%= z.target_id  %>">
-		        				<div id="love_icon_<%= z.target_id  %>" class="love_icon">
-									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= z.target_id  %>">
-		        						<%= find_micropost(z.target_id).reputation_value_for(:lovs).to_i %>
-		        					</span>
-		        					<%= link_to "x", lovs_micropost_path(find_micropost(z.target_id), type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
-		        				</div>
-		           			</span>
-						<% else %>
-							<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
-								<%= image_tag("loading.gif") %>
-							</div>
-		        			<span id="want_<%= z.target_id %>">
-		        				<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
-									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= z.target_id %>">
-		        						<%= find_micropost(z.target_id).reputation_value_for(:lovs).to_i %>
-		        					</span>
-		        				</div>
-		       				</span>
-						<% end %>
+						  <% end %>
+						</div>
 					</div>
-				  <% end %>
-				</div>
-			</div>
-		  </div>
-		<% elsif z.target_type == "Product" %>
-	 	  <div id="favorites_frame">
-			<div id="favorites_image">
-		  	  <%= link_to tag(:img, { :src => find_foto(z.target_id) }, false), product_path(z.target_id) %>
-				<% if signed_in? %>
-				  <div style="margin-right:-12%; margin-top: -9%" class="votacion" id="votacion_<%= z.target_id %>">
-					<% if find_product(z.target_id) == current_user.id %>
-						<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
-							<%= image_tag("loading.gif") %>
-						</div>
-						<span id="want_<%= z.target_id %>">
-							<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
-								<span style="float:left; display:block; margin-left:-50%; color:black" id="love_z.target_id_<%= z.target_id %>">
-									<%= find_product(z.target_id).reputation_value_for(:votes).to_i %>
-								</span>
+				  </div>
+				<% elsif z.target_type == "Product" %>
+			 	  <div id="favorites_frame">
+					<div id="favorites_image">
+				  	  <%= link_to tag(:img, { :src => find_foto(z.target_id) }, false), product_path(z.target_id) %>
+						<% if signed_in? %>
+						  <div style="margin-right:-12%; margin-top: -9%" class="votacion" id="votacion_<%= z.target_id %>">
+							<% if find_product(z.target_id) == current_user.id %>
+								<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
+									<%= image_tag("loading.gif") %>
+								</div>
+								<span id="want_<%= z.target_id %>">
+									<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
+										<span style="float:left; display:block; margin-left:-50%; color:black" id="love_z.target_id_<%= z.target_id %>">
+											<%= find_product(z.target_id).reputation_value_for(:votes).to_i %>
+										</span>
+									</div>
+							   	</span>
+							<% elsif current_user && !current_user.voted_for?(find_product(z.target_id)) %>
+								<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
+									<%= image_tag("loading.gif") %>
+								</div>
+			        			<span id="want_<%= z.target_id  %>">
+			        				<div id="love_icon_<%= z.target_id  %>" class="love_icon">
+										<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= z.target_id  %>">
+			        						<%= find_product(z.target_id).reputation_value_for(:votes).to_i %>
+			        					</span>
+			        					<%= link_to "x", vote_product_path(find_product(z.target_id), type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
+			        				</div>
+			           			</span>
+							<% else %>
+								<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
+									<%= image_tag("loading.gif") %>
+								</div>
+			        			<span id="want_<%= z.target_id %>">
+			        				<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
+										<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= z.target_id %>">
+			        						<%= find_product(z.target_id).reputation_value_for(:votes).to_i %>
+			        					</span>
+			        				</div>
+			       				</span>
+							<% end %>
+						  </div>
+						<% end %>
+			 		</div>
+				 	<p style="text-align:center"><strong><%= find_title(z.target_id) %></strong> 
+				 		<span style="color:#DD390D">$<%= find_price(z.target_id) %></span> by <span id="product_designer"><%= link_to find_designer(z.target_id), user_path(find_user(z.target_id)) %></span>
+				 	</p>
+			  	  </div>
+				<% elsif z.target_type == "Post" %>
+				  <div class="frame_link_favorites">
+					<div style="max-width: 270px; position:relative; text-align:center; height:auto; padding:5% 5% 2% 5%">
+					  	<%= link_to image_tag(find_post_image(z.target_id), style:"position: relative; margin:0%; max-width:100%; height:auto"), post_path(find_post_url(z.target_id)), target: '_blank' %>
+					  	<p id="title_link_modal">
+					      <%= link_to truncate(find_post_title(z.target_id), :length => 35), find_post_link(z.target_id), target: '_blank' %>
+					  	</p>
+						<hr/ >
+						<div style="height:50px; width: 150px" id="micropost_description">
+							<div style="float:left; width: auto; height: auto">
+						 	 <% if find_post_imagefile(z.target_id) == nil %>
+								<%= link_to image_tag(find_post_userimage(z.target_id), style:"width:35px; margin-left:2%; margin-top:0%", id: "like_small_picture"), user_path(find_post_userurl(z.target_id))%>
+							  <% else %>
+								<%= link_to image_tag(find_post_imagefile(z.target_id), style:"width:35px; margin-left:2%; margin-top:0%", id: "like_small_picture"), user_path(find_post_userurl(z.target_id))%>
+							  <% end %>
+								<% if user_signed_in? %>
+									<% unless current_user?(find_post(z.target_id).user) %>
+										<div style="margin-top:0.5em" id="form_<%= find_post_userid(z.target_id) %>" %>
+									  	<% if current_user.following?(find_post(z.target_id).user) %>
+										<% else %>
+										      <%= render :partial => 'shared/follow_favorites', :locals => { :user => find_post(z.target_id).user } %>
+										<% end %>
+										</div>
+									<% end %>
+								<% end %>
 							</div>
-					   	</span>
-					<% elsif current_user && !current_user.voted_for?(find_product(z.target_id)) %>
-						<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
-							<%= image_tag("loading.gif") %>
+							<div style="float:left; margin-left: 3%">
+								<span style="font-size:0.8em" id="item_link"><%= link_to truncate(find_post_nickname(z.target_id), :lenght => 15), user_path(find_post_userurl(z.target_id))%></span>
+							</div>
 						</div>
-	        			<span id="want_<%= z.target_id  %>">
-	        				<div id="love_icon_<%= z.target_id  %>" class="love_icon">
-								<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= z.target_id  %>">
-	        						<%= find_product(z.target_id).reputation_value_for(:votes).to_i %>
-	        					</span>
-	        					<%= link_to "x", vote_product_path(find_product(z.target_id), type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
-	        				</div>
-	           			</span>
-					<% else %>
-						<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
-							<%= image_tag("loading.gif") %>
+						  <div style="float:right; margin-top: -10%">
+							<% if signed_in? %>
+							  <div style="margin-right:-2%; margin-top: -54%" class="votacion" id="votacion_<%= z.target_id %>">
+								<% if find_post_userid(z.target_id) == current_user.id %>
+									<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
+										<%= image_tag("loading.gif") %>
+									</div>
+									<span id="want_<%= z.target_id %>">
+										<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
+											<span style="float:left; display:block; margin-left:-50%; color:black" id="love_z.target_id_<%= z.target_id %>">
+												<%= find_post(z.target_id).reputation_value_for(:likes).to_i %>
+											</span>
+										</div>
+								   	</span>
+								<% elsif current_user && !current_user.voted_for?(find_post(z.target_id)) %>
+									<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
+										<%= image_tag("loading.gif") %>
+									</div>
+				        			<span id="want_<%= z.target_id  %>">
+				        				<div id="love_icon_<%= z.target_id  %>" class="love_icon">
+											<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= z.target_id  %>">
+				        						<%= find_post(z.target_id).reputation_value_for(:likes).to_i %>
+				        					</span>
+				        					<%= link_to "x", likes_post_path(find_post(z.target_id), type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
+				        				</div>
+				           			</span>
+								<% else %>
+									<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
+										<%= image_tag("loading.gif") %>
+									</div>
+				        			<span id="want_<%= z.target_id %>">
+				        				<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
+											<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= z.target_id %>">
+				        						<%= find_post(z.target_id).reputation_value_for(:likes).to_i %>
+				        					</span>
+				        				</div>
+				       				</span>
+								<% end %>
+							  </div>
+							<% end %>
 						</div>
-	        			<span id="want_<%= z.target_id %>">
-	        				<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
-								<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= z.target_id %>">
-	        						<%= find_product(z.target_id).reputation_value_for(:votes).to_i %>
-	        					</span>
-	        				</div>
-	       				</span>
-					<% end %>
+					</div>
 				  </div>
 				<% end %>
-	 		</div>
-		 	<p style="text-align:center"><strong><%= find_title(z.target_id) %></strong> 
-		 		<span style="color:#DD390D">$<%= find_price(z.target_id) %></span> by <span id="product_designer"><%= link_to find_designer(z.target_id), user_path(find_user(z.target_id)) %></span>
-		 	</p>
-	  	  </div>
-		<% elsif z.target_type == "Post" %>
-		  <div class="frame_link_favorites">
-			<div style="max-width: 270px; position:relative; text-align:center; height:auto; padding:5% 5% 2% 5%">
-			  	<%= link_to image_tag(find_post_image(z.target_id), style:"position: relative; margin:0%; max-width:100%; height:auto"), post_path(find_post_url(z.target_id)), target: '_blank' %>
-			  	<p id="item_link">
-			      <%= link_to truncate(find_post_title(z.target_id), :length => 35), find_post_link(z.target_id), target: '_blank' %>
-			  	</p>
-				<p id="description_link_favorites"><%= find_post_body(z.target_id)%></p>
-				<hr/ >
-				<div style="height:50px; width: 150px" id="micropost_description">
-					<div style="float:left; width: auto; height: auto">
-				 	 <% if find_post_imagefile(z.target_id) == nil %>
-						<%= link_to image_tag(find_post_userimage(z.target_id), style:"width:35px; margin-left:2%; margin-top:0%", id: "like_small_picture"), user_path(find_post_userurl(z.target_id))%>
-					  <% else %>
-						<%= link_to image_tag(find_post_imagefile(z.target_id), style:"width:35px; margin-left:2%; margin-top:0%", id: "like_small_picture"), user_path(find_post_userurl(z.target_id))%>
-					  <% end %>
-						<% if user_signed_in? %>
-							<% unless current_user?(find_post(z.target_id).user) %>
-								<div style="margin-top:0.5em" id="form_<%= find_post_userid(z.target_id) %>" %>
-							  	<% if current_user.following?(find_post(z.target_id).user) %>
-								<% else %>
-								      <%= render :partial => 'shared/follow_favorites', :locals => { :user => find_post(z.target_id).user } %>
-								<% end %>
-								</div>
-							<% end %>
-						<% end %>
-					</div>
-					<div style="float:left; margin-left: 3%">
-						<span style="font-size:0.8em" id="item_link"><%= link_to truncate(find_post_nickname(z.target_id), :lenght => 15), user_path(find_post_userurl(z.target_id))%></span>
-					</div>
-				</div>
-				  <div style="float:right; margin-top: -10%">
-					<% if signed_in? %>
-					  <div style="margin-right:-2%; margin-top: -54%" class="votacion" id="votacion_<%= z.target_id %>">
-						<% if find_post_userid(z.target_id) == current_user.id %>
-							<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
-								<%= image_tag("loading.gif") %>
-							</div>
-							<span id="want_<%= z.target_id %>">
-								<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
-									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_z.target_id_<%= z.target_id %>">
-										<%= find_post(z.target_id).reputation_value_for(:likes).to_i %>
-									</span>
-								</div>
-						   	</span>
-						<% elsif current_user && !current_user.voted_for?(find_post(z.target_id)) %>
-							<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
-								<%= image_tag("loading.gif") %>
-							</div>
-		        			<span id="want_<%= z.target_id  %>">
-		        				<div id="love_icon_<%= z.target_id  %>" class="love_icon">
-									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= z.target_id  %>">
-		        						<%= find_post(z.target_id).reputation_value_for(:likes).to_i %>
-		        					</span>
-		        					<%= link_to "x", likes_post_path(find_post(z.target_id), type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
-		        				</div>
-		           			</span>
-						<% else %>
-							<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
-								<%= image_tag("loading.gif") %>
-							</div>
-		        			<span id="want_<%= z.target_id %>">
-		        				<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
-									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= z.target_id %>">
-		        						<%= find_post(z.target_id).reputation_value_for(:likes).to_i %>
-		        					</span>
-		        				</div>
-		       				</span>
-						<% end %>
-					  </div>
-					<% end %>
-				</div>
-			</div>
-		  </div>
+		   	</div>
 		<% end %>
-   	</div>
-  <% end %>
-</div>
+	</div>
+	<% else %>
+	<div class="container">
+		<div class="row">
+			<div style="margin-left:30%">
+				<p class="description-brand" style="margin-left:4%"><%= link_to "Guarda tus items ó posts favoritos", microposts_path %></p>
+				<div><%= link_to image_tag('no_favorites.png'), microposts_path%></div>
+			</div>	
+		</div>
+	</div>
+	<% end %>
 
 <script type="text/javascript">
 
 $(function() {
   $('body').bind('ajaxComplete', function() {
-	var wall = new Masonry( document.getElementById('contenedor') );
-	wall.reload();
+	var container = document.getElementById('contenedor');
+	if (container){
+		var wall = new Masonry(container);
+		wall.reload();
+	}
   });
 });
 
