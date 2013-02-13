@@ -62,6 +62,8 @@ iconmonstr-photo-camera-6-icon.png: iconmonstr-photo-camera-6-icon-61900fbd017f3
 iconmonstr-photo-camera-6-icon/index.png: iconmonstr-photo-camera-6-icon-61900fbd017f347cd358207a5f84fd0c.png
 item.jpg: item-26da9de6e79aa1c13c2d724e0e85d13d.jpg
 item/index.jpg: item-26da9de6e79aa1c13c2d724e0e85d13d.jpg
+item.png: item-5630845e8dfe4450b1a50b35a4483743.png
+item/index.png: item-5630845e8dfe4450b1a50b35a4483743.png
 item_tag.png: item_tag-7bb49638a8392501de70299085249abc.png
 item_tag/index.png: item_tag-7bb49638a8392501de70299085249abc.png
 ligth1.jpg: ligth1-291f8545377d60a02be8bfdb3a709688.jpg
@@ -88,8 +90,14 @@ men_size_guide.png: men_size_guide-900445f91c40820f9678a9c7dc2ed952.png
 men_size_guide/index.png: men_size_guide-900445f91c40820f9678a9c7dc2ed952.png
 mercadopago.png: mercadopago-bb7556cd4e78e4162e41e2885c986f75.png
 mercadopago/index.png: mercadopago-bb7556cd4e78e4162e41e2885c986f75.png
+micropost.png: micropost-bbbde30aff0a45351b64f3039eed6217.png
+micropost/index.png: micropost-bbbde30aff0a45351b64f3039eed6217.png
+micropost1.png: micropost1-67e5eda8efa954a82b86b10fb484ab8a.png
+micropost1/index.png: micropost1-67e5eda8efa954a82b86b10fb484ab8a.png
 mujer.png: mujer-38072119915c33d184a02e4511a4fa1b.png
 mujer/index.png: mujer-38072119915c33d184a02e4511a4fa1b.png
+no_favorites.png: no_favorites-8648976685dba8d7cc1ab9975c6cd6b9.png
+no_favorites/index.png: no_favorites-8648976685dba8d7cc1ab9975c6cd6b9.png
 original_loading.gif: original_loading-bcf4af504cedc42ea7c47001775d62d1.gif
 original_loading/index.gif: original_loading-bcf4af504cedc42ea7c47001775d62d1.gif
 paypal.png: paypal-d3249b74d1d355a4a96550ca5b55e930.png
@@ -114,6 +122,8 @@ share.png: share-20989ceff48427cd450e5eddf9a25089.png
 share/index.png: share-20989ceff48427cd450e5eddf9a25089.png
 shop.png: shop-6c0d0e18293b9bb641dcd2da0c8d1695.png
 shop/index.png: shop-6c0d0e18293b9bb641dcd2da0c8d1695.png
+shop1.png: shop1-c6c55f0353c77620799d32062631434f.png
+shop1/index.png: shop1-c6c55f0353c77620799d32062631434f.png
 soxialit.ico: soxialit-c30f561cbc68078f44bc39cefdc90623.ico
 soxialit/index.ico: soxialit-c30f561cbc68078f44bc39cefdc90623.ico
 soxialit.png: soxialit-41251bfa6b74179a033cc2035aada3c7.png
@@ -140,10 +150,10 @@ wrong5.jpg: wrong5-208812eb19f241c59f80a45c9f6554a4.jpg
 wrong5/index.jpg: wrong5-208812eb19f241c59f80a45c9f6554a4.jpg
 zapato.png: zapato-1029d6c5aa14da47143753767914f588.png
 zapato/index.png: zapato-1029d6c5aa14da47143753767914f588.png
-application.js: application-7a90754ac3c48906297ebb35e5450fa6.js
-application/index.js: application-7a90754ac3c48906297ebb35e5450fa6.js
-application.css: application-e1f2dc3cfc6b8b03adf3b60056e5903f.css
-application/index.css: application-e1f2dc3cfc6b8b03adf3b60056e5903f.css
+application.js: application-886c5d5dcf7f751361fb1ed83a734c26.js
+application/index.js: application-886c5d5dcf7f751361fb1ed83a734c26.js
+application.css: application-24c1fcf51df8c819bae2eaaa93ca0862.css
+application/index.css: application-24c1fcf51df8c819bae2eaaa93ca0862.css
 fontawesome-webfont.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont/index.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont.svg: fontawesome-webfont-c3f3594758768fbb43eae746d18b3b50.svg
