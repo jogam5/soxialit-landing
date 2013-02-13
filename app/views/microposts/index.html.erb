@@ -51,7 +51,22 @@ $(function() {
   });
 });
 
-
+  	$('.frame_link_favorites').live({
+		mouseenter: 
+		function(e){
+			$(this).css("box-shadow", "1px 1px 2px 0px #d0d0d0");
+			$(this).css("margin-top", "2%");
+			
+		},
+		mouseleave:
+		function (e){
+			e.preventDefault();
+			$(this).css("box-shadow", "none");
+			$(this).css("margin-top", "1%");
+			
+		}
+	});
+			
 </script>
 
 <script type="text/javascript">mixpanel.track("Microposts Feed")</script>
