@@ -21,7 +21,7 @@
 								</div>
 								<span id="want_<%= product.id %>">
 									<div id="love_icon_<%= product.id %>" class="love_icon">
-										<span style="float:left; display:none; margin-left:-50%; color:black" id="love_product_<%= product.id %>">
+										<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= product.id %>">
 											<%= product.reputation_value_for(:votes).to_i %>
 										</span>
 										<%= link_to "xxx", vote_product_path(product, type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
