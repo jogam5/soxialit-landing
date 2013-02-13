@@ -12,4 +12,17 @@
 	</div>
 </div>
 
+<script type="text/javascript">
+
+$(function() {
+  $('body').bind('ajaxComplete', function() {
+	setTimeout(function(){
+		var wall = new Masonry( document.getElementById('contenedor') );
+		wall.reload();
+	}, 500);
+  });
+});
+
+</script>
+
 <script type="text/javascript">mixpanel.track("Microposts Feed")</script>
