@@ -1,2 +1,16 @@
 $('<%= escape_javascript(render(@comment)) %>').appendTo($('#comment_<%= @comment.commentable_type.downcase %>_<%= @comment.commentable_id %>'));
 $('#form_<%= @comment.commentable_id %> > form')[0].reset();
+
+String.prototype.convertirURL = function() {
+   return this.replace(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/, function(url) {
+        return url.link(url);
+    });
+};
+$(function(){
+	var a = $(".comment_text");
+	$.each(a,function(){
+		var b = $(this).find("span").text();
+		$(this).find("span").html(b.convertirURL());
+	});
+});
+	
