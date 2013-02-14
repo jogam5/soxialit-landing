@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  layout "registro", :only => [ :registro ]
+
   def home
     @stats = Rails.cache.stats.first.last unless Rails.env.development?
   	@comment = Comment.new
@@ -77,5 +79,8 @@ class StaticPagesController < ApplicationController
   end
   
   def payment
+  end
+
+  def registro
   end
 end
