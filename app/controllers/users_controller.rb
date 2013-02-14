@@ -17,13 +17,18 @@ class UsersController < ApplicationController
   def show
     #@user = User.find(params[:id])
     @user = User.find_by_username(params[:username])
-    @products = product_ok(@user.products)
-    @activities = @user.activities.order("created_at DESC")
-    @comment = Comment.new
+    if @user.nil?
+       flash[:error] = "No se ha encontrado la URL."
+       redirect_to root_path
+     else
+       @products = product_ok(@user.products)
+       @activities = @user.activities.order("created_at DESC")
+       @comment = Comment.new
     
-    respond_to do |format|
-      format.html # show.html.erb
-    end
+       respond_to do |format|
+         format.html # show.html.erb
+       end
+     end
   end
   
   def product_ok(items)
