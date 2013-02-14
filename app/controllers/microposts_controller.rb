@@ -15,13 +15,18 @@ class MicropostsController < ApplicationController
   end
 
   def show
-    @micropost = Micropost.find(params[:id])
-    @user = @micropost.user
-    @comment = Comment.new
-    @comments = @micropost.comments
-    respond_to do |format|
-      format.html # show.html.erb
-    end
+    @micropost = Micropost.find_by_id(params[:id])
+    if @micropost.nil?
+      flash[:error] = "No se ha encontrado el Post."
+      redirect_to microposts_path
+    else
+       @user = @micropost.user
+       @comment = Comment.new
+       @comments = @micropost.comments
+       respond_to do |format|
+         format.html # show.html.erb
+       end
+   end
   end
 
   def create

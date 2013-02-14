@@ -61,7 +61,7 @@ class ProductsController < ApplicationController
     # GET /products/1
     # GET /products/1.json
     def show
-         @product = Product.find(params[:id])
+         @product = Product.find_by_id(params[:id])
         id = @product.user_id
          @user = User.find(id)
          @users = User.all
@@ -340,7 +340,6 @@ class ProductsController < ApplicationController
     def mercadopago_checkout
         product = Product.find(params[:product_id])
         test = products_as_json(product)
-
         mp_data = product.mercadopago_url(test)
         result = JSON.parse(mp_data.to_json)
         initpoint = result["init_point"]
