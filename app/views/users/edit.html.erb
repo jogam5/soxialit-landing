@@ -1,96 +1,101 @@
-<div class="row-fluid">
-  <div style="margin-top:1%" class="span2" id="about_menu">
-    <ul id="menu_about">
-	   <li id= "link_about"><%= link_to "Perfil", perfil_path(:user_id => @user.id), remote: true %></li>
-	   <li id= "link_about"><%= link_to "Datos Personales", ubicacion_path(:user_id => @user.id ), remote: true %></li>
-	   <li id= "link_about"><%= link_to "Notificaciones de Email", notificacion_path(:user_id => @user.id ), remote: true %></li>
-    </ul>
-  </div>
-  <div class="span8" id="about_rightside">
-	  <p id="sub_header_menu">Perfil</p><br />
-	  <p style="font-size: 1.2em; font-weight: lighter; color: #777;">Actualiza tu información básica, biografía, nickname y tu website.</p><br /><br/ >
-    <div class="form-horizontal">
-      <%= form_for @user, :html => { :multipart => true }, :validate => true do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
-        <div class="control-group">
-          <label class="control-label">Nombre de usuario (URL)</label>
-          <div class="controls">
-            <%= f.text_field :username %>
-            <p id="edit_information">http://soxialit.com/<span id="fashion"><%= @user.username %></span></p>
-            <p id="edit_username_format">* Sólo puede contener letras, números y guión bajo.</p>
-          </div>
-          <hr/>
-        </div>
-        <div class="control-group">
-          <label class="control-label">Nombre de perfil</label>
-          <div class="controls">
-            <%= f.text_field :nickname %>
-            <p id="edit_information">Ingresa tu nombre real, así tus contactos te reconocerán fácilmente.</p>
-          </div>
-        </div>
-        <div class="control-group">
-          <label class="control-label">Foto de perfil</label>
-          <div class="controls">
-            <% if !@user.picture.present? %>
-              <%= image_tag "http://graph.facebook.com/#{@user.uid}/picture?type=square" %>
-            <% else %>
-              <%= image_tag(@user.picture_url, :width => 100) %>
-            <% end %>
-            <%= f.file_field :picture %>
-          </div>
-          <br/ >
-        </div>
-        <div class="control-group">
-          <label class="control-label">Ubicación</label>
-          <div class="controls">
-            <%= f.text_field :location %>
-            <p id="edit_information">¿Dónde estás ubicado?</p>
-          </div>
-        </div>
-  	    <div class="control-group">
-          <label class="control-label">Website</label>
-          <div class="controls">
-            <%= f.text_field :website %>
-            <p id="edit_information">Website, Twitter, Blog, etc.</p>
-          </div>
-        </div>
-        <div class="control-group">
-          <label class="control-label">Bio</label>
-          <div class="controls">
-            <%= f.text_area :bio, rows: 4, :class => "span9" %>
-            <p id="edit_information">Cuéntale al mundo un poco de ti.</p>
-          </div>
-        </div>
-        <div class="control-group">
-          <div class="controls">
-            <label class="checkbox">
-              <%= f.check_box :fb %> Publicar tus actividades en tu timeline de Facebook.
-            </label>
-            <p id="edit_information" style="margin-left:1.5em">* Incrementa la audiencia para tus posts, fotos o links compartiéndolos con tus amigos y sus seguidores.</p>
-          </div>
-        </div>
-        <hr />
-        <div class="control-group" style="margin-left:1em">
-          <label class="control-label">Modifica tu Rol</label>
-          <div class="controls">
-            <% for role in Role.find(:all) %>
-              <div>
-                  <% unless role.name == "admin" %>
-                    <%= radio_button_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
-                    <%= role.name %>
-                  <% end %>
-              </div>
-            <% end %>
-          </div>
-        </div>
+<% if current_user == @user %>
+	<div class="row-fluid">
+	  <div style="margin-top:1%" class="span2" id="about_menu">
+	    <ul id="menu_about">
+		   <li id= "link_about"><%= link_to "Perfil", perfil_path(:user_id => @user.id), remote: true %></li>
+		   <li id= "link_about"><%= link_to "Datos Personales", ubicacion_path(:user_id => @user.id ), remote: true %></li>
+		   <li id= "link_about"><%= link_to "Notificaciones de Email", notificacion_path(:user_id => @user.id ), remote: true %></li>
+	    </ul>
+	  </div>
+	  <div class="span8" id="about_rightside">
+		  <p id="sub_header_menu">Perfil</p><br />
+		  <p style="font-size: 1.2em; font-weight: lighter; color: #777;">Actualiza tu información básica, biografía, nickname y tu website.</p><br /><br/ >
+	    <div class="form-horizontal">
+	      <%= form_for @user, :html => { :multipart => true }, :validate => true do |f| %>
+	        <%= render 'shared/error_messages', object: f.object %>
+	        <div class="control-group">
+	          <label class="control-label">Nombre de usuario (URL)</label>
+	          <div class="controls">
+	            <%= f.text_field :username %>
+	            <p id="edit_information">http://soxialit.com/<span id="fashion"><%= @user.username %></span></p>
+	            <p id="edit_username_format">* Sólo puede contener letras, números y guión bajo.</p>
+	          </div>
+	          <hr/>
+	        </div>
+	        <div class="control-group">
+	          <label class="control-label">Nombre de perfil</label>
+	          <div class="controls">
+	            <%= f.text_field :nickname %>
+	            <p id="edit_information">Ingresa tu nombre real, así tus contactos te reconocerán fácilmente.</p>
+	          </div>
+	        </div>
+	        <div class="control-group">
+	          <label class="control-label">Foto de perfil</label>
+	          <div class="controls">
+	            <% if !@user.picture.present? %>
+	              <%= image_tag "http://graph.facebook.com/#{@user.uid}/picture?type=square" %>
+	            <% else %>
+	              <%= image_tag(@user.picture_url, :width => 100) %>
+	            <% end %>
+	            <%= f.file_field :picture %>
+	          </div>
+	          <br/ >
+	        </div>
+	        <div class="control-group">
+	          <label class="control-label">Ubicación</label>
+	          <div class="controls">
+	            <%= f.text_field :location %>
+	            <p id="edit_information">¿Dónde estás ubicado?</p>
+	          </div>
+	        </div>
+	  	    <div class="control-group">
+	          <label class="control-label">Website</label>
+	          <div class="controls">
+	            <%= f.text_field :website %>
+	            <p id="edit_information">Website, Twitter, Blog, etc.</p>
+	          </div>
+	        </div>
+	        <div class="control-group">
+	          <label class="control-label">Bio</label>
+	          <div class="controls">
+	            <%= f.text_area :bio, rows: 4, :class => "span9" %>
+	            <p id="edit_information">Cuéntale al mundo un poco de ti.</p>
+	          </div>
+	        </div>
+	        <div class="control-group">
+	          <div class="controls">
+	            <label class="checkbox">
+	              <%= f.check_box :fb %> Publicar tus actividades en tu timeline de Facebook.
+	            </label>
+	            <p id="edit_information" style="margin-left:1.5em">* Incrementa la audiencia para tus posts, fotos o links compartiéndolos con tus amigos y sus seguidores.</p>
+	          </div>
+	        </div>
+	        <hr />
+	        <div class="control-group" style="margin-left:1em">
+	          <label class="control-label">Modifica tu Rol</label>
+	          <div class="controls">
+	            <% for role in Role.find(:all) %>
+	              <div>
+	                  <% unless role.name == "admin" %>
+	                    <%= radio_button_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
+	                    <%= role.name %>
+	                  <% end %>
+	              </div>
+	            <% end %>
+	          </div>
+	        </div>
 
-        <hr />
-        <div class="control-group">
-          <div class="controls">
-            <%= f.submit "Actualizar Perfil", :class => "button-want" %>
-          </div>
-        </div>
-      <% end %>
-  	</div>
-  </div>
-</div>
+	        <hr />
+	        <div class="control-group">
+	          <div class="controls">
+	            <%= f.submit "Actualizar Perfil", :class => "button-want" %>
+	          </div>
+	        </div>
+	      <% end %>
+	  	</div>
+	  </div>
+	</div>
+<% else %>
+	<h1>¡Hey! No puedes acceder a esta página</h1>
+	<%= link_to "Regresar a mi Perfil", user_path(current_user) %>
+<% end %>

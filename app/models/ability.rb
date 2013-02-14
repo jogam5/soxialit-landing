@@ -23,7 +23,6 @@ class Ability
       cannot :vote, Product, :user_id => user.id
       can :vote, Micropost
       cannot :vote, Micropost, :user_id => user.id
-      can :products_all, Product
       #can :create, Micropost
       can :read, :all
 
@@ -33,7 +32,6 @@ class Ability
       can [:paypal_checkout, :envio_df, :tallas, :comprar, :envio, :mercadopago_checkout], Product
       can :vote, Product
       cannot :vote, Micropost, :user_id => user.id
-      can :products_all, Product
       #can :create, Micropost
       can :read, :all
 
@@ -43,7 +41,6 @@ class Ability
       can [:paypal_checkout, :envio_df, :tallas, :comprar, :envio, :mercadopago_checkout], Product
       can :vote, Product
       cannot :vote, Micropost, :user_id => user.id
-      can :products_all, Product
       #can :create, Micropost
       can :read, :all
 
@@ -53,7 +50,6 @@ class Ability
       can [:paypal_checkout, :envio_df, :tallas, :comprar, :envio, :mercadopago_checkout], Product
       can :vote, Product
       cannot :vote, Micropost, :user_id => user.id
-      can :products_all, Product
       #can :create, Micropost
       can :read, :all
 
@@ -71,7 +67,6 @@ class Ability
       can :vote, Product
       cannot :vote, Product, :user_id => user.id
       cannot :vote, Micropost, :user_id => user.id
-      can :products_all, Product
       #can :create, Micropost
       can :read, :all
       
