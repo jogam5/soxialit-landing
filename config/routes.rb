@@ -77,6 +77,7 @@ DeviseFacebook::Application.routes.draw do
   match "term", to:'static_pages#term'
   match "privacy", to:'static_pages#privacy'
   match "faq", to:'static_pages#faq'
+  match "registro", to: 'static_pages#registro'
 
   # profile edit
   match "ubicacion", to: 'users#ubicacion'
@@ -103,4 +104,6 @@ DeviseFacebook::Application.routes.draw do
   match ":username", :to => "users#show", :as => "user", :via => :get
   match ":username", :to => "users#update", :as => "user", :via => :put
   match ":username", :to => "users#destroy", :as => "user", :via => :delete
+
+
 end
