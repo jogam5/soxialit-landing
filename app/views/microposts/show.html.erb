@@ -15,8 +15,8 @@
   	<br/>
   	<div style="margin-left:-70%; width: 275px">
 		<div style="float:left"><%= image_tag("link.png", style: "width:30px") %></div><input id="micropost_url" type="text" class="input-large" style="font-size: 13px;">
-		<span id="copied" style="float:left; display:none; color: rgb(43, 160, 14)">¡Ha sido copiado!</span>
-		<button class="btn btn-mini btn-primary" type="button" id="copy-some-txt" style="float:right; margin-right:8%">Copiar</button>
+		<span id="copied" style="float:left; display:none; color: rgb(43, 160, 14)">Copiado correctamente</span>
+		<button class="button-unfollow" type="button" id="copy-some-txt" style="float:right; margin-right:8%">Copiar</button>
 	  </div>
   </div>
 
@@ -165,10 +165,6 @@
                         <%= f.hidden_field :commentable_type, :value => "Micropost" %>
                     </li>
             </ul>
-            <div style="margin:1% 10% 1% 1%; text-align:right"> 
-
-            <%= f.submit "Comentar", class: "button-comment" %>
-              </div>
           <% end %>
         </div>
       <% end %>
