@@ -43,10 +43,10 @@
 					              </ul>
 					        </li>
 					<% else %>
-						<li id="signup"><%= link_to "Descubre, Compra y Comparte Moda", 
-												user_omniauth_authorize_path(:facebook) %></li>
+						<li id="signup"><%= link_to "Descubre Soxialit", 
+												microposts_path %></li>
 						<li class="divider-vertical" style="color:yellow"></li>
-						<li id="signin"><%= link_to "Registrate", user_omniauth_authorize_path(:facebook) %></li>
+						<li id="signin"><%= link_to "Regístrate", user_omniauth_authorize_path(:facebook) %></li>
 	   				<% end %>
               	  </ul>
               	</nav>
@@ -56,6 +56,9 @@
 </header>
 <% if !user_signed_in? %>
 	<div id="banner">
+		<div style="float:left; font-size:1.1em; font-family:acta-display, Helvetica-Neue">
+			<p>Soxialit es una red social de artistas, creativos y personas que aman la moda.</p>
+		</div>
 		<div style="float:right">
 			<%= link_to "Crea tu cuenta", user_omniauth_authorize_path(:facebook), class: "button-want" %>
 		</div>
