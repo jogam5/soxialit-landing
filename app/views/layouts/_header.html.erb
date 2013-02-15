@@ -46,7 +46,7 @@
 						<li id="signup"><%= link_to "Descubre, Compra y Comparte Moda", 
 												user_omniauth_authorize_path(:facebook) %></li>
 						<li class="divider-vertical" style="color:yellow"></li>
-						<li id="signin"><%= link_to "Iniciar Sesion", user_omniauth_authorize_path(:facebook) %></li>
+						<li id="signin"><%= link_to "Registrate", user_omniauth_authorize_path(:facebook) %></li>
 	   				<% end %>
               	  </ul>
               	</nav>
@@ -54,6 +54,16 @@
 		</div>
 		<div id="profile_nav_botton"></div>
 </header>
+<% if !user_signed_in? %>
+	<div id="banner">
+		<div style="float:right">
+			<%= link_to "Crea tu cuenta", user_omniauth_authorize_path(:facebook), class: "button-want" %>
+		</div>
+		<div style="float:right; margin-right:2%">
+			<div id="signup"><%= link_to "Iniciar Sesion", user_omniauth_authorize_path(:facebook), style:"font-size: 1.1em" %></div>
+		</div>
+	</div>
+<% end %>
 
 <script>
 		$('#fat-menu').click(function(){

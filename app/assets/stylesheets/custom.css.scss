@@ -703,6 +703,27 @@ margin-top: 3%;
 
 /*_ Nav Bar for App */
 
+
+/*_ Header Nav Bar */
+
+#banner{
+	overflow: auto;
+	background: #feffc5;
+	padding: 8px 20px;
+	font-size: 14px;
+	color: #7a7a7a;
+	font-weight: 300;
+	width: 840px;
+	margin: 0 auto 0;
+	opacity: .95;
+	height: 30px;
+	margin-top: -3.6%;
+	margin-left: 17%;
+	position: fixed;
+	z-index: 4000;
+}
+
+
 /* Profile Picture in Show */
 
 #profile_picture img{
