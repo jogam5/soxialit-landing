@@ -10,10 +10,27 @@
 			<% end %>
 		</span>
 		<span class="comment_author"><%= "#{comment.user.nickname}"%></span>
-		<span class="comment_text"><%= comment.body %></span>
+		<%= content_tag "span", class:"comment_text", data: {id: comment.id } do %>
+	 		<span id="comment_new_<%= comment.id%>"><%= comment.body %></span>
+		<% end %>
 		<span class="comment_timestamp"><%= time_ago_in_words(comment.created_at) %> 
 		<% if current_user == comment.user %>
 			<span class="comment_delete"><%= link_to "X", comment_path(comment), :method => :delete, remote: true %></span></span>
 		<% end %>
 	</div>
 <% end %>
+
+<script>
+	String.prototype.convertirURL = function() {
+	   return this.replace(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/, function(url) {
+	        return url.link(url);
+	    });
+	};
+	$(function(){
+		var a = $(".comment_text");
+		$.each(a,function(){
+			var b = $(this).find("span").text();
+			$(this).find("span").html(b.convertirURL());
+		});
+	});
+</script>

@@ -884,7 +884,8 @@ z-index: 2;
 li.comment {
   	list-style: none;
   	width:580px;
-	height:40px;
+	height:auto;
+	min-height: 40px;
 	background-color:whiteSmoke;
 	font-size: 12px;
 	border-bottom: 2px solid white;
