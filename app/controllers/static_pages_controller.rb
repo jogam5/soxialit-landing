@@ -85,7 +85,7 @@ class StaticPagesController < ApplicationController
     @users = User.all
     @fotografos = []
     @users.each do |user|
-      if user.roles.first.name == "fotografo"
+      if user.roles.first.name == "fotografo" || user.roles.first.name == "designer"
         @fotografos << user
       end
     end
