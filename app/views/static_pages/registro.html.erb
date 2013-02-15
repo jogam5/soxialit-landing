@@ -3,3 +3,6 @@
 <p><%= image_tag "LP.png" %></p><br/ >
 <p style="text-align:center"><%= link_to "Crea tu perfil", user_omniauth_authorize_path(:facebook), class: "button-want" %></p>
 <hr />
+<script type="text/javascript">
+mixpanel.track("Registro")
+</script>
