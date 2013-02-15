@@ -82,5 +82,12 @@ class StaticPagesController < ApplicationController
   end
 
   def registro
+    @users = User.all
+    @fotografos = []
+    @users.each do |user|
+      if user.roles.first.name == "fotografo"
+        @fotografos << user
+      end
+    end
   end
 end
