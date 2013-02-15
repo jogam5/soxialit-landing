@@ -1,6 +1,6 @@
-<p style="font-weight:lighter; color:#777; font-size:1.5em">Comparte un artículo, un post de tu blog u otro link sobre moda:
-</p>
 <% if user_signed_in? %>
+  <p style="font-weight:lighter; color:#777; font-size:1.5em">Comparte un artículo, un post de tu blog u otro link sobre moda:
+  </p>
   <%= form_for(@micropost, 
               {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true } ) do |f| %>
   	  <%= render 'shared/error_messages', object: f.object %>
