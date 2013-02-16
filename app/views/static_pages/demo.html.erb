@@ -1,0 +1,124 @@
+<div class="header_designer">
+	<div class="header_designer_inner">
+		<%= image_tag('demo1.png')%>
+	</div>
+</div>
+<div class="row">
+	<div class="frame_item_designer">
+	  <div class="designer_photo">
+		<%= link_to image_tag('item1.png'),  modal_item_path, {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
+	  </div>
+	  <div class="designer_info">
+		<p class="brand">
+			Shuviluna
+		</p>
+		<p class="description">	
+			Funda para iPad, piel sintética.
+		</p>
+		<p class="description">
+			$800
+		</p>
+	  </div>
+	</div>
+	<div class="frame_item_designer">
+		<div class="designer_photo">
+		  	<%=image_tag('item2.png')%>
+		</div>
+		<div class="designer_info">
+			<p class="brand">
+				Shuviluna
+			</p>
+			<p class="description">	
+				Cartera de piel Classic Style.
+			</p>
+			<p class="description">
+				$800
+			</p>
+	    </div>
+	</div>
+	<div class="frame_item_designer">
+		<div class="designer_photo">
+		  	<%=image_tag('item3.png')%>
+		</div>
+		<div class="designer_info">
+			<p class="brand">
+				Shuviluna
+			</p>
+			<p class="description">	
+				Cartera de piel Grab Style.
+			</p>
+			<p class="description">
+				$800
+			</p>
+	    </div>	</div>
+	<div class="frame_item_designer">
+		<div class="designer_photo">
+		  	<%=image_tag('item4.png')%>
+		</div>
+		<div class="designer_info">
+			<p class="brand">
+				Shuviluna
+			</p>
+			<p class="description">	
+				Bolsa con grabado.
+			</p>
+			<p class="description">
+				$1800
+			</p>
+	    </div>
+	</div>
+	<div class="frame_item_designer">
+		<div class="designer_photo">
+		  	<%=image_tag('item5.png')%>
+		</div>
+		<div class="designer_info">
+			<p class="brand">
+				Shuviluna
+			</p>
+			<p class="description">	
+				Bolsa con estampado sintético.
+			</p>
+			<p class="description">
+				$1800
+			</p>
+	    </div>
+	</div>
+	<div class="frame_item_designer">
+		<div class="designer_photo">
+		  	<%=image_tag('item6.png')%>
+		</div>
+		<div class="designer_info">
+			<p class="brand">
+				Shuviluna
+			</p>
+			<p class="description">	
+				Bolsa Country Style.
+			</p>
+			<p class="description">
+				$1800
+			</p>
+	    </div>
+	</div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+	$("body").animate({
+	    backgroundColor : "rgb(245, 245, 245)"
+	});
+});
+	
+$('.frame_item_designer').live({
+	mouseenter: 
+	function(e){
+		$(this).css("box-shadow", "0px 1px 1px 3px #d0d0d0");
+		
+	},
+	mouseleave:
+	function (e){
+		e.preventDefault();
+		$(this).css("box-shadow", "none");
+	}
+});	
+</script>

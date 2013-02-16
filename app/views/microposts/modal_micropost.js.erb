@@ -1,3 +1,5 @@
+$('#banner').hide();
+
 var y = window.pageYOffset;
 document.documentElement.style.overflowY = "hidden";
 
@@ -20,12 +22,14 @@ $(document).keyup(function(e) {
 	$('#modal-micropost').hide('slide');
 	window.onscroll = null;
 	document.documentElement.style.overflowY = "scroll";
+	$('#banner').show();
    }   // esc
 });
 
 $('.close-button').click(function(){
 	$('#modal-micropost').css('background-color', 'transparent')
 	$('#modal-micropost').hide('slide');
+	$('#banner').show();
 });
 
 $("#like-button").html("<fb:like href=\"https://soxialit.com/microposts/<%= @micropost.id %>\" send=\"false\" layout=\"button_count\" width=\"200\" show_faces=\"false\" action=\"like\" font=\"\"></fb:like>");

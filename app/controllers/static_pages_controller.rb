@@ -90,4 +90,11 @@ class StaticPagesController < ApplicationController
       end
     end
   end
+  
+  def demo
+  end
+  
+  def modal_item
+  end
+    
 end

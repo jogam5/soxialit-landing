@@ -78,6 +78,9 @@ DeviseFacebook::Application.routes.draw do
   match "privacy", to:'static_pages#privacy'
   match "faq", to:'static_pages#faq'
   match "registro", to: 'static_pages#registro'
+  match "demo", to: 'static_pages#demo'
+  get '/modal_item', to: 'static_pages#modal_item'
+  
 
   # profile edit
   match "ubicacion", to: 'users#ubicacion'
