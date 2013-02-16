@@ -1,11 +1,15 @@
 <div class="row">
-  <div class="span2">
-    <span style="float:right; margin-top:1.4em"><%= image_tag 'link.png' %></span>
-  </div>
-  <div class="span8">
-    <%= render 'static_pages/micropost' %>
-    <%= render 'shared/feed' %>
-  </div>
+    <div class="span2">
+      <% if user_signed_in? %>
+        <span style="float:right; margin-top:1.4em"><%= image_tag 'link.png' %></span>
+      <% else %>
+        <br />
+      <% end %>
+    </div>
+    <div class="span8">
+      <%= render 'static_pages/micropost' %>
+      <%= render 'shared/feed' %>
+    </div>
 </div>
 
 <% if user_signed_in? %>

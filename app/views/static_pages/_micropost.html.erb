@@ -1,22 +1,22 @@
-<p style="font-weight:lighter; color:#777; font-size:1.5em">Comparte un artículo, un post de tu blog u otro link sobre moda:</p>
-	<%= form_for(@micropost, 
-            {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true } ) do |f| %>
-	  <%= render 'shared/error_messages', object: f.object %>
-  <div class="field">
-    <%= f.text_area :url, :rows => "2", :class => "span8", :id => "status" %>
-  </div>
-    <%= f.hidden_field :url %>
-    <%= f.hidden_field :provider %>
-    <%= f.hidden_field :title %>
-    <%= f.hidden_field :description %>
-    <%= f.hidden_field :thumbnail %>
-    <%= f.hidden_field :status, value: true %>
-  <% if user_signed_in? %>
+<% if user_signed_in? %>
+  <p style="font-weight:lighter; color:#777; font-size:1.5em">Comparte un artículo, un post de tu blog u otro link sobre moda:
+  </p>
+  <%= form_for(@micropost, 
+              {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true } ) do |f| %>
+  	  <%= render 'shared/error_messages', object: f.object %>
+    <div class="field">
+      <%= f.text_area :url, :rows => "2", :class => "span8", :id => "status" %>
+    </div>
+      <%= f.hidden_field :url %>
+      <%= f.hidden_field :provider %>
+      <%= f.hidden_field :title %>
+      <%= f.hidden_field :description %>
+      <%= f.hidden_field :thumbnail %>
+      <%= f.hidden_field :status, value: true %>
+      <div class="actions" >
+        <span style="margin-left:38em"><%= f.submit "Publicar", id: "button_send", class: "button-want"  %></span>
+      </div>
+    <br/>
+    <p id="wait">Vista Previa <i>(edita el contenido dando click sobre el texto)</i></p>
   <% end %>
-  <div class="actions" >
-    <span style="margin-left:38em"><%= f.submit "Publicar", id: "button_send", class: "button-want"  %></span>
-  </div>
-  <br/>
-  <p id="wait">Vista Previa <i>(edita el contenido dando click sobre el texto)</i></p>
 <% end %>
-<p id="wait">Vista Previa:</p>
