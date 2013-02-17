@@ -6,8 +6,6 @@ class Micropost < ActiveRecord::Base
   has_many :comments, :as => :commentable, :dependent => :destroy
 
   validates :url, presence: true, format: { with: URI::regexp(%w(http https)) }
-
-  #title
   
   has_reputation :lovs, source: :user, aggregated_by: :sum
 
@@ -15,7 +13,7 @@ class Micropost < ActiveRecord::Base
     @micropost = micropost
     @user = @micropost.user
       options = {
-        :message => "Acabo de compartir un link en Soxialit.",
+        :message => "Acabo de compartir un post en Soxialit.",
         :picture => @micropost.thumbnail.to_s,
         :link => "http://soxialit.com/microposts/#{micropost.id}",
         :name => "#{@micropost.title} via #{@micropost.provider}",
@@ -27,7 +25,7 @@ class Micropost < ActiveRecord::Base
   def self.publish_link_like_facebook(micropost, user)
     @micropost = micropost
       options = {
-        :message => "Me gusto el siguiente link en Soxialit.",
+        :message => "Me gusto este post en Soxialit.",
         :picture => @micropost.thumbnail.to_s,
         :link => "http://soxialit.com/microposts/#{micropost.id}",
         :name => "#{@micropost.title} via #{@micropost.provider}",
