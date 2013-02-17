@@ -28,6 +28,7 @@ gem 'activerecord-reputation-system', require: 'reputation_system'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'fog'
+gem "fastimage", "~> 1.2.13"
 
 #CSS
 gem "bootstrap-sass", "~> 2.1.0.1"
