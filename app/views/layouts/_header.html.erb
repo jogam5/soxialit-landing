@@ -6,7 +6,7 @@
 		 class="navbar-inner">
 			<div class="container">
 				<span class="span6">
-					<div id="titleProfile"><%= link_to "Soxialit", root_path %></div>
+					<div id="titleProfile"><%= link_to "Soxialit", feed_path %></div>
 				</span>
 				<nav>
 				  <ul class="nav pull-right">
@@ -14,11 +14,11 @@
 						<li id="feedback_header"><%= link_to "HELP US!", feedbacks_path, :title => "Te queremos escuchar"%></li>
 						<li class="divider-vertical"></li>
 					    <li id="feedback_header">
-							<%= link_to image_tag('shop1.png', style:"margin-left:15%; margin-top:-10%"), products_path, :title => "Comprar" %>
+							<%= link_to "Comprar", products_path, :title => "Comprar" %>
 					   	</li>
 					   	<li class="divider-vertical"></li>
 					    <li id="feedback_header">
-							<%= link_to image_tag('micropost1.png', style: "margin-top:-8%"), microposts_path, :title => "Descubre" %>
+							<%= link_to "Posts", microposts_path, :title => "Descubre" %>
 					   	</li>
 						<li class="divider-vertical"></li>
 						<li><% if !current_user.picture.present? %>
@@ -35,7 +35,12 @@
 					              <ul id="profile_menu" class="dropdown-menu">
 					                <li><%= link_to '<i class="icon-edit"></i> Editar Perfil'.html_safe, edit_user_path(current_user), id:"anchor_edit" %></li>
 					                <li class="divider"></li>
-					                <li><%= link_to '<i class="icon-user"></i> Conecta'.html_safe, users_path, id:"anchor_edit" %></li>
+					                <li><%= link_to '<i class="icon-user"></i> Conecta'.html_safe, users_path, 
+					                			id:"anchor_edit" %></li>
+					               	<li class="divider"></li>
+					               	<li>
+					                  <%= link_to "Compartir Link", feed_path %>
+					                </li>
 					                <li class="divider"></li>
 					                <li>
 					                  <%= link_to "Salir", destroy_user_session_path, :method => :delete %>
@@ -43,12 +48,10 @@
 					              </ul>
 					        </li>
 					<% else %>
-						<li id="signup"><%= link_to "Descubre Soxialit", 
+						<li id="signup"><%= link_to "Posts", 
 												microposts_path %></li>
 						<li class="divider-vertical" style="color:yellow"></li>
 						<li id="signin"><%= link_to "Regístrate", user_omniauth_authorize_path(:facebook) %></li>
-
-						
 	   				<% end %>
               	  </ul>
               	</nav>
@@ -65,7 +68,7 @@
 			<%= link_to "Crea tu cuenta", user_omniauth_authorize_path(:facebook), class: "button-want" %>
 		</div>
 		<div style="float:right; margin-right:2%">
-			<div id="signup"><%= link_to "Iniciar Sesion", user_omniauth_authorize_path(:facebook), style:"font-size: 1.1em" %></div>
+			<div id="signup"><%= link_to "Iniciar Sesión", user_omniauth_authorize_path(:facebook), style:"font-size: 1.1em" %></div>
 		</div>
 	</div>
 <% end %>
