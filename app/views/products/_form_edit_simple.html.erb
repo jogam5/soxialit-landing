@@ -18,6 +18,10 @@
 		<%= f.label :brand, "*marca", :class => "description-text" %>
 	    <%= f.text_field :brand, placeholder: "" %>
 	  </div>
+	 <div class="field">
+		<%= f.label :description, "*describe tu producto", :class => "description-text" %>
+	    <%= f.text_area :description, rows: "4", placeholder: "" %>
+	  </div>
 	  <div class="field">
 		<%= f.label :price, "*precio", :class => "description-text" %>
 	    <%= f.text_field :price, placeholder: " 0.00", :class => "span2", :style => "float:left" %><p>   MXN </p>
@@ -47,7 +51,6 @@
 	  </p>
 	  <br/>
 	  <div class="field">
-	    <%= f.hidden_field :description, :value => "nil"%>
 		<%= f.hidden_field :color, :value =>"nil" %>
 		<%= f.hidden_field :material, :value =>"nil " %>
  		<%= f.hidden_field :refund_policy, :value =>"nil" %>
