@@ -6,20 +6,20 @@
 	  		<div class="row" id="image_hover">
 				<span style="margin-bottom:2%" class="span6" >
 					<div style="float:right" id="mi_image">
-						<%= image_tag('item1.png') %>
+						<%= image_tag(@product.picture) %>
 					</div>
 				</span>
 				<span class="span4">
 			  		<div class="right_side_items">
 						<div id="mi_title">
-							Luz
+							<%= @product.title %>
 						</div>
-						<p>by <span id="mi_brand">SHUVILUNA</span></p>
-						<p id="mi_description">Funda para iPad, piel sintética.</p>
+						<p>by <span id="mi_brand"><%= @product.brand %></span></p>
+						<p id="mi_description"><%= @product.description%>.</p>
 						<div id="mi_view_more">
 							<%= link_to "Ver Detalles", "#" %> 
 						</div>
-						<p id="mi_price">$800
+						<p id="mi_price">$<%= @product.price %>0
 							<span style="margin-left:2%"><%= link_to "Comprar", "#", {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :class => 'button-want'} %>
 							</span>
 						</p>

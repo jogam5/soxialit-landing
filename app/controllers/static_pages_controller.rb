@@ -95,9 +95,11 @@ class StaticPagesController < ApplicationController
   end
   
   def men_heute
+     @products = [Product.find(747), Product.find(748), Product.find(749)]
   end
   
   def modal_item
+     @product = Product.find(params[:product_id])
   end
     
 end

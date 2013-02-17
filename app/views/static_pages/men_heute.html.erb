@@ -1,112 +1,77 @@
-<div class="header_designer">
-	<div class="header_designer_inner">
-		<%= image_tag('demo1.png')%>
+<% if user_signed_in? %>
+	<div style="margin-top:-23px" class="header_designer">
+		<div class="header_designer_inner">
+			<div style="margin-top:1%; margin-left: 716px;" class="span3">
+				<div class="designer_bio">
+					<span>EDGAR SANDOVAL MENSWEAR es una casa de moda que se encuentra en constante innovación, siempre creando nuevas propuestas que invitan a los caballeros a integrarse a una cultura de moda, llena de elegancia y lujo que se reflejará en su imagen y en su estilo de vida.
+				La casa de Moda Edgar Sandoval Menswear distinguida por la elegancia y lujo de sus diseños en alta costura, selectiva a elegir los más finos y exclusivos materiales gusta de crear para los caballeros una imagen de poder con un moderno estilo sofisticado.
+					</span>
+				</div>
+			</div>
+			<div class="span11">
+				<img src="http://i1246.photobucket.com/albums/gg616/soxialit/cover2_zps8b18aaa7.png" border="0" alt=" photo cover2_zps8b18aaa7.png"/>			
+			</div>
+		</div>
+	</div>
+<% else %>
+	<div style="margin-top:-60px" class="header_designer">
+		<div class="header_designer_inner">
+			<div style="margin-top:1%; margin-left: 716px;" class="span3">
+				<div class="designer_bio">
+					<span>EDGAR SANDOVAL MENSWEAR es una casa de moda que se encuentra en constante innovación, siempre creando nuevas propuestas que invitan a los caballeros a integrarse a una cultura de moda, llena de elegancia y lujo que se reflejará en su imagen y en su estilo de vida.
+				La casa de Moda Edgar Sandoval Menswear distinguida por la elegancia y lujo de sus diseños en alta costura, selectiva a elegir los más finos y exclusivos materiales gusta de crear para los caballeros una imagen de poder con un moderno estilo sofisticado.
+					</span>
+				</div>
+			</div>
+			<div class="span11">
+				<img src="http://i1246.photobucket.com/albums/gg616/soxialit/cover2_zps8b18aaa7.png" border="0" alt=" photo cover2_zps8b18aaa7.png"/>			
+			</div>
+		</div>
+	</div>
+<% end %>
+<div style="margin-left: -12%; width: 1200px;"class="row">
+	<div class="span4" style="background-color:black; margin-left:17px">
+		<div id="myCarousel" class="carousel slide">
+			<h3 style="color:#b7b7b7; margin-left:6%">El mundo del diseñador</h3>
+		  <!-- Carousel items -->
+		  <div class="carousel-inner">
+			<div class="active item"><img src="http://i1246.photobucket.com/albums/gg616/soxialit/blogger-image--194456190_zpsa97913ff.jpg" border="0" alt=" photo blogger-image--194456190_zpsa97913ff.jpg"/></div>
+		    <div class="item"><img src="http://i1246.photobucket.com/albums/gg616/soxialit/men13_zps3138c893.png" border="0" alt=" photo men13_zps3138c893.png"/></div>
+		    <div class="item"><img src="http://i1246.photobucket.com/albums/gg616/soxialit/men12_zps6730d122.png" border="0" alt=" photo men12_zps6730d122.png"/></div>
+		  </div>
+		  <!-- Carousel nav -->
+		  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+		  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+		</div>
+	</div>
+	<div class="span10">
+		<% @products.each do |product| %>
+			<div class="frame_item_designer">
+			  <div class="designer_photo">
+				<%= link_to image_tag(product.picture),  modal_item_path(:product_id => product.id ), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
+			  </div>
+			  <div class="designer_info">
+				<p class="brand">
+					<%= product.brand%>
+				</p>
+				<p class="description">	
+					<%= product.description %>
+				</p>
+				<p class="description">
+					$<%= product.price %>0
+				</p>
+			  </div>
+			</div>
+		<% end %>
 	</div>
 </div>
-<div class="row">
-	<div class="frame_item_designer">
-	  <div class="designer_photo">
-		<%= link_to image_tag('item1.png'),  modal_item_path, {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
-	  </div>
-	  <div class="designer_info">
-		<p class="brand">
-			Shuviluna
-		</p>
-		<p class="description">	
-			Funda para iPad, piel sintética.
-		</p>
-		<p class="description">
-			$800
-		</p>
-	  </div>
-	</div>
-	<div class="frame_item_designer">
-		<div class="designer_photo">
-		  	<%=image_tag('item2.png')%>
-		</div>
-		<div class="designer_info">
-			<p class="brand">
-				Shuviluna
-			</p>
-			<p class="description">	
-				Cartera de piel Classic Style.
-			</p>
-			<p class="description">
-				$800
-			</p>
-	    </div>
-	</div>
-	<div class="frame_item_designer">
-		<div class="designer_photo">
-		  	<%=image_tag('item3.png')%>
-		</div>
-		<div class="designer_info">
-			<p class="brand">
-				Shuviluna
-			</p>
-			<p class="description">	
-				Cartera de piel Grab Style.
-			</p>
-			<p class="description">
-				$800
-			</p>
-	    </div>	</div>
-	<div class="frame_item_designer">
-		<div class="designer_photo">
-		  	<%=image_tag('item4.png')%>
-		</div>
-		<div class="designer_info">
-			<p class="brand">
-				Shuviluna
-			</p>
-			<p class="description">	
-				Bolsa con grabado.
-			</p>
-			<p class="description">
-				$1800
-			</p>
-	    </div>
-	</div>
-	<div class="frame_item_designer">
-		<div class="designer_photo">
-		  	<%=image_tag('item5.png')%>
-		</div>
-		<div class="designer_info">
-			<p class="brand">
-				Shuviluna
-			</p>
-			<p class="description">	
-				Bolsa con estampado sintético.
-			</p>
-			<p class="description">
-				$1800
-			</p>
-	    </div>
-	</div>
-	<div class="frame_item_designer">
-		<div class="designer_photo">
-		  	<%=image_tag('item6.png')%>
-		</div>
-		<div class="designer_info">
-			<p class="brand">
-				Shuviluna
-			</p>
-			<p class="description">	
-				Bolsa Country Style.
-			</p>
-			<p class="description">
-				$1800
-			</p>
-	    </div>
-	</div>
-</div>
-
 
 <script>
 $(document).ready(function(){
 	$("body").animate({
 	    backgroundColor : "rgb(245, 245, 245)"
 	});
+	$('#profile_nav_botton').css({ boxShadow: '1px 3px 6px #444' });
 });
 	
 $('.frame_item_designer').live({

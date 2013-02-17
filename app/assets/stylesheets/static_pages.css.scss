@@ -272,7 +272,7 @@ html[xmlns] .clearfix {
 	margin: 1% 2% 3% 1%;
 	left: 0%;
 	float: left;
-	width: 281px;
+	width: 235px;
 	display: block;
 	position: relative;
 	background-color: white;
@@ -316,3 +316,17 @@ html[xmlns] .clearfix {
 	line-height: 12px;
 }
 
+.designer_bio{
+	color: #b7b7b7;
+	font-family: Georgia, Palatino, serif;
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 1.4;
+	
+	span{
+		margin: 0;
+		padding: 0;
+		border: 0;
+		vertical-align: baseline;
+	}
+}
