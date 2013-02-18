@@ -101,5 +101,9 @@ class StaticPagesController < ApplicationController
   def modal_item
      @product = Product.find(params[:product_id])
   end
+  
+  def arbol_viento
+     @products = [Product.find(233), Product.find(234), Product.find(235)]
+  end
     
 end

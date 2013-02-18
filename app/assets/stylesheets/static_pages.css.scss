@@ -330,3 +330,21 @@ html[xmlns] .clearfix {
 		vertical-align: baseline;
 	}
 }
+
+.designer_name{
+	margin-bottom: 32px;
+	font-family: georgia;
+	font-weight: normal;
+	font-size: 2em;
+	font-family: Arial,Helvetica,sans-serif;
+	overflow: hidden;
+	color: #000;
+	text-transform: uppercase;
+}
+
+.designer_bio{
+	margin-bottom: 32px;
+	color: #333;
+	font-size: 1em;
+	line-height: 16px;
+}
