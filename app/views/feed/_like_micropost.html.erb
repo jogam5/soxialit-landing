@@ -1,5 +1,5 @@
 <% if signed_in? %>
-	<div style="margin-top:-3%; margin-right: 5%"class="votacion" id="votacion_<%= feed_item.activitable.id %>">
+	<div style="margin-top:-3%; margin-right: 5%" class="votacion" id="votacion_<%= feed_item.activitable.id %>">
 		<% if feed_item.activitable.user_id == current_user.id %>
 		   <div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
 				<%= image_tag("loading.gif") %>

@@ -1,0 +1,189 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 _feed.html.erb\
+\
+<% if @feed_items.any? %>\
+  <ol class="microposts">\
+	<% @feed_items.each do |feed_item| %>\
+	 <% if feed_item.present? && feed_item.activitable.status == true %>\
+  	  <li id="<%= feed_item.id %>">\
+	  	<span class="contenido">\
+	  	  <div class="row">\
+	  	  	<div class="span1">\
+	  	  		<%= render :partial => 'feed/profile_picture', :locals => \{ :feed_item => feed_item \} %>\
+			</div>\
+			<div class="span7">\
+				<p style="font-size:1.1em"><span id="user_and_items_link">\
+					<%= link_to feed_item.user.nickname, user_path(feed_item.user) %>\
+						</span>\
+				  	<%= render :partial => 'feed/headline', :locals => \{ :feed_item => feed_item \} %>\
+				  	<br />\
+					<span class="timestamp">\
+					 <%= time_ago_in_words(feed_item.created_at) if feed_item.activitable_type == "Product" %>\
+					</span>\
+					<br />\
+				</p>\
+			</div>\
+		  </div>\
+		  <div class="row">\
+			<div id="mitad">\
+				<%= render :partial => 'feed/pictures', :locals => \{ :feed_item => feed_item \} %>\
+			</div>\
+			<br />\
+		  </div>\
+		  <div class="red_bar"></div><br />\
+		  <% unless feed_item.activitable_type == "User" %>\
+		    <%= render :partial => 'feed/comments', :locals => \{ :feed_item => feed_item \} %>\
+		  <% end %>\
+		</span>\
+	  </li>\
+	 <% end %>\
+	<% end %>\
+  </ol>\
+<% end %>\
+\
+.contenido \{\
+  width:675px;\
+  display: block;\
+  background:url('module_horns_narrow.gif') top no-repeat;\
+  border-left: 10px solid black;\
+  border-right: 10px solid black;\
+  background:url('footer.png') bottom no-repeat;\
+  padding: 20px 10px 10px;\
+\}\
+\
+\
+yep\{\
+\
+<div id="micropost_description"><%= feed_item.activitable.description %><br />\
+		 	<div id="micropost_leer_mas"><%= link_to "Leer m\'e1s", feed_item.activitable.url, target: '_blank' %></div>\
+		 	<br />\
+		 	<span style="color:#999">v\'eda</span> <%= link_to feed_item.activitable.provider, feed_item.activitable.provider, target: '_blank' %>\
+		 </div>\
+\
+\}\
+\
+\
+<span class="timestamp" style="float:left; padding:0% 3%">\
+			<%= time_ago_in_words(feed_item.created_at) if feed_item.activitable_type == "Micropost" %>.\
+			\
+		</span>\
+\
+after: \
+\
+<div class="row" style="background-color:whiteSmoke; background-image: url(http://d36xtkk24g8jdx.cloudfront.net/bluebar/1053f34/images/shared/noise-2.png);\
+"> \
+\
+\
+like in MPost:\
+\
+<% elsif feed_item.activitable_type == "Micropost" && feed_item.action == "like" %>\
+<div id="product_background" class="image_hover">\
+	<div style="display:block; width:100px; margin-left:100px">\
+		  <%= link_to image_tag(feed_item.activitable.thumbnail), feed_item.activitable.url, target: '_blank' %>\
+	</div>\
+	<br/>\
+	<div style="text-align:left; margin-left:100px; margin-top:5px;">\
+		 <div id="micropost_description">\
+		 	<div style="color:#999; font-size:0.9em; width:auto; height:auto; float:left">\
+		 		Publicado por <br/>\
+				<span style="font-size:1em" id="item_link"><%= link_to feed_item.activitable.user.nickname, user_path(feed_item.activitable.user) %></span>\
+			</div> \
+			<div>\
+				<% if !feed_item.activitable.user.picture.present? %>\
+					<%= link_to image_tag("http://graph.facebook.com/#\{feed_item.activitable.user.uid\}/picture?type=square", \
+								width: 35, height: 35, :id =>  "like_small_picture"), user_path(feed_item.activitable.user) %>\
+				<% else %>\
+					<%= link_to image_tag(feed_item.activitable.user.picture_url(:thumb_profile), \
+								width: 35, height: 35, :id => "like_small_picture"), user_path(feed_item.activitable.user) %>\
+				<% end %>\
+			</div>\
+				<% if user_signed_in? %>\
+					<% unless current_user?(feed_item.activitable.user) %>\
+						<div style="margin-top:0.5em" id="form_<%= feed_item.activitable.user.id %>" %>\
+					  	<% if current_user.following?(feed_item.activitable.user) %>\
+						<% else %>\
+						      <%= render :partial => 'shared/follow', :locals => \{ :user => feed_item.activitable.user \} %>\
+						<% end %>\
+						</div>\
+					<% end %>\
+				<% end %>\
+		 </div>\
+	</div>\
+</div>\
+\
+\
+<%= render :partial => 'feed/like_micropost', :locals => \{ :feed_item => feed_item \} %>\
+\
+\
+Like:\
+\
+<div style="text-align:left; margin-left:100px; margin-top:5px;">\
+		 <div id="micropost_description">\
+		 	<div style="color:#999; font-size:0.9em; width:auto; height:auto; float:left">\
+		 		Publicado por <br/>\
+				<span style="font-size:1em" id="item_link"><%= link_to feed_item.activitable.user.nickname, user_path(feed_item.activitable.user) %></span>\
+			</div> \
+			<div>\
+				<% if !feed_item.activitable.user.picture.present? %>\
+					<%= link_to image_tag("http://graph.facebook.com/#\{feed_item.activitable.user.uid\}/picture?type=square", \
+								width: 35, height: 35, :id =>  "like_small_picture"), user_path(feed_item.activitable.user) %>\
+				<% else %>\
+					<%= link_to image_tag(feed_item.activitable.user.picture_url(:thumb_profile), \
+								width: 35, height: 35, :id => "like_small_picture"), user_path(feed_item.activitable.user) %>\
+				<% end %>\
+			</div>\
+				<% if user_signed_in? %>\
+					<% unless current_user?(feed_item.activitable.user) %>\
+						<div style="margin-top:0.5em" id="form_<%= feed_item.activitable.user.id %>" %>\
+					  	<% if current_user.following?(feed_item.activitable.user) %>\
+						<% else %>\
+						      <%= render :partial => 'shared/follow', :locals => \{ :user => feed_item.activitable.user \} %>\
+						<% end %>\
+						</div>\
+					<% end %>\
+				<% end %>\
+		 </div>\
+	</div>\
+\
+\
+\
+FOR new signup:\
+\
+<% if feed_item.activitable_type == "User" && feed_item.action == "create"  %>\
+	  <span class="timestamp" style="float:right">\
+		<%= time_ago_in_words(feed_item.created_at) %>.\
+		<br />\
+	  </span>\
+	  se acaba de unir a Soxialit.\
+	  <% if feed_item.activitable.roles.first.name == 'fashion lover' %>\
+		<p id="fashionlover">fashion lover</p>\
+	  <% elsif feed_item.activitable.roles.first.name == 'designer' %>\
+		<p id="designer"> designer</p>\
+	  <% elsif feed_item.activitable.roles.first.name == 'boutique store' %>\
+		<p id="boutique">boutique store</p>\
+	  <% elsif feed_item.activitable.roles.first.name == 'blogger' %>\
+		<p id="blogger">blogger</p>\
+	  <% elsif feed_item.activitable.roles.first.name == 'fotografo' %>\
+		<p id="fotografo">fot\'f3grafo</p>\
+	  <% end %>\
+\
+	  <% if user_signed_in? %>	\
+	  	<% unless current_user?(feed_item.activitable) %>\
+			<div style="margin-top:0.5em" id="form_<%= feed_item.activitable.id %>" %>\
+			  <% if current_user.following?(feed_item.activitable) %>\
+				<%= render :partial => 'shared/unfollow', :locals => \{ :user => feed_item.activitable \} %>\
+				  <% else %>\
+				<%= render :partial => 'shared/follow', :locals => \{ :user => feed_item.activitable \} %>\
+			  <% end %>\
+			</div>\
+		<% end %>\
+	  <% end %>\
+\
+****\
+\
+}

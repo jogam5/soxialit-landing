@@ -1,14 +1,15 @@
 class Micropost < ActiveRecord::Base
-  attr_accessible :description, :provider, :thumbnail, :title, :url, :user_id, :status
+  attr_accessible :description, :provider, :thumbnail, :title, :url, :user_id, :status, :picture, :remote_picture_url
   
   belongs_to :user
   has_many :activities, :as => :activitable, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
+  has_reputation :lovs, source: :user, aggregated_by: :sum
+
+  mount_uploader :picture, PictureMicropostUploader
 
   validates :url, presence: true, format: { with: URI::regexp(%w(http https)) }
   
-  has_reputation :lovs, source: :user, aggregated_by: :sum
-
   def self.publish_link_facebook(micropost)
     @micropost = micropost
     @user = @micropost.user

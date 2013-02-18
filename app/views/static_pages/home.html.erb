@@ -1,15 +1,16 @@
+<% if user_signed_in? %>
+  <div class="row">
+    <div class="span10 offset1">
+      <span style="float:left; margin-top:0em; margin-right:1em"><%= image_tag 'link.png' %></span>
+        <%= render 'static_pages/micropost' %>
+    </div>
+  </div>
+<% end %>
+
 <div class="row">
-    <div class="span2">
-      <% if user_signed_in? %>
-        <span style="float:right; margin-top:1.4em"><%= image_tag 'link.png' %></span>
-      <% else %>
-        <br />
-      <% end %>
-    </div>
-    <div class="span8">
-      <%= render 'static_pages/micropost' %>
-      <%= render 'shared/feed' %>
-    </div>
+  <div class="span12" style="border-top:1px solid rgba(0, 0, 0, 0.0976563)">
+    <%= render 'shared/feed' %>
+  </div>
 </div>
 
 <% if user_signed_in? %>
