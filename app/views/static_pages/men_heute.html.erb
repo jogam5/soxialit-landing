@@ -1,10 +1,11 @@
 <% if user_signed_in? %>
-	<div style="margin-top:-23px" class="header_designer">
+	<div style="margin-top:-23px; margin-left:-80%" class="header_designer">
 		<div class="header_designer_inner">
 			<div style="margin-top:1%; margin-left: 716px;" class="span3">
 				<div class="designer_bio">
-					<span>EDGAR SANDOVAL MENSWEAR es una casa de moda que se encuentra en constante innovación, siempre creando nuevas propuestas que invitan a los caballeros a integrarse a una cultura de moda, llena de elegancia y lujo que se reflejará en su imagen y en su estilo de vida.
-				La casa de Moda Edgar Sandoval Menswear distinguida por la elegancia y lujo de sus diseños en alta costura, selectiva a elegir los más finos y exclusivos materiales gusta de crear para los caballeros una imagen de poder con un moderno estilo sofisticado.
+						<span>EDGAR SANDOVAL MENSWEAR <br>
+							Es una casa de moda que se encuentra en constante innovación, siempre creando nuevas propuestas que invitan a los caballeros a integrarse a una cultura de moda, llena de elegancia y lujo que se reflejará en su imagen y en su estilo de vida.
+					La casa de Moda Edgar Sandoval Menswear distinguida por la elegancia y lujo de sus diseños en alta costura, selectiva a elegir los más finos y exclusivos materiales gusta de crear para los caballeros una imagen de poder con un moderno estilo sofisticado.
 					</span>
 				</div>
 			</div>
@@ -14,11 +15,12 @@
 		</div>
 	</div>
 <% else %>
-	<div style="margin-top:-60px" class="header_designer">
+	<div style="margin-top:-60px; margin-left:-80%" class="header_designer">
 		<div class="header_designer_inner">
 			<div style="margin-top:1%; margin-left: 716px;" class="span3">
 				<div class="designer_bio">
-					<span>EDGAR SANDOVAL MENSWEAR es una casa de moda que se encuentra en constante innovación, siempre creando nuevas propuestas que invitan a los caballeros a integrarse a una cultura de moda, llena de elegancia y lujo que se reflejará en su imagen y en su estilo de vida.
+					<span>EDGAR SANDOVAL MENSWEAR <br>
+						Es una casa de moda que se encuentra en constante innovación, siempre creando nuevas propuestas que invitan a los caballeros a integrarse a una cultura de moda, llena de elegancia y lujo que se reflejará en su imagen y en su estilo de vida.
 				La casa de Moda Edgar Sandoval Menswear distinguida por la elegancia y lujo de sus diseños en alta costura, selectiva a elegir los más finos y exclusivos materiales gusta de crear para los caballeros una imagen de poder con un moderno estilo sofisticado.
 					</span>
 				</div>
@@ -30,7 +32,7 @@
 	</div>
 <% end %>
 <div style="margin-left: -12%; width: 1200px;"class="row">
-	<div class="span4" style="background-color:black; margin-left:17px">
+	<div class="span4" style="margin-left:17px">
 		<div id="myCarousel" class="carousel slide">
 			<h3 style="color:#b7b7b7; margin-left:6%">El mundo del diseñador</h3>
 		  <!-- Carousel items -->
@@ -44,7 +46,8 @@
 		  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
 		</div>
 	</div>
-	<div class="span10">
+	<div class="span10" style="margin-top: 74px;">
+		<% if !@products.nil? %>
 		<% @products.each do |product| %>
 			<div class="frame_item_designer">
 			  <div class="designer_photo">
@@ -62,6 +65,7 @@
 				</p>
 			  </div>
 			</div>
+		<% end %>
 		<% end %>
 	</div>
 </div>

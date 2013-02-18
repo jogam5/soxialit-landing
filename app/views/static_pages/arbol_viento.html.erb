@@ -1,0 +1,98 @@
+<% if user_signed_in? %>
+	<div class="row">
+		<div class="span4">
+			<h1 style="margin-bottom: 35px !important;" class="designer_name">
+				Arbol de viento
+			</h1>
+			<p class="designer_bio">
+				Es un Colectivo Artesanal cuyo propósito es la creación de bolsas para dama y accesorios de uso cotidiano que nos ayuden a recordar los lazos ancestrales entre el ser humano, la Tierra y el Cosmos.
+				Como motivos de inspiración, Árbol de Viento utiliza, símbolos, mitologías, técnicas artesanales y materiales naturales, combinándolos con formas de elaboración, estilos y usos de nuestra cultura moderna para hacerlos más actuales, siempre tomando en cuenta el cuidado de la Tierra.
+			</p>
+		</div>
+		<div class="span6 offset1" style="">
+			<div id="myCarousel" class="carousel slide">
+			  <!-- Carousel items -->
+			  <div class="carousel-inner">
+				<div class="active item"><img src="http://i1246.photobucket.com/albums/gg616/soxialit/viento1_zps1327bd49.png"/></div>
+			    <div class="item"><img src="http://i1246.photobucket.com/albums/gg616/soxialit/viento5_zpsc3abf199.png"/></div>
+			    <div class="item"><img src="http://i1246.photobucket.com/albums/gg616/soxialit/viento4_zps0d3fbeaa.png"/></div>
+				<div class="item"><img src="http://i1246.photobucket.com/albums/gg616/soxialit/viento3_zpsb738ee68.png"/></div>
+				<div class="item"><img src="http://i1246.photobucket.com/albums/gg616/soxialit/viento2_zps818c9361.png"/></div>
+			  </div>
+			  <!-- Carousel nav -->
+			  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+			  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+			</div>
+		</div>
+	</div>
+<% else %>
+	<div  style="margin-top:-60px;" class="row">
+		<div class="span4">
+			<h1 style="margin-bottom: 35px !important;" class="designer_name">
+				Arbol de viento
+			</h1>
+			<p class="designer_bio">
+				Es un Colectivo Artesanal cuyo propósito es la creación de bolsas para dama y accesorios de uso cotidiano que nos ayuden a recordar los lazos ancestrales entre el ser humano, la Tierra y el Cosmos.
+				Como motivos de inspiración, Árbol de Viento utiliza, símbolos, mitologías, técnicas artesanales y materiales naturales, combinándolos con formas de elaboración, estilos y usos de nuestra cultura moderna para hacerlos más actuales, siempre tomando en cuenta el cuidado de la Tierra.
+			</p>
+		</div>
+		<div class="span6 offset1" style="">
+			<div id="myCarousel" class="carousel slide">
+			  <!-- Carousel items -->
+			  <div class="carousel-inner">
+				<div class="active item"><img src="http://i1246.photobucket.com/albums/gg616/soxialit/viento1_zps1327bd49.png"/></div>
+			    <div class="item"><img src="http://i1246.photobucket.com/albums/gg616/soxialit/viento5_zpsc3abf199.png"/></div>
+			    <div class="item"><img src="http://i1246.photobucket.com/albums/gg616/soxialit/viento4_zps0d3fbeaa.png"/></div>
+				<div class="item"><img src="http://i1246.photobucket.com/albums/gg616/soxialit/viento3_zpsb738ee68.png"/></div>
+				<div class="item"><img src="http://i1246.photobucket.com/albums/gg616/soxialit/viento2_zps818c9361.png"/></div>
+			  </div>
+			  <!-- Carousel nav -->
+			  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+			  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+			</div>
+		</div>
+	</div>
+<% end %>
+<div class="row">
+	<hr>
+	<div class="span12">
+			<% @products.each do |product| %>
+				<div class="frame_item_designer">
+				  <div class="designer_photo">
+					<%= link_to image_tag(product.picture),  modal_item_path(:product_id => product.id ), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
+				  </div>
+				  <div class="designer_info">
+					<p class="brand">
+						<%= product.brand%>
+					</p>
+					<p class="description">	
+						<%= product.description %>
+					</p>
+					<p class="description">
+						$<%= product.price %>0
+					</p>
+				  </div>
+				</div>
+			<% end %>
+	</div>
+</div>
+
+<script>
+$(document).ready(function(){
+
+	$('#profile_nav_botton').css({ boxShadow: '1px 3px 6px #444' });
+});
+	
+$('.frame_item_designer').live({
+	mouseenter: 
+	function(e){
+		$(this).css("box-shadow", "0px 1px 1px 3px #d0d0d0");
+		
+	},
+	mouseleave:
+	function (e){
+		e.preventDefault();
+		$(this).css("box-shadow", "none");
+	}
+});	
+</script>

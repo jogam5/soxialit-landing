@@ -86,6 +86,8 @@ DeviseFacebook::Application.routes.draw do
   match "demo", to: 'static_pages#demo'
   match "men_heute", to: 'static_pages#men_heute'
    get '/modal_item', to: 'static_pages#modal_item'
+  match "arbol_viento", to: 'static_pages#arbol_viento'
+  
 
   # profile edit
   match "ubicacion", to: 'users#ubicacion'
