@@ -1,0 +1,59 @@
+<% @designers.shuffle.each_with_index do |user, index| %>
+	<% break if index == 10 %>
+	<div class="row">
+	  <div style="margin-top:1%; margin-left:50px" class="span1">
+		<% if !user.picture.present? %>
+			<%= link_to image_tag("http://graph.facebook.com/#{user.uid}/picture?type=square", 
+						width: 50, height: 50, :id =>  "nickname_small_picture"), user_path(user) %>
+		<% else %>
+			<%= link_to image_tag(user.picture_url(:thumb_profile), :id => "nickname_small_picture"), 
+						user_path(user) %>
+		<% end %>
+	  </div>
+	  <div class="span4" style="margin-left:35px" id="nickname_users_list">
+		<%= link_to user.nickname, user_path(user) %> | 
+			<% if user.roles.first.name == 'fashion lover' %>
+				<span id="fashionlover_list">fashion lover</span>
+			<% elsif user.roles.first.name == 'boutique store' %>
+				<span id="boutique_list">boutique store</span>
+			<% elsif user.roles.first.name == 'admin' %>
+				<span id="admin_list">soxialit</span>
+			<% else %>
+	  			<span id="<%=user.roles.first.name%>_list"><%= user.roles.first.name %></span>
+			<% end %>
+			<br />
+			<i class="icon-map-marker"></i><span id="nickname_small_location"><%= user.location %></span>
+	  	<% unless current_user?(user) %>
+	  	  <div style="margin-top:0.5em" id="form_index_<%= user.id %>" %>
+	  	    <% if !current_user.following?(user) %>
+		      <%= render :partial => 'shared/follow_favorites', :locals => { :user => user } %>
+		    <% end %>
+		  </div>
+		<% end %>
+		<hr/>
+	  </div>
+	  <div class="span6">
+	  	<% if !user.evaluations.first.nil? %>
+			<% user.evaluations.each_with_index do |lov, index| %>
+				<% break if index == 4 %>
+				<% if lov.target_type == "Product" %>
+				<div class="span1">	
+			  	  <%= link_to image_tag(find_foto(lov.target_id)), product_path(lov.target_id) %>
+				</div>
+				<% elsif lov.target_type == "Micropost" %>
+				<div class="span1">
+				  <%= link_to image_tag(find_micropost_image(lov.target_id), style:"width: 80px; height:auto"), micropost_path(lov.target_id), target: '_blank' %>
+				</div>
+				<% end %>
+			<% end %>
+		<% else %>
+			<% for i in 0..2 %>
+				<div class="span1">
+					<div class="well">
+					</div>
+				</div>
+			<% end %>
+		<% end %>
+		</div>
+	</div>
+<% end %>
