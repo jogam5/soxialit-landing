@@ -1,6 +1,14 @@
 ---
+500_lights&tripod.jpg: 500_lights&tripod-88b34e7c13206fceec3c7467e2e064f6.jpg
+500_lights&tripod/index.jpg: 500_lights&tripod-88b34e7c13206fceec3c7467e2e064f6.jpg
 LP.png: LP-503de9319c9912fb0bb95175eab288ab.png
 LP/index.png: LP-503de9319c9912fb0bb95175eab288ab.png
+T01-08.jpg: T01-08-291f8545377d60a02be8bfdb3a709688.jpg
+T01-08/index.jpg: T01-08-291f8545377d60a02be8bfdb3a709688.jpg
+T01-10.jpg: T01-10-7bcba0b32f33dc7fca536ae0450db694.jpg
+T01-10/index.jpg: T01-10-7bcba0b32f33dc7fca536ae0450db694.jpg
+T08-14.png: T08-14-02a9e46e9683e63862252bd0908951d3.png
+T08-14/index.png: T08-14-02a9e46e9683e63862252bd0908951d3.png
 about.jpg: about-3e93ed7c37007087fe06bb913538814e.jpg
 about/index.jpg: about-3e93ed7c37007087fe06bb913538814e.jpg
 ajax-loader.gif: ajax-loader-6de17f6ee5598c80be37a10de34f6368.gif
@@ -13,6 +21,12 @@ arbol_viento/bolsa3.jpg: arbol_viento/bolsa3-07fb0c9f7f28b591300959d36225ae37.jp
 arbol_viento/bolsa3/index.jpg: arbol_viento/bolsa3-07fb0c9f7f28b591300959d36225ae37.jpg
 arbol_viento/bolsa4.jpg: arbol_viento/bolsa4-1b66d93393f2778e6ddc56947cc4293f.jpg
 arbol_viento/bolsa4/index.jpg: arbol_viento/bolsa4-1b66d93393f2778e6ddc56947cc4293f.jpg
+articles_lindsay_1originalphoto.jpg: articles_lindsay_1originalphoto-7ec59ddff2b257fece6bba6270fbc63c.jpg
+articles_lindsay_1originalphoto/index.jpg: articles_lindsay_1originalphoto-7ec59ddff2b257fece6bba6270fbc63c.jpg
+bgHome_2.png: bgHome_2-62a52aec07f75be6002e8f40ce0988b3.png
+bgHome_2/index.png: bgHome_2-62a52aec07f75be6002e8f40ce0988b3.png
+bgHome_8.png: bgHome_8-89899159ec7be6cadcd81149e3d9e229.png
+bgHome_8/index.png: bgHome_8-89899159ec7be6cadcd81149e3d9e229.png
 bolsa.png: bolsa-71e08624cf63bf8ab4e76f0dd6324a17.png
 bolsa/index.png: bolsa-71e08624cf63bf8ab4e76f0dd6324a17.png
 btn-like.png: btn-like-9362a8532f4d800ad42a0f1afd4f60d9.png
@@ -34,6 +48,8 @@ close.png: close-978633e6bc46e254ded380b195d2b819.png
 close/index.png: close-978633e6bc46e254ded380b195d2b819.png
 collar1.png: collar1-f26f4c2573a05fb2ffe15d16c081b106.png
 collar1/index.png: collar1-f26f4c2573a05fb2ffe15d16c081b106.png
+colorback.png: colorback-6ad6a294ce3c94b4326df1a8f8108005.png
+colorback/index.png: colorback-6ad6a294ce3c94b4326df1a8f8108005.png
 delivery-icon.gif: delivery-icon-7291eb9df232f491e904692ea8c7c715.gif
 delivery-icon/index.gif: delivery-icon-7291eb9df232f491e904692ea8c7c715.gif
 demo1.png: demo1-fc5d51324a6adf6e8970fb186ad216bd.png
@@ -50,6 +66,8 @@ dress.png: dress-0c5dd5cdbb2d3cdc92a0c94d54ee25fc.png
 dress/index.png: dress-0c5dd5cdbb2d3cdc92a0c94d54ee25fc.png
 fb_cover.png: fb_cover-524425be54c2a709d77dc723d28a066f.png
 fb_cover/index.png: fb_cover-524425be54c2a709d77dc723d28a066f.png
+feed.rtf: feed-a87b9661139bfafccab4e2ffd4934b30.rtf
+feed/index.rtf: feed-a87b9661139bfafccab4e2ffd4934b30.rtf
 footer.png: footer-8010dccd553e2290bf5163ab5bbcfcef.png
 footer/index.png: footer-8010dccd553e2290bf5163ab5bbcfcef.png
 footer1.jpg: footer1-c499543837f10785db18b0badd55e57d.jpg
@@ -108,6 +126,8 @@ link_favorite.png: link_favorite-dce983d455e30881ade605444cc5053b.png
 link_favorite/index.png: link_favorite-dce983d455e30881ade605444cc5053b.png
 loading.png: loading-323f98010c873f1cc77c59859654895e.png
 loading/index.png: loading-323f98010c873f1cc77c59859654895e.png
+login.png: login-5abbdfeb8191ad892803bb1cf8c5e06e.png
+login/index.png: login-5abbdfeb8191ad892803bb1cf8c5e06e.png
 logoestafeta.jpg: logoestafeta-4def5beec02be7fbbed4f9a33bb3a46c.jpg
 logoestafeta/index.jpg: logoestafeta-4def5beec02be7fbbed4f9a33bb3a46c.jpg
 love.png: love-77c863bf7e7e94feba9d40c4f2a2ad83.png
@@ -166,6 +186,10 @@ project.jpg: project-3c964dc18002e20c06af8b4f780a156d.jpg
 project/index.jpg: project-3c964dc18002e20c06af8b4f780a156d.jpg
 project.png: project-2a0e996d5d44401d81c0fdeca93880b7.png
 project/index.png: project-2a0e996d5d44401d81c0fdeca93880b7.png
+rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
+rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
+reporte.rtf: reporte-39e16557f20e9aa75655cac494f01f62.rtf
+reporte/index.rtf: reporte-39e16557f20e9aa75655cac494f01f62.rtf
 share.png: share-20989ceff48427cd450e5eddf9a25089.png
 share/index.png: share-20989ceff48427cd450e5eddf9a25089.png
 shop.png: shop-6c0d0e18293b9bb641dcd2da0c8d1695.png
@@ -198,17 +222,10 @@ wrong5.jpg: wrong5-208812eb19f241c59f80a45c9f6554a4.jpg
 wrong5/index.jpg: wrong5-208812eb19f241c59f80a45c9f6554a4.jpg
 zapato.png: zapato-1029d6c5aa14da47143753767914f588.png
 zapato/index.png: zapato-1029d6c5aa14da47143753767914f588.png
-<<<<<<< HEAD
-application.js: application-5e15b2bb224d423f95e10d032cb0c4d1.js
-application/index.js: application-5e15b2bb224d423f95e10d032cb0c4d1.js
-application.css: application-b36a50eb3e8349977fa4620a1297404c.css
-application/index.css: application-b36a50eb3e8349977fa4620a1297404c.css
-=======
 application.js: application-2b41a6fbcb84fe4cd85f16ca43bf8260.js
 application/index.js: application-2b41a6fbcb84fe4cd85f16ca43bf8260.js
-application.css: application-f8100e6c49b4dac14b394bf0ec04f885.css
-application/index.css: application-f8100e6c49b4dac14b394bf0ec04f885.css
->>>>>>> parent of ee9537a... assets
+application.css: application-fa0db1b27d92373deb29f8e84e7222cf.css
+application/index.css: application-fa0db1b27d92373deb29f8e84e7222cf.css
 fontawesome-webfont.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont/index.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont.svg: fontawesome-webfont-c3f3594758768fbb43eae746d18b3b50.svg

@@ -96,9 +96,9 @@ class StaticPagesController < ApplicationController
   end
   
   def men_heute
-     
-     @products = [Product.find(230), Product.find(231), Product.find(232)]
-     
+
+     @products = [Product.find(230),Product.find(231), Product.find(232), Product.find(241), Product.find(242), Product.find(243)]
+
   end
   
   def modal_item
@@ -106,7 +106,7 @@ class StaticPagesController < ApplicationController
   end
   
   def arbol_viento
-     @products = [Product.find(233), Product.find(234), Product.find(235)]
+   @products = [Product.find(233), Product.find(234), Product.find(235)]
   end
     
 end

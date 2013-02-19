@@ -4,7 +4,7 @@
 			<h1 style="margin-bottom: 35px !important;" class="designer_name">
 				Arbol de viento
 			</h1>
-			<p class="designer_bio">
+			<p class="designer_biografia">
 				Es un Colectivo Artesanal cuyo propósito es la creación de bolsas para dama y accesorios de uso cotidiano que nos ayuden a recordar los lazos ancestrales entre el ser humano, la Tierra y el Cosmos.
 				Como motivos de inspiración, Árbol de Viento utiliza, símbolos, mitologías, técnicas artesanales y materiales naturales, combinándolos con formas de elaboración, estilos y usos de nuestra cultura moderna para hacerlos más actuales, siempre tomando en cuenta el cuidado de la Tierra.
 			</p>
@@ -31,7 +31,7 @@
 			<h1 style="margin-bottom: 35px !important;" class="designer_name">
 				Arbol de viento
 			</h1>
-			<p class="designer_bio">
+			<p class="designer_biografia">
 				Es un Colectivo Artesanal cuyo propósito es la creación de bolsas para dama y accesorios de uso cotidiano que nos ayuden a recordar los lazos ancestrales entre el ser humano, la Tierra y el Cosmos.
 				Como motivos de inspiración, Árbol de Viento utiliza, símbolos, mitologías, técnicas artesanales y materiales naturales, combinándolos con formas de elaboración, estilos y usos de nuestra cultura moderna para hacerlos más actuales, siempre tomando en cuenta el cuidado de la Tierra.
 			</p>
@@ -56,6 +56,7 @@
 <div class="row">
 	<hr>
 	<div class="span12">
+		<% if !@products.nil? %>
 			<% @products.each do |product| %>
 				<div class="frame_item_designer">
 				  <div class="designer_photo">
@@ -74,6 +75,7 @@
 				  </div>
 				</div>
 			<% end %>
+		<% end %>
 	</div>
 </div>
 

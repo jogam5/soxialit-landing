@@ -1,0 +1,53 @@
+<% if @micropost.comments.count > 0 %>
+  <ul class="comments" style="margin-bottom:1px; width:458px">
+    <% @comments.each do |comment| %>
+    <%= content_tag_for(:li, comment ) do %>
+      <div class="comment_body">
+        <span class="comment_avatar">
+          <% if !comment.user.picture.present? %>
+            <%= link_to image_tag("http://graph.facebook.com/#{comment.user.uid}/picture?type=square", 
+                width: 25, height: 25, :id =>  "nickname_small_picture"), user_path(comment.user) %>
+          <% else %>
+            <%= link_to image_tag(comment.user.picture_url(:thumb_profile), width: 25, :id => "nickname_small_picture"), 
+                user_path(comment.user) %>
+          <% end %>
+        </span>
+        <span class="comment_author"><%= "#{comment.user.nickname}"%></span>
+        <span class="comment_text"><%= comment.body %></span>
+        <span class="comment_timestamp"><%= time_ago_in_words(comment.created_at) %> 
+        <% if current_user == comment.user %>
+          <span class="comment_delete"><%= link_to "X", comment_path(comment), 
+                    :method => :delete, remote: true %>
+          </span></span>
+        <% end %>
+      </div>
+    <% end %>
+    <% end %>
+  </ul>
+<% end %>
+<% if user_signed_in? %>
+  <div class="comment_form" id="form_<%=@micropost.id %>" >
+    <%= form_for(@comment, remote: true) do |f| %>
+      <ul class="comments" id="comment_micropost_<%=@micropost.id %>"></ul>
+      <ul class="comments_new">
+        <li>
+          <%= render 'shared/error_messages', object: f.object %>
+          <span class="comment_avatar">
+              <% if !current_user.picture.present? %>
+              <%= image_tag("http://graph.facebook.com/#{current_user.uid}/picture?type=square", 
+                    width: 25, height: 25, :id =>  "nickname_small_picture") %>
+            <% else %>
+              <%= image_tag(current_user.picture_url(:thumb_profile), width: 25, 
+                  :id => "nickname_small_picture") %>
+            <% end %>
+          </span>
+          <div class="field">
+              <%= f.text_area :body, rows: "1", :class => "span5", :placeholder => "Agrega un comentario..." %>
+          </div>
+          <%= f.hidden_field :commentable_id, :value => @micropost.id %>
+          <%= f.hidden_field :commentable_type, :value => "Micropost" %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+<% end %>
