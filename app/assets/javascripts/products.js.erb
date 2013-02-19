@@ -1,0 +1,98 @@
+/* products/new popups */
+
+$(document).ready(function(){
+	
+	$('#tag_info').hover(
+		function(){
+			$('#pop_tag').show();
+		},
+		function(){
+		$('#pop_tag').hide();
+		
+	});
+	$('#policy_info').hover(
+		function(){
+			$('#pop_policy').show();
+		},
+		function(){
+		$('#pop_policy').hide();
+		
+	});
+	
+
+/********* Funcion para rotar imagenes en show's product ******/
+
+		$('.paintings').live({
+			mouseenter: 
+			function(e){
+				e.preventDefault();
+				console.log($(this).data('id'));
+				$('.mainpicture').find('img').remove();
+				var test = $('.painting_'+$(this).data('id')).find('img').clone()
+				var image = test.attr('src').replace('thumb', 'timeline');
+				console.log(image);
+				test.attr('src', image).appendTo($('.mainpicture'));
+
+
+				},
+			mouseleave:
+			function (e){
+				e.preventDefault();
+				}
+		  });
+
+	});
+
+/* Edit/Delete Links on Item's Ajax Hover  */ 
+$(document).ready(function(){
+	$('.right_side_items').hover(function(e){
+		$(this).toggleClass("hover")
+	});
+});
+
+
+/* Masonry en index products */
+
+/*facebook likes */
+
+$(document).ready(function(){
+	var pathname = window.location.href;
+	$('.fb-like').data('href', pathname);
+});
+
+
+/*tagging */
+$(function () {
+  $('#product_tag_list').tokenInput('/sizes.json', { 
+    crossDomain: false,
+    prePopulate: $('#product_tag_list').data('pre'),
+    theme: 'facebook',
+	 preventDuplicates: true,
+	 tokenValue: 'name', // defaults to 'id'
+  
+	 allowCustomEntry: true
+   
+  });
+});
+
+/* sizes */
+$(function(){
+	$('#product_size_tokens').tokenInput('/sizes.json', {
+    crossDomain: false,
+	 preventDuplicates: true,
+    prePopulate: $('#product_size_tokens').data('load')
+	});
+ });
+
+
+/* Loading image */
+$(function() {
+  $('#ajax-status')
+    .hide()  // hide it initially.
+    .ajaxStart(function() {
+      $(this).show(); // show on any Ajax event.
+    })
+    .ajaxStop(function() {
+      $(this).hide(); // hide it when it is done.
+  });
+});
