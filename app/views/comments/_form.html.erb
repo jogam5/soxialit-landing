@@ -2,23 +2,23 @@
 	<ul class="comments" id="comment_<%=feed_item.activitable_type.downcase %>_<%=feed_item.activitable_id %>">
 	</ul>
 	<ul class="comments_new" >
-	    	<li>
-				<%= render 'shared/error_messages', object: f.object %>
-					<span class="comment_avatar">
-					  	<% if !current_user.picture.present? %>
-							<%= image_tag("http://graph.facebook.com/#{current_user.uid}/picture?type=square", 
-										width: 35, height: 35, :id =>  "nickname_small_picture") %>
-						<% else %>
-							<%= image_tag(current_user.picture_url(:thumb_profile), width: 35, 
-									:id => "nickname_small_picture") %>
-						<% end %>
-					</span>
-					<div class="field">
-					    <%= f.text_area :body, rows: "1", :class => "span7", :placeholder => "Agrega un comentario..." %>
-					</div>
-					  	<%= f.hidden_field :commentable_id, :value => feed_item.activitable.id %>
-					  	<%= f.hidden_field :commentable_type, :value => feed_item.activitable_type %>
-	        </li>
+    	<li>
+		  <%= render 'shared/error_messages', object: f.object %>
+			<span class="comment_avatar">
+			  	<% if !current_user.picture.present? %>
+					<%= image_tag("http://graph.facebook.com/#{current_user.uid}/picture?type=square", 
+								width: 25, height: 25, :id =>  "nickname_small_picture") %>
+				<% else %>
+					<%= image_tag(current_user.picture_url(:thumb_profile), width: 25, 
+							:id => "nickname_small_picture") %>
+				<% end %>
+			</span>
+			<div class="field">
+			    <%= f.text_area :body, rows: "1", :class => "span5", :placeholder => "Agrega un comentario..." %>
+			</div>
+			  	<%= f.hidden_field :commentable_id, :value => feed_item.activitable.id %>
+			  	<%= f.hidden_field :commentable_type, :value => feed_item.activitable_type %>
+        </li>
 	</ul>
 	
 <% end %>

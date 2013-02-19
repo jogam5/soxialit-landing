@@ -26,11 +26,12 @@ class MicropostsController < ApplicationController
        respond_to do |format|
          format.html # show.html.erb
        end
-   end
+    end
   end
 
   def create
     @micropost = current_user.microposts.build(params[:micropost])
+    @micropost.remote_picture_url = @micropost.thumbnail
     @micropost.save!
     @micropost.activities.create(:user_id => current_user.id, :action => "create")
     Activity.expire_feed_cache(current_user)

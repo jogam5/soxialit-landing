@@ -3,35 +3,28 @@
 	<% @feed_items.each do |feed_item| %>
 	 <% if feed_item.present? && feed_item.activitable.status == true %>
   	  <li id="<%= feed_item.id %>">
-	  	<span class="contenido">
-	  	  <div class="row">
-	  	  	<div class="span1">
-	  	  		<%= render :partial => 'feed/profile_picture', :locals => { :feed_item => feed_item } %>
+	  	<div class="row" >
+	  	  	<div class="span2" style="padding-top:4em; text-align:right">
+	  	  	  <%= render :partial => 'feed/profile_picture', :locals => { :feed_item => feed_item } %>
+	  	  	  <div class="timestamp" style="margin-top:1em">
+	  	  	  	<%= link_to feed_item.user.nickname, user_path(feed_item.user) %><br/ >
+				<%= time_ago_in_words(feed_item.created_at) %>
+			  </div>
 			</div>
-			<div class="span7">
-				<p style="font-size:1.1em"><span id="user_and_items_link">
-					<%= link_to feed_item.user.nickname, user_path(feed_item.user) %>
-						</span>
-				  	<%= render :partial => 'feed/headline', :locals => { :feed_item => feed_item } %>
-				  	<br />
-					<span class="timestamp">
-					 <%= time_ago_in_words(feed_item.created_at) if feed_item.activitable_type == "Product" %>
-					</span>
+			<div class="span9" id="feed_wall" style="padding-top:4em">
+				<div class="span2"> 
+				  <%= render :partial => 'feed/pictures', :locals => { :feed_item => feed_item } %>
+				</div>
+				<div class="span6">
+					<%= render :partial => 'feed/headline', :locals => { :feed_item => feed_item } %>
 					<br />
-				</p>
+					<div class="red_bar"></div>
+					<% unless feed_item.activitable_type == "User" %>
+				      <%= render :partial => 'feed/comments', :locals => { :feed_item => feed_item } %>
+				  	<% end %>
+				</div>
 			</div>
-		  </div>
-		  <div class="row">
-			<div id="mitad">
-				<%= render :partial => 'feed/pictures', :locals => { :feed_item => feed_item } %>
-			</div>
-			<br />
-		  </div>
-		  <div class="red_bar"></div><br />
-		  <% unless feed_item.activitable_type == "User" %>
-		    <%= render :partial => 'feed/comments', :locals => { :feed_item => feed_item } %>
-		  <% end %>
-		</span>
+		</div>
 	  </li>
 	 <% end %>
 	<% end %>

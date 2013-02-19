@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   layout "registro", :only => [ :registro ]
-
+  layout "feed", :only => [:home]
+  
   def home
     @stats = Rails.cache.stats.first.last unless Rails.env.development?
   	@comment = Comment.new

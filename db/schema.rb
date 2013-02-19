@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130208090717) do
+ActiveRecord::Schema.define(:version => 20130217225222) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20130208090717) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "status"
+    t.string   "picture"
   end
 
   create_table "notifications", :force => true do |t|
