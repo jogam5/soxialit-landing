@@ -66,6 +66,8 @@ dress.png: dress-0c5dd5cdbb2d3cdc92a0c94d54ee25fc.png
 dress/index.png: dress-0c5dd5cdbb2d3cdc92a0c94d54ee25fc.png
 fb_cover.png: fb_cover-524425be54c2a709d77dc723d28a066f.png
 fb_cover/index.png: fb_cover-524425be54c2a709d77dc723d28a066f.png
+feed.rtf: feed-a87b9661139bfafccab4e2ffd4934b30.rtf
+feed/index.rtf: feed-a87b9661139bfafccab4e2ffd4934b30.rtf
 footer.png: footer-8010dccd553e2290bf5163ab5bbcfcef.png
 footer/index.png: footer-8010dccd553e2290bf5163ab5bbcfcef.png
 footer1.jpg: footer1-c499543837f10785db18b0badd55e57d.jpg
@@ -164,6 +166,8 @@ mujer.png: mujer-38072119915c33d184a02e4511a4fa1b.png
 mujer/index.png: mujer-38072119915c33d184a02e4511a4fa1b.png
 no_favorites.png: no_favorites-8648976685dba8d7cc1ab9975c6cd6b9.png
 no_favorites/index.png: no_favorites-8648976685dba8d7cc1ab9975c6cd6b9.png
+one_like.png: one_like-2c932c8ddf38398ee26445fba550aaa0.png
+one_like/index.png: one_like-2c932c8ddf38398ee26445fba550aaa0.png
 original_loading.gif: original_loading-bcf4af504cedc42ea7c47001775d62d1.gif
 original_loading/index.gif: original_loading-bcf4af504cedc42ea7c47001775d62d1.gif
 paypal.png: paypal-d3249b74d1d355a4a96550ca5b55e930.png
