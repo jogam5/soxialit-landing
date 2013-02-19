@@ -514,7 +514,7 @@ margin-top: 3%;
         -moz-border-radius: 30px;
         border-radius: 30px;
         box-shadow: 0px 0px 0px 2px $website;
-        margin: -12px 5px -5px 0;
+        margin: 0px 5px -5px 0;
         vertical-align: middle;
 }
 
@@ -847,20 +847,16 @@ form div.upload div.file-preview {
 
 .microposts {
   list-style: none;
-  margin: 30px 0 0 0;
+  margin: 5px 0 0 0;
 
   li {
-    padding: 25px 0 25px 0;
+    padding: 0px 0 0px 0;
   }
 }
 
 .contenido {
   width:675px;
   display: block;
-  background:url('module_horns_narrow.gif') top no-repeat;
-  border-left: 10px solid black;
-  border-right: 10px solid black;
-  background:url('footer.png') bottom no-repeat;
   padding: 20px 10px 10px;
 }
 
@@ -887,7 +883,7 @@ z-index: 2;
 }
 
 #product_background img{
-	padding:4px 4px 4px 4px;
+	padding:0px 4px 4px 4px;
 	background-color:white;
 }
 
@@ -895,6 +891,7 @@ z-index: 2;
 	color:black;
 	font-size:1.2em;
 	font-weight:lighter;
+	font-family:acta-display;
 }
 
 #product_y{
@@ -911,7 +908,7 @@ z-index: 2;
 	font-size:1em;
 	font-weight:lighter;
 	 a{
-	color:$grayTitle;
+	color:#777;
 	text-decoration:none;
 	}
 	 a:hover{
@@ -924,6 +921,7 @@ z-index: 2;
 
 /* Comments */
 
+
 ul.comments{
 	margin: 0 0 1px 0px;
 	border-left: 1px solid #DDD;
@@ -933,17 +931,13 @@ ul.comments{
 
 li.comment {
   	list-style: none;
-  	width:580px;
+  	width:438px;
 	height:auto;
 	min-height: 40px;
-	background-color:whiteSmoke;
+	background-color:white;
 	font-size: 12px;
-	border-bottom: 2px solid white;
+	border-bottom: 1px solid #DDD;
 	padding:6px 10px;
-}
-
-ul.comments{
-	margin-bottom:1px;
 }
 
 .comment_body{
@@ -953,13 +947,16 @@ ul.comments{
 .comment_author{
 	font-size:1.2em;
 	color:black;
-	font-weight:bold;
+	font-weight:lighter;
 	margin-left:2%;
 }
 
 .comment_text{
 	margin-left:5px;
-	font-size:1.2em;
+	color:#222;
+	font-weight:lighter;
+	font-size:1.1em;
+	display:inline;
 }
 
 
@@ -978,14 +975,21 @@ ul.comments{
 
 .comment_avatar{
 	float:left;
-	margin-top:2%;
+	margin-top:0%;
+	margin-right:0.5em;
+}
+
+ul.comments_new{
+	width:458px;
+	margin-left:0px;
+	border: 1px solid #DDD;
 }
 
 .comments_new li{
 	list-style: none;
-  	width:580px;
+  	width:435px;
 	height:45px;
-	background-color:whiteSmoke;
+	background-color:white;
 	font-size: 12px;
 	padding:6px 10px;
 }
@@ -1150,6 +1154,7 @@ ul.comments{
 
 #item_link_micropost{
 	font-size:1.5em;
+	font-family:acta-display, Helvetica-Neue;
 	color:$rojo;
 	 a{
 	color:$rojo;
@@ -1639,4 +1644,3 @@ ul.comments{
   text-decoration:none;
   }
 }
-

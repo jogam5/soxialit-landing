@@ -14,7 +14,7 @@
     <p style="font-family:acta-display; font-size:1.4em; margin-bottom:1em">Nuevos Posts</p>
     <% @posts.each do |post| %>
       <p style="font-family:acta-display"><%= post.title %></p>
-      <%= image_tag post.picture_url(:feed) %>
+      <%= link_to (image_tag post.picture_url(:feed)), post_path(post) %>
       <p style="margin-right:0.5em; margin-top:0.5em">
         <% if !post.user.picture.present? %>
         <%= link_to image_tag("http://graph.facebook.com/#{post.user.uid}/picture?type=square", 
@@ -118,7 +118,7 @@
 	     </div>
 
     <div class="red_bar" style="background:black; margin-top:0.5em"></div>
-    
+    <%= render 'microposts/comments' %>
   </div>
 </div>
 <br/ >
