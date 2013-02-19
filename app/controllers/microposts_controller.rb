@@ -16,6 +16,7 @@ class MicropostsController < ApplicationController
 
   def show
     @micropost = Micropost.find_by_id(params[:id])
+    @posts = Micropost.all.last(3)
     if @micropost.nil?
       flash[:error] = "No se ha encontrado el Post."
       redirect_to microposts_path
