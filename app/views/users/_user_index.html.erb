@@ -30,8 +30,7 @@
 		    <% end %>
 		  </div>
 		<% end %>
-		<hr/>
-	  </div>
+	  	</div>
 	  <div class="span6">
 	  	<% if !user.evaluations.first.nil? %>
 			<% user.evaluations.each_with_index do |lov, index| %>
@@ -56,4 +55,5 @@
 		<% end %>
 		</div>
 	</div>
+  <hr>
 <% end %>
