@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery.preview.full
-//= requiere jquery.tokeninput
+//= require jquery.tokeninput
 //= require bootstrap
 //= require jquery_ujs
 //= require box-maker
