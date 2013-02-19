@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>Soxialit - La red social para fashion designers, bloggers, fotógrafos y boutique stores</title>
-  <%= metamagic :title => "Soxialit", :description => "La red social para fashion designers, bloggers, fotógrafos y boutique stores", :keywords => %w(keyword1 keyword2 keyword3) %>
   <%= stylesheet_link_tag  "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -13,12 +12,16 @@ mixpanel.init("5e344db467e2f971ffccde4566fe2da4");</script><!-- end Mixpanel -->
 	<% yield :javascript %>
 
 </head>
-<style> body { padding-top: 65px; } </style>
+<style> body { background-color:white;
+              padding-top: 65px;
+               background-image: url(http://d36xtkk24g8jdx.cloudfront.net/bluebar/1053f34/images/shared/noise-2.png);
+        }
+</style>
 
 <body>
-    <%= render 'layouts/header' %>
-	<% if !user_signed_in? %>
-	<div style="margin-top:5%" class="container">
+  <%= render 'layouts/header' %>
+  <% if !user_signed_in? %>
+    <div style="margin-top:5%" class="container">
       <% flash.each do |type, message| %>
         <div style="margin-top:2%" class="alert <%= flash_class type %>">
           <button class="close" data-dismiss="alert">x</button>
@@ -26,11 +29,11 @@ mixpanel.init("5e344db467e2f971ffccde4566fe2da4");</script><!-- end Mixpanel -->
         </div>
       <% end %>
       <%= yield %>
-	    <div id="modal-id"></div>
-	    <%= render 'layouts/footer' if user_signed_in? %>
+      <div id="modal-id"></div>
+      <%= render 'layouts/footer' if user_signed_in? %>
     </div>
     <%= render 'layouts/footer_unsigned' unless user_signed_in? %>
-	<% else %>
+  <% else %>
     <div class="container">
       <% flash.each do |type, message| %>
         <div style="margin-top:2%" class="alert <%= flash_class type %>">
@@ -39,10 +42,10 @@ mixpanel.init("5e344db467e2f971ffccde4566fe2da4");</script><!-- end Mixpanel -->
         </div>
       <% end %>
       <%= yield %>
-	    <div id="modal-id"></div>
-	    <%= render 'layouts/footer' if user_signed_in? %>
+      <div id="modal-id"></div>
+      <%= render 'layouts/footer' if user_signed_in? %>
     </div>
-	<% end %>
+  <% end %>
 <!-- start Fonts -->
 <link href='https://fonts.googleapis.com/css?family=Dosis|Arimo|Lobster|Raleway' rel='stylesheet' type='text/css'>
 <script type="text/javascript">

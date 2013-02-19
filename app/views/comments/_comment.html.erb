@@ -3,15 +3,15 @@
 		<span class="comment_avatar">
 			<% if !comment.user.picture.present? %>
 				<%= link_to image_tag("http://graph.facebook.com/#{comment.user.uid}/picture?type=square", 
-						width: 35, height: 35, :id =>  "nickname_small_picture"), user_path(comment.user) %>
+						width: 25, height: 25, :id =>  "nickname_small_picture"), user_path(comment.user) %>
 			<% else %>
-				<%= link_to image_tag(comment.user.picture_url(:thumb_profile), width: 35, :id => "nickname_small_picture"), 
+				<%= link_to image_tag(comment.user.picture_url(:thumb_profile), width: 25, :id => "nickname_small_picture"), 
 						user_path(comment.user) %>
 			<% end %>
 		</span>
 		<span class="comment_author"><%= "#{comment.user.nickname}"%></span>
 		<%= content_tag "span", class:"comment_text", data: {id: comment.id } do %>
-	 		<span id="comment_new_<%= comment.id%>"><%= comment.body %></span>
+	 		<span id="comment_new_<%= comment.id%>" class="comment_text"><%= comment.body %></span>
 		<% end %>
 		<span class="comment_timestamp"><%= time_ago_in_words(comment.created_at) %> 
 		<% if current_user == comment.user %>

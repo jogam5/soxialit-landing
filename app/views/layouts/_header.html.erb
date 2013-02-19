@@ -6,7 +6,7 @@
 		 class="navbar-inner">
 			<div class="container">
 				<span class="span6">
-					<div id="titleProfile"><%= link_to "Soxialit", feed_path %></div>
+					<div id="titleProfile"><%= link_to "Soxialit", root_url %></div>
 				</span>
 				<nav>
 				  <ul class="nav pull-right">
@@ -38,10 +38,6 @@
 					                <li><%= link_to '<i class="icon-user"></i> Conecta'.html_safe, users_path, 
 					                			id:"anchor_edit" %></li>
 					               	<li class="divider"></li>
-					               	<li>
-					                  <%= link_to "Compartir Link", feed_path %>
-					                </li>
-					                <li class="divider"></li>
 					                <li>
 					                  <%= link_to "Salir", destroy_user_session_path, :method => :delete %>
 					                </li>
