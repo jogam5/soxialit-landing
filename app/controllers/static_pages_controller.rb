@@ -104,7 +104,7 @@ class StaticPagesController < ApplicationController
   end
   
   def arbol_viento
-     @products = [Product.find(233), Product.find(234), Product.find(235)]
+   @products = [Product.find(233), Product.find(234), Product.find(235)]
   end
     
 end

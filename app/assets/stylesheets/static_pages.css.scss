@@ -278,6 +278,18 @@ html[xmlns] .clearfix {
 	background-color: white;
 }
 
+.frame_item_design {
+	padding: 0px;
+	margin: 1% -3% 3% 11%;
+	left: 0%;
+	float: left;
+	width: 235px;
+	display: block;
+	position: relative;
+	background-color: white;
+}
+
+
 .designer_photo{
 	width: auto;
 	background-position: center center;
@@ -342,3 +354,9 @@ html[xmlns] .clearfix {
 	text-transform: uppercase;
 }
 
+.designer_biografia{
+	margin-bottom: 32px;
+	color: #333;
+	font-size: 1em;
+	line-height: 16px;
+}
