@@ -34,7 +34,7 @@
 	  <div class="span6">
 	  	<% if !user.evaluations.first.nil? %>
 			<% user.evaluations.each_with_index do |lov, index| %>
-				<% break if index == 4 %>
+				<% break if index == 3 %>
 				<% if lov.target_type == "Product" %>
 				<div class="span1">	
 			  	  <%= link_to image_tag(find_foto(lov.target_id)), product_path(lov.target_id) %>
