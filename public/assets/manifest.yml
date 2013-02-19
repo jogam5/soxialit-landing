@@ -198,10 +198,17 @@ wrong5.jpg: wrong5-208812eb19f241c59f80a45c9f6554a4.jpg
 wrong5/index.jpg: wrong5-208812eb19f241c59f80a45c9f6554a4.jpg
 zapato.png: zapato-1029d6c5aa14da47143753767914f588.png
 zapato/index.png: zapato-1029d6c5aa14da47143753767914f588.png
+<<<<<<< HEAD
 application.js: application-5e15b2bb224d423f95e10d032cb0c4d1.js
 application/index.js: application-5e15b2bb224d423f95e10d032cb0c4d1.js
 application.css: application-b36a50eb3e8349977fa4620a1297404c.css
 application/index.css: application-b36a50eb3e8349977fa4620a1297404c.css
+=======
+application.js: application-2b41a6fbcb84fe4cd85f16ca43bf8260.js
+application/index.js: application-2b41a6fbcb84fe4cd85f16ca43bf8260.js
+application.css: application-f8100e6c49b4dac14b394bf0ec04f885.css
+application/index.css: application-f8100e6c49b4dac14b394bf0ec04f885.css
+>>>>>>> parent of ee9537a... assets
 fontawesome-webfont.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont/index.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont.svg: fontawesome-webfont-c3f3594758768fbb43eae746d18b3b50.svg
