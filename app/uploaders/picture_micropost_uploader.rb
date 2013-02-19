@@ -13,7 +13,7 @@ class PictureMicropostUploader < CarrierWave::Uploader::Base
   end
 
   version :feed do
-    process :resize_to_fit => [555,360]
+    process :resize_to_fill => [120,120]
   end
 
   # Create different versions of your uploaded files:
