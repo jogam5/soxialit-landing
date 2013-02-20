@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   layout "registro", :only => [ :registro ]
   layout "feed", :only => [:home]
+  layout "test", :only => [:test]
   
   def home
     @stats = Rails.cache.stats.first.last unless Rails.env.development?
@@ -93,6 +94,21 @@ class StaticPagesController < ApplicationController
   end
   
   def demo
+  end
+
+  def test
+  end
+
+  def items
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def biografia
+    respond_to do |format|
+      format.js
+    end
   end
   
   def men_heute
