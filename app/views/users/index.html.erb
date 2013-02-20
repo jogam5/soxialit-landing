@@ -8,10 +8,11 @@
 	</div>
   <br>
 <div id="ajax-status" style="float:left; position:absolute; display:none; margin: 0% 33%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
+  <div style="float:right; margin-right:34%; margin-bottom:1%" class="span1">
+		<%= image_tag('like-active.png', style: "margin-left:22%; margin-bottom: 5%") %>
+  </div>
   <div id="user_roles">
-	<% @fashionlovers.each do |lover| %>
-		<%= render :partial => 'user', :object => lover %>
-	<% end %>
+	<%= render :partial => 'user_fashionlover', :object => @fashionlovers %>
   </div>
 <% if user_signed_in? %>
  <% if current_user.roles.first.name == 'admin' %>
@@ -39,3 +40,22 @@
   <br />
  <% end %>
 <% end %>
+
+<script type="text/javascript">
+
+	$(function() {
+	  $('#ajax-status')
+	    .hide()  // hide it initially.
+	    .ajaxStart(function() {
+	      $(this).show(); // show on any Ajax event.
+	    })
+	    .ajaxStop(function() {
+	      $(this).hide(); // hide it when it is done.
+	  });
+	});
+	
+	$('.follow').click(function(event){
+	  event.preventDefault(); // Prevent link from following its href
+	});
+</script>
+

@@ -1,1 +1,2 @@
-$("#user_roles").html("<%= escape_javascript(render(@fashionlovers)) %>");
+$('#user_roles').html("<%= escape_javascript(render :partial => 'user_fashionlover', :object => @fashionlovers) %>");
+
