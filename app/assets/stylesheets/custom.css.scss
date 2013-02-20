@@ -867,7 +867,7 @@ filter: alpha(opacity = 80);
 -moz-opacity: 0.8;
 -khtml-opacity: 0.8;
 opacity: 0.8;
-margin: -10px 0 0 0;
+margin: 15px 0 0 0;
 position: relative;
 z-index: 2;
 }
@@ -1185,6 +1185,25 @@ ul.comments_new{
 	color:$grayTitle;
 	}
 }
+
+#micropost_description_feed{
+	overflow: hidden;
+	max-height: 50px;
+	text-align: left;
+	font-size: 1.2em;
+	font-weight: lighter;
+	font-color: #999;
+	padding: 3%;
+	margin-top: -3%;
+	a{
+	color:$rojo;
+	text-decoration:none;
+	}
+	 a:hover{
+	color:$grayTitle;
+	}
+}
+
 
 #micropost_leer_mas{
 	font-size:0.8em;

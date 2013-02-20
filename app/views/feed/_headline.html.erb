@@ -36,7 +36,7 @@
 	<% elsif feed_item.activitable_type == "Micropost" && feed_item.action == "create"  %>
 		<span id="item_link_micropost"><%= link_to feed_item.activitable.title,
 													micropost_path(feed_item.activitable), target: '_blank' %></span>
-		<div id="micropost_description"><%= feed_item.activitable.description %><br />
+		<div id="micropost_description_feed"><%= feed_item.activitable.description %><br />
 		 	<div id="micropost_leer_mas"><%= link_to "Leer más", feed_item.activitable.url, target: '_blank' %></div>
 		 	<br />
 		 	<span style="color:#999; font-size:0.9em">vía</span> <span style="font-size:0.9em"><%= link_to feed_item.activitable.provider, feed_item.activitable.provider, target: '_blank' %></span>
