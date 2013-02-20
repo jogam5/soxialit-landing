@@ -80,7 +80,7 @@ DeviseFacebook::Application.routes.draw do
   match "privacy", to:'static_pages#privacy'
   match "faq", to:'static_pages#faq'
   match "registro", to: 'static_pages#registro'
-  match "test", to: 'static_pages#test'
+  match "tanyamulki", to: 'static_pages#test'
   match "biografia", to:'static_pages#biografia'
   match "items", to:'static_pages#items'
 
