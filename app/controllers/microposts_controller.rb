@@ -12,6 +12,7 @@ class MicropostsController < ApplicationController
   
   def index  
      @microposts = Micropost.page(params[:page]).per_page(50).find_with_reputation(:lovs, :all, order: 'lovs desc')
+     
   end
 
   def show
@@ -58,7 +59,7 @@ class MicropostsController < ApplicationController
     Micropost.delay.publish_link_like_facebook(@micropost, current_user) unless current_user.fb == false
     if !@user.notification.nil?
        if @user.notification.lov_micropost == true
-         UserMailer.lov_micropost(@user, current_user, @micropost).deliver
+         UserMailer.lov_micropost(@user, current_user, @micropost).deliver 
       end
     end
      respond_to do |format|

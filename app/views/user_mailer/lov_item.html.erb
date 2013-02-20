@@ -19,7 +19,7 @@
 		padding-top: 6px;
 		margin-top: 3%;
 		margin-bottom: 2%;
-		font-family: nimbus-sans, Helvetica-Neue, Helvetica, Arial, Sans-serif;">A <%= link_to @user_following.nickname, user_url(@user.username), style: "text-decoration:none; color:#d93e38" %> le gusta tu item: <strong><%= link_to @product.title, product_url(@product), style: "color: #bbb; font-weight: lighter; text-decoration:none;" %></strong></p>
+		font-family: nimbus-sans, Helvetica-Neue, Helvetica, Arial, Sans-serif;">A <%= link_to @user_following.nickname, user_url(@user_following.username), style: "text-decoration:none; color:#d93e38" %> le gusta tu item: <strong><%= link_to @product.title, product_url(@product), style: "color: #bbb; font-weight: lighter; text-decoration:none;" %></strong></p>
 		<hr>
 		<%= link_to(image_tag(@product.picture), product_url(@product))%>
 		<img src="http://i1246.photobucket.com/albums/gg616/soxialit/like-active_zps3977b1a5.png" border="0" alt="Likes:"/>

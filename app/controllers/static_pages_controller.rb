@@ -93,6 +93,7 @@ class StaticPagesController < ApplicationController
   end
   
   def demo
+    @products = [Product.find(257),Product.find(258), Product.find(259), Product.find(260), Product.find(261), Product.find(262)]
   end
 
   def test
