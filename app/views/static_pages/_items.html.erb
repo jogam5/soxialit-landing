@@ -1,12 +1,4 @@
-<div class="row-fluid">
-  <div class="span4" id="about_menu" style="width:29%; margin-left:0px; border-right: 1px solid rgba(0, 0, 0, 0.0976563)">
-  	<%= image_tag "profilepic.png" %>
-  </div>
-  <div class="span10">
-    <div style="margin-left:33%; width:60%; padding:2em">
-      <p id="test_menu"><%= link_to "Items", items_path, remote: true %> | <%= link_to "Bio", biografia_path, remote: true %></p>
-      <div id="ajax">
-      	<div class="frame_item_designers">
+  		<div class="frame_item_designers">
 			<div class="designer_photos">
 				<img src="http://i1246.photobucket.com/albums/gg616/soxialit/GoogleChrome11_zps2cab3150.png" border="0" alt=" photo GoogleChrome11_zps2cab3150.png"/>
 			</div>
@@ -63,25 +55,3 @@
 		  <br />
 		  <p style="font-size:1.2em; margin-top:1em; font-family:acta-display; text-align:left">*Envíos Gratis en cualquier compra.</p>
 	  	</div>
-    </div>
-  </div>
-</div>
-<script>
-$(document).ready(function(){
-
-	$('#profile_nav_botton').css({ boxShadow: '1px 3px 6px #444' });
-});
-	
-$('.frame_item_designers').live({
-	mouseenter: 
-	function(e){
-		$(this).css("box-shadow", "0px 1px 1px 3px #d0d0d0");
-		
-	},
-	mouseleave:
-	function (e){
-		e.preventDefault();
-		$(this).css("box-shadow", "none");
-	}
-});	
-</script>
