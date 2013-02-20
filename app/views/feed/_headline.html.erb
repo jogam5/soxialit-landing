@@ -50,7 +50,12 @@
 		<p>
 		  <div id="product_background" >
 			<div style="width:80px; margin-left:10px; margin-right:25px">
-			  <%= link_to image_tag(feed_item.activitable.thumbnail), feed_item.activitable.url, target: '_blank' %>
+			  <% if feed_item.activitable.picture? %>
+			    <%= link_to image_tag(feed_item.activitable.picture_url(:feed)), 
+			    								feed_item.activitable.url, target: '_blank' %>
+			   <% else %>
+			    <%= link_to image_tag(feed_item.activitable.thumbnail), feed_item.activitable.url, target: '_blank' %>
+			   <% end %>
 			</div>
 		  </div>
 		  <div style="text-align:left; padding-top:1em" >
