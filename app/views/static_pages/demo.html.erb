@@ -1,112 +1,84 @@
-<div class="header_designer">
-	<div class="header_designer_inner">
-		<%= image_tag('demo1.png')%>
+<% if user_signed_in? %>
+	<div style="margin-top:-23px; margin-left:-80%" class="header_designer">
+		<div class="header_designer_inner">
+			<div style="margin-top:1%; margin-left: 716px;" class="span3">
+				<div style="margin-top:5%" class="designer_bio">
+						<span>POP ROCKS <br/>
+							<br/>
+							Estudié diseño pero en mi sangre esta el arte de mostrar al mundo como representar una etapa de la historia a través de vestuarios y accesorios.<br>
+							http://poprocks.com
+						</span>
+				</div>
+			</div>
+			<div class="span10 offset1">
+				<img src="http://i1246.photobucket.com/albums/gg616/soxialit/cover2_zps35127115.jpg"/>			
+			</div>
+		</div>
+	</div>
+<% else %>
+	<div style="margin-top:-60px; margin-left:-80%" class="header_designer">
+		<div class="header_designer_inner">
+			<div style="margin-top:1%; margin-left: 716px;" class="span3">
+				<div style="margin-top:5%" class="designer_bio">
+						<span>EDGAR SANDOVAL MENSWEAR <br/>
+							<br/>
+							Es una casa de moda que se encuentra en constante innovación, siempre creando nuevas propuestas que invitan a los caballeros a integrarse a una cultura de moda, llena de elegancia y lujo que se reflejará en su imagen y en su estilo de vida.
+						</span>
+				</div>
+			</div>
+			<div class="span10">
+				<img src="http://i1246.photobucket.com/albums/gg616/soxialit/cover_zpscc8f7ed6.jpg"/>			
+			</div>
+		</div>
+	</div>
+<% end %>
+<div style="margin-left: -12%; width: 1200px;"class="row">
+	<div class="span4" style="margin-left:17px">
+		<div id="myCarousel" class="carousel slide">
+			<h3 style="text-align: center;" class="designer_world">LOOKBOOK</h3>
+		  <!-- Carousel items -->
+		  <div class="carousel-inner">
+			<div class="active item"><img src="http://i1246.photobucket.com/albums/gg616/soxialit/page1_zpsd12af0f4.png"/></div>
+		    <div class="item"><img src="http://i1246.photobucket.com/albums/gg616/soxialit/page5_zpse4e807e0.png"/></div>
+		    <div class="item"><img src="http://i1246.photobucket.com/albums/gg616/soxialit/page4_zps3fa9af61.png"/></div>
+		    <div class="item"><img src="http://i1246.photobucket.com/albums/gg616/soxialit/page3_zps3a4d7733.png"/></div>
+		    <div class="item"><img src="http://i1246.photobucket.com/albums/gg616/soxialit/pag2_zps3b9db6f5.png"/></div>
+		  </div>
+		  <!-- Carousel nav -->
+		  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+		  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+		</div>
+	</div>
+	<div class="span10" style="margin-top: 74px;">
+		<% if !@products.nil? %>
+		<% @products.each do |product| %>
+			<div class="frame_item_designer">
+			  <div class="designer_photo">
+				<%= link_to image_tag(product.picture),  modal_item_path(:product_id => product.id ), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
+			  </div>
+			  <div class="designer_info">
+				<p class="brand">
+					<%= product.brand%>
+				</p>
+				<p class="description">	
+					<%= product.description %>
+				</p>
+				<p class="description">
+					$<%= product.price %>0
+				</p>
+			  </div>
+			</div>
+		<% end %>
+		<% end %>
 	</div>
 </div>
-<div class="row">
-	<div class="frame_item_designer">
-	  <div class="designer_photo">
-		<%= link_to image_tag('item1.png'),  modal_item_path, {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
-	  </div>
-	  <div class="designer_info">
-		<p class="brand">
-			Shuviluna
-		</p>
-		<p class="description">	
-			Funda para iPad, piel sintética.
-		</p>
-		<p class="description">
-			$800
-		</p>
-	  </div>
-	</div>
-	<div class="frame_item_designer">
-		<div class="designer_photo">
-		  	<%=image_tag('item2.png')%>
-		</div>
-		<div class="designer_info">
-			<p class="brand">
-				Shuviluna
-			</p>
-			<p class="description">	
-				Cartera de piel Classic Style.
-			</p>
-			<p class="description">
-				$800
-			</p>
-	    </div>
-	</div>
-	<div class="frame_item_designer">
-		<div class="designer_photo">
-		  	<%=image_tag('item3.png')%>
-		</div>
-		<div class="designer_info">
-			<p class="brand">
-				Shuviluna
-			</p>
-			<p class="description">	
-				Cartera de piel Grab Style.
-			</p>
-			<p class="description">
-				$800
-			</p>
-	    </div>	</div>
-	<div class="frame_item_designer">
-		<div class="designer_photo">
-		  	<%=image_tag('item4.png')%>
-		</div>
-		<div class="designer_info">
-			<p class="brand">
-				Shuviluna
-			</p>
-			<p class="description">	
-				Bolsa con grabado.
-			</p>
-			<p class="description">
-				$1800
-			</p>
-	    </div>
-	</div>
-	<div class="frame_item_designer">
-		<div class="designer_photo">
-		  	<%=image_tag('item5.png')%>
-		</div>
-		<div class="designer_info">
-			<p class="brand">
-				Shuviluna
-			</p>
-			<p class="description">	
-				Bolsa con estampado sintético.
-			</p>
-			<p class="description">
-				$1800
-			</p>
-	    </div>
-	</div>
-	<div class="frame_item_designer">
-		<div class="designer_photo">
-		  	<%=image_tag('item6.png')%>
-		</div>
-		<div class="designer_info">
-			<p class="brand">
-				Shuviluna
-			</p>
-			<p class="description">	
-				Bolsa Country Style.
-			</p>
-			<p class="description">
-				$1800
-			</p>
-	    </div>
-	</div>
-</div>
-
 
 <script>
 $(document).ready(function(){
 	$("body").animate({
 	    backgroundColor : "rgb(245, 245, 245)"
 	});
+	$('#profile_nav_botton').css({ boxShadow: '1px 3px 6px #444' });
 });
 	
 $('.frame_item_designer').live({
