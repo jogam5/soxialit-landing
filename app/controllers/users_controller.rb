@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     #@users = User.all
     @users = User.find(:all, :order => "created_at DESC")   #Show in reverse order
     @fashionlovers = find_fashionlover(@users)
-    @admin = User.first
+    @admin = User.find(1)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
@@ -145,7 +145,7 @@ class UsersController < ApplicationController
   def designer
    @users = User.all
    @designers = find_designer(@users)
-   @admin = User.first
+   @admin = User.find(1)
   end
   
   def find_designer(users)
@@ -164,8 +164,8 @@ class UsersController < ApplicationController
   def fashionlover
      @users = User.all
      @fashionlovers = find_fashionlover(@users)
-     @admin = User.first
-    end
+     @admin = User.find(1)
+  end
 
  def find_fashionlover(users)
     fashionlover = []
@@ -180,7 +180,7 @@ class UsersController < ApplicationController
   def boutique
      @users = User.all
      @boutiques = find_boutiques(@users)
-     @admin = User.first
+     @admin = User.find(1)
   end
 
   def find_boutiques(users)
@@ -196,7 +196,7 @@ class UsersController < ApplicationController
   def blogger
       @users = User.all
       @bloggers = find_bloggers(@users)
-      @admin = User.first
+      @admin = User.find(1)
   end
 
   def find_bloggers(users)
@@ -213,7 +213,7 @@ class UsersController < ApplicationController
      @users = User.all
      @fotografos =  User.find(:all, :conditions )
      @fotografos = find_fotografos(@users)
-     @admin = User.first
+     @admin = User.find(1)
    end
 
    def find_fotografos(users)
