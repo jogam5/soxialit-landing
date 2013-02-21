@@ -11,7 +11,9 @@ class MicropostsController < ApplicationController
   end
   
   def index  
+     
      @microposts = Micropost.page(params[:page]).per_page(50).find(:all, :order => "created_at DESC")
+     
   end
   
   def microposts_lov
