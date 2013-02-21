@@ -1,5 +1,5 @@
 class MicropostsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index, :modal_micropost]
+  before_filter :authenticate_user!, :except => [:show, :index, :modal_micropost, :microposts_lov, :microposts_order]
   #load_and_authorize_resource
 
   def new

@@ -1,19 +1,35 @@
 <div id="modal-micropost"></div>
 
-<div style="display:block; position: fixed;	z-index: 4000;" class="span10 offset1">
-	<ul id="ui-filter-menu">
-		<li class="filter">
-			<span class="ui-filter-menu-item-time-text">Ordenar por: </span>
-		</li>
-		<li class="ui-filter-menu-item">
-			<span class="ui-filter-menu-item-time-text"><%= link_to 'Mas populares', microposts_lov_path, remote: true, id: "microposts_lovs" %>
-			</span>
-		</li>
-		<li class="ui-filter-menu-item">
-			<span class="ui-filter-menu-item-time-text"><%= link_to 'Mas recientes', microposts_order_path, remote: true, id: "microposts_order" %>
-			</span>
-		</li>
-	</ul>
+<div id="menu-order" style="display:block; position: fixed;	z-index: 500;" class="span8 offset1">
+	<% if user_signed_in? %>
+		<ul id="ui-filter-menu">
+			<li class="filter">
+				<span class="ui-filter-menu-item-time-text">Ordenar por: </span>
+			</li>
+			<li class="ui-filter-menu-item">
+				<span class="ui-filter-menu-item-time-text"><%= link_to 'Mas populares', microposts_lov_path, remote: true, id: "microposts_lovs" %>
+				</span>
+			</li>
+			<li class="ui-filter-menu-item">
+				<span class="ui-filter-menu-item-time-text"><%= link_to 'Mas recientes', microposts_order_path, remote: true, id: "microposts_order" %>
+				</span>
+			</li>
+		</ul>
+	<% else %>
+		<ul style="margin-top:-40px" id="ui-filter-menu">
+			<li class="filter">
+				<span class="ui-filter-menu-item-time-text">Ordenar por: </span>
+			</li>
+			<li class="ui-filter-menu-item">
+				<span class="ui-filter-menu-item-time-text"><%= link_to 'Mas populares', microposts_lov_path, remote: true, id: "microposts_lovs" %>
+				</span>
+			</li>
+			<li class="ui-filter-menu-item">
+				<span class="ui-filter-menu-item-time-text"><%= link_to 'Mas recientes', microposts_order_path, remote: true, id: "microposts_order" %>
+				</span>
+			</li>
+		</ul>
+	<% end %>
 </div>
 
 <div style="display:block; margin-top: 2%" id="contenedor" class="clearfix masonry">
