@@ -1,4 +1,5 @@
 <div id="modal-micropost"></div>
+<div id="ajax" style="float:left; position:fixed; display:none; margin: 50% 34%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
 
 <div id="menu-order" style="display:block; position: fixed;	z-index: 500;" class="span8 offset1">
 	<% if user_signed_in? %>
@@ -42,12 +43,22 @@
 	<div style="display:block" class="row">
 		<div style="display:block;" class="span10 offset1">
 			<div  style="display:block; margin:1em; font-size:1.4em" class="show_more" id="paginate">Ver más Posts</div>
-			<div id="ajax-status" style="float:left; position:absolute; display:none; margin: -15% 30%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
 		</div>
 	</div>
 </div>
 <br/>
 <script type="text/javascript">
+$(function() {
+  $('#ajax')
+    .hide()  // hide it initially.
+    .ajaxStart(function() {
+      $(this).show(); // show on any Ajax event.
+    })
+    .ajaxStop(function() {
+      $(this).hide(); // hide it when it is done.
+  });
+});
+
 window.onload = function(){
 	
 	var container = document.getElementById('contenedor');
@@ -74,12 +85,10 @@ $(function() {
 
 $(function() {
   $('body').bind('ajaxComplete', function() {
-	$('#ajax-status').show();
 	$('.show_more').hide();
 	setTimeout(function(){
 		var wall = new Masonry( document.getElementById('contenedor') );
 		wall.reload();
-		$('#ajax-status').hide();
 		$('.show_more').show();
 	}, 2000);
   });
