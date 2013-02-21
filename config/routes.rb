@@ -47,6 +47,10 @@ DeviseFacebook::Application.routes.draw do
   resources :microposts do
      member { post :lovs}
   end
+  match "microposts_lov/" => "microposts#microposts_lov", :as => "microposts_lov"
+  match "microposts_order/" => "microposts#microposts_order", :as => "microposts_order"
+  
+  
   
   get '/envio', to: 'products#envio'
   get '/comprar', to: 'products#comprar'

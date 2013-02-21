@@ -47,6 +47,9 @@ gem 'nokogiri'
 #facebook_metatags
 gem 'metamagic'
 
+#metasearch
+gem "meta_search"
+
 #Improve files readability
 gem 'annotate', '~> 2.4.1.beta'
 #Improve performance in server

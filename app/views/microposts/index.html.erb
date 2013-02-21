@@ -1,9 +1,27 @@
 <div id="modal-micropost"></div>
+
+<div style="display:block" class="span10 offset1">
+	<ul id="ui-filter-menu">
+		<li class="filter">
+			<span class="ui-filter-menu-item-time-text">Ordenar por: </span>
+		</li>
+		<li class="ui-filter-menu-item">
+			<span class="ui-filter-menu-item-time-text"><%= link_to 'Mas populares', microposts_lov_path, remote: true, id: "microposts_lovs" %>
+			</span>
+		</li>
+		<li class="ui-filter-menu-item">
+			<span class="ui-filter-menu-item-time-text"><%= link_to 'Mas recientes', microposts_order_path, remote: true, id: "microposts_order" %>
+			</span>
+		</li>
+	</ul>
+</div>
+
 <div style="display:block" id="contenedor" class="clearfix masonry">
 	<%= render @microposts %>
 </div>
 
 <div style="display:none"><%= will_paginate(@microposts)%></div>
+
 <div style="display:block" class="container">
 	<div style="display:block" class="row">
 		<div style="display:block" class="span10 offset1">
@@ -40,14 +58,14 @@ $(function() {
 
 $(function() {
   $('body').bind('ajaxComplete', function() {
-	$('.show_more').hide();
 	$('#ajax-status').show();
+	$('.show_more').hide();
 	setTimeout(function(){
 		var wall = new Masonry( document.getElementById('contenedor') );
 		wall.reload();
 		$('#ajax-status').hide();
 		$('.show_more').show();
-	}, 1000);
+	}, 2000);
   });
 });
 
@@ -66,6 +84,15 @@ $(function() {
 			
 		}
 	});
+	
+
+$('#microposts_lovs').click(function(){
+	$('#contenedor').html('');
+});
+
+$('#microposts_order').click(function(){
+	$('#contenedor').html('');
+});
 			
 </script>
 
