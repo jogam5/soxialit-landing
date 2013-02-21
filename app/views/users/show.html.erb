@@ -32,6 +32,15 @@
         <%= render :partial => 'feed/feed_item', :locals => { :feed_item => feed_item } %>
       <% end %>
      </ol>
+	<% else %>
+		<div class="container">
+			<div class="row">
+				<div style="margin-left:30%">
+					<p class="description-brand" style="margin-left:4%; font-family:acta-display; font-size:1.8em"><%= link_to "Guarda tus items ó posts favoritos", microposts_path %></p>
+					<div style="margin-left:10%"><%= link_to image_tag('no_favorites.png'), microposts_path%></div>
+				</div>	
+			</div>
+		</div>
     <% end %>
    </div>
   </div>
