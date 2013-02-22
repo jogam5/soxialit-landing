@@ -67,6 +67,17 @@ $(function() {
   });
 });
 
+
+$(document).ready(function() {
+    $(document).keyup(function(event) {
+        if (event.keyCode == 13) {
+         $(".new_comment").submit();
+			$(".new_comment > form")[0].reset();
+        }
+    })
+});
+
+
 </script>
 
 

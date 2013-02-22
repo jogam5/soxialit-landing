@@ -11,10 +11,10 @@
 
 <div class="row">
   <div class="span2">
-    <p style="font-family:acta-display; font-size:1.4em; margin-bottom:1em">Nuevos Posts</p>
+    <p style="font-family:acta-display; font-size:1.4em; margin-bottom:1em">Posts recientes</p>
     <% @posts.each do |post| %>
       <p style="font-family:acta-display"><%= post.title %></p>
-      <%= link_to (image_tag post.picture_url(:feed)), post_path(post) %>
+      <%= link_to (image_tag post.picture_url(:feed)), micropost_path(post) %>
       <p style="margin-right:0.5em; margin-top:0.5em">
         <% if !post.user.picture.present? %>
         <%= link_to image_tag("http://graph.facebook.com/#{post.user.uid}/picture?type=square", 
@@ -136,4 +136,17 @@
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=439343236107925";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));
+
+
+$(document).ready(function() {
+    $(document).keyup(function(event) {
+        if (event.keyCode == 13) {
+         $(".new_comment").submit();
+			$(".new_comment > form")[0].reset();
+        }
+    })
+});
+
+
+</script>
