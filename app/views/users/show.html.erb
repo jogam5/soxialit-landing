@@ -1,3 +1,5 @@
+<% provide(:title, @user.nickname) %>
+
 <% if @user.role?(:admin) %>
   <section>
     <%= render 'users/profiles/admin' %>

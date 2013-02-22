@@ -1,3 +1,5 @@
+<% provide(:title, @product.title) %>
+
 <% content_for :meta do %>
 	<% meta :keywords => @product.tags %>
 	<% meta [:property => "og:image", :content => @product.picture] %>

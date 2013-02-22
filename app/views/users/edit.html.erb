@@ -1,3 +1,5 @@
+<% provide(:title, @user.nickname) %>
+
 <% if current_user == @user || current_user.roles.first.name == 'admin' %>
 	<div class="row-fluid">
 	  <div style="margin-top:1%" class="span2" id="about_menu">

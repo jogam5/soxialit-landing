@@ -1,3 +1,5 @@
+<% provide(:title, @micropost.title) %>
+
 <% content_for :meta do %>
 	<% if !@micropost.thumbnail.nil? %>
 		<% meta [:property => "og:image", :content => @micropost.thumbnail] %>
@@ -25,6 +27,17 @@
         <% end %>
         <span id="nickname_show_left"><%= link_to  post.user.nickname, user_path(post.user) %></span>
       </p>
+		<div style="margin-top:0.1%; margin-right: 1%"class="votacion" id="votacion_<%= post.id %>">
+			<span id="want_<%= post.id %>">
+				<div style="width:10px">
+					<div id="love_icon_<%= post.id %>" class="love_icon_active">
+						<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= post.id %>">
+							<%= post.reputation_value_for(:lovs).to_i %>
+						</span>
+					</div>
+				</div>
+			</span>
+		</div>
       <hr />
     <% end %>
     <br/>
