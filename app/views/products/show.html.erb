@@ -57,4 +57,30 @@
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=439343236107925";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));
+
+
+	$('.paintings').live({
+		mouseenter: 
+		function(e){
+			e.preventDefault();
+			console.log($(this).data('id'));
+			$('.mainpicture').find('img').remove();
+			var test = $('.painting_'+$(this).data('id')).find('img').clone()
+			var image = test.attr('src').replace('thumb', 'timeline');
+			console.log(image);
+			test.attr('src', image).appendTo($('.mainpicture'));
+
+
+			},
+		mouseleave:
+		function (e){
+			e.preventDefault();
+			}
+	  });
+
+});
+
+
+
+</script>

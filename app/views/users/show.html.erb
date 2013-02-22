@@ -23,6 +23,7 @@
     <%= render 'users/profiles/boutique' %>
   </section>
 <% end %>
+<div id="ajax-loading" style="float:left; position:fixed; display:none; margin: 0% 455px; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
 <div id="ajax">
   <div class="row">
    <div class="span12">
@@ -47,4 +48,17 @@
 </div>
 <script type="text/javascript">
 mixpanel.track("User Profile Loaded")
+
+
+$(function() {
+  $('#ajax-loading')
+    .hide()  // hide it initially.
+    .ajaxStart(function() {
+      $(this).show(); // show on any Ajax event.
+    })
+    .ajaxStop(function() {
+      $(this).hide(); // hide it when it is done.
+  });
+});
+
 </script>
