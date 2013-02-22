@@ -117,6 +117,12 @@ $('#microposts_order').click(function(){
 	$('#contenedor').html('');
 });
 
+//follow link preventdefault
+$('.follow_link').bind('click', function(e){
+	e.preventDefault();
+});
+
+
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;

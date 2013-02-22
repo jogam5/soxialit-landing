@@ -15,7 +15,7 @@
 					<% end %>
 					<% if user_signed_in? %>
 						<% unless current_user?(micropost.user) %>
-							<div style="margin-top:0.5em" id="form_<%= micropost.user_id %>">
+							<div style="margin-top:0.5em" class="form_micropost_<%= micropost.user_id %>">
 					  			<% if current_user.following?(micropost.user) %>
 								<% else %>
 						      		<%= render :partial => 'shared/follow_favorites', :locals => { :user => micropost.user } %>
