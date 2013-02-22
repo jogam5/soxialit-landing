@@ -54,8 +54,8 @@
 	  });
 	});
 	
-	$('.follow').click(function(event){
-	  event.preventDefault(); // Prevent link from following its href
+	$('.follow').bind('click', function(e){
+	  e.preventDefault(); // Prevent link from following its href
 	});
 </script>
 
