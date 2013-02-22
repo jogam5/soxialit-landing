@@ -5,14 +5,14 @@
 	<% if user_signed_in? %>
 		<ul id="ui-filter-menu">
 			<li class="filter">
-				<span class="ui-filter-menu-item-time-text">Ordenar por: </span>
+				<span class="ui-filter-menu-item-time-text"><i style="margin-top: -1%" class="icon-filter"></i>Ordenar por: </span>
 			</li>
 			<li class="ui-filter-menu-item">
-				<span class="ui-filter-menu-item-time-text"><%= link_to 'Mas populares', microposts_lov_path, remote: true, id: "microposts_lovs" %>
+				<span class="ui-filter-menu-item-time-text"><%= image_tag('like-active.png') %><%= link_to 'Mas populares', microposts_lov_path, remote: true, id: "microposts_lovs", style:"margin-left:2%" %>
 				</span>
 			</li>
 			<li class="ui-filter-menu-item">
-				<span class="ui-filter-menu-item-time-text"><%= link_to 'Mas recientes', microposts_order_path, remote: true, id: "microposts_order" %>
+				<span class="ui-filter-menu-item-time-text"><i style="margin-top: -1%" class="icon-time"></i><%= link_to 'Mas recientes', microposts_order_path, remote: true, id: "microposts_order", style:"margin-left:2%" %>
 				</span>
 			</li>
 		</ul>
