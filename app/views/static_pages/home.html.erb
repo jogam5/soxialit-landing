@@ -67,11 +67,18 @@ $(function() {
   });
 });
 
-$('#new_comment input').keydown(function(e) {
-    if (e.keyCode == 13) {
-        $(this).closest('form').submit();
-    }
+
+$(document).ready(function() {
+    $(document).keyup(function(event) {
+        if (event.keyCode == 13) {
+			if($(this).closest('form').data('changed')){
+				$(".new_comment").submit();
+				$(".new_comment > form")[0].reset();
+			  }
+        }
+    });
 });
+
 
 </script>
 
