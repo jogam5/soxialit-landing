@@ -31,4 +31,13 @@ class UserMailer < ActionMailer::Base
    def registration_confirmation(user)
       mail(:to =>  user.email, :subject => "Test")
    end
+   
+   def user_comment(user, current, type, comment)
+      @user = user
+      @user_following = current
+      @item = type
+      @comment = comment
+      mail(:to => user.email, :subject => "Han comentado tu publicacion.")
+   end
+   
 end

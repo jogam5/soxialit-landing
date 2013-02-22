@@ -22,7 +22,17 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = current_user.comments.build(params[:comment])   
+    @comment = current_user.comments.build(params[:comment])
+    if @comment.commentable_type == "Product"
+       @type = Product.find(@comment.commentable_id)
+       @user = User.find(@type.user_id)
+    else
+       @type = Micropost.find(@comment.commentable_id)
+       @user = User.find(@type.user_id)
+    end
+   # if current_user != @user
+    #   UserMailer.user_comment(@user, current_user, @type, @comment).deliver 
+    #end
     respond_to do |format|
       if @comment.save
         format.html { redirect_to :back, notice: 'Comment was successfully created.' }
