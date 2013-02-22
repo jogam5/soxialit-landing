@@ -1,5 +1,5 @@
 <div id="modal-micropost"></div>
-<div id="ajax" style="float:left; position:fixed; display:none; margin: 50% 34%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
+<div id="ajax" style="float:left; position:fixed; display:none; margin: 50% 36%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
 
 <div id="menu-order" style="display:block; position: fixed;	z-index: 500;" class="span8 offset1">
 	<% if user_signed_in? %>
@@ -47,6 +47,8 @@
 	</div>
 </div>
 <br/>
+<div id="fb-root"></div>
+
 <script type="text/javascript">
 $(function() {
   $('#ajax')
@@ -118,6 +120,14 @@ $('#microposts_lovs').click(function(){
 $('#microposts_order').click(function(){
 	$('#contenedor').html('');
 });
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=439343236107925";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 			
 </script>
 
