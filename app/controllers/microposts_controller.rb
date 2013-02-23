@@ -1,5 +1,5 @@
 class MicropostsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index, :modal_micropost, :microposts_lov, :microposts_order]
+  before_filter :authenticate_user!, :except => [:show, :index, :modal_micropost, :microposts_lov, :microposts_order, :microposts_search]
   #load_and_authorize_resource
 
   def new
@@ -12,6 +12,7 @@ class MicropostsController < ApplicationController
   
   def index  
      @microposts = Micropost.page(params[:page]).per_page(50).find(:all, :order => "created_at DESC")
+     @search = Micropost.search(params[:search])
   end
   
   def microposts_lov
@@ -20,6 +21,11 @@ class MicropostsController < ApplicationController
   
   def microposts_order
       @microposts = Micropost.page(params[:page]).per_page(50).find(:all, :order => "created_at DESC")
+  end
+  
+  def microposts_search
+     @search = Micropost.search(params[:search])
+     @microposts = @search.page(params[:page]).per_page(50)
   end
 
   def show

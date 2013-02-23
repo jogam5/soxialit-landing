@@ -49,7 +49,7 @@ DeviseFacebook::Application.routes.draw do
   end
   match "microposts_lov/" => "microposts#microposts_lov", :as => "microposts_lov"
   match "microposts_order/" => "microposts#microposts_order", :as => "microposts_order"
-  
+  match "microposts_search/" => "microposts#microposts_search", :as => "microposts_search"
   
   
   get '/envio', to: 'products#envio'
