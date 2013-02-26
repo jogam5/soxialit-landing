@@ -37,14 +37,15 @@
 					                <li class="divider"></li>
 					                <li><%= link_to '<i class="icon-user"></i> Conecta'.html_safe, users_path, 
 					                			id:"anchor_edit" %></li>
-					               	<li class="divider"></li>
-					                <li>
-					                  <%= link_to "Salir", destroy_user_session_path, :method => :delete %>
-					                </li>
 									<li class="divider"></li>
 					                <li>
 					                  <%= link_to "Crea un post", modal_post_path,  {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
 					                </li>
+					               	<li class="divider"></li>
+					                <li>
+					                  <%= link_to "Salir", destroy_user_session_path, :method => :delete %>
+					                </li>
+									
 					              </ul>
 					        </li>
 					<% else %>
