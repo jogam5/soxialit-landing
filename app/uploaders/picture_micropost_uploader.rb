@@ -15,7 +15,14 @@ class PictureMicropostUploader < CarrierWave::Uploader::Base
   version :feed do
     process :resize_to_fill => [120,120]
   end
-
+  
+  version :modal do
+       process :resize_and_pad => [460, 500, "#240902", Magick::CenterGravity]
+  end
+  
+  version :index do
+     process :resize_to_fill => [226, 255]
+  end
   # Create different versions of your uploaded files:
   # version :thumb do
   #   process :scale => [50, 50]
