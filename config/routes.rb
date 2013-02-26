@@ -59,6 +59,7 @@ DeviseFacebook::Application.routes.draw do
   get '/product_modal', to: 'users#product_modal'
   match 'preview', to: 'static_pages#preview'
   get '/modal_micropost', to: 'microposts#modal_micropost'
+  get '/modal_post', to: 'static_pages#modal_post'
   
   
  # get users/index

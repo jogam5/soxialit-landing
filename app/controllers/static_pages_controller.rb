@@ -122,5 +122,9 @@ class StaticPagesController < ApplicationController
   def arbol_viento
    @products = [Product.find(233), Product.find(234), Product.find(235)]
   end
+  
+  def modal_post
+     @micropost = Micropost.new
+  end
     
 end

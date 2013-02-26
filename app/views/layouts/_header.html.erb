@@ -41,6 +41,10 @@
 					                <li>
 					                  <%= link_to "Salir", destroy_user_session_path, :method => :delete %>
 					                </li>
+									<li class="divider"></li>
+					                <li>
+					                  <%= link_to "Crea un post", modal_post_path,  {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
+					                </li>
 					              </ul>
 					        </li>
 					<% else %>

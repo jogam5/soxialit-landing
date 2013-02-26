@@ -1,0 +1,68 @@
+<div class="modal-soxialit">
+	<div class="modal-body">
+		<div class="span9 offset1">
+			<button type="button" class="close-button" data-dismiss="modal" aria-hidden="true">X</button>
+			<% if user_signed_in? %>
+			  <p style="font-weight:lighter; color:#777; font-size:1.5em; font-family:acta-display">Comparte un artículo, un post de tu blog u otro link sobre moda:</p>
+			  <%= form_for(@micropost, 
+			              {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true } ) do |f| %>
+			  	  <%= render 'shared/error_messages', object: f.object %>
+			    <div class="field">
+			      <%= f.text_area :url, :rows => "2", :class => "span8", :id => "status" %>
+			    </div>
+			      <%= f.hidden_field :url %>
+			      <%= f.hidden_field :provider %>
+			      <%= f.hidden_field :title %>
+			      <%= f.hidden_field :description %>
+			      <%= f.hidden_field :thumbnail %>
+			      <%= f.hidden_field :status, value: true %>
+			      <div class="actions" >
+			        <span style="margin-left:38em"><%= f.submit "Publicar", id: "button_send", class: "button-want"  %></span>
+			      </div>
+			    <br/>
+			    <p id="wait">Vista Previa <i>(edita el contenido dando click sobre el texto)</i></p>
+			  <% end %>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" charset="UTF-8">
+$(function() {
+    $('#status').preview({key:'7f6cf7cec28511e0866c4040d3dc5c07'});
+
+    $('#status').live('keyup keydown', function(e) {
+      var empty = $(this).val().length;
+      if ( empty > 0 )
+        $('#wait').toggleClass('show');
+    });
+  });
+			
+$(function() {
+    $('input#button_send').click(function(){
+      var url = $('input#id_url:hidden').val();
+      $('input#micropost_url').val(url);
+       var provider_url = $('input#id_provider_url:hidden').val();
+       $('input#micropost_provider').val(provider_url);
+        var title = $('input#id_title:hidden').val();
+        $('input#micropost_title').val(title);
+         var description = $('input#id_description:hidden').val();
+         $('input#micropost_description').val(description);
+          var image = $('input#id_thumbnail_url:hidden').val();
+          $('input#micropost_thumbnail').val(image);
+     });
+    return false;
+  });
+
+$(function() {
+    $('input#button_send').click(function(){
+      setTimeout(function() {
+               location.reload('.microposts');
+      }, 500);
+    });
+  });
+
+Galleria.run('.galleria');
+
+
+</script>
