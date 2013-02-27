@@ -20,7 +20,11 @@
 					    <li id="feedback_header">
 							<%= link_to "Posts", microposts_path, :title => "Descubre" %>
 					   	</li>
-						<li class="divider-vertical"></li>
+						<li style="margin-right:0" class="divider-vertical"></li>
+					    <li class="feedback_header" style="background-color:red; padding: 0 5px 8px 5px;">
+			            	<%= link_to image_tag('link_blanco.png', style:"width:20px").html_safe, modal_post_path,  {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
+					   	</li>
+						<li style="margin-left:0" class="divider-vertical"></li>
 						<li><% if !current_user.picture.present? %>
 							<%= link_to image_tag("http://graph.facebook.com/#{current_user.uid}/picture?type=square", 
 										width: 35, height: 35, :id =>  "navbar_small_picture"), user_path(current_user) %>
@@ -37,10 +41,6 @@
 					                <li class="divider"></li>
 					                <li><%= link_to '<i class="icon-user"></i> Conecta'.html_safe, users_path, 
 					                			id:"anchor_edit" %></li>
-									<li class="divider"></li>
-					                <li>
-					                  <%= link_to "Crea un post", modal_post_path,  {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
-					                </li>
 					               	<li class="divider"></li>
 					                <li>
 					                  <%= link_to "Salir", destroy_user_session_path, :method => :delete %>
