@@ -51,7 +51,7 @@ class MicropostsController < ApplicationController
     @micropost.activities.create(:user_id => current_user.id, :action => "create")
     Activity.expire_feed_cache(current_user)
     Micropost.delay.publish_link_facebook(@micropost) unless @micropost.user.fb == false
-    redirect_to :back
+    redirect_to :back, notice: 'Tu Post ha sido publicado'
   end
 
   def destroy

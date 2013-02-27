@@ -166,7 +166,9 @@ $('.follow_link').bind('click', function(e){
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-
+setTimeout(function(){
+	$('.alert.alert-success').fadeOut();
+}, 1000);
 			
 </script>
 
