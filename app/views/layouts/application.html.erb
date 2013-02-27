@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Soxialit es la Red Social de Moda | <%= yield(:title) %> </title>
+  <title>Soxialit | La Red Social de Fashion | <%= yield(:title) %> </title>
   <%= metamagic :title => "Soxialit", :description => "La red social para fashion designers, bloggers, fotógrafos y boutique stores", :keywords => %w(keyword1 keyword2 keyword3) %>
   <%= stylesheet_link_tag  "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
@@ -18,7 +18,7 @@ mixpanel.init("5e344db467e2f971ffccde4566fe2da4");</script><!-- end Mixpanel -->
 <body>
     <%= render 'layouts/header' %>
 	<% if !user_signed_in? %>
-	<div style="margin-top:5%" class="container">
+	  <div style="margin-top:5%" class="container">
       <% flash.each do |type, message| %>
         <div style="margin-top:2%" class="alert <%= flash_class type %>">
           <button class="close" data-dismiss="alert">x</button>
@@ -27,7 +27,6 @@ mixpanel.init("5e344db467e2f971ffccde4566fe2da4");</script><!-- end Mixpanel -->
       <% end %>
       <%= yield %>
 	    <div id="modal-id"></div>
-	    <%= render 'layouts/footer' if user_signed_in? %>
     </div>
     <%= render 'layouts/footer_unsigned' unless user_signed_in? %>
 	<% else %>
@@ -40,7 +39,7 @@ mixpanel.init("5e344db467e2f971ffccde4566fe2da4");</script><!-- end Mixpanel -->
       <% end %>
       <%= yield %>
 	    <div id="modal-id"></div>
-	    <%= render 'layouts/footer' if user_signed_in? %>
+      <br />
     </div>
 	<% end %>
 <!-- start Fonts -->
