@@ -5,7 +5,6 @@
   <div class="row">
     <div class="span10 offset1">
       <span style="float:left; margin-top:0em; margin-right:1em"><%= image_tag 'link.png' %></span>
-        <%= render 'static_pages/micropost' %>
     </div>
   </div>
 <% end %>
@@ -83,53 +82,11 @@ $(document).ready(function() {
 </script>
 
 
-<script type="text/javascript">
-  $(function() {
-    $('#status').preview({key:'7f6cf7cec28511e0866c4040d3dc5c07'});
-
-    $('#status').live('keyup keydown', function(e) {
-      var empty = $(this).val().length;
-      if ( empty > 0 )
-        $('#wait').toggleClass('show');
-    });
-  });
-</script>
-
-<script type="text/javascript">
-  $(function() {
-    $('input#button_send').click(function(){
-      var url = $('input#id_url:hidden').val();
-      $('input#micropost_url').val(url);
-       var provider_url = $('input#id_provider_url:hidden').val();
-       $('input#micropost_provider').val(provider_url);
-        var title = $('input#id_title:hidden').val();
-        $('input#micropost_title').val(title);
-         var description = $('input#id_description:hidden').val();
-         $('input#micropost_description').val(description);
-          var image = $('input#id_thumbnail_url:hidden').val();
-          $('input#micropost_thumbnail').val(image);
-     });
-    return false;
-  });
-</script>
-
 <script type="text/javascript"charset="UTF-8">
-  $(function() {
-    $('input#button_send').click(function(){
-      setTimeout(function() {
-               location.reload('.microposts');
-      }, 500);
-    });
-  });
-
+  
 setTimeout(function(){
 	$('.alert.alert-success').fadeOut();
 }, 2000);
 
 </script>
-
-<script type="text/javascript">
-  Galleria.run('.galleria');
-</script>
-
 <script type="text/javascript">mixpanel.track("Home Page Loaded")</script>
