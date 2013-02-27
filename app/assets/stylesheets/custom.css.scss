@@ -551,14 +551,11 @@ margin-top: 3%;
 #feedback_header a{
 	color:whiteSmoke;
 	font-weight:300;
-	font-size:14px;
-}
-
-#feedback_header a:hover{
+	font-size:1.2em;
+	font-family:acta-display, Helvetica-Neue, Helvetica, Arial, Sans-serif;
+	 a:hover{
 	color:$rojo;
-}
-
-#feedback_header a:active{
+	}
 }
 
 #feedback_header .active{

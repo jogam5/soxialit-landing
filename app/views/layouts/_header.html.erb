@@ -11,14 +11,13 @@
 				<nav>
 				  <ul class="nav pull-right">
 					<% if user_signed_in? %>
-						<li id="feedback_header"><%= link_to "HELP US!", feedbacks_path, :title => "Te queremos escuchar"%></li>
 						<li class="divider-vertical"></li>
 					    <li id="feedback_header">
 							<%= link_to "Comprar", products_path, :title => "Comprar" %>
 					   	</li>
 					   	<li class="divider-vertical"></li>
 					    <li id="feedback_header">
-							<%= link_to "Posts", microposts_path, :title => "Descubre" %>
+							<%= link_to "Posts", microposts_path, :title => "Todos los Posts" %>
 					   	</li>
 						<li style="margin-right:0" class="divider-vertical"></li>
 					    <li class="feedback_header" style="background-color:red; padding: 0 5px 8px 5px;">
