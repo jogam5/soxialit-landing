@@ -551,12 +551,13 @@ margin-top: 3%;
 #feedback_header a{
 	color:whiteSmoke;
 	font-weight:300;
-	font-size:1.2em;
+	font-size:14px;
 	font-family:acta-display, Helvetica-Neue, Helvetica, Arial, Sans-serif;
 	 a:hover{
 	color:$rojo;
 	}
 }
+
 
 #feedback_header .active{
 	color:$rojo;
@@ -1399,6 +1400,9 @@ ul.comments_new{
 	}
 	 h3{
 	font-size:2.5em; 
+	}
+	 img{
+	text-align:center;
 	}
 }
 

@@ -41,6 +41,12 @@
 					                <li><%= link_to '<i class="icon-user"></i> Conecta'.html_safe, users_path, 
 					                			id:"anchor_edit" %></li>
 					               	<li class="divider"></li>
+					               	<li><%= link_to '<i class="icon-comment"></i> Blog'.html_safe, 
+					               				"http://blog.soxialit.com", id:"anchor_edit" %></li>
+					               	
+					               	<li><%= link_to '<i class="icon-question-sign"></i> Acerca'.html_safe, about_path, 
+					                			id:"anchor_edit" %></li>
+					               	<li class="divider"></li>
 					                <li>
 					                  <%= link_to "Salir", destroy_user_session_path, :method => :delete %>
 					                </li>
