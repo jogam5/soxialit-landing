@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     #@users = User.all
     @users = User.find(:all, :order => "created_at DESC")   #Show in reverse order
     @fashionlovers = find_fashionlover(@users)
-    @admin = User.find(1)
+    @admin = User.find(1) unless Rails.env.development?
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   def show
     #@user = User.find(params[:id])
     @user = User.find_by_username(params[:username])
+    @last = Micropost.last
     if @user.nil?
        flash[:error] = "No se ha encontrado la URL."
        redirect_to root_path

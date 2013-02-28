@@ -17,7 +17,7 @@
 					   	</li>
 					   	<li class="divider-vertical"></li>
 					    <li id="feedback_header">
-							<%= link_to "Posts", microposts_path, :title => "Todos los Posts" %>
+							<%= link_to "Todos los Posts", microposts_path, :title => "Todos los Posts" %>
 					   	</li>
 						<li style="margin-right:0" class="divider-vertical"></li>
 					    <li class="feedback_header" style="background-color:red; padding: 0 5px 8px 5px;">
@@ -54,10 +54,10 @@
 					              </ul>
 					        </li>
 					<% else %>
-						<li id="signup"><%= link_to "Posts", 
-												microposts_path %></li>
+						<li id="signin"><%= link_to "Último Post", 
+												@last %></li>
 						<li class="divider-vertical" style="color:yellow"></li>
-						<li id="signin"><%= link_to "Regístrate", user_omniauth_authorize_path(:facebook) %></li>
+						<li id="signin"><%= link_to "Todos los Posts", microposts_path %></li>
 	   				<% end %>
               	  </ul>
               	</nav>

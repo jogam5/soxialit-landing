@@ -6,6 +6,7 @@ class StaticPagesController < ApplicationController
     @stats = Rails.cache.stats.first.last unless Rails.env.development?
   	@comment = Comment.new
     @micropost = Micropost.new
+    @last = Micropost.last
   	if user_signed_in?
   		@feed_items = User.feed_cached(current_user)  if Rails.env.development?
       #@feed_items = current_user.feed 
