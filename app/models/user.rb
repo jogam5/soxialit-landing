@@ -85,11 +85,11 @@ class User < ActiveRecord::Base
         @api = Koala::Facebook::API.new(user.token)
         begin 
           options = {
-            :message => "Me acabo de unir a Soxialit, la red social que une fashion 
-            designers, bloggers, fotografos y amantes de la moda. Registrate en: http://soxialit.com",
-            :picture => "http://24.media.tumblr.com/301b572edd7f779971372981d398e32e/tumblr_mg0gzsXTuH1rv5ghbo1_1280.png",
+            :message => "Me acabo de unir a Soxialit, la Red Social que conecta Fashion 
+            Lovers. Registrate en: http://soxialit.com",
+            :picture => "http://24.media.tumblr.com/54465c721550d83d6ff4485a014b0424/tumblr_mdq2fja5Ws1rv5ghbo2_r1_1280.jpg",
             :link => "http://soxialit.com",
-            :name => "Soxialit es una red social que conecta a los amantes de la moda",
+            :name => "Soxialit es una red social que conecta a los amantes de la Moda",
             :description => "Comparte posts, items y fotos: deja que el mundo conozca tu talento y pasion por la moda."
           }
 
