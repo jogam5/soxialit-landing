@@ -13,7 +13,8 @@
 					<% if user_signed_in? %>
 						<li class="divider-vertical"></li>
 					    <li id="feedback_header">
-							<%= link_to "Comprar", products_path, :title => "Comprar" %>
+							<%= link_to "Último Post", 
+												@last, :title => "Último Post" %>
 					   	</li>
 					   	<li class="divider-vertical"></li>
 					    <li id="feedback_header">
