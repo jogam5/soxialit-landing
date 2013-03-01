@@ -30,9 +30,9 @@ class CommentsController < ApplicationController
        @type = Micropost.find(@comment.commentable_id)
        @user = User.find(@type.user_id)
     end
-   # if current_user != @user
-    #   UserMailer.user_comment(@user, current_user, @type, @comment).deliver 
-    #end
+    if current_user != @user
+       UserMailer.user_comment(@user, current_user, @type, @comment).deliver 
+    end
     respond_to do |format|
       if @comment.save
         format.html { redirect_to :back, notice: 'Comment was successfully created.' }

@@ -19,24 +19,14 @@
 		padding-top: 6px;
 		margin-top: 3%;
 		margin-bottom: 2%;
-		font-family: nimbus-sans, Helvetica-Neue, Helvetica, Arial, Sans-serif;"><%= link_to @user_following.nickname, user_url(@user_following.username), style: "text-decoration:none; color:#d93e38" %> a comentado tu <%= @comment.commentable_type %>: <strong>
+		font-family: nimbus-sans, Helvetica-Neue, Helvetica, Arial, Sans-serif;"><%= link_to @user_following.nickname, user_url(@user_following.username), style: "text-decoration:none; color:#d93e38" %> comentó tu <%= @comment.commentable_type %>: <strong>
 		<% if @comment.commentable_type == "Product" %>
 			<%= link_to @item.title, product_url(@item), style: "color: #bbb; font-weight: lighter; text-decoration:none;" %></strong></p>
 		<% else %>
 			<%= link_to @item.title, micropost_url(@item), style: "color: #bbb; font-weight: lighter; text-decoration:none;" %></strong></p>
 		<% end %>
 		<hr>
-		<% if @comment.commentable_type == "Product" %>
-			<%= link_to(image_tag(@item.picture, style:"width: 500px"), product_url(@item))%>
-		<% else %>
-			<%= link_to(image_tag(@item.thumbnail, style:"width: 500px"), micropost_url(@item))%>
-		<% end %>
-		<div style="display:block"><img src="http://i1246.photobucket.com/albums/gg616/soxialit/like-active_zps3977b1a5.png" style="float:left" border="0" alt="Likes:"/>
-		<% if @comment.commentable_type == "Product" %>
-			<%= @item.reputation_value_for(:votes).to_i %></div>
-		<% else %>
-			<%= @item.reputation_value_for(:lovs).to_i %></div>
-		<% end %>
+		<%= @user.nickname %>: "<%= @comment.body %>"
 		<hr>
 		<div style="display: block;
 		margin: 12px 0 5px;
