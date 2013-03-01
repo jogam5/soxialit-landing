@@ -1,14 +1,14 @@
 <%= content_tag_for(:li, comment ) do %>
-	<div class="comment_body">
-		<span class="comment_avatar">
-			<% if !comment.user.picture.present? %>
-				<%= link_to image_tag("http://graph.facebook.com/#{comment.user.uid}/picture?type=square", 
-						width: 25, height: 25, :id =>  "nickname_small_picture"), user_path(comment.user) %>
-			<% else %>
-				<%= link_to image_tag(comment.user.picture_url(:thumb_profile), width: 25, :id => "nickname_small_picture"), 
-						user_path(comment.user) %>
-			<% end %>
-		</span>
+	<span style="float:left" class="comment_avatar">
+		<% if !comment.user.picture.present? %>
+			<%= link_to image_tag("http://graph.facebook.com/#{comment.user.uid}/picture?type=square", 
+					width: 25, height: 25, :id =>  "nickname_small_picture"), user_path(comment.user) %>
+		<% else %>
+			<%= link_to image_tag(comment.user.picture_url(:thumb_profile), width: 25, :id => "nickname_small_picture"), 
+					user_path(comment.user) %>
+		<% end %>
+	</span>
+	<div class="comment_body" style="margin-left:16%" >
 		<span class="comment_author"><%= "#{comment.user.nickname}"%></span>
 		<%= content_tag "span", class:"comment_text", data: {id: comment.id } do %>
 	 		<span id="comment_new_<%= comment.id%>" class="comment_text"><%= comment.body %></span>
