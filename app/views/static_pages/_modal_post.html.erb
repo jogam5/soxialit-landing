@@ -1,8 +1,9 @@
-<div class="modal-soxialit">
+<div style="top:65%; left:38%" class="modal-soxialit">
 	<div class="modal-body">
 		<div class="span9 offset1">
 			<button type="button" class="close-button" data-dismiss="modal" aria-hidden="true">X</button>
 			<% if user_signed_in? %>
+			  <br/>
 			  <p style="font-weight:lighter; color:#777; font-size:1.5em; font-family:acta-display">Comparte un artículo, un post de tu blog u otro link sobre moda:</p>
 			  <%= form_for(@micropost, 
 			              {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true } ) do |f| %>
@@ -17,7 +18,7 @@
 			      <%= f.hidden_field :thumbnail %>
 			      <%= f.hidden_field :status, value: true %>
 			      <div class="actions" >
-			        <span style="margin-left:38em"><%= f.submit "Publicar", id: "button_send", class: "button-want"  %></span>
+			        <span style="margin-left:38em"><%= f.submit "Publicar", id: "button_send", class: "button-nopost", :disabled => true %></span>
 			      </div>
 			    <br/>
 			    <p id="wait">Vista Previa <i>(edita el contenido dando click sobre el texto)</i></p>
@@ -33,8 +34,15 @@ $(function() {
 
     $('#status').live('keyup keydown', function(e) {
       var empty = $(this).val().length;
-      if ( empty > 0 )
+      if ( empty > 0 ){
         $('#wait').toggleClass('show');
+		$('#button_send').removeClass('button-nopost').addClass('button-want');
+		$('#button_send').removeAttr('disabled');
+	  }else{
+		$('#button_send').removeClass('button-want').addClass('button-nopost');
+		$('#button_send').attr("disabled", "disabled");
+		
+	  }
     });
   });
 			
