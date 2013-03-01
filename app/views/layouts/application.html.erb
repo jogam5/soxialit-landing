@@ -19,15 +19,15 @@ mixpanel.init("5e344db467e2f971ffccde4566fe2da4");</script><!-- end Mixpanel -->
     <%= render 'layouts/header' %>
 	<% if !user_signed_in? %>
 	  <div style="margin-top:5%" class="container">
-      <% flash.each do |type, message| %>
-        <div style="margin-top:2%" class="alert <%= flash_class type %>">
-          <button class="close" data-dismiss="alert">x</button>
-          <%= message %>
-        </div>
-      <% end %>
-      <%= yield %>
+      	<% flash.each do |type, message| %>
+	        <div style="margin-top:2%" class="alert <%= flash_class type %>">
+	          <button class="close" data-dismiss="alert">x</button>
+	          <%= message %>
+	        </div>
+	      <% end %>
+      	<%= yield %>
 	    <div id="modal-id"></div>
-    </div>
+       </div>
     <%= render 'layouts/footer_unsigned' unless user_signed_in? %>
 	<% else %>
     <div class="container">
@@ -40,8 +40,10 @@ mixpanel.init("5e344db467e2f971ffccde4566fe2da4");</script><!-- end Mixpanel -->
       <%= yield %>
 	    <div id="modal-id"></div>
       <br />
-    </div>
 	<% end %>
+	<%= render 'layouts/footer'%>
+    </div>
+	
 <!-- start Fonts -->
 <link href='https://fonts.googleapis.com/css?family=Dosis|Arimo|Lobster|Raleway' rel='stylesheet' type='text/css'>
 <script type="text/javascript">
