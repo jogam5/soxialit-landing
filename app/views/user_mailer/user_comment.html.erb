@@ -13,8 +13,8 @@
 		font-family: nimbus-sans, Helvetica-Neue, Helvetica, Arial, Sans-serif;">¡Hey <%= @user.nickname %>!</p>
 		<p style="display: block;
 		color: black;
-		font-size:1.6em;
-		line-height: 1.7em;
+		font-size:1.3em;
+		line-height: 1.5em;
 		font-weight:lighter;
 		padding-top: 6px;
 		margin-top: 3%;
@@ -26,7 +26,16 @@
 			<%= link_to @item.title, micropost_url(@item), style: "color: #bbb; font-weight: lighter; text-decoration:none;" %></strong></p>
 		<% end %>
 		<hr>
-		<%= @user_following.nickname %>: "<%= @comment.body %>"
+		<p style="display: block;
+		color: black;
+		font-size:1.5em;
+		line-height: 1.7em;
+		font-weight:lighter;
+		padding-top: 6px;
+		margin-top: 3%;
+		margin-bottom: 2%;
+		font-family: nimbus-sans, Helvetica-Neue, Helvetica, Arial, Sans-serif;">
+		<%= @user_following.nickname %>: <span style="color:red">"<%= @comment.body %>"</span></p>
 		<hr>
 		<div style="display: block;
 		margin: 12px 0 5px;
