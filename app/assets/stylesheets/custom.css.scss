@@ -189,7 +189,7 @@ margin-top: 3%;
 #titleMainIdea{
 	font-family:acta-display, Helvetica-Neue, Helvetica, Arial, Sans-serif;
 	font-weight:400;
-	font-size:4.5em;
+	font-size:3.5em;
 	margin-top:3%;
 	margin-left:5%;
 	line-height:1em;
@@ -548,11 +548,13 @@ margin-top: 3%;
 
 /* Feedback */
 
-#feedback_header a{
+#feedback_header{
+	font-family:acta-display, Helvetica-Neue, Helvetica, Arial, Sans-serif;
+	 a{
 	color:whiteSmoke;
 	font-weight:300;
-	font-size:14px;
-	font-family:acta-display, Helvetica-Neue, Helvetica, Arial, Sans-serif;
+	font-size:1.2em;
+	}
 	 a:hover{
 	color:$rojo;
 	}
@@ -999,7 +1001,8 @@ ul.comments_new{
 	 a{
 	color:white;
 	font-weight:300;
-	font-size:1.3em;
+	font-size:1.2em;
+	font-family:acta-display, nimbus, Helvetica-Neue, Helvetica, Arial, Sans-serif;
 	}
 	 a:hover{
 	color:$rojo;
@@ -1008,7 +1011,7 @@ ul.comments_new{
 
 #signup {
 	 a{
-	color:#999;
+	color:#777;
 	font-weight:300;
 	font-size:1.2em;
 	font-family:acta-display, nimbus, Helvetica-Neue, Helvetica, Arial, Sans-serif;
@@ -1171,7 +1174,8 @@ ul.comments_new{
 
 #micropost_description{
 	text-align:left;
-	font-size:1.2em;
+	font-family:acta-display, nimbus-sans, Helvetica Neue, Helvetica, Sans-Serif;
+	font-size:1.1em;
 	font-weight:lighter;
 	font-color:#999;
 	padding:3%;
@@ -1189,7 +1193,8 @@ ul.comments_new{
 	overflow: hidden;
 	max-height: 50px;
 	text-align: left;
-	font-size: 1.2em;
+	font-family:acta-display, nimbus-sans, Helvetica Neue, Helvetica, Sans-Serif;
+	font-size: 1.1em;
 	font-weight: lighter;
 	font-color: #999;
 	padding: 3%;
@@ -1467,8 +1472,8 @@ ul.comments_new{
 
 	span{
 		padding-bottom: 10px;
-		font-size: 1.2em;
-		font-family: "helvetica";
+		font-size: 1.4em;
+		font-family:acta-display, Helvetica-Neue, Helvetica;
 		font-weight: 400;
 		color: #666;
 		text-transform: capitalize;
@@ -1476,6 +1481,7 @@ ul.comments_new{
 	a{
 		color: #666;;
 		text-decoration: none;
+
 	}
 	a:hover{
 		color:#DD390D;

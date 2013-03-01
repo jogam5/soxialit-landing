@@ -2,34 +2,46 @@
 
 <div class="row-fluid">
   <div style="margin-top:1%" class="span2" id="about_menu">
-  	<ul id="menu_about">
-	 <li id= "link_about"><%= link_to "Soxialit", soxialit_path, remote: true %></li>
-     <li id="link_about" class="vender"><%= link_to "Vender", sell_path, remote: true,
-          :onmousedown => "_gaq.push(['_trackEvent', 'About Links', 'Check Vender OnMouse', 'Vender OnMouse']);" %></li>
-     <span id="about_submenu"><li id="link_about" class="guia"><%= link_to "Guía de Fotos", guides_path, remote: true,
-          :onmousedown => "_gaq.push(['_trackEvent', 'About Links', 'Check Guia OnMouse', 'Guia OnMouse']);" %></li></span>
-     <span id="about_submenu"><li id="link_about" class="ejemplo"><%= link_to "Ejemplos", examples_path, remote: true,
-          :onmousedown => "_gaq.push(['_trackEvent', 'About Links', 'Check Ejemplo OnMouse', 'Ejemplo OnMouse']);" %></li></span>
-	 <li id="link_about" class="comprar"> <%= link_to "Comprar", buy_path, remote: true,
-          :onmousedown => "_gaq.push(['_trackEvent', 'About Links', 'Check Comprar OnMouse', 'Comprar OnMouse']);" %></li>
-     <li id="link_about"><%= link_to "FAQ", faq_path, remote: true %></li>
+    <ul id="menu_about">
+	   <li id= "link_about"><%= link_to "Soxialit", soxialit_path, remote: true %></li>
+
+      <% if current_user.roles.first.name == 'admin' %>
+       <li id="link_about" class="vender"><%= link_to "Vender", sell_path, remote: true,
+            :onmousedown => "_gaq.push(['_trackEvent', 'About Links', 'Check Vender OnMouse', 'Vender OnMouse']);" %></li>
+        <span id="about_submenu">
+          <li id="link_about" class="guia"><%= link_to "Guía de Fotos", guides_path, remote: true,
+            :onmousedown => "_gaq.push(['_trackEvent', 'About Links', 'Check Guia OnMouse', 'Guia OnMouse']);" %>
+          </li>
+        </span>
+        <span id="about_submenu">
+          <li id="link_about" class="ejemplo"><%= link_to "Ejemplos", examples_path, remote: true,
+            :onmousedown => "_gaq.push(['_trackEvent', 'About Links', 'Check Ejemplo OnMouse', 'Ejemplo OnMouse']);" %>
+          </li>
+        </span>
+  	    <li id="link_about" class="comprar"> <%= link_to "Comprar", buy_path, remote: true,
+            :onmousedown => "_gaq.push(['_trackEvent', 'About Links', 'Check Comprar OnMouse', 'Comprar OnMouse']);" %></li>
+        <li id="link_about"><%= link_to "FAQ", faq_path, remote: true %></li>
+      <% end %>
+
      <li id="link_about"><%= link_to "Privacidad", privacy_path, remote: true %></li>
      <li id="link_about"><%= link_to "Condiciones", term_path, remote: true %></li>
     </ul>
   </div>
   <div class="span10" id="about_rightside">
-  	<p id="titleMainIdea">Soxialit te conecta con las personas más apasionadas de la moda</p><br/ >
-    <p id="titleSecondIdea">Haz que tu talento y tu pasión por la moda lleguen a miles de personas.</p>
+  	<p id="titleMainIdea">Soxialit es una comunidad de personas que amamos la Moda</p>
+    <p id="titleSecondIdea"></p>
     <hr />
     <div id="about_body">
       <div class="row">
         <span class="span11 offset1">
-          <%= image_tag 'about.jpg' %><br /><br /><br />
-          <p style="color:#DD390D; font-weight:normal; font-size:1.8em">
-            En Soxialit creemos en artistas de la moda como tú
-          </p>
-          <p style="font-size:1.6em; color:#444">Somos una comunidad de personas creativas que transforman el mundo escribiendo posts sobre moda, creando prendas que cumplen los sueños de aquellos que las visten, tomando fotografías de momentos trascendentes, diseñando portadas de revistas, haciendo entrevistas a las personas que admiramos y mucho más.</p>
-          <p style="font-size:1.6em; color:#444">Soxialit nació para ser una comunidad de artistas de la moda: Editores, Bloggers, Diseñadores, Estilistas, Modelos, Fotógrafos, Maquillistas y más.</p><br />
+          <%= image_tag "fb_cover.png" %><br /><br />
+          <p style="font-size:1.8em; font-family:acta-display; line-height:1.5em; color:#555">Soxialit es la historia de artistas emergentes que marcan tendencias: bloggers, diseñadores y fotógrafos que definen la Moda en nuestro tiempo, el estilo que elegimos, la manera en que vestimos y a quienes seguimos.</p>
+          <hr />
+          <p style="font-size:1.6em; text-align:center; margin-bottom:0.9em">Ayúdanos a hacer más grande la comunidad:<p>
+          <p><%= image_tag("twitter-bg.png") %> "<span style="text-align:center; font-size:0.7em">Crea tu cuenta en Soxialit, la red social que conecta #Fashion Lovers, Bloggers, Designers y Fotógrafos</span>"</p>
+          <p style="text-align:center"><a href="https://twitter.com/share" class="twitter-share-button" data-url="." data-text="Crea tu cuenta en http://soxialit.com, la red social que conecta #Fashion Lovers, Bloggers, Designers, y Fotógrafos || vía @Soxialit" data-lang="es" data-size="large" data-count="none">Twittear</a></p>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+          </script>
         </span>
       </div>
     </div>
