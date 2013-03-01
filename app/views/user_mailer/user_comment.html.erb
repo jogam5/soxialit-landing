@@ -26,7 +26,7 @@
 			<%= link_to @item.title, micropost_url(@item), style: "color: #bbb; font-weight: lighter; text-decoration:none;" %></strong></p>
 		<% end %>
 		<hr>
-		<%= @user.nickname %>: "<%= @comment.body %>"
+		<%= @user_following.nickname %>: "<%= @comment.body %>"
 		<hr>
 		<div style="display: block;
 		margin: 12px 0 5px;
