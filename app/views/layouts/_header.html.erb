@@ -56,9 +56,10 @@
 					        </li>
 					<% else %>
 						<li id="signin"><%= link_to "Último Post", 
-												@last %></li>
+									@last, :onmousedown => "_gaq.push(['_trackEvent', 'Home', 'Header', 'ultimo post']);" %></li>
 						<li class="divider-vertical" style="color:yellow"></li>
-						<li id="signin"><%= link_to "Todos los Posts", microposts_path %></li>
+						<li id="signin"><%= link_to "Todos los Posts", microposts_path,
+							:onmousedown => "_gaq.push(['_trackEvent', 'Home', 'Header', 'todos los posts']);" %></li>
 	   				<% end %>
               	  </ul>
               	</nav>
@@ -72,7 +73,8 @@
 			<p>Soxialit es una red social de artistas, creativos y personas que aman la moda.</p>
 		</div>
 		<div style="float:right">
-			<%= link_to "Crea tu cuenta", user_omniauth_authorize_path(:facebook), class: "button-want" %>
+			<%= link_to "Crea tu cuenta", user_omniauth_authorize_path(:facebook), class: "button-want", 
+					:onmousedown => "_gaq.push(['_trackEvent', 'Home', 'Header', 'crear cuenta']);" %>
 		</div>
 		<div style="float:right; margin-right:2%">
 			<div id="signup"><%= link_to "Iniciar Sesión", user_omniauth_authorize_path(:facebook), style:"font-size: 1.1em" %></div>
