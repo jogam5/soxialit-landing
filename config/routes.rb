@@ -88,6 +88,7 @@ DeviseFacebook::Application.routes.draw do
   match "tanyamulki", to: 'static_pages#test'
   match "biografia", to:'static_pages#biografia'
   match "items", to:'static_pages#items'
+  match "las7depauline", to:'static_pages#las7depauline'
 
   #designers_pages
   match "demo", to: 'static_pages#demo'

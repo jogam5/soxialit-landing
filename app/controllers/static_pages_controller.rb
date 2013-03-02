@@ -125,7 +125,9 @@ class StaticPagesController < ApplicationController
   end
   
   def modal_post
-     @micropost = Micropost.new
+    @micropost = Micropost.new
   end
-    
+
+  def las7depauline
+  end
 end

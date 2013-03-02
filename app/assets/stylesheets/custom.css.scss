@@ -1689,3 +1689,22 @@ ul.comments_new{
 
 
 /*  Test Menu */ 
+
+
+#newsletter{
+	font-family:acta-display, Helvetica Neue;
+	p{
+	font-size:1.2em;
+	line-height:1.3em;
+	}
+	h3{
+	font-size:2em;
+	}
+	a{
+	color:$rojo;
+	}
+	a:hover{
+	color:#999;
+	text-decoration:none;
+	}
+}
