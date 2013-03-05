@@ -1,0 +1,29 @@
+<% content_for :meta do %>
+	<% meta [:property => "og:image", :content => "#{image_tag(@newsletter.imagen)}" ] %>
+	<% meta [:property => "og:description", :content => " #{@newsletter.title}"] %>
+	<% meta [:property => "og:type", :content => "website"] %>
+	<% meta [:property => "og:title", :content => " #{@newsletter.title}"] %>
+	<% meta [:property => "og:url", :content => "https://soxialit.com/newsletters/#{@newsletter.id}"] %>
+	<% meta [:property => "fb:app_id", :content => ENV["APP_ID"] ] %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @newsletter.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @newsletter.description %>
+</p>
+
+<p>
+  <b>Imagen:</b>
+  <%= @newsletter.imagen %>
+</p>
+
+
+<%= link_to 'Edit', edit_newsletter_path(@newsletter) %> |
+<%= link_to 'Back', newsletters_path %>

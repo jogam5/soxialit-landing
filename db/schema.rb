@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130217225222) do
+ActiveRecord::Schema.define(:version => 20130305033924) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -91,10 +91,21 @@ ActiveRecord::Schema.define(:version => 20130217225222) do
     t.text     "description"
     t.string   "thumbnail"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.boolean  "status"
     t.string   "picture"
+  end
+
+  add_index "microposts", ["status"], :name => "index_microposts_on_status"
+  add_index "microposts", ["user_id"], :name => "index_microposts_on_user_id"
+
+  create_table "newsletters", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "imagen"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "notifications", :force => true do |t|
@@ -116,6 +127,8 @@ ActiveRecord::Schema.define(:version => 20130217225222) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "paintings", ["product_id"], :name => "index_paintings_on_product_id"
 
   create_table "partners", :force => true do |t|
     t.integer  "user_id"
@@ -294,6 +307,8 @@ ActiveRecord::Schema.define(:version => 20130217225222) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "sizes", ["product_id"], :name => "index_sizes_on_product_id"
 
   create_table "sizeships", :force => true do |t|
     t.integer  "product_id"

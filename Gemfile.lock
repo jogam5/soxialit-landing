@@ -298,6 +298,6 @@ DEPENDENCIES
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   wicked
-  will_paginate
+  will_paginate (> 3.0)
   workless (~> 1.1.1)
   zclip-rails

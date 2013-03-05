@@ -20,6 +20,7 @@
 			<hr />
 		</div>
 	</div>
+	<div id="newsletters"><%= render 'newsletters'%></div>
 	<div class="row">
 		<div class="span4">
 			<%= image_tag "uno.jpg" %>
@@ -99,4 +100,20 @@
 	</div>
 </div>
 <br/><br/>
-<script type="text/javascript">mixpanel.track("Las 7 de Pauline")</script>
+<script type="text/javascript">
+
+mixpanel.track("Las 7 de Pauline")
+if (history && history.pushState) {
+
+	$(function(){
+		$('#newsletters').find('a').live('click', function(){
+			$.getScript(this.href);
+			history.pushState(null, "", this.href);
+		   	return false;
+		});
+		$(window).bind("popstate", function () {
+		    $.getScript(location.href);
+		  });
+	});
+}
+</script>

@@ -63,7 +63,7 @@ gem 'embedly'
 gem 'client_side_validations'
 
 #Pagination
-gem 'will_paginate'
+gem 'will_paginate', '> 3.0'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

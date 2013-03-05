@@ -1,0 +1,22 @@
+<% if !@newsletter.nil?%>
+	<div class="row">
+		<div class="span5 offset2">
+			<%= will_paginate @newsletter, previous_label: h("<"), next_label: h(">") %>
+		</div>
+	</div>
+
+	<% @newsletter.each do |news| %>
+	<div class="row">
+		<div class="span4">
+			<%= image_tag news.imagen %>
+		</div>
+		<div class="span4">
+			<h3><%= news.title %></h3>
+			<p><%= news.description.html_safe %></p>
+			<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fsoxialit.com%2Fnewsletters%2F<%= news.id%>&amp;send=false&amp;layout=box_count&amp;width=100&amp;show_faces=false&amp;font=verdana&amp;colorscheme=light&amp;action=like&amp;height=90&amp;appId=235628993153454" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:90px;" allowTransparency="true"></iframe>
+		</div>
+	
+	</div>
+	<br/ ><br/ >
+	<% end %>
+<% end %>

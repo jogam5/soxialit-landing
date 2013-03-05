@@ -1,0 +1,33 @@
+<% if current_user == @user || current_user.roles.first.name == 'admin' %>
+
+	<h1>Listing newsletters</h1>
+
+	<table>
+	  <tr>
+	    <th>Title</th>
+	    <th>Description</th>
+	    <th>Imagen</th>
+	    <th></th>
+	    <th></th>
+	    <th></th>
+	  </tr>
+
+	<% @newsletters.each do |newsletter| %>
+	  <tr>
+	    <td><%= newsletter.title %></td>
+	    <td><%= newsletter.description %></td>
+	    <td><%= newsletter.imagen %></td>
+	    <td><%= link_to 'Show', newsletter %></td>
+	    <td><%= link_to 'Edit', edit_newsletter_path(newsletter) %></td>
+	    <td><%= link_to 'Destroy', newsletter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	  </tr>
+	<% end %>
+	</table>
+
+	<br />
+
+	<%= link_to 'New Newsletter', new_newsletter_path %>
+<% else %>
+	<h1>Lo sentimos! No puedes acceder a esta página</h1>
+	<%= link_to "Regresar a mi Perfil", user_path(current_user) %>
+<% end %>
