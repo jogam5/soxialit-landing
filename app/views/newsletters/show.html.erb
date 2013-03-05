@@ -1,5 +1,5 @@
 <% content_for :meta do %>
-	<% meta [:property => "og:image", :content => "#{image_tag(@newsletter.imagen)}" ] %>
+	<% meta [:property => "og:image", :content => "#{@newsletter.imagen}" ] %>
 	<% meta [:property => "og:description", :content => " #{@newsletter.title}"] %>
 	<% meta [:property => "og:type", :content => "website"] %>
 	<% meta [:property => "og:title", :content => " #{@newsletter.title}"] %>
