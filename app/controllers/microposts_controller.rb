@@ -85,6 +85,10 @@ class MicropostsController < ApplicationController
   
   def modal_micropost
      @micropost = Micropost.find(params[:micropost_id])
+     @posts = Micropost.all.last(3)
+     @user = @micropost.user
+     @comment = Comment.new
+     @comments = @micropost.comments
   end
   
 end

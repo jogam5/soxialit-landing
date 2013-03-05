@@ -169,6 +169,21 @@ setTimeout(function(){
 	$('.alert.alert-success').fadeOut();
 }, 2000);
 			
+if (history && history.pushState) {
+
+	$(function(){
+		$('#contenedor').find('a').live('click', function(){
+			$.getScript(this.href);
+			history.pushState(null, "", this.href);
+		   	return false;
+		});
+		$(window).bind("popstate", function () {
+		    $.getScript(location.href);
+		  });
+	});
+}
+			
+			
 </script>
 
 <script type="text/javascript">mixpanel.track("Microposts Feed")</script>
