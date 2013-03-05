@@ -32,6 +32,8 @@ $(document).keyup(function(e) {
 	document.documentElement.style.overflowY = "scroll";
 	$('#banner').show();
 	$('#menu-order').show();
+	var url = "https://soxialit.com/microposts"
+	history.pushState(null, "", url);
    }   // esc
 });
 
@@ -40,6 +42,8 @@ $('.close-button').click(function(){
 	$('#modal-micropost').fadeOut('fast');
 	$('#banner').show();
 	$('#menu-order').show();
+	var url = "https://soxialit.com/microposts"
+	history.pushState(null, "", url);
 });
 
 $("#like-button").html("<fb:like href=\"https://soxialit.com/microposts/<%= @micropost.id %>\" send=\"false\" layout=\"button_count\" width=\"200\" show_faces=\"false\" action=\"like\" font=\"\"></fb:like>");

@@ -172,7 +172,7 @@ setTimeout(function(){
 if (history && history.pushState) {
 
 	$(function(){
-		$('#contenedor').find('a').live('click', function(){
+		$('#contenedor').find('#modal').live('click', function(){
 			$.getScript(this.href);
 			history.pushState(null, "", this.href);
 		   	return false;
