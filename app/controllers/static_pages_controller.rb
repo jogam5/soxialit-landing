@@ -129,6 +129,6 @@ class StaticPagesController < ApplicationController
   end
 
   def las7depauline
-     @newsletter = Newsletter.page(params[:page]).per_page(1).find(:all, :order => 'created_at DESC')
+     @newsletter = Newsletter.page(params[:page]).per_page(7).find(:all, :order => 'created_at DESC')
   end
 end
