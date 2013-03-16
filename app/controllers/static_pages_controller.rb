@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   layout "feed", :only => :home
-  layout "test", :only => :test
+  layout "test", :only => [:test, :seller1, :seller2]
 
   def home
     @stats = Rails.cache.stats.first.last unless Rails.env.development?
@@ -39,6 +39,12 @@ class StaticPagesController < ApplicationController
   end
   
   def privacy
+    respond_to do |format|
+      format.js
+    end
+  end
+
+   def team
     respond_to do |format|
       format.js
     end
@@ -130,5 +136,11 @@ class StaticPagesController < ApplicationController
 
   def las7depauline
      @newsletter = Newsletter.page(params[:page]).per_page(7).find(:all, :order => 'created_at DESC')
+  end
+
+  def seller1
+  end
+
+  def seller2
   end
 end
