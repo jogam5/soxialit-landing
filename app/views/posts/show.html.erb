@@ -193,7 +193,9 @@
    </span>
   </div>
 </div>
-<br/ >
+<%= content_tag "div", id:"post", data: {id: current_user.id } do %>
+<% end %>
+
 <script type="text/javascript">
   Galleria.run('.galleria');
 </script>
@@ -204,4 +206,7 @@
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=439343236107925";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));
+
+
+</script>

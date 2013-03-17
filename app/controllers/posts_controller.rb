@@ -54,15 +54,36 @@ class PostsController < ApplicationController
 
   def publish
     @post = Post.find(params[:post_id])
-    @user =@post.user
+    @user = @post.user
     if @post.status == false
        @post.update_attributes(:status => true)
        @post.activities.create(:user_id => current_user.id, :action => "create")
+       @followers_list = @user.followers.map do |u|
+         { :id => u.id, :follower_name => u.nickname}
+       end
+      
+       require 'json'
+        url = 'http://10.0.1.38:3000/push'
+        uri = URI.parse(url)
+        post_params = {
+           :title => @post.title,
+           :body => @post.body,
+           :user_id => @post.user_id,
+           :name => @user.nickname,
+           :followers => @followers_list
+        }
+ 
+       req = Net::HTTP::Post.new(uri.path)
+       req.body = JSON.generate(post_params)
+       req["Content-Type"] = "application/json"
+       http = Net::HTTP.new(uri.host, uri.port)
+       http.start {|htt| htt.request(req)}
+       
        Activity.expire_feed_cache(@user)
        Post.delay.publish_post_facebook(@post) unless @user.fb == false
     else
     end
-    redirect_to root_url
+    redirect_to :back
   end
 
   def avoid_nil

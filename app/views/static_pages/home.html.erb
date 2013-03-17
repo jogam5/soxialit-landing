@@ -1,12 +1,10 @@
 <% provide(:title, 'Inicio') %>
-
 <div id="ajax" style="float:left; position:fixed; display:none; margin: 20% 455px; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
 <div class="row">
   <div class="span12">
     <%= render 'shared/feed' %>
   </div>
 </div>
-
 <% if user_signed_in? %>
 <% if current_user.roles.first.name == 'admin' %>
 <% if !@stats.nil? %>
@@ -31,6 +29,8 @@
 	</table>
 <% end %>
 <% end %>
+<% end %>
+<%= content_tag "div", id:"post", data: {id: current_user.id } do %>
 <% end %>
 
 <script type="text/javascript">
@@ -89,6 +89,8 @@ $(document).ready(function() {
 setTimeout(function(){
 	$('.alert.alert-success').fadeOut();
 }, 2000);
+
+
 
 </script>
 <script type="text/javascript">mixpanel.track("Home Page Loaded")</script>
