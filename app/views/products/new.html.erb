@@ -1,8 +1,9 @@
 <div class="row">
-	<% if current_user.id == 20 || current_user.id == 4 || current_user.id == 11 || current_user.id == 65 || current_user.id == 27 || current_user.id == 47 || current_user.id == 16 || current_user.id == 265 || current_user.id == 67  %>
+	<% if current_user.roles.first.name == "admin" %>
 		<%= render 'form' %>
-	<% else %>
-		<%= render 'form_simple' %>
+  <% else %>
+    <h1>Lo sentimos! No puedes acceder a esta página</h1>
+    <%= link_to "Regresar a mi Perfil", user_path(current_user) %>
 	<% end %>
 </div>
 <script type="text/javascript">
