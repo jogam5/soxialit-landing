@@ -3,7 +3,7 @@
 	<% elsif @product.paintings.count == 1 %>
 		$("#product_images").append('<%= escape_javascript(render(@painting)) %>');
 		$('ul#images_fake li').eq('<%= @product.paintings.count %>'-1).removeClass("image_small_fake").addClass("image_small_opacity"); 
-	<% elsif @product.paintings.count <= 4 %>
+	<% elsif @product.paintings.count <= 10 %>
 		$('#select_image').show();
 		$("#product_images").append('<%= escape_javascript(render(@painting)) %>');
 		$('ul#images_fake li').eq('<%= @product.paintings.count %>'-1).removeClass("image_small_fake").addClass("image_small_opacity"); 
