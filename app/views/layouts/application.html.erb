@@ -34,8 +34,6 @@ mixpanel.init("5e344db467e2f971ffccde4566fe2da4");</script><!-- end Mixpanel -->
       <div class="span3" style="position: fixed; margin: 20% 0px 0px 0%; z-index: 4000; display: block;
       background-color: rgb(252, 248, 248); text-align: center; padding: 10px; box-shadow: 0 0 1px 0px #aaa, 0 2px 0px 0px #999999,0 5px 10px rgba(0, 0, 0, 0.25); -webkit-box-shadow: 0 0 1px 0px #aaa, 0 2px 0px 0px #999999,0 5px 10px rgba(0, 0, 0, 0.25); display:none" id="notification">
       </div>
-      <!-- <%= content_tag "div", id:"post", data: {id: current_user.id } do %>
-       <% end %> -->
       <% flash.each do |type, message| %>
         <div style="margin-top:2%" class="alert <%= flash_class type %>">
           <button class="close" data-dismiss="alert">x</button>
