@@ -78,6 +78,7 @@ class ProductsController < ApplicationController
          if signed_in?
             if current_user.direction.nil? || user_cp.nil?
             else
+=begin              
                user_product_cp = find_user_product(@product)
                current_user_cp = current_user.direction.zipcode
                logger.debug "#{user_product_cp}\n\n\n\n\n\n"
@@ -105,9 +106,9 @@ class ProductsController < ApplicationController
                    @tarifas.push(node.text)
                 end
                 logger.debug "#{@tarifas}\n\n\n\n\n\n"
+=end         
             end
          end
-         
          respond_to do |format|
            format.html # show.html.erb
            format.json { render json: @product }
