@@ -1,5 +1,5 @@
 <div class="row-fluid" style="margin-top:-7%; margin-left:-10%; width: 1150px">
-	<div style="margin: 5% 0% 5% -3%; text-align:center; width:800px" class="span7">
+	<div style="margin: 5% 0% 5% -3%; text-align:center; width:770px" class="span7">
 	  <% if @product.paintings.any? %>
 	  <% else %>
 		<div class="defaultMainImage" style="float:left;"></div>
@@ -11,9 +11,9 @@
 	        </div>
 	        	<ul id="productImagesSortable" style="float:right;">
 	        			<% @product.paintings.each_with_index do |painting, index| %>
-	        				<% if index < 4 %>
+	        				<% if index < 10 %>
 	        					<%= content_tag "div", class:"paintings", data: {id: painting.id } do %>
-	        			 			<li id="smallImage_show" class="painting_<%= painting.id%>">
+	        			 			<li style="width:70px; height: 70px" id="smallImage_show" class="painting_<%= painting.id%>">
 	        							<%= image_tag(painting.image_url(:thumb))%>
 	        						</li>
 	        					<% end %>
