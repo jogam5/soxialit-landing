@@ -107,6 +107,7 @@ class ProductsController < ApplicationController
                 end
                 logger.debug "#{@tarifas}\n\n\n\n\n\n"
 =end         
+
             end
          end
          respond_to do |format|
