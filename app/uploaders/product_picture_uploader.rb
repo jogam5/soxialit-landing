@@ -19,6 +19,10 @@ class ProductPictureUploader < CarrierWave::Uploader::Base
   version :timeline do
     process :resize_to_limit => [670,0]
   end
+
+  version :picture_300 do
+    process :resize_to_limit => [150,300]
+  end
   
   def extension_white_list
     %w(jpg jpeg gif png)
