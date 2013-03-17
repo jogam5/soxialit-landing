@@ -11,12 +11,11 @@
 g=a[f]=[]:f="mixpanel";g.people=g.people||[];h="disable track track_pageview track_links track_forms register register_once unregister identify name_tag set_config people.identify people.set people.increment".split(" ");for(e=0;e<h.length;e++)d(g,h[e]);a._i.push([b,c,f])};a.__SV=1.1})(document,window.mixpanel||[]);
 mixpanel.init("5e344db467e2f971ffccde4566fe2da4");</script><!-- end Mixpanel -->
 	<% yield :javascript %>
-
 </head>
 <style> body { padding-top: 65px; } </style>
 
 <body>
-    <%= render 'layouts/header' %>
+  <%= render 'layouts/header' %>
 	<% if !user_signed_in? %>
 	  <div style="margin-top:5%" class="container">
       	<% flash.each do |type, message| %>
@@ -32,6 +31,9 @@ mixpanel.init("5e344db467e2f971ffccde4566fe2da4");</script><!-- end Mixpanel -->
     <%= render 'layouts/footer_unsigned' unless user_signed_in? %>
 	<% else %>
     <div class="container">
+      <div class="span3" style="position: fixed; margin: 20% 0px 0px 0%; z-index: 4000; display: block;
+      background-color: rgb(252, 248, 248); text-align: center; padding: 10px; box-shadow: 0 0 1px 0px #aaa, 0 2px 0px 0px #999999,0 5px 10px rgba(0, 0, 0, 0.25); -webkit-box-shadow: 0 0 1px 0px #aaa, 0 2px 0px 0px #999999,0 5px 10px rgba(0, 0, 0, 0.25); display:none" id="notification">
+      </div>
       <% flash.each do |type, message| %>
         <div style="margin-top:2%" class="alert <%= flash_class type %>">
           <button class="close" data-dismiss="alert">x</button>
@@ -45,7 +47,7 @@ mixpanel.init("5e344db467e2f971ffccde4566fe2da4");</script><!-- end Mixpanel -->
       
     </div>
 	<% end %>
-	
+
 <!-- start Fonts -->
 <link href='https://fonts.googleapis.com/css?family=Dosis|Arimo|Lobster|Raleway' rel='stylesheet' type='text/css'>
 <script type="text/javascript">
@@ -70,6 +72,14 @@ mixpanel.init("5e344db467e2f971ffccde4566fe2da4");</script><!-- end Mixpanel -->
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
+
+  $(function(){
+    $('#close_notification').live('click', function(e){
+      e.preventDefault();
+      $('#notification').hide();
+    });
+  });
+
  </script>
 </body>
 </html>

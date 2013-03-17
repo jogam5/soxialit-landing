@@ -27,6 +27,7 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :ships
 
   acts_as_taggable
+=begin
   validates :price, :numericality => {:greater_than_or_equal_to => 0.01}, :on => :update
   validates_numericality_of :quantity, :greater_than => 0, :less_than => 6, :on => :update    
   validates :quantity, :presence => {:message => "*debe ser menor 6"}, :on => :update
@@ -39,7 +40,7 @@ class Product < ActiveRecord::Base
   validates :ship_df, :ship_int, :tipo_envio, :presence => { :message => "*seleciona al menos una opcion de envio" }, 
   :allow_blank => true, :on => :update, :if => :any_present?
   validates :picture, :presence => {:message => "*debes elegir cual es la imagen principal del producto."}, :on => :update
-  
+=end
   default_scope order: 'products.created_at DESC'
   
   def any_present?
