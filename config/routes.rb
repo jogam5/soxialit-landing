@@ -92,6 +92,7 @@ DeviseFacebook::Application.routes.draw do
   match "biografia", to:'static_pages#biografia'
   match "items", to:'static_pages#items'
   match "las7depauline", to:'static_pages#las7depauline'
+  match "team", to:'static_pages#team'
 
   #designers_pages
   match "demo", to: 'static_pages#demo'
@@ -120,11 +121,13 @@ DeviseFacebook::Application.routes.draw do
   resources :partners
   resources :pays
 
+  match "missviva", to: 'static_pages#seller1'
+  match "segundo", to: 'static_pages#seller2'
+
   #Customized Routes for Profile Page should be at th END
   match ":username/edit", :to => "users#edit", :as => "edit_user", :via => :get
   match ":username", :to => "users#show", :as => "user", :via => :get
   match ":username", :to => "users#update", :as => "user", :via => :put
   match ":username", :to => "users#destroy", :as => "user", :via => :delete
-
 
 end
