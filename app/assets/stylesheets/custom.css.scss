@@ -1690,6 +1690,7 @@ ul.comments_new{
 
 /*  Test Menu */ 
 
+/*  Newsletter */ 
 
 #newsletter{
 	font-family:acta-display, Helvetica Neue;
@@ -1755,3 +1756,12 @@ ul.comments_new{
     height: 1%; }
   *:first-child + html .pagination {
     overflow: hidden; }
+
+/*  Newsletter */ 
+
+
+#gabo{
+	 img{
+	border-right: 1px solid rgba(0, 0, 0, 0.0976563);
+	}
+}
