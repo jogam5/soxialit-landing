@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index, :tallas, :comprar, :mercadopago_checkout, :paypal_checkout, :PayerID, :envio_df, :envio]
-  load_and_authorize_resource
+  #load_and_authorize_resource
    
     def status
       Product.update_all({:status => true}, {:id => params[:status_ids]})

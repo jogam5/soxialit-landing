@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   layout "feed", :only => :home
-  layout "test", :only => [:test, :seller1, :seller2]
+  #layout "test", :only => [:test, :seller1, :seller2]
 
   def home
     @stats = Rails.cache.stats.first.last unless Rails.env.development?

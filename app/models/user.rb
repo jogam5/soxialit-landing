@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
   has_reputation :likes, source: {reputation: :likes, of: :posts}, aggregated_by: :sum
 
   mount_uploader :picture, ProfilePictureUploader
+  mount_uploader :cover, CoverPictureUploader
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -41,7 +42,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
               :username, :picture, :picture_cache, :location, :website, :bio, 
-              :role_ids, :provider, :uid, :token, :nickname, :fb, :status
+              :role_ids, :provider, :uid, :token, :nickname, :fb, :status, :cover
 
   VALID_USERNAME_REGEX = /^[a-zA-Z0-9_]*[a-zA-Z][a-zA-Z0-9_]*$/
   validates :username, presence: true,  format: { with: VALID_USERNAME_REGEX },

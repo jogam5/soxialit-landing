@@ -40,6 +40,9 @@ DeviseFacebook::Application.routes.draw do
   match "following/:username" => "users#following", :as => "following_user"
   match "favorites/:username" => "users#favorites", :as => "favorites"
   match "list_projects/:username" => "users#list_projects", :as => "list_projects"
+
+  match "items/:username" => "users#items", :as => "items"
+  match "muro/:username" => "users#muro", :as => "muro"
   
   resources :feedbacks
   resources :comments
@@ -89,8 +92,8 @@ DeviseFacebook::Application.routes.draw do
   match "faq", to:'static_pages#faq'
   match "registro", to: 'static_pages#registro'
   match "tanyamulki", to: 'static_pages#test'
-  match "biografia", to:'static_pages#biografia'
-  match "items", to:'static_pages#items'
+  #match "biografia", to:'static_pages#biografia'
+  #match "items", to:'static_pages#items'
   match "biografia1", to:'static_pages#biografia1'
   match "items1", to:'static_pages#items1'
   match "biografia2", to:'static_pages#biografia2'

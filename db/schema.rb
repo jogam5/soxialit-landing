@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20130319072500) do
 
+
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
     t.string   "activitable_type"
@@ -371,6 +372,7 @@ ActiveRecord::Schema.define(:version => 20130319072500) do
     t.string   "nickname"
     t.boolean  "fb",                     :default => true
     t.boolean  "status",                 :default => true
+    t.string   "cover"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
