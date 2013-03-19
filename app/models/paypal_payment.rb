@@ -24,7 +24,7 @@ private
       token: @pay.paypal_payment_token,
       payer_id: @pay.paypal_customer_token,
       description: @pay.product.title,
-      amount: @pay.product.total_price,
+      amount: @pay.product.price,
       currency: "MXN"
     )
     response = PayPal::Recurring.new(options).send(action)

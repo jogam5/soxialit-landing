@@ -43,7 +43,7 @@ class PaysController < ApplicationController
            return_url: product_url(product),
            cancel_url: products_url,
            description: product.title,
-           amount: product.total_price,
+           amount: product.price,
            currency: "MXN"
           )
           response = ppr.checkout
