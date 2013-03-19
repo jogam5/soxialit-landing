@@ -29,18 +29,7 @@
 		</div>
 	</div>
 	<hr>
-<!--	<div class="span3">
-	
-			<strong>
-				Que opción de envío deseas:
-			</strong>
-			<p><span id="address_form"></span></p>
-			<% if user_signed_in? %>
-				<%= render 'compra_login'%>
-			<% else %>
-				<%= render 'compra_without_login' %>
- 		    <% end %>
-	</div> -->
+
 	<div style="display:block" id="pagos" class="span8 offset2">
 			<div id="paypal_checkout" style="width:150px; float:left;">
 				<%= link_to "Pagar con Paypal", paypal_checkout_path(:product_id => @product.id), :class => "btn btn-success" %>
