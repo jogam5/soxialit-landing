@@ -6,29 +6,29 @@
   </div>
 </div>
 <% if user_signed_in? %>
-<% if current_user.roles.first.name == 'admin' %>
-<% if !@stats.nil? %>
-	<h1>Cache Stats</h1>
-	<table>
-	  <tr>
-	    <th>Metric</th>
-	    <th>Value</th>
-	  </tr>
-	  <tr>
-	    <td>Cache hits:</td>
-	     <td><%= @stats['get_hits'] %></td>
-	  </tr>
-	  <tr>
-	    <td>Cache misses:</td>
-	    <td><%= @stats['get_misses'] %></td>
-	  </tr>
-	  <tr>
-	    <td>Cache flushes:</td>
-	    <td><%= @stats['cmd_flush'] %></td>
-	  </tr>
-	</table>
-<% end %>
-<% end %>
+	<% if current_user.roles.first.name == 'admin' %>
+		<% if !@stats.nil? %>
+			<h1>Cache Stats</h1>
+			<table>
+			  <tr>
+			    <th>Metric</th>
+			    <th>Value</th>
+			  </tr>
+			  <tr>
+			    <td>Cache hits:</td>
+			     <td><%= @stats['get_hits'] %></td>
+			  </tr>
+			  <tr>
+			    <td>Cache misses:</td>
+			    <td><%= @stats['get_misses'] %></td>
+			  </tr>
+			  <tr>
+			    <td>Cache flushes:</td>
+			    <td><%= @stats['cmd_flush'] %></td>
+			  </tr>
+			</table>
+		<% end %>
+	<% end %>
 <% end %>
 
 <script type="text/javascript">

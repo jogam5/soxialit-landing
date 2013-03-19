@@ -141,6 +141,30 @@ class StaticPagesController < ApplicationController
   def seller1
   end
 
+  def items1
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def biografia1
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def seller2
+  end
+
+  def items2
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def biografia2
+    respond_to do |format|
+      format.js
+    end
   end
 end
