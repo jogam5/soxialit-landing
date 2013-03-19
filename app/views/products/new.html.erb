@@ -1,5 +1,5 @@
 <div class="row">
-	<% if current_user.roles.first.name == "boutique store" %>
+	<% if current_user.roles.first.name == "admin" %>
 		<%= render 'form' %>
   <% else %>
     <h1>Lo sentimos! No puedes acceder a esta página</h1>
