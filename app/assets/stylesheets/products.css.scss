@@ -380,6 +380,7 @@ text-align:center; list-style: none; height:100px;border:2px ridge #cbccce;
 		display:block;
 		margin: auto;
 	    top: 0;
+      max-height: 70px;
 	    left: 0;
 	    right: 0;
 	    bottom: 0;
@@ -794,3 +795,36 @@ text-align:center; list-style: none; height:100px;border:2px ridge #cbccce;
 }
 
 /************ Modal *******/
+
+/********** Popup Product show *******/
+
+.quicktip {
+  display: none;
+  margin: -10px 0 0 0;
+  position: absolute;
+  padding-bottom: 5px;
+  top: -35px;
+  z-index: 1000;
+}
+.quicktip-content {
+  border: 1px solid #dcddde;
+  padding: 8px;
+  color: #333;
+  font-family: "ff-super-grotesk-web",helvetica,arial;
+  font-weight: normal;
+  font-size: 12px;
+  background: #fff;
+  position: relative;
+  text-transform: none;
+  white-space: nowrap;
+}
+.ico {
+  background: url('icos_nasty.png') -10px -143px no-repeat;
+  bottom: -10px;
+  height: 9px;
+  left: 41%;
+  margin: -1px auto 0;
+  position: absolute;
+  overflow: hidden;
+  width: 10px;
+}
