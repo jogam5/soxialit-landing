@@ -89,3 +89,10 @@ $(document).ready(function(){
 		$(this).css('color', '#DD390D');
 	});
 });
+
+/* Edit/Delete Links on Item's Ajax Hover  */ 
+$(document).ready(function(){
+	$('#user_cover_photo').hover(function(e){
+		$('.cover_photo').toggleClass("hover")
+	});
+});

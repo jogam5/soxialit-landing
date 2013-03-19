@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130305033924) do
+ActiveRecord::Schema.define(:version => 20130318063632) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -363,6 +363,7 @@ ActiveRecord::Schema.define(:version => 20130305033924) do
     t.string   "nickname"
     t.boolean  "fb",                     :default => true
     t.boolean  "status",                 :default => true
+    t.string   "cover"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

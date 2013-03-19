@@ -1,12 +1,8 @@
 <div class="row">
-	<% if current_user.roles.first.name == 'admin'  %>
+	<% if current_user.roles.first.name == 'boutique store'  %>
 		<%= render 'form_edit' %>
 	<% else %>
 		<h1>Lo sentimos! No puedes acceder a esta página</h1>
 		<%= link_to "Regresar a mi Perfil", user_path(current_user) %>
 	<% end %>
 </div>
-
-
-
-
