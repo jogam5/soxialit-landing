@@ -30,6 +30,12 @@
 <script type="text/javascript">
 mixpanel.track("User Profile Loaded")
 
+$(document).ready(function(){
+  $('#user_cover_photo').hover(function(e){
+    $('.user_edit').toggleClass("hover")
+  });
+});
+
 $(function() {
   $('#ajax-loading')
     .hide()  // hide it initially.
@@ -57,6 +63,5 @@ $(document).ready(function(){
       e.preventDefault();
       $(this).css("box-shadow", "none");
     }
-  });
 });
 </script>
