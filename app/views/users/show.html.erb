@@ -47,16 +47,16 @@ $(document).ready(function(){
   $('#profile_nav_botton').css({ boxShadow: '1px 3px 6px #444' });
   });
   
-$('.user_item').live({
-  mouseenter: 
-  function(e){
-    $(this).css("box-shadow", "0px 1px 1px 3px #d0d0d0");
-    
-  },
-  mouseleave:
-  function (e){
-    e.preventDefault();
-    $(this).css("box-shadow", "none");
-  }
+  $('.user_item').live({
+    mouseenter: 
+    function(e){
+      $(this).css("box-shadow", "0px 1px 1px 3px #d0d0d0");  
+    },
+    mouseleave:
+    function (e){
+      e.preventDefault();
+      $(this).css("box-shadow", "none");
+    }
+  });
 });
 </script>
