@@ -44,8 +44,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
               :username, :picture, :picture_cache, :location, :website, :bio, 
-              :role_ids, :provider, :uid, :token, :nickname, :fb, :status, :cover,
-              :biopic
+              :role_ids, :provider, :uid, :token, :nickname, :fb, :status, :cover, :biopic
 
   VALID_USERNAME_REGEX = /^[a-zA-Z0-9_]*[a-zA-Z][a-zA-Z0-9_]*$/
   validates :username, presence: true,  format: { with: VALID_USERNAME_REGEX },
