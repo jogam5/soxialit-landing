@@ -44,7 +44,8 @@ DeviseFacebook::Application.routes.draw do
   match "items/:username" => "users#items", :as => "items"
   match "muro/:username" => "users#muro", :as => "muro"
   match "biografia/:username" => "users#biografia", :as => "biografia"
-  
+  #get '/muro', to: 'users#muro'
+
   resources :feedbacks
   resources :comments
   resource :direction

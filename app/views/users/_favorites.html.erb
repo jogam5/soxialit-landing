@@ -215,11 +215,10 @@
 
 $(function() {
   $('body').bind('ajaxComplete', function() {
-	var container = document.getElementById('contenedor');
-	if (container){
-		var wall = new Masonry(container);
-		wall.reload();
-	}
+		var wall = new Masonry( document.getElementById('contenedor') );
+		if (wall){
+			wall.reload();
+		}
   });
 });
 
