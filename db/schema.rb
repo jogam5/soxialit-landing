@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130319072500) do
-
+ActiveRecord::Schema.define(:version => 20130319193408) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -92,14 +91,11 @@ ActiveRecord::Schema.define(:version => 20130319072500) do
     t.text     "description"
     t.string   "thumbnail"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "status"
     t.string   "picture"
   end
-
-  add_index "microposts", ["status"], :name => "index_microposts_on_status"
-  add_index "microposts", ["user_id"], :name => "index_microposts_on_user_id"
 
   create_table "newsletters", :force => true do |t|
     t.string   "title"
@@ -129,8 +125,6 @@ ActiveRecord::Schema.define(:version => 20130319072500) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "paintings", ["product_id"], :name => "index_paintings_on_product_id"
 
   create_table "partners", :force => true do |t|
     t.integer  "user_id"
@@ -310,8 +304,6 @@ ActiveRecord::Schema.define(:version => 20130319072500) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "sizes", ["product_id"], :name => "index_sizes_on_product_id"
-
   create_table "sizeships", :force => true do |t|
     t.integer  "product_id"
     t.integer  "size_id"
@@ -373,6 +365,7 @@ ActiveRecord::Schema.define(:version => 20130319072500) do
     t.boolean  "fb",                     :default => true
     t.boolean  "status",                 :default => true
     t.string   "cover"
+    t.string   "biopic"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

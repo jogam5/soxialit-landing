@@ -152,6 +152,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def biografia
+    @user = User.find_by_username(params[:username])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def favorites
     #@user = User.find(params[:id], :order => "created_at DESC")
     @user = User.find_by_username(params[:username], :order => "created_at DESC")

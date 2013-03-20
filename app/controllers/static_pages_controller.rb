@@ -1,6 +1,5 @@
 class StaticPagesController < ApplicationController
   layout "feed", :only => :home
-  #layout "test", :only => [:test, :seller1, :seller2]
 
   def home
     @stats = Rails.cache.stats.first.last unless Rails.env.development?
@@ -103,9 +102,6 @@ class StaticPagesController < ApplicationController
     @products = [Product.find(257),Product.find(258), Product.find(259), Product.find(260), Product.find(261), Product.find(262)]
   end
 
-  def test
-  end
-
   def items
     respond_to do |format|
       format.js
@@ -136,35 +132,5 @@ class StaticPagesController < ApplicationController
 
   def las7depauline
      @newsletter = Newsletter.page(params[:page]).per_page(7).find(:all, :order => 'created_at DESC')
-  end
-
-  def seller1
-  end
-
-  def items1
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def biografia1
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def seller2
-  end
-
-  def items2
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def biografia2
-    respond_to do |format|
-      format.js
-    end
-  end
+  end  
 end

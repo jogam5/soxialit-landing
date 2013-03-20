@@ -90,9 +90,31 @@ $(document).ready(function(){
 	});
 });
 
-/* Edit/Delete Links on Item's Ajax Hover  */ 
+/* Edit Links on Item's Ajax Hover  **********************/ 
 $(document).ready(function(){
 	$('#user_cover_photo').hover(function(e){
-		$('.cover_photo').toggleClass("hover")
+		$('.user_edit').toggleClass("hover")
 	});
 });
+/* Edit Links on Item's Ajax Hover  END*******************/ 
+
+/* Seller box shadows ************************************/
+
+  $(document).ready(function(){
+	$('#profile_nav_botton').css({ boxShadow: '1px 3px 6px #444' });
+  });
+	
+$('.user_item').live({
+	mouseenter: 
+	function(e){
+		$(this).css("box-shadow", "0px 1px 1px 3px #d0d0d0");
+		
+	},
+	mouseleave:
+	function (e){
+		e.preventDefault();
+		$(this).css("box-shadow", "none");
+	}
+});	
+
+/* Seller box shadows END**********************************/

@@ -1,32 +1,40 @@
-<%= render 'users/profiles/profile_header' %>
-<div style="margin-top:2%" class="navbar">
-	<div class="navbar-inner">
-		<div class="container">
-			<nav>
-				<ul class="nav pull-left">
-					<li id="profile_nav_bar"><%= link_to "Items", list_items_path(@user), 
-							remote: true %></li>
-					<li class="divider-vertical"></li>
-					<li id="profile_nav_bar"><%= link_to image_tag('like-active.png'), favorites_path(@user),
-							remote: true, :title => "Lo que mas te gusta" %></li>
-					<li class="divider-vertical"></li>
-				</ul>
-				<ul class="nav pull-right">
-					<% if current_user == @user %>
-						<% if @user.id == 65 || @user.id == 27 || @user.id == 47 || @user.id == 16 || @user.id == 265 || @user.id == 67 || @user.id == 20 %>
-						<li class="divider-vertical"></li>
-							<li>
-								<%= link_to image_tag('product.png'), new_product_path, :title => "Crea un producto" %>
-					       	</li>
-						<% else %>
-						<li class="divider-vertical"></li>
-							<li>
-								<%= link_to image_tag('product.png'), product_modal_path, {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :title => "Crea un producto"} %>
-							</li>
-						<% end %>
-					<% end %>
-				</ul>
-            </nav>
-		</div>
-	</div>
+<div class="row">
+  <div class="span4" id="about_menu" style="border-right: 1px solid rgba(0, 0, 0, 0.0976563)">
+  	<div id="user_cover_photo">
+      <% if current_user == @user %>
+  	    <div class="user_edit">
+  	  	  <%= link_to "Editar", edit_user_path(@user) %>
+  	    </div>
+      <% end %>
+  	  <% if !@user.cover.present? %>
+	      <%= image_tag("user_cover_photo_default.jpg") %>
+	    <% else %>
+	      <%= image_tag @user.cover_url(:cover) %>
+	    <% end %>
+  	</div>
+  	<div id="user_profile_picture">
+  	  <%= render 'users/profiles/profile_picture' %>
+  	</div>
+  	<div id="user_profile_name">
+  	  <%= @user.nickname %>
+  	</div>
+  	<div id="user_profile_role">
+  	  <%= @user.roles.first.name %>
+  	</div>
+  </div>
+  <div class="span10 offset4">
+  	<div style="padding:2em">
+      <p id="user_menu">
+      	<%= link_to "Actividad", muro_path(@user), remote: true %> | 
+      	<%= link_to "Favoritos", favorites_path(@user), remote: true %> | 
+      	<%= link_to "Bio", biografia_path(@user), remote: true %> |
+      	<span id="user_menu_social"><%= link_to "Following", following_user_path(@user), remote: true %> |
+      	<%= link_to "Followers", followers_user_path(@user), remote: true %></span>
+      </p>
+      <hr />
+      <div style="margin-top:2em" id="ajax">
+        <%= render 'users/muro' %>
+      </div>
+    </div>
+  </div>
 </div>

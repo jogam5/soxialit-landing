@@ -32,6 +32,31 @@
       <br/ >
     </div>
     <div class="control-group">
+      <label class="control-label">Cover Foto</label>
+      <div class="controls">
+        <% if !@user.cover.present? %>
+          <%= image_tag("user_cover_photo_default.jpg") %>
+        <% else %>
+          <%= image_tag(@user.cover_url(:cover), width: 200, height: 300) %>
+        <% end %>
+        <%= f.file_field :cover %>
+      </div>
+      <br/ >
+    </div>
+    <hr />
+    <div class="control-group">
+      <label class="control-label">Foto de Biografia</label>
+      <div class="controls">
+        <% if !@user.biopic.present? %>
+          <%= image_tag("user_biografia_photo_default.jpg") %>
+        <% else %>
+          <%= image_tag(@user.biopic_url(:biografia), width: 300, height: 100) %>
+        <% end %>
+        <%= f.file_field :biopic %>
+      </div>
+      <br/ >
+    </div>
+    <div class="control-group">
       <label class="control-label">Ubicación</label>
       <div class="controls">
         <%= f.text_field :location %>

@@ -43,6 +43,7 @@ DeviseFacebook::Application.routes.draw do
 
   match "items/:username" => "users#items", :as => "items"
   match "muro/:username" => "users#muro", :as => "muro"
+  match "biografia/:username" => "users#biografia", :as => "biografia"
   
   resources :feedbacks
   resources :comments
@@ -94,10 +95,10 @@ DeviseFacebook::Application.routes.draw do
   match "tanyamulki", to: 'static_pages#test'
   #match "biografia", to:'static_pages#biografia'
   #match "items", to:'static_pages#items'
-  match "biografia1", to:'static_pages#biografia1'
-  match "items1", to:'static_pages#items1'
-  match "biografia2", to:'static_pages#biografia2'
-  match "items2", to:'static_pages#items2'
+  #match "biografia1", to:'static_pages#biografia1'
+  #match "items1", to:'static_pages#items1'
+  #match "biografia2", to:'static_pages#biografia2'
+  #match "items2", to:'static_pages#items2'
 
   match "las7depauline", to:'static_pages#las7depauline'
   match "team", to:'static_pages#team'
