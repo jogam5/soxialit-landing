@@ -1,5 +1,5 @@
 <li>
-  <div style="margin-top:1%; margin-left:20px;" class="span1">
+  <div style="margin-top:1%; margin-left:40px;" class="span1">
 	<% if !user.picture.present? %>
 		<%= link_to image_tag("http://graph.facebook.com/#{user.uid}/picture?type=square", 
 					width: 50, height: 50, :id =>  "nickname_small_picture"), user_path(user) %>

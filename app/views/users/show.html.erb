@@ -30,6 +30,19 @@
 <script type="text/javascript">
 mixpanel.track("User Profile Loaded")
 
+$(function() {
+  $('#ajax-loading')
+    .hide()  // hide it initially.
+    .ajaxStart(function() {
+      $(this).show(); // show on any Ajax event.
+    })
+    .ajaxStop(function() {
+      $(this).hide(); // hide it when it is done.
+  });
+});
+</script>
+
+<script type="text/javascript">
 $(document).ready(function(){
   $('#profile_nav_botton').css({ boxShadow: '1px 3px 6px #444' });
   });
@@ -46,16 +59,4 @@ $('.user_item').live({
     $(this).css("box-shadow", "none");
   }
 });
-
-$(function() {
-  $('#ajax-loading')
-    .hide()  // hide it initially.
-    .ajaxStart(function() {
-      $(this).show(); // show on any Ajax event.
-    })
-    .ajaxStop(function() {
-      $(this).hide(); // hide it when it is done.
-  });
-});
-
 </script>
