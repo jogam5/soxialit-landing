@@ -270,8 +270,8 @@ class ProductsController < ApplicationController
             #    doc.css(':nth-child(6) td:nth-child(8) , :nth-child(7) :nth-child(8), :nth-child(8) td:nth-child(8)').each do |node|
              #   @tarifas.push(node.text)
             # end
-         end
-      end
+         #end
+      #end
     end
 
     def envio
