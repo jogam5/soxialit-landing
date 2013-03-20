@@ -1,0 +1,135 @@
+$grayTitle:#999;
+$grayUsername:#555;
+$grayBio:#999;
+$pink:#F03C86;
+$orange:#ef8006;
+$website:#bbb;
+$alert_messages:#FEFFC5;
+$verde:#60b018;
+$rojo:#DD390D;
+
+/* New CSS for users profiles ***************/ 
+
+#user_cover_photo{
+  height:65%;
+  border: 1px solid #dddddd;
+}
+
+.user_edit {
+  display:none;
+}
+
+.user_edit.hover {
+  padding:3px;
+  background-color:#FFF;
+  border: 1px solid #FFF;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  display:inline;
+  position:absolute;
+  left:83%;
+  top:2%;
+  z-index:1;
+}
+
+#user_profile_picture{
+  position:relative;
+  z-index:1;
+    left:100px;
+    top:-51px;
+   img{
+  width:102px;
+  border: 1px solid white;
+  padding:2px;
+  margin-bottom:1%;
+  }
+}
+
+#user_profile_name{
+  font-family:acta-display, Helvetica Neue;
+  font-size:1.8em;
+  line-height:0.9em;
+  position:relative;
+  z-index:1;
+    left:0px;
+    top:-50px;
+    text-align:center;
+
+}
+
+#user_profile_role{
+  font-family:nimbus-sans, Helvetica Neue;
+  font-size:1.2em;
+  font-weight:lighter;
+  position:relative;
+  z-index:1;
+    left:0px;
+    top:-47px;
+    text-align:center;
+    text-transform:uppercase;
+}
+
+#user_menu{
+  font-family:acta-display;
+  font-size:1.4em;
+   a{
+  color:black;
+  }
+   a:hover{
+  color:#999;
+  text-decoration:none;
+  }
+}
+
+#user_menu_social{
+  font-size:0.7em;
+   a{
+  color:#777;
+  }
+   a:hover{
+  color:$rojo;
+  text-decoration:none;
+  }
+}
+
+/* New CSS for users profiles  END ***************/ 
+
+
+/*  Boutiques Profile ****************************/ 
+
+.user_item {
+  padding: 0px;
+  margin: 2% 2% 3% 2%;
+  left: 0%;
+  float: left;
+  width:200px;
+  display: block;
+  position: relative;
+  background-color: white;
+}
+
+.user_item_photo{
+  width: auto;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+   img{
+  margin-left:12.5%;
+  }
+}
+
+.user_item_info{
+  margin-left: 2%;
+}
+
+#user_bio_edit{
+   a{
+  color:#999;
+  }
+   a:hover{
+  color:#333;
+  text-decoration:none;
+  }
+}
+
+/* Boutiques Profile  END *************************/ 

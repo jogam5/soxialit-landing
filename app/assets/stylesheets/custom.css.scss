@@ -333,21 +333,20 @@ margin-top: 3%;
 	font-weight:lighter;
 }
 
-#location{
-	color:$website;
-	margin-left:40px;
+#user_location{
+	color:#555;
 	font-weight:lighter;
 }
 
-#url{
-	font-size:13px;
+#user_url{
+	font-size:1em;
 	font-weight:lighter;
-	margin-top:0.5em;
-	a{color:$website;
-	 }
-	a:hover{
+	 a{ 
+	color:#555;
+	}
+	 a:hover{
 	 color:$rojo;
-	} 
+	}
 }
 
 .navbar .nav > li > a {
@@ -1672,7 +1671,7 @@ ul.comments_new{
   }
 }
 
-/*  Test Menu */ 
+/*  Test Menu ***************/ 
 
 #test_menu{
 	font-family:acta-display;
@@ -1686,9 +1685,7 @@ ul.comments_new{
 	}
 }
 
-
-
-/*  Test Menu */ 
+/*  Test Menu END **************/ 
 
 /*  Newsletter */ 
 
@@ -1758,90 +1755,3 @@ ul.comments_new{
     overflow: hidden; }
 
 /*  Newsletter END */ 
-
-
-/* New CSS for users profiles */ 
-
-#user_cover_photo{
-	height:65%;
-	border: 1px solid #dddddd;
-}
-
-.cover_photo {
-	display:none;
-}
-
-.cover_photo.hover {
-	padding:3px;
-	background-color:#FFF;
-	border: 1px solid #FFF;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	display:inline;
-	position:absolute;
-	left:83%;
-	top:2%;
-	z-index:1;
-}
-
-#user_profile_picture{
-	position:relative;
-	z-index:1;
-  	left:100px;
-  	top:-51px;
-	 img{
-	width:102px;
-	border: 1px solid white;
-	padding:2px;
-	margin-bottom:1%;
-	}
-}
-
-#user_profile_name{
-	font-family:acta-display, Helvetica Neue;
-	font-size:1.8em;
-	line-height:0.9em;
-	position:relative;
-	z-index:1;
-  	left:0px;
-  	top:-50px;
-  	text-align:center;
-
-}
-
-#user_profile_role{
-	font-family:nimbus-sans, Helvetica Neue;
-	font-size:1.2em;
-	font-weight:lighter;
-	position:relative;
-	z-index:1;
-  	left:0px;
-  	top:-47px;
-  	text-align:center;
-  	text-transform:uppercase;
-}
-
-#user_menu{
-	font-family:acta-display;
-	font-size:1.4em;
-	 a{
-	color:black;
-	}
-	 a:hover{
-	color:#999;
-	text-decoration:none;
-	}
-}
-
-#user_menu_social{
-	font-size:0.7em;
-	 a{
-	color:#777;
-	}
-	 a:hover{
-	color:$rojo;
-	text-decoration:none;
-	}
-}
-
-/* New CSS for users profiles  END */ 

@@ -13,7 +13,7 @@
     <label class="control-label">Elige un perfil</label>
     <div class="controls">
       <% for role in Role.find(:all) %>
-        <% unless role.name == "admin" %>
+        <% unless role.name == "admin" || role.name == "boutique store" %>
           <%= radio_button_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
           <%= role.name %>
           <br/ >

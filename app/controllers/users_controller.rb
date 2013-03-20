@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :list_items, :list_projects, :favorites, 
+  before_filter :authenticate_user!, :except => [:show, :list_items, :list_projects, :favorites, :muro, :biografia, :items,
                  :followers, :following, :fotografo, :boutique, :fashionlover, :blogger, :bio, :designer, :index, :ubicacion, :product_modal ]
   #before_filter :authenticate_user!, :only => [:index, :new, :edit, :create, :update]
-  #load_and_authorize_resource
+  load_and_authorize_resource
   layout "test", :only => [:show]
 
   def index
@@ -147,6 +147,13 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:username])
     @activities = @user.activities.order("created_at DESC")
     @comment = Comment.new
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def biografia
+    @user = User.find_by_username(params[:username])
     respond_to do |format|
       format.js
     end

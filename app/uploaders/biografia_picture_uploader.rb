@@ -1,5 +1,6 @@
 # encoding: utf-8
-class CoverPictureUploader < CarrierWave::Uploader::Base
+class BiografiaPictureUploader < CarrierWave::Uploader::Base
+
   include CarrierWave::RMagick
 
   storage :fog
@@ -10,7 +11,7 @@ class CoverPictureUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  version :cover do
-    process :resize_and_pad => [300,450,"#240902"]
+  version :biografia do
+    process :resize_and_pad => [750,250,"#240902"]
   end
 end

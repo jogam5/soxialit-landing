@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="span9 offset1"> 
+  	<% if !@user.biopic.present? %>
+	  <%= image_tag("user_biografia_photo_default.jpg") %>
+	<% else %>
+	  <%= image_tag @user.biopic_url(:biografia) %>
+	<% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="span9 offset1">
+  	<p style="font-size:2em; font-family:acta-display; margin:1em"><%= @user.nickname %></p>
+  	<p style="font-size:1.1em; font-family:acta-display; margin:1em"><%= raw nl2br(h(@user.bio)) %></p>
+  	<p id="user_location"><i class="icon-map-marker"></i> <%= @user.location %></p>
+  	<% unless @user.roles.first.name == "boutique store" %>
+  	  <p id="user_url"><i class="icon-globe"></i> <%= link_to @user.website, @user.website, target: '_blank' %></p>
+  	<% end %>
+  	<% if current_user == @user %>
+  	  <p style="text-align:right"><span id="user_bio_edit"><%= link_to "Editar Bio", edit_user_path(@user) %></span></p>
+  	<% end %>
+  </div>
+</div>
