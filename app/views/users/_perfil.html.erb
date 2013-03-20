@@ -63,13 +63,15 @@
         <p id="edit_information">¿Dónde estás ubicado?</p>
       </div>
     </div>
-    <div class="control-group">
-      <label class="control-label">Website</label>
-      <div class="controls">
-        <%= f.text_field :website %>
-        <p id="edit_information">Website, Twitter, Blog, etc.</p>
+    <% unless @user.roles.first.name == "boutique store" %>
+      <div class="control-group">
+        <label class="control-label">Website</label>
+        <div class="controls">
+          <%= f.text_field :website %>
+          <p id="edit_information">Website, Twitter, Blog, etc.</p>
+        </div>
       </div>
-    </div>
+    <% end %>
     <div class="control-group">
       <label class="control-label">Bio</label>
       <div class="controls">
