@@ -15,6 +15,8 @@ about.jpg: about-3e93ed7c37007087fe06bb913538814e.jpg
 about/index.jpg: about-3e93ed7c37007087fe06bb913538814e.jpg
 ajax-loader.gif: ajax-loader-6de17f6ee5598c80be37a10de34f6368.gif
 ajax-loader/index.gif: ajax-loader-6de17f6ee5598c80be37a10de34f6368.gif
+ana.jpg: ana-9807846a2cc990e2c29111b53c08d532.jpg
+ana/index.jpg: ana-9807846a2cc990e2c29111b53c08d532.jpg
 arbol_viento/bolsa1.jpg: arbol_viento/bolsa1-1389e1345ae7254319650081ba472842.jpg
 arbol_viento/bolsa1/index.jpg: arbol_viento/bolsa1-1389e1345ae7254319650081ba472842.jpg
 arbol_viento/bolsa2.jpg: arbol_viento/bolsa2-9a84e48aad7fc1125b5136e6669574dc.jpg
@@ -260,8 +262,8 @@ zapato.png: zapato-1029d6c5aa14da47143753767914f588.png
 zapato/index.png: zapato-1029d6c5aa14da47143753767914f588.png
 application.js: application-40880976d254d39c45b896399010a9d8.js
 application/index.js: application-40880976d254d39c45b896399010a9d8.js
-application.css: application-5b4cd847997d8e8f208d6cec6e3f4872.css
-application/index.css: application-5b4cd847997d8e8f208d6cec6e3f4872.css
+application.css: application-fa3b77e783a36c4ec770f4148bc4e38f.css
+application/index.css: application-fa3b77e783a36c4ec770f4148bc4e38f.css
 fontawesome-webfont.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont/index.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont.svg: fontawesome-webfont-c3f3594758768fbb43eae746d18b3b50.svg

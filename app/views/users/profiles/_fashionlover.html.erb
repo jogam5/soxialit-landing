@@ -28,9 +28,12 @@
       	<%= link_to "Actividad", muro_path(@user), remote: true %> | 
       	<%= link_to "Favoritos", favorites_path(@user), remote: true %> | 
       	<%= link_to "Bio", biografia_path(@user), remote: true %> |
-      	<span id="user_menu_social"><%= link_to "Following", following_user_path(@user), remote: true %> |
-      	<%= link_to "Followers", followers_user_path(@user), remote: true %></span>
+      	<span id="user_menu_social">
+          <%= link_to "Following", following_user_path(@user), remote: true %> (<%= @user.followed_users.count %>) |
+          <%= link_to "Followers", followers_user_path(@user), remote: true %> (<%= @user.followers.count %>) 
+        </span>
       </p>
+      <span><%= render 'follow_form' if user_signed_in? %></span>
       <hr />
       <div style="margin-top:2em" id="ajax">
         <%= render 'users/muro' %>
