@@ -147,9 +147,6 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:username])
     @activities = @user.activities.order("created_at DESC")
     @comment = Comment.new
-    respond_to do |format|
-      format.js
-    end
   end
 
   def biografia
