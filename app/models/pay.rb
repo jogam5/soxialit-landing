@@ -16,7 +16,7 @@ class Pay < ActiveRecord::Base
                  token: paypal_payment_token,
                  payer_id: paypal_customer_token,
                  description: product.title,
-                 amount: product.total_price,
+                 amount: product.price,
                  currency: "MXN"
                  )
               response = ppr.request_payment
@@ -32,7 +32,7 @@ class Pay < ActiveRecord::Base
          token: paypal_payment_token,
          payer_id: paypal_customer_token,
          description: @pay.product.title,
-         amount: @pay.product.total_price,
+         amount: @pay.product.price,
          currency: "MXN"
          )
       response = ppr.request_payment

@@ -3,9 +3,9 @@
 <% content_for :meta do %>
 	<% meta :keywords => @product.tags %>
 	<% meta [:property => "og:image", :content => @product.picture] %>
-	<% meta [:property => "og:description", :content => " #{@product.brand} - #{@product.title} - #{@product.description}"] %>
+	<% meta [:property => "og:description", :content => " #{@product.title} - #{@product.description}"] %>
 	<% meta [:property => "og:type", :content => "website"] %>
-	<% meta [:property => "og:title", :content => " #{@product.brand} - #{@product.title}"] %>
+	<% meta [:property => "og:title", :content => "#{@product.title}"] %>
 	<% meta [:property => "og:url", :content => "https://soxialit.com/products/#{@product.id}"] %>
 	<% meta [:property => "fb:app_id", :content => ENV["APP_ID"] ] %>
 <% end %>
@@ -44,9 +44,7 @@
 			</div>
 		<% end %>
 	<% end %>
-	<% if current_user.roles.first.name == "admin" %>
-		<%= render 'show_product'%>
-	<% end %>
+	<%= render 'show_product'%>
 <% end %>
 
 

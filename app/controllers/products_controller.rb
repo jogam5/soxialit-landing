@@ -62,7 +62,7 @@ class ProductsController < ApplicationController
     # GET /products/1.json
     def show
         @product = Product.find_by_id(params[:id])
-        @items = Product.tagged_with([@product.tag_list], :match_all => true)
+        @items = Product.tagged_with([@product.tag_list], :any => true)
         id = @product.user_id
          @user = User.find(id)
          @users = User.all
@@ -318,7 +318,7 @@ class ProductsController < ApplicationController
              "title" => product.title,
              "description" => product.description,
              "quantity" => 1,
-             "unit_price" => product.total_price.to_i,
+             "unit_price" => product.price.to_i,
              "currency_id" => "MEX",
              "picture_url" => "http://i1266.photobucket.com/albums/jj523/JulioAhuactzin/Safari3_zpsb24612a1.png"
            }

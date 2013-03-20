@@ -156,7 +156,7 @@
 				<div style="margin-left: 15%; display:block" id="select_image" class="description-main"> Selecciona la imagen principal del producto </div>
 				<div id="ajax-status" style="display:none; margin-left:45%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
 					<% @product.paintings.each_with_index do |painting, index| %>
-						<% if index >= 0 && index <= 4 %>
+						<% if index >= 0 && index <= 10 %>
 							<div class="painting_<%= painting.id%>">
 								<%= content_tag "div", style:"float:left; margin-top:5%", id:"paintings", data: {id: painting.id } do %>
 									<div style="float:left" id="image_small" class="span3">
