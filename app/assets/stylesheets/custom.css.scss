@@ -860,15 +860,15 @@ form div.upload div.file-preview {
 }
 
 .red_bar {
-background: #ED1B24;
-height: 5px;
-filter: alpha(opacity = 80);
--moz-opacity: 0.8;
--khtml-opacity: 0.8;
-opacity: 0.8;
-margin: 15px 0 0 0;
-position: relative;
-z-index: 2;
+	background: #ED1B24;
+	height: 2px;
+	filter: alpha(opacity = 80);
+	-moz-opacity: 0.8;
+	-khtml-opacity: 0.8;
+	opacity: 0.8;
+	margin: 15px 0 0 0;
+	position: relative;
+	z-index: 2;
 }
 
 #mitad{

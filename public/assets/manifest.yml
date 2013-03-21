@@ -106,6 +106,8 @@ iconmonstr-photo-camera-6-icon.png: iconmonstr-photo-camera-6-icon-61900fbd017f3
 iconmonstr-photo-camera-6-icon/index.png: iconmonstr-photo-camera-6-icon-61900fbd017f347cd358207a5f84fd0c.png
 icos_nasty.png: icos_nasty-17415ee488ffb96cfdcfdfa0a2a7d4cb.png
 icos_nasty/index.png: icos_nasty-17415ee488ffb96cfdcfdfa0a2a7d4cb.png
+index_background.jpg: index_background-760e5c99bdd9a3658897f7a640791672.jpg
+index_products.jpg: index_products-1837a2ea9a64a532ad154cbba4e4b962.jpg
 item.jpg: item-26da9de6e79aa1c13c2d724e0e85d13d.jpg
 item/index.jpg: item-26da9de6e79aa1c13c2d724e0e85d13d.jpg
 item.png: item-5630845e8dfe4450b1a50b35a4483743.png
@@ -262,8 +264,8 @@ zapato.png: zapato-1029d6c5aa14da47143753767914f588.png
 zapato/index.png: zapato-1029d6c5aa14da47143753767914f588.png
 application.js: application-40880976d254d39c45b896399010a9d8.js
 application/index.js: application-40880976d254d39c45b896399010a9d8.js
-application.css: application-fa3b77e783a36c4ec770f4148bc4e38f.css
-application/index.css: application-fa3b77e783a36c4ec770f4148bc4e38f.css
+application.css: application-0af643734018f2cda1627723b5b1e570.css
+application/index.css: application-0af643734018f2cda1627723b5b1e570.css
 fontawesome-webfont.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont/index.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont.svg: fontawesome-webfont-c3f3594758768fbb43eae746d18b3b50.svg
