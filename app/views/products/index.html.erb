@@ -1,64 +1,51 @@
 <% provide(:title, 'Shop') %>
-
-<div id="contenedor" class="clearfix masonry">
- 		<% @products.each do |product| %>
-		<div class="box photo col3 masonry-brick">
-	 	  <div id="favorites_frame">
-			<div id="favorites_image">
-			  	<%= link_to tag(:img, { :src => product.picture }, false), product %>
-		
-				<% if signed_in? %>
-					<div style="margin-right:-21%; margin-top: -9%" class="votacion" id="votacion_<%= product.id %>">
-						<% if product.user_id == current_user.id %>
-							<span id="want_<%= product.id %>">
-								<div id="love_icon_<%= product.id %>" class="love_icon_active">
-									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= product.id %>">
-										<%= product.reputation_value_for(:votes).to_i %>
-									</span>
-								</div>
-				   			</span>
-							<% elsif current_user && !current_user.voted_for?(product) %>
-								<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
-									<%= image_tag("loading.gif") %>
-								</div>
-								<span id="want_<%= product.id %>">
-									<div id="love_icon_<%= product.id %>" class="love_icon">
-										<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= product.id %>">
-											<%= product.reputation_value_for(:votes).to_i %>
-										</span>
-										<%= link_to "xxx", vote_product_path(product, type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
-									</div>
-					   			</span>
-							<% else %>
-								<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
-									<%= image_tag("loading.gif") %>
-								</div>
-			        			<span id="want_<%= product.id %>">
-			        				<div id="love_icon_<%= product.id %>" class="love_icon_active">
-										<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= product.id %>">
-			        						<%= product.reputation_value_for(:votes).to_i %>
-			        					</span>
-			        				</div>
-			       				</span>
-						<% end %>
-					</div>
-				<% end %>
-	 		</div>
-	 		<p style="text-align:center"><strong><%= product.title %></strong> 
- 				<span style="color:#DD390D">$<%= product.price %></span> by <span style="color:#999"><span id="product_designer"><%= link_to product.brand, user_path(product.user) %></span></span>
- 			</p>
-	  	</div>
+<div style="-webkit-box-shadow: rgba(0, 0, 0, 0.246094) 0px 1px 2px 1px;
+border-bottom-left-radius: 1px;
+border-bottom-right-radius: 1px;
+border-top-left-radius: 1px;
+border-top-right-radius: 1px;
+box-shadow: rgba(0, 0, 0, 0.246094) 0px 1px 2px 1px;
+box-sizing: border-box;" class="container">
+	<div style="background-color:white"class="span12">
+		<div style="margin:0; background-image:url('assets/index_products.jpg'); height:200px"></div>  
+		<% @products.each do |item| %>
+			<div style="margin: 2% 7% 3% 5%" class="user_item">
+		  		<div class="user_item_photo">
+					<%= link_to image_tag(item.picture, style: "text-align:center; max-height: 300px"), item %>
+		  		</div>
+		  		<div class="user_item_info">
+		  			<p style="font-size:1.2em; font-family:acta-display; text-align:center"><%= item.title %></p>
+					<p style="font-size:1.2em; font-family:acta-display; text-align:center"><%= number_to_currency(item.price) %></p>
+		  		</div>
+	    	</div>
+		<% end %>    
+	  </div>
 	</div>
-  <% end %>
-</div>
+	<br />
+	<p style="font-size:1.2em; margin-top:1em; font-weight:lighter">*Envíos <b>Gratis</b> en cualquier compra.
+	</p>
+
+
+
 <script type="text/javascript">
-window.onload = function(){
+
+$(document).ready(function(){
+  $('#profile_nav_botton').css({ boxShadow: '1px 3px 6px #444' });
+  });
 	
-	var container = document.getElementById('contenedor');
-	var wall = new Masonry(container);
-	container.style.display = "block";
-	wall.reload();
-	
-};
+$('.user_item').live({
+	mouseenter: 
+	function(e){
+		$(this).css("box-shadow", "0px 1px 1px 3px #d0d0d0");
+		
+	},
+	mouseleave:
+	function (e){
+		e.preventDefault();
+		$(this).css("box-shadow", "none");
+	}
+});
+
+mixpanel.track("Random Page Loaded")
+
 </script>
-<script type="text/javascript">mixpanel.track("Random Page Loaded")</script>

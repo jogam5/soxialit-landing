@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index, :tallas, :comprar, :mercadopago_checkout, :paypal_checkout, :PayerID, :envio_df, :envio]
   load_and_authorize_resource
+  layout "products_index", :only => [:index]
+
    
     def status
       Product.update_all({:status => true}, {:id => params[:status_ids]})
@@ -11,7 +13,7 @@ class ProductsController < ApplicationController
          b = Product.find(id)
          logger.debug "producto: #{b}"
       end
-      Product.delay.publish_product_facebook(b) unless b.user.fb == false
+     # Product.delay.publish_product_facebook(b) unless b.user.fb == false
       redirect_to products_path
     end
     
@@ -62,7 +64,7 @@ class ProductsController < ApplicationController
     # GET /products/1.json
     def show
         @product = Product.find_by_id(params[:id])
-        @items = Product.tagged_with([@product.tag_list], :match_all => true)
+        @tags = Product.tagged_with([@product.tag_list], :any => true)
         id = @product.user_id
          @user = User.find(id)
          @users = User.all
@@ -173,7 +175,7 @@ class ProductsController < ApplicationController
          if params[:position].nil?
          else
             painting = Painting.find(params[:position])
-            @product.update_attribute(:picture, painting.image_url(:feed).to_s)
+            @product.update_attribute(:picture, painting.image_url(:picture_300).to_s)
          end
        end
        respond_to do |format|
@@ -318,7 +320,7 @@ class ProductsController < ApplicationController
              "title" => product.title,
              "description" => product.description,
              "quantity" => 1,
-             "unit_price" => product.total_price.to_i,
+             "unit_price" => product.price.to_i,
              "currency_id" => "MEX",
              "picture_url" => "http://i1266.photobucket.com/albums/jj523/JulioAhuactzin/Safari3_zpsb24612a1.png"
            }

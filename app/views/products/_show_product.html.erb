@@ -7,7 +7,7 @@
 
 	  <% if @product.paintings.any? %>
 	        <div class="mainpicture" style="float:left" id="painting_<%= @product.paintings.first.id %>">
-	        	<%= image_tag(@product.picture)  %>
+	        	<%= image_tag(@product.paintings.first.image_url(:feed))  %>
 	        </div>
 	        	<ul id="productImagesSortable" style="float:right;">
 	        			<% @product.paintings.each_with_index do |painting, index| %>
@@ -83,6 +83,9 @@
 		<div style="margin-left:49%; margin-top:-10%">
 	        <%= link_to "Comprar", comprar_path(:product_id => @product.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :class => 'button-want'} %>
 		</div>
+		<p style="font-size:1.2em; margin-top:1em; font-weight:lighter; color:red">*Envíos <b>Gratis</b> en cualquier compra.
+		</p>
+
 		<!--
 		<br/>
 		<div class="description-low" style=""> Medidas/Tallas</div>
@@ -160,15 +163,15 @@
 	-->
 	        <div style="border: 1px solid white; background-color:white; height: auto; padding:0%;" class="well">
 	        	<div style="margin-left:0px" class="row">
-	        		<div class="description-brand">
+	        		<div style="width:180px; border-bottom: 3px solid #ededee;" class="description-main">
 	        			Más Fancy items
 	        		</div>
-	        		<% @items.shuffle.each_with_index do |product, index| %>
+	        		<% @tags.shuffle.each_with_index do |product, index| %>
 	        			<% break if index == 3 %>
 	        	  			<div id="product_tip" style="width:30%; margin-top:13%" class="span4">
 	        						<% if product.paintings.any? %>
 	        							<div style="height: auto; margin-top: 10%; position:relative;"><%= link_to image_tag(product.picture), product %>
-											<div style="top:-54px; left:10px;" class="quicktip">
+											<div style="top:-5px; left:8px;" class="quicktip">
 												<div class="quicktip-content">
 													<%= link_to product.title, product %>
 													<div class="price">
@@ -186,4 +189,5 @@
 	        	</div>
 	        </div>
 	</div>
+</div>
 </div>

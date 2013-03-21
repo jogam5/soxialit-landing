@@ -7,7 +7,7 @@
 		  		</div>
 		  		<div class="user_item_info">
 		  			<p style="font-size:1.2em; font-family:acta-display; text-align:center"><%= item.title %></p>
-					<p style="font-size:1.2em; font-family:acta-display; text-align:center"><%= item.price %></p>
+					<p style="font-size:1.2em; font-family:acta-display; text-align:center"><%= number_to_currency(item.price) %></p>
 		  		</div>
 	    	</div>
 		<% end %>    
