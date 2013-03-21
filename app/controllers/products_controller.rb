@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   load_and_authorize_resource
    
     def status
-      Product.update_all({:status => false}, {:id => params[:status_ids]})
+      Product.update_all({:status => true}, {:id => params[:status_ids]})
       a = []
       b = params[:status_ids]
       b.each do |id|
