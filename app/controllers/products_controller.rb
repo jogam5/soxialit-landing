@@ -318,7 +318,7 @@ class ProductsController < ApplicationController
              "title" => product.title,
              "description" => product.description,
              "quantity" => 1,
-             "unit_price" => product.total_price.to_i,
+             "unit_price" => product.price.to_i,
              "currency_id" => "MEX",
              "picture_url" => "http://i1266.photobucket.com/albums/jj523/JulioAhuactzin/Safari3_zpsb24612a1.png"
            }
