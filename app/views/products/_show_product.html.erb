@@ -7,7 +7,7 @@
 
 	  <% if @product.paintings.any? %>
 	        <div class="mainpicture" style="float:left" id="painting_<%= @product.paintings.first.id %>">
-	        	<%= image_tag(@product.picture)  %>
+	        	<%= image_tag(@product.paintings.first.image_url(:feed))  %>
 	        </div>
 	        	<ul id="productImagesSortable" style="float:right;">
 	        			<% @product.paintings.each_with_index do |painting, index| %>
