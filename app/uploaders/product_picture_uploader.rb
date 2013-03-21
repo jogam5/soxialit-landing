@@ -21,7 +21,7 @@ class ProductPictureUploader < CarrierWave::Uploader::Base
   end
 
   version :picture_300 do
-    process :resize_to_limit => [150,300]
+    process :resize_to_fit => [150,300]
   end
   
   def extension_white_list
