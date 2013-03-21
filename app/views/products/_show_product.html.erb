@@ -163,7 +163,7 @@
 	        		<div class="description-brand">
 	        			Más Fancy items
 	        		</div>
-	        		<% @items.shuffle.each_with_index do |product, index| %>
+	        		<% @tags.shuffle.each_with_index do |product, index| %>
 	        			<% break if index == 3 %>
 	        	  			<div id="product_tip" style="width:30%; margin-top:13%" class="span4">
 	        						<% if product.paintings.any? %>
