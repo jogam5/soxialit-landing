@@ -21,7 +21,7 @@ class ProductPictureUploader < CarrierWave::Uploader::Base
   end
 
   version :picture_300 do
-    process :resize_and_pad => [150,300,"#9016"]
+    process :resize_and_pad => [150,300,"#FFFFFF"]
   end
   
   def extension_white_list
