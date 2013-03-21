@@ -62,7 +62,7 @@ class ProductsController < ApplicationController
     # GET /products/1.json
     def show
         @product = Product.find_by_id(params[:id])
-        @tags = Product.tagged_with([@product.tag_list], :match_all => true)
+        @tags = Product.tagged_with([@product.tag_list], :any => true)
         id = @product.user_id
          @user = User.find(id)
          @users = User.all
