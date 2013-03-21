@@ -3,7 +3,7 @@
 	  <div class="span9">  
 		<div class="user_item">
 		  <div class="user_item_photo">
-			<%= link_to image_tag(item.picture.image_url(:picture_300), style: "text-align:center"), item) %>
+			<%= image_tag(item.picture.image_url(:picture_300), style: "text-align:center") %>
 		  </div>
 		  <div class="user_item_info">
 		  	<p style="font-size:1.2em; font-family:acta-display; text-align:center"><%= item.title %></p>
