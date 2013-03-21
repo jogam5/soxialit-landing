@@ -20,6 +20,8 @@ class UsersController < ApplicationController
     #@user = User.find(params[:id])
     @user = User.find_by_username(params[:username])
     @last = Micropost.last
+    @items = [Product.find(739)]
+
     if @user.nil?
        flash[:error] = "No se ha encontrado la URL."
        redirect_to root_path
@@ -138,9 +140,8 @@ class UsersController < ApplicationController
 
   def items
     @user = User.find_by_username(params[:username])
-    if @user.username == "eileen"
-      @items = [Product.find(276),Product.find(277), Product.find(278), Product.find(279), Product.find(280), Product.find(281), Product.find(282)]
-    end
+     # @items = [Product.find(276),Product.find(277), Product.find(278), Product.find(279), Product.find(280), Product.find(281), Product.find(282)]
+    @items = [Product.find(739)]
   end
 
   def muro

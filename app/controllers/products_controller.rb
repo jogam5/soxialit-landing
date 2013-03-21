@@ -150,7 +150,7 @@ class ProductsController < ApplicationController
          if params[:position].nil?
          else
             painting = Painting.find(params[:position])
-            @product.update_attribute(:picture, painting.image_url(:feed).to_s)
+            @product.update_attribute(:picture, painting.image_url(:picture_300).to_s)
          end
       end
       respond_to do |format|
