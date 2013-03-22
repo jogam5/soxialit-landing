@@ -217,7 +217,7 @@ $(function() {
   $('body').bind('ajaxComplete', function() {
 		var wall = new Masonry( document.getElementById('contenedor') );
 		var test = $('#test');
-		if (test){
+		if (test.lenght > 0){
 			wall.reload();
 		}
   });
