@@ -7,7 +7,7 @@
 			<span id="want_<%= feed_item.activitable.id %>">
 				<div id="love_icon_<%= feed_item.activitable.id %>" class="love_icon_active">
 					<span style="float:left; display:block; margin-left:-50%; color:black" 
-								id="love_product_<%= feed_item.activitable.id %>">
+								class="love_product_<%= feed_item.activitable.id %>">
 						<%= feed_item.activitable.reputation_value_for(:lovs).to_i %>
 					</span>
 				</div>
@@ -19,7 +19,7 @@
 				<span id="want_<%= feed_item.activitable.id %>">
 					<div id="love_icon_<%= feed_item.activitable.id %>" class="love_icon">
 						<span style="float:left; display:block; margin-left:-50%; color:black" 
-									id="love_product_<%= feed_item.activitable.id %>">
+									class="love_product_<%= feed_item.activitable.id %>">
 							<%= feed_item.activitable.reputation_value_for(:lovs).to_i %>
 						</span>
 						<%= link_to "xxx", lovs_micropost_path(feed_item.activitable, type: "up"), 
@@ -32,7 +32,7 @@
 			</div>
 			<span id="want_<%= feed_item.activitable.id %>">
 				<div id="love_icon_<%= feed_item.activitable.id %>" class="love_icon_active">
-					<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= feed_item.activitable.id %>">
+					<span style="float:left; display:block; margin-left:-50%; color:black" class="love_product_<%= feed_item.activitable.id %>">
 						<%= feed_item.activitable.reputation_value_for(:lovs).to_i %>
 					</span>
 				</div>
