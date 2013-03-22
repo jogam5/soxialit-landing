@@ -14,7 +14,7 @@
 <div class="row">
   <div class="span2">
     <p style="font-family:acta-display; font-size:1.4em; margin-bottom:1em">Posts recientes</p>
-    <% @posts.each do |post| %>
+    <% @posts.shuffle.each do |post| %>
       <p style="font-family:acta-display"><%= post.title %></p>
       <%= link_to (image_tag post.picture_url(:feed)), micropost_path(post) %>
       <p style="margin-right:0.5em; margin-top:0.5em">
