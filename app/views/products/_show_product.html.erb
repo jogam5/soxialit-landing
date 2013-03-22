@@ -1,5 +1,7 @@
-<div class="row-fluid" style="margin-top:-7%; margin-left:-10%; width: 1150px">
-	<div style="margin: 5% 0% 5% -3%; text-align:center; width:770px" class="span7">
+	<div class="span11">
+		<div class="row-fluid">
+
+	<div style="text-align:center;" class="span6">
 	  <% if @product.paintings.any? %>
 	  <% else %>
 		<div class="defaultMainImage" style="float:left;"></div>
@@ -7,13 +9,13 @@
 
 	  <% if @product.paintings.any? %>
 	        <div class="mainpicture" style="float:left" id="painting_<%= @product.paintings.first.id %>">
-	        	<%= image_tag(@product.paintings.first.image_url(:feed))  %>
+	        	<%= image_tag(@product.paintings.first.image_url(:timeline))  %>
 	        </div>
 	        	<ul id="productImagesSortable" style="float:right;">
 	        			<% @product.paintings.each_with_index do |painting, index| %>
 	        				<% if index < 10 %>
 	        					<%= content_tag "div", class:"paintings", data: {id: painting.id } do %>
-	        			 			<li style="width:70px; height: 70px" id="smallImage_show" class="painting_<%= painting.id%>">
+	        			 			<li style="width:60px; height: 60px" id="smallImage_show" class="painting_<%= painting.id%>">
 	        							<%= image_tag(painting.image_url(:thumb))%>
 	        						</li>
 	        					<% end %>
@@ -22,9 +24,23 @@
 	        	</ul>
 	        <% end %>
 		</div>
-<div style="margin-top:5%; width: 340px" class="span4">
+<div class="span6">
 	<div class="well" style="border: 1px solid white; background-color:white">
-		<div style="float:right; width:200px; margin-right: -35%; margin-top:-2%; height:30px; padding: 5%">
+		
+		<div style="width:300px"class="description-main">
+	      	<%= @product.title %>
+	 	</div>
+		<div class="description-marca"> 
+	       	<%= @product.brand %>
+		</div>
+		<br/>
+		<div class="description-precio">
+	        <%= number_to_currency(@product.price) %>
+		</div>
+		<div style="margin-top:5%; padding: 3% 0">
+	        <%= link_to "Comprar", comprar_path(:product_id => @product.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :class => 'button-want'} %>
+		</div>
+		<div style="float: right; width: 200px; margin-top: -8%; margin-right: 35%; height: 20px; padding: 1%;">
 		   <% if signed_in? %>
         	<div class="votacion" style="display:block; float:left; width:20px" id="votacion_<%= @product.id %>">
         		<% if @product.user_id == current_user.id %>
@@ -68,22 +84,7 @@
 				<div class="fb-like" data-href="" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false"></div>
 			</span>
 		</div>
-
-		<div class="description-main">
-	      	<%= @product.title %>
-	 	</div>
-		<div class="description-brand"> 
-	       	<%= image_tag(@product.brand, style:"width:100px") %>
-		</div>
-		
-		
-		<div class="description-price">
-	        <%= number_to_currency(@product.price) %>
-		</div>
-		<div style="margin-left:49%; margin-top:-10%">
-	        <%= link_to "Comprar", comprar_path(:product_id => @product.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, :class => 'button-want'} %>
-		</div>
-		<p style="font-size:1.2em; margin-top:1em; font-weight:lighter; color:red">*Envíos <b>Gratis</b> en cualquier compra.
+		<p style="font-size:0.9em; font-weight:lighter; color:red; margin-top:3%">*Envíos <b>Gratis</b> en cualquier compra.
 		</p>
 
 		<!--
@@ -99,21 +100,25 @@
 		<div class="description-low"> Piezas disponibles</div>
 		<div class="description-medium"> <%= @product.quantity %> </div>
 		-->
-
-		<hr>
-		<div class="description-low"> Detalles</div>
-		<div class="description-text"> "<%= @product.description %>"</div>
-		<div style="display:block; margin-bottom:5%">
-	        <div style="float:left; margin-botom:5%; position:relative; width: 150px">
-	        	<div class="description-low"> Colores</div>
-	        	<div class="description-text"> <%= @product.color %> </div>
-	        </div>
-	        <div style="float:left; margin-botom:5%; position:relative; width: 150px">
-	        	<div class="description-low"> Material</div>
-	        	<div class="description-text"> <%= @product.material %> </div>
-	        </div>
-		</div>
-		<br/>
+		<div class="tabbable" style="margin-bottom: 18px;">
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab1" data-toggle="tab">Detalles</a></li>
+                <li class=""><a href="#tab2" data-toggle="tab">Colores</a></li>
+                <li class=""><a href="#tab3" data-toggle="tab">Material</a></li>
+              </ul>
+              <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
+                <div class="tab-pane active" id="tab1">
+					<div class="description-text"> "<%= @product.description %>"</div>
+                </div>
+                <div class="tab-pane" id="tab2">
+		        	<div class="description-text"> <%= @product.color %> </div>
+                </div>
+                <div class="tab-pane" id="tab3">
+		        	<div class="description-text"> <%= @product.material %> </div>
+                </div>
+              </div>
+            </div>
+		
 		<!--
 		<div style="margin-top: 15%" class="description-low">
 	        <hr>
@@ -128,10 +133,10 @@
 	        	<% end %>
 	        </div>
 		</div> -->
-		<hr>
-		<div class="description-low">Tiempo estimado de entrega</div>
-		<i style="float:left" class="icon-time icon-black"></i>
-		<div style="margin-left:8%; margin-top:-2%" class="description-text"><%= "#{@product.delivery_time} días" %></div>
+		<div class="description-details">Tiempo estimado de entrega</div>
+		<i style="float:left; margin-top:12px" class="icon-time icon-black"></i>
+		<div style="margin-left:8%; margin-top:1%" class="description-text"><%= "#{@product.delivery_time} días" %></div>
+
 		<!--
 		<div class="description-low"> Opciones de envío</div>
 	        <% if @product.ship_df.nil? %>
@@ -161,33 +166,33 @@
 	        
 		</div>
 	-->
-	        <div style="border: 1px solid white; background-color:white; height: auto; padding:0%;" class="well">
-	        	<div style="margin-left:0px" class="row">
-	        		<div style="width:180px; border-bottom: 3px solid #ededee;" class="description-main">
-	        			Más Fancy items
-	        		</div>
-	        		<% @tags.shuffle.each_with_index do |product, index| %>
-	        			<% break if index == 3 %>
-	        	  			<div id="product_tip" style="width:30%; margin-top:13%" class="span4">
-	        						<% if product.paintings.any? %>
-	        							<div style="height: auto; margin-top: 10%; position:relative;"><%= link_to image_tag(product.picture), product %>
-											<div style="top:-5px; left:8px;" class="quicktip">
-												<div class="quicktip-content">
-													<%= link_to product.title, product %>
-													<div class="price">
-														<div class="price">
-															<span>$<%= product.price %>0</span>
-														</div>
-													</div>
-													<span class="ico"></span>
-												</div>
-											</div>
-	        							</div>
-	        						<% end %>
-	        				</div>
-	        		<% end %>
-	        	</div>
 	        </div>
+		</div>
 	</div>
 </div>
+<div class="container">
+	<hr>
+	<div style="width:280px; border-bottom: 3px solid #ededee;" class="description-fancy">
+	   	Más Fancy items
+	</div>
+    <% @tags.shuffle.each_with_index do |product, index| %>
+		<% break if index == 4 %>
+			<div id="product_tip" style="width:20%; margin-top:13%" class="span4">
+				<% if product.paintings.any? %>
+					<div style="height: auto; margin-top: 10%; position:relative;"><%= link_to image_tag(product.picture), product %>
+						<div style="top:-5px; left:8px;" class="quicktip">
+							<div class="quicktip-content">
+								<%= link_to product.title, product %>
+								<div class="price">
+									<div class="price">
+										<span>$<%= product.price %>0</span>
+									</div>
+								</div>
+								<span class="ico"></span>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			</div>
+    <% end %>
 </div>

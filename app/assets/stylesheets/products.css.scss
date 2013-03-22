@@ -374,18 +374,19 @@ td.picture img { width: 140px; }
 #smallImage_show{
 
 width:100px; 
-text-align:center; list-style: none; height:100px;border:2px ridge #cbccce;
+text-align:center; list-style: none; height:100px;border:1px dotted #cbccce;
 	
 	img{
 		display:block;
 		margin: auto;
 	    top: 0;
-      max-height: 70px;
+      max-height: 60px;
 	    left: 0;
 	    right: 0;
 	    bottom: 0;
 	}
 }
+
 
 
 #image_small
@@ -431,13 +432,48 @@ text-align:center; list-style: none; height:100px;border:2px ridge #cbccce;
 }
 
 .description-main{
-	font-size: 1.7em;
-	line-height: 1.5em;
+	color: #111;
+font-family: "proxima_nova_excn_rgregular",Helvetica,Arial,sans-serif;
+font-size: 30px;
+line-height: 1em;
+margin-bottom: 8px;
+}
+
+.description-marca{
+  color: #333;
+font-size: 18px;
+font-family: "proxima_nova_excn_rgregular",Helvetica,Arial,sans-serif;
+line-height: 1em;
 }
 
 .description-price{
 	font-size: 2em;
 	line-height: 1.5em;
+  a {
+    color: #333;
+    text-decoration: none;
+    margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+  }
+}
+
+.description-precio{
+  color: #333;
+font-size: 20px;
+line-height: 1em;
+  span{
+  margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+color: #333;
+  }
 }
 
 .description-medium{
@@ -827,4 +863,22 @@ text-align:center; list-style: none; height:100px;border:2px ridge #cbccce;
   position: absolute;
   overflow: hidden;
   width: 10px;
+}
+
+.description-details{
+  color: #666;
+display: block;
+font-family: "proxima_nova_excn_ltsemibold",Helvetica,Arial,sans-serif;
+font-size: 14px;
+line-height: 1em;
+padding: 0 0 3px 0;
+text-decoration: none;
+border-bottom: 1px solid transparent;
+}
+
+.description-fancy{
+font-size: 2em;
+line-height: 2em;
+padding: 5px 0 0 0;
+  
 }

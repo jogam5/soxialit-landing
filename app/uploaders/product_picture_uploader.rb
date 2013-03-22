@@ -17,11 +17,15 @@ class ProductPictureUploader < CarrierWave::Uploader::Base
   end
   
   version :timeline do
-    process :resize_to_limit => [670,0]
+    process :resize_and_pad => [460,590, "#FFFFFF"]
   end
 
   version :picture_300 do
     process :resize_and_pad => [150,300,"#FFFFFF"]
+  end
+
+  version :fancy do
+    process :resize_and_pad => [200, 300, "#FFFFFF"]
   end
   
   def extension_white_list
