@@ -5,6 +5,8 @@ class Micropost < ActiveRecord::Base
   has_many :activities, :as => :activitable, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_reputation :lovs, source: :user, aggregated_by: :sum
+  acts_as_taggable
+
 
   mount_uploader :picture, PictureMicropostUploader
 
