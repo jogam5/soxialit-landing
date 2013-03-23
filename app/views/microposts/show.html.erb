@@ -153,14 +153,15 @@
 }(document, 'script', 'facebook-jssdk'));
 
 
-$(document).ready(function() {
-    $(document).keyup(function(event) {
-        if (event.keyCode == 13) {
-         $(".new_comment").submit();
-			$(".new_comment > form")[0].reset();
+$(function(){
+  $('.new_comment textarea').bind('keyup', function() { 
+    if (event.keyCode == 13) {
+      $(this).closest('form').submit();
+      
         }
-    })
+  });
 });
+
 
 
 </script>

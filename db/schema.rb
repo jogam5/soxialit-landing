@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130319193408) do
+ActiveRecord::Schema.define(:version => 20130323194045) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -329,6 +329,20 @@ ActiveRecord::Schema.define(:version => 20130319193408) do
   end
 
   add_index "slides", ["post_id"], :name => "index_slides_on_post_id"
+
+  create_table "sources", :force => true do |t|
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "name"
+    t.integer  "micropost_id"
+  end
+
+  create_table "sourceships", :force => true do |t|
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "micropost_id"
+    t.integer  "source_id"
+  end
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

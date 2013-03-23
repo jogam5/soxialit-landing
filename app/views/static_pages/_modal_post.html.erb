@@ -4,7 +4,7 @@
 			<button type="button" class="close-button" data-dismiss="modal" aria-hidden="true">X</button>
 			<% if user_signed_in? %>
 			  <br/>
-			  <p style="font-weight:lighter; color:#777; font-size:1.5em; font-family:acta-display">Comparte un artículo, un post de tu blog u otro link sobre moda:</p>
+			  <p style="font-weight:lighter; color:#777; font-size:1.5em; font-family:acta-display;">Comparte un artículo, un post de tu blog u otro link sobre moda:</p>
 			  <%= form_for(@micropost, 
 			              {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true } ) do |f| %>
 			  	  <%= render 'shared/error_messages', object: f.object %>
@@ -12,24 +12,26 @@
 			      <%= f.text_area :url, :rows => "2", :class => "span8", :id => "status" %>
 			    </div>
 
-	    		<!--<%= f.text_field :tag_list, placeholder: "*agrega tus tags", "data-pre" => @micropost.tags.map(&:attributes).to_json, data: {load: @micropost.tags}, :class => "description-text" %>-->
+          
 			      <%= f.hidden_field :url %>
 			      <%= f.hidden_field :provider %>
 			      <%= f.hidden_field :title %>
 			      <%= f.hidden_field :description %>
 			      <%= f.hidden_field :thumbnail %>
 			      <%= f.hidden_field :status, value: true %>
-			      <div class="actions" >
-			        <span style="margin-left:38em"><%= f.submit "Publicar", id: "button_send", class: "button-nopost", :disabled => true %></span>
+            <div id="micropost-tags" style="font-weight:lighter; color:#777; font-size:0.9em; font-family:acta-display; display:none; float:left">TAGS: <%= f.text_field :source_tokens, data: {load: @micropost.sources} %>
+            </div>
+			      <div style="float:right" class="actions" >
+			        <span style="margin-right:6em"><%= f.submit "Publicar", id: "button_send", class: "button-nopost", :disabled => true %></span>
 			      </div>
 			    <br/>
-			    <p id="wait">Vista Previa <i>(edita el contenido dando click sobre el texto)</i></p>
+			    <p id="wait" style="color:red; margin-top:6%">Vista Previa <i>(edita el contenido dando click sobre el texto)</i></p>
+
 			  <% end %>
 			<% end %>
 		</div>
 	</div>
 </div>
-
 <script type="text/javascript" charset="UTF-8">
   $(function() {
     $('#status').preview({key:'7f6cf7cec28511e0866c4040d3dc5c07'});
@@ -37,14 +39,16 @@
     $('#status').live('keyup keydown', function(e) {
       var empty = $(this).val().length;
       if ( empty > 0 ){
-        $('#wait').toggleClass('show');
-		$('#button_send').removeClass('button-nopost').addClass('button-want');
-		$('#button_send').removeAttr('disabled');
-	  }else{
-		$('#button_send').removeClass('button-want').addClass('button-nopost');
-		$('#button_send').attr("disabled", "disabled");
-		
-	  }
+        $('#wait').show();
+        $('#micropost-tags').show();
+		    $('#button_send').removeClass('button-nopost').addClass('button-want');
+		    $('#button_send').removeAttr('disabled');
+	    }else{
+		    $('#button_send').removeClass('button-want').addClass('button-nopost');
+		    $('#button_send').attr("disabled", "disabled");
+        $('#micropost-tags').hide();
+        $('#wait').hide();
+  	  }
     });
   });
 			

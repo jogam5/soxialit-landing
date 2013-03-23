@@ -131,7 +131,7 @@ class StaticPagesController < ApplicationController
     @microposts = Micropost.all
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @microposts.map(&:attributes) }
+      format.json { render json: @microposts.tokens(params[:q]) }
       format.js
     end
   end

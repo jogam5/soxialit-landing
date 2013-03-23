@@ -21,15 +21,9 @@ $('.close-button').click(function(){
 	$('#modal-link').fadeOut('fast');
 });
 
-$(function () {
-  $('#micropost_tag_list').tokenInput('/sizes.json', { 
-    crossDomain: false,
-    prePopulate: $('#micropost_tag_list').data('pre'),
+$('#micropost_source_tokens').tokenInput('/sources.json', { 
     theme: 'facebook',
-   preventDuplicates: true,
-   tokenValue: 'name', // defaults to 'id'
-  
-   allowCustomEntry: true
-   
-  });
+    crossDomain: false,
+	 preventDuplicates: true,
+    prePopulate: $('#micropost_source_tokens').data('load')  
 });

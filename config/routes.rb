@@ -2,7 +2,8 @@ DeviseFacebook::Application.routes.draw do
  
   resources :newsletters
 
-
+  resources :sources
+  
   resources :supports, :only => [:new, :create]
 
   root :to => 'static_pages#home'
