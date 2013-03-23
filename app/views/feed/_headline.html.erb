@@ -11,7 +11,7 @@
 		<p>
 		  <div id="product_background" class="image_hover">
 			<div style="float:left; width:80px; margin-left:10px; margin-right:25px">
-			  <%= link_to image_tag(feed_item.activitable.picture), product_path(feed_item.activitable), target: '_blank' %>
+			  <%= link_to image_tag(feed_item.activitable.paintings.first.image_url(:feed)), product_path(feed_item.activitable), target: '_blank' %>
 			</div>
 		  </div>
 		  <div style="text-align:left; padding-left:3em">
