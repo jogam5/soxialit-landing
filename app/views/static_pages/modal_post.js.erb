@@ -20,3 +20,16 @@ $(document).keyup(function(e) {
 $('.close-button').click(function(){
 	$('#modal-link').fadeOut('fast');
 });
+
+$(function () {
+  $('#micropost_tag_list').tokenInput('/sizes.json', { 
+    crossDomain: false,
+    prePopulate: $('#micropost_tag_list').data('pre'),
+    theme: 'facebook',
+   preventDuplicates: true,
+   tokenValue: 'name', // defaults to 'id'
+  
+   allowCustomEntry: true
+   
+  });
+});

@@ -14,6 +14,11 @@ class MicropostsController < ApplicationController
      @microposts = Micropost.page(params[:page]).per_page(50).find(:all, :order => "created_at DESC")
      @search = Micropost.search(params[:search])
      @last = Micropost.last
+     respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @microposts.map(&:attributes) }
+      format.js
+    end
   end
   
   def microposts_lov
