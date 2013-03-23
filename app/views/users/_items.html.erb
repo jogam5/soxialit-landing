@@ -1,4 +1,5 @@
-<div class="row">
+<% if !@items.nil? %>
+  <div class="row">
 	<div class="span9">  
 		<% @items.each do |item| %>
 			<div class="user_item">
@@ -16,4 +17,4 @@
 	<br />
 	<p style="font-size:1.2em; margin-top:1em; font-weight:lighter">*Envíos <b>Gratis</b> en cualquier compra.
 	</p>
-
+<% end %>

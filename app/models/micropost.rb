@@ -5,10 +5,17 @@ class Micropost < ActiveRecord::Base
   has_many :activities, :as => :activitable, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_reputation :lovs, source: :user, aggregated_by: :sum
+  acts_as_taggable
+  attr_accessible :tag_list
+  attr_reader :tag_list
 
   mount_uploader :picture, PictureMicropostUploader
 
   validates :url, presence: true, format: { with: URI::regexp(%w(http https)) }
+  
+  def size_tokens=(tokens)
+     self.size_ids = Size.ids_from_tokens(tokens)
+  end
   
   def self.publish_link_facebook(micropost)
     @micropost = micropost

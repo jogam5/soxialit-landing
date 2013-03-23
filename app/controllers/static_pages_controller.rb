@@ -128,6 +128,12 @@ class StaticPagesController < ApplicationController
   
   def modal_post
     @micropost = Micropost.new
+    @microposts = Micropost.all
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @microposts.map(&:attributes) }
+      format.js
+    end
   end
 
   def las7depauline

@@ -1,7 +1,7 @@
   <% if !@user.evaluations.first.nil? %>
-	<div id="contenedor" class="clearfix masonry" style="margin-left:3%; margin-right: 8%; width:940px">
+	<div id="contenedor" class="clearfix masonry" style="margin-left:-1%; width:870px">
   		<% @user.evaluations.each do |z| %>
-		    <div class="box photo col3 masonry-brick">
+		    <div class="box photo col3 masonry-brick" id = "test">
 			  	<% if z.target_type == "Micropost" %>	
 				  <div class="frame_link_favorites">
 					<div style="max-width: 270px; position:relative; text-align:center; height:auto; padding:5% 5% 5% 5%">
@@ -213,13 +213,12 @@
 
 <script type="text/javascript">
 
-$(function() {
-  $('body').bind('ajaxComplete', function() {
+$('body').bind('ajaxComplete', function() {
+    setTimeout(function(){
 		var wall = new Masonry( document.getElementById('contenedor') );
-		if (wall){
-			wall.reload();
-		}
-  });
+		wall.reload();
+	}, 2000);
+	$('#ajax-loading').hide();
 });
 
 </script>
