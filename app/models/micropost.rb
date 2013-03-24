@@ -17,7 +17,7 @@ class Micropost < ActiveRecord::Base
   validates :url, presence: true, format: { with: URI::regexp(%w(http https)) }
   
   def source_tokens=(tokens)
-     self.size_ids = Source.ids_from_tokens(tokens)
+     self.source_ids = Source.ids_from_tokens(tokens)
   end
   
   def self.publish_link_facebook(micropost)

@@ -19,8 +19,8 @@
 			      <%= f.hidden_field :description %>
 			      <%= f.hidden_field :thumbnail %>
 			      <%= f.hidden_field :status, value: true %>
-            <div id="micropost-tags" style="font-weight:lighter; color:#777; font-size:0.9em; font-family:acta-display; display:none; float:left">TAGS: <%= f.text_field :source_tokens, data: {load: @micropost.sources} %>
-            </div>
+              <div id="micropost-tags" style="font-weight:lighter; color:#777; font-size:0.9em; font-family:acta-display; display:none; float:left">TAGS: <%= f.text_field :source_tokens, data: {load: @micropost.sources} %>
+              </div>
 			      <div style="float:right" class="actions" >
 			        <span style="margin-right:6em"><%= f.submit "Publicar", id: "button_send", class: "button-nopost", :disabled => true %></span>
 			      </div>
