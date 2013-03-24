@@ -10,7 +10,9 @@ class Micropost < ActiveRecord::Base
   attr_accessible :source_tokens
   attr_reader :source_tokens
   acts_as_taggable_on :source_tokens
-
+  attr_reader :tag_list
+  attr_accessible :tag_list
+  acts_as_taggable
 
   mount_uploader :picture, PictureMicropostUploader
 
@@ -44,5 +46,7 @@ class Micropost < ActiveRecord::Base
       }
       user.facebook.put_connections("me", "feed", options)
   end
+
+  
 
 end

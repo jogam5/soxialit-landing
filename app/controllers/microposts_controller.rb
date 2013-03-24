@@ -11,9 +11,15 @@ class MicropostsController < ApplicationController
   end
   
   def index  
-     @microposts = Micropost.page(params[:page]).per_page(50).find(:all, :order => "created_at DESC")
-     @search = Micropost.search(params[:search])
-     @last = Micropost.last
+    if params[:tag]
+       @microposts = Micropost.page(params[:page]).per_page(50).tagged_with(params[:tag])
+       @search = Micropost.search(params[:search])
+       @last = Micropost.last
+    else
+       @microposts = Micropost.page(params[:page]).per_page(50).find(:all, :order => "created_at DESC")
+       @search = Micropost.search(params[:search])
+       @last = Micropost.last
+    end
      respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @microposts.tokens(params[:q]) }
@@ -37,6 +43,8 @@ class MicropostsController < ApplicationController
   def show
     @micropost = Micropost.find_by_id(params[:id])
     @posts = Micropost.all.last(20)
+    @tags = Micropost.tagged_with([@micropost.tag_list], :any => true)
+
     if @micropost.nil?
       flash[:error] = "No se ha encontrado el Post."
       redirect_to microposts_path

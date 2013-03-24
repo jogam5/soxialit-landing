@@ -16,8 +16,8 @@ DeviseFacebook::Application.routes.draw do
   end
 
   #tags
-  get "products/tags" => "products#tags", :as => :products_tags
-  get 'tags/:tag', to: 'products#index', as: :tag
+  #get "products/tags" => "products#tags", :as => :products_tags
+  #get 'tags/:tag', to: 'products#index', as: :tag
   match '/tags', to: 'tags#show_tags'
   get '/products_all', to: 'products#products_all'
   #----
@@ -47,13 +47,17 @@ DeviseFacebook::Application.routes.draw do
 
   resources :feedbacks
   resources :comments
-  resource :direction
+  resources :direction
   resources :notifications
   resources :paintings
   resources :sizes
+ # get 'sources/:source', to: 'sources#index', as: :source
+  get 'tags/:tag', to: 'microposts#index', as: :tag
   resources :microposts do
      member { post :lovs}
   end
+
+
   match "microposts_lov/" => "microposts#microposts_lov", :as => "microposts_lov"
   match "microposts_order/" => "microposts#microposts_order", :as => "microposts_order"
   match "microposts_search/" => "microposts#microposts_search", :as => "microposts_search"

@@ -6,4 +6,8 @@ class SourcesController < ApplicationController
       format.json { render json: @sources.tokens(params[:q]) }
     end
   end
+
+  def show
+  end 
+  
 end

@@ -21,9 +21,9 @@ $('.close-button').click(function(){
 	$('#modal-link').fadeOut('fast');
 });
 
-$('#micropost_source_tokens').tokenInput('/sources.json', { 
+$('#micropost_tag_list').tokenInput('/sources.json', { 
     theme: 'facebook',
     crossDomain: false,
 	 preventDuplicates: true,
-    prePopulate: $('#micropost_source_tokens').data('load')  
+    prePopulate: $('#micropost_tag_list').data('load')  
 });

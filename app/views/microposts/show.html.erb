@@ -136,6 +136,9 @@
 				</div>
 		    <% end %>
 	     </div>
+   <!--    <%= raw @micropost.sources.map(&:name).map { |t| link_to t, source_path(t) }.join(', ') %> -->
+   <p>Tags: <%= raw @micropost.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
+
 	<div class="red_bar" style="background:black; margin-top:0.5em"></div>
     <%= render 'microposts/comments' %>
   </div>
