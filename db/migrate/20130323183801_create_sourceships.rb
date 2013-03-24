@@ -5,7 +5,7 @@ class CreateSourceships < ActiveRecord::Migration
        t.belongs_to :source
       t.timestamps
     end
-    add_index :sizeships, :micropost_id
-    add_index :sizeships, :source_id
+    add_index :sourceships, :micropost_id
+    add_index :sourceships, :source_id
   end
 end
