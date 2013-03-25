@@ -138,7 +138,7 @@ class StaticPagesController < ApplicationController
   end
 
   def las7depauline
-     @test = [Micropost.find(400) ,Micropost.find(401), Micropost.find(402) ,Micropost.find(403), Micropost.find(404), Micropost.find(405), Micropost.find(406)]
-     @newsletter = @test.paginate(:page => params[:page], :per_page => 1)
+     @test = [Micropost.find(585), Micropost.find(571), Micropost.find(553), Micropost.find(543), Micropost.find(541), Micropost.find(540), Micropost.find(539), Micropost.find(528), Micropost.find(527), Micropost.find(518), Micropost.find(513), Micropost.find(484), Micropost.find(483), Micropost.find(482), Micropost.find(476), Micropost.find(467), Micropost.find(463), Micropost.find(459), Micropost.find(456), Micropost.find(465), Micropost.find(466), Micropost.find(460), Micropost.find(400) ,Micropost.find(401), Micropost.find(402) ,Micropost.find(403), Micropost.find(404)]
+     @newsletter = @test.paginate(:page => params[:page], :per_page => 7)
   end  
 end
