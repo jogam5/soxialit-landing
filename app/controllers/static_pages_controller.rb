@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+
   layout "feed", :only => :home
 
   def home
@@ -137,6 +138,7 @@ class StaticPagesController < ApplicationController
   end
 
   def las7depauline
-     @newsletter = Newsletter.page(params[:page]).per_page(7).find(:all, :order => 'created_at DESC')
+     @test = [Micropost.find(400) ,Micropost.find(401), Micropost.find(402) ,Micropost.find(403), Micropost.find(404), Micropost.find(405), Micropost.find(406)]
+     @newsletter = @test.paginate(:page => params[:page], :per_page => 1)
   end  
 end
