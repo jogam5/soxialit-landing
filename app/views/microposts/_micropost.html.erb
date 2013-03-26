@@ -6,6 +6,7 @@
 			<% else %>
 				<%= link_to image_tag(micropost.thumbnail, style:"margin-left:5%; max-width: 90%; height:auto"),  modal_micropost_path(:micropost_id => micropost.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
 			<% end %>
+			
 			<p id="title_link_modal">
 				<%= link_to micropost.title, micropost, target: '_blank' %>
 		  	</p>
