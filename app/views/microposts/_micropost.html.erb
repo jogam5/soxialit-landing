@@ -1,12 +1,13 @@
 <div style="display:block" id="micropost" class="box photo col3 masonry-brick">
 	<div style="display:block" class="frame_link_favorites">
 		<div style="max-width: 270px; position:relative; text-align:center; height:auto; padding:5% 5% 5% 5%">
-			<% if !micropost.picture.nil? %>
+			<% if micropost.picture.nil? %>
 				<%= link_to image_tag(micropost.picture_url(:index), style:"margin-left:5%; max-width: 90%; height:auto"),  modal_micropost_path(:micropost_id => micropost.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
 			<% else %>
 				<%= link_to image_tag(micropost.thumbnail, style:"margin-left:5%; max-width: 90%; height:auto"),  modal_micropost_path(:micropost_id => micropost.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
+				
 			<% end %>
-			
+
 			<p id="title_link_modal">
 				<%= link_to micropost.title, micropost, target: '_blank' %>
 		  	</p>
