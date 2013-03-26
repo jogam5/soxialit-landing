@@ -17,7 +17,7 @@ class PictureMicropostUploader < CarrierWave::Uploader::Base
   end
   
   version :modal do
-       process :resize_and_pad => [460, 500, "#240902", Magick::CenterGravity]
+    process :resize_and_pad => [460,500,"#240902"]
   end
   
   version :index do
