@@ -136,8 +136,10 @@
 				</div>
 		    <% end %>
 	     </div>
-  <%if current_user.roles.first.name == "admin" %>
-    <p>Tags: <%= raw tagging(@micropost.tag_list).map { |t| link_to t, tag_path(t) }.join(', ') %></p>
+  <% if user_signed_in? %>
+    <% if current_user.roles.first.name == "admin" %>
+      <p>Tags: <%= raw tagging(@micropost.tag_list).map { |t| link_to t, tag_path(t) }.join(', ') %></p>
+    <% end %>
   <% end %>
 
 	<div class="red_bar" style="background:black; margin-top:0.5em"></div>
