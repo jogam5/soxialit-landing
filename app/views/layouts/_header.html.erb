@@ -54,14 +54,16 @@
 					        </li>
 					<% else %>
 						
-						<li id="signin"><%= link_to "EXPLORA", microposts_path,
+						<li id="home_nav_bar"><%= link_to "EXPLORA", microposts_path,
 							:onmousedown => "_gaq.push(['_trackEvent', 'Home', 'Header', 'todos los posts']);" %></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 						<li class="divider-vertical" style="color:yellow"></li>
-						<li id="signin"><%= link_to "INGRESAR", user_omniauth_authorize_path(:facebook), style: "font-size:0.8em"%></li>
+						<li id="home_nav_bar"><%= link_to "Inicia Sesión", user_omniauth_authorize_path(:facebook), style: "font-size:0.9em"%></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 						<li class="divider-vertical" style="color:yellow; margin:0px"></li>
 						<li style="background: red; margin-top: -7px; padding: 7.8px;">
 							<%= link_to "CREA TU CUENTA", user_omniauth_authorize_path(:facebook), 
-					:onmousedown => "_gaq.push(['_trackEvent', 'Home', 'Header', 'crear cuenta']);", style:"color:white; font-size:0.8em" %>
+					:onmousedown => "_gaq.push(['_trackEvent', 'Home', 'Header', 'crear cuenta']);", style:"color:white; font-size:1em" %>
 						</li>
 	   				<% end %>
               	  </ul>
