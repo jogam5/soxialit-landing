@@ -80,13 +80,9 @@
     </div>
     <br />
   	<div style="padding:5%; margin-right:-4%; margin-top:-7%;">
-      <% if user_signed_in? %>
-        <% if current_user.roles.first.name == "admin" %>
-          <p class="tags">TAGS:</p>
-          <li class="taging"><%= raw @micropost.tag_list.map { |t| link_to t, tag_path(t) }.join(' ') %></li>
-        <% end %>
-      <% end %>
-			  <span style="float:right;  display:block">
+      <p class="tags">TAGS:</p>
+         <li class="taging"><%= raw @micropost.tag_list.map { |t| link_to t, tag_path(t) }.join(' ') %></li>
+     	  <span style="float:right;  display:block">
 				  <div class="fb-like" data-href="" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false"></div>
 			  </span>
     		<% if signed_in? %>

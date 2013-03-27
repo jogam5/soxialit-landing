@@ -1,8 +1,6 @@
 <% if signed_in? %>
-	<% if current_user.roles.first.name == "admin" %>
-    	<div style="color:#999; font-size:0.9em; font-weight: lighter;">TAGS: </div>
+    <div style="color:#999; font-size:0.9em; font-weight: lighter;">TAGS: </div>
     	<span class="taging"><%= raw feed_item.activitable.tag_list.map { |t| link_to t, tag_path(t) }.join(' ') %></span>
-   	<% end %>
 	<div style="margin-top: 2%; margin-right: 5%" class="votacion" id="votacion_<%= feed_item.activitable.id %>">
 		<% if feed_item.activitable.user_id == current_user.id %>
 		   <div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">

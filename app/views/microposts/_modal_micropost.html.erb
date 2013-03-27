@@ -22,7 +22,6 @@
 	<div class="row">
 		<div class="span6">
 			<% if @micropost.id > 450 %>
-				<%= link_to image_tag(@micropost.picture_url(:modal)), @micropost.url, target: '_blank' %>
 				<% if !@micropost.picture_url(:modal).nil? %>
 					<%= link_to image_tag(@micropost.picture_url(:modal)), @micropost.url, target: '_blank' %>
 				<% else %>
@@ -63,13 +62,9 @@
 			<div id="micropost_leer_mas" style="margin-bottom:1em"><%= link_to "Leer más", @micropost.url, target: '_blank' %>
 			</div>
             <span style="color:#999">vía</span> <%= link_to @micropost.provider, @micropost.provider, target: '_blank' %>
-            <% if user_signed_in? %>
-           		<% if current_user.roles.first.name == "admin" %>
-            		<div style="color:#999; font-size:0.9em; font-weight: lighter;">TAGS: </div>
-            		<li class="taging"><%= raw @micropost.tag_list.map { |t| link_to t, tag_path(t) }.join(' ') %></li>
-           		<% end %>
-          	<% end %>
-          	<div style="margin-right: 28%; margin-top:15%">
+            <div style="color:#999; font-size:0.9em; font-weight: lighter;">TAGS: </div>
+            	<li class="taging"><%= raw @micropost.tag_list.map { |t| link_to t, tag_path(t) }.join(' ') %></li>
+           	<div style="margin-right: 28%; margin-top:15%">
 				<span style="float:right;  width: 100px; display:block">
 					<div id="like_box">
 						<span id="like-button"></span>
