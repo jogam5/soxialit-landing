@@ -21,7 +21,7 @@ module MicropostsHelper
 	
    def tagging(tag_list)
    		tags = []
-   		tags.each do |tokens|
+   		tag_list.each do |tokens|
    			tokens.gsub!(/<<<(.+?)>>>/) { create!(name: $1).id }
     		tags << tokens.split(',')
     	end
