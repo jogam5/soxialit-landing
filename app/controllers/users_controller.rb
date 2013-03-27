@@ -20,8 +20,10 @@ class UsersController < ApplicationController
     #@user = User.find(params[:id])
     @user = User.find_by_username(params[:username])
     @last = Micropost.last
-    if @user.username == "eileen"
-      @items = [Product.find(276),Product.find(277), Product.find(279), Product.find(280), Product.find(281), Product.find(282)]
+    if user_signed_in?
+      if @user.username == "eileen"
+        @items = [Product.find(276),Product.find(277), Product.find(279), Product.find(280), Product.find(281), Product.find(282)]
+      end
     end
     if @user.nil?
        flash[:error] = "No se ha encontrado la URL."
