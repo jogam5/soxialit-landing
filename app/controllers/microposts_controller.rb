@@ -58,6 +58,10 @@ class MicropostsController < ApplicationController
     end
   end
 
+  def edit
+    @micropost = Micropost.find_by_id(params[:id])
+  end
+
   def create
     @micropost = current_user.microposts.build(params[:micropost])
     @micropost.remote_picture_url = @micropost.thumbnail
@@ -106,6 +110,17 @@ class MicropostsController < ApplicationController
      @user = @micropost.user
      @comment = Comment.new
      @comments = @micropost.comments
+  end
+
+  def update
+    @micropost = Micropost.find_by_id(params[:id])
+    respond_to do |format|
+      if @micropost.update_attributes(params[:micropost])
+        format.html { redirect_to @micropost, notice: '' }
+      else
+        format.html { render action: "edit" }
+      end
+    end
   end
   
 end
