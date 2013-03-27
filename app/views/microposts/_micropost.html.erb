@@ -17,7 +17,7 @@
 				<%= link_to micropost.title, micropost, target: '_blank' %>
 		  	</p>
 		  	<hr/>
-		  	<div id="micropost_description" style="height:50px; width: 150px">
+		  	<div id="micropost_description" style="height:50px; width:185px">
 				<div style="float:left; width: auto; height: auto">
 					<% if find_micropost_imagefile(micropost.id) == nil %>
 						<%= link_to image_tag(find_micropost_userimage(micropost.id), style:"width:35px; margin-left:2%; margin-top:0", id: "like_small_picture"), user_path(micropost.user)%>
