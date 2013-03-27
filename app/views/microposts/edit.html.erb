@@ -5,14 +5,15 @@
 		<div class="span10">
 		<%= form_for(@micropost) do |f| %>
 		  	  <%= render 'shared/error_messages', object: f.object %>
-		      <%= f.text_area :url, :rows => "2", :class => "span8", :id => "status" %>
-		      <%= f.text_field :url %>
-		      <%= f.text_field :provider %>
-		      <%= f.text_field :title %>
-		      <%= f.text_field :description %>
-		      <%= f.text_field :thumbnail %>
-		      <%= f.text_field :status, value: true %>
-	    	  TAGS: <%= f.text_field :tag_list %>
+		      <p>URL: <%= f.text_area :url, :rows => "2", :class => "span8", :id => "status" %></p>
+		      <p>URL: <%= f.text_field :url %></p>
+		      <p>PROVIDER: <%= f.text_field :provider %></p>
+		      <p>TITULO: <%= f.text_field :title %></p>
+		      <p>DESCRIPTION: <%= f.text_field :description %></p>
+		      <p>THUMBNAIL: <%= f.text_field :thumbnail %></p>
+		      <p>STATUS: <%= f.text_field :status, value: true %></p>
+		      <p>PICTURE: <%= f.text_field :picture %></p>
+	    	  <p>TAGS: <%= f.text_field :tag_list %></p>
 
 		      <div style="float:right" class="actions" >
 		        <span style="margin-right:6em"><%= f.submit "Publicar", id: "button_send", class: "button-nopost" %></span>
