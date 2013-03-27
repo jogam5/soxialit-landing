@@ -19,4 +19,7 @@ module MicropostsHelper
 	   b.nickname
    end
 	
+   def tagging(tag_list)
+   		tags = tag_list.gsub!(/<<<(.+?)>>>/)
+   	end
 end
