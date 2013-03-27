@@ -21,7 +21,7 @@
 	</div>
 	<div class="row">
 		<div class="span6">
-			<% if !@micropost.thumbnail.present? %>
+			<% if !@micropost.picture_url(:modal).present? %>
 				<%= link_to image_tag(@micropost.picture_url(:modal)), @micropost.url, target: '_blank' %>
 			<% else %>
 				<%= link_to image_tag(@micropost.thumbnail, style: "max-height: 500px"), @micropost.url, target: '_blank' %>

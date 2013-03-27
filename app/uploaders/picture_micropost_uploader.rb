@@ -21,7 +21,7 @@ class PictureMicropostUploader < CarrierWave::Uploader::Base
   end
   
   version :index do
-     process :resize_to_fill => [226, 255]
+     process :resize_and_pad => [226, 255, "#240902"]
   end
   
 end
