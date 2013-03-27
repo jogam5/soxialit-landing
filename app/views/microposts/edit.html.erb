@@ -2,6 +2,7 @@
 	<% if current_user.roles.first.name == "admin" %>
 		<br/>
 		<p style="font-weight:lighter; color:#777; font-size:1.5em; font-family:acta-display;">Comparte un artículo, un post de tu blog u otro link sobre moda:</p>
+		<div class="span10">
 		<%= form_for(@micropost) do |f| %>
 		  	  <%= render 'shared/error_messages', object: f.object %>
 		      <%= f.text_area :url, :rows => "2", :class => "span8", :id => "status" %>
@@ -12,12 +13,12 @@
 		      <%= f.text_field :thumbnail %>
 		      <%= f.text_field :status, value: true %>
 	    	  TAGS: <%= f.text_field :tag_list %>
-	    	</div>
 
 		      <div style="float:right" class="actions" >
 		        <span style="margin-right:6em"><%= f.submit "Publicar", id: "button_send", class: "button-nopost" %></span>
 		      </div>
 		    <br/>
 	    <% end %>
+		</div>
 	 <% end %>
 <% end %>
