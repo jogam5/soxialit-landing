@@ -20,6 +20,10 @@ module MicropostsHelper
    end
 	
    def tagging(tag_list)
-   		tags = tag_list.gsub!(/<<<(.+?)>>>/)
+   		tags = []
+   		tag_list.each do |tag|
+   			tags << tag.gsub!(/<<<(.+?)>>>/)
+   		end
+   		return tags
    	end
 end
