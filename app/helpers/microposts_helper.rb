@@ -19,8 +19,12 @@ module MicropostsHelper
 	   b.nickname
    end
 	
-   def tagging(tokens)
-   		tokens.gsub!(/<<<(.+?)>>>/) { create!(name: $1).id }
-    	tokens.split(',')
+   def tagging(tag_list)
+   		tags = []
+   		tags.each do |tokens|
+   			tokens.gsub!(/<<<(.+?)>>>/) { create!(name: $1).id }
+    		tags << tokens.split(',')
+    	end
+    	return tags
    	end
 end
