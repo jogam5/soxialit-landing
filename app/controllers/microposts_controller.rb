@@ -106,6 +106,7 @@ class MicropostsController < ApplicationController
   
   def modal_micropost
      @micropost = Micropost.find(params[:micropost_id])
+     @tags = Micropost.tagged_with([@micropost.tag_list], :any => true)
      @posts = Micropost.all.last(3)
      @user = @micropost.user
      @comment = Comment.new
