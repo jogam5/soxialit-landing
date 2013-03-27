@@ -552,7 +552,7 @@ margin-top: 3%;
 	 a{
 	color:whiteSmoke;
 	font-weight:300;
-	font-size:1.2em;
+	font-size:1em;
 	}
 	 a:hover{
 	color:$rojo;
@@ -1000,7 +1000,7 @@ ul.comments_new{
 	 a{
 	color:white;
 	font-weight:300;
-	font-size:1.2em;
+	font-size:1.1em;
 	font-family:acta-display, nimbus, Helvetica-Neue, Helvetica, Arial, Sans-serif;
 	}
 	 a:hover{
@@ -1017,6 +1017,17 @@ ul.comments_new{
 	}
 	 a:hover{
 	color:$rojo;
+	}
+}
+
+.cuenta {
+	 a{
+	color:white;
+	font-size: 0.8em;
+	}
+	 a:hover{
+	color:whitesmoke;
+	font-size: 0.8em;
 	}
 }
 
