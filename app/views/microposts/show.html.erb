@@ -138,7 +138,7 @@
 	     </div>
   <% if user_signed_in? %>
     <% if current_user.roles.first.name == "admin" %>
-      <p>Tags: <%= raw tagging(@micropost.tag_list).map { |t| link_to t, tag_path(t) }.join(', ') %></p>
+      <p>Tags: <%= raw @micropost.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
     <% end %>
   <% end %>
 

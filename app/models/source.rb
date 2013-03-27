@@ -7,7 +7,7 @@ class Source < ActiveRecord::Base
   def self.tokens(query)
       authors = where("name like ?", "%#{query}%")
       if authors.empty?
-        [{id: "<<<#{query}>>>", name: "\"#{query}\""}]
+        [{id: "#{query}", name: "\"#{query}\""}]
       else
         authors
       end
