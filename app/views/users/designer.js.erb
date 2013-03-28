@@ -1,6 +1,6 @@
 $('#user_roles').html("<%= escape_javascript(render :partial => 'user_designer', :object => @designers) %>");
 $(function(){
-	$('#user_unfollow_button').bind('click', function(e){
+	$('#user_follow_button').bind('click', function(e){
 	  e.preventDefault(); // Prevent link from following its href
 	});
 });
