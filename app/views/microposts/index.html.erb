@@ -48,7 +48,7 @@
 </div>
 
 <div style="display:block; margin-top: 2%" id="contenedor" class="clearfix masonry">
-	<%= render @microposts %>
+	<!--<%= render @microposts %> -->
 </div>
 
 <div style="display:none"><%= will_paginate(@microposts)%></div>
@@ -136,11 +136,11 @@ $(function() {
 	
 
 $('#microposts_lovs').click(function(){
-	$('#contenedor').html('');
+	$('#contenedor').empty();
 });
 
 $('#microposts_order').click(function(){
-	$('#contenedor').html('');
+	$("#contenedor").empty();
 });
 
 //follow link preventdefault
