@@ -171,79 +171,6 @@ $rojo:#DD390D;
     font: 32px Arial, sans-serif
 }
 
-
-.numberCircleSecondOn {
-    -webkit-border-radius: 999px;
-    -moz-border-radius: 999px;
-    border-radius: 999px;
-    behavior: url(PIE.htc);
-
-    width: 36px;
-    height: 36px;
-    padding: 8px;
-
-    background: #fff;
-    border: 2px solid #666;
-    color: #666;
-    text-align: center;
-
-    font: 32px Arial, sans-serif
-}
-
-.numberCircleSecondOff {
-    -webkit-border-radius: 999px;
-    -moz-border-radius: 999px;
-    border-radius: 999px;
-    behavior: url(PIE.htc);
-
-    width: 36px;
-    height: 36px;
-    padding: 8px;
-
-    background: #fff;
-    border: 2px solid #666;
-    color: #666;
-    text-align: center;
-
-    font: 32px Arial, sans-serif
-}
-
-.numberCircleThreeOn {
-    -webkit-border-radius: 999px;
-    -moz-border-radius: 999px;
-    border-radius: 999px;
-    behavior: url(PIE.htc);
-
-    width: 36px;
-    height: 36px;
-    padding: 8px;
-
-    background: #fff;
-    border: 2px solid #666;
-    color: #666;
-    text-align: center;
-
-    font: 32px Arial, sans-serif
-}
-
-.numberCircleThreeOff {
-    -webkit-border-radius: 999px;
-    -moz-border-radius: 999px;
-    border-radius: 999px;
-    behavior: url(PIE.htc);
-
-    width: 36px;
-    height: 36px;
-    padding: 8px;
-
-    background: #fff;
-    border: 2px solid #666;
-    color: #666;
-    text-align: center;
-
-    font: 32px Arial, sans-serif
-}
-
 #user_unfollow_button{
   border: 0;
   border-radius: 0px;
@@ -300,4 +227,29 @@ $rojo:#DD390D;
   a{
   text-decoration:none;
   }
+}
+
+#users_nickname{
+  font-size:1.3em;
+  text-transform:uppercase;
+   a{
+  color:black;
+  }
+   a:hover{
+  color:#777;
+  text-decoration:none;
+  }
+}
+
+#users_role{
+  font-size:1em;
+  text-transform:uppercase;
+  color:$rojo;
+  font-family:acta-display;
+}
+
+#users_location{
+  font-size:0.9em;
+  color:#999;
+  font-weight:lighter;
 }

@@ -10,25 +10,12 @@
 						user_path(user) %>
 		<% end %>
 	  </div>
-	  <div class="span4" style="margin-left:35px" id="nickname_users_list">
-		<%= link_to user.nickname, user_path(user) %> 
-			<br />
-			<i class="icon-map-marker"></i><span id="nickname_small_location"><%= user.location %></span>
-			<p style="margin-top:0%" id="profile_nav_bar">
-				<% if current_user == user %>
-				<span style="font-size:0.8em">
-					<%= user.followers.count %></span>
-					<%= link_to "Followers", user_path(user), remote: true, style: "font-size:0.8em" %> |
-					<span style="font-size:0.8em" id="followers_count"><%= user.followed_users.count %></span>
-					<%= link_to "Following", user_path(user), remote: true, style: "font-size:0.8em" %>
-				<% else %>
-					<span style="font-size:0.8em" id="followers_count_<%= user.id %>">
-						<%= user.followers.count %></span>
-						<%= link_to "Followers", user_path(user), remote: true, style: "font-size:0.8em" %> |
-					<span style="font-size:0.8em"><%= user.followed_users.count %></span>
-					<%= link_to "Following", user_path(user), remote: true, style: "font-size:0.8em" %>
-				<% end %>
-			</p>
+	  <div class="span4" style="margin-left:2em">
+	    <span id="users_nickname"><%= link_to user.nickname, user_path(user) %></span><br /> 
+	    <span id="users_role"><%= user.roles.first.name %></span><br />
+	    <span id="users_location"><%= user.location %></span>
+      </div>
+	  <div class="span1 offset2">
 	  	<% unless current_user?(user) %>
 	  	  <div style="margin-top:0.5em" id="form_index_<%= user.id %>" %>
 	  	    <% if !current_user.following?(user) %>
@@ -38,7 +25,7 @@
 		    <% end %>
 		  </div>
 		<% end %>
-	  	</div>
+	  </div>
 	</div>
   <hr>
 <% end %>
