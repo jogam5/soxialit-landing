@@ -1,3 +1,4 @@
+<li style="list-style:none" class="users">
 <div class="row">
   <div style="margin-top:1%; margin-left:50px" class="span1">
 	<% if !user.picture.present? %>
@@ -27,6 +28,8 @@
 				<%= link_to "Following", user_path(user), remote: true, style: "font-size:0.8em" %>
 			<% end %>
 		</p>
+  </div>
+  <div class="span1 offset2">
   	<% unless current_user?(user) %>
   	  <div style="margin-top:0.5em; color:white" id="form_index_<%= user.id %>" >
   	    <% if !current_user.following?(user) %>
@@ -38,4 +41,5 @@
 	<% end %>
   </div>
 </div>
+</li>
 <hr />

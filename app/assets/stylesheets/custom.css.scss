@@ -1501,20 +1501,9 @@ ul.comments_new{
 
 /* Friends User_Steps */
 
-#friends_end{
+#user_steps_friends{
 	text-align:right;
-	margin-bottom:3em;
-	 a{
-	border: 1px dotted black;
-	padding:4px;
-	color:$rojo;
-	font-size:1.4em;
-	font-weight:lighter;
-	}
-	 a:hover{
-	color: black;
-	text-decoration: none;
-	}
+	margin:1em 1em 3em 3em;
 }
 
 /* Friends User_Steps  END */

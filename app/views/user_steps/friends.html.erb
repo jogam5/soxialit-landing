@@ -1,5 +1,24 @@
 <div id="ajax-status" style="float:left; position:absolute; display:none; margin: 0% 33%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
-<p id="friends_end"><%= link_to 'Terminar', next_wizard_path %></p>
-<% if @users.any? %>
-  <%= render @users %>
-<% end %>
+<div class="row">
+  <div class="span10">
+  	<p id="main_header_menu" style="text-align:center; color:#777">¡Te presentamos a tus nuevos mejores amigos!</p>
+  </div>
+  <div class="span1">
+    <div class="numberCircleOff">1</div>
+    <p style="text-align:center">Nickname<br/>y Perfil</p>
+  </div>
+  <div class="span1">
+    <div class="numberCircleOn">2</div>
+    <p style="text-align:center"><b>Amigos</b></p>
+  </div>
+</div>
+<p id="user_steps_friends"><%= link_to 'Finalizar', next_wizard_path, :class => "button-want" %></p>
+<div class="row">
+  <div class="span10">
+  	<% if @users.any? %>
+  	  <ul>
+  		<%= render @users %>
+  	  </ul>
+    <% end %>
+  </div>
+</div>
