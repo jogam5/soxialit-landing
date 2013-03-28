@@ -2,7 +2,7 @@
 	<% if feed_item.activitable_type == "Product" && feed_item.action == "create" %>	
 	  <div id="product_background">
 		<div style="margin-left:10px">
-			<%= link_to image_tag(feed_item.activitable.picture), product_path(feed_item.activitable) %>
+			<%= link_to image_tag(feed_item.activitable.paintings.first.image_url(:feed)), product_path(feed_item.activitable) %>
 		</div>
 	  </div>
 	  <%= render :partial => 'feed/likes', :locals => { :feed_item => feed_item } %>
