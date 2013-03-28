@@ -1,4 +1,4 @@
-<div class="row"> 
+<div class="row">
   <div style="margin-top:1%; margin-left:50px" class="span1">
 	<% if !user.picture.present? %>
 		<%= link_to image_tag("http://graph.facebook.com/#{user.uid}/picture?type=square", 
@@ -28,7 +28,7 @@
 			<% end %>
 		</p>
   	<% unless current_user?(user) %>
-  	  <div style="margin-top:0.5em" id="form_index_<%= user.id %>" >
+  	  <div style="margin-top:0.5em; color:white" id="form_index_<%= user.id %>" >
   	    <% if !current_user.following?(user) %>
 	      <%= render :partial => 'shared/follow_user', :locals => { :user => user } %>
 		<% else %>

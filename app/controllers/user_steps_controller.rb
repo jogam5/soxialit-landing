@@ -1,7 +1,7 @@
 class UserStepsController < ApplicationController
 	include Wicked::Wizard
 	#before_filter :authenticate_user!
-	before_filter :check_signup
+	#before_filter :check_signup
 
 	steps :personal, :friends
 

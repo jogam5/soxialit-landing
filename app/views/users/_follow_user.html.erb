@@ -1,5 +1,5 @@
 <%= form_for(current_user.relationships.build(followed_id: @user.id),
              remote: true) do |f| %>
   <div><%= f.hidden_field :followed_id %></div>
-  <%= link_to 'Follow', "#", :onclick => "$('#form_index_#{@user.id}').find('form').submit()", :style => "color:#777; font-size:0.8em", :class => "follow" %>
+  <%= link_to 'Follow', "#", :onclick => "$('#form_index_#{@user.id}').find('form').submit()", :style => "color:white", :id => "user_follow_button" %>
 <% end %>
