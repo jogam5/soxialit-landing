@@ -6,24 +6,26 @@
 		 class="navbar-inner">
 			<div class="container">
 				<span class="span6">
-					<div id="titleProfile"><%= link_to "Soxialit", root_url %></div>
+					<div id="titleProfile"><%= link_to "Soxialit ", root_url %></div>
 				</span>
 				<nav>
 				  <ul class="nav pull-right">
 					<% if user_signed_in? %>
-						<li class="divider-vertical"></li>
-					    <li id="feedback_header">
+						<li class=""></li>
+					    <li id="home_nav_bar">
 							<%= link_to 'CONECTA', users_path %>
 					   	</li>
-					   	<li class="divider-vertical"></li>
-					    <li id="feedback_header">
-							<%= link_to "EXPLORA", microposts_path, :title => "Todos los Posts" %>
+					   	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					    <li id="home_nav_bar">
+							<%= link_to "DESCUBRE", microposts_path, :title => "Todos los Posts" %>
 					   	</li>
+					   	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 						<li style="margin-right:0" class="divider-vertical"></li>
-					    <li class="feedback_header" style="background-color:red; padding: 0 5px 8px 5px;">
+					    <li class="home_nav_bar" style="background-color:red; padding: 0 5px 8px 5px;">
 			            	<%= link_to image_tag('link_blanco.png', style:"width:20px").html_safe, modal_post_path,  {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
 					   	</li>
 						<li style="margin-left:0" class="divider-vertical"></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 						<li><% if !current_user.picture.present? %>
 							<%= link_to image_tag("http://graph.facebook.com/#{current_user.uid}/picture?type=square", 
 										width: 35, height: 35, :id =>  "navbar_small_picture"), user_path(current_user) %>
@@ -52,49 +54,36 @@
 					        </li>
 					<% else %>
 						
-						<li id="signin"><%= link_to "EXPLORA", microposts_path,
+						<li id="home_nav_bar"><%= link_to "EXPLORA", microposts_path,
 							:onmousedown => "_gaq.push(['_trackEvent', 'Home', 'Header', 'todos los posts']);" %></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 						<li class="divider-vertical" style="color:yellow"></li>
-						<li id="signin"><%= link_to "INGRESAR", user_omniauth_authorize_path(:facebook), style: "font-size:0.8em"%></li>
+						<li id="home_nav_bar"><%= link_to "Inicia Sesión", user_omniauth_authorize_path(:facebook), style: "font-size:0.9em"%></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 						<li class="divider-vertical" style="color:yellow; margin:0px"></li>
 						<li style="background: red; margin-top: -7px; padding: 7.8px;">
 							<%= link_to "CREA TU CUENTA", user_omniauth_authorize_path(:facebook), 
-					:onmousedown => "_gaq.push(['_trackEvent', 'Home', 'Header', 'crear cuenta']);", style:"color:white; font-size:0.8em" %>
+					:onmousedown => "_gaq.push(['_trackEvent', 'Home', 'Header', 'crear cuenta']);", style:"color:white; font-size:1em" %>
 						</li>
 	   				<% end %>
               	  </ul>
               	</nav>
 			</div>
 		</div>
-		<div id="profile_nav_botton"></div>
 </header>
-<!--<% if !user_signed_in? %>
-	<div id="banner">
-		<div style="float:left; font-size:1.1em; font-family:acta-display, Helvetica-Neue">
-			<p>Soxialit es una red social de artistas, creativos y personas que aman la moda.</p>
-		</div>
-		<div style="float:right">
-			<%= link_to "Crea tu cuenta", user_omniauth_authorize_path(:facebook), class: "button-want", 
-					:onmousedown => "_gaq.push(['_trackEvent', 'Home', 'Header', 'crear cuenta']);" %>
-		</div>
-		<div style="float:right; margin-right:2%">
-			<div id="signup"><%= link_to "Iniciar Sesión", user_omniauth_authorize_path(:facebook), style:"font-size: 1.1em" %></div>
-		</div>
-	</div>
-<% end %> -->
 
 <script>
-		$('#fat-menu').click(function(){
-			$('#profile_menu').toggle();
-			
-		});
+	$('#fat-menu').click(function(){
+		$('#profile_menu').toggle();
 		
-		$('#anchor_edit').click(function(){
-			event.cancelBubble = true;
-		});
-		
-		$('body').live("click",function(){
-			$('#profile_menu').hide();
-		});
+	});
+	
+	$('#anchor_edit').click(function(){
+		event.cancelBubble = true;
+	});
+	
+	$('body').live("click",function(){
+		$('#profile_menu').hide();
+	});
 	
 </script>

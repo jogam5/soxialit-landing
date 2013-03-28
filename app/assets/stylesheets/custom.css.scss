@@ -356,10 +356,12 @@ margin-top: 3%;
 }
 
 #titleProfile{
-	font-family:Lobster, Raleway, Helvetica, Sans-Serif;
+	font-family:Lobster, acta-display, Helvetica-Neue, Helvetica, Sans-Serif;
 	font-size:2em;
+	font-weight:lighter;
 	margin-top:2%;
 	 a{
+	font-weight:lighter;
 	text-decoration:none;
 	color:white;
 	}
@@ -545,10 +547,10 @@ margin-top: 3%;
 }
 /************************** Profile on blocks END */
 
-/* Feedback */
+/* Home Nav Bar **********************************/
 
-#feedback_header{
-	font-family:acta-display, Helvetica-Neue, Helvetica, Arial, Sans-serif;
+#home_nav_bar{
+	font-family:Helvetica-Neue, Helvetica, nimbus-sans, Arial, Sans-serif;
 	 a{
 	color:whiteSmoke;
 	font-weight:300;
@@ -559,12 +561,11 @@ margin-top: 3%;
 	}
 }
 
-
-#feedback_header .active{
+#home_nav_bar .active{
 	color:$rojo;
 }
 
-/* Feedback */
+/* Home Nav Bar *********************************/
 
 /* Footer */
 
@@ -1366,15 +1367,13 @@ ul.comments_new{
 
 }
 
-
-
 /* Menu About ****************/
 
 /* Footer Unsigned */
 
 #unsigned{
 	background-color:black;
-	padding:5em 1em 1em 1em;
+	padding:2em 1em 1em 1em;
 	color:whiteSmoke;
 	font-weight:lighter;
 	 a{
@@ -1399,7 +1398,7 @@ ul.comments_new{
 	}
 	 p{
 	font-size:1.4em;
-	color:#777;
+	color:#999;
 	}
 }
 
