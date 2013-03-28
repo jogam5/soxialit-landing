@@ -1,2 +1,7 @@
 $('#user_roles').html("<%= escape_javascript(render :partial => 'user_fotografo', :object => @fotografos) %>");
 
+$(function(){
+	$('#user_unfollow_button').bind('click', function(e){
+	  e.preventDefault(); // Prevent link from following its href
+	});
+});

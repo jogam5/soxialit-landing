@@ -48,7 +48,9 @@
 </div>
 
 <div style="display:block; margin-top: 2%" id="contenedor" class="clearfix masonry">
-	<!--<%= render @microposts %> -->
+	<% if browser.firefox? %>
+		<%= render @microposts %>
+	<% end %>
 </div>
 
 <div style="display:none"><%= will_paginate(@microposts)%></div>
@@ -104,6 +106,14 @@ $(function() {
 			});
 		}
 	});
+});
+
+$(function(){
+	setTimeout(function(){
+		var wall = new Masonry( document.getElementById('contenedor') );
+		wall.reload();
+		$('.show_more').show();
+	}, 4000);
 });
 
 

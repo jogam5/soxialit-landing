@@ -65,6 +65,9 @@ gem 'client_side_validations'
 #Pagination
 gem 'will_paginate', '> 3.0'
 
+#browser detection
+gem "browser" 
+
 group :development, :test do
   gem 'sqlite3', '1.3.5'
   gem 'rspec-rails', '2.11.0'
