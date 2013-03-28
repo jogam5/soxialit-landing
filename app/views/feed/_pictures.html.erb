@@ -3,7 +3,7 @@
 		<span id="product_title"><%= feed_item.activitable.title %></span><br/>
 		<span id="product_price">$<%= feed_item.activitable.price %>0</span><br/ >
 		<span id="product_designer">
-			<%= link_to  feed_item.activitable.brand, user_path(feed_item.activitable.user) %>
+			<%= link_to  feed_item.activitable.brand, products_path %>
 		</span>
 	</div>
 	
