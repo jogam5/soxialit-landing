@@ -25,7 +25,7 @@
   <div class="span10 offset4">
   	<div style="padding:2em">
       <p id="user_menu">
-      	<%= link_to "Actividad", muro_path(@user), remote: true %> | 
+      	<%= link_to "Actividad", muro_path(@user), remote: true, style:"color:red; border-bottom: 1px solid red" %> | 
       	<%= link_to "Favoritos", favorites_path(@user), remote: true %> | 
       	<%= link_to "Bio", biografia_path(@user), remote: true %> |
       	<span id="user_menu_social">
