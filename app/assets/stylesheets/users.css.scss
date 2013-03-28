@@ -244,3 +244,56 @@ $rojo:#DD390D;
     font: 32px Arial, sans-serif
 }
 
+#user_unfollow_button{
+  border: 0;
+  border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  padding: .3em 1em .3em;
+  box-shadow: none;
+  background: #4e5563;
+  color: white;
+  text-transform: uppercase;
+  margin-right: 10px;
+  text-shadow: none;
+  font-size: 0.8em;
+  line-height: 1;
+  font-weight: bold;
+  -webkit-transition: .1s ease-in background-color;
+  -webkit-font-smoothing: antialiased;
+}
+
+#user_unfollow_button:hover{
+  border: 0;
+  background:#111;
+  box-shadow: none;
+  -webkit-transition: .1s ease-in background-color;
+}
+
+#user_follow_button{
+  border: 0;
+  border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  padding: .3em 1em .3em;
+  box-shadow: none;
+  background: #db3c14;
+  color: white;
+  text-transform: uppercase;
+  margin-right: 10px;
+  text-shadow: none;
+  font-size: 0.8em;
+  line-height: 1;
+  font-weight: bold;
+  -webkit-transition: .1s ease-in background-color;
+  -webkit-font-smoothing: antialiased;
+}
+
+#user_follow_button:hover{
+  border: 0;
+  background:#ea471e;
+  box-shadow: none;
+  -webkit-transition: .1s ease-in background-color;
+}
+
+
