@@ -1,12 +1,5 @@
 <div id="ajax-status" style="float:left; position:absolute; display:none; margin: 0% 33%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
-<div class="row">
-  <div class="span12">
-  	<p id="main_header_menu">Descubre lo que otros amantes de la moda están compartiendo</p>
-  	<p id="friends_end"><%= link_to 'Terminar', next_wizard_path %></p>
-    <% if @users.any? %>
-      <ul id="followers">
-          <%= render @users %>
-      </ul>
-    <% end %>
-  </div>
-</div>
+<p id="friends_end"><%= link_to 'Terminar', next_wizard_path %></p>
+<% if @users.any? %>
+  <%= render @users %>
+<% end %>

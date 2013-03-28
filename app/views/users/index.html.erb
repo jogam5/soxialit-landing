@@ -13,8 +13,9 @@
 		<%= image_tag('like-active.png', style: "margin-left:22%; margin-bottom: 5%") %>
   </div>
   <div id="user_roles">
-	<%= render :partial => 'user_fashionlover', :object => @fashionlovers %>
+	 <%= render :partial => 'user_fashionlover', :object => @fashionlovers %>
   </div>
+
 <% if user_signed_in? %>
  <% if current_user.roles.first.name == 'admin' %>
   <h1>Listing users</h1>
@@ -27,7 +28,6 @@
       <th></th>
       <th></th>
     </tr>
-
   <% @users.each do |user| %>
     <tr>
       <td><%= user.username %></td>
@@ -43,7 +43,6 @@
 <% end %>
 
 <script type="text/javascript">
-
 	$(function() {
 	  $('#ajax-status')
 	    .hide()  // hide it initially.
@@ -59,6 +58,4 @@ $(function(){
 	$('.follow').bind('click', function(e){
 	  e.preventDefault(); // Prevent link from following its href
 	});
-});
 </script>
-

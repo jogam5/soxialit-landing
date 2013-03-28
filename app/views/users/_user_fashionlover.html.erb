@@ -30,7 +30,7 @@
 				<% end %>
 			</p>
 	  	<% unless current_user?(user) %>
-	  	  <div style="margin-top:0.5em" id="form_index_<%= user.id %>" %>
+	  	  <div style="margin-top:0.5em" id="form_index_<%= user.id %>" >
 	  	    <% if !current_user.following?(user) %>
 		      <%= render :partial => 'shared/follow_user', :locals => { :user => user } %>
 			<% else %>
@@ -38,19 +38,19 @@
 		    <% end %>
 		  </div>
 		<% end %>
-	  	</div>
+	  </div>
 	  <div class="span6">
 	  	<% if !user.evaluations.first.nil? %>
 			<% user.evaluations.each_with_index do |lov, index| %>
 				<% break if index == 3 %>
 				<% if lov.target_type == "Product" %>
-				<div class="span1">	
-			  	  <%= link_to image_tag(find_foto(lov.target_id)), product_path(lov.target_id) %>
-				</div>
+				  <div class="span1">	
+			  	    <%= link_to image_tag(find_foto(lov.target_id)), product_path(lov.target_id) %>
+				  </div>
 				<% elsif lov.target_type == "Micropost" %>
-				<div class="span1">
-				  <%= link_to image_tag(find_micropost_image(lov.target_id), style:"width: 80px; height:auto"), micropost_path(lov.target_id), target: '_blank' %>
-				</div>
+				  <div class="span1">
+					<%= link_to image_tag(find_micropost_image(lov.target_id), style:"width: 80px; height:auto"), micropost_path(lov.target_id), target: '_blank' %>
+				  </div>
 				<% end %>
 			<% end %>
 		<% else %>
@@ -67,7 +67,7 @@
 				<% end %>
 			<% end %>
 		<% end %>
-		</div>
+	  </div>
 	</div>
   <hr>
 <% end %>

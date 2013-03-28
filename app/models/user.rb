@@ -173,7 +173,7 @@ class User < ActiveRecord::Base
   end
 
   def friends
-    User.all.shuffle.take(12)
+    User.all.shuffle.take(24)
   end
 
   def to_param
