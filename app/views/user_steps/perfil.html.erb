@@ -1,17 +1,4 @@
-<div class="row">
-  <div class="span6">
-    <p id="main_header_menu">Hola <span style="color:#DD390D"><%= @user.nickname %></span></p>
-    <p style="font-size:1.2em; font-weight:lighter; color:#777; font-family:nimbus-sans, Helvetica Neue; margin-bottom:4em">vamos a configurar tu cuenta en Soxialit</p>
-  </div>
-  <div class="span1 offset3">
-    <div class="numberCircleOn">1</div>
-    <p style="text-align:center">Nickname<br/>y Perfil</p>
-  </div>
-  <div class="span1">
-    <div class="numberCircleOff">2</div>
-    <p style="text-align:center">Amigos</p>
-  </div>
-</div>
+<p id="main_header_menu" style="margin-bottom:1.5em">¡Yay! Bienvenido a Soxialit</p>
 <div class="row">
   <div class="span6" id="edit_account_data">
     <div class="form-horizontal">
@@ -43,18 +30,10 @@
       <hr />
       <div class="control-group">
         <div class="controls">
-          <%= f.submit "Siguiente", :class => "button-want" %>
+          <%= f.submit "Crear Perfil", :class => "button-want" %>
         </div>
       </div>
      <% end %>
     </div>
   </div>
 </div>
-<script type="text/javascript">
-  mixpanel.people.identify("<%=@user.id%>");
-  mixpanel.people.set({
-    "$email": "<%=@user.email%>",
-    "$name": "<%=@user.username%>"
-  })
-  mixpanel.name_tag('<%=@user.username%>');
-</script>
