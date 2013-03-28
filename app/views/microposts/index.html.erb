@@ -108,6 +108,14 @@ $(function() {
 	});
 });
 
+$(function(){
+	setTimeout(function(){
+		var wall = new Masonry( document.getElementById('contenedor') );
+		wall.reload();
+		$('.show_more').show();
+	}, 4000);
+});
+
 
 $(function() {
   $('body').bind('ajaxComplete', function() {
