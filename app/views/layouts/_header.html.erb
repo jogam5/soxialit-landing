@@ -13,11 +13,11 @@
 					<% if user_signed_in? %>
 						<li class=""></li>
 					    <li id="home_nav_bar">
-							<%= link_to 'CONECTA', users_path, :title => "Conecta con la comunidad" %>
+							<%= link_to 'CONECTA', users_path, id:"index_users", :title => "Conecta con la comunidad" %>
 					   	</li>
 					   	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 					    <li id="home_nav_bar">
-							<%= link_to "DESCUBRE", microposts_path, :title => "Todos los Posts" %>
+							<%= link_to "DESCUBRE", microposts_path, id:"index_microposts", :title => "Todos los Posts" %>
 					   	</li>
 					   	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 						<li style="margin-right:0" class="divider-vertical"></li>
