@@ -80,10 +80,16 @@ $(function(){
   $('.new_comment textarea').bind('keyup', function() { 
     if (event.keyCode == 13) {
       $(this).closest('form').submit();
-      
-        }
+    }
   });
 });
 
-
+$(function(){
+    $('#user_menu').find('a').live('click', function(){
+      $('#user_menu').find('a').css('color', 'black');
+      $('#user_menu').find('a').css('border', 'none');
+      $(this).css('color', 'red');
+      $(this).css('border-bottom', '1px solid red')
+    });
+  });
 </script>

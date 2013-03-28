@@ -13,7 +13,7 @@
 					<% if user_signed_in? %>
 						<li class=""></li>
 					    <li id="home_nav_bar">
-							<%= link_to 'CONECTA', users_path %>
+							<%= link_to 'CONECTA', users_path, :title => "Conecta con la comunidad" %>
 					   	</li>
 					   	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 					    <li id="home_nav_bar">
@@ -28,7 +28,7 @@
 						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 						<li><% if !current_user.picture.present? %>
 							<%= link_to image_tag("http://graph.facebook.com/#{current_user.uid}/picture?type=square", 
-										width: 35, height: 35, :id =>  "navbar_small_picture"), user_path(current_user) %>
+										width: 35, height: 35, :id =>  "navbar_small_picture"), user_path(current_user), :title => "Revisa tu perfil" %>
 						<% else %>
 							<%= link_to image_tag(current_user.picture_url(:thumb_profile), 
 										width: 35, height: 35, :id => "navbar_small_picture"), user_path(current_user) %>
@@ -55,15 +55,15 @@
 					<% else %>
 						
 						<li id="home_nav_bar"><%= link_to "EXPLORA", microposts_path,
-							:onmousedown => "_gaq.push(['_trackEvent', 'Home', 'Header', 'todos los posts']);" %></li>
+							:onmousedown => "_gaq.push(['_trackEvent', 'Home', 'Header', 'todos los posts']);", :title => "Todos los Posts" %></li>
 						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 						<li class="divider-vertical" style="color:yellow"></li>
-						<li id="home_nav_bar"><%= link_to "Inicia Sesión", user_omniauth_authorize_path(:facebook), style: "font-size:0.9em"%></li>
+						<li id="home_nav_bar"><%= link_to "Inicia sesión", user_omniauth_authorize_path(:facebook), style: "font-size:0.9em", :title => "Ingresa"%></li>
 						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 						<li class="divider-vertical" style="color:yellow; margin:0px"></li>
 						<li style="background: red; margin-top: -7px; padding: 7.8px;">
 							<%= link_to "CREA TU CUENTA", user_omniauth_authorize_path(:facebook), 
-					:onmousedown => "_gaq.push(['_trackEvent', 'Home', 'Header', 'crear cuenta']);", style:"color:white; font-size:1em" %>
+					:onmousedown => "_gaq.push(['_trackEvent', 'Home', 'Header', 'crear cuenta']);", style:"color:white; font-size:1em", :title => "Únete a la comunidad" %>
 						</li>
 	   				<% end %>
               	  </ul>
