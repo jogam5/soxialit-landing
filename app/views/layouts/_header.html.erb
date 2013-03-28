@@ -5,13 +5,18 @@
 				background: -moz-linear-gradient(top, black, black);"
 		 class="navbar-inner">
 			<div class="container">
-				<span class="span6">
+				<span class="span5">
 					<div id="titleProfile"><%= link_to "Soxialit ", root_url %></div>
 				</span>
 				<nav>
 				  <ul class="nav pull-right">
 					<% if user_signed_in? %>
 						<li class=""></li>
+					    <li id="home_nav_bar">
+							<%= link_to '7-PAULINE', "http://soxialit.com/las7depauline", 
+															:title => "7 historias de la semana" %>
+					   	</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 					    <li id="home_nav_bar">
 							<%= link_to 'CONECTA', users_path, id:"index_users", :title => "Conecta con la comunidad" %>
 					   	</li>
@@ -53,7 +58,9 @@
 					              </ul>
 					        </li>
 					<% else %>
-						
+						<li id="home_nav_bar">
+							<%= link_to '7-PAULINE', "http://soxialit.com/las7depauline" %></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 						<li id="home_nav_bar"><%= link_to "EXPLORA", microposts_path,
 							:onmousedown => "_gaq.push(['_trackEvent', 'Home', 'Header', 'todos los posts']);", :title => "Todos los Posts" %></li>
 						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
