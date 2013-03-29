@@ -71,13 +71,13 @@ $('#micropost_search input').keydown(function(e) {
     if (e.keyCode == 13) {
 	    e.preventDefault();
         $(this).closest('form').submit();
-		$('#contenedor').html('');
+		$('#contenedor').empty();
 		$('#micropost_search')[0].reset();
     }
 });
 
 $('#search-button').bind('click', function(e){
-	$('#contenedor').html('');
+	$('#contenedor').empty();
 	$('#micropost_search input').closest('form').submit();
 	$('#micropost_search')[0].reset();
 });
