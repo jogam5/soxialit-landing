@@ -80,7 +80,7 @@
     </div>
     <br />
   	<div style="padding:5%; margin-right:-4%; margin-top:-7%; margin-bottom:5%">
-     <% if !@micropost.tag_list.first.nil?
+     <% if !@micropost.tag_list.first.nil? %>
         <p class="tags">TAGS:</p>
            <li class="taging" style="width:300px"><%= raw @micropost.tag_list.map { |t| link_to t, tag_path(t) }.join(' ') %></li>
       <% end %>
