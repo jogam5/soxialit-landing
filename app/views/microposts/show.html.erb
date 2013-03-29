@@ -81,7 +81,7 @@
     <br />
   	<div style="padding:5%; margin-right:-4%; margin-top:-7%; margin-bottom:5%">
       <p class="tags">TAGS:</p>
-         <li class="taging" style="300px"><%= raw @micropost.tag_list.map { |t| link_to t, tag_path(t) }.join(' ') %></li>
+         <li class="taging" style="width:300px"><%= raw @micropost.tag_list.map { |t| link_to t, tag_path(t) }.join(' ') %></li>
      	  <span style="float:right;  display:block">
 				  <div class="fb-like" data-href="" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false"></div>
 			  </span>
