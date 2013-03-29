@@ -1,6 +1,6 @@
 	<% if !feed_item.activitable.tag_list.first.nil? %>
     	<div style="color:#999; font-size:0.9em; font-weight: lighter;">TAGS: </div>
-    		<span class="taging"><%= raw feed_item.activitable.tag_list.map { |t| link_to t, tag_path(t) }.join(' ') %></span>
+    		<div style="width: 350px; float: left;" class="taging"><%= raw feed_item.activitable.tag_list.map { |t| link_to t, tag_path(t) }.join(' ') %></div>
     <% end %>
     <% if signed_in? %>
 
