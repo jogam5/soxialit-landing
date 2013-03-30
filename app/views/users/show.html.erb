@@ -64,8 +64,10 @@ $(document).ready(function(){
 });
 
 $(function(){
-  $('.user_follow').bind('click', function(e){
-    e.preventDefault(); // Prevent link from following its href
+  $('body').bind('ajaxComplete', function() {
+    $('.user_follow').bind('click', function(e){
+      e.preventDefault(); // Prevent link from following its href
+    });
   });
 });
 /*
