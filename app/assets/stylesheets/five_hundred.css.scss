@@ -1,0 +1,132 @@
+@import "bootstrap";
+
+$rojo:#DD390D;
+$oro:#F6C851;
+
+body{ 
+  	font-family:Helvetica Neue, Helvetica, nimbus-sans;
+}
+
+#intro{
+	background:black;
+	color:whiteSmoke;
+	height:630px;
+
+}
+
+#brand{
+	font-family:Lobster;
+	font-size:6em;
+	margin-top:1em;
+	text-align:center;
+}
+
+#subtitle{
+	font-family:Helvetica Neue, Helvetica, nimbus-sans;
+	font-weight:100;
+	font-size:2em;
+	color:#999;
+	margin-top:2em;
+	text-align:center;
+	line-height:1.5em;
+
+}
+
+#problem{
+	background:white;
+	color:black;
+	height:620px;
+}
+
+#problem_title{
+	font-weight:600;
+	font-size:3em;
+	padding-top:1em;
+}
+
+#problem_description{
+	font-size:1.2em;
+	font-weight:300;
+	line-height:1.2em;
+}
+
+#problem_image{
+	img{
+	margin-top:-40px;
+	margin-left:20px;
+	}
+}
+
+#ud{
+	text-decoration:underline;
+}
+
+#solution{
+	background:black;
+	color:white;
+	height:1200px;
+}
+
+#solution_description{
+	font-size:1.2em;
+	font-weight:300;
+	line-height:1.2em;
+	color:#999;
+}
+
+#market{
+	background:white;
+	color:black;
+	height:900px;
+}
+
+#differentiation{
+	background:black;
+	color:white;
+	height:750px;
+}
+
+#team{
+	background:white;
+	color:black;
+	height:750px;
+}
+
+#sofar{
+	background:black;
+	color:white;
+	height:650px;
+}
+
+#sofar_description{
+	font-size:1.4em;
+	font-weight:300;
+	line-height:1.2em;
+	color:#DDD;
+	margin-bottom:1em;
+	margin-left:20px;
+}
+
+#money{
+	background:white;
+	color:black;
+	height:650px;
+}
+
+#end{
+	background:black;
+	color:white;
+	height:570px;
+	font-weight:600;
+	font-size:5em;
+	padding-top:1em;
+	line-height:1em;
+}
+
+#end_sox{
+	color:white;
+	font-size:22px;
+	text-align:left;
+	font-family:Helvetica Neue;
+	font-weight:100;
+}

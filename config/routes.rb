@@ -97,12 +97,7 @@ DeviseFacebook::Application.routes.draw do
   match "faq", to:'static_pages#faq'
   match "registro", to: 'static_pages#registro'
   match "tanyamulki", to: 'static_pages#test'
-  #match "biografia", to:'static_pages#biografia'
-  #match "items", to:'static_pages#items'
-  #match "biografia1", to:'static_pages#biografia1'
-  #match "items1", to:'static_pages#items1'
-  #match "biografia2", to:'static_pages#biografia2'
-  #match "items2", to:'static_pages#items2'
+  match "500mx", to: 'five_hundred#fivehundred'
 
   match "las7depauline", to:'static_pages#las7depauline'
   match "team", to:'static_pages#team'

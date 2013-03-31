@@ -142,4 +142,7 @@ class StaticPagesController < ApplicationController
      #@test = [Micropost.find(25)]
      @newsletter = @microposts.paginate(:page => params[:page], :per_page => 7)
   end  
+
+  def fivehundred
+  end
 end
