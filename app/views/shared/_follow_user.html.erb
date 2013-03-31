@@ -2,5 +2,5 @@
              remote: true) do |f| %>
   <div><%= f.hidden_field :followed_id %></div>
   <%= link_to 'Follow', "#", :onclick => "$('#form_index_#{user.id}').find('form').submit()", :style => "color:white", 
-  			:id => "user_follow_button" %>
+  			:id => "user_follow_button", class: "user_follow" %>
 <% end %>

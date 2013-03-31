@@ -18,7 +18,7 @@
 				<div class="span6">
 					<%= render :partial => 'feed/headline', :locals => { :feed_item => feed_item } %>
 					<br />
-					<div class="red_bar" style="background:black"></div>
+					<div class="red_bar" style="margin-top:6%; background:black"></div>
 					<% unless feed_item.activitable_type == "User" %>
 				      <%= render :partial => 'feed/comments', :locals => { :feed_item => feed_item } %>
 				  	<% end %>
