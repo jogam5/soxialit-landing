@@ -7,7 +7,7 @@
 
 	<% @newsletter.each do |news| %>
 	<div class="row">
-		<div class="span4">
+		<div class="span7">
 			<%= link_to image_tag(news.thumbnail), news.url, :target => "_blank" %>
 		</div>
 		<div class="span4">
@@ -18,6 +18,6 @@
 			<iframe style="margin-top:6%" src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fsoxialit.com%2Fmicroposts%2F<%= news.id %>&amp;send=false&amp;layout=box_count&amp;width=450&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=90&amp;appId=235628993153454" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:90px;" allowTransparency="true"></iframe>
 		</div>
 	</div>
-	<br/ ><br/ >
+	<br/ ><br/ ><br />
 	<% end %>
 <% end %>
