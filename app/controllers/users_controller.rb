@@ -128,6 +128,11 @@ class UsersController < ApplicationController
      @user = User.find(params[:user_id])
   end
   
+  def coleccion
+    @user = User.find_by_username(params[:username])
+    @galleries = @user.galleries.all
+  end
+
   def list_projects
      #@user = User.find(params[:id])
      @user = User.find_by_username(params[:username])

@@ -1,0 +1,16 @@
+<%= form_for(@gallery) do |f| %>
+<!--    <%= f.hidden_field :token %> -->
+  <div id="galleries" class="field">
+    <p style="font-size:1.8em; margin-bottom:0.8em; margin-top:2em"><span style="font-size:1.1em; margin-right:0.8em"></span>Edita tu colección <strong><%= @gallery.name %></strong>
+      <span style="float:right"><%= link_to "Eliminar", @gallery, method: :delete, data: {confirm: '¿Estás seguro?'}, :class => "btn" %>
+    <p>
+    <hr>  
+    <p style="font-size:1.8em; margin-bottom:0.8em; margin-top:2em">Nombre:  <%= f.text_field :name, style: "margin-left:10%" %></p>
+    <p style="font-size:1.8em; margin-bottom:0.8em; margin-top:2em">Descripción: <%= f.text_area :description, class: "span3", rows: "3", style:"margin-left: 5%" %>
+    </p>
+  </div>
+  <hr>
+  <div style="float:left; margin-right:5%" class="actions">
+    <%= f.submit "Actualizar", :class => 'button-want' %>
+  </div>
+<% end %>

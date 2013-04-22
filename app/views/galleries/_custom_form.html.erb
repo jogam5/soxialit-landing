@@ -1,0 +1,27 @@
+    <%= form_for(@gallery, :remote => true) do |f| %>
+  <!--    <%= f.hidden_field :token %> -->
+      <div id="galleries" class="control-group">
+          <p>Selecciona una colección</p>
+        <%= f.collection_select :user_id, @galleries, :id, :name %>
+      </div>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <p id="collection"><ins>Crear nueva colleción</ins></a>
+      <div style="display:none" id="new_collection" class="control-group">
+        <%= f.label :name, "Nueva colección" %>
+        <%= f.text_field :name, style: "width:110px" %>
+        <%= f.submit "Crear colección", :class => 'btn btn-mini', style: "margin-top:-10px" %>
+    <% end %>
+ <script type="text/javascript">
+
+$(function () {
+    $("#gallery_user_id").live("change", function () {
+      $('#pin_gallery_id').val($('#gallery_user_id').val());
+      $('#gallery_user_id').blur();
+      console.log($('#pin_gallery_id').val());
+      $('#pinit').show();
+    });
+    $("#collection").live('click', function(){
+      $('#new_collection').show();
+    });
+});
+</script>

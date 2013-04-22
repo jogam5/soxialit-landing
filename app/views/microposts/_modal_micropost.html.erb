@@ -61,7 +61,7 @@
 			<p id="description_micropost" style="color:#555"><%= @micropost.description %></p>
 			<div id="micropost_leer_mas" style="margin-bottom:1em"><%= link_to "Leer más", @micropost.url, target: '_blank' %>
 			</div>
-            <span style="color:#999">vía</span> <%= link_to @micropost.provider, @micropost.provider, target: '_blank' %>
+		    <span style="color:#999">vía</span> <%= link_to @micropost.provider, @micropost.provider, target: '_blank' %>
             <div style="color:#999; font-size:0.9em; font-weight: lighter;">TAGS: </div>
             	<li class="taging"><%= raw @micropost.tag_list.map { |t| link_to t, tag_path(t) }.join(' ') %></li>
            	<div style="margin-right: 28%; margin-top:15%">
