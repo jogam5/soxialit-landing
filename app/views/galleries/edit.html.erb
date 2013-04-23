@@ -1,0 +1,7 @@
+<% if current_user == @user || current_user.roles.first.name == 'admin' %>
+	<%= render 'form' %>
+	<%= link_to 'Cancelar', galleries_path, class: "btn" %>
+<% else %>
+	<h1>Lo sentimos! No puedes acceder a esta página</h1>
+	<%= link_to "Regresar a mi Perfil", user_path(current_user) %>
+<% end %>

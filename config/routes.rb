@@ -1,5 +1,9 @@
 DeviseFacebook::Application.routes.draw do
  
+  resources :pins
+
+  resources :galleries
+
   resources :newsletters
 
   resources :sources
@@ -43,6 +47,8 @@ DeviseFacebook::Application.routes.draw do
   match "items/:username" => "users#items", :as => "items"
   match "muro/:username" => "users#muro", :as => "muro"
   match "biografia/:username" => "users#biografia", :as => "biografia"
+  match 'coleccion/:username' => "users#coleccion", :as => "coleccion"
+
   #get '/muro', to: 'users#muro'
 
   resources :feedbacks
@@ -71,7 +77,8 @@ DeviseFacebook::Application.routes.draw do
   match 'preview', to: 'static_pages#preview'
   get '/modal_micropost', to: 'microposts#modal_micropost'
   get '/modal_post', to: 'static_pages#modal_post'
-  
+  get '/collect', to: 'microposts#collect'
+
   
  # get users/index
   get '/designer', to: 'users#designer'
@@ -80,7 +87,7 @@ DeviseFacebook::Application.routes.draw do
   get '/blogger', to: 'users#blogger'
   get '/fotografo', to: 'users#fotografo'
   get '/bio', to: 'users#bio'
-  
+
  # get 'paypal/checkout', to: 'products#paypal_checkout'
   get 'paypal/checkout', to: 'pays#paypal_checkout'
   get 'mercadopago/checkout', to: 'products#mercadopago_checkout'

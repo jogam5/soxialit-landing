@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130323194045) do
+ActiveRecord::Schema.define(:version => 20130418042457) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -82,6 +82,25 @@ ActiveRecord::Schema.define(:version => 20130323194045) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "galleries", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "token"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "user_id"
+    t.string   "cover"
+  end
+
+  create_table "items", :force => true do |t|
+    t.string   "description"
+    t.integer  "gallery_id"
+    t.string   "gallery_token"
+    t.integer  "micropost_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "microposts", :force => true do |t|
@@ -166,6 +185,15 @@ ActiveRecord::Schema.define(:version => 20130323194045) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.boolean  "position"
+  end
+
+  create_table "pins", :force => true do |t|
+    t.string   "description"
+    t.integer  "gallery_id"
+    t.string   "gallery_token"
+    t.integer  "micropost_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "posts", :force => true do |t|

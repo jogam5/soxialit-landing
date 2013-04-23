@@ -113,6 +113,14 @@ class MicropostsController < ApplicationController
      @comments = @micropost.comments
   end
 
+  def collect
+     @micropost = Micropost.find(params[:micropost_id])
+     #@gallery = Gallery.new
+     #@gallery.token = @gallery.generate_token
+     @galleries = current_user.galleries
+     @pin = Pin.new
+  end
+
   def update
     @micropost = Micropost.find_by_id(params[:id])
     respond_to do |format|

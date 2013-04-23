@@ -1,0 +1,42 @@
+<% if !@galleries.nil? %>
+	<div id="contenedor" class="clearfix masonry" style="margin-left:-1%; width:870px">
+		<% @galleries.each do |gallery| %>
+			<div class="box photo col3 masonry-brick" id = "test">
+				<div class="frame_link_favorites">
+					<div style="max-width: 270px; position:relative; text-align:center; height:auto; padding:5% 5% 5% 5%">
+						<%= link_to image_tag(gallery.cover, style:"margin-left:5%; max-width: 90%; height:auto"), gallery %>
+						 <p id="title_link_modal">
+							<%= link_to truncate(gallery.name, :lenght => 35), gallery %>
+						  </p>
+						  <hr/ >
+						  <div style="height:80px; width: 250px; padding:0%;" id="micropost_description">
+						  	<div style="float:left; width: auto; height: auto">
+						  		<% if gallery.pins.any? %>
+									<% gallery.pins.each_with_index do |pin, index| %>
+										<% break if index == 3 %>
+											<div class="span1">
+												<%= link_to(image_tag(find_micropost_image(pin.micropost_id)), gallery) %>
+											</div>
+									<% end %>
+								<% end %>
+							</div>
+						  </div>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+<% end %>
+
+<script type="text/javascript">
+
+$('body').bind('ajaxComplete', function() {
+    setTimeout(function(){
+		var wall = new Masonry( document.getElementById('contenedor') );
+		wall.reload();
+	}, 2000);
+	$('#ajax-loading').hide();
+});
+
+
+</script>
