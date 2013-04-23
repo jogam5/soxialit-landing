@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130323194045) do
+ActiveRecord::Schema.define(:version => 20130418010301) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -91,14 +91,11 @@ ActiveRecord::Schema.define(:version => 20130323194045) do
     t.text     "description"
     t.string   "thumbnail"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "status"
     t.string   "picture"
   end
-
-  add_index "microposts", ["status"], :name => "index_microposts_on_status"
-  add_index "microposts", ["user_id"], :name => "index_microposts_on_user_id"
 
   create_table "newsletters", :force => true do |t|
     t.string   "title"
@@ -128,8 +125,6 @@ ActiveRecord::Schema.define(:version => 20130323194045) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "paintings", ["product_id"], :name => "index_paintings_on_product_id"
 
   create_table "partners", :force => true do |t|
     t.integer  "user_id"
@@ -309,8 +304,6 @@ ActiveRecord::Schema.define(:version => 20130323194045) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "sizes", ["product_id"], :name => "index_sizes_on_product_id"
-
   create_table "sizeships", :force => true do |t|
     t.integer  "product_id"
     t.integer  "size_id"
@@ -338,11 +331,14 @@ ActiveRecord::Schema.define(:version => 20130323194045) do
   end
 
   create_table "sourceships", :force => true do |t|
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
     t.integer  "micropost_id"
     t.integer  "source_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
+
+  add_index "sourceships", ["micropost_id"], :name => "index_sourceships_on_micropost_id"
+  add_index "sourceships", ["source_id"], :name => "index_sourceships_on_source_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
@@ -387,10 +383,12 @@ ActiveRecord::Schema.define(:version => 20130323194045) do
     t.boolean  "status",                 :default => true
     t.string   "cover"
     t.string   "biopic"
+    t.string   "gender"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["fb"], :name => "index_users_on_facebook"
+  add_index "users", ["gender"], :name => "index_users_on_gender"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["status"], :name => "index_users_on_status"
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
