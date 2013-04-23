@@ -1,31 +1,50 @@
 <% provide(:title, @user.nickname) %>
 <div id="ajax-loading" style="float:left; position:fixed; display:none; margin: 54px 755px; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
-<% if @user.role?(:admin) %>
-  <section>
-    <%= render 'users/profiles/admin' %>
-   </section>
-<% elsif @user.role?(:designer)  %>
-  <section>
-    <%= render 'users/profiles/designer' %>
-  </section>
-<% elsif @user.role?(:'fashion lover')  %>
-  <section>
-    <%= render 'users/profiles/fashionlover' %>
-  </section>
-<% elsif @user.role?(:'blogger')  %>	
-  <section>
-    <%= render 'users/profiles/blogger' %>
-  </section> 
-<% elsif @user.role?(:'fotografo')  %>
-  <section>
-    <%= render 'users/profiles/fotografo' %>
-  </section>  
-<% elsif @user.role?(:'boutique store')  %>
-  <section>
-    <%= render 'users/profiles/boutique' %>
-  </section>
-<% end %>
 
+<div class="row">
+  <div class="span4" id="about_menu" style="border-right: 1px solid rgba(0, 0, 0, 0.0976563)">
+    <div id="user_cover_photo">
+      <% if current_user == @user %>
+        <div class="user_edit">
+          <%= link_to "Editar", edit_user_path(@user) %>
+        </div>
+      <% end %>
+      <% if !@user.cover.present? %>
+        <%= image_tag("user_cover_photo_default.jpg") %>
+      <% else %>
+        <%= image_tag @user.cover_url(:cover) %>
+      <% end %>
+    </div>
+    <div id="user_profile_picture">
+      <%= render 'users/profiles/profile_picture' %>
+    </div>
+    <div id="user_profile_name">
+      <%= @user.nickname %>
+    </div>
+    <div id="user_profile_role">
+      <%= @user.roles.first.name %>
+    </div>
+  </div>
+  <div class="span10 offset4">
+    <div style="padding:2em">
+      <p id="user_menu">
+        <%= link_to "Actividad", muro_path(@user), remote: true%> | 
+        <%= link_to "Favoritos", favorites_path(@user), remote: true %> | 
+        <%= link_to "Bio", biografia_path(@user), remote: true %> |
+        <%= link_to "Colecciones", coleccion_path(@user), remote: true  %> |
+        <span id="user_menu_social">
+          <%= link_to "Following", following_user_path(@user), remote: true %> (<%= @user.followed_users.count %>) |
+          <%= link_to "Followers", followers_user_path(@user), remote: true, style:"color:red; border-bottom: 1px solid red"  %> (<%= @user.followers.count %>) 
+        </span>
+      </p>
+      <span><%= render 'follow_form' if user_signed_in? %></span>
+      <hr />
+      <div style="margin-top:2em" id="ajax">
+        <%= render 'users/show_follow' %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script type="text/javascript">
 mixpanel.track("User Profile Loaded")

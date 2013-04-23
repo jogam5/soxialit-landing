@@ -1,19 +1,14 @@
 <div style="display:block" id="micropost" class="box photo col3 masonry-brick">
 	<div style="display:block" class="frame_link_favorites">
 		<div style="max-width: 270px; position:relative; text-align:center; height:auto; padding:5% 5% 5% 5%">
-			<% if micropost.id > 450 %>
-				<% if !micropost.picture_url(:index).nil? %>
-					<%= link_to image_tag(micropost.picture_url(:index), style:"margin-left:5%; max-width: 90%; height:auto"),  modal_micropost_path(:micropost_id => micropost.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
-			
-				<% else %>
-					<%= link_to image_tag(micropost.thumbnail, style:"margin-left:5%; max-width: 90%; height:auto"),  modal_micropost_path(:micropost_id => micropost.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
+				<% if signed_in? %>
+					<% if current_user.roles.first.name == "admin" %>
+					<section class="collect_button" style="display:none; float:right; position:absolute; margin-top:5%; margin-left:60%">
+					<%= link_to "+ Colección", collect_path(:micropost_id => micropost.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, class: "btn btn-mini"} %>
+					<% else %>
+					<section class="collect_button" style="display:none; float:right; position:absolute; margin-top:5%; margin-left:80%">
+					<% end %>
 				<% end %>
-			<% else %>
-				<%= link_to image_tag(micropost.thumbnail, style:"margin-left:5%; max-width: 90%; height:auto"),  modal_micropost_path(:micropost_id => micropost.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
-
-			<% end %>
-			<section class="collect_button" style="display:none; float:right; position:relative; margin-top:-85%">
-				<%= link_to "+ Colección", collect_path(:micropost_id => micropost.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, class: "btn btn-mini"} %>
 				<div style="float:right; margin-top:10%">
 		  		<% if signed_in? %>
 					<div style="margin-right:-2%;" class="votacion" id="votacion_<%= micropost.id %>">
@@ -55,6 +50,18 @@
 				<% end %>
 			  </div>
 			</section>
+			<% if micropost.id > 450 %>
+				<% if !micropost.picture_url(:index).nil? %>
+					<%= link_to image_tag(micropost.picture_url(:index), style:"margin-left:5%; max-width: 90%; height:auto"),  modal_micropost_path(:micropost_id => micropost.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
+			
+				<% else %>
+					<%= link_to image_tag(micropost.thumbnail, style:"margin-left:5%; max-width: 90%; height:auto"),  modal_micropost_path(:micropost_id => micropost.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
+				<% end %>
+			<% else %>
+				<%= link_to image_tag(micropost.thumbnail, style:"margin-left:5%; max-width: 90%; height:auto"),  modal_micropost_path(:micropost_id => micropost.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
+
+			<% end %>
+			
 			<p id="title_link_modal">
 				<%= link_to micropost.title, micropost, target: '_blank' %>
 		  	</p>
