@@ -3,13 +3,13 @@
 		<div style="max-width: 270px; position:relative; text-align:center; height:auto; padding:5% 5% 5% 5%">
 				<% if signed_in? %>
 					<% if current_user.roles.first.name == "admin" %>
-					<section class="collect_button" style="display:none; float:right; position:absolute; margin-top:5%; margin-left:60%">
+					<section class="collect_button" style="display:none; float:right; position:absolute; margin-top:5%; margin-left:68%">
 					<%= link_to "+ Colección", collect_path(:micropost_id => micropost.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, class: "btn btn-mini"} %>
 					<% else %>
 					<section class="collect_button" style="display:none; float:right; position:absolute; margin-top:5%; margin-left:80%">
 					<% end %>
 				<% end %>
-				<div style="float:right; margin-top:10%">
+				<div style="float:right; margin-top:10%; margin-right: -22%">
 		  		<% if signed_in? %>
 					<div style="margin-right:-2%;" class="votacion" id="votacion_<%= micropost.id %>">
 						<% if micropost.user_id == current_user.id %>
