@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
-ActiveRecord::Schema.define(:version => 20130418042457)
+ActiveRecord::Schema.define(:version => 20130418042457) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -359,7 +358,6 @@ ActiveRecord::Schema.define(:version => 20130418042457)
     t.integer  "micropost_id"
   end
 
-<<<<<<< HEAD
   create_table "sourceships", :force => true do |t|
     t.integer  "micropost_id"
     t.integer  "source_id"
@@ -370,8 +368,6 @@ ActiveRecord::Schema.define(:version => 20130418042457)
   add_index "sourceships", ["micropost_id"], :name => "index_sourceships_on_micropost_id"
   add_index "sourceships", ["source_id"], :name => "index_sourceships_on_source_id"
 
-=======
->>>>>>> 60a21f7c2ca80d450893f507cf0f45d4254d33b9
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
