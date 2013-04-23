@@ -3,7 +3,7 @@ class UsersController < ApplicationController
                  :followers, :following, :fotografo, :boutique, :fashionlover, :blogger, :bio, :designer, :index, :ubicacion, :product_modal ]
   #before_filter :authenticate_user!, :only => [:index, :new, :edit, :create, :update]
   load_and_authorize_resource
-  layout "test", :only => [:show]
+  layout "test", :only => [:show, :coleccion, :biografia, :favorites, :muro, :following, :followers]
 
   def index
     #@users = User.all
@@ -110,24 +110,33 @@ class UsersController < ApplicationController
     #@user = User.find(params[:id])
     @user = User.find_by_username(params[:username])
     @users = @user.followed_users
-    respond_to do |format|
-      format.js
-    end
+    
   end
 
   def followers
     @user = User.find_by_username(params[:username])
     #@user = User.find(params[:id])
     @users = @user.followers
-    respond_to do |format|
-      format.js
-    end
+    
   end
   
   def bio
      @user = User.find(params[:user_id])
   end
   
+  def coleccion
+    @user = User.find_by_username(params[:username])
+    @galleries = @user.galleries.all
+     if @user.nil?
+       flash[:error] = "No se ha encontrado la URL."
+       redirect_to root_path
+     else
+       @products = product_ok(@user.products)
+       @activities = @user.activities.order("created_at DESC")
+       @comment = Comment.new
+    end
+  end
+
   def list_projects
      #@user = User.find(params[:id])
      @user = User.find_by_username(params[:username])
@@ -160,17 +169,11 @@ class UsersController < ApplicationController
 
   def biografia
     @user = User.find_by_username(params[:username])
-    respond_to do |format|
-      format.js
-    end
   end
 
   def favorites
     #@user = User.find(params[:id], :order => "created_at DESC")
     @user = User.find_by_username(params[:username], :order => "created_at DESC")
-    respond_to do |format|
-      format.js
-    end
   end
   
   def designer

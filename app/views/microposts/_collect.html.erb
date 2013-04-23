@@ -1,0 +1,66 @@
+<div class="modal-pin">
+  <div style="max-height: 620px" class="modal-body">
+  	<button type="button" class="close-button" data-dismiss="modal" aria-hidden="true">X</button>
+  		<div class="row">
+			<div class="span4">
+				<% if @micropost.id > 450 %>
+					<% if !@micropost.picture_url(:modal).nil? %>
+						<%= link_to image_tag(@micropost.picture_url(:modal)), @micropost.url, target: '_blank' %>
+					<% else %>
+						<%= link_to image_tag(@micropost.thumbnail, style: "max-height: 500px"), @micropost.url, target: '_blank' %>
+					<% end %>
+				<% else %>
+					<%= link_to image_tag(@micropost.thumbnail, style: "max-height: 500px"), @micropost.url, target: '_blank' %>
+				<% end %>
+			</div>
+			<div class="row">
+				<div class="span5">
+					<div class="span3">
+				  		<div id="collections" style="block">
+							<%= form_for(Gallery.new, :remote => true) do |f| %>
+						<!--	  <%= f.hidden_field :token %> -->
+							  <div id="galleries" class="control-group">
+							  	  <p>Selecciona una colección</p>
+								  <%= f.collection_select :user_id, @galleries, :id, :name %>
+							  </div>
+							  <%= f.hidden_field :user_id, :value => current_user.id %>
+							  <%= f.hidden_field :cover, :value => @micropost.thumbnail %>
+							  <p id="collection"><ins>Crear nueva colección</ins></a>
+							  <div style="display:none" id="new_collection" class="control-group">
+							  	<%= f.label :name, "Nueva colección" %>
+							  	<%= f.text_field :name, style: "width:110px" %>
+							    <%= f.submit "Crear colección", :class => 'btn btn-mini', style: "margin-top:-10px" %>
+							  </div>
+							<% end %>
+						</div>
+					</div>
+					<div style="margin-top:8%" class="span1">
+						<div id="pinit" style="display:none">
+							<%= form_for(@pin, :remote => true) do |f| %>
+								<%= f.hidden_field :gallery_id %>
+								<%= f.hidden_field :micropost_id, :value => @micropost.id %>
+							 	<%= f.submit "+ Colección", :class => 'btn' %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+$(function () {
+    $("#gallery_user_id").live("change", function () {
+    	$('#pin_gallery_id').val($('#gallery_user_id').val());
+	    $('#gallery_user_id').blur();
+    	console.log($('#pin_gallery_id').val());
+    	$('#pinit').show();
+    });
+    $("#collection").live('click', function(){
+    	$('#new_collection').show();
+    	console.log('test');
+    });
+});
+</script>

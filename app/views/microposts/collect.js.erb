@@ -1,0 +1,45 @@
+var y = window.pageYOffset;
+document.documentElement.style.overflowY = "hidden";
+
+window.onscroll = function(){
+	window.scroll(0, y);
+};
+/*
+$('#modal-micropost').show('slide', {}, 500);
+setTimeout(function() {
+	$('#modal-micropost').css('background-color', 'rgba(0, 0, 0, 0.298039)');	
+}, 500);
+*/
+$('#modal-pin').fadeIn('fast');
+setTimeout(function(){
+		$('#modal-pin').css('background-color', 'rgba(0, 0, 0, 0.298039)');	
+	}, 100);
+	
+$('#modal-pin').html("<%= escape_javascript(render :partial => 'collect', :object => @micropost) %>");
+$('#modal-pin').click(function(){
+	window.onscroll = null;
+	document.documentElement.style.overflowY = "scroll";
+});
+
+$(document).keyup(function(e) {
+  if (e.keyCode == 27) { 
+	//$('#modal-micropost').css('background-color', 'transparent')
+	$('#modal-pin').fadeOut('fast');
+	window.onscroll = null;
+	document.documentElement.style.overflowY = "scroll";
+	$('#banner').show();
+	$('#menu-order').show();
+	var url = "https://soxialit.com/microposts"
+	history.pushState(null, "", url);
+   }   // esc
+});
+
+$('.close-button').click(function(){
+//	$('#modal-micropost').css('background-color', 'transparent')
+	$('#modal-pin').fadeOut('fast');
+	$('#banner').show();
+	$('#menu-order').show();
+	var url = "https://soxialit.com/microposts"
+	history.pushState(null, "", url);
+});
+

@@ -28,6 +28,7 @@
       	<%= link_to "Actividad", muro_path(@user), remote: true, style:"color:red; border-bottom: 1px solid red" %> | 
       	<%= link_to "Favoritos", favorites_path(@user), remote: true %> | 
       	<%= link_to "Bio", biografia_path(@user), remote: true %> |
+        <%= link_to "Colecciones", coleccion_path(@user), remote: true %> |
       	<span id="user_menu_social">
           <%= link_to "Following", following_user_path(@user), remote: true %> (<%= @user.followed_users.count %>) |
       	  <%= link_to "Followers", followers_user_path(@user), remote: true %> (<%= @user.followers.count %>) 

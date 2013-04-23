@@ -1,6 +1,8 @@
 <% provide(:title, 'Posts') %>
 
 <div id="modal-micropost"></div>
+<div id="modal-pin"></div>
+
 <div id="ajax" style="float:left; position:fixed; display:none; margin: 20% 455px; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
 
 <div id="menu-order" style="display:block; position: fixed;	z-index: 500; margin-left: 35px;" class="span11">
@@ -133,14 +135,14 @@ $(function() {
 		function(e){
 			$(this).css("box-shadow", "1px 1px 2px 0px #d0d0d0");
 			$(this).css("margin-top", "2%");
-			
+			$(this).find('.collect_button').show();
 		},
 		mouseleave:
 		function (e){
 			e.preventDefault();
 			$(this).css("box-shadow", "none");
 			$(this).css("margin-top", "1%");
-			
+		    $(this).find('.collect_button').hide();
 		}
 	});
 	
@@ -185,11 +187,11 @@ if (history && history.pushState) {
 	});
 }
 
-$(function(){
-	$('#index_microposts').css('color', 'red');
-	$('#index_microposts').css('border-bottom', '1px solid red');
-});
-			
+	$(function(){
+		$('#index_microposts').css('color', 'red');
+		$('#index_microposts').css('border-bottom', '1px solid red');
+	});
+  
 </script>
 
 <script type="text/javascript">mixpanel.track("Microposts Feed")</script>

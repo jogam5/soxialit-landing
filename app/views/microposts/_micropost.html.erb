@@ -1,45 +1,15 @@
 <div style="display:block" id="micropost" class="box photo col3 masonry-brick">
 	<div style="display:block" class="frame_link_favorites">
 		<div style="max-width: 270px; position:relative; text-align:center; height:auto; padding:5% 5% 5% 5%">
-			<% if micropost.id > 450 %>
-				<% if !micropost.picture_url(:index).nil? %>
-					<%= link_to image_tag(micropost.picture_url(:index), style:"margin-left:5%; max-width: 90%; height:auto"),  modal_micropost_path(:micropost_id => micropost.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
-			
-				<% else %>
-					<%= link_to image_tag(micropost.thumbnail, style:"margin-left:5%; max-width: 90%; height:auto"),  modal_micropost_path(:micropost_id => micropost.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
-				<% end %>
-			<% else %>
-				<%= link_to image_tag(micropost.thumbnail, style:"margin-left:5%; max-width: 90%; height:auto"),  modal_micropost_path(:micropost_id => micropost.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
-
-			<% end %>
-
-			<p id="title_link_modal">
-				<%= link_to micropost.title, micropost, target: '_blank' %>
-		  	</p>
-		  	<hr/>
-		  	<div id="micropost_description" style="height:50px; width:185px">
-				<div style="float:left; width: auto; height: auto">
-					<% if find_micropost_imagefile(micropost.id) == nil %>
-						<%= link_to image_tag(find_micropost_userimage(micropost.id), style:"width:35px; margin-left:2%; margin-top:0", id: "like_small_picture"), user_path(micropost.user)%>
+				<% if signed_in? %>
+					<% if current_user.roles.first.name == "admin" %>
+					<section class="collect_button" style="display:none; float:right; position:absolute; margin-top:5%; margin-left:60%">
+					<%= link_to "+ Colección", collect_path(:micropost_id => micropost.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, class: "btn btn-mini"} %>
 					<% else %>
-						<%= link_to image_tag(find_micropost_imagefile(micropost.id), style:"width:35px; margin-left:2%; margin-top:0", id: "like_small_picture"), user_path(micropost.user)%>
+					<section class="collect_button" style="display:none; float:right; position:absolute; margin-top:5%; margin-left:80%">
 					<% end %>
-					<% if user_signed_in? %>
-						<% unless current_user?(micropost.user) %>
-							<div style="margin-top:0.5em" class="form_micropost_<%= micropost.user_id %>">
-					  			<% if current_user.following?(micropost.user) %>
-								<% else %>
-						      		<%= render :partial => 'shared/follow_favorites', :locals => { :user => micropost.user } %>
-								<% end %>
-							</div>
-						<% end %>
-					<% end %>
-				</div>
-				<div style="float:left; margin-left:3%">
-					<span style="font-size:0.8em" id="item_link"><%= link_to truncate(find_micropost_nickname(micropost.id), :length => 25), user_path(micropost.user)%></span>
-				</div>
-		  	</div>
-		  	<div style="float:right; margin-top: -20%">
+				<% end %>
+				<div style="float:right; margin-top:10%">
 		  		<% if signed_in? %>
 					<div style="margin-right:-2%;" class="votacion" id="votacion_<%= micropost.id %>">
 						<% if micropost.user_id == current_user.id %>
@@ -79,6 +49,46 @@
 					</span>
 				<% end %>
 			  </div>
+			</section>
+			<% if micropost.id > 450 %>
+				<% if !micropost.picture_url(:index).nil? %>
+					<%= link_to image_tag(micropost.picture_url(:index), style:"margin-left:5%; max-width: 90%; height:auto"),  modal_micropost_path(:micropost_id => micropost.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
+			
+				<% else %>
+					<%= link_to image_tag(micropost.thumbnail, style:"margin-left:5%; max-width: 90%; height:auto"),  modal_micropost_path(:micropost_id => micropost.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
+				<% end %>
+			<% else %>
+				<%= link_to image_tag(micropost.thumbnail, style:"margin-left:5%; max-width: 90%; height:auto"),  modal_micropost_path(:micropost_id => micropost.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
+
+			<% end %>
+			
+			<p id="title_link_modal">
+				<%= link_to micropost.title, micropost, target: '_blank' %>
+		  	</p>
+		  	<hr/>
+		  	<div id="micropost_description" style="height:50px; width:185px">
+				<div style="float:left; width: auto; height: auto">
+					<% if find_micropost_imagefile(micropost.id) == nil %>
+						<%= link_to image_tag(find_micropost_userimage(micropost.id), style:"width:35px; margin-left:2%; margin-top:0", id: "like_small_picture"), user_path(micropost.user)%>
+					<% else %>
+						<%= link_to image_tag(find_micropost_imagefile(micropost.id), style:"width:35px; margin-left:2%; margin-top:0", id: "like_small_picture"), user_path(micropost.user)%>
+					<% end %>
+					<% if user_signed_in? %>
+						<% unless current_user?(micropost.user) %>
+							<div style="margin-top:0.5em" class="form_micropost_<%= micropost.user_id %>">
+					  			<% if current_user.following?(micropost.user) %>
+								<% else %>
+						      		<%= render :partial => 'shared/follow_favorites', :locals => { :user => micropost.user } %>
+								<% end %>
+							</div>
+						<% end %>
+					<% end %>
+				</div>
+				<div style="float:left; margin-left:3%">
+					<span style="font-size:0.8em" id="item_link"><%= link_to truncate(find_micropost_nickname(micropost.id), :length => 25), user_path(micropost.user)%></span>
+				</div>
+		  	</div>
+		  	
 		</div>
 	</div>
 </div>
