@@ -20,12 +20,11 @@
 							<%= form_for(Gallery.new, :remote => true) do |f| %>
 						<!--	  <%= f.hidden_field :token %> -->
 							  <div id="galleries" class="control-group">
-							  	  <p>Selecciona una colección</p>
-								  <%= f.collection_select :user_id, @galleries, :id, :name %>
+								  <%= f.collection_select :user_id, @galleries, :id, :name ,:prompt => "Elige una colección" %>
 							  </div>
 							  <%= f.hidden_field :user_id, :value => current_user.id %>
 							  <%= f.hidden_field :cover, :value => @micropost.thumbnail %>
-							  <p id="collection"><ins>Crear nueva colección</ins></a>
+							  <p style="cursor: pointer;" id="collection"><ins>Crear nueva colección</ins></a>
 							  <div style="display:none" id="new_collection" class="control-group">
 							  	<%= f.label :name, "Nueva colección" %>
 							  	<%= f.text_field :name, style: "width:110px" %>
@@ -34,7 +33,7 @@
 							<% end %>
 						</div>
 					</div>
-					<div style="margin-top:8%" class="span1">
+					<div class="span1">
 						<div id="pinit" style="display:none">
 							<%= form_for(@pin, :remote => true) do |f| %>
 								<%= f.hidden_field :gallery_id %>
@@ -60,7 +59,7 @@ $(function () {
     });
     $("#collection").live('click', function(){
     	$('#new_collection').show();
-    	console.log('test');
+    	$(this).hide();
     });
 });
 </script>

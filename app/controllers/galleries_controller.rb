@@ -12,7 +12,7 @@ class GalleriesController < ApplicationController
   # GET /galleries/1
   # GET /galleries/1.json
   def show
-    @gallery = Gallery.find(params[:id])
+    @gallery = Gallery.find_by_name(params[:name])
     @user = @gallery.user
     @pins = @gallery.pins.all
     respond_to do |format|

@@ -4,10 +4,12 @@
 			<div class="box photo col3 masonry-brick" id = "test">
 				<div class="frame_link_favorites">
 					<div style="max-width: 270px; position:relative; text-align:center; height:auto; padding:5% 5% 5% 5%">
-						<%= link_to image_tag(gallery.cover, style:"margin-left:5%; max-width: 90%; height:auto"), gallery %>
+						<%= link_to image_tag(gallery.cover, style:"margin-left:5%; max-width: 90%; height:auto"), collections_path(gallery.name) %>
 						 <p id="title_link_modal">
-							<%= link_to truncate(gallery.name, :lenght => 35), gallery %>
+							<%= link_to truncate(gallery.name, :lenght => 35), collections_path(gallery.name) %>
 						  </p>
+						  
+						  <!--
 						  <hr/ >
 						  <div style="height:80px; width: 250px; padding:0%;" id="micropost_description">
 						  	<div style="float:left; width: auto; height: auto">
@@ -15,16 +17,25 @@
 									<% gallery.pins.each_with_index do |pin, index| %>
 										<% break if index == 3 %>
 											<div class="span1">
-												<%= link_to(image_tag(find_micropost_image(pin.micropost_id)), gallery) %>
+												<%= link_to(image_tag(find_micropost_image(pin.micropost_id)), collections_path(gallery.name)) %>
 											</div>
 									<% end %>
 								<% end %>
 							</div>
-						  </div>
+						  </div>-->
 					</div>
 				</div>
 			</div>
 		<% end %>
+	</div>
+<% else %>
+	<div class="container">
+		<div class="row">
+			<div style="margin-left:30%">
+				<p class="description-brand" style="margin-left:4%; font-family:acta-display; font-size:1.8em"><%= link_to "Colecciona tus posts favoritos", microposts_path %></p>
+				<div style="margin-left:10%"><%= link_to image_tag('no_favorites.png'), microposts_path%></div>
+			</div>	
+		</div>
 	</div>
 <% end %>
 
