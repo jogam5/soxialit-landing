@@ -2,8 +2,8 @@ DeviseFacebook::Application.routes.draw do
  
   resources :pins
 
-  #resources :galleries
   match "collections/:name" => "galleries#show", :as => "collections"
+  resources :galleries
 
   resources :newsletters
 
