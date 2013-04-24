@@ -136,7 +136,7 @@ DeviseFacebook::Application.routes.draw do
   resources :pays
 
   #Testing
-  match "feed", to: "static_pages#test"
+  match "feed", to: "static_pages#feed"
 
   #Customized Routes for Profile Page should be at th END
   match ":username/edit", :to => "users#edit", :as => "edit_user", :via => :get

@@ -146,6 +146,6 @@ class StaticPagesController < ApplicationController
   def fivehundred
   end
 
-  def test
+  def feed
   end
 end
