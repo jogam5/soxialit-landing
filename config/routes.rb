@@ -103,7 +103,6 @@ DeviseFacebook::Application.routes.draw do
   match "privacy", to:'static_pages#privacy'
   match "faq", to:'static_pages#faq'
   match "registro", to: 'static_pages#registro'
-  match "tanyamulki", to: 'static_pages#test'
   match "500mx", to: 'five_hundred#fivehundred'
 
   match "las7depauline", to:'static_pages#las7depauline'
@@ -135,6 +134,9 @@ DeviseFacebook::Application.routes.draw do
   get 'tags/:tag', to: 'projects#index', as: :tag
   resources :partners
   resources :pays
+
+  #Testing
+  match "feed" to: "static_pages#test"
 
   #Customized Routes for Profile Page should be at th END
   match ":username/edit", :to => "users#edit", :as => "edit_user", :via => :get
