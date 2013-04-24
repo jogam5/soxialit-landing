@@ -17,11 +17,11 @@ class PictureMicropostUploader < CarrierWave::Uploader::Base
   end
   
   version :modal do
-    process :resize_and_pad => [460,500,"#240902"]
+    process :resize_and_pad => [460,500,"white"]
   end
   
   version :index do
-     process :resize_and_pad => [226, 255, "#240902"]
+     process :resize_and_pad => [226, 255, "white"]
   end
   
 end

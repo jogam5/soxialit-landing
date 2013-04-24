@@ -1,5 +1,6 @@
 DeviseFacebook::Application.routes.draw do
  
+  root :to => 'static_pages#home'
   resources :pins
 
   match "collections/:name" => "galleries#show", :as => "collections"
@@ -10,8 +11,6 @@ DeviseFacebook::Application.routes.draw do
   resources :sources
   
   resources :supports, :only => [:new, :create]
-
-  root :to => 'static_pages#home'
  
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
