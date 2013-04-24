@@ -1,8 +1,7 @@
-    <%= form_for(@gallery, :remote => true) do |f| %>
-  <!--    <%= f.hidden_field :token %> -->
+    <%= form_for(Gallery.new, :remote => true) do |f| %>
       <div id="galleries" class="control-group">
-          <p>Selecciona una colección</p>
-        <%= f.collection_select :user_id, @galleries, :id, :name %>
+          <%= f.collection_select :user_id, @galleries, :id, :name, 
+          :prompt => "Elige una colección" %>
       </div>
       <%= f.hidden_field :user_id, :value => current_user.id %>
       <p id="collection"><ins>Crear nueva colleción</ins></a>
