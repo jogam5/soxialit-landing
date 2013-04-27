@@ -13,14 +13,11 @@ class Micropost < ActiveRecord::Base
   attr_reader :tag_list
   attr_accessible :tag_list
   acts_as_taggable
+  has_reputation :votes, source: :user, aggregated_by: :sum
 
   mount_uploader :picture, PictureMicropostUploader
 
-  validates :url, presence: true, format: { with: URI::regexp(%w(http https)) }
-  
- # def source_tokens=(tokens)
-  #   self.source_ids = Source.ids_from_tokens(tokens)
-  #end
+  #validates :url, presence: true, :allow_blank => true, format: { with: URI::regexp(%w(http https)) }
   
   def self.publish_link_facebook(micropost)
     @micropost = micropost
