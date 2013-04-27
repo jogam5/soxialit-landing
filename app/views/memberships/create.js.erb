@@ -1,0 +1,2 @@
+$("#subscribe_form").html("<%= escape_javascript(render('groups/unsubscribe')) %>")
+$("#subscribers").html('<%= @group.users.count %>')
