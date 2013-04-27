@@ -1,8 +1,13 @@
 class GroupsController < ApplicationController
-  before_filter :authenticate_user!
-  
+  #before_filter :authenticate_user!
+  #load_and_authorize_resource
+
   def show
     @group = Group.find_by_name(params[:name])
+    @all_stories = Group.get_all_stories(@group)
+    @new_stories = Group.get_new_stories(@group)
+    
+    
     #@group = Group.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb

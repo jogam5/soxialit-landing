@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130426221910) do
+ActiveRecord::Schema.define(:version => 20130427170834) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -133,7 +133,10 @@ ActiveRecord::Schema.define(:version => 20130426221910) do
     t.datetime "updated_at"
     t.boolean  "status"
     t.string   "picture"
+    t.integer  "group_id"
   end
+
+  add_index "microposts", ["group_id"], :name => "index_microposts_on_group_id"
 
   create_table "newsletters", :force => true do |t|
     t.string   "title"

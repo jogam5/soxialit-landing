@@ -152,6 +152,8 @@ loading.png: loading-323f98010c873f1cc77c59859654895e.png
 loading/index.png: loading-323f98010c873f1cc77c59859654895e.png
 login.png: login-5abbdfeb8191ad892803bb1cf8c5e06e.png
 login/index.png: login-5abbdfeb8191ad892803bb1cf8c5e06e.png
+logo.png: logo-f741071b8546125f735ca4cb08f398bf.png
+logo/index.png: logo-f741071b8546125f735ca4cb08f398bf.png
 logoestafeta.jpg: logoestafeta-4def5beec02be7fbbed4f9a33bb3a46c.jpg
 logoestafeta/index.jpg: logoestafeta-4def5beec02be7fbbed4f9a33bb3a46c.jpg
 love.png: love-77c863bf7e7e94feba9d40c4f2a2ad83.png
@@ -264,6 +266,10 @@ vestido1.png: vestido1-3ac119568ac0cfcf4b56b34b8f5c3e47.png
 vestido1/index.png: vestido1-3ac119568ac0cfcf4b56b34b8f5c3e47.png
 vestido2.png: vestido2-d221b6dbbc51436bd63020ba650db71f.png
 vestido2/index.png: vestido2-d221b6dbbc51436bd63020ba650db71f.png
+vote_down.png: vote_down-b66ff27dc16be45feb2f56ab605a498f.png
+vote_down/index.png: vote_down-b66ff27dc16be45feb2f56ab605a498f.png
+vote_up.png: vote_up-1e942a36be76135b4956a1ca6ec04278.png
+vote_up/index.png: vote_up-1e942a36be76135b4956a1ca6ec04278.png
 women_size_guide.png: women_size_guide-4a4efab8a3c939f2988e280e53a173f4.png
 women_size_guide/index.png: women_size_guide-4a4efab8a3c939f2988e280e53a173f4.png
 wrong1.jpg: wrong1-69995adcde437f9d8b2389d6851e0e73.jpg
@@ -278,8 +284,8 @@ zapato.png: zapato-1029d6c5aa14da47143753767914f588.png
 zapato/index.png: zapato-1029d6c5aa14da47143753767914f588.png
 application.js: application-35be96a50af4bfe2332208c17d46ca00.js
 application/index.js: application-35be96a50af4bfe2332208c17d46ca00.js
-application.css: application-eca21d6a2addb58c8b17d39e36eaeba3.css
-application/index.css: application-eca21d6a2addb58c8b17d39e36eaeba3.css
+application.css: application-5c633ac6f711462027f4e9d708b5d9d3.css
+application/index.css: application-5c633ac6f711462027f4e9d708b5d9d3.css
 fontawesome-webfont.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont/index.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont.svg: fontawesome-webfont-c3f3594758768fbb43eae746d18b3b50.svg

@@ -3,5 +3,27 @@
 <h2 style="font-family:acta-display"><%= @group.name %></h2>
 <p style="color:#999; font-size:1.2em; font-weight:lighter"><%= @group.description %></p>
 <%= render 'subscribe_form' if user_signed_in? %>
-<hr />
+<br />
 <p><span id=""><%= %><span></p>
+
+
+<div class="tabbable" style="margin-bottom: 18px;">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab">Todos</a></li>
+    <li class=""><a href="#tab2" data-toggle="tab">Nuevos</a></li>
+    <li class=""><a href="#tab3" data-toggle="tab">Top</a></li>
+    <li class=""><a href="#tab3" data-toggle="tab">Trending</a></li>
+  </ul>
+  <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
+    <div class="tab-pane active" id="tab1">
+    	<%= render 'show_all' %>
+    </div>
+    <div class="tab-pane" id="tab2">
+    	<% @new_stories.each do |s| %>
+			<%= s.title %><br />
+		<% end %>
+    </div>
+    <div class="tab-pane" id="tab3">
+    </div>
+  </div>
+</div>
