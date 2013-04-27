@@ -1,22 +1,22 @@
 <div style="display:block" id="micropost" class="box photo col3 masonry-brick">
 	<div style="display:block" class="frame_link_favorites">
 		<div style="max-width: 270px; position:relative; text-align:center; height:auto; padding:5% 5% 5% 5%">
-				<% if signed_in? %>
+			<!--	<% if signed_in? %>
 					<% if current_user.roles.first.name == "admin" %>
-					<section class="collect_button" style="display:none; float:right; position:absolute; margin-top:5%; margin-left:68%">
+					<section class="collect_button" style="display:block; float:right; position:absolute; margin-top:5%; margin-left:68%">
 					<%= link_to "+ Colección", collect_path(:micropost_id => micropost.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, class: "btn btn-mini"} %>
 					<% else %>
-					<section class="collect_button" style="display:none; float:right; position:absolute; margin-top:5%; margin-left:80%">
+					<section class="collect_button" style="display:block; float:right; position:absolute; margin-top:5%; margin-left:80%">
 					<% end %>
-				<% end %>
-				<div style="float:right; margin-top:10%; margin-right: -22%">
+				<% end %> -->
+				<div style="margin-top: 12%; margin-right: 0%; background-color: rgb(228, 228, 228); padding: 1% 0% 1% 7%; position: absolute; border-radius: 5px;">
 		  		<% if signed_in? %>
 					<div style="margin-right:-2%;" class="votacion" id="votacion_<%= micropost.id %>">
 						<% if micropost.user_id == current_user.id %>
 							<span id="want_<%= micropost.id %>">
 								<div id="love_icon_<%= micropost.id %>" class="love_icon_active">
 									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_z.target_id_<%= micropost.id %>">
-										<%= micropost.reputation_value_for(:lovs).to_i %>
+										<%= micropost.reputation_for(:lovs).to_i %>
 									</span>
 								</div>
 					   		</span>
@@ -24,7 +24,7 @@
 	        				<span id="want_<%= micropost.id  %>">
 	        					<div id="love_icon_<%= micropost.id  %>" class="love_icon">
 									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= micropost.id  %>">
-	        							<%= micropost.reputation_value_for(:lovs).to_i %>
+	        							<%= micropost.reputation_for(:lovs).to_i %>
 	        						</span>
 	        						<%= link_to "x", lovs_micropost_path(micropost, type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
 	        					</div>
@@ -33,7 +33,7 @@
 	        				<span id="want_<%= micropost.id %>">
 	        					<div id="love_icon_<%= micropost.id %>" class="love_icon_active">
 									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= micropost.id %>">
-	        							<%= micropost.reputation_value_for(:lovs).to_i %>
+	        							<%= micropost.reputation_for(:lovs).to_i %>
 	        						</span>
 	        					</div>
 	       					</span>
@@ -43,13 +43,45 @@
 					<span id="want_<%= micropost.id %>">
 						<div id="love_icon_<%= micropost.id %>" class="love_icon_active">
 							<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= micropost.id %>">
-								<%= micropost.reputation_value_for(:lovs).to_i %>
+								<%= micropost.reputation_for(:lovs).to_i %>
 							</span>
 						</div>
 					</span>
 				<% end %>
 			  </div>
+			 <% if current_user.roles.first.name == "admin" %>
+			<section style="position: absolute; margin-top: 30%; background-color: rgb(228,228,228); border-radius: 5px; padding: 2%;">
+				<div class="haiku">
+						<em>
+							<% if micropost.user_id == current_user.id %>
+							<div class="vote_micropost_<%= micropost.id %>">
+							<%= pluralize micropost.reputation_for(:votes).to_i, "vote" %>
+							</div>
+							<% elsif current_user.vote_evaluation(micropost, current_user.id) == 1 %>
+							<div id="vote_up_<%= micropost.id %>" style="margin-left:-2px" class="vote_up_icon_active">
+								
+							</div>
+							<div class="vote_micropost_<%= micropost.id %>">
+								<%= pluralize micropost.reputation_for(:votes).to_i, "vote" %>
+							</div>
+							<div id="vote_down_<%= micropost.id %>" class="vote_down_icon">
+								<%= link_to "x", vote_micropost_path(micropost, type: "down"), :remote => true, method: "post", class: "trick_anchor" %>
+							</div>
+							<% elsif current_user.vote_evaluation(micropost, current_user.id) == -1 %>
+							<div id="vote_up_<%= micropost.id %>" style="margin-left:-2px" class="vote_up_icon">
+								<%= link_to "x", vote_micropost_path(micropost, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>
+							</div>
+							<div class="vote_micropost_<%= micropost.id %>">
+								<%= pluralize micropost.reputation_for(:votes).to_i, "vote" %>
+							</div>
+							<div id="vote_down_<%= micropost.id %>" class="vote_down_icon_active">
+								
+							</div>	
+						<% end %>
+						</em>
+				</div>
 			</section>
+			<% end %>
 			<% if micropost.id > 450 %>
 				<% if !micropost.picture_url(:index).nil? %>
 					<%= link_to image_tag(micropost.picture_url(:index), style:"margin-left:5%; max-width: 90%; height:auto"),  modal_micropost_path(:micropost_id => micropost.id), {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
@@ -86,6 +118,7 @@
 				</div>
 				<div style="float:left; margin-left:3%">
 					<span style="font-size:0.8em" id="item_link"><%= link_to truncate(find_micropost_nickname(micropost.id), :length => 25), user_path(micropost.user)%></span>
+					
 				</div>
 		  	</div>
 		  	

@@ -22,7 +22,7 @@ gem "workless", "~> 1.1.1"
 gem 'zclip-rails'
 
 #Reputation
-gem 'activerecord-reputation-system', require: 'reputation_system'
+gem 'activerecord-reputation-system'
 
 #Pictures
 gem 'carrierwave'

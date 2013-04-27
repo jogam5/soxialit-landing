@@ -1,0 +1,15 @@
+$('.vote_micropost_<%= @micropost.id %>').text('<%= pluralize @micropost.reputation_for(:votes).to_i, "vote" %>');
+var x = '<%= params[:type] %>';
+if (x == "up"){
+	$('#vote_up_<%= @micropost.id %>').addClass('vote_up_icon_active');
+	$('#vote_up_<%= @micropost.id %>').empty();
+	$('#vote_down_<%= @micropost.id %>').removeClass().addClass('vote_down_icon');
+	$('#vote_down_<%= @micropost.id %>').html('<%= link_to "x", vote_micropost_path(@micropost, type: "down"), :remote => true, method: "post", class: "trick_anchor" %>');
+}else if ( x == "down"){
+	$('#vote_down_<%= @micropost.id %>').addClass('vote_down_icon_active');
+	$('#vote_down_<%= @micropost.id %>').empty();
+	$('#vote_up_<%= @micropost.id %>').removeClass().addClass('vote_up_icon');
+	$('#vote_up_<%= @micropost.id %>').html('<%= link_to "x", vote_micropost_path(@micropost, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>');
+}
+
+

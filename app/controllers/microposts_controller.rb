@@ -28,7 +28,7 @@ class MicropostsController < ApplicationController
   end
   
   def microposts_lov
-     @microposts = Micropost.page(params[:page]).per_page(50).find_with_reputation(:lovs, :all, order: 'lovs desc')
+     @microposts = Micropost.page(params[:page]).per_page(50).find_with_reputation(:votes, :all, order: 'votes desc')
   end
   
   def microposts_order
@@ -86,7 +86,7 @@ class MicropostsController < ApplicationController
   def lovs
     value = params[:type] == "up" ? 1 : -1
     @micropost = Micropost.find(params[:id])
-    @micropost.add_evaluation(:lovs, value, current_user)
+    @micropost.add_or_update_evaluation(:lovs, value, current_user)
     @micropost.activities.create(:user_id => current_user.id, :action => "like")
     @user = User.find(@micropost.user_id)
     Micropost.delay.publish_link_like_facebook(@micropost, current_user) unless current_user.fb == false
@@ -102,6 +102,18 @@ class MicropostsController < ApplicationController
      respond_to do |format|
         format.js
       end
+  end
+
+  def vote
+    value = params[:type] == "up" ? 1 : -1
+    @micropost = Micropost.find(params[:id])
+    @micropost.add_or_update_evaluation(:votes, value, current_user)
+   # @micropost.activities.create(:user_id => current_user.id, :action => "like")
+   # @user = User.find(@micropost.user_id)
+   # Micropost.delay.publish_link_like_facebook(@micropost, current_user) unless current_user.fb == false
+    #@followers_list = current_user.followers.map do |u|
+    #     { :id => u.id, :follower_name => u.nickname}
+    #end
   end
   
   def modal_micropost

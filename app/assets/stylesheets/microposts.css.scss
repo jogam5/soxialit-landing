@@ -236,3 +236,38 @@ form {
 		color: black;
 	}
 }
+
+.vote_up_icon {
+	background: url(vote_up.png) no-repeat;
+	cursor: pointer!important;
+	background-position: -3px 0px;
+	width: 17px;
+	height: 13px;
+}
+
+.vote_up_icon:hover{
+	background-position: -3px -27px; width: 17px; height: 13px;
+}
+
+.vote_up_icon_active{
+	background: url(vote_up.png) no-repeat;
+	background-position: -3px -27px; width: 17px; height: 13px;
+}
+
+
+.vote_down_icon {
+	background: url(vote_down.png) no-repeat;
+	cursor: pointer!important;
+	background-position: -1px -27px;
+	width: 17px;
+	height: 13px;
+}
+
+.vote_down_icon:hover{
+	background-position: -1px 0px; width: 17px; height: 13px;
+}
+
+.vote_down_icon_active{
+	background: url(vote_down.png) no-repeat;
+	background-position: -1px 0px; width: 17px; height: 13px;	
+}

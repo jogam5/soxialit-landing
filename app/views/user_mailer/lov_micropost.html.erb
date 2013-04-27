@@ -23,7 +23,7 @@
 		<hr>
 		<%= link_to(image_tag(@micropost.thumbnail, style:"width: 500px"), micropost_url(@micropost))%>
 		<div style="display:block"><img src="http://i1246.photobucket.com/albums/gg616/soxialit/like-active_zps3977b1a5.png" style="float:left" border="0" alt="Likes:"/>
-		<%= @micropost.reputation_value_for(:lovs).to_i %></div>
+		<%= @micropost.reputation_for(:lovs).to_i %></div>
 		<hr>
 		<div style="display: block;
 		margin: 12px 0 5px;

@@ -51,6 +51,7 @@ DeviseFacebook::Application.routes.draw do
   get 'tags/:tag', to: 'microposts#index', as: :tag
   resources :microposts do
      member { post :lovs}
+     member { post :vote}
   end
 
 

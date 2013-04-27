@@ -33,7 +33,7 @@
 				<div style="width:10px">
 					<div id="love_icon_<%= post.id %>" class="love_icon_active">
 						<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= post.id %>">
-							<%= post.reputation_value_for(:lovs).to_i %>
+							<%= post.reputation_for(:lovs).to_i %>
 						</span>
 					</div>
 				</div>
@@ -97,7 +97,7 @@
     						<div id="love_icon_<%= @micropost.id %>" class="love_icon_active">
     							<span style="float:left; display:block; margin-left:-50%; color:black" 
     										id="love_product_<%= @micropost.id %>">
-    								<%= @micropost.reputation_value_for(:lovs).to_i %>
+    								<%= @micropost.reputation_for(:lovs).to_i %>
     							</span>
     						</div>
     		   			</span>
@@ -109,7 +109,7 @@
     							<div id="love_icon_<%= @micropost.id %>" class="love_icon">
     								<span style="float:left; display:block; margin-left:-50%; color:black" 
     											id="love_product_<%= @micropost.id %>">
-    									<%= @micropost.reputation_value_for(:lovs).to_i %>
+    									<%= @micropost.reputation_for(:lovs).to_i %>
     								</span>
     								<%= link_to "xxx", lovs_micropost_path(@micropost, type: "up"), 
     										:class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
@@ -122,7 +122,7 @@
         			<span id="want_<%= @micropost.id %>">
         				<div id="love_icon_<%= @micropost.id %>" class="love_icon_active">
 							<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= @micropost.id %>">
-        						<%= @micropost.reputation_value_for(:lovs).to_i %>
+        						<%= @micropost.reputation_for(:lovs).to_i %>
         					</span>
         				</div>
        				</span>
@@ -133,7 +133,7 @@
 					<span id="want_<%= @micropost.id %>">
 						<div id="love_icon_<%= @micropost.id %>" class="love_icon_active">
 							<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= @micropost.id %>">
-								<%= @micropost.reputation_value_for(:lovs).to_i %>
+								<%= @micropost.reputation_for(:lovs).to_i %>
 							</span>
 						</div>
 					</span>
