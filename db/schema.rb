@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130418042457) do
+ActiveRecord::Schema.define(:version => 20130426221910) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -94,6 +94,14 @@ ActiveRecord::Schema.define(:version => 20130418042457) do
     t.string   "cover"
   end
 
+  create_table "groups", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "picture"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "items", :force => true do |t|
     t.string   "description"
     t.integer  "gallery_id"
@@ -102,6 +110,17 @@ ActiveRecord::Schema.define(:version => 20130418042457) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  create_table "memberships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
+  add_index "memberships", ["user_id", "group_id"], :name => "index_memberships_on_user_id_and_group_id", :unique => true
+  add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
   create_table "microposts", :force => true do |t|
     t.string   "url"

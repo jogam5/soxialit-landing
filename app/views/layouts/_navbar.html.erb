@@ -1,0 +1,93 @@
+<header class="navbar navbar-fixed-top">
+		<div
+		 style="background-color:black;
+				background: -webkit-linear-gradient(top, black, black);
+				background: -moz-linear-gradient(top, black, black);"
+		 class="navbar-inner">
+			<div class="container">
+				<span class="span5">
+					<div id="home_nav_bar_logo"><%= link_to image_tag("logo.png", width:35, height:35), root_url %></div>
+				</span>
+				<nav>
+				  <ul class="nav pull-right">
+					<% if user_signed_in? %>
+						<li class=""></li>
+					    <li id="home_nav_bar">
+							<%= link_to '', "http://soxialit.com/las7depauline", 
+															:title => "7 historias de la semana", :id => "index_pauline" %>
+					   	</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					    <li id="home_nav_bar">
+							<%= link_to '', users_path, id:"index_users", :title => "Conecta con la comunidad" %>
+					   	</li>
+					   	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					    <li id="home_nav_bar">
+							<%= link_to "", microposts_path, id:"index_microposts", :title => "Todos los Posts" %>
+					   	</li>
+					   	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li style="margin-right:0" class="divider-vertical"></li>
+					    <li id="home_nav_bar_share" style="background-color:red; padding: 0 5px 8px 5px;">
+			            	<%= link_to image_tag('link_blanco.png', style:"width:20px;").html_safe, modal_post_path,  {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
+					   	</li>
+						<li style="margin-left:0" class="divider-vertical"></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li><% if !current_user.picture.present? %>
+							<%= link_to image_tag("http://graph.facebook.com/#{current_user.uid}/picture?type=square", 
+										width: 35, height: 35, :id =>  "navbar_small_picture"), user_path(current_user), :title => "Revisa tu perfil" %>
+						<% else %>
+							<%= link_to image_tag(current_user.picture_url(:thumb_profile), 
+										width: 35, height: 35, :id => "navbar_small_picture"), user_path(current_user) %>
+						<% end %></li>
+							<li id="fat-menu" class="dropdown">
+					              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+						        	<b class="caret"></b>
+					              </a>
+					              <ul id="profile_menu" class="dropdown-menu">
+					                <li><%= link_to '<i class="icon-edit"></i> Editar Perfil'.html_safe, edit_user_path(current_user), id:"anchor_edit" %></li>
+					                <li class="divider"></li>
+					               	<li><%= link_to '<i class="icon-comment"></i> Blog'.html_safe, 
+					               				"http://blog.soxialit.com", id:"anchor_edit" %></li>
+					               	
+					               	<li><%= link_to '<i class="icon-question-sign"></i> Acerca'.html_safe, about_path, 
+					                			id:"anchor_edit" %></li>
+					               	<li class="divider"></li>
+					                <li>
+					                  <%= link_to "Salir", destroy_user_session_path, :method => :delete %>
+					                </li>
+									
+					              </ul>
+					        </li>
+					<% else %>
+						<li id="home_nav_bar">
+							<%= link_to '', "http://soxialit.com/las7depauline" %></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li class="divider-vertical" style="color:yellow"></li>
+						<li id="home_nav_bar"><%= link_to "INGRESA", user_omniauth_authorize_path(:facebook), style: "font-size:0.9em", :title => "Ingresa"%></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li class="divider-vertical" style="color:yellow; margin:0px"></li>
+						<li style="background: red; margin-top: -7px; padding: 7.8px; font-family:Helvetica Neue">
+							<%= link_to "CREA TU CUENTA", user_omniauth_authorize_path(:facebook), 
+					:onmousedown => "_gaq.push(['_trackEvent', 'Home', 'Header', 'crear cuenta']);", style:"color:white; font-size:1em", :title => "Únete a la comunidad" %>
+						</li>
+	   				<% end %>
+              	  </ul>
+              	</nav>
+			</div>
+		</div>
+</header>
+
+<script>
+	$('#fat-menu').click(function(){
+		$('#profile_menu').toggle();
+		
+	});
+	
+	$('#anchor_edit').click(function(){
+		event.cancelBubble = true;
+	});
+	
+	$('body').live("click",function(){
+		$('#profile_menu').hide();
+	});
+	
+</script>

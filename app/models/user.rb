@@ -26,6 +26,8 @@ class User < ActiveRecord::Base
   has_one :notification, :dependent => :destroy
   has_many :posts, :dependent => :destroy
   has_many :galleries, :dependent => :destroy
+  has_many :memberships, :dependent => :destroy
+  has_many :groups, :through => :memberships
 
   has_reputation :votes, source: {reputation: :votes, of: :products}, aggregated_by: :sum, :order => "created_at DESC"
   #has_reputation :haves, source: {reputation: :haves, of: :products}, aggregated_by: :sum
@@ -52,7 +54,7 @@ class User < ActiveRecord::Base
             uniqueness: { case_sensitive: false }
 
   before_save {  self.username.downcase! }
-  after_create :add_user_to_mailchimp 
+  after_create :add_user_to_mailchimp
   #before_destroy :remove_user_from_mailchimp
 
   def role?(role)
@@ -187,5 +189,20 @@ class User < ActiveRecord::Base
   rescue Koala::Facebook::APIError => e
     logger.info. e.to_s
     nil
+  end
+
+  #Check if thee user is already a member of a Group
+  def subscribed?(group)
+    memberships.find_by_group_id(group.id)
+  end
+
+  #The member is added to a Group
+  def subscribe!(group)
+    memberships.create!(group_id: group.id)
+  end
+
+  #The member is removed from a Group
+  def unsubscribe!(group)
+    memberships.find_by_group_id(group.id).destroy
   end
 end

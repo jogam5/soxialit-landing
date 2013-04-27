@@ -1,17 +1,7 @@
 DeviseFacebook::Application.routes.draw do
  
   root :to => 'static_pages#home'
-  resources :pins
-
-  match "collections/:name" => "galleries#show", :as => "collections"
-  resources :galleries
-
-  resources :newsletters
-
-  resources :sources
-  
-  resources :supports, :only => [:new, :create]
- 
+   
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   devise_scope :user do
@@ -138,7 +128,26 @@ DeviseFacebook::Application.routes.draw do
   #Testing
   match "feed", to: "static_pages#feed"
 
-  #Customized Routes for Profile Page should be at th END
+  #ORDENA TU DESMADRE
+  resources :pins
+  resources :galleries
+  resources :newsletters
+  resources :sources
+  resources :supports, :only => [:new, :create]
+
+  match "collections/:name" => "galleries#show", :as => "collections"
+
+  resources :groups, only: [:index, :create, :new]
+
+  # Groups Routes
+  match "groups/:name/edit", :to => "groups#edit", path: "s/:name/edit", :as => "edit_group", :via => :get
+  match "groups/:name", :to => "groups#show", path: "s/:name", :as => "group", :via => :get
+  match "groups/:name", :to => "groups#update", path: "s/:name", :as => "group", :via => :put
+
+  # Memberships Routes
+  resources :memberships, only: [:create, :destroy]
+
+  # Customized Routes for Profile Page should be at th END
   match ":username/edit", :to => "users#edit", :as => "edit_user", :via => :get
   match ":username", :to => "users#show", :as => "user", :via => :get
   match ":username", :to => "users#update", :as => "user", :via => :put

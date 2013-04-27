@@ -1,0 +1,7 @@
+<% provide(:title, @group.name) %>
+<%= image_tag(@group.picture_url, :width => 900) if @group.picture.present? %>
+<h2 style="font-family:acta-display"><%= @group.name %></h2>
+<p style="color:#999; font-size:1.2em; font-weight:lighter"><%= @group.description %></p>
+<%= render 'subscribe_form' if user_signed_in? %>
+<hr />
+<p><span id=""><%= %><span></p>

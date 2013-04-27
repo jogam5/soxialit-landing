@@ -355,21 +355,6 @@ margin-top: 3%;
 	text-shadow: none;
 }
 
-#titleProfile{
-	font-family:Lobster, acta-display, Helvetica-Neue, Helvetica, Sans-Serif;
-	font-size:2em;
-	font-weight:lighter;
-	margin-top:2%;
-	 a{
-	font-weight:lighter;
-	text-decoration:none;
-	color:white;
-	}
-	 a:hover{
-	color:$grayTitle;
-	}
-}
-
 
 /* followers */
 
@@ -564,6 +549,20 @@ margin-top: 3%;
 #home_nav_bar .active{
 	color:$rojo;
 }
+
+#home_nav_bar_logo{
+	margin-top:2px;
+	 a:hover{
+	opacity:0.6;
+	}
+}
+
+#home_nav_bar_share{
+	 a:hover{
+	opacity:0.5;
+	}
+}
+
 
 /* Home Nav Bar *********************************/
 

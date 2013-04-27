@@ -273,4 +273,10 @@ class UsersController < ApplicationController
    def notificacion
       @user = User.find(params[:user_id])
    end
+
+   #Not finished, better using only AJAX
+   def subscribed
+     @user = find_by_username(params[:username])
+     @groups = @user.groups
+   end
 end
