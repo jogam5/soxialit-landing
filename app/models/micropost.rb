@@ -1,7 +1,9 @@
 class Micropost < ActiveRecord::Base
-  attr_accessible :description, :provider, :thumbnail, :title, :url, :user_id, :status, :picture, :remote_picture_url
+  attr_accessible :description, :provider, :thumbnail, :title, :url, :user_id, :status, :picture, 
+                    :remote_picture_url, :group_id
   
   belongs_to :user
+  belongs_to :group
   has_many :activities, :as => :activitable, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :sourceships
@@ -46,7 +48,4 @@ class Micropost < ActiveRecord::Base
       }
       user.facebook.put_connections("me", "feed", options)
   end
-
-  
-
 end
