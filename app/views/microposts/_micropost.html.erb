@@ -20,7 +20,16 @@
 									</span>
 								</div>
 					   		</span>
-							<% elsif current_user && !current_user.voted_for?(micropost) %>
+							<% elsif micropost.has_evaluation?(:lovs, current_user) %>
+							<span id="want_<%= micropost.id %>">
+	        					<div id="love_icon_<%= micropost.id %>" class="love_icon_active">
+									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= micropost.id %>">
+	        							<%= micropost.reputation_for(:lovs).to_i %>
+	        						</span>
+	        					</div>
+	       					</span>
+	        				
+							<% else %>
 	        				<span id="want_<%= micropost.id  %>">
 	        					<div id="love_icon_<%= micropost.id  %>" class="love_icon">
 									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= micropost.id  %>">
@@ -29,14 +38,6 @@
 	        						<%= link_to "x", lovs_micropost_path(micropost, type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
 	        					</div>
 	           				</span>
-							<% else %>
-	        				<span id="want_<%= micropost.id %>">
-	        					<div id="love_icon_<%= micropost.id %>" class="love_icon_active">
-									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= micropost.id %>">
-	        							<%= micropost.reputation_for(:lovs).to_i %>
-	        						</span>
-	        					</div>
-	       					</span>
 						<% end %>
 					</div>
 				<% else %>
