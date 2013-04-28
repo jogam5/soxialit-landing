@@ -4,6 +4,7 @@
 <p style="color:#999; font-size:1.2em; font-weight:lighter"><%= @group.description %></p>
 <%= render 'subscribe_form' if user_signed_in? %>
 <br />
+<hr />
 <p><span id=""><%= %><span></p>
 
 
@@ -19,9 +20,7 @@
     	<%= render 'show_all' %>
     </div>
     <div class="tab-pane" id="tab2">
-    	<% @new_stories.each do |s| %>
-			<%= s.title %><br />
-		<% end %>
+    	<%= render 'show_new' %>
     </div>
     <div class="tab-pane" id="tab3">
     </div>

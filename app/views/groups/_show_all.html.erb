@@ -1,8 +1,33 @@
 <div class="row">
-	<div class="span4 offset8">
-		<p>hola</p>
-	</div>
+  <div class="span12">
+    <% if @all_stories.any? %>
+      <ol class="microposts">
+        <% @all_stories.each do |story| %>
+		  <li id="<%= story.id %>">
+		    <div class="row">
+		      <div class="span7 offset1">
+		        <% if story.picture? %>
+		    	  <%= link_to image_tag(story.picture_url(:link_480)), story.url, target: '_blank' %>
+		    	<% else %>
+				  <%= link_to image_tag(story.thumbnail), story.url, target: '_blank' %>
+		    	<% end %>
+		      </div>
+		      <div class="span4">
+		      	<span id="item_link_micropost"><%= link_to story.title,
+													story.url, target: '_blank' %></span>
+		      	<div class="timestamp" style="margin-top:1em">
+		      	  <p><%= time_ago_in_words(story.created_at) %> by
+		          <%= link_to story.user.nickname, user_path(story.user) %>
+		          </p>
+		        </div>
+		      </div>
+		    </div>
+		  </li>
+		  <br /><br />
+        <% end %>
+      </ol>
+    <% else %>
+    	<h3>Sé el primero en compartir una historia.</h3>
+    <% end %>
+  </div>
 </div>
-<% @all_stories.each do |s| %>
-  <%= s.title %><br />
-<% end %>
