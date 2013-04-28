@@ -28,7 +28,7 @@ class MicropostsController < ApplicationController
   end
   
   def microposts_lov
-     @microposts = Micropost.page(params[:page]).per_page(50).find_with_reputation(:votes, :all, order: 'votes desc')
+     @microposts = Micropost.page(params[:page]).per_page(50).find_with_reputation(:lovs, :all, order: 'lovs desc')
   end
   
   def microposts_order
