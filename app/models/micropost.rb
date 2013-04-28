@@ -19,7 +19,7 @@ class Micropost < ActiveRecord::Base
 
   mount_uploader :picture, PictureMicropostUploader
 
-  #validates :url, presence: true, :allow_blank => true, format: { with: URI::regexp(%w(http https)) }
+  validates :url, presence: true, :allow_blank => true, format: { with: URI::regexp(%w(http https)) }
   
   def self.publish_link_facebook(micropost)
     @micropost = micropost
