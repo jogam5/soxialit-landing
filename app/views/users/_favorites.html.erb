@@ -42,7 +42,7 @@
 									<span id="want_<%= z.target_id %>">
 										<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
 											<span style="float:left; display:block; margin-left:-50%; color:black" id="love_z.target_id_<%= z.target_id %>">
-												<%= find_micropost(z.target_id).reputation_value_for(:lovs).to_i %>
+												<%= find_micropost(z.target_id).reputation_for(:lovs).to_i %>
 											</span>
 										</div>
 								   	</span>
@@ -53,7 +53,7 @@
 				        			<span id="want_<%= z.target_id  %>">
 				        				<div id="love_icon_<%= z.target_id  %>" class="love_icon">
 											<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= z.target_id  %>">
-				        						<%= find_micropost(z.target_id).reputation_value_for(:lovs).to_i %>
+				        						<%= find_micropost(z.target_id).reputation_for(:lovs).to_i %>
 				        					</span>
 				        					<%= link_to "x", lovs_micropost_path(find_micropost(z.target_id), type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
 				        				</div>
@@ -65,7 +65,7 @@
 				        			<span id="want_<%= z.target_id %>">
 				        				<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
 											<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= z.target_id %>">
-				        						<%= find_micropost(z.target_id).reputation_value_for(:lovs).to_i %>
+				        						<%= find_micropost(z.target_id).reputation_for(:lovs).to_i %>
 				        					</span>
 				        				</div>
 				       				</span>
@@ -88,7 +88,7 @@
 								<span id="want_<%= z.target_id %>">
 									<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
 										<span style="float:left; display:block; margin-left:-50%; color:black" id="love_z.target_id_<%= z.target_id %>">
-											<%= find_product(z.target_id).reputation_value_for(:votes).to_i %>
+											<%= find_product(z.target_id).reputation_for(:votes).to_i %>
 										</span>
 									</div>
 							   	</span>
@@ -99,7 +99,7 @@
 			        			<span id="want_<%= z.target_id  %>">
 			        				<div id="love_icon_<%= z.target_id  %>" class="love_icon">
 										<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= z.target_id  %>">
-			        						<%= find_product(z.target_id).reputation_value_for(:votes).to_i %>
+			        						<%= find_product(z.target_id).reputation_for(:votes).to_i %>
 			        					</span>
 			        					<%= link_to "x", vote_product_path(find_product(z.target_id), type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
 			        				</div>
@@ -111,7 +111,7 @@
 			        			<span id="want_<%= z.target_id %>">
 			        				<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
 										<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= z.target_id %>">
-			        						<%= find_product(z.target_id).reputation_value_for(:votes).to_i %>
+			        						<%= find_product(z.target_id).reputation_for(:votes).to_i %>
 			        					</span>
 			        				</div>
 			       				</span>
@@ -163,7 +163,7 @@
 									<span id="want_<%= z.target_id %>">
 										<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
 											<span style="float:left; display:block; margin-left:-50%; color:black" id="love_z.target_id_<%= z.target_id %>">
-												<%= find_post(z.target_id).reputation_value_for(:likes).to_i %>
+												<%= find_post(z.target_id).reputation_for(:likes).to_i %>
 											</span>
 										</div>
 								   	</span>
@@ -174,7 +174,7 @@
 				        			<span id="want_<%= z.target_id  %>">
 				        				<div id="love_icon_<%= z.target_id  %>" class="love_icon">
 											<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= z.target_id  %>">
-				        						<%= find_post(z.target_id).reputation_value_for(:likes).to_i %>
+				        						<%= find_post(z.target_id).reputation_for(:likes).to_i %>
 				        					</span>
 				        					<%= link_to "x", likes_post_path(find_post(z.target_id), type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
 				        				</div>
@@ -186,7 +186,7 @@
 				        			<span id="want_<%= z.target_id %>">
 				        				<div id="love_icon_<%= z.target_id %>" class="love_icon_active">
 											<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= z.target_id %>">
-				        						<%= find_post(z.target_id).reputation_value_for(:likes).to_i %>
+				        						<%= find_post(z.target_id).reputation_for(:likes).to_i %>
 				        					</span>
 				        				</div>
 				       				</span>

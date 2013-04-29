@@ -31,3 +31,14 @@ $('#micropost_tag_list').tokenInput('/sources.json', {
   
 	 allowCustomEntry: true
 });
+
+$('.micropost_tag_list').tokenInput('/sources.json', { 
+    theme: 'facebook',
+    crossDomain: false,
+    prePopulate: $('#micropost_tag_list').data('pre'),
+    theme: 'facebook',
+	 preventDuplicates: true,
+	 tokenValue: 'name', // defaults to 'id'
+  
+	 allowCustomEntry: true
+});

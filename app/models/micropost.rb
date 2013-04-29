@@ -21,6 +21,9 @@ class Micropost < ActiveRecord::Base
 
   validates :url, presence: true, :allow_blank => true, format: { with: URI::regexp(%w(http https)) }
   
+  #validates :url, :length => { :in => 0..255 }, :allow_nil => true, :allow_blank => true
+
+
   def self.publish_link_facebook(micropost)
     @micropost = micropost
     @user = @micropost.user

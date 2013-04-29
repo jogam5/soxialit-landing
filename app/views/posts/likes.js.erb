@@ -1,4 +1,4 @@
-$('#love_post_<%= @post.id %>').text('<%= @post.reputation_value_for(:likes).to_i %>');
+$('#love_post_<%= @post.id %>').text('<%= @post.reputation_for(:likes).to_i %>');
 $('#love_post_<%= @post.id %>').show();
 $('#love_icon_<%= @post.id %>').addClass('love_icon_active');
 
