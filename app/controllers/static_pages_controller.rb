@@ -131,6 +131,7 @@ class StaticPagesController < ApplicationController
   def modal_post
     @micropost = Micropost.new
     @microposts = Micropost.all
+    @groups = Group.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @microposts.tokens(params[:q]) }

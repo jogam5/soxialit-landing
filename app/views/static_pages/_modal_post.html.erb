@@ -9,8 +9,22 @@
             <div class="tabbable" style="margin-bottom: 18px;">
               <ul class="nav nav-tabs">
                 <% if current_user.roles.first.name == "admin" %>
-                <li class="active"><span id="select_url" style="cursor:pointer; color: rgb(0, 165, 240);">Comparte un link </span></li>
-                <li class=""> | <span id="select_img" style="cursor:pointer; color: rgb(0, 165, 240);"> Comparte una imagen</span></li>
+                <li class="active">
+                  <span id="select_url" style="cursor:pointer; color: rgb(0, 165, 240);">
+                    <div class="span1">
+                      <%= image_tag('link_blanco.png', style: "width:30px; background-color:black; margin-top:6px") %><br/>
+                        Link 
+                    </div>
+                  </span>
+                </li>
+                <li>
+                  <span id="select_img" style="cursor:pointer; color: rgb(0, 165, 240);">
+                    <div style="margin-top:-4px" class="span1">
+                      <%= image_tag('iconmonstr-photo-camera-6-icon.png', style: "width:40px") %> <br/>
+                        Imagen
+                    </div>
+                  </span>
+                </li>
                 <% end %>
               </ul>
               <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
@@ -21,21 +35,29 @@
                     <div class="field">
                        <p style="display:block" id ="post_title"> 
                          <span id="label_title" style="font-weight:lighter; color:#777; font-size:0.9em; font-family:acta-display;float:left; margin-right: 14%">Título : </span>
-                          <%= f.text_field :title, :rows => "1", :class => "span4" %>
+                          <%= f.text_field :title, :rows => "1", :class => "span4", 
+                          :placeholder => 'Describe tu historia' %>
                       </p>
                       <span id="label_url" style="font-weight:lighter; color:#777; font-size:0.9em; font-family:acta-display;float:left; margin-right: 5%">Link de tu post: </span>
-                      <%= f.text_area :url, :rows => "1", :class => "span4", :id => "status" %>
+                      <%= f.text_area :url, :rows => "1", :class => "span4", :id => "status", :placeholder => 'p. ejem. http://soxialit.com' %>
                       <span id="label_img" style="display:none; font-weight:lighter; color:#777; font-size:0.9em; font-family:acta-display;float:left; margin-right: 5%">Sube una imagen: </span>
                       <%= f.file_field :picture, :rows => "1", :class => "span4", id: "selection_file", style: "display:none" %>
-                      <br/>
-                      <span id="label_link" style="display:none; font-weight:lighter; color:#777; font-size:0.9em; font-family:acta-display; margin-right: 13%; margin-top:3%">Fuente: </span>
-                      <%= f.text_area :url, :rows => "1", :class => "span4", id: "link_field", style: "display:none"%>
+                      <br/><br/>
+                      <span id="label_link" style="display:none; font-weight:lighter; color:#777; font-size:0.9em; font-family:acta-display; margin-right: 45px; margin-top:3%">URL fuente: </span>
+                      <%= f.text_area :url, :rows => "1", :class => "span4", id: "link_field", style: "display:none", :placeholder => 'opcional' %>
                       <%= f.hidden_field :url, :value => "http://soxialit.com" %>
                       <%= f.hidden_field :provider %>
                       <%= f.hidden_field :description %>
                       <%= f.hidden_field :thumbnail %>
+                      <%= f.hidden_field :group_id, class: "groups" %>
                       <%= f.hidden_field :status, value: true %>
                     </div>
+                    <% if current_user.roles.first.name == "admin" %>
+                      <p style="display:block" id ="post_title"> 
+                         <span id="label_title" style="font-weight:lighter; color:#777; font-size:0.9em; font-family:acta-display;float:left; margin-right: 59px">Categoría: </span>
+                         <%= f.collection_select :group_id, @groups, :id, :name ,:prompt => "Elige una categoría", class: "span4" %>
+                      </p>
+                    <% end %>
                      <span id="micropost-tags" style="font-weight:lighter; color:#777; font-size:0.9em; font-family:acta-display; display:block;">TAGS: 
                       <%= f.text_field :tag_list %></span>
                       <div style="float:right; margin-top: -9%"class="actions" >
@@ -130,7 +152,12 @@
       }, 500);
     });
   });
-
+  $(function(){
+    $("#micropost_group_id").live("change", function () {
+      $('.groups').val($(this).val());
+      $(this).blur();
+    });
+  })
 
 Galleria.run('.galleria');
 
