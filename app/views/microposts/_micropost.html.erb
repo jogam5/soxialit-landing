@@ -82,6 +82,15 @@
 									
 								</div>
 								<% end %>	
+						<% else %>
+							<div id="vote_up_<%= micropost.id %>" style="margin-left:-2px" class="vote_up_icon">
+									<%= link_to "x", vote_micropost_path(micropost, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>
+								</div>
+								<div class="vote_micropost_<%= micropost.id %>">
+									<%= pluralize micropost.reputation_for(:votes).to_i, "vote" %>
+								</div>
+								<div id="vote_down_<%= micropost.id %>" class="vote_down_icon"><%= link_to "x", vote_micropost_path(micropost, type: "down"), :remote => true, method: "post", class: "trick_anchor" %>
+								</div>
 						<% end %>
 						</em>
 				</div>
