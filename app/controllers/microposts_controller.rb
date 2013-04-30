@@ -108,9 +108,9 @@ class MicropostsController < ApplicationController
     value = params[:type] == "up" ? 1 : -1
     @micropost = Micropost.find(params[:id])
     @micropost.add_or_update_evaluation(:votes, value, current_user)
-   # @micropost.activities.create(:user_id => current_user.id, :action => "like")
-   # @user = User.find(@micropost.user_id)
-   # Micropost.delay.publish_link_like_facebook(@micropost, current_user) unless current_user.fb == false
+    #@micropost.activities.create(:user_id => current_user.id, :action => "like")
+    #@user = User.find(@micropost.user_id)
+    #Micropost.delay.publish_link_like_facebook(@micropost, current_user) unless current_user.fb == false
     #@followers_list = current_user.followers.map do |u|
     #     { :id => u.id, :follower_name => u.nickname}
     #end

@@ -9,9 +9,7 @@ DeviseFacebook::Application.routes.draw do
     get 'users/sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
 
-  #tags
-  #get "products/tags" => "products#tags", :as => :products_tags
-  #get 'tags/:tag', to: 'products#index', as: :tag
+  
   match '/tags', to: 'tags#show_tags'
   get '/products_all', to: 'products#products_all'
   #----
@@ -129,7 +127,7 @@ DeviseFacebook::Application.routes.draw do
   #Testing
   match "feed", to: "static_pages#feed"
 
-  #ORDENA TU DESMADRE
+  #ORDENA TU DESMADREEEEEEEEE
   resources :pins
   resources :galleries
   resources :newsletters
