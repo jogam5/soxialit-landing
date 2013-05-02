@@ -1,0 +1,2 @@
+$("#ajax_all_stories").html("<%= escape_javascript( render :partial => 'list', :collection => @all_stories, :as => :story ) %>");
+$("#ajax_new_stories").html("<%= escape_javascript( render :partial => 'list', :collection => @new_stories, :as => :story ) %>");

@@ -1,7 +1,7 @@
 # encoding: utf-8
 class PictureMicropostUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
-  
+
   # Choose what kind of storage to use for this uploader:
   #storage :file
   storage :fog

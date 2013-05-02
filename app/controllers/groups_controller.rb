@@ -1,14 +1,13 @@
 class GroupsController < ApplicationController
-  #before_filter :authenticate_user!
+  before_filter :authenticate_user!
   #load_and_authorize_resource
 
   def show
     @group = Group.find_by_name(params[:name])
     @all_stories = Group.get_all_stories(@group)
     @new_stories = Group.get_new_stories(@group)
-    
-    
-    #@group = Group.find(params[:id])
+    @top = Micropost.find_with_reputation(:votes, :all, 
+      {:conditions => ["microposts.group_id = ?", @group.id], :order => 'votes desc'})
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @group }
@@ -39,13 +38,30 @@ class GroupsController < ApplicationController
 
   def update
     @group = Group.find_by_name(params[:name])
-
     respond_to do |format|
       if @group.update_attributes(params[:group])
         format.html { redirect_to @group, notice: 'Group was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
+    end
+  end
+
+  def square
+    @group = Group.find_by_name(params[:name])
+    @all_stories = Group.get_all_stories(@group)
+    @new_stories = Group.get_new_stories(@group)
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def list
+    @group = Group.find_by_name(params[:name])
+    @all_stories = Group.get_all_stories(@group)
+    @new_stories = Group.get_new_stories(@group)
+    respond_to do |format|
+      format.js
     end
   end
 end

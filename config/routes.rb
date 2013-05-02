@@ -143,6 +143,9 @@ DeviseFacebook::Application.routes.draw do
   match "groups/:name", :to => "groups#show", path: "s/:name", :as => "group", :via => :get
   match "groups/:name", :to => "groups#update", path: "s/:name", :as => "group", :via => :put
 
+  match "square/s/:name" => "groups#square", :as => "square"
+  match "list/s/:name" => "groups#list", :as => "list"
+
   # Memberships Routes
   resources :memberships, only: [:create, :destroy]
 

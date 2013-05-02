@@ -877,7 +877,7 @@ form div.upload div.file-preview {
 
 .timestamp {
   color: $website;
-  font-size:0.9em;
+  font-size:1em;
   font-weight:lighter;
 }
 
@@ -1756,4 +1756,17 @@ ul.comments_new{
 
 .nav-tabs > li > a{
 	color: #333;
+}
+
+
+#group_story_menu{
+	font-family:acta-display;
+	 a{
+	color:#777; 
+	font-weight:lighter; 
+	}
+	 a:hover{
+	color:$rojo;
+	text-decoration:none;
+	}
 }
