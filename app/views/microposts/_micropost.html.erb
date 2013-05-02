@@ -54,30 +54,43 @@
 			<section style="position: absolute; margin-top: 30%; background-color: rgb(228,228,228); border-radius: 5px; padding: 2%;">
 				<div class="haiku">
 						<em>
-							<% if micropost.user_id == current_user.id %>
+						<% if micropost.user_id == current_user.id %>
 							<div class="vote_micropost_<%= micropost.id %>">
 							<%= pluralize micropost.reputation_for(:votes).to_i, "vote" %>
 							</div>
-							<% elsif current_user.vote_evaluation(micropost, current_user.id) == 1 %>
-							<div id="vote_up_<%= micropost.id %>" style="margin-left:-2px" class="vote_up_icon_active">
-								
-							</div>
-							<div class="vote_micropost_<%= micropost.id %>">
-								<%= pluralize micropost.reputation_for(:votes).to_i, "vote" %>
-							</div>
-							<div id="vote_down_<%= micropost.id %>" class="vote_down_icon">
-								<%= link_to "x", vote_micropost_path(micropost, type: "down"), :remote => true, method: "post", class: "trick_anchor" %>
-							</div>
-							<% elsif current_user.vote_evaluation(micropost, current_user.id) == -1 %>
+							<% elsif micropost.has_evaluation?(:votes, current_user) %>
+
+								<% if current_user.vote_evaluation(micropost, current_user.id) == 1 %>
+								<div id="vote_up_<%= micropost.id %>" style="margin-left:-2px" class="vote_up_icon_active">
+									
+								</div>
+								<div class="vote_micropost_<%= micropost.id %>">
+									<%= pluralize micropost.reputation_for(:votes).to_i, "vote" %>
+								</div>
+								<div id="vote_down_<%= micropost.id %>" class="vote_down_icon">
+									<%= link_to "x", vote_micropost_path(micropost, type: "down"), :remote => true, method: "post", class: "trick_anchor" %>
+								</div>
+								<% end %>
+								<% if current_user.vote_evaluation(micropost, current_user.id) == -1 %>
+								<div id="vote_up_<%= micropost.id %>" style="margin-left:-2px" class="vote_up_icon">
+									<%= link_to "x", vote_micropost_path(micropost, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>
+								</div>
+								<div class="vote_micropost_<%= micropost.id %>">
+									<%= pluralize micropost.reputation_for(:votes).to_i, "vote" %>
+								</div>
+								<div id="vote_down_<%= micropost.id %>" class="vote_down_icon_active">
+									
+								</div>
+								<% end %>	
+						<% else %>
 							<div id="vote_up_<%= micropost.id %>" style="margin-left:-2px" class="vote_up_icon">
-								<%= link_to "x", vote_micropost_path(micropost, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>
-							</div>
-							<div class="vote_micropost_<%= micropost.id %>">
-								<%= pluralize micropost.reputation_for(:votes).to_i, "vote" %>
-							</div>
-							<div id="vote_down_<%= micropost.id %>" class="vote_down_icon_active">
-								
-							</div>	
+									<%= link_to "x", vote_micropost_path(micropost, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>
+								</div>
+								<div class="vote_micropost_<%= micropost.id %>">
+									<%= pluralize micropost.reputation_for(:votes).to_i, "vote" %>
+								</div>
+								<div id="vote_down_<%= micropost.id %>" class="vote_down_icon"><%= link_to "x", vote_micropost_path(micropost, type: "down"), :remote => true, method: "post", class: "trick_anchor" %>
+								</div>
 						<% end %>
 						</em>
 				</div>
