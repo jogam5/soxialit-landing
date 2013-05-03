@@ -1,3 +1,13 @@
-<% @new_stories.each do |s| %>
-  <%= s.title %><br />
+<div style="text-align:right">
+	<%= link_to "LISTA", list_path(@group), remote: true %> | <%= link_to "SQUARE", square_path(@group), remote: true %> 
+</div>
+<br /><br />
+<% if @all_stories.any? %>
+  <ol class="microposts">
+    <div id="ajax_new_stories">
+  	  <%= render :partial => 'list', :collection => @new_stories, :as => :story   %>
+	</div>
+  </ol>
+<% else %>
+  <h3>Sé el primero en compartir una historia.</h3>
 <% end %>
