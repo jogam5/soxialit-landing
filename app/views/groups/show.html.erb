@@ -12,7 +12,7 @@
     <li class="active"><a href="#tab1" data-toggle="tab">Todos</a></li>
     <li class=""><a href="#tab2" data-toggle="tab">Nuevos</a></li>
     <li class=""><a href="#tab3" data-toggle="tab">Top</a></li>
-    <li class=""><a href="#tab3" data-toggle="tab">Trending</a></li>
+    <li class=""><a href="#tab4" data-toggle="tab">Trending</a></li>
   </ul>
   <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
     <div class="tab-pane active" id="tab1">
@@ -22,6 +22,10 @@
     	<%= render 'show_new' %>
     </div>
     <div class="tab-pane" id="tab3">
+      <%= render 'show_top' %>
+    </div>
+     <div class="tab-pane" id="tab4">
+      <%= render 'show_trend' %>
     </div>
   </div>
 </div>

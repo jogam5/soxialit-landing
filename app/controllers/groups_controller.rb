@@ -6,8 +6,10 @@ class GroupsController < ApplicationController
     @group = Group.find_by_name(params[:name])
     @all_stories = Group.get_all_stories(@group)
     @new_stories = Group.get_new_stories(@group)
-    
-    
+    #@top = @group.microposts
+    #logger.debug "microposts con el grupo: #{@top}"
+    @top = Micropost.find_with_reputation(:votes, :all, {:conditions => ["microposts.group_id = ?", @group.id], :order => 'votes desc'})
+    @trend = Micropost.find_with_reputation(:votes, :all, {:conditions => ["microposts.group_id = ?", @group.id], :order => 'votes desc, created_at desc', :limit => 10})
     #@group = Group.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb

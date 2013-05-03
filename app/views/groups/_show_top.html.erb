@@ -1,0 +1,6 @@
+<%= @top.count %><br>
+<% @top.each do |s| %>
+  <%= s.id %><br>
+  <%= s.title %><br />
+  <%= pluralize s.reputation_for(:votes).to_i, "vote" %><br>
+<% end %>

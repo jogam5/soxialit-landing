@@ -95,7 +95,7 @@
 								<div id="love_icon_<%= @post.id %>" class="love_icon_active">
 									<span style="float:left; display:block; margin-left:-50%; color:black" 
 												id="love_post_<%= @post.id %>">
-										<%= @post.reputation_value_for(:likes).to_i %>
+										<%= @post.reputation_for_for(:likes).to_i %>
 									</span>
 								</div>
 				   			</span>
@@ -107,7 +107,7 @@
 									<div id="love_icon_<%= @post.id %>" class="love_icon">
 										<span style="float:left; display:block; margin-left:-50%; color:black" 
 													id="love_post_<%= @post.id %>">
-											<%= @post.reputation_value_for(:likes).to_i %>
+											<%= @post.reputation_for_for(:likes).to_i %>
 										</span>
 										<%= link_to "xxx", likes_post_path(@post, type: "up"), 
 												:class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
@@ -120,7 +120,7 @@
 		        			<span id="want_<%= @post.id %>">
 		        				<div id="love_icon_<%= @post.id %>" class="love_icon_active">
 									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= @post.id %>">
-		        						<%= @post.reputation_value_for(:likes).to_i %>
+		        						<%= @post.reputation_for_for(:likes).to_i %>
 		        					</span>
 		        				</div>
 		       				</span>

@@ -23,7 +23,7 @@
 		<hr>
 		<%= link_to(image_tag(@product.picture), product_url(@product))%>
 		<img src="http://i1246.photobucket.com/albums/gg616/soxialit/like-active_zps3977b1a5.png" border="0" alt="Likes:"/>
-		<div style="margin-left:5%; margin-top:-4%"><%= @product.reputation_value_for(:votes).to_i %></div>
+		<div style="margin-left:5%; margin-top:-4%"><%= @product.reputation_for_for(:votes).to_i %></div>
 		<hr>
 		<div style="display: block;
 		margin: 12px 0 5px;
