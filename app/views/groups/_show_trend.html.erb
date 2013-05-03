@@ -1,6 +1,13 @@
-<%= @trend.count %><br>
-<% @trend.each do |s| %>
-  <%= s.id %><br>
-  <%= s.title %><br />
-  <%= pluralize s.reputation_for(:votes).to_i, "vote" %><br>
+<div style="text-align:right">
+	<%= link_to "LISTA", list_path(@group), remote: true, style: "color: red;", class: 'lista_link' %> | <%= link_to "SQUARE", square_path(@group), remote: true, class: 'square_link' %> 
+</div>
+<br /><br />
+<% if @trend.any? %>
+  <ol class="microposts">
+	<div id="ajax_all_stories">
+	  <%= render :partial => 'list', :collection => @trend, :as => :story   %>
+	</div>  
+  </ol>
+<% else %>
+	<h3>Sé el primero en compartir una historia.</h3>
 <% end %>

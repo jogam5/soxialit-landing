@@ -6,7 +6,7 @@
 <br />
 <br />
 <p><span id=""><%= %><span></p>
-
+<div id="ajax" style="float:left; position:fixed; display:none; margin: 20% 455px; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
 <div class="tabbable" style="margin-bottom: 18px;">
   <ul class="nav nav-tabs">
     <li class="active"><a href="#tab1" data-toggle="tab">Todos</a></li>
@@ -29,3 +29,32 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+$(function() {
+  $('#ajax')
+    .hide()  // hide it initially.
+    .ajaxStart(function() {
+      $(this).show(); // show on any Ajax event.
+    })
+    .ajaxStop(function() {
+      $(this).hide(); // hide it when it is done.
+  });
+});
+
+  
+  $(function(){
+    $('.square_link').live('click', function(){
+      $('.lista_link').css('color', 'rgb(0, 136, 204)');
+      $(this).css('color', 'red');
+    });
+
+    $('.lista_link').live('click', function(){
+      $('.square_link').css('color', 'rgb(0, 136, 204)');
+      $(this).css('color', 'red');
+    })
+
+
+  });
+
+</script>
