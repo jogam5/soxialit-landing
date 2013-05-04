@@ -33,8 +33,8 @@ class User < ActiveRecord::Base
   #has_reputation :haves, source: {reputation: :haves, of: :products}, aggregated_by: :sum
   has_reputation :lovs, source: {reputation: :lovs, of: :microposts}, aggregated_by: :sum
   has_reputation :likes, source: {reputation: :likes, of: :posts}, aggregated_by: :sum
-  has_reputation :votes, source: {reputation: :votes, of: :microposts}, aggregated_by: :sum
-
+ # has_reputation :votes, source: {reputation: :votes, of: :microposts}, aggregated_by: :sum
+  has_reputation :user_votes, source: {reputation: :votes, of: :microposts}, aggregated_by: :sum
 
   mount_uploader :picture, ProfilePictureUploader
   mount_uploader :cover, CoverPictureUploader

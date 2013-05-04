@@ -105,9 +105,13 @@ class MicropostsController < ApplicationController
   end
 
   def vote
-    value = params[:type] == "up" ? 1 : -1
+    voto = params[:type] == "up" ? 1 : -1
     @micropost = Micropost.find(params[:id])
-    @micropost.add_or_update_evaluation(:votes, value, current_user)
+      @x = @micropost.reputation_for(:votes).to_i
+      @value = @x + (voto)
+      @value.to_i
+      logger.debug "Voto value #{@value}"
+      @micropost.add_or_update_evaluation(:votes, @value, current_user)
     #@micropost.activities.create(:user_id => current_user.id, :action => "like")
     #@user = User.find(@micropost.user_id)
     #Micropost.delay.publish_link_like_facebook(@micropost, current_user) unless current_user.fb == false
