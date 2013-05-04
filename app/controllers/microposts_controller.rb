@@ -79,7 +79,7 @@ class MicropostsController < ApplicationController
     Activity.expire_feed_cache(@micropost.user)
     @micropost.destroy
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'Micropost eliminado correctamente' }
+      format.html { redirect_to root_url, notice: 'Micropost eliminado correctamente' }
     end
   end
   

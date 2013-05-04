@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   before_filter :authenticate_user!
   #load_and_authorize_resource
+  layout "test", :only => :show
 
   def show
     @group = Group.find_by_name(params[:name])
