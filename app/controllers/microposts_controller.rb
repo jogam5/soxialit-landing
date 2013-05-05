@@ -105,19 +105,39 @@ class MicropostsController < ApplicationController
   end
 
   def vote
-    voto = params[:type] == "up" ? 1 : -1
+    voto = params[:type]
     @micropost = Micropost.find(params[:id])
+    if voto = "up"
       @x = @micropost.reputation_for(:votes).to_i
-      @value = @x + (voto)
+      logger.debug "Valor actual: #{@x}"
+      @value = @x + 1
       @value.to_i
-      logger.debug "Voto value #{@value}"
+      logger.debug "Voto despues: #{@value}"
       @micropost.add_or_update_evaluation(:votes, @value, current_user)
+      logger.debug "Reputation after: #{@micropost.reputation_for(:votes).to_i}"
+    else
+      @x = @micropost.reputation_for(:votes)
+      @value = @x - 1
+      @micropost.decrease_evaluation(:votes, @value, current_user)
+    end
+     #== "up" ? 1 : -1
+   # @micropost = Micropost.find(params[:id])
+   # @x = @micropost.reputation_for(:votes)
+    #logger.debug "Valor actual: #{@x}"
+    #logger.debug "Voto nuevo: #{voto}"
+    #@value = @x + (voto)
+    #@value
+    #logger.debug "Voto despues: #{@value}"
+    
+    #@micropost.add_or_update_evaluation(:votes, voto, current_user)
+    
     #@micropost.activities.create(:user_id => current_user.id, :action => "like")
     #@user = User.find(@micropost.user_id)
     #Micropost.delay.publish_link_like_facebook(@micropost, current_user) unless current_user.fb == false
     #@followers_list = current_user.followers.map do |u|
     #     { :id => u.id, :follower_name => u.nickname}
     #end
+
   end
   
   def modal_micropost
