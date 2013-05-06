@@ -105,9 +105,17 @@ class MicropostsController < ApplicationController
   end
 
   def vote
-    value = params[:type] == "up" ? 1 : 0
+    value = params[:type] 
     @micropost = Micropost.find(params[:id])
-    @micropost.add_or_update_evaluation(:votes, value, current_user)
+    if value == "up"
+      @micropost.add_or_update_evaluation(:votes, 1, current_user)
+    else
+      if @micropost.has_evaluation?(:votes, current_user)
+        @micropost.add_or_update_evaluation(:votes, 0, current_user)
+      else
+        @micropost.add_or_update_evaluation(:votes, -1, current_user)
+      end
+    end
 =begin
     voto = params[:type]
     logger.debug "Tipo voto: #{voto}"
