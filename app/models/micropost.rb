@@ -27,7 +27,9 @@ class Micropost < ActiveRecord::Base
   def reputation(micropost)
     evaluation = []
     micropost.evaluations.each do |voto|
+        if voto.reputation_name == "votes"
           evaluation << voto.value
+        end
     end
       evaluation.inject{|sum, x| sum + x}.to_i
   end
