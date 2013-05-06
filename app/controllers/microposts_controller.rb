@@ -105,22 +105,30 @@ class MicropostsController < ApplicationController
   end
 
   def vote
+    value = params[:type] == "up" ? 1 : -1
+    @micropost = Micropost.find(params[:id])
+    @micropost.add_or_update_evaluation(:votes, value, current_user)
+=begin
     voto = params[:type]
     logger.debug "Tipo voto: #{voto}"
     @micropost = Micropost.find(params[:id])
     if voto == "up"
-      @x = @micropost.reputation_for(:votes).to_i
+      @x = @micropost.reputation_for(:ups).to_i
       logger.debug "Valor actual: #{@x}"
       @value = @x + 1
       @value.to_i
       logger.debug "Voto despues: #{@value}"
-      @micropost.add_or_update_evaluation(:votes, @value, current_user)
-      logger.debug "Reputation after: #{@micropost.reputation_for(:votes).to_i}"
+      @micropost.add_or_update_evaluation(:ups, @value, current_user)
+      logger.debug "Reputation after: #{@micropost.reputation_for(:ups).to_i}"
     else
-      @x = @micropost.reputation_for(:votes)
+      @x = @micropost.reputation_for(:ups).to_i
+      logger.debug "Valor actual: #{@x}"
       @value = @x - 1
-      @micropost.add_or_update_evaluation(:votes, @value, current_user)
+      logger.debug "Voto despues: #{@value}"
+      @micropost.decrease_evaluation(:ups, @value, current_user)
+      logger.debug "Reputation after: #{@micropost.reputation_for(:ups).to_i}"
     end
+=end
      #== "up" ? 1 : -1
    # @micropost = Micropost.find(params[:id])
    # @x = @micropost.reputation_for(:votes)
@@ -129,7 +137,7 @@ class MicropostsController < ApplicationController
     #@value = @x + (voto)
     #@value
     #logger.debug "Voto despues: #{@value}"
-    
+  
     #@micropost.add_or_update_evaluation(:votes, voto, current_user)
     
     #@micropost.activities.create(:user_id => current_user.id, :action => "like")

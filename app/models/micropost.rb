@@ -15,13 +15,22 @@ class Micropost < ActiveRecord::Base
   attr_reader :tag_list
   attr_accessible :tag_list
   acts_as_taggable
-  has_reputation :votes, source: :user, aggregated_by: :product
+  has_reputation :votes, source: :user, aggregated_by: :sum
+
   #has_reputation :votes, source: :user, aggregated_by: :sum, source_of: [{ :reputation => :user_votes, :of => :user }] 
   mount_uploader :picture, PictureMicropostUploader
 
   validates :url, presence: true, :allow_blank => true, format: { with: URI::regexp(%w(http https)) }
   
   #validates :url, :length => { :in => 0..255 }, :allow_nil => true, :allow_blank => true
+
+  def reputation(micropost)
+    evaluation = []
+    micropost.evaluations.each do |voto|
+          evaluation << voto.value
+    end
+      evaluation.inject{|sum, x| sum + x}.to_i
+  end
 
   def self.publish_link_facebook(micropost)
     @micropost = micropost

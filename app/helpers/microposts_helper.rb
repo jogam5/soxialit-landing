@@ -19,4 +19,17 @@ module MicropostsHelper
 	   b.nickname
    end
 	
+   def reputation_value(evaluations)
+    evaluation = []
+    if !evaluations.nil?
+    	evaluations.each do |voto|
+      		evaluation << voto.value
+    	end
+    	evaluation.inject{|sum, x| sum + x}
+    else 
+    	0
+    end
+  end
+
+
 end
