@@ -106,8 +106,9 @@ class MicropostsController < ApplicationController
 
   def vote
     voto = params[:type]
+    logger.debug "Tipo voto: #{voto}"
     @micropost = Micropost.find(params[:id])
-    if voto = "up"
+    if voto == "up"
       @x = @micropost.reputation_for(:votes).to_i
       logger.debug "Valor actual: #{@x}"
       @value = @x + 1
@@ -118,7 +119,7 @@ class MicropostsController < ApplicationController
     else
       @x = @micropost.reputation_for(:votes)
       @value = @x - 1
-      @micropost.decrease_evaluation(:votes, @value, current_user)
+      @micropost.add_or_update_evaluation(:votes, @value, current_user)
     end
      #== "up" ? 1 : -1
    # @micropost = Micropost.find(params[:id])
