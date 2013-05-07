@@ -73,6 +73,17 @@
 									<%= link_to "xxx", vote_micropost_path(micropost, type: "down"), :remote => true, method: "post", class: "trick_anchor" %>
 								</div>
 								<% end %>
+								<% if current_user.vote_evaluation(micropost, current_user.id) == 0 %>
+								<div id="vote_up_<%= micropost.id %>" style="margin-left:-2px" class="vote_up_icon">
+									<%= link_to "xxx", vote_micropost_path(micropost, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>
+								</div>
+								<div class="vote_micropost_<%= micropost.id %>">
+								<%= pluralize micropost.reputation(micropost), "vote" %>
+								</div>
+								<div id="vote_down_<%= micropost.id %>" class="vote_down_icon_active">
+									
+								</div>
+								<% end %>
 								<% if current_user.vote_evaluation(micropost, current_user.id) == -1 %>
 								<div id="vote_up_<%= micropost.id %>" style="margin-left:-2px" class="vote_up_icon">
 									<%= link_to "xxx", vote_micropost_path(micropost, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>
@@ -83,7 +94,8 @@
 								<div id="vote_down_<%= micropost.id %>" class="vote_down_icon_active">
 									
 								</div>
-								<% end %>	
+								<% end %>
+								
 						<% else %>
 							<div id="vote_up_<%= micropost.id %>" style="margin-left:-2px" class="vote_up_icon">
 									<%= link_to "xxx", vote_micropost_path(micropost, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>
