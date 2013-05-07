@@ -8,8 +8,7 @@
 						<%= pluralize story.reputation(story), "vote" %>
 						</div>
 						<% elsif story.has_evaluation?(:votes, current_user) %>
-							<% case current_user.vote_evaluation(story, current_user.id) %>
-							<% when 1 %>
+							<% if current_user.vote_evaluation(story, current_user.id) == 1 %>
 							<div id="vote_up_<%= story.id %>" style="margin-left:-2px" class="vote_up_icon_active">
 								
 							</div>
@@ -19,7 +18,8 @@
 							<div id="vote_down_<%= story.id %>" class="vote_down_icon">
 								<%= link_to "xxx", vote_micropost_path(story, type: "down"), :remote => true, method: "post", class: "trick_anchor" %>
 							</div>
-							<% when 0 %>
+							<% end %>
+							<% if current_user.vote_evaluation(story, current_user.id) == 0 %>
 							<div id="vote_up_<%= story.id %>" style="margin-left:-2px" class="vote_up_icon">
 								<%= link_to "xxx", vote_micropost_path(story, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>
 							</div>
@@ -29,7 +29,8 @@
 							<div id="vote_down_<%= story.id %>" class="vote_down_icon_active">
 								
 							</div>
-							<% when -1 %>
+							<% end %>
+							<% if current_user.vote_evaluation(story, current_user.id) == -1 %>
 							<div id="vote_up_<%= story.id %>" style="margin-left:-2px" class="vote_up_icon">
 								<%= link_to "xxx", vote_micropost_path(story, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>
 							</div>
@@ -39,7 +40,6 @@
 							<div id="vote_down_<%= story.id %>" class="vote_down_icon_active">
 								
 							</div>
-							
 							<% end %>	
 					<% else %>
 						<div id="vote_up_<%= story.id %>" style="margin-left:-2px" class="vote_up_icon">
