@@ -62,7 +62,7 @@
 							</div>
 							<% elsif micropost.has_evaluation?(:votes, current_user) %>
 
-								<% if current_user.vote_evaluation(micropost, current_user.id) == 1 %>
+								<% if current_user.vote_evaluation(micropost, current_user) == 1 %>
 								<div id="vote_up_<%= micropost.id %>" style="margin-left:-2px" class="vote_up_icon_active">
 									
 								</div>
@@ -73,7 +73,7 @@
 									<%= link_to "xxx", vote_micropost_path(micropost, type: "down"), :remote => true, method: "post", class: "trick_anchor" %>
 								</div>
 								<% end %>
-								<% if current_user.vote_evaluation(micropost, current_user.id) == 0 %>
+								<% if current_user.vote_evaluation(micropost, current_user) == 0 %>
 								<div id="vote_up_<%= micropost.id %>" style="margin-left:-2px" class="vote_up_icon">
 									<%= link_to "xxx", vote_micropost_path(micropost, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>
 								</div>
@@ -84,7 +84,7 @@
 									
 								</div>
 								<% end %>
-								<% if current_user.vote_evaluation(micropost, current_user.id) == -1 %>
+								<% if current_user.vote_evaluation(micropost, current_user) == -1 %>
 								<div id="vote_up_<%= micropost.id %>" style="margin-left:-2px" class="vote_up_icon">
 									<%= link_to "xxx", vote_micropost_path(micropost, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>
 								</div>
