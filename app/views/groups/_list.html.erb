@@ -8,7 +8,8 @@
 						<%= pluralize story.reputation(story), "vote" %>
 						</div>
 						<% elsif story.has_evaluation?(:votes, current_user) %>
-							<% if current_user.vote_evaluation(story, current_user.id) == 1 %>
+							<% case current_user.vote_evaluation(story, current_user.id) %>
+							<% when 1 %>
 							<div id="vote_up_<%= story.id %>" style="margin-left:-2px" class="vote_up_icon_active">
 								
 							</div>
@@ -18,8 +19,7 @@
 							<div id="vote_down_<%= story.id %>" class="vote_down_icon">
 								<%= link_to "xxx", vote_micropost_path(story, type: "down"), :remote => true, method: "post", class: "trick_anchor" %>
 							</div>
-							<% end %>
-							<% if current_user.vote_evaluation(story, current_user.id) == 0 %>
+							<% when 0 %>
 							<div id="vote_up_<%= story.id %>" style="margin-left:-2px" class="vote_up_icon">
 								<%= link_to "xxx", vote_micropost_path(story, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>
 							</div>
@@ -29,8 +29,7 @@
 							<div id="vote_down_<%= story.id %>" class="vote_down_icon_active">
 								
 							</div>
-							<% end %>
-							<% if current_user.vote_evaluation(story, current_user.id) == -1 %>
+							<% when -1 %>
 							<div id="vote_up_<%= story.id %>" style="margin-left:-2px" class="vote_up_icon">
 								<%= link_to "xxx", vote_micropost_path(story, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>
 							</div>
@@ -39,6 +38,16 @@
 							</div>
 							<div id="vote_down_<%= story.id %>" class="vote_down_icon_active">
 								
+							</div>
+							<% else %>
+							<div id="vote_up_<%= story.id %>" style="margin-left:-2px" class="vote_up_icon">
+								<%= link_to "xxx", vote_micropost_path(story, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>
+							</div>
+							<div class="vote_micropost_<%= story.id %>">
+								<%= pluralize story.reputation(story), "vote" %>
+								
+							</div>
+							<div id="vote_down_<%= story.id %>" class="vote_down_icon"><%= link_to "xxx", vote_micropost_path(story, type: "down"), :remote => true, method: "post", class: "trick_anchor" %>
 							</div>
 							<% end %>	
 					<% else %>
