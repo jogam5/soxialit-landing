@@ -147,12 +147,14 @@ class User < ActiveRecord::Base
   
   def vote_evaluation(micropost, user)
     a = micropost.evaluations
+    valor = ""
       a.each do |eval|
         if eval.source_id == user
-          eval.value
+          valor = eval.value
           logger.debug "valor es: #{eval.value}"
         end
-        return eval.value
+        return valor.to_i
+        logger.debug "valor es: #{valor.to_i}"
       end
     end
 
