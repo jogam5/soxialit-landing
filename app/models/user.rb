@@ -147,16 +147,10 @@ class User < ActiveRecord::Base
   
   def vote_evaluation(micropost, user)
     a = micropost.evaluations
-    valor = ""
-      a.each do |eval|
-        if eval.source_id == user
-          valor = eval.value
-          logger.debug "valor es: #{eval.value}"
-        end
-        return valor.to_i
-        logger.debug "valor es: #{valor.to_i}"
-      end
+    a.each do |eval|
+      return eval.value if (eval.source_id == user.id)
     end
+  end
 
   def voted_by?(haiku, eva)
      haiku.each do |test|
