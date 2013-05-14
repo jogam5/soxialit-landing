@@ -1708,8 +1708,15 @@ ul.comments_new{
 #newsletter_leer_mas{
 	background-color: black;
 	padding: 0.5em 6em 0.5em 0.5em;
-	color: white;
 	font-size: 0.9em;
+	margin: 0.5em 0 5em 0;
+	 a{
+	color:white;
+	}
+	 a:hover{
+	color:$rojo;
+	text-decoration:none;
+	}
 }
 
 .pagination {
