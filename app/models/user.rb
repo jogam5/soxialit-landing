@@ -33,8 +33,10 @@ class User < ActiveRecord::Base
   #has_reputation :haves, source: {reputation: :haves, of: :products}, aggregated_by: :sum
   has_reputation :lovs, source: {reputation: :lovs, of: :microposts}, aggregated_by: :sum
   has_reputation :likes, source: {reputation: :likes, of: :posts}, aggregated_by: :sum
- # has_reputation :votes, source: {reputation: :votes, of: :microposts}, aggregated_by: :sum
-  has_reputation :user_votes, source: {reputation: :votes, of: :microposts}, aggregated_by: :sum
+  has_reputation :votes, source: {reputation: :votes, of: :microposts}, aggregated_by: :sum
+  #has_reputation :ups, source: {reputation: :ups, of: :microposts}, aggregated_by: :sum
+
+  #has_reputation :user_votes, source: {reputation: :votes, of: :microposts}, aggregated_by: :sum
 
   mount_uploader :picture, ProfilePictureUploader
   mount_uploader :cover, CoverPictureUploader
@@ -145,14 +147,10 @@ class User < ActiveRecord::Base
   
   def vote_evaluation(micropost, user)
     a = micropost.evaluations
-      a.each do |eval|
-        if eval.source_id == user
-          eval.value
-          logger.debug "valor es: #{eval.value}"
-        end
-        return eval.value
-      end
+    a.each do |eval|
+      return eval.value if (eval.source_id == user.id)
     end
+  end
 
   def voted_by?(haiku, eva)
      haiku.each do |test|

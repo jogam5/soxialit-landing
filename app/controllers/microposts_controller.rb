@@ -105,19 +105,56 @@ class MicropostsController < ApplicationController
   end
 
   def vote
-    voto = params[:type] == "up" ? 1 : -1
+    value = params[:type] 
     @micropost = Micropost.find(params[:id])
-      @x = @micropost.reputation_for(:votes).to_i
-      @value = @x + (voto)
+    if value == "up"
+      @micropost.add_or_update_evaluation(:votes, 1, current_user)
+    else
+      if @micropost.has_evaluation?(:votes, current_user)
+        @micropost.add_or_update_evaluation(:votes, 0, current_user)
+      else
+        @micropost.add_or_update_evaluation(:votes, -1, current_user)
+      end
+    end
+=begin
+    voto = params[:type]
+    logger.debug "Tipo voto: #{voto}"
+    @micropost = Micropost.find(params[:id])
+    if voto == "up"
+      @x = @micropost.reputation_for(:ups).to_i
+      logger.debug "Valor actual: #{@x}"
+      @value = @x + 1
       @value.to_i
-      logger.debug "Voto value #{@value}"
-      @micropost.add_or_update_evaluation(:votes, @value, current_user)
+      logger.debug "Voto despues: #{@value}"
+      @micropost.add_or_update_evaluation(:ups, @value, current_user)
+      logger.debug "Reputation after: #{@micropost.reputation_for(:ups).to_i}"
+    else
+      @x = @micropost.reputation_for(:ups).to_i
+      logger.debug "Valor actual: #{@x}"
+      @value = @x - 1
+      logger.debug "Voto despues: #{@value}"
+      @micropost.decrease_evaluation(:ups, @value, current_user)
+      logger.debug "Reputation after: #{@micropost.reputation_for(:ups).to_i}"
+    end
+=end
+     #== "up" ? 1 : -1
+   # @micropost = Micropost.find(params[:id])
+   # @x = @micropost.reputation_for(:votes)
+    #logger.debug "Valor actual: #{@x}"
+    #logger.debug "Voto nuevo: #{voto}"
+    #@value = @x + (voto)
+    #@value
+    #logger.debug "Voto despues: #{@value}"
+  
+    #@micropost.add_or_update_evaluation(:votes, voto, current_user)
+    
     #@micropost.activities.create(:user_id => current_user.id, :action => "like")
     #@user = User.find(@micropost.user_id)
     #Micropost.delay.publish_link_like_facebook(@micropost, current_user) unless current_user.fb == false
     #@followers_list = current_user.followers.map do |u|
     #     { :id => u.id, :follower_name => u.nickname}
     #end
+
   end
   
   def modal_micropost

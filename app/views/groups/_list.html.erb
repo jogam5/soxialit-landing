@@ -3,39 +3,54 @@
 	  	<section style="position: absolute; margin-left: -4%; background-color: rgb(228,228,228); border-radius: 5px; padding: 10px;">
 				<div class="haiku">
 					<em>
-					<% if story.user_id == current_user.id %>
-						<div class="vote_micropost_<%= story.id %>">
-							<%= pluralize story.reputation_for(:votes).to_i, "vote" %>
+						<% if story.user_id == current_user.id %>
+						<div class="vote_story_<%= story.id %>">
+						<%= pluralize story.reputation(story), "vote" %>
 						</div>
-					<% elsif story.has_evaluation?(:votes, current_user) %>
-						<% if current_user.vote_evaluation(story, current_user.id) == 1 %>
-							<div id="vote_up_<%= story.id %>" style="margin-left:-2px" class="vote_up_icon_active"></div>
+						<% elsif story.has_evaluation?(:votes, current_user) %>
+							<% if current_user.vote_evaluation(story, current_user) == 1 %>
+							<div id="vote_up_<%= story.id %>" style="margin-left:-2px" class="vote_up_icon_active">
+								
+							</div>
 							<div class="vote_micropost_<%= story.id %>">
-								<%= pluralize story.reputation_for(:votes).to_i, "vote" %>
+							<%= pluralize story.reputation(story), "vote" %>
 							</div>
 							<div id="vote_down_<%= story.id %>" class="vote_down_icon">
 								<%= link_to "xxx", vote_micropost_path(story, type: "down"), :remote => true, method: "post", class: "trick_anchor" %>
 							</div>
-						<% end %>
-						<% if current_user.vote_evaluation(story, current_user.id) == -1 %>
+							<% end %>
+							<% if current_user.vote_evaluation(story, current_user) == 0 %>
 							<div id="vote_up_<%= story.id %>" style="margin-left:-2px" class="vote_up_icon">
 								<%= link_to "xxx", vote_micropost_path(story, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>
 							</div>
 							<div class="vote_micropost_<%= story.id %>">
-									<%= pluralize story.reputation_for(:votes).to_i, "vote" %>
+							<%= pluralize story.reputation(story), "vote" %>
 							</div>
 							<div id="vote_down_<%= story.id %>" class="vote_down_icon_active">
+								
 							</div>
-						<% end %>	
+							<% end %>
+							<% if current_user.vote_evaluation(story, current_user) == -1 %>
+							<div id="vote_up_<%= story.id %>" style="margin-left:-2px" class="vote_up_icon">
+								<%= link_to "xxx", vote_micropost_path(story, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>
+							</div>
+							<div class="vote_micropost_<%= story.id %>">
+							<%= pluralize story.reputation(story), "vote" %>
+							</div>
+							<div id="vote_down_<%= story.id %>" class="vote_down_icon_active">
+								
+							</div>
+							<% end %>	
 					<% else %>
 						<div id="vote_up_<%= story.id %>" style="margin-left:-2px" class="vote_up_icon">
-							<%= link_to "xxx", vote_micropost_path(story, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>
-						</div>
-						<div class="vote_micropost_<%= story.id %>">
-							<%= pluralize story.reputation_for(:votes).to_i, "vote" %>
-						</div>
-						<div id="vote_down_<%= story.id %>" class="vote_down_icon"><%= link_to "xxx", vote_micropost_path(story, type: "down"), :remote => true, method: "post", class: "trick_anchor" %>
-						</div>
+								<%= link_to "xxx", vote_micropost_path(story, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>
+							</div>
+							<div class="vote_micropost_<%= story.id %>">
+								<%= pluralize story.reputation(story), "vote" %>
+								
+							</div>
+							<div id="vote_down_<%= story.id %>" class="vote_down_icon"><%= link_to "xxx", vote_micropost_path(story, type: "down"), :remote => true, method: "post", class: "trick_anchor" %>
+							</div>
 					<% end %>
 					</em>
 				</div>
@@ -48,7 +63,7 @@
 		<% end %>
 	  </div>
 	  <div class="span5">
-	  	<span id="item_link_micropost" style="font-size:3em; line-height:1.2em"><%= link_to story.title,
+	  	<span id="item_link_story" style="font-size:3em; line-height:1.2em"><%= link_to story.title,
 											story.url, target: '_blank' %></span>
 	  	<div class="timestamp" style="margin-top:1em">
 	  	  <p><%= time_ago_in_words(story.created_at) %> by
