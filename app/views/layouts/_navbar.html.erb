@@ -5,7 +5,7 @@
 				background: -moz-linear-gradient(top, black, black);"
 		 class="navbar-inner">
 			<div class="container">
-				<span class="span5">
+				<span class="span2">
 					<div id="home_nav_bar_logo"><%= link_to image_tag("logo.png", width:35, height:35), root_url %></div>
 				</span>
 				<nav>
@@ -13,12 +13,29 @@
 					<% if user_signed_in? %>
 						<li class=""></li>
 					    <li id="home_nav_bar">
-							<%= link_to 'Celebrities', "", 
+							<%= link_to 'Celebrities', group_path(Group.find_by_name("Celebrities")), 
 															:title => "7 historias de la semana", :id => "index_pauline" %>
 					   	</li>
 						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 					    <li id="home_nav_bar">
 							<%= link_to 'Beauty', "", id:"index_users", :title => "Conecta con la comunidad" %>
+					   	</li>
+					   	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					    <li id="home_nav_bar">
+							<%= link_to 'DIY', "", id:"index_users", :title => "Conecta con la comunidad" %>
+					   	</li>
+					   	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					    <li id="home_nav_bar">
+							<%= link_to 'Gente', "", id:"index_users", :title => "Conecta con la comunidad" %>
+					   	</li>
+					 
+					   	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					    <li id="home_nav_bar">
+							<%= link_to 'Tendencias', "", id:"index_users", :title => "Conecta con la comunidad" %>
+					   	</li>
+					   	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					    <li id="home_nav_bar">
+							<%= link_to 'Streetstyle', "", id:"index_users", :title => "Conecta con la comunidad" %>
 					   	</li>
 					   	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 					    <li id="home_nav_bar">
