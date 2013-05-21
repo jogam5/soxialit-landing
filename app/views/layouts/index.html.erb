@@ -12,14 +12,37 @@ mixpanel.init("5e344db467e2f971ffccde4566fe2da4");</script><!-- end Mixpanel -->
   <% yield :javascript %>
 
 </head>
-<style> body { padding-top: 40px; } </style>
+<style> 
+        body { padding-top: 40px; }
+
+        .sidebar-nav-fixed {
+             position:fixed;
+             top:60px;
+             width:25%;
+         }
+
+       @media (max-width: 767px) {
+            .sidebar-nav-fixed {
+                position:static;
+                width:auto;
+            }
+        }
+
+        @media (max-width: 979px) {
+            .sidebar-nav-fixed {
+                top:70px;
+            }
+        }
+
+
+</style>
 <body>
 
   <%= render 'layouts/navbar' %>
-  <div class="container">
+  
     <%= yield %>
     <div id="modal-link"></div>
-  </div>
+  
 
 <!-- start Fonts -->
 <link href='https://fonts.googleapis.com/css?family=Dosis|Arimo|Lobster|Raleway' rel='stylesheet' type='text/css'>
