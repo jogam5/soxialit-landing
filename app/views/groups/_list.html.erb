@@ -56,14 +56,14 @@
 				</div>
 			</section>
 	  <div class="span6">
-	    <% if story.picture.present? %>
-		  <%= link_to image_tag(story.picture_url, width:380), story.url, target: '_blank' %>
-		<% else %>
+	  <% if story.picture.present? %>
+	 	 <%= link_to image_tag(story.picture_url(:link_430), story.url, target: '_blank' %>
+  	  <% else %>
 		  <%= link_to image_tag(story.thumbnail), story.url, target: '_blank' %>
 		<% end %>
 	  </div>
 	  <div class="span5">
-	  	<span id="item_link_story" style="font-size:3em; line-height:1.2em"><%= link_to story.title,
+	  	<span id="item_link_micropost" style="font-size:3em; line-height:1.2em"><%= link_to story.title,
 											story.url, target: '_blank' %></span>
 	  	<div class="timestamp" style="margin-top:1em">
 	  	  <p><%= time_ago_in_words(story.created_at) %> by

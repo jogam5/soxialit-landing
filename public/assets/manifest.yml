@@ -52,6 +52,8 @@ classic-map.png: classic-map-573537dc8c2f39b035fd8bd0d15657ab.png
 classic-map/index.png: classic-map-573537dc8c2f39b035fd8bd0d15657ab.png
 close.png: close-978633e6bc46e254ded380b195d2b819.png
 close/index.png: close-978633e6bc46e254ded380b195d2b819.png
+coac.jpg: coac-fd10bb3bde60f42717d14def2a9f62d1.jpg
+coac/index.jpg: coac-fd10bb3bde60f42717d14def2a9f62d1.jpg
 collar1.png: collar1-f26f4c2573a05fb2ffe15d16c081b106.png
 collar1/index.png: collar1-f26f4c2573a05fb2ffe15d16c081b106.png
 colorback.png: colorback-6ad6a294ce3c94b4326df1a8f8108005.png
@@ -284,8 +286,8 @@ zapato.png: zapato-1029d6c5aa14da47143753767914f588.png
 zapato/index.png: zapato-1029d6c5aa14da47143753767914f588.png
 application.js: application-35be96a50af4bfe2332208c17d46ca00.js
 application/index.js: application-35be96a50af4bfe2332208c17d46ca00.js
-application.css: application-15146f8f55bd323da42142847beef85e.css
-application/index.css: application-15146f8f55bd323da42142847beef85e.css
+application.css: application-94e25430527bcf28d9c11394dcf3db2c.css
+application/index.css: application-94e25430527bcf28d9c11394dcf3db2c.css
 fontawesome-webfont.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont/index.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont.svg: fontawesome-webfont-c3f3594758768fbb43eae746d18b3b50.svg

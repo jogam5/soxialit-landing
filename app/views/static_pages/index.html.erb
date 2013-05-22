@@ -3,6 +3,15 @@
  <div class="span3">
    <div id="left_bar" class="sidebar-nav sidebar-nav-fixed">
     <div class="main-head">
+    	
+    	<%= link_to image_tag("logo.png", width:35, height:35), root_url %>
+    	<div class="separador"></div>
+		<p><%= link_to image_tag(current_user.picture_url(:thumb_profile), 
+										width: 30, height: 30, 
+										:style => "float:right; margin:5px 5px 0 0"), user_path(current_user) %>
+
+    	</p>
+									
     </div>
     <div class="body-row">
     	<p id="explorar-editor"><%= link_to "Editor's Pick", "" %></p>
