@@ -12,6 +12,11 @@
 				  <ul class="nav pull-right">
 					<% if user_signed_in? %>
 						<li class=""></li>
+						<% if current_user.roles.first.name == "admin" %>
+					   	 <li id="home_nav_bar">
+							<%= link_to "Testing", story_path, {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true}  %>
+					   	</li>	
+					   	<% end %>
 					    <li id="home_nav_bar">
 							<%= link_to '7-PAULINE', "http://soxialit.com/las7depauline", 
 															:title => "7 historias de la semana", :id => "index_pauline" %>
@@ -24,6 +29,7 @@
 					    <li id="home_nav_bar">
 							<%= link_to "EXPLORA", microposts_path, id:"index_microposts", :title => "Todos los Posts" %>
 					   	</li>
+					   	
 					   	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 						<li style="margin-right:0" class="divider-vertical"></li>
 					    <li class="home_nav_bar" style="background-color:red; padding: 0 5px 8px 5px;">
@@ -58,6 +64,7 @@
 					              </ul>
 					        </li>
 					<% else %>
+
 						<li id="home_nav_bar">
 							<%= link_to '7-PAULINE', "http://soxialit.com/las7depauline" %></li>
 						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>

@@ -11,3 +11,19 @@
 <% else %>
   <h3>Sé el primero en compartir una historia.</h3>
 <% end %>
+
+<script>
+$(function(){
+    $('.square_link').live('click', function(){
+      $('.lista_link').css('color', 'rgb(0, 136, 204)');
+      $(this).css('color', 'red');
+    });
+
+    $('.lista_link').live('click', function(){
+      $('.square_link').css('color', 'rgb(0, 136, 204)');
+      $(this).css('color', 'red');
+    })
+
+
+  });
+</script>

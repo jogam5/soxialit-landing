@@ -216,4 +216,6 @@ class User < ActiveRecord::Base
   def unsubscribe!(group)
     memberships.find_by_group_id(group.id).destroy
   end
+
+  
 end
