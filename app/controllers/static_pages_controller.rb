@@ -152,5 +152,17 @@ class StaticPagesController < ApplicationController
   end
 
   def index
+    @group = Group.find(1)
+    @all_stories = Group.get_all_stories(@group)
+    @new_stories = Group.get_new_stories(@group)
+    @top = Micropost.find_with_reputation(:votes, :all, 
+      {:conditions => ["microposts.group_id = ?", @group.id], :order => 'votes desc'})
+    @trend = Micropost.find_with_reputation(:votes, :all, 
+      {:conditions => ["microposts.group_id = ?", @group.id], :order => 'votes desc, created_at desc', :limit => 10})
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @group }
+    end
   end
 end

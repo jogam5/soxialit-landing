@@ -13,38 +13,38 @@
 					<% if user_signed_in? %>
 						<li class=""></li>
 					    <li id="home_nav_bar">
-							<%= link_to 'Celebrities', group_path(Group.find_by_name("Celebrities")), 
+							<%= link_to '', group_path(Group.find_by_name("Celebrities")), 
 															:title => "7 historias de la semana", :id => "index_pauline" %>
 					   	</li>
 						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 					    <li id="home_nav_bar">
-							<%= link_to 'Beauty', "", id:"index_users", :title => "Conecta con la comunidad" %>
+							<%= link_to '', "", id:"index_users", :title => "Conecta con la comunidad" %>
 					   	</li>
 					   	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 					    <li id="home_nav_bar">
-							<%= link_to 'DIY', "", id:"index_users", :title => "Conecta con la comunidad" %>
+							<%= link_to '', "", id:"index_users", :title => "Conecta con la comunidad" %>
 					   	</li>
 					   	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 					    <li id="home_nav_bar">
-							<%= link_to 'Gente', "", id:"index_users", :title => "Conecta con la comunidad" %>
+							<%= link_to '', "", id:"index_users", :title => "Conecta con la comunidad" %>
 					   	</li>
 					 
 					   	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 					    <li id="home_nav_bar">
-							<%= link_to 'Tendencias', "", id:"index_users", :title => "Conecta con la comunidad" %>
+							<%= link_to '', "", id:"index_users", :title => "Conecta con la comunidad" %>
 					   	</li>
 					   	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 					    <li id="home_nav_bar">
-							<%= link_to 'Streetstyle', "", id:"index_users", :title => "Conecta con la comunidad" %>
+							<%= link_to '', "", id:"index_users", :title => "Conecta con la comunidad" %>
 					   	</li>
 					   	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 					    <li id="home_nav_bar">
-							<%= link_to "Runway", "", id:"index_microposts", :title => "Todos los Posts" %>
+							<%= link_to "", "", id:"index_microposts", :title => "Todos los Posts" %>
 					   	</li>
 					   	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 						<li style="margin-right:0" class="divider-vertical"></li>
 					    <li id="home_nav_bar_share" style="background-color:red; padding: 0 5px 8px 5px;">
-			            	<%= link_to image_tag('link_blanco.png', style:"width:20px;").html_safe, modal_post_path,  {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
+			            	<%= link_to '<i class="icon-edit icon-white"></i> Nuevo'.html_safe, modal_post_path,  {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
 					   	</li>
 						<li style="margin-left:0" class="divider-vertical"></li>
 						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
@@ -71,7 +71,6 @@
 					                <li>
 					                  <%= link_to "Salir", destroy_user_session_path, :method => :delete %>
 					                </li>
-									
 					              </ul>
 					        </li>
 					<% else %>
