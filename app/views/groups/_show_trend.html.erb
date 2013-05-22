@@ -5,7 +5,7 @@
 <% if @trend.any? %>
   <ol class="microposts">
 	<div id="ajax_trend_stories">
-	  <%= render :partial => 'list', :collection => @trend, :as => :story   %>
+	  <%= render :partial => 'groups/list', :collection => @trend, :as => :story   %>
 	</div>  
   </ol>
 <% else %>

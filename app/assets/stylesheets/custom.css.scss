@@ -82,6 +82,7 @@ $website:#bbb;
 $alert_messages:#FEFFC5;
 $verde:#60b018;
 $rojo:#DD390D;
+$grayKippt:#22262e;
 
 $fashionlover:#FF555D;
 $designer:#00B174;
@@ -351,8 +352,12 @@ margin-top: 3%;
 
 .navbar .nav > li > a {
 	padding: 8px 5px 3px;
-	color:$pink;
+	color:whiteSmoke;
 	text-shadow: none;
+}
+
+.navbar .nav > li > a:hover{
+	color:black;
 }
 
 
@@ -559,7 +564,7 @@ margin-top: 3%;
 
 #home_nav_bar_share{
 	 a:hover{
-	opacity:0.5;
+	opacity:1;
 	}
 }
 
@@ -1782,5 +1787,112 @@ ul.comments_new{
 	 a:hover{
 	color:$rojo;
 	text-decoration:none;
+	}
+}
+
+
+/***** left bar in home ****/
+
+#left_bar{
+	background:#1B1E24;
+	color:whitesmoke;
+	font-family: Helvetica-Neue, Helvetica, nimbus-sans, Arial;
+	font-weight:300;
+	z-index:1;
+	height:100%;
+
+	 .main-head{
+	height:60px;
+	}
+	 .body-row{
+	top:60px;
+	bottom:30px;
+	overflow-y:scroll;
+	right:-30px;
+	}
+	
+}
+
+.body-list{
+    margin: 0 0 10px 2px;
+	 li {
+	list-style:none;
+	margin-left:7px;
+	line-height:25px;
+	}
+}
+
+#explorar-editor{
+	 a{
+	font-size:1em;
+	padding:3px 20px 3px 5px;
+	background:#999;
+	color:whiteSmoke;
+	font-weight:300;
+	}
+	 a:hover{
+	font-size:1em;
+	padding:3px 20px 3px 5px;
+	background:#555;
+	color:whiteSmoke;
+	font-weight:300;
+	text-decoration:none;
+	}
+}
+
+#explorar-revistas{
+	padding:3px 20px 3px 5px;
+	background:$rojo;
+	margin-bottom:1.5em;
+	 a{
+	font-size:1em;
+	color:whiteSmoke;
+	font-weight:300;
+	}
+	 a:hover{
+	font-size:1em;
+	padding:3px 20px 3px 5px;
+	background:$rojo;
+	color:black;
+	font-weight:300;
+	text-decoration:none;
+	}
+}
+
+.main-head .separador{
+	border-bottom:1px solid #999;
+}
+
+.main-head .btn-group{
+	position: absolute;
+	right: 20px;
+	top: 14px;
+	width: 105px;
+	background: rgba(0,0,0,0.2);
+	.user{
+	padding: 6px 6px;
+	}
+}
+
+.main-head .btn-group > a {
+	padding: 8px 8px;
+	float: right;
+	margin-left: 4px;
+	text-align: center;
+	vertical-align: top;
+	line-height: 1;
+	color:whiteSmoke;
+}
+
+.body-list{
+	 a{
+	color:whiteSmoke;
+	font-size:1.2em;
+	}
+	 a:hover{
+	background:whiteSmoke;
+	padding:3px 20px 3px 0px;
+	text-decoration:none;
+	color:black;
 	}
 }

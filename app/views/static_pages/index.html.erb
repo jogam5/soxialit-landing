@@ -1,30 +1,56 @@
-<div class="container-fluid">
+<div style="padding-left:0px" class="container-fluid">
 <div class="row-fluid">
- <div class="span4">
-   <div class="sidebar-nav sidebar-nav-fixed">
-    <p>yooko</p>
-    <%= image_tag "dos.jpg" %>
+ <div class="span3">
+   <div id="left_bar" class="sidebar-nav sidebar-nav-fixed">
+    <div class="main-head">
+    </div>
+    <div class="body-row">
+    	<p id="explorar-editor"><%= link_to "Editor's Pick", "" %></p>
+    	<p id="explorar-revistas"><%= link_to "Explorar Revistas", "" %></p>
+    	
+    	<p style="font-size:1em; color:#999; margin-left:5px">Mis Revistas</p>
+    	<ul class="body-list">
+    		<li><%= link_to "Celebrities", group_path(Group.find_by_name("Celebrities")) %></li>
+    		<li><%= link_to "The New Black", "" %></li>
+    	</ul>
+    	<p style="font-size:1em; color:#999; margin-left:5px">Revistas que sigo</p>
+    	<ul class="body-list">
+    		<li><%= link_to "Vestidos de Verano", group_path(Group.find_by_name("Celebrities")) %></li>
+    		<li><%= link_to "Lookbooks", "" %></li>
+    		<li><%= link_to "Fashion Parade", "" %></li>
+    		<li><%= link_to "Coachella Inspiration", "" %></li>
+    		<li><%= link_to "Gente", "" %></li>
+    		<li><%= link_to "DIY-Bolsos", "" %></li>
+    		<li><%= link_to "DIY-Jeans", "" %></li>
+    		<li><%= link_to "MBFW 2013", "" %></li>
+    	</ul>
+    </div>
    </div><!--/.well -->
  </div><!--/span-->
- <div class="span7">
- 	<h2>Yooko Ono</h2>
-    <p>hi guys,
-Is there a way to convert fixed layout design of www.thefunnyquotessayings.com to a responsive design ? I am not a highly technical person. Just wondering if there are any tools to convert the site to responsive design. Thank you waiitng for your reply.</p>
-<p>hi guys,
-Is there a way to convert fixed layout design of www.thefunnyquotessayings.com to a responsive design ? I am not a highly technical person. Just wondering if there are any tools to convert the site to responsive design. Thank you waiitng for your reply.</p><p>hi guys,
-Is there a way to convert fixed layout design of www.thefunnyquotessayings.com to a responsive design ? I am not a highly technical person. Just wondering if there are any tools to convert the site to responsive design. Thank you waiitng for your reply.</p><p>hi guys,
-Is there a way to convert fixed layout design of www.thefunnyquotessayings.com to a responsive design ? I am not a highly technical person. Just wondering if there are any tools to convert the site to responsive design. Thank you waiitng for your reply.</p><p>hi guys,
-Is there a way to convert fixed layout design of www.thefunnyquotessayings.com to a responsive design ? I am not a highly technical person. Just wondering if there are any tools to convert the site to responsive design. Thank you waiitng for your reply.</p><p>hi guys,
-Is there a way to convert fixed layout design of www.thefunnyquotessayings.com to a responsive design ? I am not a highly technical person. Just wondering if there are any tools to convert the site to responsive design. Thank you waiitng for your reply.</p><p>hi guys,
-Is there a way to convert fixed layout design of www.thefunnyquotessayings.com to a responsive design ? I am not a highly technical person. Just wondering if there are any tools to convert the site to responsive design. Thank you waiitng for your reply.</p><p>hi guys,
-Is there a way to convert fixed layout design of www.thefunnyquotessayings.com to a responsive design ? I am not a highly technical person. Just wondering if there are any tools to convert the site to responsive design. Thank you waiitng for your reply.</p><p>hi guys,
-Is there a way to convert fixed layout design of www.thefunnyquotessayings.com to a responsive design ? I am not a highly technical person. Just wondering if there are any tools to convert the site to responsive design. Thank you waiitng for your reply.</p><p>hi guys,
-Is there a way to convert fixed layout design of www.thefunnyquotessayings.com to a responsive design ? I am not a highly technical person. Just wondering if there are any tools to convert the site to responsive design. Thank you waiitng for your reply.</p><p>hi guys,
-Is there a way to convert fixed layout design of www.thefunnyquotessayings.com to a responsive design ? I am not a highly technical person. Just wondering if there are any tools to convert the site to responsive design. Thank you waiitng for your reply.</p><p>hi guys,
-Is there a way to convert fixed layout design of www.thefunnyquotessayings.com to a responsive design ? I am not a highly technical person. Just wondering if there are any tools to convert the site to responsive design. Thank you waiitng for your reply.</p><p>hi guys,
-Is there a way to convert fixed layout design of www.thefunnyquotessayings.com to a responsive design ? I am not a highly technical person. Just wondering if there are any tools to convert the site to responsive design. Thank you waiitng for your reply.</p><p>hi guys,
-Is there a way to convert fixed layout design of www.thefunnyquotessayings.com to a responsive design ? I am not a highly technical person. Just wondering if there are any tools to convert the site to responsive design. Thank you waiitng for your reply.</p><p>hi guys,
-Is there a way to convert fixed layout design of www.thefunnyquotessayings.com to a responsive design ? I am not a highly technical person. Just wondering if there are any tools to convert the site to responsive design. Thank you waiitng for your reply.</p>
+ <div class="span8">
+ 	<br />
+ 	<div class="tabbable" style="margin-bottom: 18px;">
+	  <ul class="nav nav-tabs">
+	    <li class="active"><a href="#tab1" data-toggle="tab">Todos</a></li>
+	    <li class=""><a href="#tab2" data-toggle="tab">Nuevos</a></li>
+	    <li class=""><a href="#tab3" data-toggle="tab">Top</a></li>
+	    <li class=""><a href="#tab4" data-toggle="tab">Trending</a></li>
+	  </ul>
+	  <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
+	    <div class="tab-pane active" id="tab1">
+	    	<%= render 'groups/show_all' %>
+	    </div>
+	    <div class="tab-pane" id="tab2">
+	    	<%= render 'groups/show_new' %>
+	    </div>
+	    <div class="tab-pane" id="tab3">
+	      <%= render 'groups/show_top' %>
+	    </div>
+	     <div class="tab-pane" id="tab4">
+	      <%= render 'groups/show_trend' %>
+	    </div>
+	  </div>
+	</div>
  </div><!--/span-->
 </div><!--/row-->
 

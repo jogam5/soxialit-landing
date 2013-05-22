@@ -5,7 +5,7 @@
 <% if @all_stories.any? %>
   <ol class="microposts">
     <div id="ajax_new_stories">
-  	  <%= render :partial => 'list', :collection => @new_stories, :as => :story   %>
+  	  <%= render :partial => 'groups/list', :collection => @new_stories, :as => :story   %>
 	</div>
   </ol>
 <% else %>
