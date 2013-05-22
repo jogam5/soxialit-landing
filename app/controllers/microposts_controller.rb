@@ -72,11 +72,11 @@ class MicropostsController < ApplicationController
 
   def create
     @micropost = current_user.microposts.build(params[:micropost])
-   # @micropost.remote_picture_url = @micropost.thumbnail
+    #@micropost.remote_picture_url = @micropost.thumbnail
     @micropost.save!
     @micropost.activities.create(:user_id => current_user.id, :action => "create")
-    #Activity.expire_feed_cache(current_user)
-    #Micropost.delay.publish_link_facebook(@micropost) unless @micropost.user.fb == false
+    Activity.expire_feed_cache(current_user)
+    Micropost.delay.publish_link_facebook(@micropost) unless @micropost.user.fb == false
     if !@micropost.picture.present?
       require 'embedly'
       require 'json'
