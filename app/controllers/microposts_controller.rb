@@ -95,6 +95,7 @@ class MicropostsController < ApplicationController
       end
       puts images
       @micropost.update_attributes(thumbnail: images)
+      @micropost.update_attributes(url: result['url'])
       @micropost.update_attributes(title: result['title'])
       puts json_obj
     end

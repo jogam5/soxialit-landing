@@ -56,7 +56,7 @@
 				</div>
 			</section>
 	  <div class="span6">
-	    <% if story.picture? %>
+	    <% if story.picture.present? %>
 		  <%= link_to image_tag(story.picture_url, width:380), story.url, target: '_blank' %>
 		<% else %>
 		  <%= link_to image_tag(story.thumbnail), story.url, target: '_blank' %>
@@ -85,15 +85,24 @@
 		    		  <%= link_to "FAVORITOS", lovs_micropost_path(story, type: "up"), :remote => true,  method: "post", id: "story_id_#{story.id}" %>
 		    		</span> |
 		    	<% end %> 
-	    		<span id="">
-	    		  <%= link_to "COMPARTIR", "" %>
+	    		<span style="cursor:pointer" class="share_link">
+	    		  COMPARTIR
 	    		</span>
+	    		
+	    		<textarea class="span4" style="display:none" id="show_share_url" cols="40" rows="1" >http://soxialit.com/microposts/<%= story.id %></textarea>
 	    	</p>
+	    	
 	    </div>
 	  	  </div>
 	</div>
   </li>
   <br /><br />
- 
-	  
+ <script type="text/javascript">
+ 	$(function(){
+ 		$('.share_link').bind('click', function(){
+ 			$(this).next('#show_share_url').show();
+ 		});
+ 	});
+
+ </script>
 	 	    
