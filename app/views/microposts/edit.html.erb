@@ -1,27 +1,31 @@
 <% if user_signed_in? %>
 	<% if current_user.roles.first.name == "admin" %>
 		<br/>
-		<p style="font-weight:lighter; color:#777; font-size:1.5em; font-family:acta-display;">Completa la informacíon de tu historia:</p>
+		<h2>Define tu historia</h3>
 		<div class="row">
 			<div class="span12">
 				<%= form_for(@micropost) do |f| %>
 				<div class="span8">
 			  	  	<%= render 'shared/error_messages', object: f.object %>
 			      	<p style="display:block" id ="post_title"> 
-	                         <span id="label_title" style="font-weight:lighter; color:#777; font-size:0.9em; font-family:acta-display;float:left; margin-right: 78px">Título: </span> <%= f.text_field :title, rows: "5", class: "span5"  %></p>
+	                         <span id="label_title" style="font-weight:lighter; color:#777; font-size:1.5em; font-family:acta-display;float:left; margin-right: 78px">Título: </span> <%= f.text_field :title, rows: "5", class: "span5"  %></p>
 			      	<p style="display:block" id ="post_title"> 
-	                         <span id="label_title" style="font-weight:lighter; color:#777; font-size:0.9em; font-family:acta-display;float:left; margin-right: 78px">Grupo: </span>
+	                         <span id="label_title" style="font-weight:lighter; color:#777; font-size:1.5em; font-family:acta-display;float:left; margin-right: 73px">Grupo: </span>
 	                         <%= f.collection_select :group_id, @groups, :id, :name ,:prompt => "Elige un grupo", class: "span6" %>
 	              	</p>
 				     
-		 			<p id="micropost-tags" style="font-weight:lighter; color:#777; font-size:0.9em; font-family:acta-display; display:block;">TAGS: 
-		                      <%= f.text_field :tag_list, style: "margin-left: 78px", class: "span5" %></p>
+		 			<p id="micropost-tags" style="font-weight:lighter; color:#777; font-size:1.5em; font-family:acta-display; display:block;">Tags: 
+		                      <%= f.text_field :tag_list, style: "margin-left: 86px", class: "span5" %></p>
+		            <% if @img.length <= 1 %>
+		            <p style="color:red"> Detectamos que la imagen de tu URL esta rota, por favor sube una imagen desde tu computadora</p>
+						<span id="label_img" style="display:block; font-weight:lighter; color:#777; font-size:1.5em; font-family:acta-display;float:left; margin-right: 12px">Sube una imagen: </span>
+             			<%= f.file_field :picture, :rows => "1", :class => "span4", id: "selection_file", style: "margin-left:40%; display:block" %>
+             		<% end %>
 		            <%= f.hidden_field :thumbnail %>
-		            <%= f.hidden_field :picture %>
 	             </div>
 	             <div class="span2">
 			      	<div style="float:right" class="actions" >
-			        	<span style="margin-right:6em"><%= f.submit "Publicar", class: "btn" %></span>
+			        	<span style="margin-right:6em"><%= f.submit "Publicar en Soxialit", class: "button-story" %></span>
 			      	</div>
 			      </div>
 			 </div>
@@ -31,23 +35,23 @@
 <% end %>
 <div class="container-fluid">
 	<div class="row-fluid">
-		<div class="span12">
-			<% if !@micropost.picture.present? %>
+		<% if !@micropost.picture.present? %>
+			<div class="span12">
 				<% @img.each_with_index do |image, index| %>
-					<% if image.length > 4 %>
+					<% if image.length > 7 %>
 					<% break if index == 4 %>
 						<div class="span4">
-							<%= image_tag(image) %>
+							<%= image_tag(image, class: "find_img") %>
 							<%= radio_button_tag "image", image, {:checked => true}, class: "image_val" %>
 						</div>
 					<% end %>
 				<% end %>
-			<% else %>
-				<div class="span4">
-					<%= image_tag(@img) %>
-				</div>
-			<% end %>
+		<% else %>
+			<div class="span4">
+				<%= image_tag(@img) %>
+			</div>
 		</div>
+		<% end %>
 	</div>
 </div>
 
@@ -64,18 +68,18 @@ $(function(){
 	 allowCustomEntry: true
 	});
 
-	$('#micropost_thumbnail').val($("input[name=image]").val());
+	var $img = $('input[name=image]:checked');
+	$img.prev().css('border', '2px solid black');
+
+	$('#micropost_thumbnail').val($("input[name=image]:checked").val());
 
 	$("input[name=image]").change(function(){
-		$('#micropost_picture').val($(this).val());
+		$('.find_img').css('border', 'none');
+		var $img = $('input[name=image]:checked');
+		$img.prev().css('border', '2px solid black');
+		$('#selection_file').val($(this).val());
 		$('#micropost_thumbnail').val($(this).val());
 	});
 
-
-	if($("input[type='radio'].image_val").is(':checked')) {
-		$('#micropost_picture').val($(this).val());
-        var card_type = $(this).val();
-        console.log(card_type);
-	}
 });
 </script>

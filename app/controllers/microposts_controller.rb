@@ -99,7 +99,7 @@ class MicropostsController < ApplicationController
       puts json_obj
     end
     respond_to do |format|
-       format.html { redirect_to edit_micropost_path(@micropost), notice: 'Actualiza tu historia' }
+       format.html { redirect_to edit_micropost_path(@micropost)}
     end 
   end
 

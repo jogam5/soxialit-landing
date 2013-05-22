@@ -80,7 +80,7 @@
 	overflow: scroll;
     z-index: 2040;
 	display: none;
-	background-color: rgba(248, 248, 248, 0.7);
+	background-color: rgba(194, 194, 194, 0.7);
 }
 
 
@@ -271,3 +271,47 @@ form {
 	background: url(vote_down.png) no-repeat;
 	background-position: -1px 0px; width: 17px; height: 13px;	
 }
+.micropost_images{
+      float: left;
+      position: relative;
+      height: 0;
+      width: 100%;
+      padding-bottom: 388%;
+      margin-bottom: 2%;
+      background-color: #000;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      background-position: center;
+    }
+
+
+
+.button-story {
+   border-top: 1px solid #ff0000;
+   background: #ff0000;
+   background: -webkit-gradient(linear, left top, left bottom, from(#ff0000), to(#ff0000));
+   background: -webkit-linear-gradient(top, #ff0000, #ff0000);
+   background: -moz-linear-gradient(top, #ff0000, #ff0000);
+   background: -ms-linear-gradient(top, #ff0000, #ff0000);
+   background: -o-linear-gradient(top, #ff0000, #ff0000);
+   padding: 10px 10px;
+   -webkit-border-radius: 0px;
+   -moz-border-radius: 0px;
+   border-radius: 0px;
+   color: white;
+   font-size: 14px;
+   font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button-story:hover {
+   border-top-color: #f06060;
+   background: #f06060;
+   color: #ffffff;
+   }
+.button-story:active {
+   border-top-color: #d65151;
+   background: #d65151;
+   }

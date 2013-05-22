@@ -1,22 +1,22 @@
-<div style="top:50%; left:44%; width:800px" class="modal-soxialit">
-	<div style="max-height: 630px" class="modal-body">
-    <button type="button" class="close-button" data-dismiss="modal" aria-hidden="true">X</button>
-     <p style="font-weight:lighter; color:#777; font-size:1.5em; font-family:acta-display;">Comparte una historia</p>
+<div class="modal-story">
+	<div style="max-height: 330px;box-shadow: rgb(0,0,0) 0 0 0 10px;" class="modal-body">
+    <span style="cursor:pointer" class="close-button" data-dismiss="modal" aria-hidden="true">X</span>
+    <h2 align="center">Comparte una historia: </h2>
     <div class="bs-docs-example">
-        <div class="tabbable" style="margin-bottom: 18px;">
+        <div class="tabbable" style="margin-bottom: 0px;">
           <ul class="nav nav-tabs">
             <% if current_user.roles.first.name == "admin" %>
-            <li class="active">
+            <li style="margin-left:30%" class="active">
               <span id="select_url" style="cursor:pointer; color: rgb(0, 165, 240);">
-                <div class="span1">
+                <div style="text-align: center; border: 2px solid black;" class="span1">
                   <%= image_tag('link_blanco.png', style: "width:30px; background-color:black; margin-top:6px") %><br/>
-                    <span id="link_name" style="border-bottom: 2px solid black">Link </span>
+                    <span id="link_name" style="">Link </span>
                 </div>
               </span>
             </li>
             <li>
-              <span id="select_img" style="cursor:pointer; color: rgb(0, 165, 240);">
-                <div style="margin-top:-4px" class="span1">
+              <span id="select_img" style="text-align: center; cursor:pointer; color: rgb(0, 165, 240);">
+                <div style="margin-top:-4px; text-align: center;" class="span1">
                   <%= image_tag('iconmonstr-photo-camera-6-icon.png', style: "width:40px") %> <br/>
                     <span id="img_name">Imagen</span>
                 </div>
@@ -26,15 +26,15 @@
           </ul>
         </div>
     </div>
-    <div class="span8 offset1">
+    <div class="span6">
     	<%= form_for(@micropost) do |f| %>
 			 <%= f.hidden_field :url, :value => "http://soxialit.com" %>
-             <span id="label_url" style="font-weight:lighter; color:#777; font-size:0.9em; font-family:acta-display;float:left; margin-right: 25px">Link de tu post: </span>
-             <%= f.text_area :url, :rows => "1", :class => "span4", :id => "status", :placeholder => 'p. ejem. http://soxialit.com' %>
-             <span id="label_img" style="display:none; font-weight:lighter; color:#777; font-size:0.9em; font-family:acta-display;float:left; margin-right: 12px">Sube una imagen: </span>
+             <h3 id="label_url">URL</h3>
+             <%= f.text_area :url, :rows => "3", :class => "span4", :id => "status", :placeholder => 'p. ejem. http://soxialit.com' %>
+             <h3 id="label_img" style="display:none;">Sube una imagen</h3>
              <%= f.file_field :picture, :rows => "1", :class => "span4", id: "selection_file", style: "display:none" %>
-             <div style="float:right;"class="actions" >
-                <span><%= f.submit "Scrap", id: "button_send", class: "button-nopost", style:"margin-top:12%" %>
+             <div style="float:right; margin-right: 15%"class="actions" >
+                <span><%= f.submit "Publicar", class: "button-story", style:"margin-top:-2%;" %>
                 </span>
              </div>
         <% end %>
@@ -48,8 +48,8 @@
             $('#selection_file').show();
             $('#label_url').hide();
             $('#status').hide();
-            $('#link_name').css('border-bottom', 'none');
-            $('#img_name').css('border-bottom', '2px solid black');
+            $('#select_url').find('.span1').css('border', 'none');
+            $(this).find('.span1').css('border', '2px solid black');
             $('#status').val('http://soxialit.com');
         });
 
@@ -59,8 +59,8 @@
             $('#selection_file').hide();
             $('#label_url').show();
             $('#status').show();
-            $('#img_name').css('border-bottom', 'none');
-            $('#link_name').css('border-bottom', '2px solid black');
+            $(this).find('.span1').css('border', '2px solid black');
+            $('#select_img').find('.span1').css('border', 'none');
             $('#status').val('');
         });
     })
