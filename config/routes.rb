@@ -128,6 +128,8 @@ DeviseFacebook::Application.routes.draw do
 
   #Testing
   match "feed", to: "static_pages#feed"
+  match "index", to: "static_pages#index"
+
 
   #ORDENA TU DESMADREEEEEEEEE
   resources :pins

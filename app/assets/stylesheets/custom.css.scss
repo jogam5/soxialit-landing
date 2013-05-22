@@ -1694,13 +1694,27 @@ ul.comments_new{
 	line-height:1.3em;
 	}
 	h3{
-	font-size:2em;
+	font-size:3em;
 	}
 	a{
 	color:$rojo;
 	}
 	a:hover{
 	color:#999;
+	text-decoration:none;
+	}
+}
+
+#newsletter_leer_mas{
+	background-color: black;
+	padding: 0.5em 6em 0.5em 0.5em;
+	font-size: 0.9em;
+	margin: 0.5em 0 5em 0;
+	 a{
+	color:white;
+	}
+	 a:hover{
+	color:$rojo;
 	text-decoration:none;
 	}
 }
