@@ -1,0 +1,42 @@
+<div style="padding-left:0px" class="container-fluid">
+<div class="row-fluid">
+ <div class="span3">
+   <div id="" class="sidebar-nav sidebar-nav-fixed">
+   		<%= image_tag("coac.jpg") %>
+    <div class="main-head">
+		<h3>COACHELLA INSPIRATION</h3>
+		<h4 style="color:#999; padding-left:10px">by Alexandra </h4>
+		<%= link_to "Suscribirse", "", :id => "user_follow_button", :style => "float:right; margin-top:-30px" %>
+    </div>
+    <div class="body-row">
+    </div>
+   </div><!--/.well -->
+ </div><!--/span-->
+ <div class="span8 offset1">
+ 	<br />
+ 	<div class="tabbable" style="margin-bottom: 18px;">
+	  <ul class="nav nav-tabs">
+	    <li class="active"><a href="#tab1" data-toggle="tab">Todos</a></li>
+	    <li class=""><a href="#tab2" data-toggle="tab">Nuevos</a></li>
+	    <li class=""><a href="#tab3" data-toggle="tab">Top</a></li>
+	    <li class=""><a href="#tab4" data-toggle="tab">Trending</a></li>
+	  </ul>
+	  <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
+	    <div class="tab-pane active" id="tab1">
+	    	<%= render 'groups/show_all' %>
+	    </div>
+	    <div class="tab-pane" id="tab2">
+	    	<%= render 'groups/show_new' %>
+	    </div>
+	    <div class="tab-pane" id="tab3">
+	      <%= render 'groups/show_top' %>
+	    </div>
+	     <div class="tab-pane" id="tab4">
+	      <%= render 'groups/show_trend' %>
+	    </div>
+	  </div>
+	</div>
+ </div><!--/span-->
+</div><!--/row-->
+
+</div><!--/.fluid-container-->

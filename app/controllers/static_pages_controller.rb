@@ -1,8 +1,11 @@
 class StaticPagesController < ApplicationController
+  #layout "black", :only => :black
 
-  layout "feed", :only => :home
-  layout "test", :only => :feed
+  #layout "feed", :only => :home
+  #layout "test", :only => :feed
   layout "index", :only => :index
+    layout "black", :only => :black
+
 
   def home
     @stats = Rails.cache.stats.first.last unless Rails.env.development?
@@ -187,6 +190,21 @@ class StaticPagesController < ApplicationController
 
   def index
     @group = Group.find(1)
+    @all_stories = Group.get_all_stories(@group)
+    @new_stories = Group.get_new_stories(@group)
+    @top = Micropost.find_with_reputation(:votes, :all, 
+      {:conditions => ["microposts.group_id = ?", @group.id], :order => 'votes desc'})
+    @trend = Micropost.find_with_reputation(:votes, :all, 
+      {:conditions => ["microposts.group_id = ?", @group.id], :order => 'votes desc, created_at desc', :limit => 10})
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @group }
+    end
+  end
+
+  def black
+    @group = Group.find(2)
     @all_stories = Group.get_all_stories(@group)
     @new_stories = Group.get_new_stories(@group)
     @top = Micropost.find_with_reputation(:votes, :all, 
