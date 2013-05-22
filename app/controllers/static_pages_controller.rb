@@ -149,5 +149,39 @@ class StaticPagesController < ApplicationController
   end
 
   def feed
+    @stories = current_user.groups.includes(:microposts)
+    #@microposts = []
+    #@stories.each do |test|
+     # @microposts << test.microposts
+    #end
+    #return @microposts
+
+   # @group_microposts = current_user.groups.includes(:microposts).
+                              #each_with_object({}){|group, h| h[group] = group.microposts}
+    @microposts = Micropost.joins(:group => :users).where(:users => {id: current_user.id})
+    #@stories = Membership.get_group_stories(current_user)
+    #@microposts = []
+    #@stories.each do |test|
+     # @microposts << Group.get_stories(test.group_id)
+    #end
+    #return @microposts
   end
+
+  def story
+    @micropost = Micropost.new
+  end
+
+  def scrap
+    require 'embedly'
+    require 'json'
+    embedly_api = Embedly::API.new :key => '80abb9f8804a4cad90d3f21d33b49037',
+            :user_agent => 'Mozilla/5.0 (compatible; mytestapp/1.0; my@email.com)'
+
+    obj = embedly_api.oembed(:url => 'http://soxialit.com', :maxwidth => 500,
+                :maxheight => 500)
+
+    #puts obj[0].marshal_dump
+    json_obj = JSON.pretty_generate(obj[0].marshal_dump)
+    puts json_obj
+   end
 end

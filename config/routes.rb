@@ -19,7 +19,7 @@ DeviseFacebook::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   
   resources :products do
-       member { post :vote }
+       #member { post :vote }
       # member { post :have}
        put :envio_df, on: :member
        put :create, on: :collection
@@ -48,8 +48,8 @@ DeviseFacebook::Application.routes.draw do
  # get 'sources/:source', to: 'sources#index', as: :source
   get 'tags/:tag', to: 'microposts#index', as: :tag
   resources :microposts do
-     member { post :lovs}
      member { post :vote}
+     member { post :lovs}
   end
 
 
@@ -67,6 +67,8 @@ DeviseFacebook::Application.routes.draw do
   get '/modal_micropost', to: 'microposts#modal_micropost'
   get '/modal_post', to: 'static_pages#modal_post'
   get '/collect', to: 'microposts#collect'
+  get '/story', to: 'static_pages#story'
+  get 'scrap', to: 'static_pages#scrap'
 
   
  # get users/index

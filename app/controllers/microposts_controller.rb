@@ -60,17 +60,46 @@ class MicropostsController < ApplicationController
 
   def edit
     @micropost = Micropost.find_by_id(params[:id])
+    @groups = Group.all
+    if !@micropost.picture.present?
+      images = @micropost.thumbnail
+      @img = images.split( /\r?\n- / )
+    else
+      @img = @micropost.picture
+    end
+
   end
 
   def create
     @micropost = current_user.microposts.build(params[:micropost])
-    @micropost.remote_picture_url = @micropost.thumbnail
+   # @micropost.remote_picture_url = @micropost.thumbnail
     @micropost.save!
     @micropost.activities.create(:user_id => current_user.id, :action => "create")
-    Activity.expire_feed_cache(current_user)
-    Micropost.delay.publish_link_facebook(@micropost) unless @micropost.user.fb == false
+    #Activity.expire_feed_cache(current_user)
+    #Micropost.delay.publish_link_facebook(@micropost) unless @micropost.user.fb == false
+    if !@micropost.picture.present?
+      require 'embedly'
+      require 'json'
+      embedly_api = Embedly::API.new :key => '80abb9f8804a4cad90d3f21d33b49037',
+              :user_agent => 'Mozilla/5.0 (compatible; mytestapp/1.0; my@email.com)'
+      obj = embedly_api.extract :url => @micropost.url
+      #puts obj[0].marshal_dump
+      json_obj = JSON.pretty_generate(obj[0].marshal_dump)
+      result = JSON.parse(json_obj)
+      images = []
+      result['images'].each do |s|
+        size = s['width'].to_i
+        if size >= 400
+          images << s['url']
+        end
+      end
+      puts images
+      @micropost.update_attributes(thumbnail: images)
+      @micropost.update_attributes(title: result['title'])
+      puts json_obj
+    end
     respond_to do |format|
-       format.html { redirect_to :back, notice: 'Tu Post ha sido publicado' }
+       format.html { redirect_to edit_micropost_path(@micropost), notice: 'Tu Post ha sido publicado' }
     end 
   end
 
@@ -176,7 +205,7 @@ class MicropostsController < ApplicationController
 
   def update
     @micropost = Micropost.find_by_id(params[:id])
-    respond_to do |format|
+       respond_to do |format|
       if @micropost.update_attributes(params[:micropost])
         format.html { redirect_to @micropost, notice: '' }
       else

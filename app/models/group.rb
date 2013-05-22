@@ -19,6 +19,18 @@ class Group < ActiveRecord::Base
   	return group.microposts.order("created_at DESC").limit(4)
   end
 
-  def self.get_top_stories
+  def self.get_top_stories(group)
+    return Micropost.find_with_reputation(:votes, :all, 
+      {:conditions => ["microposts.group_id = ?", group.id], :order => 'votes desc'})
+  end
+
+  def self.get_trend_stories(group)
+    return Micropost.find_with_reputation(:votes, :all, 
+      {:conditions => ["microposts.group_id = ?", group.id], :order => 'votes desc, created_at desc', :limit => 10})
+  end
+
+  def self.get_stories(group)
+    return Micropost.find_with_reputation(:votes, :all, 
+      {:conditions => ["microposts.group_id = ?", group], :order => 'votes desc'})
   end
 end
