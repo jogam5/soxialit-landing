@@ -148,7 +148,7 @@ class User < ActiveRecord::Base
   def vote_evaluation(micropost, user)
     a = micropost.evaluations
     a.each do |eval|
-      return eval.value if (eval.source_id == user.id)
+      return eval.value if (eval.source_id == user.id && eval.reputation_name == "votes")
     end
   end
 
