@@ -162,6 +162,7 @@ class StaticPagesController < ApplicationController
    # @group_microposts = current_user.groups.includes(:microposts).
                               #each_with_object({}){|group, h| h[group] = group.microposts}
     @microposts = Micropost.joins(:group => :users).where(:users => {id: current_user.id})
+    @stories = @microposts.sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
     #@stories = Membership.get_group_stories(current_user)
     #@microposts = []
     #@stories.each do |test|
