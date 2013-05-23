@@ -5,9 +5,21 @@
 <% if @all_stories.any? %>
   <ol class="microposts">
     <div id="ajax_new_stories">
-  	  <%= render :partial => 'groups/list', :collection => @new_stories, :as => :story   %>
+  	  <%= render :partial => 'groups/list', :collection => @new_stories, :as => :story %>
 	</div>
   </ol>
+   <div class="row">
+    <div style="display:none" class="span5 offset2">
+      <%= will_paginate @new_stories %>
+    </div>
+  </div>
+  <div style="display:block" class="container">
+  <div style="display:block" class="row">
+    <div style="display:block;" class="span10 offset1">
+      <div  style="display:block; margin:1em; font-size:1.4em" class="show_more" id="paginate_new">Ver más historias</div>
+    </div>
+  </div>
+</div>
 <% else %>
   <h3>Sé el primero en compartir una historia.</h3>
 <% end %>
@@ -23,7 +35,36 @@ $(function(){
       $('.square_link').css('color', 'rgb(0, 136, 204)');
       $(this).css('color', 'red');
     })
-
-
   });
+
+$(function() {
+ 
+  jQuery(function(){
+    if ($('.pagination').length) {
+      var url;
+      //$('#paginate').show();
+      $('#paginate_new').bind('click', function(){
+        url = $('.pagination .next_page').attr('href');
+        return $.getScript(url);
+      });
+    }
+  });
+});
+
+$(function(){
+  var a = $('.pagination').find('a').length;
+  if (a < 0){
+    $('#paginate_new').hide();
+  }
+});
+
+$(function() {
+  $('body').bind('ajaxComplete', function() {
+   var a = $('.pagination').find('a').length;
+    if (a < 1){
+      $('#paginate_new').hide();
+    }
+  });
+});
+
 </script>

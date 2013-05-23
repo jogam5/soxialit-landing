@@ -5,10 +5,14 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find_by_name(params[:name])
-    @all_stories = Group.get_all_stories(@group)
-    @new_stories = Group.get_new_stories(@group)
-    @top = Group.get_top_stories(@group)
-    @trend = Group.get_trend_stories(@group)
+    @stories = Group.get_all_stories(@group)
+    @all_stories = @stories.paginate(:page => params[:page], :per_page => 10)
+    @new = Group.get_new_stories(@group)
+    @new_stories = @new.paginate(:page => params[:page], :per_page => 10)
+    @top_stories = Group.get_top_stories(@group)
+    @top = @top_stories.paginate(:page => params[:page], :per_page => 10)
+    @trend_stories = Group.get_trend_stories(@group)
+    @trend = @trend_stories.paginate(:page => params[:page], :per_page => 10)
 
     #@top = Micropost.find_with_reputation(:votes, :all, 
      # {:conditions => ["microposts.group_id = ?", @group.id], :order => 'votes desc'})
@@ -18,6 +22,7 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @group }
+      format.js
     end
   end
 
@@ -56,23 +61,25 @@ class GroupsController < ApplicationController
 
   def square
     @group = Group.find_by_name(params[:name])
-    @all_stories = Group.get_all_stories(@group)
-    @new_stories = Group.get_new_stories(@group)
-    @top = Group.get_top_stories(@group)
-    @trend = Group.get_trend_stories(@group)
-    respond_to do |format|
-      format.js
-    end
+    @stories = Group.get_all_stories(@group)
+    @all_stories = @stories.paginate(:page => params[:page], :per_page => 10)
+    @new = Group.get_new_stories(@group)
+    @new_stories = @new.paginate(:page => params[:page], :per_page => 10)
+    @top_stories = Group.get_top_stories(@group)
+    @top = @top_stories.paginate(:page => params[:page], :per_page => 10)
+    @trend_stories = Group.get_trend_stories(@group)
+    @trend = @trend_stories.paginate(:page => params[:page], :per_page => 10)
   end
 
   def list
     @group = Group.find_by_name(params[:name])
-    @all_stories = Group.get_all_stories(@group)
-    @new_stories = Group.get_new_stories(@group)
-    @top = Group.get_top_stories(@group)
-    @trend = Group.get_trend_stories(@group)
-    respond_to do |format|
-      format.js
-    end
+    @stories = Group.get_all_stories(@group)
+    @all_stories = @stories.paginate(:page => params[:page], :per_page => 10)
+    @new = Group.get_new_stories(@group)
+    @new_stories = @new.paginate(:page => params[:page], :per_page => 10)
+    @top_stories = Group.get_top_stories(@group)
+    @top = @top_stories.paginate(:page => params[:page], :per_page => 10)
+    @trend_stories = Group.get_trend_stories(@group)
+    @trend = @trend_stories.paginate(:page => params[:page], :per_page => 10)
   end
 end

@@ -8,6 +8,17 @@
 	  <%= render :partial => 'groups/list', :collection => @trend, :as => :story   %>
 	</div>  
   </ol>
+  <div class="row">
+    <div style="display:none" class="span5 offset2">
+      <%= will_paginate @trend %>
+    </div>
+  </div>
+  <div style="display:block" class="container">
+  <div style="display:block" class="row">
+    <div style="display:block;" class="span10 offset1">
+      <div  style="display:block; margin:1em; font-size:1.4em" class="show_more" id="paginate_trend">Ver más historias</div>
+    </div>
+  </div>
 <% else %>
 	<h3>Sé el primero en compartir una historia.</h3>
 <% end %>
@@ -23,7 +34,34 @@ $(function(){
       $('.square_link').css('color', 'rgb(0, 136, 204)');
       $(this).css('color', 'red');
     })
-
-
   });
+$(function() {
+ 
+  jQuery(function(){
+    if ($('.pagination').length) {
+      var url;
+      //$('#paginate').show();
+      $('#paginate_trend').bind('click', function(){
+        url = $('.pagination .next_page').attr('href');
+        return $.getScript(url);
+      });
+    }
+  });
+});
+
+$(function(){
+  var a = $('.pagination').find('a').length;
+  if (a < 0){
+    $('#paginate_trend').hide();
+  }
+});
+
+$(function() {
+  $('body').bind('ajaxComplete', function() {
+   var a = $('.pagination').find('a').length;
+    if (a < 1){
+      $('#paginate_trend').hide();
+    }
+  });
+});
 </script>

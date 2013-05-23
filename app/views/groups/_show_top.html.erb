@@ -8,6 +8,18 @@
 	  <%= render :partial => 'groups/list', :collection => @top, :as => :story   %>
 	</div>  
   </ol>
+  <div class="row">
+    <div style="display:none" class="span5 offset2">
+      <%= will_paginate @top %>
+    </div>
+  </div>
+  <div style="display:block" class="container">
+  <div style="display:block" class="row">
+    <div style="display:block;" class="span10 offset1">
+      <div  style="display:block; margin:1em; font-size:1.4em" class="show_more" id="paginate_top">Ver más historias</div>
+    </div>
+  </div>
+</div>
 <% else %>
 	<h3>Sé el primero en compartir una historia.</h3>
 <% end %>
@@ -23,7 +35,35 @@ $(function(){
       $('.square_link').css('color', 'rgb(0, 136, 204)');
       $(this).css('color', 'red');
     })
-
-
   });
+
+$(function() {
+ 
+  jQuery(function(){
+    if ($('.pagination').length) {
+      var url;
+      //$('#paginate').show();
+      $('#paginate_top').bind('click', function(){
+        url = $('.pagination .next_page').attr('href');
+        return $.getScript(url);
+      });
+    }
+  });
+});
+
+$(function(){
+  var a = $('.pagination').find('a').length;
+  if (a < 0){
+    $('#paginate_top').hide();
+  }
+});
+
+$(function() {
+  $('body').bind('ajaxComplete', function() {
+   var a = $('.pagination').find('a').length;
+    if (a < 1){
+      $('#paginate_top').hide();
+    }
+  });
+});
 </script>

@@ -1,0 +1,12 @@
+$('#ajax_all_stories').append("<%= j render(:partial => 'groups/list', :collection => @all_stories, :as => 'story' ) %>");
+$('#ajax_new_stories').append("<%= j render(:partial => 'groups/list', :collection => @new_stories, :as => 'story' ) %>");
+$('#ajax_top_stories').append("<%= j render(:partial => 'groups/list', :collection => @top, :as => 'story' ) %>");
+$('#ajax_trend_stories').append("<%= j render(:partial => 'groups/list', :collection => @trend, :as => 'story' ) %>");
+<% if @all_stories.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate(@all_stories) %>');
+  $('.pagination').replaceWith('<%= j will_paginate(@new_stories) %>');
+  $('.pagination').replaceWith('<%= j will_paginate(@top) %>');
+  $('.pagination').replaceWith('<%= j will_paginate(@trend) %>');
+<% else %>
+  $('#paginate').remove();
+<% end %>
