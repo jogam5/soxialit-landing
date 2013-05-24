@@ -103,6 +103,7 @@ class MicropostsController < ApplicationController
       @micropost.update_attributes(title: result['title'])
       @micropost.update_attributes(provider: result['provider_url'])
       puts json_obj
+    end
     respond_to do |format|
        format.html { redirect_to edit_micropost_path(@micropost)}
     end 
