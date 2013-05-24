@@ -62,8 +62,12 @@ class MicropostsController < ApplicationController
     @micropost = Micropost.find_by_id(params[:id])
     @groups = Group.all
     if !@micropost.picture.present?
-      images = @micropost.thumbnail
-      @img = images.split( /\r?\n- / )
+      if !@micropost.thumbnail.nil?
+        images = @micropost.thumbnail
+        @img = images.split( /\r?\n- / )
+      else
+        @img = @micropost.thumbnail
+      end
     else
       @img = @micropost.picture
     end
@@ -71,7 +75,7 @@ class MicropostsController < ApplicationController
   end
 
   def create
-    @micropost = current_user.microposts.build(params[:micropost])
+   @micropost = current_user.microposts.build(params[:micropost])
     #@micropost.remote_picture_url = @micropost.thumbnail
     @micropost.save!
     @micropost.activities.create(:user_id => current_user.id, :action => "create")
@@ -97,9 +101,8 @@ class MicropostsController < ApplicationController
       @micropost.update_attributes(thumbnail: images)
       @micropost.update_attributes(url: result['url'])
       @micropost.update_attributes(title: result['title'])
-      @micropost.update_attributes(provider: result['provider'])
+      @micropost.update_attributes(provider: result['provider_url'])
       puts json_obj
-    end
     respond_to do |format|
        format.html { redirect_to edit_micropost_path(@micropost)}
     end 
@@ -206,8 +209,19 @@ class MicropostsController < ApplicationController
   end
 
   def update
+    @groups = Group.all
     @micropost = Micropost.find_by_id(params[:id])
-       respond_to do |format|
+    if !@micropost.picture.present?
+      if !@micropost.thumbnail.nil?
+        images = @micropost.thumbnail
+        @img = images.split( /\r?\n- / )
+      else
+        @img = @micropost.thumbnail
+      end
+    else
+      @img = @micropost.picture
+    end
+    respond_to do |format|
       if @micropost.update_attributes(params[:micropost])
         format.html { redirect_to @micropost, notice: '' }
       else
