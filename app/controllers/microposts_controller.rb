@@ -97,6 +97,7 @@ class MicropostsController < ApplicationController
       @micropost.update_attributes(thumbnail: images)
       @micropost.update_attributes(url: result['url'])
       @micropost.update_attributes(title: result['title'])
+      @micropost.update_attributes(provider: result['provider'])
       puts json_obj
     end
     respond_to do |format|
