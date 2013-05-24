@@ -20,7 +20,7 @@ gem 'delayed_job_active_record'
 gem "workless", "~> 1.1.1"
 
 #gem copy text_field entry into clipboard
-gem 'zclip-rails'
+#gem 'zclip-rails'
 
 #Reputation
 gem 'activerecord-reputation-system'
