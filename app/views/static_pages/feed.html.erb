@@ -1,6 +1,6 @@
 <h1>Feed</h1>
-<% @microposts.each do |s| %>
+<% @stories.each do |s| %>
 	<%= s.title %>
 	<%= s.group_id %>
-    <%= s.reputation_for(:votes).to_i %><br>
+    <%= s.reputation(s)%><br>
 <% end %>

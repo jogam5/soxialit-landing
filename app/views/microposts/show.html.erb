@@ -17,7 +17,11 @@
     <% @posts.shuffle.each_with_index do |post, index| %>
       <% break if index == 3 %>
       <p style="font-family:acta-display"><%= post.title %></p>
-      <%= link_to (image_tag post.picture_url(:feed)), micropost_path(post) %>
+      <% if post.picture.present? %>
+        <%= link_to (image_tag post.picture), micropost_path(post) %>
+      <% else %>
+        <%= link_to (image_tag post.thumbnail), micropost_path(post) %>
+      <% end %>
       <p style="margin-right:0.5em; margin-top:0.5em">
         <% if !post.user.picture.present? %>
         <%= link_to image_tag("http://graph.facebook.com/#{post.user.uid}/picture?type=square", 
