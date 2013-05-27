@@ -151,7 +151,7 @@ class UsersController < ApplicationController
     if @user.username == "eileen"
       @items = [Product.find(276),Product.find(277), Product.find(279), Product.find(280), Product.find(281), Product.find(282)]
     elsif @user.username == "missviva"
-        @items = [Product.find(288), Product.find(289), Product.find(290), Product.find(291), Product.find(292), Product.find(293), Product.find(294), Product.find(295), Product.find(296), Product.find(297), Product.find(298), Product.find(299), Product.find(300)]
+        @items = [Product.find(290), Product.find(291), Product.find(292), Product.find(293), Product.find(294), Product.find(295), Product.find(296), Product.find(297), Product.find(298), Product.find(299), Product.find(300)]
     end
   end
 
