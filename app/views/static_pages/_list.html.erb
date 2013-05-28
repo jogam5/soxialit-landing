@@ -80,8 +80,8 @@
 		    		   FAVORITOS
 		    		</span> | 
 		    	<% else %>
-		    		<span id="">
-		    		  <%= link_to "FAVORITOS", lovs_micropost_path(story, type: "up"), :remote => true,  method: "post", id: "story_id_#{story.id}" %>
+		    		<span id="story_id_<%= story.id %>">
+		    		  <%= link_to "FAVORITOS", lovs_micropost_path(story, type: "up"), :remote => true,  method: "post" %>
 		    		</span> |
 		    	<% end %> 
 	    		<span style="cursor:pointer" class="share_link">
