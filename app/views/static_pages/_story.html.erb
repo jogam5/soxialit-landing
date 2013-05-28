@@ -33,10 +33,11 @@
              <%= f.text_area :url, :rows => "3", :class => "span4", :id => "status", :placeholder => 'p. ejem. http://soxialit.com' %>
              <h3 id="label_img" style="display:none;">Sube una imagen</h3>
              <%= f.file_field :picture, :rows => "1", :class => "span4", id: "selection_file", style: "display:none" %>
-             <div style="float:right; margin-right: 15%"class="actions" >
-                <span><%= f.submit "Publicar", class: "button-story", style:"margin-top:-2%;" %>
+             <div style="float:right; margin-right: 10%"class="actions" >
+                <span><%= f.submit "Publicar", id: "publicar", class: "button-nopost", :disabled => true, style:"margin-top:-2%;" %>
                 </span>
              </div>
+             <span id="url_val" style="display:none; color:red">Introduce una URL valida</span>
         <% end %>
 	</div>
 </div>
@@ -63,5 +64,24 @@
             $('#select_img').find('.span1').css('border', 'none');
             $('#status').val('');
         });
-    })
+
+
+        $('#status').live('keyup keydown', function(){
+          var url = $(this).val();
+          console.log(url);
+           var urlregex = new RegExp("^(http|https|ftp)\://([a-zA-Z0-9\.\-]+(\:[a-zA-Z0-9\.&amp;%\$\-]+)*@)*((25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])|([a-zA-Z0-9\-]+\.)*[a-zA-Z0-9\-]+\.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{2}))(\:[0-9]+)*(/($|[a-zA-Z0-9\.\,\?\'\\\+&amp;%\$#\=~_\-]+))*$");
+          if (urlregex.test(url)) {
+            console.log('ok');
+            $('#publicar').removeAttr('disabled');
+            $('#publicar').removeClass('button-nopost').addClass('button-story');
+            $('#url_val').hide();
+          }else{
+            console.log('nook');
+            $('#publicar').removeClass('button-story').addClass('button-nopost');
+            $('#publicar').attr("disabled", "disabled");
+            $('#url_val').show();
+          }
+        });
+
+    });
 </script>

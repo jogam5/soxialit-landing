@@ -72,7 +72,7 @@
       <div id="product_background">
         <div class="row" style="display:block;  margin-left:10px">
          <div style="width:300px" id="micropost_img">
-          <% if @micropost.id > 450 %>
+          <% if @micropost.id > 4 %>
             <% if !@micropost.picture_url(:modal).nil? %>
               <%= link_to image_tag(@micropost.picture_url(:modal)), @micropost.url, target: '_blank' %>
             <% else %>

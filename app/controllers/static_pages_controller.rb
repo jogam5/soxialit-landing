@@ -153,22 +153,12 @@ class StaticPagesController < ApplicationController
 
   def feed
     @stories = current_user.groups.includes(:microposts)
-    #@microposts = []
-    #@stories.each do |test|
-     # @microposts << test.microposts
-    #end
-    #return @microposts
-
-   # @group_microposts = current_user.groups.includes(:microposts).
-                              #each_with_object({}){|group, h| h[group] = group.microposts}
-    @microposts = Micropost.joins(:group => :users).where(:users => {id: current_user.id})
-    @stories = @microposts.sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
-    #@stories = Membership.get_group_stories(current_user)
-    #@microposts = []
-    #@stories.each do |test|
-     # @microposts << Group.get_stories(test.group_id)
-    #end
-    #return @microposts
+    @stories_top = Micropost.joins(:group => :users).where(:users => {id: current_user.id})
+    @top = @stories_top.paginate(:page => params[:page], :per_page => 50).sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
+    @stories_new = Micropost.joins(:group => :users).where(:users => {id: current_user.id}).order("created_at DESC")
+    @new = @stories_new.paginate(:page => params[:page], :per_page => 50)
+    @stories_trend = Micropost.joins(:group => :users).where(:users => {id: current_user.id}).order("created_at DESC").limit(5)
+    @trend = @stories_trend.paginate(:page => params[:page], :per_page => 5).sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
   end
 
   def story

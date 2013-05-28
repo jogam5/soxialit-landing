@@ -75,19 +75,17 @@ class MicropostsController < ApplicationController
   end
 
   def create
-   @micropost = current_user.microposts.build(params[:micropost])
+    @micropost = current_user.microposts.build(params[:micropost])
     #@micropost.remote_picture_url = @micropost.thumbnail
-    @micropost.save!
-    @micropost.activities.create(:user_id => current_user.id, :action => "create")
-    Activity.expire_feed_cache(current_user)
-    Micropost.delay.publish_link_facebook(@micropost) unless @micropost.user.fb == false
+   # @micropost.activities.create(:user_id => current_user.id, :action => "create")
+    #Activity.expire_feed_cache(current_user)
+    #Micropost.delay.publish_link_facebook(@micropost) unless @micropost.user.fb == false
     if !@micropost.picture.present?
       require 'embedly'
       require 'json'
       embedly_api = Embedly::API.new :key => '80abb9f8804a4cad90d3f21d33b49037',
               :user_agent => 'Mozilla/5.0 (compatible; mytestapp/1.0; my@email.com)'
       obj = embedly_api.extract :url => @micropost.url
-      #puts obj[0].marshal_dump
       json_obj = JSON.pretty_generate(obj[0].marshal_dump)
       result = JSON.parse(json_obj)
       images = []
@@ -98,17 +96,22 @@ class MicropostsController < ApplicationController
         end
       end
       puts images
-      @micropost.update_attributes(thumbnail: images)
-      @micropost.update_attributes(url: result['url'])
-      @micropost.update_attributes(title: result['title'])
-      @micropost.update_attributes(provider: result['provider_url'])
+      @micropost.assign_attributes(thumbnail: images, title: result['title'], url: result['url'], provider: result['provider_url'])
+      #@micropost.assign_attributes(thumbnail: images)
+     # @micropost.update_attributes()
+     # @micropost.update_attributes()
+      @micropost.save!
+      @micropost.activities.create(:user_id => current_user.id, :action => "create")
+      Activity.expire_feed_cache(current_user)
       puts json_obj
+    else 
+      @micropost.assign_attributes(thumbnail: @micropost.picture, provider: "http://soxialit.com", url: "http://soxialit.com")
+      @micropost.save!
     end
     respond_to do |format|
        format.html { redirect_to edit_micropost_path(@micropost)}
     end 
   end
-
 
   def destroy
     @micropost = Micropost.find(params[:id])
