@@ -62,7 +62,7 @@
                          <%= f.collection_select :group_id, @groups, :id, :name ,:prompt => "Elige un grupo", class: "span4" %>
                       </p>
                     <% end %>
-                     <span id="micropost-tags" style="font-weight:lighter; color:#777; font-size:0.9em; font-family:acta-display; display:block;">TAGS: 
+                     <span id="micropost-tags" style="font-weight:lighter; color:#777; font-size:0.9em; font-family:acta-display; display:block; margin-right:20%">TAGS: 
                       <%= f.text_field :tag_list %></span>
                       <div style=" margin-top: -9%"class="actions" >
                         <span><%= f.submit "Publicar", id: "button_send", class: "button-nopost", style:"margin-top:12%", :disabled => true %>
