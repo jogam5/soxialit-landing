@@ -159,6 +159,7 @@ class StaticPagesController < ApplicationController
     @new = @stories_new.paginate(:page => params[:page], :per_page => 50)
     @stories_trend = Micropost.joins(:group => :users).where(:users => {id: current_user.id}).last(10).reverse
     @trend = @stories_trend.paginate(:page => params[:page], :per_page => 10).sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
+    
   end
 
   def story
