@@ -12,7 +12,7 @@ class GroupsController < ApplicationController
     @top_stories = Group.get_top_stories(@group)
     @top = @top_stories.paginate(:page => params[:page], :per_page => 10).sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
     @trend_stories = Group.get_trend_stories(@group)
-    @trend = @trend_stories.paginate(:page => params[:page], :per_page => 10).sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
+    @trend = @trend_stories.sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
    end
 
   def new
@@ -57,11 +57,11 @@ class GroupsController < ApplicationController
     @top_stories = Group.get_top_stories(@group)
     @top = @top_stories.paginate(:page => params[:page], :per_page => 10).sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
     @trend_stories = Group.get_trend_stories(@group)
-    @trend = @trend_stories.paginate(:page => params[:page], :per_page => 10).sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
+    @trend = @trend_stories.sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
   end
 
   def list
-   @group = Group.find_by_name(params[:name])
+    @group = Group.find_by_name(params[:name])
     @stories = Group.get_all_stories(@group)
     @all_stories = @stories.paginate(:page => params[:page], :per_page => 10)
     @new = Group.get_new_stories(@group)
@@ -69,6 +69,6 @@ class GroupsController < ApplicationController
     @top_stories = Group.get_top_stories(@group)
     @top = @top_stories.paginate(:page => params[:page], :per_page => 10).sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
     @trend_stories = Group.get_trend_stories(@group)
-    @trend = @trend_stories.paginate(:page => params[:page], :per_page => 10).sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
+    @trend = @trend_stories.sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
   end
 end
