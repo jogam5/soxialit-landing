@@ -1,6 +1,33 @@
-<h1>Feed</h1>
-<% @stories.each do |s| %>
-	<%= s.title %>
-	<%= s.group_id %>
-    <%= s.reputation(s)%><br>
-<% end %>
+<div id="ajax" style="float:left; position:fixed; display:none; margin: 20% 455px; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
+<div class="tabbable" style="margin-bottom: 18px;">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab">Top</a></li>
+    <li class=""><a href="#tab2" data-toggle="tab">Nuevos</a></li>
+    <li class=""><a href="#tab3" data-toggle="tab">Trending</a></li>
+  </ul>
+  <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
+    <div class="tab-pane active" id="tab1">
+    	<%= render 'show_top' %>
+    </div>
+    <div class="tab-pane" id="tab2">
+    	<%= render 'show_new' %>
+    </div>
+    <div class="tab-pane" id="tab3">
+    	<%= render 'show_trend' %>
+    </div>
+   </div>
+</div>
+
+<script type="text/javascript">
+$(function() {
+  $('#ajax')
+    .hide()  // hide it initially.
+    .ajaxStart(function() {
+      $(this).show(); // show on any Ajax event.
+    })
+    .ajaxStop(function() {
+      $(this).hide(); // hide it when it is done.
+  });
+});
+
+</script>

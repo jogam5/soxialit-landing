@@ -13,13 +13,19 @@
 	                         <span id="label_title" style="font-weight:lighter; color:#777; font-size:1.5em; font-family:acta-display;float:left; margin-right: 73px">Grupo: </span>
 	                         <%= f.collection_select :group_id, @groups, :id, :name ,:prompt => "Elige un grupo", class: "span6" %>
 	              	</p>
-				     
-		 			<p id="micropost-tags" style="font-weight:lighter; color:#777; font-size:1.5em; font-family:acta-display; display:block;">Tags: 
-		                      <%= f.text_field :tag_list, style: "margin-left: 86px", class: "span5" %></p>
+		            <div style="margin-left:0%" class="span1">
+		            	<span id="micropost-tags" style="font-weight:lighter; color:#777; font-size:1.5em; font-family:acta-display; display:block;">Tags: 
+		            	</span>
+		            </div>
+		            <div style="margin-left:0px" class="span6">
+		                <%= f.text_field :tag_list, style: "", class: "span5" %>
+		            </div>
 		            <% if @img.length <= 1 %>
-		            <p style="color:red"> Detectamos que la imagen de tu URL esta rota, por favor sube una imagen desde tu computadora</p>
-						<span id="label_img" style="display:block; font-weight:lighter; color:#777; font-size:1.5em; font-family:acta-display;float:left; margin-right: 12px">Sube una imagen: </span>
-             			<%= f.file_field :picture, :rows => "1", :class => "span4", id: "selection_file", style: "margin-left:40%; display:block" %>
+		            <br>
+		            <br>
+		        	<span id="label_img" style="display:block; font-weight:lighter; color:#777; font-size:1.5em; font-family:acta-display;float:left; margin-right: 12px">Sube una imagen: </span>
+					<%= f.file_field :picture, :rows => "1", :class => "span4", id: "selection_file", style: "margin-left:40%; display:block" %>
+					<p style="color:red"> Detectamos que la imagen de tu URL esta rota, por favor sube una imagen desde tu computadora.</p>
              		<% end %>
 		            <%= f.hidden_field :thumbnail %>
 	             </div>
@@ -33,6 +39,7 @@
 		</div>
 	 <% end %>
 <% end %>
+<br>
 <div class="container-fluid">
 	<div class="row-fluid">
 		<% if !@micropost.picture.present? %>
@@ -69,18 +76,24 @@ $(function(){
 		tokenValue: 'name', // defaults to 'id'
 	  	allowCustomEntry: true
 	});
-	
+
 
 	var $img = $('input[name=image]:checked');
 	$img.prev().css('border', '2px solid black');
 
-	$('#micropost_thumbnail').val($("input[name=image]:checked").val());
+	if($("input[name=image]:checked").length >= 1){
+		$('#micropost_thumbnail').val($("input[name=image]:checked").val());
+	}
 
 	$("input[name=image]").change(function(){
 		$('.find_img').css('border', 'none');
 		var $img = $('input[name=image]:checked');
 		$img.prev().css('border', '2px solid black');
 		$('#selection_file').val($(this).val());
+		$('#micropost_thumbnail').val($(this).val());
+	});
+
+	$('#selection_file').change(function(){
 		$('#micropost_thumbnail').val($(this).val());
 	});
 

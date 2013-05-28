@@ -1,0 +1,10 @@
+$('#ajax_top_stories').append("<%= j render(:partial => 'groups/list', :collection => @top, :as => 'story' ) %>");
+$('#ajax_new_stories').append("<%= j render(:partial => 'groups/list', :collection => @new, :as => 'story' ) %>");
+$('#ajax_trend_stories').append("<%= j render(:partial => 'groups/list', :collection => @trend, :as => 'story' ) %>");
+<% if @top.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate(@top) %>');
+  $('.pagination').replaceWith('<%= j will_paginate(@new) %>');
+  $('.pagination').replaceWith('<%= j will_paginate(@trend) %>');
+<% else %>
+  $('#paginate').remove();
+<% end %>
