@@ -54,20 +54,20 @@ color: white;
 
 .close-button {
 	float: right;
-	font-size: 20px;
-	font-weight: bold;
+	font-size: 2em;
+	font-weight: lighter;
 	line-height: 20px;
-	color: black;
+	color: #999;
 	opacity: 1;
 	filter: alpha(opacity=20);
 }
 
 .close-button:hover {
 	float: right;
-	font-size: 20px;
-	font-weight: bold;
+	font-size: 2em;
+	font-weight: lighter;
 	line-height: 20px;
-	color: black;
+	color: red;
 	opacity: 1;
 	filter: alpha(opacity=20);
 }
