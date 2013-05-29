@@ -65,20 +65,28 @@
 	      <%= link_to story.user.nickname, user_path(story.user) %> 
 	      </p>
 	    </div>
-	    <div id="group_story_menu">
+	   <div id="group_story_menu">
 	    	<p>
 	    		<span id="">
 	    		  <%= link_to "CONVERSACIONES", micropost_path(story) %>
-	    		</span> | 
-	    		<span id="">
-	    		  <%= link_to "FAVORITOS", "" %>
-	    		</span> | 
+	    		</span> |
+	    		<% if story.user_id == current_user.id %>
+ 				<% elsif story.has_evaluation?(:lovs, current_user) %>
+ 					<span style="color:red" id="">
+		    		   FAVORITOS
+		    		</span> | 
+		    	<% else %>
+		    		<span id="story_id_<%= story.id %>">
+		    		  <%= link_to "FAVORITOS", lovs_micropost_path(story, type: "up"), :remote => true,  method: "post" %>
+		    		</span> |
+		    	<% end %> 
 	    		<span style="cursor:pointer" class="share_link">
 	    		  COMPARTIR
 	    		</span>
 	    		
 	    		<textarea class="span4" style="display:none" id="show_share_url" cols="40" rows="1" >http://soxialit.com/microposts/<%= story.id %></textarea>
 	    	</p>
+	    	
 	    </div>
 	  	  </div>
 	</div>

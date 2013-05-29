@@ -25,8 +25,9 @@ class Group < ActiveRecord::Base
   end
 
   def self.get_trend_stories(group)
+    days = Micropost.where('created_at >= ?', 4.day.ago).count
     return Micropost.find_with_reputation(:votes, :all, 
-      {:conditions => ["microposts.group_id = ?", group.id], :order => 'created_at desc', :limit => 10})
+      {:conditions => ["microposts.group_id = ?", group.id], :order => 'created_at desc', :limit => days})
   end
 
   def self.get_stories(group)

@@ -8,17 +8,6 @@
 	  <%= render :partial => 'groups/list', :collection => @trend, :as => :story   %>
 	</div>  
   </ol>
-  <div class="row">
-    <div style="display:none" class="span5 offset2">
-      <%= will_paginate @trend %>
-    </div>
-  </div>
-  <div style="display:block" class="container">
-  <div style="display:block" class="row">
-    <div style="display:block;" class="span10 offset1">
-      <div  style="display:block; margin:1em; font-size:1.4em" class="show_more" id="paginate_trend">Ver más historias</div>
-    </div>
-  </div>
 <% else %>
 	<h3>Sé el primero en compartir una historia.</h3>
 <% end %>

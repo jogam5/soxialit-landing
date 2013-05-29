@@ -1,9 +1,10 @@
 class StaticPagesController < ApplicationController
+  #layout "black", :only => :black
 
   #layout "feed", :only => :home
   #layout "test", :only => :feed
   layout "index", :only => :index
-    #layout "black", :only => :black
+    layout "black", :only => :black
 
 
   def home
@@ -156,8 +157,8 @@ class StaticPagesController < ApplicationController
     @top = @stories_top.paginate(:page => params[:page], :per_page => 50).sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
     @stories_new = Micropost.joins(:group => :users).where(:users => {id: current_user.id}).order("created_at DESC")
     @new = @stories_new.paginate(:page => params[:page], :per_page => 50)
-    @stories_trend = Micropost.joins(:group => :users).where(:users => {id: current_user.id}).order("created_at DESC").limit(50)
-    @trend = @stories_trend.paginate(:page => params[:page], :per_page => 50).sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
+    @stories_trend = Micropost.joins(:group => :users).where(:users => {id: current_user.id}).order("id DESC").limit(10)
+    @trend = @stories_trend.sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
   end
 
   def story

@@ -12,13 +12,8 @@ class GroupsController < ApplicationController
     @top_stories = Group.get_top_stories(@group)
     @top = @top_stories.paginate(:page => params[:page], :per_page => 10).sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
     @trend_stories = Group.get_trend_stories(@group)
-    @trend = @trend_stories.paginate(:page => params[:page], :per_page => 10).sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @group }
-      format.js
-    end
-  end
+    @trend = @trend_stories.sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
+   end
 
   def new
     @group = Group.new
@@ -60,9 +55,9 @@ class GroupsController < ApplicationController
     @new = Group.get_new_stories(@group)
     @new_stories = @new.paginate(:page => params[:page], :per_page => 10)
     @top_stories = Group.get_top_stories(@group)
-    @top = @top_stories.paginate(:page => params[:page], :per_page => 10)
+    @top = @top_stories.paginate(:page => params[:page], :per_page => 10).sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
     @trend_stories = Group.get_trend_stories(@group)
-    @trend = @trend_stories.paginate(:page => params[:page], :per_page => 10)
+    @trend = @trend_stories.sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
   end
 
   def list
@@ -72,8 +67,8 @@ class GroupsController < ApplicationController
     @new = Group.get_new_stories(@group)
     @new_stories = @new.paginate(:page => params[:page], :per_page => 10)
     @top_stories = Group.get_top_stories(@group)
-    @top = @top_stories.paginate(:page => params[:page], :per_page => 10)
+    @top = @top_stories.paginate(:page => params[:page], :per_page => 10).sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
     @trend_stories = Group.get_trend_stories(@group)
-    @trend = @trend_stories.paginate(:page => params[:page], :per_page => 10)
+    @trend = @trend_stories.sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
   end
 end
