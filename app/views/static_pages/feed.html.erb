@@ -1,22 +1,65 @@
-<div id="ajax" style="float:left; position:fixed; display:none; margin: 20% 455px; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
-<div class="tabbable" style="margin-bottom: 18px;">
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#tab1" data-toggle="tab">Top</a></li>
-    <li class=""><a href="#tab2" data-toggle="tab">Nuevos</a></li>
-    <li class=""><a href="#tab3" data-toggle="tab">Trending</a></li>
-  </ul>
-  <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
-    <div class="tab-pane active" id="tab1">
-    	<%= render 'show_top' %>
+<div style="padding-left:0px" class="container-fluid">
+<div class="row-fluid">
+ <div class="span3">
+   <div id="left_bar" class="sidebar-nav sidebar-nav-fixed">
+    <div class="main-head">
+      <%= link_to image_tag("logo.png", width:35, height:35), root_url %>
+      <%= link_to '<i class="icon-edit icon-white"></i> compartir'.html_safe, modal_post_path,  {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, 
+        :style => 'background-color:red; float:right; padding: 3px 25px; color:white; margin:7px 7px'} %>
+      <div class="separador"></div>
     </div>
-    <div class="tab-pane" id="tab2">
-    	<%= render 'show_new' %>
+      <%= link_to "Home", root_url, :style => "margin:55px 0 0 5px; color:white; font-size:1em" %> |
+      <%= link_to "Favoritos", root_url, :style => "margin:55px 0 0 5px; color:#999; font-size:0.9em" %>
+      <%= link_to image_tag(current_user.picture_url(:thumb_profile), 
+                    width: 35, :style => "float:right; margin:0px 5px 0 5px"), user_path(current_user) %><br />
+      
+    <br /><br />
+    <div class="body-row">
+      <p id="explorar-editor"><%= link_to "Explorar Colecciones", "" %></p>
+      
+      <p style="font-size:1em; color:#999; margin-left:5px">Mis Revistas</p>
+      <ul class="body-list">
+        <li><%= link_to "Celebrities", group_path(Group.find_by_name("Celebrities")) %></li>
+        <li><%= link_to "The New Black", "" %></li>
+      </ul>
+      <p style="font-size:1em; color:#999; margin-left:5px">Revistas que sigo</p>
+      <ul class="body-list">
+        <li><%= link_to "Vestidos de Verano", group_path(Group.find_by_name("Celebrities")) %></li>
+        <li><%= link_to "Lookbooks", "" %></li>
+        <li><%= link_to "Fashion Parade", "" %></li>
+        <li><%= link_to "Coachella Inspiration", "" %></li>
+        <li><%= link_to "Gente", "" %></li>
+        <li><%= link_to "DIY-Bolsos", "" %></li>
+        <li><%= link_to "DIY-Jeans", "" %></li>
+        <li><%= link_to "MBFW 2013", "" %></li>
+      </ul>
     </div>
-    <div class="tab-pane" id="tab3">
-    	<%= render 'show_trend' %>
-    </div>
-   </div>
-</div>
+   </div><!--/.well -->
+ </div><!--/span-->
+ <div class="span8">
+  <br />
+  <div id="ajax" style="float:left; position:fixed; display:none; margin: 20% 455px; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
+  <div class="tabbable" style="margin-bottom: 18px;">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#tab1" data-toggle="tab">Top</a></li>
+      <li class=""><a href="#tab2" data-toggle="tab">Nuevos</a></li>
+      <li class=""><a href="#tab3" data-toggle="tab">Trending</a></li>
+    </ul>
+    <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
+      <div class="tab-pane active" id="tab1">
+        <%= render 'show_top' %>
+      </div>
+      <div class="tab-pane" id="tab2">
+        <%= render 'show_new' %>
+      </div>
+      <div class="tab-pane" id="tab3">
+        <%= render 'show_trend' %>
+      </div>
+     </div>
+  </div>
+ </div><!--/span-->
+</div><!--/row-->
+</div><!--/.fluid-container-->
 
 <script type="text/javascript">
 $(function() {
@@ -29,5 +72,4 @@ $(function() {
       $(this).hide(); // hide it when it is done.
   });
 });
-
 </script>
