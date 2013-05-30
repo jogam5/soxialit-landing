@@ -1,6 +1,6 @@
-  <% if !@user.evaluations.first.nil? %>
+  <% if !Micropost.evaluated_by(:lovs, @user).nil? %>
 	<div id="contenedor" class="clearfix masonry" style="margin-left:-1%; width:870px">
-  		<% @user.evaluations.each do |z| %>
+  		<% Micropost.evaluated_by(:lovs, @user).each do |z| %>
 		    <div class="box photo col3 masonry-brick" id = "test">
 			  	<% if z.target_type == "Micropost" %>	
 				  <div class="frame_link_favorites">
