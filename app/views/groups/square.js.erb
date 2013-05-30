@@ -2,3 +2,5 @@ $("#ajax_all_stories").html("<%= escape_javascript( render :partial => 'square',
 $("#ajax_new_stories").html("<%= escape_javascript( render :partial => 'square', :collection => @new_stories, :as => :story ) %>");
 $("#ajax_top_stories").html("<%= escape_javascript( render :partial => 'square', :collection => @top, :as => :story ) %>");
 $("#ajax_trend_stories").html("<%= escape_javascript( render :partial => 'square', :collection => @trend, :as => :story ) %>");
+$('.square_link').find('img').css('width', '50px');
+$('.lista_link').find('img').css('width', '30px');
