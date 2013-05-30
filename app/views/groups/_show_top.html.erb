@@ -1,5 +1,5 @@
 <div style="text-align:right">
-	<%= link_to "LISTA", list_path(@group), remote: true, style: "color: red;", class: 'lista_link' %> | <%= link_to "SQUARE", square_path(@group), remote: true, class: 'square_link' %> 
+  <%= link_to image_tag('list_icon.png', width: '50px'), list_path(@group), remote: true, style: "color: red;", class: 'lista_link' %>  <%= link_to image_tag('square_icon.png', width: '30px'), square_path(@group), remote: true, class: 'square_link' %> 
 </div>
 <br /><br />
 <% if @top.any? %>

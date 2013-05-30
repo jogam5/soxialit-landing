@@ -45,4 +45,33 @@ $(function() {
   });
 });
 
+
+$(function(){
+    $('.square_link').live({
+      mouseenter: 
+      function(e){
+        $(this).css("opacity", "0.7");
+      },
+      mouseleave:
+      function (e){
+        e.preventDefault();
+        $(this).css("opacity", "1");
+         // $(this).find('.collect_button').hide();
+      }
+    });
+  
+   $('.lista_link').live({
+      mouseenter: 
+      function(e){
+        $(this).css("opacity", "0.7");
+      },
+      mouseleave:
+      function (e){
+        e.preventDefault();
+        $(this).css("opacity", "1");
+         // $(this).find('.collect_button').hide();
+      }
+    });
+  });
+
 </script>
