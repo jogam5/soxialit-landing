@@ -8,7 +8,7 @@
         :style => 'background-color:red; float:right; padding: 3px 25px; color:white; margin:7px 7px'} %>
       <div class="separador"></div>
     </div>
-      <%= link_to "Home", feed_path, :style => "margin:55px 0 0 5px; color:white; font-size:1em" %> |
+      <%= link_to "Home", feed_path , :style => "margin:55px 0 0 5px; color:white; font-size:1em" %> |
       <%= link_to "Fashion Karma", root_url, :style => "margin:55px 0 0 5px; color:#999; font-size:0.9em" %>
       <%= link_to image_tag(current_user.picture_url(:thumb_profile), 
                     width: 35, :style => "float:right; margin:0px 5px 0 5px"), user_path(current_user) %><br />
@@ -31,38 +31,24 @@
  </div><!--/span-->
  <div class="span8">
   <br />
-  <div id="ajax" style="float:left; position:fixed; display:none; margin: 20% 455px; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
-  <div class="tabbable" style="margin-bottom: 18px;">
-    <ul class="nav nav-tabs">
-      <li class="active"><a href="#tab1" data-toggle="tab">TOP</a></li>
-      <li class=""><a href="#tab2" data-toggle="tab">NUEVOS</a></li>
-      <li class=""><a href="#tab3" data-toggle="tab">TRENDING</a></li>
-    </ul>
-    <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
-      <div class="tab-pane active" id="tab1">
-        <%= render 'show_top' %>
-      </div>
-      <div class="tab-pane" id="tab2">
-        <%= render 'show_new' %>
-      </div>
-      <div class="tab-pane" id="tab3">
-        <%= render 'show_trend' %>
-      </div>
-     </div>
-  </div>
+  <ul>
+  <% @groups.each do |group| %>
+  	<li style="list-style: none">
+  	  <div class="row" >
+  	  	<div class="span8">
+  	  	  <span id="groups_index_images"><%= image_tag(group.picture_url(:index_500)) %></span>
+  	  	</div>
+  	  	<div class="span4">
+  	  	  <br />
+  	  	  <p id="groups_index_title"><%= link_to group.name, group_path(group) %></p>
+  	  	  <p id="">By <%= link_to current_user.username, "" %></p>
+  	  	  <p id="groups_index_description"><%= group.description %></p>
+  	  	</div>
+  	  </div>
+    </li>
+    <br /><br />
+  <% end %>
+  </ul>
  </div><!--/span-->
 </div><!--/row-->
 </div><!--/.fluid-container-->
-
-<script type="text/javascript">
-$(function() {
-  $('#ajax')
-    .hide()  // hide it initially.
-    .ajaxStart(function() {
-      $(this).show(); // show on any Ajax event.
-    })
-    .ajaxStop(function() {
-      $(this).hide(); // hide it when it is done.
-  });
-});
-</script>

@@ -1840,6 +1840,25 @@ ul.comments_new{
 	}
 }
 
+#explore-collections{
+	padding:3px 20px 3px 5px;
+	background:#999;
+	margin-bottom:1.5em;
+	 a{
+	font-size:1em;
+	color:whiteSmoke;
+	font-weight:300;
+	}
+	 a:hover{
+	font-size:1em;
+	padding:5px 20px 5px 1px;
+	background:#555;
+	color:whiteSmoke;
+	font-weight:300;
+	text-decoration:none;
+	}
+}
+
 #explorar-revistas{
 	padding:3px 20px 3px 5px;
 	background:$rojo;
@@ -1896,4 +1915,45 @@ ul.comments_new{
 	text-decoration:none;
 	color:black;
 	}
+}
+
+.nav-tabs {
+border-bottom: 3px solid whitesmoke;
+}
+
+.nav-tabs > li {
+margin-bottom: -3px;
+background: whitesmoke;
+}
+
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+color: #555555;
+background-color: white;
+border: 1px solid whitesmoke;
+border-bottom-color: transparent;
+cursor: default;
+}
+
+#groups_index_images{
+   img{
+  border: 1px solid #bbb;
+  }
+}
+
+#groups_index_title{
+   a{
+  font-family:acta-display;
+  font-size:1.8em;
+  color:black;
+  }
+   a:hover{
+  text-decoration:none;
+  color:$rojo;
+  }
+}
+
+#groups_index_description{
+  font-size:1.1em;
+  color:#999;
+  font-weight:lighter;
 }

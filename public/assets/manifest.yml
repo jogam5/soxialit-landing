@@ -148,6 +148,8 @@ link_blanco.png: link_blanco-17b9d32c6f0472eabbeab6376ee1b08d.png
 link_blanco/index.png: link_blanco-17b9d32c6f0472eabbeab6376ee1b08d.png
 link_favorite.png: link_favorite-dce983d455e30881ade605444cc5053b.png
 link_favorite/index.png: link_favorite-dce983d455e30881ade605444cc5053b.png
+list_icon.png: list_icon-0087d2da9158ea7134e6ea4ec92feccf.png
+list_icon/index.png: list_icon-0087d2da9158ea7134e6ea4ec92feccf.png
 liza.jpg: liza-f37f3fff896307912ec8849d091bb586.jpg
 liza/index.jpg: liza-f37f3fff896307912ec8849d091bb586.jpg
 loading.png: loading-323f98010c873f1cc77c59859654895e.png
@@ -250,6 +252,8 @@ soxialit.png: soxialit-41251bfa6b74179a033cc2035aada3c7.png
 soxialit/index.png: soxialit-41251bfa6b74179a033cc2035aada3c7.png
 soxialit_partner.png: soxialit_partner-57faa1fb8132d16ece5c551eba7bde73.png
 soxialit_partner/index.png: soxialit_partner-57faa1fb8132d16ece5c551eba7bde73.png
+square_icon.png: square_icon-09617999f5883a4239d513eafb9f259b.png
+square_icon/index.png: square_icon-09617999f5883a4239d513eafb9f259b.png
 team_500.png: team_500-a056b48a3601b8cc1990629a5f9984fd.png
 team_500/index.png: team_500-a056b48a3601b8cc1990629a5f9984fd.png
 trash.png: trash-7c60f61d07df1bc572333fd0a71216c2.png
@@ -286,8 +290,8 @@ zapato.png: zapato-1029d6c5aa14da47143753767914f588.png
 zapato/index.png: zapato-1029d6c5aa14da47143753767914f588.png
 application.js: application-785ae9eb74e09cef81cef1d32f8ff2f1.js
 application/index.js: application-785ae9eb74e09cef81cef1d32f8ff2f1.js
-application.css: application-1466ff156cd1374d4442f02f6dc369d0.css
-application/index.css: application-1466ff156cd1374d4442f02f6dc369d0.css
+application.css: application-5535d66c0b49cba81119741039ed5def.css
+application/index.css: application-5535d66c0b49cba81119741039ed5def.css
 fontawesome-webfont.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont/index.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont.svg: fontawesome-webfont-c3f3594758768fbb43eae746d18b3b50.svg
