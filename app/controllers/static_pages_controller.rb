@@ -1,10 +1,8 @@
 class StaticPagesController < ApplicationController
-  #layout "black", :only => :black
-
   #layout "feed", :only => :home
   #layout "test", :only => :feed
-  layout "index", :only => :index
-    layout "black", :only => :black
+  layout "index", :only => [:index, :feed]
+  #layout "black", :only => :black
 
 
   def home
