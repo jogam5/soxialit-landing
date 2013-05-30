@@ -1,7 +1,13 @@
 class GroupsController < ApplicationController
   #before_filter :authenticate_user!
   #load_and_authorize_resource
-  #layout "index", :only => :show
+  layout "index", :only => :index
+
+  def index
+    @groups = Group.all
+    #Groups I am suscribed
+    @suscribed_groups = current_user.groups
+  end
 
   def show
     @group = Group.find_by_name(params[:name])

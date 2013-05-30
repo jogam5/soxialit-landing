@@ -217,5 +217,8 @@ class User < ActiveRecord::Base
     memberships.find_by_group_id(group.id).destroy
   end
 
+  def subscribed_groups(group_array)
+    
+  end
   
 end

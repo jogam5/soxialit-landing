@@ -286,8 +286,8 @@ zapato.png: zapato-1029d6c5aa14da47143753767914f588.png
 zapato/index.png: zapato-1029d6c5aa14da47143753767914f588.png
 application.js: application-785ae9eb74e09cef81cef1d32f8ff2f1.js
 application/index.js: application-785ae9eb74e09cef81cef1d32f8ff2f1.js
-application.css: application-1466ff156cd1374d4442f02f6dc369d0.css
-application/index.css: application-1466ff156cd1374d4442f02f6dc369d0.css
+application.css: application-1a53adff2b66c7c9ba325c45b734de0e.css
+application/index.css: application-1a53adff2b66c7c9ba325c45b734de0e.css
 fontawesome-webfont.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont/index.eot: fontawesome-webfont-86a6da438b901860c3a54e21f9098bf8.eot
 fontawesome-webfont.svg: fontawesome-webfont-c3f3594758768fbb43eae746d18b3b50.svg

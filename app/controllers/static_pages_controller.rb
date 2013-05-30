@@ -157,6 +157,8 @@ class StaticPagesController < ApplicationController
     @new = @stories_new.paginate(:page => params[:page], :per_page => 50)
     @stories_trend = Micropost.joins(:group => :users).where(:users => {id: current_user.id}).order("id DESC").limit(10)
     @trend = @stories_trend.sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
+    #Groups I am suscribed
+    @suscribed_groups = current_user.groups
   end
 
   def story
