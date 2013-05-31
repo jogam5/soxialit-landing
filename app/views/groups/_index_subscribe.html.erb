@@ -1,6 +1,6 @@
-<%= form_for(current_user.memberships.build(group_id: @group.id),
+<%= form_for(current_user.memberships.build(group_id: group.id),
 				remote: true) do |f| %>
   <div><%= f.hidden_field :group_id %></div>
-  <%= link_to 'Suscribirme', "#", :onclick => "$('#form_index_#{@group.id}').find('form').submit()", 
+  <%= link_to 'Suscribirme', "#", :onclick => "$('#form_index_#{group.id}').find('form').submit()", 
   			:id => "user_follow_button" %>
 <% end %>
