@@ -47,7 +47,10 @@ DeviseFacebook::Application.routes.draw do
   resources :sizes
  # get 'sources/:source', to: 'sources#index', as: :source
   get 'tags/:tag', to: 'microposts#index', as: :tag
-  resources :microposts do
+  match '/microposts' => 'microposts#index', :as => 'p'
+  match '/microposts/:id' => 'microposts#show', :as => 'p'
+  match '/microposts/:id/edit' => 'microposts#edit', :as => 'p'
+  resources :microposts, :path => "p" do
      member { post :vote}
      member { post :lovs}
   end
