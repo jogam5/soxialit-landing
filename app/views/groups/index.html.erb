@@ -63,12 +63,16 @@
 
 <script type="text/javascript">
 $(function(){
-  $('#user_follow_button').bind('click', function(e){
-    e.preventDefault(); // Prevent link from following its href
+  $('body').bind('ajaxComplete', function() {
+    $('#user_follow_button').bind('click', function(e){
+      e.preventDefault(); // Prevent link from following its href
+    });
   });
 
-  $('#user_unfollow_button').bind('click', function(e){
-    e.preventDefault(); // Prevent link from following its href
+  $('body').bind('ajaxComplete', function() {
+    $('#user_unfollow_button').bind('click', function(e){
+      e.preventDefault(); // Prevent link from following its href
+    });
   });
 });
 </script>
