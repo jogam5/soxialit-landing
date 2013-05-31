@@ -111,7 +111,6 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:username])
     #@user = User.find(params[:id])
     @users = @user.followers
-    
   end
   
   def bio

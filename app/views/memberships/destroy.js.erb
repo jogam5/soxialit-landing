@@ -1,2 +1,3 @@
 $("#subscribe_form").html("<%= escape_javascript(render('groups/subscribe')) %>")
 $("#subscribers").html('<%= @group.users.count %>')
+$("#form_index_<%= @group.id %>").html("<%= escape_javascript(render :partial => 'groups/index_subscribe') %> ")

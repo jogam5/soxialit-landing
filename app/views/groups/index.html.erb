@@ -43,6 +43,14 @@
   	  	  <p id="groups_index_title"><%= link_to group.name, group_path(group) %></p>
   	  	  <p id="">By <%= link_to current_user.username, "" %></p>
   	  	  <p id="groups_index_description"><%= group.description %></p>
+  	  	  <br />
+  	  	  <div id="form_index_<%= group.id %>">
+  	  	    <% if !current_user.subscribed?(group) %>
+	            <%= render :partial => 'groups/index_subscribe', :locals => { :group => group } %>
+		        <% else %>
+		          <%= render :partial => 'groups/index_unsubscribe', :locals => { :group => group } %>
+	          <% end %>
+	        </div>
   	  	</div>
   	  </div>
     </li>
