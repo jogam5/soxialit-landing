@@ -66,29 +66,60 @@
 	      </p>
 	    </div>
 	   <div id="group_story_menu">
-	    	<p>
+	    	<div classs="row">
 	    		<span id="">
-	    		  <%= link_to "CONVERSACIONES", micropost_path(story) %>
+	    		  <%= link_to "CONVERSACIONES", story %>
 	    		</span> |
-	    		<% if story.user_id == current_user.id %>
- 				<% elsif story.has_evaluation?(:lovs, current_user) %>
- 					<span style="color:red" id="">
-		    		   FAVORITOS
-		    		</span> | 
-		    	<% else %>
-		    		<span id="story_id_<%= story.id %>">
-		    		  <%= link_to "FAVORITOS", lovs_micropost_path(story, type: "up"), :remote => true,  method: "post" %>
-		    		</span> |
-		    	<% end %> 
-	    		<span style="cursor:pointer" class="share_link">
-	    		  COMPARTIR
+ 					
+		    	<span style="margin-top: 0%; margin-left: 1%; position: absolute;">
+		  		<% if signed_in? %>
+					<div style="margin-right:-2%;" class="votacion" id="votacion_<%= story.id %>">
+						<% if story.user_id == current_user.id %>
+							<span id="want_<%= story.id %>">
+								<div id="love_icon_<%= story.id %>" class="love_icon_active">
+									<span style="margin-top:1px;float:left; display:block; margin-left:-50%; color:black" id="love_z.target_id_<%= story.id %>">
+										<%= story.reputation_for(:lovs).to_i %>
+									</span>
+								</div>
+					   		</span>
+							<% elsif story.has_evaluation?(:lovs, current_user) %>
+							<span id="want_<%= story.id %>">
+	        					<div id="love_icon_<%= story.id %>" class="love_icon_active">
+									<span style="margin-top:1px;float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= story.id %>">
+	        							<%= story.reputation_for(:lovs).to_i %>
+	        						</span>
+	        					</div>
+	       					</span>
+	        				
+							<% else %>
+	        				<span id="want_<%= story.id  %>">
+	        					<div id="love_icon_<%= story.id  %>" class="love_icon">
+									<span style="margin-top:1px;float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= story.id  %>">
+	        							<%= story.reputation_for(:lovs).to_i %>
+	        						</span>
+	        						<%= link_to "xxx", lovs_micropost_path(story, type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link", style: "color: transparent" %>
+	        					</div>
+	           				</span>
+						<% end %>
+					</div>
+				<% else %>
+					<span id="want_<%= story.id %>">
+						<div id="love_icon_<%= story.id %>" class="love_icon_active">
+							<span style="margin-top:1px;float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= story.id %>">
+								<%= story.reputation_for(:lovs).to_i %>
+							</span>
+						</div>
+					</span>
+				<% end %>
+			  	</span> 
+	    		<span style="cursor:pointer; margin-left:13%" class="share_link">
+	    		  | COMPARTIR
 	    		</span>
 	    		
-	    		<textarea class="span4" style="display:none" id="show_share_url" cols="40" rows="1" >http://soxialit.com/microposts/<%= story.id %></textarea>
-	    	</p>
-	    	
+	    		<textarea class="span4" style="display:none" id="show_share_url" cols="40" rows="1" >http://soxialit.com/p/<%= story.id %></textarea>
+	    	</div>
 	    </div>
-	  	  </div>
+	   </div>
 	</div>
   </li>
   <br /><br />
