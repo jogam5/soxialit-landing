@@ -34,41 +34,40 @@
 					<div style="float:right; margin-top: -20%">
 					  <% if signed_in? %>
 						<div style="margin-right:-2%;" class="votacion" id="votacion_<%= z.id %>">
-					  	<% if find_micropost_userid(z.id) == current_user.id %>
-							<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
+					  		<% if find_micropost_userid(z.id) == current_user.id %>
+								<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
 								<%= image_tag("loading.gif") %>
-							</div>
-							<span id="want_<%= z.id %>">
-								<div id="love_icon_<%= z.id %>" class="love_icon_active">
+								</div>
+								<span id="want_<%= z.id %>">
+									<div id="love_icon_<%= z.id %>" class="love_icon_active">
 									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_z.id_<%= z.id %>">
 										<%= find_micropost(z.id).reputation_for(:lovs).to_i %>
 									</span>
+									</div>
+						   		</span>
+							<% elsif z.has_evaluation?(:lovs, current_user) %>
+								<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
+								<%= image_tag("loading.gif") %>
 								</div>
-						   	</span>
-						<% elsif current_user && !current_user.voted_for?(find_micropost(z.id)) %>
-							<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
-								<%= image_tag("loading.gif") %>
-							</div>
-				        	<span id="want_<%= z.id  %>">
-				        	<div id="love_icon_<%= z.id  %>" class="love_icon">
-								<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= z.id  %>">
-				        			<%= find_micropost(z.id).reputation_for(:lovs).to_i %>
-				        		</span>
-				        		<%= link_to "x", lovs_micropost_path(find_micropost(z.id), type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
-				        	</div>
-				         	</span>
-						<% else %>
-							<div id="ajax-status" style="float: right; display:none; margin-left: 50%; width:20px">
-								<%= image_tag("loading.gif") %>
-							</div>
-				        	<span id="want_<%= z.id %>">
-				        		<div id="love_icon_<%= z.id %>" class="love_icon_active">
+					        	<span id="want_<%= z.id %>">
+				        			<div id="love_icon_<%= z.id %>" class="love_icon_active">
 									<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= z.id %>">
 				        				<%= find_micropost(z.id).reputation_for(:lovs).to_i %>
 				        			</span>
-				        		</div>
-				       		</span>
-						<% end %>
+				        			</div>
+				       			</span>
+				       		<% else %>
+				       	   		<span id="want_<%= z.id  %>">
+				        			<div id="love_icon_<%= z.id  %>" class="love_icon">
+										<span style="float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= z.id  %>">
+				        				<%= find_micropost(z.id).reputation_for(:lovs).to_i %>
+				        				</span>
+				        				<%= link_to "x", lovs_micropost_path(find_micropost(z.id), type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
+				        			</div>
+				         		</span>
+							<% end %>
+						</div>
+					  <% end %>
 					</div>
 				</div>
 			</div>
