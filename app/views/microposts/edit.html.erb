@@ -1,3 +1,4 @@
+<div id="ajax" style="float:left; position:fixed; display:none; margin: 20% 455px; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
 <% if user_signed_in? %>
 	<% if current_user.roles.first.name == "admin" %>
 		<br/>
@@ -29,11 +30,14 @@
              		<% end %>
 		            <%= f.hidden_field :thumbnail %>
 	             </div>
+	            <div style="display:none" id="bar" class="progress progress-striped active">
+  					<div class="bar" style="width: 100%;">Publicando</div>
+				</div>
 	             <div class="span2">
 			      	<div style="float:right" class="actions" >
 			        	<span style="margin-right:6em"><%= f.submit "Publicar en Soxialit", class: "button-story" %></span>
 			      	</div>
-			      </div>
+			     </div>
 			 </div>
 	    	<% end %>
 		</div>
@@ -66,6 +70,12 @@
 <%= link_to "Eliminar la historia", @micropost, method: :delete %>
 
 <script type="text/javascript">
+$(function() {
+  $('.button-story').live('click', function(){
+  	$('#bar').show();
+  })
+});
+
 $(function(){
 	$('#micropost_tag_list').tokenInput('/sources.json', { 
 	    theme: 'facebook',
