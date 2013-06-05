@@ -63,7 +63,7 @@
 	  <% end %>
 	  </div>
 	  <div class="span5">
-	  	<span id="item_link_story" style="font-size:3em; line-height:1.2em"><%= link_to story.title, story.url, target: '_blank' %></span>
+	  	<span id="item_link_micropost" style="font-size:3em; line-height:1.2em"><%= link_to story.title, story.url, target: '_blank' %></span>
 	  	<div class="timestamp" style="margin-top:1em">
 	  	  <p><%= time_ago_in_words(story.created_at) %> by
 	      <%= link_to story.user.nickname, user_path(story.user) %> 
