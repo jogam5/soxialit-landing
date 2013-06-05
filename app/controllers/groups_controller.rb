@@ -34,6 +34,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(params[:group])
+    @group.update_attributes(user_id: current_user.id)
     respond_to do |format|
       if @group.save
         format.html { redirect_to @group }
