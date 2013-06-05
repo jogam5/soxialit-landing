@@ -24,7 +24,11 @@ class PictureMicropostUploader < CarrierWave::Uploader::Base
      process :resize_and_pad => [226, 255, "white"]
   end
 
-  version :link_430 do
-    process :resize_to_fill => [430,280, Magick::NorthGravity]
-  end
+  #version :link_430 do
+  #  process :resize_to_fill => [430,280, Magick::NorthGravity]
+  #end
+
+  #version :link_500 do
+  #  process :resize_to_fill => [500,500, Magick::NorthGravity]
+  #end
 end

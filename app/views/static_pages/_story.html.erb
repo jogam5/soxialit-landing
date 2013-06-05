@@ -7,7 +7,7 @@
         <div class="tabbable" style="margin-bottom: 0px;">
           <ul class="nav nav-tabs">
             <% if current_user.roles.first.name == "admin" %>
-              <li style="margin-left:5%" class="active">
+              <li style="margin-left:5%;" class="active">
                 <span id="select_url" style="cursor:pointer; color: rgb(0, 165, 240);">
                   <div style="text-align: center; border: 1px solid #999;" class="span3">
                     <%= image_tag('link_blanco.png', style: "width:30px; background-color:black; margin-top:6px") %><br/><br />
@@ -15,7 +15,7 @@
                   </div>
                 </span>
               </li>
-              <li>
+              <li style="">
                 <span id="select_img" style="text-align: center; cursor:pointer; color: rgb(0, 165, 240);">
                   <div style="margin-top:-4px; text-align: center;" class="span3">
                     <%= image_tag('iconmonstr-photo-camera-6-icon.png', style: "width:40px") %> <br/><br />

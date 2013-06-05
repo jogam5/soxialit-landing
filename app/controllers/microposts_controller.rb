@@ -114,6 +114,7 @@ class MicropostsController < ApplicationController
     end 
   end
 
+
   def destroy
     @micropost = Micropost.find(params[:id])
     Activity.expire_feed_cache(@micropost.user)
