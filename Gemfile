@@ -31,6 +31,10 @@ gem 'rmagick'
 gem 'fog'
 gem "fastimage", "~> 1.2.13"
 
+#notification
+gem 'exception_notification'
+gem 'letter_opener', group: :development
+
 #CSS
 gem "bootstrap-sass", "~> 2.1.0.1"
 
