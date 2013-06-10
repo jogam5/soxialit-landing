@@ -22,8 +22,7 @@
 									id="love_product_<%= feed_item.activitable.id %>">
 							<%= feed_item.activitable.reputation_for(:votes).to_i %>
 						</span>
-						<%= link_to "xxx", vote_product_path(feed_item.activitable, type: "up"), 
-								:class =>"trick_anchor", :remote => true,  method: "post", id: "link" %>
+						
 					</div>
 	   			</span>
 			<% else %>
