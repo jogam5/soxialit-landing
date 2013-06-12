@@ -36,7 +36,7 @@ $rojo:#DD390D;
   position:relative;
   z-index:1;
     left:100px;
-    top:-51px;
+    top:-81px;
    img{
   width:102px;
   border: 3px solid white;
@@ -52,7 +52,7 @@ $rojo:#DD390D;
   position:relative;
   z-index:1;
     left:0px;
-    top:-50px;
+    top:-80px;
     text-align:center;
 
 }
@@ -60,13 +60,26 @@ $rojo:#DD390D;
 #user_profile_role{
   font-family:nimbus-sans, Helvetica Neue;
   font-size:1.1em;
-  font-weight:lighter;
+  font-weight:normal;
   position:relative;
+  color:#555;
   z-index:1;
     left:0px;
-    top:-47px;
+    top:-77px;
     text-align:center;
     text-transform:uppercase;
+}
+
+#user_profile_url{
+  font-family:nimbus-sans, Helvetica Neue;
+  font-size:1em;
+  font-weight:lighter;
+  position:relative;
+  color:#999;
+  z-index:1;
+    left:0px;
+    top:-78px;
+    text-align:center;
 }
 
 #user_menu{

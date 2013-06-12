@@ -8,7 +8,7 @@
         :style => 'background-color:red; float:right; padding: 3px 25px; color:white; margin:7px 7px'} %>
       <div class="separador"></div>
     </div>
-      <%= link_to "HOME", root_url , :style => "margin:55px 0 0 5px; color:white; font-size:1em" %>
+      <%= link_to "FEED", feed_path , :style => "margin:55px 0 0 5px; color:white; font-size:1em" %>
       <%= link_to "", root_url, :style => "margin:55px 0 0 5px; color:#999; font-size:0.9em" %>
       <%= link_to image_tag(current_user.picture_url(:thumb_profile), 
                     width: 35, :style => "float:right; margin:0px 5px 0 5px"), user_path(current_user) %><br />

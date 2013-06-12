@@ -8,8 +8,8 @@
 					user_path(comment.user) %>
 		<% end %>
 	</span>
-	<div class="comment_body" style="margin-left:16%" >
-		<span class="comment_author"><%= "#{comment.user.nickname}: "%></span>
+	<div class="comment_body" >
+		
 		<%= content_tag "span", class:"comment_text", data: {id: comment.id } do %>
 	 		<span id="comment_new_<%= comment.id%>" class="comment_text"><%= comment.body %></span>
 		<% end %>
