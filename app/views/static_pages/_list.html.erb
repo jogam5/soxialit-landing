@@ -1,6 +1,6 @@
   <li id="<%= story.id %>">
 	<div class="row">
-	  	<section style="position: absolute; margin: 20px 0 0 20px; background-color: rgb(228,228,228); border-radius: 5px; padding: 10px;" class="span1">
+	  	<section style="position: absolute; margin: 0px 0 0 -20px; border-radius: 0px; padding: 0px;" class="span1">
 				<div class="haiku">
 					<em>
 						<% if story.user_id == current_user.id %>
@@ -72,7 +72,7 @@
 	    <div id="group_story_menu">
 	    	<div classs="row">
 	    		<span id="">
-	    		  <%= link_to "CONVERSACIONES", story %>
+	    		  <%= link_to "COMENTARIOS", story %>
 	    		</span> |
  					
 		    	<span style="margin-top: 0%; margin-left: 1%; position: absolute;">
@@ -115,9 +115,9 @@
 						</div>
 					</span>
 				<% end %>
-			  	</span> 
-	    		<span style="cursor:pointer; margin-left:11%" class="share_link">
-	    		  | COMPARTIR
+			  	</span>
+	    		<span style="cursor:pointer; margin-left:14%" class="share_link">
+	    		   | COMPARTIR
 	    		</span>
 	    		
 	    		<textarea class="span8" style="display:none" id="show_share_url" cols="40" rows="1" >http://soxialit.com/p/<%= story.id %></textarea>

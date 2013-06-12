@@ -5,6 +5,12 @@ class Group < ActiveRecord::Base
   has_many :users, :through => :memberships
   has_many :microposts
 
+  VALID_GROUPNAME_REGEX = /^[a-zA-Z0-9_]*[a-zA-Z][a-zA-Z0-9_]*$/
+  validates :name, presence: true,  format: { with: VALID_GROUPNAME_REGEX },
+            uniqueness: { case_sensitive: false }
+
+  before_save {  self.name.downcase! }
+
   mount_uploader :picture, GroupPictureUploader
 
   def to_param

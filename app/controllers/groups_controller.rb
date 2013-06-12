@@ -19,6 +19,8 @@ class GroupsController < ApplicationController
     @top = @top_stories.paginate(:page => params[:page], :per_page => 10).sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
     @trend_stories = Group.get_trend_stories(@group)
     @trend = @trend_stories.sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
+    #Get profile picture of group creator
+    @group_creator = User.find(@group.user_id)
    end
 
   def new
