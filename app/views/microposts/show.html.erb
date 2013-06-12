@@ -13,14 +13,13 @@
 
 <div class="row">
   <div class="span2">
-    <p style="font-family:acta-display; font-size:1.4em; margin-bottom:1em">Posts recientes</p>
+    <p style="font-family:acta-display; font-size:1.4em; margin-bottom:1em">Te sugerimos:</p>
     <% @posts.shuffle.each_with_index do |post, index| %>
       <% break if index == 3 %>
-      <p style="font-family:acta-display"><%= post.title %></p>
       <% if post.picture.present? %>
-        <%= link_to (image_tag post.picture), micropost_path(post) %>
+        <%= link_to image_tag(post.picture_url, width:200), micropost_path(post) %>
       <% else %>
-        <%= link_to (image_tag post.thumbnail), micropost_path(post) %>
+        <%= link_to image_tag(post.thumbnail), micropost_path(post) %>
       <% end %>
       <p style="margin-right:0.5em; margin-top:0.5em">
         <% if !post.user.picture.present? %>
@@ -47,55 +46,29 @@
     <% end %>
     <br/>
   </div>
-  <div class="span2" style=" padding-top:4em; text-align:right">
-    <% if !@user.picture.present? %>
-      <%= link_to image_tag("http://graph.facebook.com/#{@user.uid}/picture?type=square", 
-            width: 50, height: 50, :id =>  "nickname_small_picture"), user_path(@user) %>
-    <% else %>
-      <%= link_to image_tag(@user.picture_url(:thumb_profile), :id => "nickname_small_picture"), user_path(@user) %>
+  <div class="span9" id="feed_wall" style="padding: 0em 2em 0em 2.5em">
+    <% if current_user == @micropost.user %>
+      <span class="micropost_delete"><%= link_to "Eliminar", micropost_path(@micropost), :method => :delete %></span>
     <% end %>
-    <div class="timestamp" style="margin-top:1em">
-      <%= link_to @micropost.user.nickname, user_path(@micropost.user) %><br/ >
-      <%= time_ago_in_words(@micropost.created_at) %>
-    </div>
-  </div>
-  <div class="span7" id="feed_wall" style="padding: 0em 2em 0em 2.5em">
-    <div class="row">
-      <% if current_user == @micropost.user %>
-        <span class="micropost_delete"><%= link_to "Eliminar", micropost_path(@micropost), :method => :delete %></span>
+    <p id="item_link_micropost" style="text-align:center; margin:0.5em; font-size:3.3em; line-height:1.1em"><%= link_to @micropost.title, @micropost.url, target: '_blank' %></p>
+
+    <div class="row" style="text-align:center">
+      <% if @micropost.picture.present? %>
+        <%= link_to image_tag(@micropost.picture_url, width:500), @micropost.url, target: '_blank' %>
+      <% else %>
+        <%= link_to image_tag(@micropost.thumbnail), @micropost.url, target: '_blank' %>
       <% end %>
-      <div class="span7">
-        <p id="item_link_micropost" style="font-size:1.6em"><%= link_to @micropost.title, @micropost.url, target: '_blank' %></p>
-      </div>
-    </div>
-    <div class="row" style="margin-top:1em">
-      <div id="product_background">
-        <div class="row" style="display:block;  margin-left:10px">
-         <div style="width:300px" id="micropost_img">
-          <% if @micropost.id > 4 %>
-            <% if !@micropost.picture_url(:modal).nil? %>
-              <%= link_to image_tag(@micropost.picture_url(:modal)), @micropost.url, target: '_blank' %>
-            <% else %>
-            <%= link_to image_tag(@micropost.thumbnail, style: "max-height: 500px"), @micropost.url, target: '_blank' %>
-            <% end %>
-          <% else %>
-            <%= link_to image_tag(@micropost.thumbnail, style: "max-height: 500px"), @micropost.url, target: '_blank' %>
-          <% end %>
-          </div>
-         <div id="micropost_description" style="font-size:1.1em"><%= @micropost.description %><br />
-          <div id="micropost_leer_mas"><%= link_to "Leer más", @micropost.url, target: '_blank' %>
-          </div>
-          <br />
-          <span style="color:#999">vía</span> <%= link_to @micropost.provider, @micropost.provider, target: '_blank' %>
-         </div>
-        </div>
+      <br /><br />
+      <div ><span style="color:#999">vía</span> <%= link_to @micropost.provider, @micropost.provider, target: '_blank' %>
+        <br />
       </div>
     </div>
     <br />
+
   	<div style="padding:5%; margin-right:-4%; margin-top:-7%; margin-bottom:5%">
      <% if !@micropost.tag_list.first.nil? %>
         <p class="tags">TAGS:</p>
-           <li class="taging" style="width:300px"><%= raw @micropost.tag_list.map { |t| link_to t, tag_path(t) }.join(' ') %></li>
+          <li class="taging" style="width:300px"><%= raw @micropost.tag_list.map { |t| link_to t, tag_path(t) }.join(' ') %></li>
       <% end %>
      	  <span style="float:right;  display:block">
 				  <div class="fb-like" data-href="" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false"></div>

@@ -1,31 +1,35 @@
 <div style="padding-left:0px" class="container-fluid">
 <div class="row-fluid">
  <div class="span3">
-   <div id="left_bar" class="sidebar-nav sidebar-nav-fixed">
-    <div class="main-head">
+   <div id="left_bar" class="sidebar-nav sidebar-nav-fixed" style="overflow-y:scroll;" >
+    <div class="main-head" >
       <%= link_to image_tag("logo.png", width:35, height:35), root_url %>
-      <%= link_to '<i class="icon-edit icon-white"></i> compartir'.html_safe, modal_post_path,  {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, 
+      <%= link_to '<i class="icon-edit icon-white"></i> compartir post'.html_safe, story_path,  {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, 
         :style => 'background-color:red; float:right; padding: 3px 25px; color:white; margin:7px 7px'} %>
       <div class="separador"></div>
     </div>
-      <%= link_to "Home", feed_path, :style => "margin:55px 0 0 5px; color:white; font-size:1em" %> |
-      <%= link_to "Fashion Karma", root_url, :style => "margin:55px 0 0 5px; color:#999; font-size:0.9em" %>
+      <%= link_to "FEED", feed_path, :style => "margin:55px 0 0 5px; color:white; font-size:1em" %> 
+      <%= link_to "", root_url, :style => "margin:55px 0 0 5px; color:#999; font-size:0.9em" %>
       <%= link_to image_tag(current_user.picture_url(:thumb_profile), 
                     width: 35, :style => "float:right; margin:0px 5px 0 5px"), user_path(current_user) %><br />
     <br /><br />
     <div class="body-row">
       <p id="explore-collections"><%= link_to "Explorar Colecciones", groups_path %></p>
-      
-      <p style="font-size:1em; color:#999; margin-left:5px">Mis Colecciones</p>
+      <p id="create-collection"><%= link_to "Crear Nueva Colección", new_group_path %></p>
+      <p style="font-size:1.1em; color:#999; margin-left:5px">Mis Colecciones</p>
       <ul class="body-list">
-        <li><%= link_to "Shoes", "" %></li>
+        <% @my_groups.each do |group| %>
+          <li><%= link_to group.name, group_path(group) %></li>
+        <% end %>
       </ul>
-      <p style="font-size:1em; color:#999; margin-left:5px">Colecciones que sigo</p>
-      <ul class="body-list">
+      <p style="font-size:1.1em; color:#999; margin-left:5px">Colecciones que sigo</p>
+      <ul class="body-list" >
         <% @suscribed_groups.each do |group| %>
           <li><%= link_to group.name, group_path(group) %></li>
         <% end %>
       </ul>
+      
+      
     </div>
    </div><!--/.well -->
  </div><!--/span-->

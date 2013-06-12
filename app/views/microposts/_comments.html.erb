@@ -1,5 +1,5 @@
 <% if @micropost.comments.count > 0 %>
-  <ul class="comments" style="margin-bottom:1px; width:458px">
+  <ul class="comments" style="margin-bottom:1px; width:650px">
     <% @comments.each do |comment| %>
     <%= content_tag_for(:li, comment ) do %>
       <div class="comment_body">
@@ -12,7 +12,6 @@
                 user_path(comment.user) %>
           <% end %>
         </span>
-        <span class="comment_author"><%= "#{comment.user.nickname}"%></span>
         <span class="comment_text"><%= comment.body %></span>
         <span class="comment_timestamp"><%= time_ago_in_words(comment.created_at) %> 
         <% if current_user == comment.user %>
@@ -25,6 +24,7 @@
     <% end %>
   </ul>
 <% end %>
+
 <% if user_signed_in? %>
   <div class="comment_form" id="form_<%=@micropost.id %>" >
     <%= form_for(@comment, remote: true) do |f| %>
@@ -42,7 +42,7 @@
             <% end %>
           </span>
           <div class="field">
-              <%= f.text_area :body, rows: "1", :class => "span5", :placeholder => "Agrega un comentario..." %>
+              <%= f.text_area :body, rows: "1", :class => "span7", :placeholder => "Agrega un comentario..." %>
           </div>
           <%= f.hidden_field :commentable_id, :value => @micropost.id %>
           <%= f.hidden_field :commentable_type, :value => "Micropost" %>

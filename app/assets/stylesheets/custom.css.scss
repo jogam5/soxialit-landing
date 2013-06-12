@@ -930,12 +930,12 @@ ul.comments{
 	margin: 0 0 1px 0px;
 	border-left: 1px solid #DDD;
 	border-right: 1px solid #DDD;
-	width:458px;
+	width:650px;
 }
 
 li.comment {
   	list-style: none;
-  	width:438px;
+  	width:630px;
 	height:auto;
 	min-height: 40px;
 	background-color:white;
@@ -951,13 +951,12 @@ li.comment {
 .comment_author{
 	font-size:1.2em;
 	color:black;
-	font-weight:lighter;
 	margin-left:2%;
 }
 
 .comment_text{
 	margin-left:5px;
-	color:#222;
+	color:#999;
 	font-weight:lighter;
 	font-size:1.1em;
 	display:inline;
@@ -985,14 +984,14 @@ li.comment {
 }
 
 ul.comments_new{
-	width:458px;
+	width:650px;
 	margin-left:0px;
 	border: 1px solid #DDD;
 }
 
 .comments_new li{
 	list-style: none;
-  	width:435px;
+  	width:630px;
 	height:45px;
 	background-color:white;
 	font-size: 12px;
@@ -1172,12 +1171,12 @@ ul.comments_new{
 #item_link_micropost{
 	font-size:1.5em;
 	font-family:acta-display, Helvetica-Neue;
-	color:$rojo;
+	color:#555;
 	 a{
-	color:$rojo;
+	color:#555;
 	}
 	 a:hover{
-	color:black;
+	color:$rojo;
 	text-decoration:none;
 	}
 }
@@ -1842,7 +1841,7 @@ ul.comments_new{
 
 #explore-collections{
 	padding:3px 20px 3px 5px;
-	background:#999;
+	background:#777;
 	margin-bottom:1.5em;
 	 a{
 	font-size:1em;
@@ -1852,16 +1851,16 @@ ul.comments_new{
 	 a:hover{
 	font-size:1em;
 	padding:5px 20px 5px 1px;
-	background:#555;
+	background:#999;
 	color:whiteSmoke;
 	font-weight:300;
 	text-decoration:none;
 	}
 }
 
-#explorar-revistas{
+#create-collection{
 	padding:3px 20px 3px 5px;
-	background:$rojo;
+	background:#BF3030;
 	margin-bottom:1.5em;
 	 a{
 	font-size:1em;
@@ -1870,9 +1869,8 @@ ul.comments_new{
 	}
 	 a:hover{
 	font-size:1em;
-	padding:3px 20px 3px 5px;
+	padding:5px 20px 5px 1px;
 	background:$rojo;
-	color:black;
 	font-weight:300;
 	text-decoration:none;
 	}

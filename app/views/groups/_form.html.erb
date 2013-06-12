@@ -1,19 +1,33 @@
-<%= form_for(@group) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :picture %><br />
-    <%= f.file_field :picture %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<div class="form-horizontal">
+  <%= form_for(@group) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <br />
+    <div class="control-group">
+      <label class="control-label">Nombre</label>
+      <div class="controls">
+      <%= f.text_field :name %>
+      <p id="edit_information">Por ejemplo: "<span style="color:#555">coachella_2013</span>"</p>
+      <p id="edit_username_format"><span id="fashion">* Sólo puede contener letras, números y guión bajo.</span></p>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Descripción</label>
+      <div class="controls">
+      <%= f.text_area :description, rows: 4, :class => "span7" %>
+      <p id="edit_information">Cuéntale a los demás de que se trata tu colección.</p>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Foto</label>
+      <div class="controls">
+      <%= f.file_field :picture %>
+      <p id="edit_information">Dimensiones sugeridas: 900px por 400px.</p>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <%= f.submit "Crear Colección", :id => "user_follow_button" %>
+      </div>
+    </div>
+  <% end %>
+</div>
