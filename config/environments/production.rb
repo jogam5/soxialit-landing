@@ -67,10 +67,10 @@ DeviseFacebook::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  config.middleware.use ExceptionNotifier, 
-    sender_address: 'noreply@soxialit.com',
-    exception_recipients: 'julio@soxialit.com'
+#  config.middleware.use ExceptionNotifier, 
+ #   sender_address: 'noreply@soxialit.com',
+  #  exception_recipients: 'julio@soxialit.com'
 
-  config.action_mailer.delivery_method = :letter_opener
+  #config.action_mailer.delivery_method = :letter_opener
 
 end
