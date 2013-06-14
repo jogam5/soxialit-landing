@@ -21,15 +21,11 @@
 		            <div style="margin-left:0px" class="span6">
 		                <%= f.text_field :tag_list, style: "", class: "span5" %>
 		            </div>
-		            <% if @img.length <= 1 %>
 		            <br>
 		            <br>
 		        	<span id="label_img" style="display:block; font-weight:lighter; color:#777; font-size:1.5em; font-family:acta-display;float:left; margin-right: 12px">Sube una imagen: </span>
 					<%= f.file_field :picture, :rows => "1", :class => "span4", id: "selection_file", style: "margin-left:40%; display:block" %>
 					<p style="color:red"> Detectamos que la imagen de tu URL esta rota, por favor sube una imagen desde tu computadora.</p>
-             		<% else %>
-             			<p><span id="label_title" style="font-weight:lighter; color:#777; font-size:1.5em; font-family:acta-display;float:left; margin-right: 73px; margin-top:20px">Selecciona una imagen:</span></p>
-             		<% end %>
 
              		
 		            <%= f.hidden_field :thumbnail %>
