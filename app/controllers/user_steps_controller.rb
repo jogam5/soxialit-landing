@@ -1,9 +1,11 @@
 class UserStepsController < ApplicationController
 	include Wicked::Wizard
 	#before_filter :authenticate_user!
-	before_filter :check_signup
+	#before_filter :check_signup
+	layout "black", :only => [:show, :update]
 
-	steps :personal, :friends
+
+	steps :personal, :friends, :colecciones1, :colecciones2
 
 	def show
 	  @user = current_user

@@ -209,4 +209,7 @@ class StaticPagesController < ApplicationController
       format.json { render json: @group }
     end
   end
+
+  def instrucciones
+  end
 end

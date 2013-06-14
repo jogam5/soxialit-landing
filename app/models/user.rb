@@ -89,6 +89,7 @@ class User < ActiveRecord::Base
       user.update_attributes(role_ids:"6")
       user.build_notification
       user.follow!(User.find(1))
+      user.subscribe!(Group.find(1)) #Every user is subscribed to main Group
       user.save(:validate => false)
       #user.activities.create(:user_id => user.id, :action => "create")
 
@@ -123,6 +124,7 @@ class User < ActiveRecord::Base
         end
       #User.find(1).follow!(user)
     end
+
     user.update_attributes(token:auth.credentials.token)
     user.save(:validate => false)
     user.build_notification unless !user.notification.nil?

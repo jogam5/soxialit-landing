@@ -1,0 +1,28 @@
+<div id="ajax-status" style="float:left; position:absolute; display:none; margin: 0% 33%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
+<div class="row">
+  <div class="span8">
+  	<%= image_tag "tutorial1.png", :style => "float:left" %>
+  	<p style="font-size:2em; font-weight:lighter; line-height:1.2em; color:#555; font-family:nimbus-sans, Helvetica Neue; margin-top:1em; text-align:right">Crea Colecciones de temás que te interesan.</p>
+  </div>
+  <div class="span1 offset1">
+    <div class="numberCircleOff">1</div>
+    <p style="text-align:center">Nickname</p>
+  </div>
+  <div class="span1">
+    <div class="numberCircleOff">2</div>
+    <p style="text-align:center"><b>Fashion Lovers</b></p><br />
+    <p id="user_steps_friends"><%= link_to 'Siguiente', next_wizard_path, :class => "button-want" %></p>
+  </div>
+  <div class="span1">
+    <div class="numberCircleOn">3</div>
+    <p style="text-align:center">Colecciones</p>
+  </div>
+</div>
+<br /><br />
+<div class="row">
+	<div class="span12">
+		<p style="font-size:2em; float:left; font-weight:lighter; line-height:1.2em; color:#555; font-family:nimbus-sans, Helvetica Neue; margin-top:1em;">Además de ti, la comunidad <br />puede compartir Posts en tus <br /> Colecciones y votar por ellos.</p>
+  		<%= image_tag "tutorial2.png", :style => "float:right; margin-bottom:2em" %>
+
+	</div>
+</div>
