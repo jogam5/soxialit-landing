@@ -172,9 +172,7 @@ class StaticPagesController < ApplicationController
       #Groups I am suscribed
       @suscribed_groups = User.find(1).groups
       @my_groups = Group.where("user_id = ?", User.find(1).id)
-      current_user = User.find(1)
     end
-
     
   end
 
