@@ -1,58 +1,100 @@
 <% provide(:title, @group.name) %>
-<%= image_tag(@group.picture_url, :width => 900) if @group.picture.present? %>
-<div class="row">
-  <div class="span6">
-    <h1 style="font-family:acta-display"><%= @group.name %></h1>
+<% if user_signed_in %> 
+  <%= image_tag(@group.picture_url, :width => 900) if @group.picture.present? %>
+  <div class="row">
+    <div class="span6">
+      <h1 style="font-family:acta-display"><%= @group.name %></h1>
+    </div>
+    <div class="span2 offset4">
+      <p style="margin-top:1.5em; color:#777">
+      Editor: &nbsp; 
+      <% if !@group_creator.picture.present? %>
+        <%= link_to image_tag("http://graph.facebook.com/#{@group_creator.uid}/picture?type=square", 
+          width: 35, height: 35, :id =>  "navbar_small_picture"), user_path(@group_creator) %>
+      <% else %>
+        <%= link_to image_tag(@group_creator.picture_url(:thumb_profile), 
+                      width: 35, height: 35, :id => "navbar_small_picture"), user_path(@group_creator) %>
+      <% end %>
+      </p>
+      <% if @group.user_id == current_user.id  %>
+        <%= link_to "Editar Colección", edit_group_path(@group) %>
+      <% end %>
+    </div>
   </div>
-  <div class="span2 offset4">
-    <p style="margin-top:1.5em; color:#777">
-    Editor: &nbsp; 
-    <% if !@group_creator.picture.present? %>
-      <%= link_to image_tag("http://graph.facebook.com/#{@group_creator.uid}/picture?type=square", 
-        width: 35, height: 35, :id =>  "navbar_small_picture"), user_path(@group_creator) %>
-    <% else %>
-      <%= link_to image_tag(@group_creator.picture_url(:thumb_profile), 
-                    width: 35, height: 35, :id => "navbar_small_picture"), user_path(@group_creator) %>
-    <% end %>
-    </p>
-    <% if @group.user_id == current_user.id  %>
-      <%= link_to "Editar Colección", edit_group_path(@group) %>
-    <% end %>
-  </div>
-</div>
-<p style="color:#999; font-size:1.2em; font-weight:lighter"><%= @group.description %></p>
+  <p style="color:#999; font-size:1.2em; font-weight:lighter"><%= @group.description %></p>
 
-<% if @group.user_id != current_user.id  %>
-  <%= render 'subscribe_form' if user_signed_in? %>
-<% end %>
-  
-<br />
-<br />
-<p><span id=""><%= %><span></p>
-<div id="ajax" style="float:left; position:fixed; display:none; margin: 10% 455px; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
-<div class="tabbable" style="margin-bottom: 18px;">
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#tab1" data-toggle="tab">TODOS</a></li>
-    <li class=""><a href="#tab2" data-toggle="tab">NUEVOS</a></li>
-    <li class=""><a href="#tab3" data-toggle="tab">TOP</a></li>
-    <li class=""><a href="#tab4" data-toggle="tab">TRENDING</a></li>
-  </ul>
-  <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
-    <div class="tab-pane active" id="tab1">
-    	<%= render 'show_all' %>
+  <% if @group.user_id != current_user.id  %>
+    <%= render 'subscribe_form' if user_signed_in? %>
+  <% end %>
+    
+  <br />
+  <br />
+  <p><span id=""><%= %><span></p>
+  <div id="ajax" style="float:left; position:fixed; display:none; margin: 10% 455px; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
+  <div class="tabbable" style="margin-bottom: 18px;">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#tab1" data-toggle="tab">TODOS</a></li>
+      <li class=""><a href="#tab2" data-toggle="tab">NUEVOS</a></li>
+      <li class=""><a href="#tab3" data-toggle="tab">TOP</a></li>
+      <li class=""><a href="#tab4" data-toggle="tab">TRENDING</a></li>
+    </ul>
+    <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
+      <div class="tab-pane active" id="tab1">
+      	<%= render 'show_all' %>
+      </div>
+      <div class="tab-pane" id="tab2">
+      	<%= render 'show_new' %>
+      </div>
+      <div class="tab-pane" id="tab3">
+        <%= render 'show_top' %>
+      </div>
+       <div class="tab-pane" id="tab4">
+        <%= render 'show_trend' %>
+      </div>
+      <hr />
     </div>
-    <div class="tab-pane" id="tab2">
-    	<%= render 'show_new' %>
-    </div>
-    <div class="tab-pane" id="tab3">
-      <%= render 'show_top' %>
-    </div>
-     <div class="tab-pane" id="tab4">
-      <%= render 'show_trend' %>
-    </div>
-    <hr />
   </div>
-</div>
+<% else %>
+  <% current_user = User.find(1) %>
+  <%= image_tag(@group.picture_url, :width => 900) if @group.picture.present? %>
+  <div class="row">
+    <div class="span6">
+      <h1 style="font-family:acta-display"><%= @group.name %></h1>
+    </div>
+    <div class="span2 offset4">
+      
+    </div>
+  </div>
+  <p style="color:#999; font-size:1.2em; font-weight:lighter"><%= @group.description %></p>
+    
+  <br />
+  <br />
+  <p><span id=""><%= %><span></p>
+  <div id="ajax" style="float:left; position:fixed; display:none; margin: 10% 455px; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
+  <div class="tabbable" style="margin-bottom: 18px;">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#tab1" data-toggle="tab">TODOS</a></li>
+      <li class=""><a href="#tab2" data-toggle="tab">NUEVOS</a></li>
+      <li class=""><a href="#tab3" data-toggle="tab">TOP</a></li>
+      <li class=""><a href="#tab4" data-toggle="tab">TRENDING</a></li>
+    </ul>
+    <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
+      <div class="tab-pane active" id="tab1">
+        <%= render 'show_all' %>
+      </div>
+      <div class="tab-pane" id="tab2">
+        <%= render 'show_new' %>
+      </div>
+      <div class="tab-pane" id="tab3">
+        <%= render 'show_top' %>
+      </div>
+       <div class="tab-pane" id="tab4">
+        <%= render 'show_trend' %>
+      </div>
+      <hr />
+    </div>
+  </div>
+<% end %>
 
 <script type="text/javascript">
 $(function() {

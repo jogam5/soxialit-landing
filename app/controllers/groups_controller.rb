@@ -6,7 +6,11 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.all
     #Groups I am suscribed
-    @suscribed_groups = current_user.groups
+    if user_signed_in?
+      @suscribed_groups = current_user.groups
+    else
+      @suscribed_groups = User.find(1).groups
+    end
   end
 
   def show
@@ -21,6 +25,7 @@ class GroupsController < ApplicationController
     @trend = @trend_stories.sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
     #Get profile picture of group creator
     @group_creator = User.find(@group.user_id)
+    
    end
 
   def new
