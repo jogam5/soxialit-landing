@@ -8,8 +8,10 @@ class GroupsController < ApplicationController
     #Groups I am suscribed
     if user_signed_in?
       @suscribed_groups = current_user.groups
+      @my_groups = Group.where("user_id = ?", current_user.id)
     else
       @suscribed_groups = User.find(1).groups
+      @my_groups = Group.where("user_id = ?", User.find(1).id)
     end
   end
 
