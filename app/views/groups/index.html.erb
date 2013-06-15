@@ -23,6 +23,7 @@
         <%= link_to "INICIO", feed_path, :style => "margin:55px 0 0 5px; color:white; font-size:1em" %> 
         <br /><br />
       <% end %>
+      <br /><br /><br />
       <div class="body-row">
         <p id="explore-collections"><%= link_to "Explorar Colecciones", groups_path %></p>
         <% if user_signed_in? %>
@@ -30,7 +31,9 @@
         <% end %>
         <p style="font-size:1em; color:#999; margin-left:5px">Mis Colecciones</p>
         <ul class="body-list">
-          <li><%= link_to "Shoes", "" %></li>
+          <% @my_groups.each do |group| %>
+            <li><%= link_to group.name, group_path(group) %></li>
+          <% end %>
         </ul>
         <p style="font-size:1em; color:#999; margin-left:5px">Colecciones que sigo</p>
         <ul class="body-list">
