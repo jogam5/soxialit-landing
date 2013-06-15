@@ -1,6 +1,7 @@
 class Micropost < ActiveRecord::Base
   attr_accessible :description, :provider, :thumbnail, :title, :url, :user_id, :status, :picture, 
                     :remote_picture_url, :group_id
+  scope :since, lambda {|time| where("created_at > ?", time) }
   
   belongs_to :user
   belongs_to :group
@@ -21,7 +22,8 @@ class Micropost < ActiveRecord::Base
   mount_uploader :picture, PictureMicropostUploader
 
   validates :url, presence: true, :allow_blank => true, format: { with: URI::regexp(%w(http https)) }
-  
+  validates :thumbnail, :length => {:minimum => 10, :too_short => "Por favor agrega una imagen a tu historia."}, :on => :update
+  validates :title, :presence => {:message => "Escribe el titulo de tu historia."}, :on => :update
   #validates :url, :length => { :in => 0..255 }, :allow_nil => true, :allow_blank => true
 
   def reputation(micropost)
