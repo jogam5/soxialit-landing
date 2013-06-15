@@ -6,7 +6,6 @@
     <div class="bs-docs-example">
         <div class="tabbable" style="margin-bottom: 0px;">
           <ul class="nav nav-tabs">
-            <% if current_user.roles.first.name == "admin" %>
               <li style="margin-left:5%;" class="active">
                 <span id="select_url" style="cursor:pointer; color: rgb(0, 165, 240);">
                   <div style="text-align: center; border: 1px solid #999;" class="span3">
@@ -23,7 +22,6 @@
                   </div>
                 </span>
               </li>
-            <% end %>
           </ul>
         </div>
     </div>

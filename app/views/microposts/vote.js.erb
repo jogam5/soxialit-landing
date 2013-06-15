@@ -1,4 +1,6 @@
 $('.vote_micropost_<%= @micropost.id %>').text('<%= pluralize @micropost.reputation(@micropost), "vote" %>');
+$('.vote_story_<%= @micropost.id %>').text('<%= pluralize @micropost.reputation(@micropost), "vote" %>');
+
 var x = "<%= params[:type] %>";
 if (x == "up"){
 	$('#vote_up_<%= @micropost.id %>').addClass('vote_up_icon_active');
