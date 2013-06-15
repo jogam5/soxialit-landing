@@ -1,0 +1,22 @@
+<div id="ajax-status" style="float:left; position:absolute; display:none; margin: 0% 33%; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
+<div class="row">
+  <div class="span8">
+    <p style="font-size:2em; font-weight:lighter; line-height:1.2em; color:#555; font-family:nimbus-sans, Helvetica Neue; margin-top:1em; text-align:center"><span style="color:red">Suscríbete</span> a otras colecciones y recibe las historias más votadas en tu página principal.</p>
+    <br />
+  	<%= image_tag "tutorial3.png", :style => "float:left" %>
+  </div>
+  <div class="span1 offset1">
+    <div class="numberCircleOff">1</div>
+    <p style="text-align:center">Nickname</p>
+  </div>
+  <div class="span1">
+    <div class="numberCircleOff">2</div>
+    <p style="text-align:center"><b>Fashion Lovers</b></p><br />
+    <p id="user_steps_friends"><%= link_to 'Finalizar', next_wizard_path, :class => "button-want" %> </p>
+  </div>
+  <div class="span1">
+    <div class="numberCircleOn">3</div>
+    <p style="text-align:center">Colecciones</p>
+  </div>
+</div>
+<br />

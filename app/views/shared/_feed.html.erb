@@ -20,7 +20,6 @@
 					<br />
 					<div class="red_bar" style="margin-top:6%; background:black"></div>
 					<% unless feed_item.activitable_type == "User" %>
-				      <%= render :partial => 'feed/comments', :locals => { :feed_item => feed_item } %>
 				  	<% end %>
 				</div>
 			</div>

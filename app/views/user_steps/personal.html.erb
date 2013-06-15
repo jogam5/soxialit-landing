@@ -1,46 +1,39 @@
 <div class="row">
-  <div class="span6">
+  <div class="span7">
     <p id="main_header_menu">Hola <span style="color:#DD390D"><%= @user.nickname %></span></p>
-    <p style="font-size:1.2em; font-weight:lighter; color:#777; font-family:nimbus-sans, Helvetica Neue; margin-bottom:3em">vamos a configurar tu cuenta en Soxialit</p>
+    <p style="font-size:1.9em; font-weight:lighter; line-height:1.2em; color:#555; font-family:nimbus-sans, Helvetica Neue; margin-bottom:3em">¡Descubre y comparte las mejores historias del mundo de la moda!</p>
   </div>
-  <div class="span1 offset3">
+  <div class="span1 offset2">
     <div class="numberCircleOn">1</div>
-    <p style="text-align:center"><b>Nickname<br/>y Perfil</b></p>
+    <p style="text-align:center"><b>Nickname</b></p>
   </div>
   <div class="span1">
     <div class="numberCircleOff">2</div>
-    <p style="text-align:center">Amigos</p>
+    <p style="text-align:center">Fashion Lovers</p>
+  </div>
+  <div class="span1">
+    <div class="numberCircleOff">3</div>
+    <p style="text-align:center">Colecciones</p>
   </div>
 </div>
 <div class="row">
-  <div class="span6" id="edit_account_data">
+  <div class="span8" >
     <div class="form-horizontal">
      <%= form_for @user, :url => wizard_path, :html => { :multipart => true }, :validate => true do |f| %>
       <%= render 'shared/error_messages', object: f.object %>  
       <div class="control-group">
-        <label class="control-label">Nombre de usuario (URL)</label>
+        <label class="control-label" style="font-size:1.2em; font-weight:lighter">Nombre de usuario</label>
         <div class="controls">
-          <div class="field">
-          <%= f.text_field :username %>
+          <div class="field" >
+          <%= f.text_field :username, :class => "span4", :id =>"custom_form" %>
         </div>
-          <p id="edit_information">http://soxialit.com/<span id="fashion"><%= @user.username %></span></p>
-          <p id="edit_username_format">* Sólo puede contener letras, números y guión bajo.</p>
+          <p id="edit_information" style="font-size:1.2em">http://soxialit.com/<span id="fashion"><%= @user.username %></span></p>
+          <p id="edit_username_format" style="font-size:1.1em">* Sólo puede contener letras, números y guión bajo.</p>
         </div>
       </div>
-      <hr />
-      <div class="control-group">
-        <label class="control-label">Elige un perfil</label>
-        <div class="controls">
-          <% for role in Role.find(:all) %>
-            <% unless role.name == "admin" %>
-              <%= radio_button_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
-              <%= role.name %>
-              <br/ >
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-      <hr />
+      <br />
+      
+      
       <div class="control-group">
         <div class="controls">
           <%= f.submit "Siguiente", :class => "button-want" %>

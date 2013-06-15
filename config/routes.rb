@@ -99,6 +99,7 @@ DeviseFacebook::Application.routes.draw do
   match "faq", to:'static_pages#faq'
   match "registro", to: 'static_pages#registro'
   match "500mx", to: 'five_hundred#fivehundred'
+  match "instrucciones", to: "static_pages#instrucciones"
 
   match "black", to: "static_pages#black"
 

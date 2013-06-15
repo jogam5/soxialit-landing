@@ -150,16 +150,30 @@ class StaticPagesController < ApplicationController
   end
 
   def feed
-    @stories = current_user.groups.includes(:microposts)
-    @stories_top = Micropost.joins(:group => :users).where(:users => {id: current_user.id})
-    @top = @stories_top.paginate(:page => params[:page], :per_page => 50).sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
-    @stories_new = Micropost.joins(:group => :users).where(:users => {id: current_user.id}).order("created_at DESC")
-    @new = @stories_new.paginate(:page => params[:page], :per_page => 50)
-    @stories_trend = Micropost.joins(:group => :users).where(:users => {id: current_user.id}).order("id DESC").limit(10)
-    @trend = @stories_trend.sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
-    #Groups I am suscribed
-    @suscribed_groups = current_user.groups
-    @my_groups = Group.where("user_id = ?", current_user.id)
+    if user_signed_in?
+      @stories = current_user.groups.includes(:microposts)
+      @stories_top = Micropost.joins(:group => :users).where(:users => {id: current_user.id})
+      @top = @stories_top.paginate(:page => params[:page], :per_page => 50).sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
+      @stories_new = Micropost.joins(:group => :users).where(:users => {id: current_user.id}).order("created_at DESC")
+      @new = @stories_new.paginate(:page => params[:page], :per_page => 50)
+      @stories_trend = Micropost.joins(:group => :users).where(:users => {id: current_user.id}).order("id DESC").limit(10)
+      @trend = @stories_trend.sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
+      #Groups I am suscribed
+      @suscribed_groups = current_user.groups
+      @my_groups = Group.where("user_id = ?", current_user.id)
+    else
+      @stories = User.find(1).groups.includes(:microposts)
+      @stories_top = Micropost.joins(:group => :users).where(:users => {id: User.find(1).id})
+      @top = @stories_top.paginate(:page => params[:page], :per_page => 50).sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
+      @stories_new = Micropost.joins(:group => :users).where(:users => {id: User.find(1).id}).order("created_at DESC")
+      @new = @stories_new.paginate(:page => params[:page], :per_page => 50)
+      @stories_trend = Micropost.joins(:group => :users).where(:users => {id: User.find(1).id}).order("id DESC").limit(10)
+      @trend = @stories_trend.sort! {|mp1, mp2| mp2.reputation(mp2) <=> mp1.reputation(mp1) }
+      #Groups I am suscribed
+      @suscribed_groups = User.find(1).groups
+      @my_groups = Group.where("user_id = ?", User.find(1).id)
+    end
+    
   end
 
   def story
@@ -208,5 +222,8 @@ class StaticPagesController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @group }
     end
+  end
+
+  def instrucciones
   end
 end

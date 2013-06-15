@@ -1,70 +1,90 @@
 <div style="padding-left:0px" class="container-fluid">
-<div class="row-fluid">
- <div class="span3">
-   <div id="left_bar" class="sidebar-nav sidebar-nav-fixed">
-    <div class="main-head">
-      <%= link_to image_tag("logo.png", width:35, height:35), root_url %>
-      <%= link_to '<i class="icon-edit icon-white"></i> compartir'.html_safe, modal_post_path,  {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, 
-        :style => 'background-color:red; float:right; padding: 3px 25px; color:white; margin:7px 7px'} %>
-      <div class="separador"></div>
-    </div>
-      <%= link_to "FEED", feed_path , :style => "margin:55px 0 0 5px; color:white; font-size:1em" %>
-      <%= link_to "", root_url, :style => "margin:55px 0 0 5px; color:#999; font-size:0.9em" %>
-      <%= link_to image_tag(current_user.picture_url(:thumb_profile), 
-                    width: 35, :style => "float:right; margin:0px 5px 0 5px"), user_path(current_user) %><br />
-    <br /><br />
-    <div class="body-row">
-      <p id="explore-collections"><%= link_to "Explorar Colecciones", groups_path %></p>
-      <p id="create-collection"><%= link_to "Crear Nueva Colección", new_group_path %></p>
-      <p style="font-size:1em; color:#999; margin-left:5px">Mis Colecciones</p>
-      <ul class="body-list">
-        <li><%= link_to "Shoes", "" %></li>
-      </ul>
-      <p style="font-size:1em; color:#999; margin-left:5px">Colecciones que sigo</p>
-      <ul class="body-list">
-        <% @suscribed_groups.each do |group| %>
-          <li><%= link_to group.name, group_path(group) %></li>
-        <% end %>
-      </ul>
-    </div>
-   </div><!--/.well -->
- </div><!--/span-->
- <div class="span8">
   <div class="row-fluid">
-    <div class="span6">
-      
-    </div> 
-  </div>
-  <br />
-  <ul>
-  <% @groups.each do |group| %>
-  	<li style="list-style: none">
-  	  <div class="row" >
-  	  	<div class="span8">
-  	  	  <span id="groups_index_images"><%= image_tag(group.picture_url(:index_500)) %></span>
-  	  	</div>
-  	  	<div class="span4">
-  	  	  <br />
-  	  	  <p id="groups_index_title"><%= link_to group.name, group_path(group) %></p>
-  	  	  <p id="">By <%= link_to current_user.username, "" %></p>
-  	  	  <p id="groups_index_description"><%= group.description %></p>
-  	  	  <br />
-  	  	  <div id="form_index_<%= group.id %>">
-  	  	    <% if !current_user.subscribed?(group) %>
-	            <%= render :partial => 'groups/index_subscribe', :locals => { :group => group } %>
-		        <% else %>
-		          <%= render :partial => 'groups/index_unsubscribe', :locals => { :group => group } %>
-	          <% end %>
-	        </div>
-  	  	</div>
-  	  </div>
-    </li>
-    <br /><br />
-  <% end %>
-  </ul>
- </div><!--/span-->
-</div><!--/row-->
-</div><!--/.fluid-container-->
+   <div class="span3">
+     <div id="left_bar" class="sidebar-nav sidebar-nav-fixed">
+      <% if user_signed_in? %>
+        <div class="main-head" >
+          <%= link_to image_tag("logo.png", width:35, height:35), root_url %>
+            <%= link_to '<i class="icon-edit icon-white"></i> compartir post'.html_safe, story_path,  {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, 
+            :style => 'background-color:red; float:right; padding: 3px 25px; color:white; margin:7px 7px'} %>
+          <div class="separador"></div>
+        </div>
+        <%= link_to "FEED", feed_path, :style => "margin:55px 0 0 5px; color:white; font-size:1em" %> 
+        <%= link_to "", root_url, :style => "margin:55px 0 0 5px; color:#999; font-size:0.9em" %>
+        <% if user_signed_in? %>
+          <%= link_to image_tag(current_user.picture_url(:thumb_profile), 
+                      width: 35, :style => "float:right; margin:0px 5px 0 5px"), user_path(current_user) %><br />
+        <% else %>
+          <%= link_to image_tag(User.find(1).picture_url(:thumb_profile), 
+                      width: 35, :style => "float:right; margin:0px 5px 0 5px"), user_path(User.find(1)) %><br />
+        <% end %>
+      <% else %>
+        <br /><br />
+        <%= link_to "INICIO", feed_path, :style => "margin:55px 0 0 5px; color:white; font-size:1em" %> 
+        <br /><br />
+      <% end %>
+      <div class="body-row">
+        <p id="explore-collections"><%= link_to "Explorar Colecciones", groups_path %></p>
+        <% if user_signed_in? %>
+          <p id="create-collection"><%= link_to "Crear Nueva Colección", new_group_path %></p>
+        <% end %>
+        <p style="font-size:1em; color:#999; margin-left:5px">Mis Colecciones</p>
+        <ul class="body-list">
+          <li><%= link_to "Shoes", "" %></li>
+        </ul>
+        <p style="font-size:1em; color:#999; margin-left:5px">Colecciones que sigo</p>
+        <ul class="body-list">
+          <% @suscribed_groups.each do |group| %>
+            <li><%= link_to group.name, group_path(group) %></li>
+          <% end %>
+        </ul>
+
+        <% if user_signed_in? %>
+        <% else %>
+          <br />
+          <p style="text-align:center"><%= link_to "CREA TU CUENTA", user_omniauth_authorize_path(:facebook), style: "font-size:0.9em", :title => "Ingresa", :class => "button-want"  %></p>
+        <% end %>
+      </div>
+     </div><!--/.well -->
+   </div><!--/span-->
+
+   <div class="span8">
+    <div class="row-fluid">
+      <div class="span6">
+        
+      </div> 
+    </div>
+    <br />
+    <ul>
+    <% @groups.each do |group| %>
+    	<li style="list-style: none">
+    	  <div class="row" >
+    	  	<div class="span8">
+    	  	  <span id="groups_index_images"><%= image_tag(group.picture_url(:index_500)) %></span>
+    	  	</div>
+    	  	<div class="span4">
+    	  	  <br />
+    	  	  <p id="groups_index_title"><%= link_to group.name, group_path(group) %></p>
+    	  	  <p id="groups_index_description"><%= group.description %></p>
+    	  	  <br />
+            <% if user_signed_in? %>
+      	  	  <div id="form_index_<%= group.id %>">
+      	  	    <% if !current_user.subscribed?(group) %>
+    	            <%= render :partial => 'groups/index_subscribe', :locals => { :group => group } %>
+    		        <% else %>
+    		          <%= render :partial => 'groups/index_unsubscribe', :locals => { :group => group } %>
+    	          <% end %>
+    	        </div>
+            <% end %>
+    	  	</div>
+    	  </div>
+      </li>
+      <br /><br />
+    <% end %>
+    </ul>
+   </div><!--/span-->
+  </div><!--/row-->
+  </div><!--/.fluid-container-->
 
 <script type="text/javascript">
 $(function(){
