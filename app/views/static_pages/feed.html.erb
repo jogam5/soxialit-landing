@@ -2,12 +2,13 @@
 <div class="row-fluid">
  <div class="span3">
    <div id="left_bar" class="sidebar-nav sidebar-nav-fixed" style="overflow-y:scroll;" >
-    <div class="main-head" >
-      <%= link_to image_tag("logo.png", width:35, height:35), root_url %>
-      <%= link_to '<i class="icon-edit icon-white"></i> compartir post'.html_safe, story_path,  {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, 
-        :style => 'background-color:red; float:right; padding: 3px 25px; color:white; margin:7px 7px'} %>
-      <div class="separador"></div>
-    </div>
+    <% if user_signed_in? %>
+      <div class="main-head" >
+        <%= link_to image_tag("logo.png", width:35, height:35), root_url %>
+          <%= link_to '<i class="icon-edit icon-white"></i> compartir post'.html_safe, story_path,  {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true, 
+          :style => 'background-color:red; float:right; padding: 3px 25px; color:white; margin:7px 7px'} %>
+        <div class="separador"></div>
+      </div>
       <%= link_to "FEED", feed_path, :style => "margin:55px 0 0 5px; color:white; font-size:1em" %> 
       <%= link_to "", root_url, :style => "margin:55px 0 0 5px; color:#999; font-size:0.9em" %>
       <% if user_signed_in? %>
@@ -17,10 +18,14 @@
         <%= link_to image_tag(User.find(1).picture_url(:thumb_profile), 
                     width: 35, :style => "float:right; margin:0px 5px 0 5px"), user_path(User.find(1)) %><br />
       <% end %>
+    <% end %>
+
     <br /><br />
     <div class="body-row">
       <p id="explore-collections"><%= link_to "Explorar Colecciones", groups_path %></p>
-      <p id="create-collection"><%= link_to "Crear Nueva Colección", new_group_path %></p>
+      <% if user_signed_in? %>
+        <p id="create-collection"><%= link_to "Crear Nueva Colección", new_group_path %></p>
+      <% end %>
       <p style="font-size:1.1em; color:#999; margin-left:5px">Mis Colecciones</p>
       <ul class="body-list">
         <% @my_groups.each do |group| %>
@@ -34,8 +39,14 @@
         <% end %>
       </ul>
       
-      
-      <p style="text-align:center; margin-top:3.5em"><%= link_to "Conoce el nuevo Soxialit", instrucciones_path, :class => "btn btn-success" %></p>
+      <br />
+      <% if user_signed_in? %>
+        <p style="text-align:center; margin-top:3.5em"><%= link_to "Conoce el nuevo Soxialit", instrucciones_path, :class => "btn btn-success" %></p>
+      <% else %>
+        <br />
+        <p style="text-align:center"><%= link_to "CREA TU CUENTA", user_omniauth_authorize_path(:facebook), style: "font-size:0.9em", :title => "Ingresa",
+            :class => "button-want"  %></p>
+      <% end %>
 
     </div>
    </div><!--/.well -->

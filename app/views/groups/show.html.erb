@@ -1,5 +1,5 @@
 <% provide(:title, @group.name) %>
-<% if user_signed_in %> 
+<% if user_signed_in? %> 
   <%= image_tag(@group.picture_url, :width => 900) if @group.picture.present? %>
   <div class="row">
     <div class="span6">

@@ -1,6 +1,4 @@
-<% if !user_signed_in? %> 
-
-  <% current_user = User.find(1) %>
+<% if user_signed_in? %> 
 
   <li id="<%= story.id %>">
 	<div class="row">
@@ -130,10 +128,11 @@
 	  </div>
 	</div>
   </li>
-
 
 <% else %>
 
+  <% current_user = User.find(1) %>
+
 
   <li id="<%= story.id %>">
 	<div class="row">
@@ -263,6 +262,7 @@
 	  </div>
 	</div>
   </li>
+
 <% end %>
 <br /><br />
 <script type="text/javascript">

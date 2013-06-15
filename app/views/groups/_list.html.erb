@@ -1,3 +1,4 @@
+<% if user_signed_in? %> 
   <li id="<%= story.id %>">
 	<div class="row">
 	  	<section style="position: absolute; margin: 20px 0 0 20px; background-color: rgb(228,228,228); border-radius: 5px; padding: 10px;" class="span1">
@@ -126,6 +127,137 @@
 	  </div>
 	</div>
   </li>
+<% else %>
+  <% current_user = User.find(1) %>
+  <li id="<%= story.id %>">
+	<div class="row">
+	  	<section style="position: absolute; margin: 20px 0 0 20px; background-color: rgb(228,228,228); border-radius: 5px; padding: 10px;" class="span1">
+				<div class="haiku">
+					<em>
+						<% if story.user_id == current_user.id %>
+							<div class="vote_story_<%= story.id %>">
+							<%= pluralize story.reputation(story), "vote" %>
+							</div>
+						<% elsif story.has_evaluation?(:votes, current_user) %>
+							<% if current_user.vote_evaluation(story, current_user) == 1 %>
+							<div id="vote_up_<%= story.id %>" style="margin-left:-2px" class="vote_up_icon_active">
+								
+							</div>
+							<div class="vote_story_<%= story.id %>">
+							<%= pluralize story.reputation(story), "vote" %>
+							</div>
+							<div id="vote_down_<%= story.id %>" class="vote_down_icon">
+								<%= link_to "xxx", vote_micropost_path(story, type: "down"), :remote => true, method: "post", class: "trick_anchor" %>
+							</div>
+							<% end %>
+							<% if current_user.vote_evaluation(story, current_user) == 0 %>
+							<div id="vote_up_<%= story.id %>" style="margin-left:-2px" class="vote_up_icon">
+								<%= link_to "xxx", vote_micropost_path(story, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>
+							</div>
+							<div class="vote_story_<%= story.id %>">
+							<%= pluralize story.reputation(story), "vote" %>
+							</div>
+							<div id="vote_down_<%= story.id %>" class="vote_down_icon_active">
+								
+							</div>
+							<% end %>
+							<% if current_user.vote_evaluation(story, current_user) == -1 %>
+							<div id="vote_up_<%= story.id %>" style="margin-left:-2px" class="vote_up_icon">
+								<%= link_to "xxx", vote_micropost_path(story, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>
+							</div>
+							<div class="vote_story_<%= story.id %>">
+							<%= pluralize story.reputation(story), "vote" %>
+							</div>
+							<div id="vote_down_<%= story.id %>" class="vote_down_icon_active">
+								
+							</div>
+							<% end %>	
+					<% else %>
+							<div id="vote_up_<%= story.id %>" style="margin-left:-2px" class="vote_up_icon">
+								<%= link_to "xxx", vote_micropost_path(story, type: "up"), :remote => true, method: "post", class: "trick_anchor" %>
+							</div>
+							<div class="vote_story_<%= story.id %>">
+								<%= pluralize story.reputation(story), "vote" %>
+								
+							</div>
+							<div id="vote_down_<%= story.id %>" class="vote_down_icon"><%= link_to "xxx", vote_micropost_path(story, type: "down"), :remote => true, method: "post", class: "trick_anchor" %>
+							</div>
+					<% end %>
+					</em>
+				</div>
+			</section>
+	  <div class="span6">
+	  <% if story.picture.present? %>
+	 	 <%= link_to image_tag(story.picture), story.url, target: '_blank' %>
+  	  <% else %>
+		  <%= link_to image_tag(story.thumbnail), story.url, target: '_blank' %>
+	  <% end %>
+	  </div>
+	  <div class="span5">
+	  	<span id="item_link_micropost" style="font-size:3em; line-height:1.2em"><%= link_to story.title, story.url, target: '_blank' %></span>
+	  	<div class="timestamp" style="margin-top:1em">
+	  	  <p><%= time_ago_in_words(story.created_at) %> by
+	      <%= link_to story.user.nickname, user_path(story.user) %> 
+	      </p>
+	    </div>
+	    <div id="group_story_menu">
+	    	<div classs="row">
+	    		<span id="">
+	    		  <%= link_to "CONVERSACIONES", story %>
+	    		</span> |
+ 					
+		    	<span style="margin-top: 0%; margin-left: 1%; position: absolute;">
+		  		<% if signed_in? %>
+					<div style="margin-right:-2%;" class="votacion" id="votacion_<%= story.id %>">
+						<% if story.user_id == current_user.id %>
+							<span id="want_<%= story.id %>">
+								<div id="love_icon_<%= story.id %>" class="love_icon_active">
+									<span style="margin-top:1px;float:left; display:block; margin-left:-50%; color:black" id="love_z.target_id_<%= story.id %>">
+										<%= story.reputation_for(:lovs).to_i %>
+									</span>
+								</div>
+					   		</span>
+							<% elsif story.has_evaluation?(:lovs, current_user) %>
+							<span id="want_<%= story.id %>">
+	        					<div id="love_icon_<%= story.id %>" class="love_icon_active">
+									<span style="margin-top:1px;float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= story.id %>">
+	        							<%= story.reputation_for(:lovs).to_i %>
+	        						</span>
+	        					</div>
+	       					</span>
+	        				
+							<% else %>
+	        				<span id="want_<%= story.id  %>">
+	        					<div id="love_icon_<%= story.id  %>" class="love_icon">
+									<span style="margin-top:1px;float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= story.id  %>">
+	        							<%= story.reputation_for(:lovs).to_i %>
+	        						</span>
+	        						<%= link_to "xxx", lovs_micropost_path(story, type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link", style: "color: transparent" %>
+	        					</div>
+	           				</span>
+						<% end %>
+					</div>
+				<% else %>
+					<span id="want_<%= story.id %>">
+						<div id="love_icon_<%= story.id %>" class="love_icon_active">
+							<span style="margin-top:1px;float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= story.id %>">
+								<%= story.reputation_for(:lovs).to_i %>
+							</span>
+						</div>
+					</span>
+				<% end %>
+			  	</span> 
+	    		<span style="cursor:pointer; margin-left:11%" class="share_link">
+	    		  | COMPARTIR
+	    		</span>
+	    		
+	    		<textarea class="span4" style="display:none" id="show_share_url" cols="40" rows="1" >http://soxialit.com/p/<%= story.id %></textarea>
+	    	</div>
+	    </div>
+	  </div>
+	</div>
+  </li>
+<% end %>
   <br /><br />
  <script type="text/javascript">
  	$(function(){
