@@ -91,7 +91,7 @@
 							<% elsif story.has_evaluation?(:lovs, current_user) %>
 							<span id="want_<%= story.id %>">
 	        					<div id="love_icon_<%= story.id %>" class="love_icon_active">
-									<span style="margin-top:1px;float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= story.id %>">
+									<span style="margin-top:1px;float:left; display:block; margin-left:-50%; color:black" class="love_product_<%= story.id %>">
 	        							<%= story.reputation_for(:lovs).to_i %>
 	        						</span>
 	        					</div>
@@ -100,7 +100,7 @@
 							<% else %>
 	        				<span id="want_<%= story.id  %>">
 	        					<div id="love_icon_<%= story.id  %>" class="love_icon">
-									<span style="margin-top:1px;float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= story.id  %>">
+									<span style="margin-top:1px;float:left; display:block; margin-left:-50%; color:black" class="love_product_<%= story.id  %>">
 	        							<%= story.reputation_for(:lovs).to_i %>
 	        						</span>
 	        						<%= link_to "xxx", lovs_micropost_path(story, type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link", style: "color: transparent" %>
@@ -111,7 +111,7 @@
 				<% else %>
 					<span id="want_<%= story.id %>">
 						<div id="love_icon_<%= story.id %>" class="love_icon_active">
-							<span style="margin-top:1px;float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= story.id %>">
+							<span style="margin-top:1px;float:left; display:block; margin-left:-50%; color:black" class="love_product_<%= story.id %>">
 								<%= story.reputation_for(:lovs).to_i %>
 							</span>
 						</div>
@@ -225,7 +225,7 @@
 							<% elsif story.has_evaluation?(:lovs, current_user) %>
 							<span id="want_<%= story.id %>">
 	        					<div id="love_icon_<%= story.id %>" class="love_icon_active">
-									<span style="margin-top:1px;float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= story.id %>">
+									<span style="margin-top:1px;float:left; display:block; margin-left:-50%; color:black" class="love_product_<%= story.id %>">
 	        							<%= story.reputation_for(:lovs).to_i %>
 	        						</span>
 	        					</div>
@@ -234,7 +234,7 @@
 							<% else %>
 	        				<span id="want_<%= story.id  %>">
 	        					<div id="love_icon_<%= story.id  %>" class="love_icon">
-									<span style="margin-top:1px;float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= story.id  %>">
+									<span style="margin-top:1px;float:left; display:block; margin-left:-50%; color:black" class="love_product_<%= story.id  %>">
 	        							<%= story.reputation_for(:lovs).to_i %>
 	        						</span>
 	        						<%= link_to "xxx", lovs_micropost_path(story, type: "up"), :class =>"trick_anchor", :remote => true,  method: "post", id: "link", style: "color: transparent" %>
@@ -245,7 +245,7 @@
 				<% else %>
 					<span id="want_<%= story.id %>">
 						<div id="love_icon_<%= story.id %>" class="love_icon_active">
-							<span style="margin-top:1px;float:left; display:block; margin-left:-50%; color:black" id="love_product_<%= story.id %>">
+							<span style="margin-top:1px;float:left; display:block; margin-left:-50%; color:black" class="love_product_<%= story.id %>">
 								<%= story.reputation_for(:lovs).to_i %>
 							</span>
 						</div>

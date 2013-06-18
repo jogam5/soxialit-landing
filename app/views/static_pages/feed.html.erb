@@ -56,16 +56,16 @@
   <div id="ajax" style="float:left; position:fixed; display:none; margin: 20% 455px; z-index: 3000"><%= image_tag("ajax-loader.gif") %></div>
   <div class="tabbable" style="margin-bottom: 18px;">
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#tab1" data-toggle="tab">TOP</a></li>
-      <li class=""><a href="#tab2" data-toggle="tab">NUEVOS</a></li>
+      <li class="active"><a href="#tab1" data-toggle="tab">NUEVOS</a></li>
+      <li class=""><a href="#tab2" data-toggle="tab">TOP</a></li>
       <li class=""><a href="#tab3" data-toggle="tab">TRENDING</a></li>
     </ul>
     <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
       <div class="tab-pane active" style="overflow:hidden" id="tab1">
-        <%= render 'show_top' %>
+        <%= render 'show_new' %>
       </div>
       <div class="tab-pane" style="overflow:hidden" id="tab2">
-        <%= render 'show_new' %>
+        <%= render 'show_top' %>
       </div>
       <div class="tab-pane" style="overflow:hidden" id="tab3">
         <%= render 'show_trend' %>
