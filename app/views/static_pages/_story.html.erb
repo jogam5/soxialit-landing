@@ -33,7 +33,7 @@
           <h3 id="label_img" style="display:none;"></h3>
           <%= f.file_field :picture, :rows => "1", :class => "span4", id: "selection_file", style: "display:none" %>
           <div style="float:right; margin-right: 5%"class="actions" >
-            <span><%= f.submit "Compartir", id: "publicar", class: "button-nopost", :disabled => true, style:"margin-top:-2%;" %></span>
+            <span><%= f.submit "Compartir", id: "publicar", class: "button-story", style:"margin-top:-2%;" %></span>
           </div>
           <div id="url_val" style="display:none; color:red">Introduce una URL valida</div>
       <% end %>
@@ -65,7 +65,7 @@
             $('#status').val('');
         });
 
-
+/*
         $('#status').live('keyup keydown', function(){
           var url = $(this).val();
           console.log(url);
@@ -81,7 +81,7 @@
             $('#publicar').attr("disabled", "disabled");
             $('#url_val').show();
           }
-        });
+        });*/
 
     });
 </script>
