@@ -19,11 +19,11 @@ end
 module DeviseFacebook
   class Application < Rails::Application
 
-    config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
-            r301 %r{.*}, 'http://soxialit.com$&', :if => Proc.new {|rack_env|
-          rack_env['SERVER_NAME'] == 'www.soxialit.com'
-        }
-    end
+    #config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
+    #        r301 %r{.*}, 'http://soxialit.com$&', :if => Proc.new {|rack_env|
+    #      rack_env['SERVER_NAME'] == 'www.soxialit.com'
+    #    }
+    #end
 
     
     # Settings in config/environments/* take precedence over those specified here.
