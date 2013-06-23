@@ -43,7 +43,7 @@ class MicropostsController < ApplicationController
   def show
     @micropost = Micropost.find_by_id(params[:id])
     @posts = Micropost.all.last(20)
-    @tags = Micropost.tagged_with([@micropost.tag_list], :any => true)
+   # @tags = Micropost.tagged_with([@micropost.tag_list], :any => true)
 
     if @micropost.nil?
       flash[:error] = "No se ha encontrado el Post."

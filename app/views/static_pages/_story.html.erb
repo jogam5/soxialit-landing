@@ -6,7 +6,6 @@
     <div class="bs-docs-example">
         <div class="tabbable" style="margin-bottom: 0px;">
           <ul class="nav nav-tabs">
-            <% if current_user.roles.first.name == "admin" %>
               <li style="margin-left:5%;" class="active">
                 <span id="select_url" style="cursor:pointer; color: rgb(0, 165, 240);">
                   <div style="text-align: center; border: 1px solid #999;" class="span3">
@@ -23,7 +22,6 @@
                   </div>
                 </span>
               </li>
-            <% end %>
           </ul>
         </div>
     </div>
@@ -35,7 +33,7 @@
           <h3 id="label_img" style="display:none;"></h3>
           <%= f.file_field :picture, :rows => "1", :class => "span4", id: "selection_file", style: "display:none" %>
           <div style="float:right; margin-right: 5%"class="actions" >
-            <span><%= f.submit "Compartir", id: "publicar", class: "button-nopost", :disabled => true, style:"margin-top:-2%;" %></span>
+            <span><%= f.submit "Compartir", id: "publicar", class: "button-story", style:"margin-top:-2%;" %></span>
           </div>
           <div id="url_val" style="display:none; color:red">Introduce una URL valida</div>
       <% end %>
@@ -67,7 +65,7 @@
             $('#status').val('');
         });
 
-
+/*
         $('#status').live('keyup keydown', function(){
           var url = $(this).val();
           console.log(url);
@@ -83,7 +81,7 @@
             $('#publicar').attr("disabled", "disabled");
             $('#url_val').show();
           }
-        });
+        });*/
 
     });
 </script>

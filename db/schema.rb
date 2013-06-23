@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130605145314) do
+ActiveRecord::Schema.define(:version => 20130615234241) do
 
   create_table "activities", :force => true do |t|
     t.integer  "activitable_id"
@@ -126,20 +126,22 @@ ActiveRecord::Schema.define(:version => 20130605145314) do
   add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
   create_table "microposts", :force => true do |t|
-    t.string   "url"
-    t.string   "provider"
+    t.text     "url"
+    t.text     "provider"
     t.string   "title"
     t.text     "description"
-    t.string   "thumbnail"
+    t.text     "thumbnail"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.boolean  "status"
     t.string   "picture"
     t.integer  "group_id"
   end
 
   add_index "microposts", ["group_id"], :name => "index_microposts_on_group_id"
+  add_index "microposts", ["status"], :name => "index_microposts_on_status"
+  add_index "microposts", ["user_id"], :name => "index_microposts_on_user_id"
 
   create_table "newsletters", :force => true do |t|
     t.string   "title"
@@ -169,6 +171,8 @@ ActiveRecord::Schema.define(:version => 20130605145314) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "paintings", ["product_id"], :name => "index_paintings_on_product_id"
 
   create_table "partners", :force => true do |t|
     t.integer  "user_id"
@@ -357,6 +361,8 @@ ActiveRecord::Schema.define(:version => 20130605145314) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "sizes", ["product_id"], :name => "index_sizes_on_product_id"
+
   create_table "sizeships", :force => true do |t|
     t.integer  "product_id"
     t.integer  "size_id"
@@ -384,14 +390,11 @@ ActiveRecord::Schema.define(:version => 20130605145314) do
   end
 
   create_table "sourceships", :force => true do |t|
-    t.integer  "micropost_id"
-    t.integer  "source_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "micropost_id"
+    t.integer  "source_id"
   end
-
-  add_index "sourceships", ["micropost_id"], :name => "index_sourceships_on_micropost_id"
-  add_index "sourceships", ["source_id"], :name => "index_sourceships_on_source_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

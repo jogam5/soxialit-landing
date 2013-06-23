@@ -1,7 +1,7 @@
 DeviseFacebook::Application.routes.draw do
  
-  root :to => 'static_pages#home'
-  #root :to => 'static_pages#feed'
+  #root :to => 'static_pages#home'
+  root :to => 'static_pages#feed'
    
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 

@@ -14,28 +14,29 @@
 						<li class=""></li>
 						<% if current_user.roles.first.name == "admin" %>
 					   	 <li id="home_nav_bar">
-							<%= link_to "Testing", story_path, {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true}  %>
+							<%= link_to "", story_path, {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true}  %>
 					   	</li>	
 					   	<% end %>
 					    <li id="home_nav_bar">
-							<%= link_to '7-PAULINE', "http://soxialit.com/las7depauline", 
+							<%= link_to '', "http://soxialit.com/las7depauline", 
 															:title => "7 historias de la semana", :id => "index_pauline" %>
 					   	</li>
 						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 					    <li id="home_nav_bar">
-							<%= link_to 'CONECTA', users_path, id:"index_users", :title => "Conecta con la comunidad" %>
+							<%= link_to '', users_path, id:"index_users", :title => "Conecta con la comunidad" %>
 					   	</li>
 					   	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 					    <li id="home_nav_bar">
-							<%= link_to "EXPLORA", microposts_path, id:"index_microposts", :title => "Todos los Posts" %>
+							<%= link_to "", microposts_path, id:"index_microposts", :title => "Todos los Posts" %>
 					   	</li>
 					   	
 					   	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-						<li style="margin-right:0" class="divider-vertical"></li>
-					    <li class="home_nav_bar" style="background-color:red; padding: 0 5px 8px 5px;">
-			            	<%= link_to image_tag('link_blanco.png', style:"width:20px").html_safe, modal_post_path,  {:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
+					    <li>
+			    			<%= link_to '<i class="icon-edit icon-white"></i> compartir post'.html_safe, story_path,  
+			    				{:id => "modal", :rel => "tab", :remote => true, 'data-controls-modal' =>  "modal-window", 
+			    					'data-backdrop' => true, 'data-keyboard' => true, :style => 'background-color:red; 
+			    					padding: 3px 25px; margin:7px 2px; color:white;'} %>
 					   	</li>
-						<li style="margin-left:0" class="divider-vertical"></li>
 						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 						<li><% if !current_user.picture.present? %>
 							<%= link_to image_tag("http://graph.facebook.com/#{current_user.uid}/picture?type=square", 
@@ -51,6 +52,8 @@
 					              <ul id="profile_menu" class="dropdown-menu">
 					                <li><%= link_to '<i class="icon-edit"></i> Editar Perfil'.html_safe, edit_user_path(current_user), id:"anchor_edit" %></li>
 					                <li class="divider"></li>
+					                <li><%= link_to 'Las 7 Pauline', "http://soxialit.com/las7depauline", 
+															:id => "anchor_edit" %>
 					               	<li><%= link_to '<i class="icon-comment"></i> Blog'.html_safe, 
 					               				"http://blog.soxialit.com", id:"anchor_edit" %></li>
 					               	
@@ -64,7 +67,7 @@
 					              </ul>
 					        </li>
 					<% else %>
- 
+
 						<li id="home_nav_bar">
 							<%= link_to '7-PAULINE', "http://soxialit.com/las7depauline" %></li>
 						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
@@ -82,7 +85,7 @@
 			</div>
 		</div>
 </header>
- 
+
 <script>
 	$('#fat-menu').click(function(){
 		$('#profile_menu').toggle();
