@@ -5,4 +5,5 @@ class ApplicationController < ActionController::Base
     redirect_to user_path(current_user), :alert => exception.message
 	exception.default_message = "blage"
   end
+
 end

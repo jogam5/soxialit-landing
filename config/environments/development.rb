@@ -3,8 +3,6 @@ DeviseFacebook::Application.configure do
   ENV["APP_ID"] = '439343236107925'
   ENV["APP_SECRET"] = 'fb1c82f1f5893548e750e18e0b67362e'
   ENV["MAILCHIMP_API_KEY"] = '8acea2d56fff73cbaa8a707bf2d2d880-us5'
-  ENV['S3_KEY'] = 'AKIAISOYROBHPU657TUA'
-  ENV['S3_SECRET'] = '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'
 
   config.cache_store = :dalli_store
 
