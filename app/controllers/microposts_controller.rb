@@ -230,6 +230,8 @@ class MicropostsController < ApplicationController
     end
     respond_to do |format|
       if @micropost.update_attributes(params[:micropost])
+        @micropost.activities.create(:user_id => current_user.id, :action => "create")
+        Activity.expire_feed_cache(current_user)
         format.html { redirect_to @micropost, notice: '' }
       else
         format.html { render action: "edit" }
