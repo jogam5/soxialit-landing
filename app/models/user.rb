@@ -53,9 +53,9 @@ class User < ActiveRecord::Base
               :username, :picture, :picture_cache, :location, :website, :bio, 
               :role_ids, :provider, :uid, :token, :nickname, :fb, :status, :cover, :biopic
 
-  VALID_USERNAME_REGEX = /^[a-zA-Z0-9_]*[a-zA-Z][a-zA-Z0-9_]*$/
-  validates :username, presence: true,  format: { with: VALID_USERNAME_REGEX },
-            uniqueness: { case_sensitive: false }
+  #VALID_USERNAME_REGEX = /^[a-zA-Z0-9_]*[a-zA-Z][a-zA-Z0-9_]*$/
+  #validates :username, presence: true,  format: { with: VALID_USERNAME_REGEX },
+           # uniqueness: { case_sensitive: false }
 
   before_save {  self.username.downcase! }
   after_create :add_user_to_mailchimp
@@ -90,7 +90,7 @@ class User < ActiveRecord::Base
       user.build_notification
       user.follow!(User.find(1))
       user.subscribe!(Group.find(1)) #Every user is subscribed to main Group
-      user.save(:validate => false)
+      #user.save(:validate => false)
       #user.activities.create(:user_id => user.id, :action => "create")
 
         @api = Koala::Facebook::API.new(user.token)
@@ -126,7 +126,7 @@ class User < ActiveRecord::Base
     end
 
     user.update_attributes(token:auth.credentials.token)
-    user.save(:validate => false)
+    #user.save(:validate => false)
     user.build_notification unless !user.notification.nil?
     user
   end

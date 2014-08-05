@@ -19,6 +19,8 @@ Devise.setup do |config|
   
   # ******************************** CHANGES I MADE TO THE DEVISE THING ************************
   #require 'omniauth-facebook'
+  config.secret_key = ENV["APP_SECRET"]
+
   config.omniauth :facebook, ENV["APP_ID"],  ENV["APP_SECRET"],
                   :scope => 'email, user_birthday, user_location, publish_stream',
                   :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}

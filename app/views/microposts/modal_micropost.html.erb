@@ -1,14 +1,13 @@
 <% provide(:title, @micropost.title) %>
 
-<% content_for :meta do %>
-  <% if !@micropost.thumbnail.nil? %>
-    <% meta [:property => "og:image", :content => @micropost.thumbnail] %>
-  <% end %>
-  <% meta [:property => "og:description", :content => " #{@micropost.title}"] %>
-  <% meta [:property => "og:type", :content => "website"] %>
-  <% meta [:property => "og:title", :content => "Soxialit - #{@micropost.title}"] %>
-  <% meta [:property => "og:url", :content => "https://soxialit.com/microposts/#{@micropost.id}"] %>
-  <% meta [:property => "fb:app_id", :content => "235628993153454"] %>
+<% if !@micropost.thumbnail.nil? %>
+  <% meta image: "#{@micropost.thumbnail}",
+  description:"#{@micropost.title}",
+  type: "website",
+  title: "Soxialit - #{@micropost.title}",
+  url: "https://soxialit.com/p/#{@micropost.id}",
+  app_id: "235628993153454"
+  %>
 <% end %>
 
 <div class="row">
@@ -91,7 +90,7 @@
       <% if user_signed_in? %>
         <% if current_user.roles.first.name == "admin" %>
           <p class="tags">TAGS:</p>
-          <li class="taging"><%= raw @micropost.tag_list.map { |t| link_to t, tag_path(t) }.join(' ') %></li>
+          <li class="taging"><%= raw @micropost.tags.map { |t| link_to t, tag_path(t) }.join(' ') %></li>
         <% end %>
       <% end %>
         <span style="float:right;  display:block">
