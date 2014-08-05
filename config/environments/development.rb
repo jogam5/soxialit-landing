@@ -1,7 +1,7 @@
 DeviseFacebook::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-  ENV["APP_ID"] = '439343236107925'
-  ENV["APP_SECRET"] = 'fb1c82f1f5893548e750e18e0b67362e'
+  ENV["APP_ID"] = '235628993153454'
+  ENV["APP_SECRET"] = '6dc90b8b268f2643ebd5b074a88db7c8'
   ENV["MAILCHIMP_API_KEY"] = '8acea2d56fff73cbaa8a707bf2d2d880-us5'
 
   config.cache_store = :dalli_store
