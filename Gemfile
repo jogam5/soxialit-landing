@@ -41,7 +41,7 @@ gem 'letter_opener', group: :development
 gem "bootstrap-sass", "~> 2.1.0.1"
 
 #tags
-gem 'acts-as-taggable-on'
+gem 'acts-as-taggable-on', '3.3.0'
 
 #payment methods
 gem 'mercadopago'
